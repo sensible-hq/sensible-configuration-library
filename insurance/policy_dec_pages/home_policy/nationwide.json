@@ -1,0 +1,308 @@
+{
+  "fields": [
+    {
+      "id": "policy_number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "policy number"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "named_insured",
+      "type": "name",
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "named insured"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": {
+          "type": "regex",
+          "pattern": "^\\d",
+          "flags": "i"
+        }
+      }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "policy period from"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "tiebreaker": "<"
+      }
+    },
+    {
+      "id": "expiration_date",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "policy period from"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "residence premises information:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": "gap"
+      }
+    },
+    {
+      "id": "deductible",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "deductible:"
+        }
+      }
+    },
+    {
+      "id": "dwelling_limit",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "Coverage-A-Dwelling"
+        }
+      }
+    },
+    {
+      "id": "other_structures_limit",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "Coverage-B-Other structures"
+        }
+      }
+    },
+    {
+      "id": "personal_property_limit",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "Coverage-C-Personal property"
+        }
+      }
+    },
+    {
+      "id": "loss_of_use_limit",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "Coverage-D-loss of use"
+        }
+      }
+    },
+    {
+      "id": "personal_liability_limit",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "Coverage-E-personal liability"
+        }
+      }
+    },
+    {
+      "id": "medical_payment_to_others_limit",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "Coverage-F-Medical payment"
+        }
+      }
+    },
+    {
+      "id": "deductible_wind_hail",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "above"
+      },
+      "anchor": {
+        "start": {
+          "type": "includes",
+          "text": "deductible:"
+        },
+        "match": {
+          "type": "includes",
+          "text": "windstorm"
+        }
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "premium summary"
+        },
+        "match": {
+          "type": "equals",
+          "text": "annual premium"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "premium summary"
+        },
+        "match": {
+          "type": "equals",
+          "text": "policy premium"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "premium summary"
+        },
+        "match": {
+          "type": "equals",
+          "text": "annual premium"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "premium summary"
+        },
+        "match": {
+          "type": "includes",
+          "text": "policy premium"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "_premium_period_raw",
+      "anchor": {
+        "start": {
+          "text": "policy premium",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "regex",
+          "pattern": "^(.+) Premium"
+        }
+      },
+      "method": {
+        "id": "passthrough"
+      }
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "premium_period",
+      "method": {
+        "id": "mapper",
+        "source_id": "_premium_period_raw",
+        "mappings": {
+          "Annual Premium": "12",
+          "Annual Renewal Premium": "12"
+        }
+      }
+    }
+  ]
+}

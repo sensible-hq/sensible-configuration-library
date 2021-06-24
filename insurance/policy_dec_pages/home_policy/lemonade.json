@@ -1,0 +1,240 @@
+{
+    "fields": [
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "policy number"
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "policy start date"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "policy expires on"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "match": {
+            "text": "name of insured",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "insured property address"
+          }
+        }
+      },
+      {
+        "id": "dwelling_limit",
+        "anchor": {
+          "match": {
+            "text": "dwelling",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "other_structures_limit",
+        "anchor": {
+          "match": {
+            "text": "other structures",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "personal_property_limit",
+        "anchor": {
+          "match": {
+            "text": "personal property",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "loss_of_use_limit",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "loss of use",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "personal_liability_limit",
+        "anchor": {
+          "match": {
+            "text": "personal liability",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "medical_payment_to_others_limit",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "match": {
+            "text": "medical payments",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "deductible",
+        "type": "currency",
+        "method": {
+          "id": "regex",
+          "pattern": "(.*)",
+          "flags": "i"
+        },
+        "anchor": {
+          "match": {
+            "text": "deductible",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "policy_premium",
+        "type": "currency",
+        "method": {
+          "id": "regex",
+          "pattern": "(\\$[\\d.]+)/mo",
+          "flags": "i"
+        },
+        "anchor": {
+          "match": {
+            "type": "regex",
+            "pattern": "\\$[\\d.]+/mo",
+            "flags": "i"
+          }
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "method": {
+          "id": "regex",
+          "pattern": "(\\$[\\d.]+)/mo",
+          "flags": "i"
+        },
+        "anchor": {
+          "match": {
+            "type": "regex",
+            "pattern": "\\$[\\d.]+/mo",
+            "flags": "i"
+          }
+        }
+      },
+      {
+        "id": "_premium_period_raw",
+        "method": {
+          "id": "regex",
+          "pattern": "\\$[\\d.]+(/mo)",
+          "flags": "i"
+        },
+        "anchor": {
+          "match": {
+            "type": "regex",
+            "pattern": "\\$[\\d.]+/mo",
+            "flags": "i"
+          }
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "premium_period",
+        "method": {
+          "id": "mapper",
+          "source_id": "_premium_period_raw",
+          "mappings": {
+            "/mo": "1"
+          }
+        }
+      }
+    ]
+  }

@@ -1,0 +1,549 @@
+{
+    "fields": [
+      {
+        "id": "address",
+        "type": "address",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": {
+            "text": "policy number",
+            "type": "startsWith"
+          }
+        },
+        "anchor": {
+          "match": {
+            "text": "mailing address",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "Summary",
+            "type": "equals"
+          },
+          "match": {
+            "text": "policy number",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "match": {
+            "text": "if you pay in installments",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "tiebreaker": "<",
+          "stop": {
+            "text": "your allstate agency",
+            "type": "includes"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "Summary",
+            "type": "equals"
+          },
+          "match": {
+            "text": "policy period",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "tiebreaker": ">",
+          "stop": {
+            "text": "your allstate agency",
+            "type": "includes"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "summary",
+            "type": "equals"
+          },
+          "match": {
+            "text": "policy period",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "vehicle_model",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "(?:19|20)\\d{2} [\\w-]+ (.*)$"
+        },
+        "anchor": {
+          "start": {
+            "text": "total premium",
+            "type": "includes"
+          },
+          "match": {
+            "pattern": "^(?:19|20)\\d{2} .*",
+            "type": "regex"
+          },
+          "end": {
+            "text": "additional coverages",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "vin",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": {
+            "text": "total premium",
+            "type": "includes"
+          },
+          "match": {
+            "pattern": "^.{12}\\d{5}$",
+            "type": "regex"
+          },
+          "end": {
+            "text": "additional coverages",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "named_insured",
+        "match": "all",
+        "type": "name",
+        "method": {
+          "id": "regex",
+          "pattern": "(.*) - "
+        },
+        "anchor": {
+          "start": {
+            "text": "listed driver",
+            "type": "startsWith"
+          },
+          "match": {
+            "pattern": ".* - ",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "excluded drivers",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "fee_names",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": {
+            "text": "total premium",
+            "type": "includes"
+          },
+          "match": {
+            "text": "fee",
+            "type": "includes"
+          },
+          "end": {
+            "text": "additional coverages",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "fee_values",
+        "match": "all",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "total premium",
+            "type": "includes"
+          },
+          "match": {
+            "text": "fee",
+            "type": "includes"
+          },
+          "end": {
+            "text": "additional coverages",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "bodily_injury_liability_per_person",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage detail",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "bodily injury",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "bodily_injury_liability_per_accident",
+        "type": "currency",
+        "method": {
+          "id": "regex",
+          "pattern": "(\\$\\d[0-9]+)"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverage detail",
+              "type": "startsWith"
+            },
+            {
+              "text": "bodily injury",
+              "type": "includes"
+            },
+            {
+              "text": "each person",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "pattern": "\\$\\d[0-9]+ each occurrence",
+            "type": "regex"
+          }
+        }
+      },
+      {
+        "id": "property_damage_liability_per_accident",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage detail",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "property Damage",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "collision_deductible",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage detail",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "auto collision insurance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "collision_limit",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage detail",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "auto collision insurance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "comprehensive_deductible",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage detail",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "auto comprehensive insurance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "comprehensive_limit",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage detail",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "auto comprehensive insurance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "roadside_assistance",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage detail",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "roadside coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "rental_reimbursement_per_day",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage detail",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "transportation expense",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "uninsured_underinsured_motorist_bodily_injury_per_accident",
+        "type": "currency",
+        "method": {
+          "id": "regex",
+          "pattern": "(\\$\\d[0-9]+)"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "uninsured/underinsured",
+              "type": "startsWith"
+            },
+            {
+              "text": "bodily injury",
+              "type": "includes"
+            },
+            {
+              "text": "each person",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "pattern": "\\$\\d[0-9]+ each accident",
+            "type": "regex"
+          }
+        }
+      },
+      {
+        "id": "uninsured_underinsured_motorist_bodily_injury_per_person",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": {
+            "text": "uninsured/underinsured",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "bodily injury",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "uninsured_underinsured_property_damage_deductible",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "tiebreaker": "second"
+        },
+        "anchor": {
+          "start": {
+            "text": "uninsured/underinsured",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "property damage",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "uninsured_underinsured_property_damage_per_accident",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": {
+            "text": "uninsured/underinsured",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "property damage",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "personal_injury_protection_per_person",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage detail",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "includes",
+            "text": "personal injury"
+          }
+        }
+      },
+      {
+        "id": "policy_premium",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "match": {
+            "text": "total premium for",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "vehicle_year",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "(?:19|20)\\d{2}"
+        },
+        "anchor": {
+          "start": {
+            "text": "total premium",
+            "type": "includes"
+          },
+          "match": {
+            "pattern": "^(?:19|20)\\d{2} .*",
+            "type": "regex"
+          },
+          "end": {
+            "text": "additional coverages",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "vehicle_make",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "(?:19|20)\\d{2} ([\\w-]+) .*$"
+        },
+        "anchor": {
+          "start": {
+            "text": "total premium",
+            "type": "includes"
+          },
+          "match": {
+            "pattern": "^(?:19|20)\\d{2} .*",
+            "type": "regex"
+          },
+          "end": {
+            "text": "additional coverages",
+            "type": "includes"
+          }
+        }
+      }
+    ]
+  }

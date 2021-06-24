@@ -1,0 +1,225 @@
+{
+  "fields": [
+    {
+      "id": "policy_number",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "policy number"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left"
+      }
+    },
+    {
+      "id": "named_insured",
+      "type": "name",
+      "match": "all",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "named insured"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "named insured"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left"
+      }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "effective date"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "tiebreaker": "<"
+      }
+    },
+    {
+      "id": "expiration_date",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "effective date"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "premium_period",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "effective date"
+        }
+      },
+      "method": {
+        "id": "regex",
+        "pattern": "(\\d+) months - policy period",
+        "flags": "i"
+      }
+    },
+    {
+      "id": "dwelling_limit",
+      "anchor": {
+        "match": {
+          "text": "building property",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "left",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "personal_property_limit",
+      "anchor": {
+        "match": {
+          "text": "personal property",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "left",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "personal_liability_limit",
+      "anchor": {
+        "match": {
+          "text": "personal liability",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "left",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "medical_payment_to_others_limit",
+      "anchor": {
+        "match": {
+          "text": "medical payments",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "left",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "loss_of_use_limit",
+      "anchor": {
+        "match": {
+          "text": "loss of use",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "left",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "other_structures_limit",
+      "anchor": {
+        "match": {
+          "text": "other structures",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "left",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "deductible",
+      "anchor": {
+        "match": {
+          "text": "deductibles",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "text": "policy premium",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "text": "policy premium",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    }
+  ]
+}

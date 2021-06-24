@@ -1,0 +1,173 @@
+{
+  "fields": [
+    {
+      "id": "policy_number",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "policy number"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "policy start",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "expiration_date",
+      "type": "date",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "policy expires on",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "named_insured",
+      "type": "name",
+      "match": "all",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "name of insured"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": "gap"
+      }
+    },
+    {
+      "id": "address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "insured property address"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": "gap"
+      }
+    },
+    {
+      "id": "personal_property_limit",
+      "anchor": "personal property",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "loss_of_use_limit",
+      "anchor": "loss of use",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "personal_liability_limit",
+      "anchor": "personal liability",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "medical_payment_to_others_limit",
+      "anchor": "medical payments",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "deductible",
+      "anchor": "deductible",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">",
+        "includeAnchor": true
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": "total premium",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "<"
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": "total premium",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "<"
+      }
+    },
+    {
+      "id": "_premium_period_raw",
+      "method": {
+        "id": "regex",
+        "pattern": "\\$[\\d.]+(/mo)",
+        "flags": "i"
+      },
+      "anchor": {
+        "match": {
+          "type": "regex",
+          "pattern": "\\$[\\d.]+/mo",
+          "flags": "i"
+        }
+      }
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "premium_period",
+      "method": {
+        "id": "mapper",
+        "source_id": "_premium_period_raw",
+        "mappings": {
+          "/mo": "1"
+        }
+      }
+    }
+  ]
+}

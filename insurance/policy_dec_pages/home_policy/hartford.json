@@ -1,0 +1,228 @@
+{
+  "fields": [
+    {
+      "id": "address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "insured and mailing address:"
+        }
+      },
+      "method": {
+        "id": "documentRange",
+        "stop": {
+          "text": "residence premises",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "named_insured",
+      "type": "name",
+      "match": "all",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "insured and mailing address:"
+        }
+      },
+      "method": {
+        "id": "documentRange",
+        "stop": {
+          "pattern": "\\d",
+          "type": "regex"
+        }
+      }
+    },
+    {
+      "id": "policy_number",
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "policy number:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "anchor": {
+        "start": {
+          "text": "policy information:",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "your policy number"
+        }
+      },
+      "method": {
+        "id": "documentRange",
+        "stop": {
+          "text": "Producer code:",
+          "type": "includes"
+        },
+        "tiebreaker": "<"
+      }
+    },
+    {
+      "id": "expiration_date",
+      "type": "date",
+      "anchor": {
+        "start": {
+          "text": "policy information:",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "your policy number"
+        }
+      },
+      "method": {
+        "id": "documentRange",
+        "stop": {
+          "text": "Producer code:",
+          "type": "includes"
+        },
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "text": "policy premium",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "text": "total policy premium:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "dwelling_limit",
+      "anchor": {
+        "match": {
+          "text": "dwelling:",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "personal_property_limit",
+      "anchor": {
+        "match": {
+          "text": "personal property:",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "loss_of_use_limit",
+      "anchor": {
+        "match": {
+          "text": "loss of use:",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "personal_liability_limit",
+      "anchor": {
+        "match": {
+          "text": "personal liability:",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "medical_payment_to_others_limit",
+      "anchor": {
+        "match": {
+          "text": "medical payments",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "other_structures_limit",
+      "anchor": {
+        "match": {
+          "text": "other structures:",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "deductible",
+      "anchor": "deductible(s):",
+      "type": "currency",
+      "method": {
+        "id": "documentRange",
+        "stop": {
+          "text": "important information",
+          "type": "includes"
+        }
+      }
+    }
+  ]
+}
