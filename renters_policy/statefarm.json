@@ -1,0 +1,177 @@
+{
+    "fields": [
+      {
+        "id": "policy_number",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "policy number"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "left",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "policy_premium",
+        "type": "currency",
+        "anchor": "policy premium",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "premium_period",
+        "type": "number",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "effective date",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "row",
+          "position": "left"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "effective date",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "method": {
+          "id": "row",
+          "position": "left",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "expiration of policy",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "Named Insured and Mailing Address"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "text": "The Policy Period begins",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "match": "all",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "named insured"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "personal_property_limit",
+        "anchor": {
+          "match": {
+            "text": "personal property",
+            "type": "startsWith"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "left",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "loss_of_use_limit",
+        "anchor": "loss of use",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "personal_liability_limit",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "personal liability",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "left",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "medical_payment_to_others_limit",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "medical payments",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "left",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "deductible",
+        "anchor": {
+          "match": {
+            "text": "deductibles",
+            "type": "startsWith"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      }
+    ]
+  }

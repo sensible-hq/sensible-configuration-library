@@ -1,0 +1,485 @@
+{
+    "fields": [
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Policy Number:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "fee_names",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "includes",
+              "text": "coverage and limits"
+            }
+          ],
+          "match": [
+            {
+              "type": "includes",
+              "text": "fee"
+            }
+          ]
+        }
+      },
+      {
+        "id": "fee_values",
+        "match": "all",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "includes",
+              "text": "coverage and limits"
+            }
+          ],
+          "match": [
+            {
+              "type": "includes",
+              "text": "fee"
+            }
+          ]
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "match": [
+            {
+              "type": "equals",
+              "text": "Amount Due"
+            }
+          ]
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": "<"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Policy Period:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Policy Period:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 0,
+          "offsetY": 0.7,
+          "width": 3,
+          "height": 1.45
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "State Farm Mutual Automobile Insurance Company",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Assigned Driver",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "text": "Name",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "vehicle_year",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "(\\d{4})"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Vehicle:",
+              "type": "equals"
+            }
+          ],
+          "match": [
+            {
+              "pattern": "(\\d{4})",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "text": "Principal",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "vehicle_make",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "\\d{4} ([\\w-]+) .*"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Vehicle:",
+              "type": "equals"
+            }
+          ],
+          "match": [
+            {
+              "pattern": "\\d{4} (.*)",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "text": "Principal",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "vehicle_model",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "\\d{4} [\\w-]+ (.*)"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Vehicle:",
+              "type": "equals"
+            }
+          ],
+          "match": [
+            {
+              "pattern": "\\d{4} (.*)",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "text": "Principal",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "vin",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Vehicle:",
+              "type": "equals"
+            }
+          ],
+          "match": [
+            {
+              "pattern": "[A-Z0-9]{12}\\d{5}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "text": "Driver",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "bodily_injury_liability_per_person",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": "<"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Coverage and Limits",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "text": "Bodily Injury",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "bodily_injury_liability_per_accident",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Coverage and Limits",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "text": "Bodily Injury",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "property_damage_liability_per_accident",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Coverage and Limits",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "text": "property damage",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "uninsured_underinsured_motorist_bodily_injury_per_person",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": "<"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Coverage and Limits",
+              "type": "startsWith"
+            },
+            {
+              "text": "Uninsured",
+              "type": "includes"
+            }
+          ],
+          "match": [
+            {
+              "text": "bodily injury",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "uninsured_underinsured_motorist_bodily_injury_per_accident",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Coverage and Limits",
+              "type": "startsWith"
+            },
+            {
+              "text": "Uninsured",
+              "type": "includes"
+            }
+          ],
+          "match": [
+            {
+              "text": "bodily injury",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "rental_reimbursement_per_day",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Coverage and Limits",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "Car Rental",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "collision_deductible",
+        "type": "currency",
+        "method": {
+          "id": "regex",
+          "pattern": "(\\d+) Deductible Collision",
+          "flags": "i"
+        },
+        "anchor": {
+          "start": {
+            "text": "Coverage and Limits",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "type": "regex",
+              "pattern": "(\\d+) Deductible Collision",
+              "flags": "i"
+            }
+          ]
+        }
+      },
+      {
+        "id": "comprehensive_deductible",
+        "type": "currency",
+        "method": {
+          "id": "regex",
+          "pattern": "(\\d+) Deductible Comprehensive",
+          "flags": "i"
+        },
+        "anchor": {
+          "start": {
+            "text": "Coverage and Limits",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "type": "regex",
+              "pattern": "(\\d+) Deductible Comprehensive",
+              "flags": "i"
+            }
+          ]
+        }
+      },
+      {
+        "id": "_roadside_assistance",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": {
+            "text": "Coverage And Limits",
+            "type": "includes"
+          },
+          "match": [
+            {
+              "type": "includes",
+              "text": "Emergency Road Service"
+            }
+          ]
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "roadside_assistance",
+        "method": {
+          "id": "mapper",
+          "source_id": "_roadside_assistance",
+          "mappings": {
+            "Emergency Road Service": "yes"
+          }
+        }
+      }
+    ]
+  }
