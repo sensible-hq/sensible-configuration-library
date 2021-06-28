@@ -1,0 +1,236 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "type": "equals",
+          "text": "POLICY COVERAGES AND LIMITS OF LIABILITY",
+          "minimumHeight": 0.15,
+          "isCaseSensitive": true
+        },
+        {
+          "type": "equals",
+          "text": "POLICY SAVINGS AND DEDUCTIBLES",
+          "minimumHeight": 0.15,
+          "isCaseSensitive": true
+        },
+        {
+          "type": "equals",
+          "text": "OPTIONAL ENDORSEMENTS AND COVERAGES",
+          "minimumHeight": 0.15,
+          "isCaseSensitive": true
+        }
+      ]
+    },
+    "preprocessors": [
+      {
+        "type": "ocr",
+        "match": {
+          "type": "equals",
+          "text": "POLICY COVERAGES AND LIMITS OF LIABILITY",
+          "minimumHeight": 0.15,
+          "isCaseSensitive": true
+        },
+        "pageOffset": 0
+      }
+    ],
+    "fields": [
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "homeowners policy no",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "policy_premium",
+        "type": "currency",
+        "anchor": "total policy premium",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "anchor": "total policy premium",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "Name and Mailing Address"
+          }
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "residence premises"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "Policy period"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "tiebreaker": "<"
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "Policy period"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "dwelling_limit",
+        "anchor": {
+          "match": {
+            "text": "A - Dwelling",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "other_structures_limit",
+        "anchor": {
+          "match": {
+            "text": "B - Other structures",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "personal_property_limit",
+        "anchor": {
+          "match": {
+            "text": "C - personal property",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "loss_of_use_limit",
+        "anchor": {
+          "match": {
+            "text": "D - loss of use",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "medical_payment_to_others_limit",
+        "anchor": {
+          "match": {
+            "text": "F - Medical payments",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "personal_liability_limit",
+        "anchor": {
+          "match": {
+            "text": "E - personal liability",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "deductible",
+        "anchor": {
+          "match": {
+            "text": "Property coverages deductible",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "deductible_wind_hail",
+        "anchor": "hail deductible",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      }
+    ]
+  }
