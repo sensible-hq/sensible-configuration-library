@@ -1,0 +1,1929 @@
+{
+    "fields": [
+      {
+        "id": "agency",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "agency",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.phone",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "(a/c, no, ext):",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.fax",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "(a/c, no):",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.code",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "code",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.sub_code",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "sub code",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.customer_id",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "wordFilters": [
+            "agency"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "customer id:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insured_name_and_mailing_address",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "insured and mailing address",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "company.name",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "company",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "company.binder_number",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "binder #",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "company.effective_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "offsetY": 0.15
+        },
+        "anchor": {
+          "match": {
+            "text": "date",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "company.effective_time",
+        "method": {
+          "id": "box",
+          "offsetX": 0.1,
+          "offsetY": 0.15
+        },
+        "anchor": {
+          "match": {
+            "text": "effective",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "company.effective_time.am",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "am",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "company.effective_time.pm",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "pm",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "company.expiration_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "offsetY": 0.15
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "date",
+              "type": "endsWith"
+            },
+            {
+              "text": "date",
+              "type": "endsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "company.expiration_time.1201",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "12:01AM",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "company.expiration_time.noon",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "noon",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "company.extend_coverage_checkbox",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetY": 0.1,
+          "offsetX": -0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "this binder is issued",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "company.expiring_policy_number",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "per expiring policy #:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "company.expiring_policy_number",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "width": 2.7,
+          "height": 0.15,
+          "offsetX": 0,
+          "offsetY": -0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "per expiring policy #:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "company.description_of_operations_vehicles_property",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "description of operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.property.causes_of_loss.basic",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "basic",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.property.causes_of_loss.broad",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "broad",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.property.causes_of_loss.spec",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "spec",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.property.coverage_and_forms",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "coverage/forms",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.property.deductible_limit",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "deductible",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.property.coins_percent_limit",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "coins",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.property.amount_limit",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "amount",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.general_liability.commercial_general_liability",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "commercial general liability",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.general_liability.claims_made",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "commercial general liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "claims",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.general_liability.occur",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "commercial general liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "occur",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.general_liability.coverages_and_forms",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "coverage/forms",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.general_liability.each_occurrence_limit",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "number": 1,
+            "direction": "right"
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "type of insurance",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "occurrence",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.general_liability.damage_to_rented_premises_limit",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "number": 1,
+            "direction": "right"
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "type of insurance",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "premises",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.general_liability.medical_expense",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "number": 1,
+            "direction": "right"
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "type of insurance",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "med exp",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.general_liability.personal_and_advertising_injury",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "number": 1,
+            "direction": "right"
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "type of insurance",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "personal & adv",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.general_liability.general_aggregate",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "number": 1,
+            "direction": "right"
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "type of insurance",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "aggregate",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.general_liability.products_completed_operations_aggregate",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "number": 1,
+            "direction": "right"
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "type of insurance",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "agg",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_liability.any_auto",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "any",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_liability.owned_autos_only",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "owned autos",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_liability.scheduled_autos",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "scheduled autos",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_liability.hired_autos_only",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "hired autos",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_liability.nonowned_autos_only",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "non-owned autos",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_liability.coverages_and_forms",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "coverage/forms",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_liability.combined_single_limit",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "single limit",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_liability.bodily_injury_per_person_limit",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "(per person)",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_liability.bodily_injury_per_accident_limit",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "(per accident)",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_liability.property_damage_limit",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "property damage",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_liability.medical_payments_limit",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "medical payments",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_liability.personal_injury_protection_limit",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "injury prot",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_liability.uninsured_motorist_limit",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          },
+          "xMajorSort": true
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "uninsured motorist",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_physical_damage.collision",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle physical damage",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "collision:",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_physical_damage.collision_deductible",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 1.1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle physical damage",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "collision:",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages_vehicle.physical_damage.other_than_collision",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle physical damage",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "other than col:",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_physical_damage.other_than_collision_deductible",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 0.8
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle physical damage",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "other than col:",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_physical_damage.all_vehicles_covered",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle physical damage",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "all vehicles",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_physical_damage.scheduled_vehicles_covered",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle physical damage",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "scheduled",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_physical_damage.limits.actual_cash_value",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle physical damage",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "actual cash value",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_physical_damage.limits.stated_amount",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle physical damage",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "stated",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.vehicle_physical_damage.limits.stated_amount_total",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "vehicle physical damage",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "stated",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.garage_liability.any_auto",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "garage liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "any",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.garage_liability.coverage_and_forms",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "coverage/forms",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.garage_liability.auto_only_each_accident",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "garage liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "auto only",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.garage_liability.other_than_auto_only",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "garage liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "other than auto",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.garage_liability.each_accident",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "garage liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "each accident",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.garage_liability.aggregate",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "garage liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "aggregate",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.excess_liability.umbrella_form",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "excess liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "umbrella form",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.excess_liability.other_than_umbrella_form",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "excess liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "other than umbrella",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.excess_liability.coverage_and_forms",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "coverage/forms",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.excess_liability.each_occurrence_limit",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "excess liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "occurrence",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.excess_liability.aggregate_limit",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "excess liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "aggregate",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.excess_liability.self_insured_retention_limit",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "excess liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "retention",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.workers_comp_employers_liability.coverage_and_forms",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "coverage/forms",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.workers_comp_employers_liability.per_statute",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "excess liability",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "statute",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.workers_comp_employers_liability.each_accident_limit",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "excess liability",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "each accident",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.workers_comp_employers_liability.disease_each_employee_limit",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "excess liability",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "ea employee",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.workers_comp_employers_liability.disease_policy_limit",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "excess liability",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "policy limit",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.special_conditions_and_other_coverages",
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "text": "name &",
+            "type": "startsWith"
+          },
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 4.95
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "employer's liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "conditions/",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.special_conditions_and_other_coverages.fees_limit",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "employer's liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "fees",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.special_conditions_and_other_coverages.taxes_limit",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "employer's liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "taxes",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.special_conditions_and_other_coverages.estimated_total_premium",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "employer's liability",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "estimated total",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "name_and_address",
+        "method": {
+          "id": "box",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "name & address",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "name_and_address.additional_insured",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "name & address",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "additional insured",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "name_and_address.loss_payee",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "name & address",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "loss payee",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "name_and_address.mortgagee",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "name & address",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "mortgagee",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "name_and_address.lenders_loss_payable",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "name & address",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "lender's",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "name_and_address.loan_number",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "name & address",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "loan #",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "name_and_address.authorized_representative",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "wordFilters": [
+            "authorized"
+          ]
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "coverages",
+              "type": "endsWith"
+            },
+            {
+              "text": "name & address",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "representative",
+            "type": "endsWith"
+          }
+        }
+      }
+    ]
+  }

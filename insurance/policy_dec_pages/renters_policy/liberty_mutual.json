@@ -1,203 +1,207 @@
 {
-    "fields": [
-      {
-        "id": "policy_number",
-        "anchor": {
-          "start": "Insurance Information",
-          "match": {
-            "type": "startsWith",
-            "text": "policy number:"
-          }
-        },
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
+  "fields": [
+    {
+      "id": "premium_period",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "regex",
+          "pattern": "^Total(.)* Premium:$"
         }
       },
-      {
-        "id": "policy_premium",
-        "type": "currency",
-        "anchor": {
-          "match": {
-            "type": "endsWith",
-            "text": "premium:"
-          }
-        },
-        "method": {
-          "id": "row",
-          "tiebreaker": "first"
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "endsWith",
+          "text": "premium:"
         }
       },
-      {
-        "id": "total",
-        "type": "currency",
-        "anchor": {
-          "match": {
-            "type": "regex",
-            "pattern": "^Total(.)* Premium:$"
-          }
-        },
-        "method": {
-          "id": "label",
-          "position": "right"
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "regex",
+          "pattern": "^Total(.)* Premium:$"
         }
       },
-      {
-        "id": "premium_period",
-        "type": "number",
-        "anchor": {
-          "match": {
-            "type": "regex",
-            "pattern": "^Total(.)* Premium:$"
-          }
-        },
-        "method": {
-          "id": "passthrough"
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "named_insured",
+      "match": "all",
+      "anchor": {
+        "start": "insurance information",
+        "match": {
+          "type": "startsWith",
+          "text": "named insured:"
         }
       },
-      {
-        "id": "effective_date",
-        "type": "date",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "<"
-        },
-        "anchor": {
-          "match": [
-            {
-              "text": "policy period",
-              "type": "startsWith"
-            }
-          ]
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "policy_number",
+      "anchor": {
+        "start": "Insurance Information",
+        "match": {
+          "type": "startsWith",
+          "text": "policy number:"
         }
       },
-      {
-        "id": "expiration_date",
-        "type": "date",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": ">"
-        },
-        "anchor": {
-          "match": [
-            {
-              "text": "policy period",
-              "type": "startsWith"
-            }
-          ]
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "address",
+      "type": "address",
+      "anchor": {
+        "start": "insurance information",
+        "match": {
+          "type": "startsWith",
+          "text": "mailing address"
         }
       },
-      {
-        "id": "address",
-        "type": "address",
-        "anchor": {
-          "start": "insurance information",
-          "match": {
-            "type": "startsWith",
-            "text": "mailing address"
-          }
+      "method": {
+        "id": "documentRange",
+        "stop": {
+          "text": "discounts and benefits",
+          "type": "startsWith"
         },
-        "method": {
-          "id": "documentRange",
-          "stop": {
-            "text": "discounts and benefits",
-            "type": "startsWith"
-          },
-          "xRangeFilter": {
-            "start": "right",
-            "offsetX": 0,
-            "width": 2
-          }
-        }
-      },
-      {
-        "id": "named_insured",
-        "match": "all",
-        "anchor": {
-          "start": "insurance information",
-          "match": {
-            "type": "startsWith",
-            "text": "named insured:"
-          }
-        },
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        }
-      },
-      {
-        "id": "personal_property_limit",
-        "anchor": {
-          "start": "coverage information",
-          "match": {
-            "text": "personal property",
-            "type": "includes"
-          }
-        },
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": ">"
-        }
-      },
-      {
-        "id": "loss_of_use_limit",
-        "anchor": "loss of use",
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "tiebreaker": ">"
-        }
-      },
-      {
-        "id": "personal_liability_limit",
-        "type": "currency",
-        "anchor": {
-          "match": {
-            "text": "personal liability",
-            "type": "includes"
-          }
-        },
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": ">"
-        }
-      },
-      {
-        "id": "medical_payment_to_others_limit",
-        "type": "currency",
-        "anchor": {
-          "match": {
-            "text": "medical",
-            "type": "includes"
-          }
-        },
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": ">"
-        }
-      },
-      {
-        "id": "deductible",
-        "anchor": {
-          "start": "policy deductibles",
-          "match": {
-            "text": "losses covered",
-            "type": "startsWith"
-          }
-        },
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "right"
+        "xRangeFilter": {
+          "start": "right",
+          "offsetX": 0,
+          "width": 2
         }
       }
-    ]
-  }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "match": {
+          "text": "policy period",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "expiration_date",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": {
+          "text": "policy period",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "personal_property_limit",
+      "anchor": {
+        "start": {
+          "text": "coverage information",
+          "type": "includes"
+        },
+        "match": {
+          "text": "personal property",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "loss_of_use_limit",
+      "anchor": "loss of use",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "personal_liability_limit",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "text": "personal liability",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "medical_payment_to_others_limit",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "text": "medical",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "deductible",
+      "anchor": {
+        "start": {
+          "text": "policy deductibles",
+          "type": "includes"
+        },
+        "match": {
+          "text": "losses covered",
+          "type": "startsWith"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    }
+  ]
+}

@@ -1,308 +1,303 @@
 {
-    "fields": [
-      {
-        "id": "policy_number",
-        "match": "first",
-        "type": "string",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": {
-          "match": {
-            "text": "Policy Number:",
-            "type": "startsWith"
-          }
-        }
+  "fields": [
+    {
+      "id": "policy_number",
+      "match": "first",
+      "type": "string",
+      "method": {
+        "id": "label",
+        "position": "right"
       },
-      {
-        "id": "policy_premium",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "Premium:",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "total",
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "position": "right"
-        },
-        "anchor": {
-          "match": [
-            {
-              "text": "Payment information",
-              "type": "equals"
-            },
-            {
-              "text": "Total",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "premium_period",
-        "method": {
-          "id": "regex",
-          "pattern": "Total (.+) Premium",
-          "flags": ""
-        },
-        "anchor": "payment information"
-      },
-      {
-        "id": "effective_date",
-        "type": "date",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": {
-          "match": [
-            {
-              "text": "Policy Effective Date",
-              "type": "startsWith"
-            }
-          ]
-        }
-      },
-      {
-        "id": "continuous_until_cancelled",
-        "type": "string",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": {
-          "match": {
-            "text": "Policy Term:",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "_street_address",
-        "match": "first",
-        "type": "string",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": {
-          "match": {
-            "text": "Street Address:",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "_city",
-        "match": "first",
-        "type": "string",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": {
-          "match": {
-            "text": "City:",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "_state",
-        "match": "first",
-        "type": "string",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": {
-          "match": {
-            "text": "State:",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "_zip_code",
-        "match": "first",
-        "type": "string",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": {
-          "match": {
-            "text": "Zip Code:",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "named_insured",
-        "type": "name",
-        "match": "all",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": {
-          "match": [
-            {
-              "text": "Pet parent information",
-              "type": "startsWith"
-            },
-            {
-              "text": "Name:",
-              "type": "startsWith"
-            }
-          ]
-        }
-      },
-      {
-        "id": "coinsurance",
-        "match": "first",
-        "type": "string",
-        "method": {
-          "id": "label",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "(Your Share)",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "reimbursement",
-        "match": "first",
-        "type": "string",
-        "method": {
-          "id": "label",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "(Our Share)",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "annual_deductible",
-        "match": "first",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "Annual Deductible:",
-            "type": "equals"
-          }
-        }
-      },
-      {
-        "id": "pet_name",
-        "match": "first",
-        "type": "string",
-        "method": {
-          "id": "label",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "Pet Name:",
-            "type": "equals"
-          }
-        }
-      },
-      {
-        "id": "pet_type",
-        "match": "first",
-        "type": "string",
-        "method": {
-          "id": "box",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "Type:",
-            "type": "equals"
-          }
-        }
-      },
-      {
-        "id": "breed_type",
-        "match": "first",
-        "type": "string",
-        "method": {
-          "id": "box",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "Breed:",
-            "type": "equals"
-          }
-        }
-      },
-      {
-        "id": "date_of_birth",
-        "match": "first",
-        "type": "date",
-        "method": {
-          "id": "box",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "Date of Birth:",
-            "type": "equals"
-          }
-        }
-      },
-      {
-        "id": "pet_sex",
-        "match": "first",
-        "type": "string",
-        "method": {
-          "id": "box",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "Pet Sex:",
-            "type": "equals"
-          }
+      "anchor": {
+        "match": {
+          "text": "policy number:",
+          "type": "startsWith"
         }
       }
-    ],
-    "computed_fields": [
-      {
-        "id": "address",
-        "method": {
-          "id": "concat",
-          "source_ids": [
-            "_street_address",
-            "_city",
-            "_state",
-            "_zip_code"
-          ],
-          "delimiter": " "
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "policy effective date",
+          "type": "startsWith"
         }
       }
-    ]
-  }
+    },
+    {
+      "id": "continuous_until_cancelled",
+      "type": "string",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "policy term:",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "_street_address",
+      "match": "first",
+      "type": "string",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "street address:",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "_city",
+      "match": "first",
+      "type": "string",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "city:",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "_state",
+      "match": "first",
+      "type": "string",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "state:",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "_zip_code",
+      "match": "first",
+      "type": "string",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "zip Code:",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "pet_name",
+      "match": "first",
+      "type": "string",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "pet name:",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "pet_type",
+      "match": "first",
+      "type": "string",
+      "method": {
+        "id": "box",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "type:",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "breed_type",
+      "match": "first",
+      "type": "string",
+      "method": {
+        "id": "box",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "breed:",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "date_of_birth",
+      "match": "first",
+      "type": "date",
+      "method": {
+        "id": "box",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "date of birth:",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "pet_sex",
+      "match": "first",
+      "type": "string",
+      "method": {
+        "id": "box",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "pet sex:",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "coinsurance",
+      "match": "first",
+      "type": "string",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "(your share)",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "reimbursement",
+      "match": "first",
+      "type": "string",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "(our share)",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "annual_deductible",
+      "match": "first",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "annual deductible:",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "premium:",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "premium_period",
+      "method": {
+        "id": "regex",
+        "pattern": "Total (.+) Premium",
+        "flags": ""
+      },
+      "anchor": "payment information"
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "payment information",
+          "type": "equals"
+        },
+        "match": {
+          "text": "total",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "named_insured",
+      "type": "name",
+      "match": "all",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "pet parent information",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "name:",
+          "type": "startsWith"
+        }
+      }
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "address",
+      "method": {
+        "id": "concat",
+        "source_ids": [
+          "_street_address",
+          "_city",
+          "_state",
+          "_zip_code"
+        ],
+        "delimiter": " "
+      }
+    }
+  ]
+}

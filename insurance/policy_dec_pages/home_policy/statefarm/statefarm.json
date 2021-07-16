@@ -1,96 +1,37 @@
 {
   "fields": [
     {
-      "id": "address",
-      "type": "address",
-      "anchor": {
-        "match": {
-          "type": "startsWith",
-          "text": "insured and mailing address:"
-        }
-      },
-      "method": {
-        "id": "documentRange",
-        "stop": {
-          "text": "residence premises",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
       "id": "named_insured",
       "type": "name",
       "match": "all",
       "anchor": {
         "match": {
           "type": "startsWith",
-          "text": "insured and mailing address:"
+          "text": "named insured"
         }
       },
       "method": {
-        "id": "documentRange",
+        "id": "label",
+        "position": "below",
         "stop": {
-          "pattern": "\\d",
-          "type": "regex"
-        }
-      }
-    },
-    {
-      "id": "policy_number",
-      "anchor": {
-        "match": {
-          "type": "includes",
-          "text": "policy number:"
-        }
-      },
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first"
-      }
-    },
-    {
-      "id": "effective_date",
-      "type": "date",
-      "anchor": {
-        "start": {
-          "text": "policy information:",
-          "type": "startsWith"
-        },
-        "match": {
           "type": "startsWith",
-          "text": "your policy number"
+          "text": "section"
         }
-      },
-      "method": {
-        "id": "documentRange",
-        "stop": {
-          "text": "Producer code:",
-          "type": "includes"
-        },
-        "tiebreaker": "<"
       }
     },
     {
-      "id": "expiration_date",
-      "type": "date",
+      "id": "address",
+      "type": "address",
       "anchor": {
-        "start": {
-          "text": "policy information:",
-          "type": "startsWith"
-        },
         "match": {
-          "type": "startsWith",
-          "text": "your policy number"
+          "type": "equals",
+          "text": "location of residence premises"
         }
       },
       "method": {
-        "id": "documentRange",
-        "stop": {
-          "text": "Producer code:",
-          "type": "includes"
-        },
-        "tiebreaker": ">"
+        "id": "label",
+        "position": "below",
+        "stop": "gap"
       }
     },
     {
@@ -98,7 +39,7 @@
       "type": "currency",
       "anchor": {
         "match": {
-          "text": "policy premium",
+          "text": "amount due",
           "type": "startsWith"
         }
       },
@@ -113,8 +54,22 @@
       "type": "currency",
       "anchor": {
         "match": {
-          "text": "total policy premium:",
+          "text": "amount due",
           "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "policy_number",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "policy number:"
         }
       },
       "method": {
@@ -123,10 +78,68 @@
       }
     },
     {
+      "id": "premium_period",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "policy period:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "effective dates:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right",
+        "tiebreaker": "<"
+      }
+    },
+    {
+      "id": "expiration_date",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "effective dates:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
       "id": "dwelling_limit",
       "anchor": {
         "match": {
-          "text": "dwelling:",
+          "text": "dwelling",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "other_structures_limit",
+      "anchor": {
+        "match": {
+          "text": "other structures",
           "type": "includes"
         }
       },
@@ -141,7 +154,7 @@
       "id": "personal_property_limit",
       "anchor": {
         "match": {
-          "text": "personal property:",
+          "text": "personal property",
           "type": "includes"
         }
       },
@@ -156,7 +169,7 @@
       "id": "loss_of_use_limit",
       "anchor": {
         "match": {
-          "text": "loss of use:",
+          "text": "loss of use",
           "type": "includes"
         }
       },
@@ -171,7 +184,7 @@
       "id": "personal_liability_limit",
       "anchor": {
         "match": {
-          "text": "personal liability:",
+          "text": "personal liability",
           "type": "includes"
         }
       },
@@ -198,10 +211,10 @@
       }
     },
     {
-      "id": "other_structures_limit",
+      "id": "deductible",
       "anchor": {
         "match": {
-          "text": "other structures:",
+          "text": "all losses",
           "type": "includes"
         }
       },
@@ -210,18 +223,6 @@
         "id": "row",
         "position": "right",
         "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "deductible",
-      "anchor": "deductible(s):",
-      "type": "currency",
-      "method": {
-        "id": "documentRange",
-        "stop": {
-          "text": "important information",
-          "type": "includes"
-        }
       }
     }
   ]

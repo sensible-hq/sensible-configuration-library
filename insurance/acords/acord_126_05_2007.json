@@ -1,0 +1,5919 @@
+{
+    "fields": [
+      {
+        "id": "agency.phone",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 1.83,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "match": {
+            "text": "ext):",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.fax",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 2.25,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "match": {
+            "text": "fax",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.name_and_address",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 3.2,
+          "height": 0.66,
+          "offsetX": -0.1,
+          "offsetY": 0.26
+        },
+        "anchor": {
+          "match": {
+            "text": "agency",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.code",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "code:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.sub_code",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "sub code:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.customer_id",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "wordFilters": [
+            "agency"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "customer id:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "applicant.named_insured",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "width": 4.3,
+          "height": 0.5,
+          "offsetX": 0,
+          "offsetY": -0.05
+        },
+        "anchor": {
+          "match": {
+            "text": "applicant",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "applicant.effective_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "effective date",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "applicant.expiration_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "expiration date",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "applicant.bill.direct",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "direct bill",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "applicant.bill.agency",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "agency bill",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "applicant.payment_plan",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "payment plan",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "applicant.audit",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "audit",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "applicant.for_company_use_only",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "wordFilters": [
+            "for",
+            "company"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "use only",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.commercial_general_liability",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "commercial general",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.claims_made",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "claims made",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.occurrence",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "occurrence",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.owners_and_contractors_protective",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "owner's",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.deductibles.property_damage",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "property damage",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.deductibles.property_damage_amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 1.75,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "property_damage",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.deductibles.bodily_injury",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "bodily injury",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.deductibles_bodily_injury_total",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 1.25,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "bodily injury",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.general_aggregate",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "general aggregate",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.products_and_completed_operations_aggregate",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 1.36,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products &",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.personal_and_advertising_injury",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 2.1,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "personal &",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.each_occurrence",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 2.68,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "each occurrence",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.damage_to_rented_premises",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 1.5,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "damage to rented",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.medical_expense",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 2.08,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "medical expense",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.employee_benefits",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 2.67,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "employee benefits",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.premiums.premises_operations",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "premises/operations",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.premiums.products",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.premiums.other",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "other",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.premiums.total",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "total",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.other_coverages",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "other coverages,",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.location_number_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "loc",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.hazard_number_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "haz",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.classification_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "classification",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.class_code_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "class",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium_basis_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "basis",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.exposure_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.territorial_rating_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "terr",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.prem_ops_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.products_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.prem_ops_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.products_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.location_number_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "loc",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.hazard_number_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "haz",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.classification_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "classification",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.class_code_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "class",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium_basis_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "basis",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.exposure_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.territorial_rating_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "terr",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.prem_ops_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.products_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.prem_ops_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.products_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.location_number_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "loc",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.hazard_number_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "haz",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.classification_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "classification",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.class_code_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "class",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium_basis_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "basis",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.exposure_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.territorial_rating_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "terr",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.prem_ops_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.products_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.prem_ops_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.products_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.location_number_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "loc",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.hazard_number_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "haz",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.classification_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "classification",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.class_code_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "class",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium_basis_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "basis",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.exposure_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.territorial_rating_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "terr",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.prem_ops_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.products_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.prem_ops_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.products_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.location_number_5",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "loc",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.hazard_number_5",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "haz",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.classification_5",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "classification",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.class_code_5",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "class",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium_basis_5",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "basis",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.exposure_5",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.territorial_rating_5",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "terr",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.prem_ops_5",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.products_5",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.prem_ops_5",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.products_5",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.location_number_6",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "loc",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.hazard_number_6",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "haz",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.classification_6",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "classification",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.class_code_6",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "class",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium_basis_6",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "basis",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.exposure_6",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.territorial_rating_6",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "terr",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.prem_ops_6",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.products_6",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.prem_ops_6",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.products_6",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.location_number_7",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "loc",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.hazard_number_7",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "haz",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.classification_7",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "classification",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.class_code_7",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "class",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium_basis_7",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "basis",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.exposure_7",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.territorial_rating_7",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "terr",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.prem_ops_7",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.products_7",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.prem_ops_7",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.products_7",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.location_number_8",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "loc",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.hazard_number_8",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "haz",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.classification_8",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "classification",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.class_code_8",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "class",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium_basis_8",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "basis",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.exposure_8",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.territorial_rating_8",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "terr",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.prem_ops_8",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.rate.products_8",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.prem_ops_8",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            },
+            {
+              "text": "prem/",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "prem/",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards.premium.products_8",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "schedule of hazards",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            },
+            {
+              "text": "products",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claims made",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claims_made.proposed_retroactive_date",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "retroactive date:",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claims_made.entry_date_uninterrupted_claims_made_coverage",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "claims made coverage",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claims_made.any_product_work_accident_location_been_excluded",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.81,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "any previous coverage?",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claims_made.any_product_work_accident_location_been_excluded_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "any previous coverage?",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claims_made.tail_coverage_purchased",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 4.36,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "any previous policy?",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claims_made.tail_coverage_purchased_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "any previous policy?",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "employee_benefits_liability.deductible_per_claim",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "1. ",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "employee_benefits_liability.number_of_employees",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "2. ",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "employee_benefits_liability.number_of_employees_covered",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "3. ",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "employee_benefits_liability.retroactive_date",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "4. ",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.applicant_draw_plans_for_others",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.17
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.applicant_draw_plans_for_others_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "1. does applicant",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.any_operations_include_blasting_or_explosive_material",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.7
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.any_operations_include_blasting_or_explosive_material_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "2. do any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.any_operation_include_excavation",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 1.17
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.any_operation_include_excavation_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "3. do any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.subcontractors_carry_coverages_less",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 1.7
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.subcontractors_carry_coverages_less_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "4. do your",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.subcontractors_allowed_to_work_without_insurance_certificate",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 2.18
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.subcontractors_allowed_to_work_without_insurance_certificate_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "5. are",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.applicant_lease_equipment_to_others",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 2.69
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.applicant_lease_equipment_to_others_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "6. does",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.describe_type_of_work_subcontracted",
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "contractors",
+              "type": "endsWith"
+            },
+            {
+              "text": "time staff",
+              "type": "startsWith"
+            },
+            {
+              "text": "time staff",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "time staff:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.money_paid_to_subcontractors",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "contractors",
+              "type": "endsWith"
+            },
+            {
+              "text": "describe the type of work",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "contractors:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.percentage_of_work_subcontracted",
+        "type": "percentage",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "contractors",
+              "type": "endsWith"
+            },
+            {
+              "text": "describe the type of work",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "subcontracted",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.number_of_full_time_staff",
+        "type": "number",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "contractors",
+              "type": "endsWith"
+            },
+            {
+              "text": "describe the type of work",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "time staff:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.number_of_part_time_staff",
+        "type": "number",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "contractors",
+              "type": "endsWith"
+            },
+            {
+              "text": "describe the type of work",
+              "type": "startsWith"
+            },
+            {
+              "text": "time staff:",
+              "type": "startsWith"
+            },
+            {
+              "text": "time staff:",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "time staff:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/completed",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.annual_gross_sales_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "annual gross sales",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.number_of_units_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "# of units",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.time_in_market_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "market",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.expected_life_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "life",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.intended_use_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "intended use",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.principal_components_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "principal components",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/completed",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.annual_gross_sales_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "annual gross sales",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.number_of_units_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "# of units",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.time_in_market_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "market",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.expected_life_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "life",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.intended_use_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "intended use",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.principal_components_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "principal components",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/completed",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.annual_gross_sales_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "annual gross sales",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.number_of_units_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "# of units",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.time_in_market_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "time in",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.expected_life_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "expected",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.intended_use_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "intended use",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.principal_components_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "principal components",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.applicant_installs_services_demonstrates_products",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.15
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.applicant_installs_services_demonstrates_products_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "1. does applicant",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.foreign_products",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.63
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.foreign_products_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "2. foreign",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.research_and_development_conducted",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.9
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.research_and_development_conducted_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "3. research",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.guarantees_warranties_hold_harmless_agreements",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 1.39
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.guarantees_warranties_hold_harmless_agreements_explanantion",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "4. guarantees",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_related_to_aircraft_space_industry",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 1.9
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_related_to_aircraft_space_industry_explanantion",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "5. products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_recalled_discontinued_changed",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 2.4
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_recalled_discontinued_changed_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "6. products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_of_others_sold",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 2.88
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_of_others_sold_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "7. products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_under_label_of_others",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 3.39
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_under_label_of_others_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "8. products",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.vendors_coverage_required",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 3.9
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.vendors_coverage_required_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "9. vendors",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.any_named_insureds_sell_to_others",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 4.38
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.any_named_insureds_sell_to_others_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "products/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "10. does",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.interest.additional_insured",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "additional insured",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.interest.loss_payee",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "loss payee",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.interest.mortgagee",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "mortgagee",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.interest.lienholder",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "lienholder",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.interest.employee_as_lessor",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "employee as lessor",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.rank",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "rank:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.name_and_address",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 4.5,
+          "height": 0.84,
+          "offsetX": 0,
+          "offsetY": 0.07
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "name and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.reference_number",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "reference #:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.certificate_required",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "certificate required",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.location",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "location:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.building",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "building:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.vehicle",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "vehicle:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.boat",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "boat:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.scheduled_item_number",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "scheduled item number:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.other",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "other",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.item_description",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "join"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest/",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "item description:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_medical_facilities_provided",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.16
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_medical_facilities_provided_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "1. any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_exposure_radioactive_nuclear_materials",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.72
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_exposure_radioactive_nuclear_materials_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "2. any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.hazardous_material",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 1.3
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.hazardous_material_explanation",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 7.6,
+          "height": 0.35,
+          "offsetX": -0.22,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "transporting of hazardous",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_operations_sold_acquired_discontinued",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 1.97
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_operations_sold_acquired_discontinued_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "4. any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.machinery_or_equipment_loaned_or_rented",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 2.63
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.machinery_or_equipment_loaned_or_rented_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "5. machinery",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.watercraft_docks_floats",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 3.13
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.watercraft_docks_floats_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "6. any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.parking_facilities_owned_rented",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 3.62
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.parking_facilities_owned_rented_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "7. any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.fee_charged_for_parking",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 4.13
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.fee_charged_for_parking_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "8. is",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.recreation_facilities_provided",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 4.63
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.recreation_facilities_provided_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "9. recreation",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.swimming_pool_on_premises",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 5.13
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.swimming_pool_on_premises_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "10. is",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.sporting_or_social_events",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 5.63
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.sporting_or_social_events_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "11. sporting",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.structural_alterations_contemplated",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 6.13
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.structural_alterations_contemplated_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "12. any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_demolition_exposure_contemplated",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 6.63
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_demolition_exposure_contemplated_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "13. any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.applicant_involved_joint_ventures",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 7.13
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.applicant_involved_joint_ventures_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "14. has",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lease_employees_other_employers",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 7.63
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lease_employees_other_employers_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "15. do",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.labor_interchange_other_business_or_subsidiaries",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 8.13
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.labor_interchange_other_business_or_subsidiaries_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "16. is",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.day_care_facilities",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.15
+        },
+        "anchor": {
+          "start": {
+            "text": "general information (continued)",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.day_care_facilities_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information (continued)",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "17. are",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.crimes_occured_or_attempted",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.65
+        },
+        "anchor": {
+          "start": {
+            "text": "general information (continued)",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.crimes_occured_or_attempted_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information (continued)",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "18. have",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.formal_safety_policy",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 1.15
+        },
+        "anchor": {
+          "start": {
+            "text": "general information (continued)",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.formal_safety_policy_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information (continued)",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "19. is",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.does_business_promotion_represent_premises_safety_or_security",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 1.65
+        },
+        "anchor": {
+          "start": {
+            "text": "general information (continued)",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "y/n",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.does_business_promotion_represent_premises_safety_or_security_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "general information (continued)",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "20. does",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "remkarks",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "general information (continued)",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "remarks",
+            "type": "endsWith"
+          }
+        }
+      }
+    ]
+  }

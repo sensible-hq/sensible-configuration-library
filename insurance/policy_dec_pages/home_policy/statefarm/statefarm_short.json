@@ -1,14 +1,33 @@
 {
-  "preprocessors": [
-    {
-      "type": "mergeLines",
-      "directlyAdjacentThreshold": 0.16,
-      "adjacentThreshold": 1.25,
-      "yOverlapThreshold": 1,
-      "minXGapThreshold": 0.1
-    }
-  ],
   "fields": [
+    {
+      "id": "policy_number",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "policy number"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left"
+      }
+    },
+    {
+      "id": "named_insured",
+      "type": "name",
+      "match": "all",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "named insured"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
     {
       "id": "address",
       "type": "address",
@@ -19,48 +38,8 @@
         }
       },
       "method": {
-        "id": "documentRange",
-        "stop": {
-          "text": "policy period",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "policy_number",
-      "anchor": {
-        "match": {
-          "text": "policy number",
-          "type": "includes"
-        }
-      },
-      "method": {
-        "id": "documentRange",
-        "stop": {
-          "text": "policy period from",
-          "type": "startsWith"
-        },
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": -0.5,
-          "width": 2.8
-        }
-      }
-    },
-    {
-      "id": "named_insured",
-      "type": "name",
-      "match": "all",
-      "method": {
-        "id": "label",
-        "position": "below",
-        "stop": "gap"
-      },
-      "anchor": {
-        "match": {
-          "type": "startsWith",
-          "text": "named insured"
-        }
+        "id": "box",
+        "position": "left"
       }
     },
     {
@@ -69,11 +48,11 @@
       "anchor": {
         "match": {
           "type": "startsWith",
-          "text": "policy period from"
+          "text": "effective date"
         }
       },
       "method": {
-        "id": "row",
+        "id": "box",
         "position": "right",
         "tiebreaker": "<"
       }
@@ -84,72 +63,57 @@
       "anchor": {
         "match": {
           "type": "startsWith",
-          "text": "policy period from"
+          "text": "effective date"
         }
       },
       "method": {
-        "id": "row",
+        "id": "box",
         "position": "right",
         "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "premium_period",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "effective date"
+        }
+      },
+      "method": {
+        "id": "regex",
+        "pattern": "(\\d+) months - policy period",
+        "flags": "i"
       }
     },
     {
       "id": "dwelling_limit",
       "anchor": {
         "match": {
-          "text": "dwelling protection",
+          "text": "building property",
           "type": "includes"
         }
       },
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "other_structures_limit",
-      "anchor": {
-        "match": {
-          "text": "other structures protection",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
+        "position": "left",
+        "tiebreaker": "first"
       }
     },
     {
       "id": "personal_property_limit",
       "anchor": {
         "match": {
-          "text": "personal property protection",
+          "text": "personal property",
           "type": "includes"
         }
       },
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "loss_of_use_limit",
-      "anchor": {
-        "match": {
-          "text": "loss of use",
-          "type": "includes"
-        }
-      },
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
+        "position": "left",
+        "tiebreaker": "first"
       }
     },
     {
@@ -163,41 +127,52 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
+        "position": "left",
+        "tiebreaker": "first"
       }
     },
     {
       "id": "medical_payment_to_others_limit",
       "anchor": {
         "match": {
-          "text": "medical payments to others",
-          "type": "startsWith"
+          "text": "medical payments",
+          "type": "includes"
         }
       },
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
+        "position": "left",
+        "tiebreaker": "first"
       }
     },
     {
-      "id": "deductible_wind_hail",
+      "id": "loss_of_use_limit",
       "anchor": {
-        "start": {
-          "text": "deductibles",
-          "type": "startsWith"
-        },
         "match": {
-          "text": "Wind",
-          "type": "startsWith"
+          "text": "loss of use",
+          "type": "includes"
         }
       },
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
+        "position": "left",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "other_structures_limit",
+      "anchor": {
+        "match": {
+          "text": "other structures",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "left",
         "tiebreaker": "first"
       }
     },
@@ -205,15 +180,15 @@
       "id": "deductible",
       "anchor": {
         "match": {
-          "text": "All other perils",
-          "type": "startsWith"
+          "text": "deductibles",
+          "type": "includes"
         }
       },
       "type": "currency",
       "method": {
         "id": "row",
         "position": "right",
-        "tiebreaker": "<"
+        "tiebreaker": ">"
       }
     },
     {
@@ -222,7 +197,7 @@
       "anchor": {
         "match": {
           "text": "policy premium",
-          "type": "startsWith"
+          "type": "includes"
         }
       },
       "method": {
@@ -236,13 +211,14 @@
       "type": "currency",
       "anchor": {
         "match": {
-          "text": "total policy premium",
-          "type": "startsWith"
+          "text": "policy premium",
+          "type": "includes"
         }
       },
       "method": {
-        "id": "box",
-        "position": "below"
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
       }
     }
   ]

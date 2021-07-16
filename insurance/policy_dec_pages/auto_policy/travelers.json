@@ -1,597 +1,516 @@
 {
-    "fields": [
-      {
-        "id": "policy_number",
-        "method": {
-          "id": "row",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Your Insurer",
-              "type": "equals"
-            }
-          ],
-          "match": [
-            {
-              "text": "Your auto policy number",
-              "type": "startsWith"
-            }
-          ]
-        }
+  "fields": [
+    {
+      "id": "policy_number",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first"
       },
-      {
-        "id": "policy_premium",
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "tiebreaker": "first"
+      "anchor": {
+        "start": {
+          "text": "your insurer",
+          "type": "equals"
         },
-        "anchor": {
-          "match": [
-            {
-              "text": "Total premium for this policy",
-              "type": "startsWith"
-            }
-          ]
-        }
-      },
-      {
-        "id": "total",
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "match": [
-            {
-              "text": "Total premium for this policy",
-              "type": "startsWith"
-            }
-          ]
-        }
-      },
-      {
-        "id": "effective_date",
-        "type": "date",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "match": [
-            {
-              "text": "Policy Period",
-              "type": "equals"
-            }
-          ]
-        }
-      },
-      {
-        "id": "expiration_date",
-        "type": "date",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "second"
-        },
-        "anchor": {
-          "match": [
-            {
-              "text": "Policy Period",
-              "type": "equals"
-            }
-          ]
-        }
-      },
-      {
-        "id": "address",
-        "type": "address",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "stop": {
-            "text": "Your Insurer",
-            "type": "equals"
-          }
-        },
-        "anchor": {
-          "match": [
-            {
-              "text": "Named Insured",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "named_insured",
-        "match": "all",
-        "type": "name",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "stop": {
-            "pattern": "\\d",
-            "type": "regex"
-          }
-        },
-        "anchor": {
-          "match": [
-            {
-              "text": "named insured",
-              "type": "includes"
-            }
-          ],
-          "end": [
-            {
-              "text": "your insurer",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "vin",
-        "match": "all",
-        "method": {
-          "id": "passthrough"
-        },
-        "anchor": {
-          "start": [
-            {
-              "pattern": "your (autos|vehicles)",
-              "flags": "i",
-              "type": "regex"
-            }
-          ],
-          "match": [
-            {
-              "pattern": "^.{12}\\d{5}$",
-              "type": "regex"
-            }
-          ],
-          "end": [
-            {
-              "text": "coverages",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "vehicle_year",
-        "match": "all",
-        "method": {
-          "id": "regex",
-          "pattern": "(?:19|20)\\d{2}"
-        },
-        "anchor": {
-          "start": [
-            {
-              "pattern": "your (autos|vehicles)",
-              "flags": "i",
-              "type": "regex"
-            }
-          ],
-          "match": [
-            {
-              "pattern": "^(?:19|20)\\d{2} .*",
-              "type": "regex"
-            }
-          ],
-          "end": [
-            {
-              "text": "coverages",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "vehicle_make",
-        "match": "all",
-        "method": {
-          "id": "regex",
-          "pattern": "(?:19|20)\\d{2} ([\\w-]+) .*$"
-        },
-        "anchor": {
-          "start": [
-            {
-              "pattern": "your (autos|vehicles)",
-              "flags": "i",
-              "type": "regex"
-            }
-          ],
-          "match": [
-            {
-              "pattern": "^(?:19|20)\\d{2} .*",
-              "type": "regex"
-            }
-          ],
-          "end": [
-            {
-              "text": "coverages",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "vehicle_model",
-        "match": "all",
-        "method": {
-          "id": "regex",
-          "pattern": "(?:19|20)\\d{2} [\\w-]+ (.*)$"
-        },
-        "anchor": {
-          "start": [
-            {
-              "pattern": "your (autos|vehicles)",
-              "flags": "i",
-              "type": "regex"
-            }
-          ],
-          "match": [
-            {
-              "pattern": "^(?:19|20)\\d{2} .*",
-              "type": "regex"
-            }
-          ],
-          "end": [
-            {
-              "text": "coverages",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "bodily_injury_liability_per_person",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "stop": "gap",
-          "tiebreaker": "<"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Coverages, Limits of liability",
-              "type": "includes"
-            }
-          ],
-          "match": [
-            {
-              "text": "Bodily injury",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "bodily_injury_liability_per_accident",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "stop": "gap",
-          "tiebreaker": ">"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Coverages, Limits of Liability",
-              "type": "includes"
-            }
-          ],
-          "match": [
-            {
-              "text": "Bodily injury",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "property_damage_liability_per_accident",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "tiebreaker": ">",
-          "stop": "gap"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Coverages, Limits of liability",
-              "type": "includes"
-            }
-          ],
-          "match": [
-            {
-              "pattern": "(else’s property|property damage)",
-              "flags": "i",
-              "type": "regex"
-            }
-          ]
-        }
-      },
-      {
-        "id": "personal_injury_protection_per_person",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Coverages, Limits of liability",
-              "type": "includes"
-            }
-          ],
-          "match": [
-            {
-              "type": "includes",
-              "text": "Personal Injury"
-            }
-          ]
-        }
-      },
-      {
-        "id": "uninsured_underinsured_motorist_bodily_injury_per_person",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "left"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Bodily injury caused by an",
-              "type": "startsWith"
-            },
-            {
-              "text": "Uninsured Auto",
-              "type": "startsWith"
-            }
-          ],
-          "match": [
-            {
-              "text": "per person",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "uninsured_underinsured_motorist_bodily_injury_per_person",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "tiebreaker": "<",
-          "textAlignment": "hangingIndent",
-          "stop": "gap"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Coverages, Limits of liability",
-              "type": "includes"
-            }
-          ],
-          "match": [
-            {
-              "type": "includes",
-              "text": "uninsured motorists bodily injury"
-            }
-          ]
-        }
-      },
-      {
-        "id": "uninsured_underinsured_motorist_bodily_injury_per_accident",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "left"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Bodily injury caused by an",
-              "type": "startsWith"
-            },
-            {
-              "text": "Uninsured Auto",
-              "type": "startsWith"
-            }
-          ],
-          "match": [
-            {
-              "text": "per accident",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "uninsured_underinsured_motorist_bodily_injury_per_accident",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "tiebreaker": ">",
-          "textAlignment": "hangingIndent",
-          "stop": "gap"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Coverages, Limits of liability",
-              "type": "includes"
-            }
-          ],
-          "match": [
-            {
-              "type": "includes",
-              "text": "uninsured motorists bodily injury"
-            }
-          ]
-        }
-      },
-      {
-        "id": "roadside_assistance",
-        "method": {
-          "id": "region",
-          "offsetX": -0.1,
-          "offsetY": 0.08,
-          "width": 3,
-          "height": 0.35,
-          "start": "left"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Coverages, Limits of liability",
-              "type": "includes"
-            }
-          ],
-          "match": [
-            {
-              "text": "Roadside Assistance",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "rental_reimbursement_per_day",
-        "type": "currency",
-        "method": {
-          "id": "region",
-          "offsetX": -0.1,
-          "offsetY": 0.08,
-          "width": 3,
-          "height": 0.35,
-          "start": "left",
-          "tiebreaker": "<",
-          "lineFilters": [
-            {
-              "text": "endorsement",
-              "type": "includes"
-            }
-          ]
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Coverages, Limits of liability",
-              "type": "includes"
-            }
-          ],
-          "match": [
-            {
-              "pattern": "(substitute transportation|extended transportation)",
-              "flags": "i",
-              "type": "regex"
-            }
-          ]
-        }
-      },
-      {
-        "id": "collision_deductible",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "stop": "gap"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Coverages, Limits of liability",
-              "type": "includes"
-            }
-          ],
-          "match": [
-            {
-              "text": "Collision",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "comprehensive_deductible",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "stop": "gap"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Coverages, Limits of liability",
-              "type": "includes"
-            }
-          ],
-          "match": [
-            {
-              "text": "Comprehensive",
-              "type": "includes"
-            }
-          ]
-        }
-      },
-      {
-        "id": "collision_limit",
-        "method": {
-          "id": "label",
-          "position": "below"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Coverages, Limits of liability",
-              "type": "includes"
-            }
-          ],
-          "match": [
-            {
-              "text": "Collision",
-              "type": "startsWith"
-            }
-          ]
-        }
-      },
-      {
-        "id": "comprehensive_limit",
-        "method": {
-          "id": "label",
-          "position": "below"
-        },
-        "anchor": {
-          "start": [
-            {
-              "text": "Coverages, Limits of liability",
-              "type": "includes"
-            }
-          ],
-          "match": [
-            {
-              "text": "Comprehensive",
-              "type": "startsWith"
-            }
-          ]
+        "match": {
+          "text": "your auto policy number",
+          "type": "startsWith"
         }
       }
-    ]
-  }
+    },
+    {
+      "id": "policy_number",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "your auto policy number",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "address",
+      "type": "address",
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": {
+          "text": "your insurer",
+          "type": "equals"
+        }
+      },
+      "anchor": {
+        "match": {
+          "text": "named insured",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "named_insured",
+      "match": "all",
+      "type": "name",
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": {
+          "pattern": "\\d",
+          "type": "regex"
+        }
+      },
+      "anchor": {
+        "match": {
+          "text": "named insured",
+          "type": "includes"
+        },
+        "end": {
+          "text": "your insurer",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "vin",
+      "match": "all",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "start": {
+          "pattern": "your (autos|vehicles)",
+          "flags": "i",
+          "type": "regex"
+        },
+        "match": {
+          "pattern": "^.{12}\\d{5}$",
+          "type": "regex"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "vehicle_year",
+      "match": "all",
+      "method": {
+        "id": "regex",
+        "pattern": "(?:19|20)\\d{2}"
+      },
+      "anchor": {
+        "start": {
+          "pattern": "your (autos|vehicles)",
+          "flags": "i",
+          "type": "regex"
+        },
+        "match": {
+          "pattern": "^(?:19|20)\\d{2} .*",
+          "type": "regex"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "vehicle_make",
+      "match": "all",
+      "method": {
+        "id": "regex",
+        "pattern": "(?:19|20)\\d{2} ([\\w-]+) .*$"
+      },
+      "anchor": {
+        "start": {
+          "pattern": "your (autos|vehicles)",
+          "flags": "i",
+          "type": "regex"
+        },
+        "match": {
+          "pattern": "^(?:19|20)\\d{2} .*",
+          "type": "regex"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "vehicle_model",
+      "match": "all",
+      "method": {
+        "id": "regex",
+        "pattern": "(?:19|20)\\d{2} [\\w-]+ (.*)$"
+      },
+      "anchor": {
+        "start": {
+          "pattern": "your (autos|vehicles)",
+          "flags": "i",
+          "type": "regex"
+        },
+        "match": {
+          "pattern": "^(?:19|20)\\d{2} .*",
+          "type": "regex"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "bodily_injury_liability_per_person",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": "gap",
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages, limits of liability",
+          "type": "includes"
+        },
+        "match": {
+          "text": "bodily injury",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "bodily_injury_liability_per_accident",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": "gap",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages, limits of liability",
+          "type": "includes"
+        },
+        "match": {
+          "text": "bodily injury",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "property_damage_liability_per_accident",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "below",
+        "tiebreaker": ">",
+        "stop": "gap"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages, limits of liability",
+          "type": "includes"
+        },
+        "match": {
+          "pattern": "(else’s property|property damage)",
+          "flags": "i",
+          "type": "regex"
+        }
+      }
+    },
+    {
+      "id": "collision_deductible",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": "gap"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages, limits of liability",
+          "type": "includes"
+        },
+        "match": {
+          "text": "collision",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "collision_limit",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages, limits of liability",
+          "type": "includes"
+        },
+        "match": {
+          "text": "collision",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "comprehensive_deductible",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": "gap"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages, limits of liability",
+          "type": "includes"
+        },
+        "match": {
+          "text": "comprehensive",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "comprehensive_limit",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages, limits of liability",
+          "type": "includes"
+        },
+        "match": {
+          "text": "comprehensive",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "total premium for this policy",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "total premium for this policy",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "policy period",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "expiration_date",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "second"
+      },
+      "anchor": {
+        "match": {
+          "text": "policy period",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "personal_injury_protection_per_person",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages, limits of liability",
+          "type": "includes"
+        },
+        "match": {
+          "type": "includes",
+          "text": "Personal Injury"
+        }
+      }
+    },
+    {
+      "id": "uninsured_underinsured_motorist_bodily_injury_per_person",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "left"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "bodily injury caused by an",
+            "type": "startsWith"
+          },
+          {
+            "text": "uninsured auto",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "per person",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "uninsured_underinsured_motorist_bodily_injury_per_person",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "below",
+        "tiebreaker": "<",
+        "textAlignment": "hangingIndent",
+        "stop": "gap"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages, limits of liability",
+          "type": "includes"
+        },
+        "match": {
+          "type": "includes",
+          "text": "uninsured motorists bodily injury"
+        }
+      }
+    },
+    {
+      "id": "uninsured_underinsured_motorist_bodily_injury_per_accident",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "left"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "bodily injury caused by an",
+            "type": "startsWith"
+          },
+          {
+            "text": "uninsured Auto",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "per accident",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "uninsured_underinsured_motorist_bodily_injury_per_accident",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "below",
+        "tiebreaker": ">",
+        "textAlignment": "hangingIndent",
+        "stop": "gap"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages, limits of liability",
+          "type": "includes"
+        },
+        "match": {
+          "type": "includes",
+          "text": "uninsured motorists bodily injury"
+        }
+      }
+    },
+    {
+      "id": "roadside_assistance",
+      "method": {
+        "id": "region",
+        "offsetX": -0.1,
+        "offsetY": 0.08,
+        "width": 3,
+        "height": 0.35,
+        "start": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "Coverages, Limits of liability",
+          "type": "includes"
+        },
+        "match": {
+          "text": "roadside assistance",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "rental_reimbursement_per_day",
+      "type": "currency",
+      "method": {
+        "id": "region",
+        "offsetX": -0.1,
+        "offsetY": 0.08,
+        "width": 3,
+        "height": 0.35,
+        "start": "left",
+        "tiebreaker": "<",
+        "lineFilters": [
+          {
+            "text": "endorsement",
+            "type": "includes"
+          }
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages, limits of liability",
+          "type": "includes"
+        },
+        "match": {
+          "pattern": "(substitute transportation|extended transportation)",
+          "flags": "i",
+          "type": "regex"
+        }
+      }
+    }
+  ]
+}
