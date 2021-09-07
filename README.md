@@ -1,16 +1,16 @@
 # Sensible Configuration Library
-Open-source SenseML configurations for public use by [Sensible](https://www.sensible.so/)
+Open-source SenseML configurations for public use by [Sensible](https://www.sensible.so/).
 
 ## Intro to SenseML
 SenseML is Sensible's document query language. SenseML provides a set of [primitives](https://docs.sensible.so/docs/methods) (such as `label`, `row`, and `table`) that make it easy to describe the data you'd like to extract from documents.
 
-## List of available templates: 
+## Verticals
 
 ### Insurance
 
-#### Policy declaration pages:
+#### Policy declaration pages
 
-##### Auto:
+##### Auto
 - [Allstate](./insurance/policy_dec_pages/auto_policy/allstate.json)
 - [Branch](./insurance/policy_dec_pages/auto_policy/branch.json)
 - [Farmer's](./insurance/policy_dec_pages/auto_policy/farmers.json)
@@ -23,7 +23,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [USAA](./insurance/policy_dec_pages/auto_policy/usaa/usaa.json)
 - [USAA (MA)](./insurance/policy_dec_pages/auto_policy/usaa/usaa_ma.json)
 
-##### Home:
+##### Home
 - [Allstate](./insurance/policy_dec_pages/home_policy/allstate.json)
 - [Hanover](./insurance/policy_dec_pages/home_policy/hanover.json)
 - [Hartford](./insurance/policy_dec_pages/home_policy/hartford.json)
@@ -37,17 +37,17 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [Traveler's (High Value)](./insurance/policy_dec_pages/home_policy/travelers/travelers_high_value.json)
 - [USAA](./insurance/policy_dec_pages/home_policy/usaa.json)
 
-##### Renters:
+##### Renters
 - [Lemonade](./insurance/policy_dec_pages/renters_policy/lemonade.json)
 - [Liberty Mutual](./insurance/policy_dec_pages/renters_policy/liberty_mutual.json)
 - [State Farm ](./insurance/policy_dec_pages/renters_policy/state_farm.json)
 - [USAA](./insurance/policy_dec_pages/renters_policy/usaa.json)
 
-##### Pet:
+##### Pet
 - [Healthy Paws](./insurance/policy_dec_pages/pet_policy/healthy_paws.json)
 
-#### ACORDs:
-Find the ACORD number/year/month at the bottom left corner of each ACORD page.
+#### ACORDs
+Find the ACORD year/month at the bottom left corner of each ACORD page. Often the differences between versions are minor and can use the same configuration.
 
 - [ACORD 25 (03/2016)](./insurance/acords/acord_25/2016_03.json)
 - [ACORD 75 (09/2013)](./insurance/acords/acord_75/2013_09.json)
@@ -59,7 +59,7 @@ Find the ACORD number/year/month at the bottom left corner of each ACORD page.
 
 
 ## Using a configuration
-To use the library, you'll need a Sensible account. If you don't have an account, please reach out to hello@sensible.so with a short description of your use case. 
+To use the library, you'll need a Sensible account. If you don't have an account, please reach out to hello@sensible.so with a short description of your use case to start a free trial. 
 
 Once you have a Sensible account, copy and paste the configuration you want to use into your configuration editor and publish it. Upload PDFs corresponding to the configuration, and changes field names, add fields, or remove fields to extract the data you want from your PDFs.
 
