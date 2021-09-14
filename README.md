@@ -1,7 +1,7 @@
 # Sensible Configuration Library
 Open-source SenseML configurations for public use by [Sensible](https://www.sensible.so/).
 
-## Intro to SenseML
+## About SenseML
 SenseML is Sensible's document query language. SenseML provides a set of [primitives](https://docs.sensible.so/docs/methods) (such as `label`, `row`, and `table`) that make it easy to describe the data you'd like to extract from documents.
 
 ## Verticals
