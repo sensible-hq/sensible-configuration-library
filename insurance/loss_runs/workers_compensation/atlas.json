@@ -1,0 +1,514 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "claim number:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "policy_period",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "worker's compensation insured losses report",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "policy period",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_premium",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not found"
+      },
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": "policy number"
+      },
+      {
+        "id": "claim_number",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "worker's compensation insured losses report",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "claim number:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claim_type",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "worker's compensation insured losses report",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "claim status:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "loss_date",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "worker's compensation insured losses report",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "loss date",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claim_date",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "worker's compensation insured losses report",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "reported date",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_paid.total",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "worker's compensation insured losses report",
+              "type": "startsWith"
+            },
+            {
+              "text": "claim number",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "Total",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_paid.medical",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "worker's compensation insured losses report",
+              "type": "startsWith"
+            },
+            {
+              "text": "claim number",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "medical",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_paid.indemnity",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "worker's compensation insured losses report",
+              "type": "startsWith"
+            },
+            {
+              "text": "claim number",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "Indemnity",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_paid.expense",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "worker's compensation insured losses report",
+              "type": "startsWith"
+            },
+            {
+              "text": "claim number",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "expense",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_incurred.total",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "third"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "worker's compensation insured losses report",
+              "type": "startsWith"
+            },
+            {
+              "text": "claim number",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "Total",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_incurred.medical",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "third"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "worker's compensation insured losses report",
+              "type": "startsWith"
+            },
+            {
+              "text": "claim number",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "medical",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_incurred.indemnity",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "third"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "worker's compensation insured losses report",
+              "type": "startsWith"
+            },
+            {
+              "text": "claim number",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "Indemnity",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_incurred.expense",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "third"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "worker's compensation insured losses report",
+              "type": "startsWith"
+            },
+            {
+              "text": "claim number",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "expense",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "open_claims",
+        "type": "number",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "insured loss summary",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "open claims",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "closed_claims",
+        "type": "number",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "insured loss summary",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "closed claims",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "total_claims",
+        "type": "number",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "insured loss summary",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "total claims",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "loss_description",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not found"
+      },
+      {
+        "id": "nature_of_injuries",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "claim number:",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "nature",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "cause",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "insured loss summary",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "cause",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "body_parts",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "insured loss summary",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "body part",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "location",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "insured loss summary",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "body part",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "location",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not found"
+      },
+      {
+        "id": "litigation",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not found"
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "claim_details",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "claim_number",
+            "claim_type",
+            "loss_date",
+            "claim_date",
+            "claim_amount_paid.total",
+            "claim_amount_paid.medical",
+            "claim_amount_paid.indemnity",
+            "claim_amount_paid.expense",
+            "claim_amount_incurred.total",
+            "claim_amount_incurred.medical",
+            "claim_amount_incurred.indemnity",
+            "claim_amount_incurred.expense",
+            "nature_of_injuries",
+            "cause",
+            "body_parts"
+          ]
+        }
+      }
+    ]
+  }

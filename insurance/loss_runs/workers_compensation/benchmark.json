@@ -1,0 +1,540 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "standard loss report",
+              "type": "startsWith"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "policy_period",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": "policy period range"
+      },
+      {
+        "id": "claim_number",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "regex",
+            "pattern": "^\\d{6,8}$"
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "claim_type",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "width": 0.5,
+          "height": 0.22,
+          "offsetX": -0.3,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "regex",
+            "pattern": "^\\d{6,8}$"
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "loss_date",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "width": 0.9,
+          "height": 0.22,
+          "offsetX": 0.9,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "regex",
+            "pattern": "^\\d{6,8}$"
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "claim_date",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not found"
+      },
+      {
+        "id": "claim_amount_paid.total",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "equals",
+            "text": "TOTAL",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_paid.medical",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "MED",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_paid.indemnity",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "ind/bi"
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_paid.expense",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "EXPENSE",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_incurred.total",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "TOTAL",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_incurred.medical",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "MED",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_incurred.indemnity",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "ind/bi"
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "claim_amount_incurred.expense",
+        "type": "currency",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "EXPENSE",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "open_claims",
+        "type": "number",
+        "match": "last",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "grand total summary",
+            "type": "includes"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "open"
+          }
+        }
+      },
+      {
+        "id": "closed_claims",
+        "type": "number",
+        "match": "last",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "grand total summary",
+            "type": "includes"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "closed"
+          }
+        }
+      },
+      {
+        "id": "total_claims",
+        "type": "number",
+        "match": "last",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "grand total summary",
+            "type": "includes"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "total"
+          }
+        }
+      },
+      {
+        "id": "loss_description",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "regex",
+            "pattern": "^[A-Z]{2}-[A-Z]{2}$"
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "nature_of_injuries",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "width": 3.55,
+          "height": 0.2,
+          "offsetX": 2.2,
+          "offsetY": 0.72
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "regex",
+            "pattern": "^\\d{6,8}$"
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "cause",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "width": 3.55,
+          "height": 0.2,
+          "offsetX": 2.2,
+          "offsetY": 0.72
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "regex",
+            "pattern": "^\\d{6,8}$"
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "body_parts",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "width": 3.55,
+          "height": 0.2,
+          "offsetX": 2.2,
+          "offsetY": 0.52
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "regex",
+            "pattern": "^\\d{6,8}$"
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "location",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "width": 0.75,
+          "height": 0.2,
+          "offsetX": -0.4,
+          "offsetY": 0.52
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "regex",
+            "pattern": "^\\d{6,8}$"
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "litigation",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        },
+        "anchor": {
+          "start": {
+            "text": "cumulative loss run report",
+            "type": "equals"
+          },
+          "match": {
+            "type": "regex",
+            "pattern": "^\\d{6,8}$"
+          },
+          "end": {
+            "text": "summary for client",
+            "type": "includes"
+          }
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "claim_details",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "claim_number",
+            "claim_type",
+            "loss_date",
+            "claim_amount_paid.total",
+            "claim_amount_paid.medical",
+            "claim_amount_paid.expense",
+            "claim_amount_incurred.total",
+            "claim_amount_incurred.medical",
+            "claim_amount_incurred.expense",
+            "open_claims",
+            "closed_claims",
+            "total_claims",
+            "loss_description",
+            "nature_of_injuries",
+            "cause",
+            "body_parts",
+            "location",
+            "litigation"
+          ]
+        }
+      }
+    ]
+  }
