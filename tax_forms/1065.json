@@ -1,0 +1,1164 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "1065",
+              "type": "includes"
+            },
+            {
+              "text": "u.s. return of partnership income",
+              "type": "includes"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "principal_business_activity",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "principal business activity",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "principal_product_or_service",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "principal product or service",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "business_code_number",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -0.6,
+          "offsetY": 0,
+          "width": 1.2,
+          "height": 0.45
+        },
+        "anchor": {
+          "match": {
+            "text": "business code number",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "name_of_partnership",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "name of partnership",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ein",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -0.7,
+          "offsetY": 0,
+          "width": 1.4,
+          "height": 0.25
+        },
+        "anchor": {
+          "match": {
+            "text": "employer identification number",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "date_business_started",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "date business started",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "total_assets",
+        "type": "currency",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -0.4,
+          "offsetY": 0.15,
+          "width": 1.4,
+          "height": 0.25
+        },
+        "anchor": {
+          "match": {
+            "text": "total assets",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "return_type.initial_return",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "initial return",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "return_type.final return",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "final return",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "return_type.name_change",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "name change",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "return_type.address_change",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "address change",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "return_type.amended_return",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "amended return",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "accounting_method.cash",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "cash",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "accounting_method.accrual",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "accrual",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "accounting_method.other",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "other (specify)",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "number_of_schedules_k1",
+        "type": "number",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "match": {
+            "text": "number of schedules k-1",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "gross_receipts_or_sales",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^1a$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "gross receipts or sales",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "returns_and_allowances",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^1b$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "returns and allowances",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "balance1c",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^1c$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "balance. subtract line 1b",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "cost_of_goods_sold",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^2$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "cost of goods sold",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "gross_profit",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^3$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "gross profit.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ordinary_income_from_other_partnerships",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^4$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "ordinary income (loss) from other partnerships",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "net_farm_profit",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^5$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "net farm profit",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "net_gain_from_form_4797",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^6$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "net gain (loss) from form 4797",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "other_income",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "other income (loss)",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "total_income",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^8$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "total income (loss)",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "salaries_and_wages",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^9$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "salaries and wages",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "guaranteed_payments_to_partners",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^10$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "guaranteed payments to partners",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "repairs_and_maintenance",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^11$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "repairs and maintenance",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "bad_debts",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^12$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "bad debts",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "rent",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^13$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "rent",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "taxes_and_licenses",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^14$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "taxes and licenses",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "interest",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^15$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "interest (see instructions)",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "depreciation16a",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^16a$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "depreciation (if required",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "depreciation16b",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^16b$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^16c$"
+            }
+          ],
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 5.85
+          }
+        },
+        "anchor": {
+          "match": {
+            "text": "less depreciation reported",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "depreciation16c",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "match": {
+            "text": "16c",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "depletion",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^17$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "depletion (do not",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "retirement_plans",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^18$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "retirement plans,",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "employee_benefit_programs",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^19$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "employee benefit programs",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "other_deductions",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^20$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "other deductions (attach",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "total_deductions",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^21$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "total deductions.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ordinary_business_income",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^22$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "ordinary business income (loss)",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "interest_due_under_look_back_method.completed_long_term_contracts",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^23$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "completed long-term contracts",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "interest_due_under_look_back_method.income_forecast_method",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^24$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "income forecast method",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "bba_aar_imputed_underpayment",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^25$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "bba aar imputed",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "other_taxes",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^26$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "other taxes (see",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "total_balance_due",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^27$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "total balance due.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "payment",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^28$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "payment (see instructions)",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "amount_owed",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^29$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "amount owed.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "overpayment",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^30$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "overpayment.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "signature_of_partner.present",
+        "method": {
+          "id": "signature",
+          "start": "left",
+          "offsetX": 0,
+          "offsetY": -0.4,
+          "width": 3.3,
+          "height": 0.32
+        },
+        "anchor": {
+          "match": {
+            "text": "signature of partner or limited liability company member",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "signature_of_partner.date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "above"
+        },
+        "anchor": {
+          "start": "overpayment.",
+          "match": {
+            "text": "date",
+            "type": "startsWith"
+          },
+          "end": "Print/Type preparer’s name"
+        }
+      },
+      {
+        "id": "preparers_name",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "Print/Type preparer’s name",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "preparers_signature.present",
+        "method": {
+          "id": "signature",
+          "start": "below",
+          "offsetX": -0.5,
+          "offsetY": 0,
+          "width": 2.2,
+          "height": 0.2
+        },
+        "anchor": {
+          "match": {
+            "text": "Preparer’s signature",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "preparers_signature.date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "Preparer’s signature",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "date"
+          }
+        }
+      },
+      {
+        "id": "PTIN",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "Preparer’s signature",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "ptin"
+          }
+        }
+      },
+      {
+        "id": "firms_name",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "lineFilters": [
+            {
+              "text": "▶",
+              "type": "startsWith"
+            },
+            {
+              "text": "firm's ein",
+              "type": "startsWith"
+            }
+          ],
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 5.21
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "Preparer’s signature",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "Firm’s name"
+          }
+        }
+      },
+      {
+        "id": "firms_address",
+        "type": "address",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 5.21
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "Preparer’s signature",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "Firm’s address"
+          }
+        }
+      },
+      {
+        "id": "firms_ein",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "text": "▶",
+              "type": "startsWith"
+            }
+          ],
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 5.21
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "Preparer’s signature",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "Firm’s ein"
+          }
+        }
+      },
+      {
+        "id": "firms_phone_number",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "Preparer’s signature",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "phone no."
+          }
+        }
+      }
+    ]
+  }

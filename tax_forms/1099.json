@@ -1,0 +1,469 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "1099",
+              "type": "includes"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "payers_name",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "text": "postal code",
+              "type": "includes"
+            },
+            {
+              "pattern": "^\\d",
+              "type": "regex"
+            },
+            {
+              "pattern": "\\d$",
+              "type": "regex"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "PAYER’S name",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "payers_address",
+        "type": "address",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "text": "postal code",
+              "type": "includes"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "PAYER’S name",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "payers_tin",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "PAYER’S tin",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "recipients_tin",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "Recipient’S tin",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "recipients_name",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        },
+        "anchor": {
+          "match": {
+            "text": "RECIPIENT’S name",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "recipients_street_address",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        },
+        "anchor": {
+          "match": {
+            "text": "street address",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "recipients_city_state_zip",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        },
+        "anchor": {
+          "match": {
+            "text": "city or town, state or province",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "rents",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^1$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "rents",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "royalties",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^2$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "royalties",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "other_income",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^3$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "other income",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "federal_income_tax_withheld",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^4$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "federal income tax withheld",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "fishing_boat_proceeds",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^5$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "fishing boat proceeds",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "medical_and_health_care_payments",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^6$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "medical and health care payments",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "payer_made_direct_sales_totaling_5000_or_more",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.3
+        },
+        "anchor": {
+          "match": {
+            "text": "recipient for resale",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "substitute_payments_in_lieu_of_dividends_or_interest",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^8$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "substitute payments",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "crop_insurance_proceeds",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^9$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "crop insurance proceeds",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "gross_proceeds_paid_to_an_attorney",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^10$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "10 gross proceeds",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "fish_purchased_for_resale",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^11$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "fish purchased",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "section_409a_deferrals",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^12$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "section 409a deferrals",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "excess_golden_parachute_payments",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^13$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "excess golden",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "nonqualified_deferred_compensated",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^14$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "nonqualified deferred",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "state_tax_withheld",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^15$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "state tax withheld",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "state_payers_state_number",
+        "type": "number",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^16$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "State/Payer’s",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "state_income",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^17$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "State income",
+            "type": "includes"
+          }
+        }
+      }
+    ]
+  }

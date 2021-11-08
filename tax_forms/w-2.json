@@ -1,0 +1,489 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "w-2",
+              "type": "includes"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "ssn",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "Employee’s social security number",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ein",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "employer identification number",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "wages_tips_other_compensation",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^1$|^1\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "wages, tips, other",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "federal_income_tax_withheld",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^2$|^2\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "federal income tax withheld",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "employer_name",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^\\d|\\d$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "Employer’s name, address, and ZIP code",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "employer_address",
+        "type": "address",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "Employer’s name, address, and ZIP code",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "social_security_wages",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^3$|^3\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "social security wages",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "social_security_tax_withheld",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^4$|^4\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "social security tax withheld",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "medicare_wages_and_tips",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^5$|^5\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "medicare wages and tips",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "medicare_tax_withheld",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^6$|^6\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "medicare tax withheld",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "social_security_tips",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$|^7\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "social security tips",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "allocated_tips",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^8$|^8\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "allocated tips",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "control_number",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^d$|^d\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "control number",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "dependent_care_benefits",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^10$|^10\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "dependent care benefits",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "employee_name",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^e$|^e\\.$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^Last name$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^Suff"
+            },
+            {
+              "type": "regex",
+              "pattern": "^\\d|\\d$"
+            },
+            {
+              "type": "regex",
+              "pattern": "Employee’s address"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "Employee’s first name and initial",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "employee_address",
+        "type": "address",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "Employee’s first name and initial",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "nonqualified_plans",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^11$|^11\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "nonqualified plans",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "box13.statutory_employee",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetY": 0.2,
+          "offsetX": 0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "statutory",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "box13.retirement_plan",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetY": 0.2,
+          "offsetX": 0.6
+        },
+        "anchor": {
+          "match": {
+            "text": "statutory",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "box13.third_paty_sick_pay",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetY": 0.2,
+          "offsetX": 1.1
+        },
+        "anchor": {
+          "match": {
+            "text": "statutory",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "state",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "state",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "employers_state_id_number",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        },
+        "anchor": {
+          "match": {
+            "text": "Employer’s state ID number",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "state_wages_tips",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        },
+        "anchor": {
+          "match": {
+            "text": "state wages, tips",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "state_income_tax",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        },
+        "anchor": {
+          "match": {
+            "text": "state income tax",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "local_wages_tips",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        },
+        "anchor": {
+          "match": {
+            "text": "local wages, tips",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "local_income_tax",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        },
+        "anchor": {
+          "match": {
+            "text": "local income tax",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "locality_name",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        },
+        "anchor": {
+          "match": {
+            "text": "locality name",
+            "type": "includes"
+          }
+        }
+      }
+    ]
+  }
