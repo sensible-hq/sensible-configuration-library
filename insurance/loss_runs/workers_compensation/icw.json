@@ -1,592 +1,455 @@
 {
-    "fingerprint": {
-      "tests": [
-        {
-          "page": "any",
-          "match": [
-            {
-              "text": "claimant name:",
-              "type": "startsWith"
-            },
-            {
-              "text": "CURRENT & PAST ACCOUNT SUMMARY",
-              "type": "includes"
-            }
-          ]
-        }
-      ]
-    },
-    "fields": [
+  "fingerprint": {
+    "tests": [
       {
-        "id": "policy_period",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": "policy period"
-      },
-      {
-        "id": "policy_premium",
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": "term premium"
-      },
-      {
-        "id": "earned_premium",
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": "earned premium"
-      },
-      {
-        "id": "term_premium",
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": "Term premium"
-      },
-      {
-        "id": "insured",
-        "match": "all",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": "Insured"
-      },
-      {
-        "id": "policy_number",
-        "match": "all",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": "policy number"
-      },
-      {
-        "id": "claim_number",
-        "match": "all",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "claim number:",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "claim_number",
-        "match": "all",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "claim number:",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "claim_type",
-        "match": "all",
-        "method": {
-          "id": "label",
-          "position": "right"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "claim status:",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "loss_date",
-        "type": "date",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "date of injury",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "claim_date",
-        "type": "date",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "date reported to carrier",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "claim_date",
-        "type": "date",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "date reported to carrier",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "claim_amount_paid.total",
-        "type": "currency",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "Total",
+        "page": "first",
+        "match": [
+          {
+            "text": "Workers' Compensation Loss Analysis Report",
             "type": "startsWith",
             "isCaseSensitive": true
           },
-          "end": "location summary"
-        }
-      },
-      {
-        "id": "claim_amount_paid.medical",
-        "type": "currency",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "Medical",
+          {
+            "text": "INSURED",
             "type": "startsWith",
             "isCaseSensitive": true
           },
-          "end": "location summary"
-        }
-      },
-      {
-        "id": "claim_amount_paid.indemnity",
-        "type": "currency",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "Indemnity",
+          {
+            "text": "CURRENT & PAST ACCOUNT SUMMARY",
             "type": "startsWith",
             "isCaseSensitive": true
-          },
-          "end": "location summary"
-        }
-      },
-      {
-        "id": "claim_amount_paid.expense",
-        "type": "currency",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "loss adj. expense",
-            "type": "startsWith"
-          },
-          "end": "location summary"
-        }
-      },
-      {
-        "id": "claim_amount_incurred.total",
-        "type": "currency",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "third"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "Total",
-            "type": "startsWith",
-            "isCaseSensitive": true
-          },
-          "end": "location summary"
-        }
-      },
-      {
-        "id": "claim_amount_incurred.medical",
-        "type": "currency",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "third"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "Medical",
-            "type": "startsWith",
-            "isCaseSensitive": true
-          },
-          "end": "location summary"
-        }
-      },
-      {
-        "id": "claim_amount_incurred.indemnity",
-        "type": "currency",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "third"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "Indemnity",
-            "type": "startsWith",
-            "isCaseSensitive": true
-          },
-          "end": "location summary"
-        }
-      },
-      {
-        "id": "claim_amount_incurred.expense",
-        "type": "currency",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "third"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "Loss Adj. Expense",
-            "type": "startsWith",
-            "isCaseSensitive": true
-          },
-          "end": "location summary"
-        }
-      },
-      {
-        "id": "summary_policy_number",
-        "match": "all",
-        "type": "string",
-        "method": {
-          "id": "passthrough"
-        },
-        "anchor": {
-          "start": {
-            "text": "Policy Number",
-            "type": "equals"
-          },
-          "match": {
-            "type": "regex",
-            "pattern": "^WSA"
-          },
-          "end": "page"
-        }
-      },
-      {
-        "id": "summary_eff_date",
-        "match": "all",
-        "type": "date",
-        "method": {
-          "id": "passthrough",
-          "position": "right"
-        },
-        "anchor": {
-          "start": {
-            "text": "Effective Date",
-            "type": "equals"
-          },
-          "match": {
-            "type": "regex",
-            "pattern": "^[0-9]{7,9}"
-          },
-          "end": "page"
-        }
-      },
-      {
-        "id": "open_claims",
-        "type": "number",
-        "method": {
-          "id": "region",
-          "start": "below",
-          "width": 0.45,
-          "height": 0.2,
-          "offsetX": -0.25,
-          "offsetY": 1.1
-        },
-        "anchor": "# open"
-      },
-      {
-        "id": "closed_claims",
-        "method": {
-          "id": "passthrough"
-        },
-        "anchor": "not configured, not found"
-      },
-      {
-        "id": "total_claims",
-        "type": "number",
-        "method": {
-          "id": "region",
-          "start": "below",
-          "width": 0.45,
-          "height": 0.2,
-          "offsetX": -0.25,
-          "offsetY": 1.1
-        },
-        "anchor": "# total"
-      },
-      {
-        "id": "loss_description",
-        "match": "all",
-        "method": {
-          "id": "documentRange",
-          "stop": {
-            "type": "regex",
-            "pattern": "Claim Number|Page"
           }
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number:",
-            "type": "startsWith"
+        ]
+      },
+      {
+        "page": "any",
+        "match": [
+          {
+            "text": "Claim Number:",
+            "type": "startsWith",
+            "isCaseSensitive": true
           },
-          "match": {
-            "text": "accident description",
-            "type": "startsWith"
+          {
+            "text": "Claimant Name:",
+            "type": "startsWith",
+            "isCaseSensitive": true
           }
-        }
+        ]
       },
       {
-        "id": "nature_of_injuries",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number:",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "nature of injury",
-            "type": "startsWith"
-          },
-          "end": "location summary"
-        }
-      },
-      {
-        "id": "cause",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number:",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "Cause",
-            "type": "equals",
+        "page": "last",
+        "match": [
+          {
+            "text": "Location Summary",
+            "type": "startsWith",
             "isCaseSensitive": true
-          },
-          "end": "location summary"
-        }
-      },
-      {
-        "id": "body_parts",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number:",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "body part",
-            "type": "startsWith"
-          },
-          "end": "location summary"
-        }
-      },
-      {
-        "id": "location",
-        "match": "all",
-        "method": {
-          "id": "region",
-          "start": "right",
-          "width": 2.15,
-          "height": 0.5,
-          "offsetX": 0.4,
-          "offsetY": -0.1
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number:",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "Location",
-            "type": "equals",
-            "isCaseSensitive": true
-          },
-          "end": "location summary"
-        }
-      },
-      {
-        "id": "litigation",
-        "match": "all",
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        },
-        "anchor": {
-          "start": {
-            "text": "claim number:",
-            "type": "startsWith"
-          },
-          "match": {
-            "text": "in litigation",
-            "type": "startsWith"
-          },
-          "end": "location summary"
-        }
-      }
-    ],
-    "computed_fields": [
-      {
-        "id": "claim_details",
-        "method": {
-          "id": "zip",
-          "source_ids": [
-            "claim_number",
-            "claim_type",
-            "loss_date",
-            "claim_date",
-            "claim_amount_paid.total",
-            "claim_amount_paid.medical",
-            "claim_amount_paid.indemnity",
-            "claim_amount_paid.expense",
-            "claim_amount_incurred.total",
-            "claim_amount_incurred.medical",
-            "claim_amount_incurred.indemnity",
-            "claim_amount_incurred.expense",
-            "loss_description",
-            "nature_of_injuries",
-            "cause",
-            "body_parts",
-            "location",
-            "litigation"
-          ]
-        }
+          }
+        ]
       }
     ]
-  }
+  },
+  "fields": [
+    {
+      "id": "insured",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "insured",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "policy_start_date",
+      "type": "date",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "match": {
+          "text": "policy period",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "policy_end_date",
+      "type": "date",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": {
+          "text": "policy period",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "term premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "policy_number",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "policy number",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "open_claims",
+      "type": "number",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "location summary",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "open claims:",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "closed_claims",
+      "type": "number",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": "not found, not configured"
+    },
+    {
+      "id": "total_claims",
+      "type": "number",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "location summary",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "number of claims:",
+          "type": "startsWith"
+        }
+      }
+    }
+  ],
+  "sections": [
+    {
+      "id": "claims_details",
+      "range": {
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Claim Number:"
+          },
+          "end": {
+            "text": "Location Summary",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      "fields": [
+        {
+          "id": "claim_number",
+          "method": {
+            "id": "label",
+            "position": "right"
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "claim number:"
+            }
+          }
+        },
+        {
+          "id": "claim_type",
+          "method": {
+            "id": "passthrough"
+          },
+          "anchor": "not configured, not found"
+        },
+        {
+          "id": "loss_date",
+          "type": "date",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "first"
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "date of injury"
+            }
+          }
+        },
+        {
+          "id": "claim_date",
+          "type": "date",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "first"
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "date reported to carrier"
+            }
+          }
+        },
+        {
+          "id": "claim_amount_paid.total",
+          "type": "currency",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "first"
+          },
+          "anchor": {
+            "match": {
+              "text": "Total",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          }
+        },
+        {
+          "id": "claim_amount_paid.medical",
+          "type": "currency",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "first"
+          },
+          "anchor": {
+            "match": {
+              "text": "Medical",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          }
+        },
+        {
+          "id": "claim_amount_paid.indemnity",
+          "type": "currency",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "first"
+          },
+          "anchor": {
+            "match": {
+              "text": "Indemnity",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          }
+        },
+        {
+          "id": "claim_amount_paid.expense",
+          "type": "currency",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "first"
+          },
+          "anchor": {
+            "match": {
+              "text": "Expense",
+              "type": "endsWith",
+              "isCaseSensitive": true
+            }
+          }
+        },
+        {
+          "id": "claim_amount_incurred.total",
+          "type": "currency",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "last"
+          },
+          "anchor": {
+            "match": {
+              "text": "Total",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          }
+        },
+        {
+          "id": "claim_amount_incurred.medical",
+          "type": "currency",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "last"
+          },
+          "anchor": {
+            "match": {
+              "text": "Medical",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          }
+        },
+        {
+          "id": "claim_amount_incurred.indemnity",
+          "type": "currency",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "last"
+          },
+          "anchor": {
+            "match": {
+              "text": "Indemnity",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          }
+        },
+        {
+          "id": "claim_amount_incurred.expense",
+          "type": "currency",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "last"
+          },
+          "anchor": {
+            "match": {
+              "text": "Expense",
+              "type": "endsWith",
+              "isCaseSensitive": true
+            }
+          }
+        },
+        {
+          "id": "accident_description",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "first"
+          },
+          "anchor": {
+            "match": {
+              "text": "accident description",
+              "type": "startsWith"
+            }
+          }
+        },
+        {
+          "id": "nature_of_injuries",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "first"
+          },
+          "anchor": {
+            "match": {
+              "text": "nature of injury",
+              "type": "startsWith"
+            }
+          }
+        },
+        {
+          "id": "cause",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "first"
+          },
+          "anchor": {
+            "match": {
+              "text": "cause",
+              "type": "startsWith"
+            }
+          }
+        },
+        {
+          "id": "body_parts",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "first"
+          },
+          "anchor": {
+            "match": {
+              "text": "body part",
+              "type": "startsWith"
+            }
+          }
+        },
+        {
+          "id": "location",
+          "type": "address",
+          "method": {
+            "id": "region",
+            "start": "left",
+            "offsetX": 0.5,
+            "offsetY": -0.1,
+            "width": 2.5,
+            "height": 0.6
+          },
+          "anchor": {
+            "match": {
+              "text": "Location",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          }
+        },
+        {
+          "id": "litigation",
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "first"
+          },
+          "anchor": {
+            "match": {
+              "text": "in litigation",
+              "type": "startsWith"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
