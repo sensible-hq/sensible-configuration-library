@@ -57,6 +57,25 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [ACORD 130 (05/2017)](./insurance/acords/acord_130/2017_05.json)
 - [ACORD 140 (09/2007)](./insurance/acords/acord_140/2007_09.json)
 
+#### Loss Runs
+- [Amtrust](./insurance/loss_runs/amtrust.json)
+- [Applied Underwriters](./insurance/loss_runs/applied_underwriters.json)
+- [Atlas](./insurance/loss_runs/atlas.json)
+- [Benchmark](./insurance/loss_runs/benchmark.json)
+- [Compwest](./insurance/loss_runs/compwest.json)
+- [ICW](./insurance/loss_runs/icw.json)
+- [Statefund](./insurance/loss_runs/statefund.json)
+- [Travelers](./insurance/loss_runs/travelers.json)
+- [Zenith](./insurance/loss_runs/zenith.json)
+
+### Tax Forms
+- [1040](./tax_forms/1040.json)
+- [1065](./tax_forms/1065.json)
+- [1099](./tax_forms/1099.json)
+- [1120](./tax_forms/1120.json)
+- [w-2](./tax_forms/w-2.json)
+- [w-9](./tax_forms/w-9.json)
+
 
 ## Using a configuration
 To use the library, you'll need a Sensible account. If you don't have an account, please reach out to hello@sensible.so with a short description of your use case to start a free trial. 
