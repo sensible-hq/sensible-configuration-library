@@ -2,27 +2,22 @@
   "fingerprint": {
     "tests": [
       {
-        "page": "any",
-        "match": [
-          {
-            "type": "equals",
-            "text": "POLICY COVERAGES AND LIMITS OF LIABILITY",
-            "minimumHeight": 0.15,
-            "isCaseSensitive": true
-          },
-          {
-            "type": "equals",
-            "text": "POLICY SAVINGS AND DEDUCTIBLES",
-            "minimumHeight": 0.15,
-            "isCaseSensitive": true
-          },
-          {
-            "type": "equals",
-            "text": "OPTIONAL ENDORSEMENTS AND COVERAGES",
-            "minimumHeight": 0.15,
-            "isCaseSensitive": true
-          }
-        ]
+        "type": "equals",
+        "text": "POLICY COVERAGES AND LIMITS OF LIABILITY",
+        "minimumHeight": 0.15,
+        "isCaseSensitive": true
+      },
+      {
+        "type": "equals",
+        "text": "POLICY SAVINGS AND DEDUCTIBLES",
+        "minimumHeight": 0.15,
+        "isCaseSensitive": true
+      },
+      {
+        "type": "equals",
+        "text": "OPTIONAL ENDORSEMENTS AND COVERAGES",
+        "minimumHeight": 0.15,
+        "isCaseSensitive": true
       }
     ]
   },
@@ -40,6 +35,37 @@
   ],
   "fields": [
     {
+      "id": "policy_number",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "homeowners policy no",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": "total policy premium",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": "total policy premium",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
       "id": "named_insured",
       "type": "name",
       "match": "all",
@@ -50,7 +76,7 @@
       "anchor": {
         "match": {
           "type": "includes",
-          "text": "name and mailing address"
+          "text": "Name and Mailing Address"
         }
       }
     },
@@ -70,25 +96,12 @@
       }
     },
     {
-      "id": "policy_number",
-      "method": {
-        "id": "label",
-        "position": "below"
-      },
-      "anchor": {
-        "match": {
-          "text": "homeowners policy no",
-          "type": "includes"
-        }
-      }
-    },
-    {
       "id": "effective_date",
       "type": "date",
       "anchor": {
         "match": {
           "type": "includes",
-          "text": "policy period"
+          "text": "Policy period"
         }
       },
       "method": {
@@ -103,42 +116,12 @@
       "anchor": {
         "match": {
           "type": "includes",
-          "text": "policy period"
+          "text": "Policy period"
         }
       },
       "method": {
         "id": "label",
         "position": "below",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "policy_premium",
-      "type": "currency",
-      "anchor": {
-        "match": {
-          "text": "total policy premium",
-          "type": "startsWith"
-        }
-      },
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "total",
-      "type": "currency",
-      "anchor": {
-        "match": {
-          "text": "total policy premium",
-          "type": "startsWith"
-        }
-      },
-      "method": {
-        "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -153,7 +136,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -168,7 +150,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -183,7 +164,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -198,22 +178,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "personal_liability_limit",
-      "anchor": {
-        "match": {
-          "text": "E - personal liability",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -228,7 +192,20 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "personal_liability_limit",
+      "anchor": {
+        "match": {
+          "text": "E - personal liability",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
         "tiebreaker": ">"
       }
     },
@@ -236,29 +213,22 @@
       "id": "deductible",
       "anchor": {
         "match": {
-          "text": "property coverages deductible",
+          "text": "Property coverages deductible",
           "type": "includes"
         }
       },
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
     {
       "id": "deductible_wind_hail",
-      "anchor": {
-        "match": {
-          "text": "hail deductible",
-          "type": "includes"
-        }
-      },
+      "anchor": "hail deductible",
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     }

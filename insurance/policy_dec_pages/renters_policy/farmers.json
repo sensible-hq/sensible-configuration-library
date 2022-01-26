@@ -1,0 +1,247 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "farmers",
+              "type": "includes"
+            },
+            {
+              "text": "toggle",
+              "type": "includes"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "policy_number",
+        "match": "first",
+        "anchor": {
+          "match": [
+            {
+              "type": "equals",
+              "text": "Policy Number"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Policy Period"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "From"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Policy Period"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "To"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "match": "all",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "equals",
+                "text": "Named Insured"
+              },
+              {
+                "type": "equals",
+                "text": "Additional Insured"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap",
+          "lineFilters": [
+            {
+              "type": "includes",
+              "text": "@"
+            },
+            {
+              "type": "regex",
+              "pattern": "\\d"
+            }
+          ]
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "anchor": {
+          "match": [
+            {
+              "type": "equals",
+              "text": "Named Insured"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap",
+          "lineFilters": [
+            {
+              "type": "includes",
+              "text": "@"
+            },
+            {
+              "type": "regex",
+              "pattern": "!\\d"
+            }
+          ]
+        }
+      },
+      {
+        "id": "policy_premium",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Policy Premium"
+          },
+          "match": [
+            {
+              "type": "includes",
+              "text": "/year"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "left"
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Policy Premium"
+          },
+          "match": [
+            {
+              "type": "includes",
+              "text": "/year"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "left"
+        }
+      },
+      {
+        "id": "personal_property_limit",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Property Coverage"
+          },
+          "match": {
+            "text": "Other perils",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "personal_liability_limit",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Liability Coverage"
+          },
+          "match": {
+            "text": "Personal Liability",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "medical_payment_to_others_limit",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Liability Coverage"
+          },
+          "match": {
+            "text": "Medical Payments",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "deductible",
+        "anchor": {
+          "match": {
+            "text": "deductible",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      }
+    ]
+  }

@@ -1,0 +1,263 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "type": "includes",
+          "text": "nationwide"
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "policy_number",
+        "match": "first",
+        "method": {
+          "id": "passthrough",
+          "wordFilters": [
+            "POLICY NO:"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "POLICY NO:"
+          }
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "TOTAL COST OF POLICY"
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "POLICY EFFECTIVE DATE"
+          }
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "POLICY EXPIRATION DATE"
+          }
+        }
+      },
+      {
+        "id": "_premium_period_raw",
+        "method": {
+          "id": "passthrough",
+          "wordFilters": [
+            "Term:"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Term:"
+          }
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "isAbsoluteOffset": true,
+          "start": "below",
+          "height": 1.5,
+          "width": 3,
+          "offsetX": 1,
+          "offsetY": 3,
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "[0-9]"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "nationwide"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "Important information"
+          }
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "isAbsoluteOffset": true,
+          "start": "below",
+          "height": 1.5,
+          "width": 3,
+          "offsetX": 1,
+          "offsetY": 3
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "nationwide"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "Important information"
+          }
+        }
+      },
+      {
+        "id": "coinsurance",
+        "type": "percentage",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Co-Insurance"
+          }
+        }
+      },
+      {
+        "id": "annual_deductible",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Deductible"
+          }
+        }
+      },
+      {
+        "id": "pet_name",
+        "method": {
+          "id": "passthrough",
+          "wordFilters": [
+            "PET NAME:"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "PET NAME"
+          }
+        }
+      },
+      {
+        "id": "pet_type",
+        "method": {
+          "id": "passthrough",
+          "wordFilters": [
+            "BREED:"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "BREED"
+          }
+        }
+      },
+      {
+        "id": "_pet_sex",
+        "method": {
+          "id": "passthrough",
+          "wordFilters": [
+            "SEX:"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "SEX"
+          }
+        }
+      },
+      {
+        "id": "_pet_sex",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "SEX:"
+          }
+        }
+      },
+      {
+        "id": "breed_type",
+        "method": {
+          "id": "passthrough",
+          "wordFilters": [
+            "SPECIES:"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "SPECIES"
+          }
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "premium_period",
+        "method": {
+          "id": "mapper",
+          "source_id": "_premium_period_raw",
+          "mappings": {
+            "Annual": "12"
+          }
+        }
+      },
+      {
+        "id": "pet_sex",
+        "method": {
+          "id": "mapper",
+          "source_id": "_pet_sex",
+          "mappings": {
+            "F": "Female",
+            "M": "Male",
+            "U": "Unknown"
+          }
+        }
+      }
+    ]
+  }

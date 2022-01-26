@@ -2,13 +2,8 @@
   "fingerprint": {
     "tests": [
       {
-        "page": "any",
-        "match": [
-          {
-            "text": "nationwide",
-            "type": "includes"
-          }
-        ]
+        "type": "startsWith",
+        "text": "nationwide"
       }
     ]
   },
@@ -22,17 +17,94 @@
         }
       },
       "method": {
-        "id": "box",
+        "id": "label",
         "position": "below"
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Premium Summary"
+        },
+        "match": {
+          "type": "equals",
+          "text": "Annual Premium"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Premium Summary"
+        },
+        "match": {
+          "type": "equals",
+          "text": "policy premium"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Premium Summary"
+        },
+        "match": {
+          "type": "equals",
+          "text": "Annual Premium"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Premium Summary"
+        },
+        "match": {
+          "type": "includes",
+          "text": "Policy Premium"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
       }
     },
     {
       "id": "named_insured",
       "type": "name",
+      "match": "all",
       "anchor": {
+        "end": {
+          "type": "startsWith",
+          "text": "Policy Period From:"
+        },
         "match": {
           "type": "includes",
-          "text": "named insured"
+          "text": "Named insured"
         }
       },
       "method": {
@@ -40,9 +112,24 @@
         "position": "below",
         "stop": {
           "type": "regex",
-          "pattern": "^\\d",
+          "pattern": "\\d",
           "flags": "i"
         }
+      }
+    },
+    {
+      "id": "address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "Residence Premises Information:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": "gap"
       }
     },
     {
@@ -51,7 +138,7 @@
       "anchor": {
         "match": {
           "type": "includes",
-          "text": "policy period from"
+          "text": "Policy period from"
         }
       },
       "method": {
@@ -66,7 +153,7 @@
       "anchor": {
         "match": {
           "type": "includes",
-          "text": "policy period from"
+          "text": "Policy period from"
         }
       },
       "method": {
@@ -76,33 +163,19 @@
       }
     },
     {
-      "id": "address",
-      "type": "address",
+      "id": "_premium_period_raw",
       "anchor": {
+        "start": {
+          "text": "POLICY PREMIUM",
+          "type": "startsWith"
+        },
         "match": {
-          "type": "equals",
-          "text": "residence premises information:"
+          "type": "regex",
+          "pattern": "^(.+) Premium"
         }
       },
       "method": {
-        "id": "label",
-        "position": "below",
-        "stop": "gap"
-      }
-    },
-    {
-      "id": "deductible",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "match": {
-          "type": "includes",
-          "text": "deductible:"
-        }
+        "id": "passthrough"
       }
     },
     {
@@ -110,7 +183,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       },
       "anchor": {
@@ -125,7 +197,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       },
       "anchor": {
@@ -140,7 +211,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       },
       "anchor": {
@@ -154,7 +224,6 @@
       "id": "loss_of_use_limit",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": "first"
       },
       "anchor": {
@@ -169,7 +238,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       },
       "anchor": {
@@ -184,13 +252,26 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       },
       "anchor": {
         "match": {
           "type": "includes",
           "text": "Coverage-F-Medical payment"
+        }
+      }
+    },
+    {
+      "id": "deductible",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "deductible:"
         }
       }
     },
@@ -210,98 +291,6 @@
           "type": "includes",
           "text": "windstorm"
         }
-      }
-    },
-    {
-      "id": "policy_premium",
-      "type": "currency",
-      "anchor": {
-        "start": {
-          "type": "equals",
-          "text": "premium summary"
-        },
-        "match": {
-          "type": "equals",
-          "text": "annual premium"
-        }
-      },
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "policy_premium",
-      "type": "currency",
-      "anchor": {
-        "start": {
-          "type": "equals",
-          "text": "premium summary"
-        },
-        "match": {
-          "type": "equals",
-          "text": "policy premium"
-        }
-      },
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "total",
-      "type": "currency",
-      "anchor": {
-        "start": {
-          "type": "equals",
-          "text": "premium summary"
-        },
-        "match": {
-          "type": "equals",
-          "text": "annual premium"
-        }
-      },
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "total",
-      "type": "currency",
-      "anchor": {
-        "start": {
-          "type": "equals",
-          "text": "premium summary"
-        },
-        "match": {
-          "type": "includes",
-          "text": "policy premium"
-        }
-      },
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "_premium_period_raw",
-      "anchor": {
-        "start": {
-          "text": "policy premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "type": "regex",
-          "pattern": "^(.+) Premium"
-        }
-      },
-      "method": {
-        "id": "passthrough"
       }
     }
   ],

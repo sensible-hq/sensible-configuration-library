@@ -1,0 +1,238 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "type": "includes",
+          "text": "PURE",
+          "isCaseSensitive": true
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "policy_number",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "policy number"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "policy_premium",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "location premium",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "named_insured",
+        "match": "all",
+        "type": "name",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "NAME & ADDRESS OF INSURED"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "type": "regex",
+            "pattern": "\\d"
+          },
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": -0.2,
+            "width": 4
+          }
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "NAME & ADDRESS OF INSURED"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "type": "includes",
+            "text": "policy number"
+          },
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": -0.2,
+            "width": 4
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "policy period"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "<"
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "policy period"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "location premium",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "dwelling_limit",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "dwelling"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "deductible",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "deductible",
+            "type": "equals"
+          },
+          "match": {
+            "text": "All Other Peril Deductible",
+            "type": "endsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "medical_payment_to_others_limit",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "medical payments",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        }
+      },
+      {
+        "id": "personal_liability_limit",
+        "type": "currency",
+        "anchor": {
+          "start": "coverage",
+          "match": {
+            "text": "liability",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "loss_of_use_limit",
+        "anchor": {
+          "match": {
+            "text": "loss of use",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        }
+      },
+      {
+        "id": "personal_property_limit",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "contents",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "other_structures_limit",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "other structures",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      }
+    ]
+  }

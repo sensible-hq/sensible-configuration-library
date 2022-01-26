@@ -2,13 +2,9 @@
   "fingerprint": {
     "tests": [
       {
-        "page": "any",
-        "match": [
-          {
-            "text": "lemonade",
-            "type": "includes"
-          }
-        ]
+        "type": "includes",
+        "text": "Lemonade",
+        "isCaseSensitive": true
       }
     ]
   },
@@ -27,6 +23,41 @@
       }
     },
     {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": "total premium",
+      "method": {
+        "id": "row",
+        "tiebreaker": "<"
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": "total premium",
+      "method": {
+        "id": "row",
+        "tiebreaker": "<"
+      }
+    },
+    {
+      "id": "_premium_period_raw",
+      "method": {
+        "id": "regex",
+        "pattern": "\\$[\\d.]+(/mo)",
+        "flags": "i"
+      },
+      "anchor": {
+        "match": [
+          {
+            "type": "regex",
+            "pattern": "\\$[\\d.]+/mo",
+            "flags": "i"
+          }
+        ]
+      }
+    },
+    {
       "id": "effective_date",
       "type": "date",
       "method": {
@@ -34,10 +65,12 @@
         "position": "below"
       },
       "anchor": {
-        "match": {
-          "text": "policy start",
-          "type": "startsWith"
-        }
+        "match": [
+          {
+            "text": "policy start",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -48,10 +81,27 @@
         "position": "below"
       },
       "anchor": {
+        "match": [
+          {
+            "text": "policy expires on",
+            "type": "startsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "address",
+      "type": "address",
+      "anchor": {
         "match": {
-          "text": "policy expires on",
-          "type": "startsWith"
+          "type": "equals",
+          "text": "insured property address"
         }
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": "gap"
       }
     },
     {
@@ -71,27 +121,11 @@
       }
     },
     {
-      "id": "address",
-      "type": "address",
-      "anchor": {
-        "match": {
-          "type": "equals",
-          "text": "insured property address"
-        }
-      },
-      "method": {
-        "id": "label",
-        "position": "below",
-        "stop": "gap"
-      }
-    },
-    {
       "id": "personal_property_limit",
       "anchor": "personal property",
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -101,7 +135,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -111,7 +144,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -121,7 +153,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -133,41 +164,6 @@
         "id": "row",
         "tiebreaker": ">",
         "includeAnchor": true
-      }
-    },
-    {
-      "id": "total",
-      "type": "currency",
-      "anchor": "total premium",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "<"
-      }
-    },
-    {
-      "id": "policy_premium",
-      "type": "currency",
-      "anchor": "total premium",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "<"
-      }
-    },
-    {
-      "id": "_premium_period_raw",
-      "method": {
-        "id": "regex",
-        "pattern": "\\$[\\d.]+(/mo)",
-        "flags": "i"
-      },
-      "anchor": {
-        "match": {
-          "type": "regex",
-          "pattern": "\\$[\\d.]+/mo",
-          "flags": "i"
-        }
       }
     }
   ],

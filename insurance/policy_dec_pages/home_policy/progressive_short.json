@@ -1,0 +1,374 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "progressive",
+              "type": "includes"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "policy_number",
+        "anchor": {
+          "match": [
+            {
+              "text": "policy number",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "match": "all",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "startsWith",
+                "text": "Named Insured"
+              },
+              {
+                "type": "startsWith",
+                "text": "Additional Insured"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": {
+            "type": "regex",
+            "pattern": "\\d"
+          }
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "anchor": {
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "Named Insured"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Policy Period"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "<"
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Policy Period"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "policy_premium",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "Policy Premium"
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "Policy Premium"
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "fee_names",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Coverages and Limits of Liability"
+          },
+          "match": [
+            {
+              "text": "fee",
+              "type": "includes"
+            }
+          ],
+          "end": {
+            "text": "Additional Insured:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "fee_values",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Coverages and Limits of Liability"
+          },
+          "match": [
+            {
+              "text": "fee",
+              "type": "includes"
+            }
+          ],
+          "end": {
+            "text": "Additional Insured:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "other_structures_limit",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Coverages and Limits of Liability"
+          },
+          "match": [
+            {
+              "text": "Coverage",
+              "type": "startsWith"
+            },
+            {
+              "text": "other structures",
+              "type": "includes"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "dwelling_limit",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Coverages and Limits of Liability"
+          },
+          "match": [
+            {
+              "text": "Coverage",
+              "type": "startsWith"
+            },
+            {
+              "text": "Dwelling",
+              "type": "includes"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "personal_property_limit",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Coverages and Limits of Liability"
+          },
+          "match": [
+            {
+              "text": "Coverage",
+              "type": "startsWith"
+            },
+            {
+              "text": "Personal Property",
+              "type": "includes"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "medical_payment_to_others_limit",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Coverages and Limits of Liability"
+          },
+          "match": [
+            {
+              "text": "Coverage",
+              "type": "startsWith"
+            },
+            {
+              "text": "Medical Payments to Others",
+              "type": "includes"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "loss_of_use_limit",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Coverages and Limits of Liability"
+          },
+          "match": [
+            {
+              "text": "Coverage",
+              "type": "startsWith"
+            },
+            {
+              "text": "Loss of Use",
+              "type": "includes"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "personal_liability_limit",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Coverages and Limits of Liability"
+          },
+          "match": [
+            {
+              "text": "Coverage",
+              "type": "startsWith"
+            },
+            {
+              "text": "Personal Liability",
+              "type": "includes"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "deductible",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Coverages and Limits of Liability",
+              "type": "includes"
+            },
+            {
+              "text": "DEDUCTIBLE",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "Other Perils",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "deductible_wind_hail",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Coverages and Limits of Liability",
+              "type": "includes"
+            },
+            {
+              "text": "DEDUCTIBLE",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "Wind",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      }
+    ]
+  }

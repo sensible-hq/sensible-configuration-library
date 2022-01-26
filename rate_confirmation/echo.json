@@ -1,0 +1,745 @@
+{
+    "fields": [
+      {
+        "id": "load_id",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "service for load #",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "rate",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "pay summary",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "text": "total",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "broker_contact_name",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "echo rep",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "broker_contact_email",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "rep email",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "broker_contact_phone",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": "rep phone"
+        }
+      },
+      {
+        "id": "load_mode",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": "mode:"
+        }
+      },
+      {
+        "id": "trailer_type",
+        "method": {
+          "id": "regex",
+          "pattern": "trailer type: (.+) \\d",
+          "flags": "i"
+        },
+        "anchor": {
+          "match": "trailer type"
+        }
+      },
+      {
+        "id": "trailer_size",
+        "method": {
+          "id": "regex",
+          "pattern": "trailer type: .+ (\\d.+)",
+          "flags": "i"
+        },
+        "anchor": {
+          "match": "trailer type"
+        }
+      },
+      {
+        "id": "shipper_name",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "left",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "PKU#",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Drop",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "shipper_number",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "PKU#",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Drop",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "shipper_phone",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "left",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "Weight:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Drop",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_pickup_date_raw",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "Earliest",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Drop",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_pickup_window_date_raw",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "Latest",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Drop",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_pickup_time_raw",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "\\d{4} (.+)"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "Earliest:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Drop",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_pickup_window_time_raw",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "\\d{4} (.+)"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "Latest:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Drop",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_address",
+        "match": "all",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -3.7,
+          "offsetY": 0,
+          "width": 3,
+          "height": 1
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "pickup_zip_code",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z]{2} ([0-9]{5}|[0-9]{5}[- ][0-9]{4})$",
+          "flags": "i",
+          "stop": {
+            "text": "latest",
+            "type": "startsWith"
+          }
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "Earliest",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Drop",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "pickup_instructions",
+        "type": "paragraph",
+        "match": "all",
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "type": "regex",
+            "pattern": "pickup|drop",
+            "flags": "i"
+          }
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup instructions",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "pickup_weight",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "equals"
+            },
+            {
+              "text": "Weight:",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "dropoff_weight",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Drop",
+              "type": "equals"
+            },
+            {
+              "text": "Weight:",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "consignee_name",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "left",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Drop",
+              "type": "startsWith"
+            },
+            {
+              "text": "DELV#",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Payment requirements",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "consignee_number",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Drop",
+              "type": "startsWith"
+            },
+            {
+              "text": "DELV#",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Payment requirements",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "consignee_phone",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "left",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Drop",
+              "type": "startsWith"
+            },
+            {
+              "text": "Weight",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Payment requirements",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_delivery_date_raw",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Drop",
+              "type": "startsWith"
+            },
+            {
+              "text": "Earliest",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Payment requirements",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_delivery_window_date_raw",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Drop",
+              "type": "startsWith"
+            },
+            {
+              "text": "Latest",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Payment requirements",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "delivery_address",
+        "match": "all",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -3.7,
+          "offsetY": 0,
+          "width": 3,
+          "height": 1
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Drop",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "delivery_zip_code",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z]{2} ([0-9]{5}|[0-9]{5}[- ][0-9]{4})$",
+          "flags": "i",
+          "stop": {
+            "text": "latest",
+            "type": "startsWith"
+          }
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Drop",
+              "type": "startsWith"
+            },
+            {
+              "text": "Earliest",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Payment requirements",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_delivery_time_raw",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "\\d{4} (.+)"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Drop",
+              "type": "startsWith"
+            },
+            {
+              "text": "Earliest:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Payment requirements",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_delivery_window_time_raw",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "\\d{4} (.+)"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Drop",
+              "type": "startsWith"
+            },
+            {
+              "text": "Latest:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Payment requirements",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "delivery_instructions",
+        "type": "paragraph",
+        "match": "all",
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "type": "regex",
+            "pattern": "drivers are responsible|drop",
+            "flags": "i"
+          }
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Drop instructions",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "carrier_name",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "carrier",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "trailer_number",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "trailer #",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "general_notes",
+        "method": {
+          "id": "documentRange",
+          "includeAnchor": true,
+          "stop": {
+            "text": "Pursuant to",
+            "type": "startsWith"
+          }
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Note:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "broker_name",
+        "method": {
+          "id": "constant",
+          "value": "echo"
+        }
+      },
+      {
+        "id": "pickup_date",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_pickup_date_raw",
+            "_pickup_window_date_raw"
+          ],
+          "delimiter": " - "
+        }
+      },
+      {
+        "id": "pickup_time",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_pickup_time_raw",
+            "_pickup_window_time_raw"
+          ],
+          "delimiter": " - "
+        }
+      },
+      {
+        "id": "delivery_date",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_delivery_date_raw",
+            "_delivery_window_date_raw"
+          ],
+          "delimiter": " - "
+        }
+      },
+      {
+        "id": "delivery_time",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_delivery_time_raw",
+            "_delivery_window_time_raw"
+          ],
+          "delimiter": " - "
+        }
+      }
+    ]
+  }
