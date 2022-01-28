@@ -93,6 +93,17 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [w-2](./tax_forms/w-2.json)
 - [w-9](./tax_forms/w-9.json)
 
+### Rate Confirmations
+- [Arrive](./rate_confirmations/arrive.json)
+- [CH Robinson](./rate_confirmations/ch_robinson.json)
+- [Coyote](./rate_confirmations/coyote.json)
+- [Echo](./rate_confirmations/echo.json)
+- [JB Hunt](./rate_confirmations/jb_hunt.json)
+- [LD Logistics](./rate_confirmations/ld_logistics.json)
+- [Nolan](./rate_confirmations/nolan.json)
+- [TQL](./rate_confirmations/tql.json)
+- [Uber Freight](./rate_confirmations/uber_freight.json)
+
 
 ## Using a configuration
 To use the library, you'll need a Sensible account. If you don't have an account, please reach out to hello@sensible.so with a short description of your use case to start a free trial. 

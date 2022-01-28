@@ -1,0 +1,824 @@
+{
+    "fields": [
+      {
+        "id": "load_id",
+        "anchor": {
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "CARRIER CONFIRMATION: NTG LOAD #",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "rate",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "CHARGES:"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "broker_contact_name",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "CARRIER CONFIRMATION: NTG LOAD #",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "ACCOUNT MANAGER:",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "P:",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "broker_contact_phone",
+        "match": "first",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "ACCOUNT MANAGER:",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "P:",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": "E:"
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "broker_contact_email",
+        "match": "first",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "ACCOUNT MANAGER:",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "E:",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": "OFFICE"
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "_trailer_type_raw",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "OFFICE",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "EQUIPMENT REQUIRED:",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "REFERENCE NUMBERS",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "_carrier_name_raw",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "E:",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "CARRIER",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "OFFICE",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "carrier_contact_name",
+        "match": "first",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "OFFICE:",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "BOOKED WITH:",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "PHONE",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "carrier_contact_phone",
+        "match": "first",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "BOOKED WITH:",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "PHONE",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "FAX",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "_pickup_datetime_raw",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "STOP:",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "PICK-UP",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first",
+          "wordFilters": [
+            "Hours",
+            "APPT",
+            "FCFS"
+          ]
+        }
+      },
+      {
+        "id": "shipper_name",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "STOP:",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "PICK-UP",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "_shipper_number_raw",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "PICK-UP",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "PICKUP#",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "documentRange",
+          "includeAnchor": true,
+          "stop": {
+            "type": "regex",
+            "pattern": "CONTACT|PHONE"
+          }
+        }
+      },
+      {
+        "id": "_pickup_shipment_description_raw",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "PICK-UP",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "equals",
+              "text": "PICKUP DESCRIPTION",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "above"
+        }
+      },
+      {
+        "id": "_delivery_shipment_description_raw",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "DELIVER",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "equals",
+              "text": "DELIVER DESCRIPTION",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "above"
+        }
+      },
+      {
+        "id": "_pickup_description_raw",
+        "type": "paragraph",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "PICK-UP",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "equals",
+              "text": "PICKUP DESCRIPTION",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "region",
+          "start": "above",
+          "width": 3.9,
+          "height": 0.5,
+          "offsetX": -0.8,
+          "offsetY": 0
+        }
+      },
+      {
+        "id": "_delivery_description_raw",
+        "type": "paragraph",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "STOP",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "DELIVER DESCRIPTION",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "region",
+          "start": "above",
+          "width": 3.9,
+          "height": 0.7,
+          "offsetX": -0.8,
+          "offsetY": 0
+        }
+      },
+      {
+        "id": "_pickup_address_raw",
+        "match": "all",
+        "type": "address",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "STOP",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "PICK-UP",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": -0.1,
+            "width": 3
+          },
+          "stop": {
+            "type": "includes",
+            "text": "PHONE"
+          }
+        }
+      },
+      {
+        "id": "_delivery_datetime_raw",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "STOP",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "DELIVER",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "wordFilters": [
+            "Hours",
+            "APPT",
+            "FCFS"
+          ]
+        }
+      },
+      {
+        "id": "consignee_name",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "STOP",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "equals",
+              "text": "DELIVER",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "_consignee_number_raw",
+        "match": "all",
+        "type": "paragraph",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "DELIVER",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "equals",
+              "text": "DELIV#",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "documentRange",
+          "includeAnchor": true,
+          "stop": {
+            "type": "regex",
+            "pattern": "CONTACT|PHONE"
+          }
+        }
+      },
+      {
+        "id": "_pickup_shipment_description_raw",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "STOP",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "equals",
+              "text": "PICKUP DESCRIPTION",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "above"
+        }
+      },
+      {
+        "id": "_delivery_address_raw",
+        "type": "address",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "STOP",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "equals",
+              "text": "DELIVER",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": -0.1,
+            "width": 3
+          },
+          "stop": {
+            "type": "includes",
+            "text": "PHONE"
+          }
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "broker_name",
+        "method": {
+          "id": "constant",
+          "value": "nolan"
+        }
+      },
+      {
+        "id": "trailer_type",
+        "method": {
+          "id": "mapper",
+          "source_id": "_trailer_type_raw",
+          "mappings": {
+            "DRY VAN": "VAN"
+          }
+        }
+      },
+      {
+        "id": "carrier_name",
+        "method": {
+          "id": "split",
+          "source_id": "_carrier_name_raw",
+          "separator": " (MC#",
+          "index": 0
+        }
+      },
+      {
+        "id": "pickup_date",
+        "type": "date",
+        "method": {
+          "id": "split",
+          "source_id": "_pickup_datetime_raw",
+          "separator": " : ",
+          "index": 0
+        }
+      },
+      {
+        "id": "pickup_time",
+        "method": {
+          "id": "split",
+          "source_id": "_pickup_datetime_raw",
+          "separator": " : ",
+          "index": 1
+        }
+      },
+      {
+        "id": "_pickup_address_line_1",
+        "method": {
+          "id": "split",
+          "separator": "\n",
+          "source_id": "_pickup_address_raw",
+          "index": 0
+        }
+      },
+      {
+        "id": "_pickup_address_line_2",
+        "method": {
+          "id": "split",
+          "separator": "\n",
+          "source_id": "_pickup_address_raw",
+          "index": 1
+        }
+      },
+      {
+        "id": "_pickup_city",
+        "method": {
+          "id": "split",
+          "separator": ", ",
+          "source_id": "_pickup_address_line_2",
+          "index": 0
+        }
+      },
+      {
+        "id": "_pickup_raw_state_zip_code",
+        "method": {
+          "id": "split",
+          "separator": ", ",
+          "source_id": "_pickup_address_line_2",
+          "index": 1
+        }
+      },
+      {
+        "id": "_pickup_state",
+        "method": {
+          "id": "split",
+          "separator": " ",
+          "source_id": "_pickup_raw_state_zip_code",
+          "index": 0
+        }
+      },
+      {
+        "id": "pickup_zip_code",
+        "method": {
+          "id": "split",
+          "separator": " ",
+          "source_id": "_pickup_raw_state_zip_code",
+          "index": 1
+        }
+      },
+      {
+        "id": "_pickup_city_state",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_pickup_city",
+            "_pickup_state"
+          ],
+          "delimiter": ", "
+        }
+      },
+      {
+        "id": "pickup_address",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_pickup_address_line_1",
+            "_pickup_city_state"
+          ],
+          "delimiter": " "
+        }
+      },
+      {
+        "id": "shipper_number",
+        "method": {
+          "id": "split",
+          "source_id": "_shipper_number_raw",
+          "separator": "PICKUP# ",
+          "index": 1
+        }
+      },
+      {
+        "id": "delivery_date",
+        "type": "date",
+        "method": {
+          "id": "split",
+          "source_id": "_delivery_datetime_raw",
+          "separator": " : ",
+          "index": 0
+        }
+      },
+      {
+        "id": "delivery_time",
+        "method": {
+          "id": "split",
+          "source_id": "_delivery_datetime_raw",
+          "separator": " : ",
+          "index": 1
+        }
+      },
+      {
+        "id": "_delivery_address_line_1",
+        "method": {
+          "id": "split",
+          "separator": "\n",
+          "source_id": "_delivery_address_raw",
+          "index": 0
+        }
+      },
+      {
+        "id": "_delivery_address_line_2",
+        "method": {
+          "id": "split",
+          "separator": "\n",
+          "source_id": "_delivery_address_raw",
+          "index": 1
+        }
+      },
+      {
+        "id": "_delivery_city",
+        "method": {
+          "id": "split",
+          "separator": ", ",
+          "source_id": "_delivery_address_line_2",
+          "index": 0
+        }
+      },
+      {
+        "id": "_delivery_raw_state_zip_code",
+        "method": {
+          "id": "split",
+          "separator": ", ",
+          "source_id": "_delivery_address_line_2",
+          "index": 1
+        }
+      },
+      {
+        "id": "_delivery_state",
+        "method": {
+          "id": "split",
+          "separator": " ",
+          "source_id": "_delivery_raw_state_zip_code",
+          "index": 0
+        }
+      },
+      {
+        "id": "delivery_zip_code",
+        "method": {
+          "id": "split",
+          "separator": " ",
+          "source_id": "_delivery_raw_state_zip_code",
+          "index": 1
+        }
+      },
+      {
+        "id": "_delivery_city_state",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_delivery_city",
+            "_delivery_state"
+          ],
+          "delimiter": ", "
+        }
+      },
+      {
+        "id": "delivery_address",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_delivery_address_line_1",
+            "_delivery_city_state"
+          ],
+          "delimiter": " "
+        }
+      },
+      {
+        "id": "consignee_number",
+        "method": {
+          "id": "split",
+          "source_id": "_consignee_number_raw",
+          "separator": "DELIV# ",
+          "index": 1
+        }
+      },
+      {
+        "id": "_pickup_description",
+        "method": {
+          "id": "mapper",
+          "source_id": "_pickup_description_raw",
+          "mappings": {
+            "PICKUP DESCRIPTION": " "
+          }
+        }
+      },
+      {
+        "id": "_delivery_description",
+        "method": {
+          "id": "mapper",
+          "source_id": "_delivery_description_raw",
+          "mappings": {
+            "DELIVER DESCRIPTION": " "
+          }
+        }
+      },
+      {
+        "id": "pickup_instructions",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_pickup_shipment_description_raw",
+            "_pickup_description"
+          ],
+          "delimiter": "\n"
+        }
+      },
+      {
+        "id": "delivery_instructions",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_delivery_shipment_description_raw",
+            "_delivery_description"
+          ],
+          "delimiter": "\n"
+        }
+      }
+    ]
+  }
