@@ -18,6 +18,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [Liberty Mutual](./insurance/policy_dec_pages/auto_policy/liberty_mutual.json)
 - [Nationwide](./insurance/policy_dec_pages/auto_policy/nationwide.json)
 - [Progressive](./insurance/policy_dec_pages/auto_policy/progressive.json)
+- [Root Insurance](./insurance/policy_dec_pages/auto_policy/root_insurance.json)
 - [State Farm](./insurance/policy_dec_pages/auto_policy/state_farm.json)
 - [Traveler's](./insurance/policy_dec_pages/auto_policy/travelers.json)
 - [USAA](./insurance/policy_dec_pages/auto_policy/usaa/usaa.json)
@@ -25,11 +26,17 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 
 ##### Home
 - [Allstate](./insurance/policy_dec_pages/home_policy/allstate.json)
+- [Branch](./insurance/policy_dec_pages/home_policy/branch.json)
+- [Farmer's](./insurance/policy_dec_pages/home_policy/farmers.json)
+- [Geico](./insurance/policy_dec_pages/home_policy/geico.json)
 - [Hanover](./insurance/policy_dec_pages/home_policy/hanover.json)
 - [Hartford](./insurance/policy_dec_pages/home_policy/hartford.json)
 - [Lemonade](./insurance/policy_dec_pages/home_policy/lemonade.json)
 - [Liberty Mutual](./insurance/policy_dec_pages/home_policy/liberty_mutual.json)
 - [Nationwide](./insurance/policy_dec_pages/home_policy/nationwide.json)
+- [Progessive (Short)](./insurance/policy_dec_pages/home_policy/progressive_short.json)
+- [Progressive](./insurance/policy_dec_pages/home_policy/progressive.json)
+- [Pure](./insurance/policy_dec_pages/home_policy/pure.json)
 - [State Farm](./insurance/policy_dec_pages/home_policy/state_farm/state_farm.json)
 - [State Farm (Short)](./insurance/policy_dec_pages/home_policy/state_farm/state_farm_short.json)
 - [Traveler's](./insurance/policy_dec_pages/home_policy/travelers/travelers.json)
@@ -38,13 +45,23 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [USAA](./insurance/policy_dec_pages/home_policy/usaa.json)
 
 ##### Renters
+- [Allstate](./insurance/policy_dec_pages/renters_policy/allstate.json)
+- [Farmer's](./insurance/policy_dec_pages/renters_policy/lemonade.json)
+- [Geico](./insurance/policy_dec_pages/renters_policy/geico.json)
 - [Lemonade](./insurance/policy_dec_pages/renters_policy/lemonade.json)
 - [Liberty Mutual](./insurance/policy_dec_pages/renters_policy/liberty_mutual.json)
-- [State Farm ](./insurance/policy_dec_pages/renters_policy/state_farm.json)
+- [Nationwide](./insurance/policy_dec_pages/renters_policy/nationwide.json)
+- [Progressive (Short)](./insurance/policy_dec_pages/renters_policy/progressive_short.json)
+- [Progressive](./insurance/policy_dec_pages/renters_policy/progressive.json)
+- [State Farm](./insurance/policy_dec_pages/renters_policy/state_farm.json)
+- [Travelers](./insurance/policy_dec_pages/renters_policy/travelers.json)
 - [USAA](./insurance/policy_dec_pages/renters_policy/usaa.json)
 
 ##### Pet
 - [Healthy Paws](./insurance/policy_dec_pages/pet_policy/healthy_paws.json)
+- [Lemonade](./insurance/policy_dec_pages/pet_policy/lemonade.json)
+- [Nationwide](./insurance/policy_dec_pages/pet_policy/nationwide.json)
+- [Trupanion](./insurance/policy_dec_pages/pet_policy/trupanion.json)
 
 #### ACORDs
 Find the ACORD year/month at the bottom left corner of each ACORD page. Often the differences between versions are minor and can use the same configuration.
@@ -75,6 +92,17 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [1120](./tax_forms/1120.json)
 - [w-2](./tax_forms/w-2.json)
 - [w-9](./tax_forms/w-9.json)
+
+### Rate Confirmations
+- [Arrive](./rate_confirmations/arrive.json)
+- [CH Robinson](./rate_confirmations/ch_robinson.json)
+- [Coyote](./rate_confirmations/coyote.json)
+- [Echo](./rate_confirmations/echo.json)
+- [JB Hunt](./rate_confirmations/jb_hunt.json)
+- [LD Logistics](./rate_confirmations/ld_logistics.json)
+- [Nolan](./rate_confirmations/nolan.json)
+- [TQL](./rate_confirmations/tql.json)
+- [Uber Freight](./rate_confirmations/uber_freight.json)
 
 
 ## Using a configuration

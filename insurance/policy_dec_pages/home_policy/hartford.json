@@ -5,8 +5,8 @@
         "page": "any",
         "match": [
           {
-            "text": "hartford",
-            "type": "includes"
+            "text": "the hartford",
+            "type": "startsWith"
           }
         ]
       }
@@ -14,20 +14,31 @@
   },
   "fields": [
     {
-      "id": "address",
-      "type": "address",
+      "id": "policy_number",
       "anchor": {
         "match": {
-          "type": "startsWith",
-          "text": "insured and mailing address:"
+          "type": "includes",
+          "text": "policy number:"
         }
       },
       "method": {
-        "id": "documentRange",
-        "stop": {
-          "text": "residence premises",
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "text": "policy premium",
           "type": "startsWith"
         }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
       }
     },
     {
@@ -49,27 +60,27 @@
       }
     },
     {
-      "id": "policy_number",
+      "id": "address",
+      "type": "address",
       "anchor": {
         "match": {
-          "type": "includes",
-          "text": "policy number:"
+          "type": "startsWith",
+          "text": "insured and mailing address:"
         }
       },
       "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first"
+        "id": "documentRange",
+        "stop": {
+          "text": "residence premises",
+          "type": "startsWith"
+        }
       }
     },
     {
       "id": "effective_date",
       "type": "date",
       "anchor": {
-        "start": {
-          "text": "policy information:",
-          "type": "startsWith"
-        },
+        "start": "policy information:",
         "match": {
           "type": "startsWith",
           "text": "your policy number"
@@ -88,10 +99,7 @@
       "id": "expiration_date",
       "type": "date",
       "anchor": {
-        "start": {
-          "text": "policy information:",
-          "type": "startsWith"
-        },
+        "start": "policy information:",
         "match": {
           "type": "startsWith",
           "text": "your policy number"
@@ -107,29 +115,9 @@
       }
     },
     {
-      "id": "policy_premium",
-      "type": "currency",
-      "anchor": {
-        "match": {
-          "text": "policy premium",
-          "type": "startsWith"
-        }
-      },
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
       "id": "total",
       "type": "currency",
-      "anchor": {
-        "match": {
-          "text": "total policy premium:",
-          "type": "startsWith"
-        }
-      },
+      "anchor": "total policy premium:",
       "method": {
         "id": "label",
         "position": "right"
@@ -137,91 +125,10 @@
     },
     {
       "id": "dwelling_limit",
-      "anchor": {
-        "match": {
-          "text": "dwelling:",
-          "type": "includes"
-        }
-      },
+      "anchor": "dwelling",
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "personal_property_limit",
-      "anchor": {
-        "match": {
-          "text": "personal property:",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "loss_of_use_limit",
-      "anchor": {
-        "match": {
-          "text": "loss of use:",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "personal_liability_limit",
-      "anchor": {
-        "match": {
-          "text": "personal liability:",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "medical_payment_to_others_limit",
-      "anchor": {
-        "match": {
-          "text": "medical payments",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "other_structures_limit",
-      "anchor": {
-        "match": {
-          "text": "other structures:",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -235,6 +142,51 @@
           "text": "important information",
           "type": "includes"
         }
+      }
+    },
+    {
+      "id": "medical_payment_to_others_limit",
+      "anchor": "medical payments",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "personal_liability_limit",
+      "anchor": "personal liability",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "loss_of_use_limit",
+      "anchor": "loss of use",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "personal_property_limit",
+      "anchor": "personal property",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "other_structures_limit",
+      "anchor": "other structures",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
       }
     }
   ]

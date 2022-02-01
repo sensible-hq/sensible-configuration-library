@@ -1,11 +1,4 @@
 {
-  "preprocessors": [
-    {
-      "type": "mergeLines",
-      "directlyAdjacentThreshold": 0.15,
-      "adjacentThreshold": 1
-    }
-  ],
   "fingerprint": {
     "tests": [
       {
@@ -19,7 +12,90 @@
       }
     ]
   },
+  "preprocessors": [
+    {
+      "type": "mergeLines",
+      "directlyAdjacentThreshold": 0.15,
+      "adjacentThreshold": 1
+    }
+  ],
   "fields": [
+    {
+      "id": "policy_number",
+      "method": {
+        "id": "row",
+        "position": "right"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "Policy Number",
+            "type": "equals"
+          }
+        ]
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "total",
+            "type": "equals"
+          },
+          {
+            "text": "premium",
+            "type": "equals"
+          }
+        ]
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "total",
+            "type": "equals"
+          },
+          {
+            "text": "premium",
+            "type": "equals"
+          }
+        ]
+      }
+    },
+    {
+      "id": "_premium_period_raw",
+      "method": {
+        "id": "region",
+        "start": "below",
+        "offsetX": -0.55,
+        "offsetY": 0,
+        "width": 0.55,
+        "height": 0.15
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "premium",
+            "type": "equals"
+          }
+        ]
+      }
+    },
     {
       "id": "effective_date",
       "type": "date",
@@ -29,10 +105,12 @@
         "tiebreaker": "<"
       },
       "anchor": {
-        "match": {
-          "text": "policy period:",
-          "type": "startsWith"
-        }
+        "match": [
+          {
+            "text": "Policy Period:",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -44,10 +122,12 @@
         "tiebreaker": ">"
       },
       "anchor": {
-        "match": {
-          "text": "policy period:",
-          "type": "startsWith"
-        }
+        "match": [
+          {
+            "text": "Policy Period:",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -62,299 +142,12 @@
         "height": 1
       },
       "anchor": {
-        "match": {
-          "text": "item 1:",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "policy_number",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "join"
-      },
-      "anchor": {
-        "match": {
-          "text": "policy number",
-          "type": "equals"
-        }
-      }
-    },
-    {
-      "id": "personal_injury_protection_per_person",
-      "type": "currency",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "number": 1,
-          "direction": "right"
-        },
-        "tiebreaker": "<"
-      },
-      "anchor": {
-        "match": {
-          "text": "personal injury protection",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "uninsured_underinsured_motorist_bodily_injury_per_person",
-      "type": "currency",
-      "method": {
-        "id": "region",
-        "start": "left",
-        "offsetX": 2,
-        "offsetY": -0.15,
-        "width": 1.5,
-        "height": 0.6,
-        "tiebreaker": "<"
-      },
-      "anchor": {
-        "match": {
-          "text": "bodily injury caused by an",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "uninsured_underinsured_motorist_bodily_injury_per_accident",
-      "type": "currency",
-      "method": {
-        "id": "region",
-        "start": "left",
-        "offsetX": 2,
-        "offsetY": -0.15,
-        "width": 1.5,
-        "height": 0.6,
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "match": {
-          "text": "bodily injury caused by an",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "property_damage_liability_per_accident",
-      "type": "currency",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "number": 1,
-          "direction": "right"
-        },
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "match": {
-          "text": "damage to someone else",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "bodily_injury_liability_per_person",
-      "type": "currency",
-      "method": {
-        "id": "region",
-        "start": "left",
-        "offsetX": 2,
-        "offsetY": -0.1,
-        "width": 1.5,
-        "height": 0.4,
-        "tiebreaker": "<"
-      },
-      "anchor": {
-        "match": {
-          "text": "optional bodily injury",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "bodily_injury_liability_per_person",
-      "type": "currency",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "number": 1,
-          "direction": "right"
-        },
-        "tiebreaker": "<"
-      },
-      "anchor": {
-        "match": {
-          "text": "bodily injury to others",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "bodily_injury_liability_per_accident",
-      "type": "currency",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "number": 1,
-          "direction": "right"
-        },
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "match": {
-          "text": "optional bodily injury",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "bodily_injury_liability_per_accident",
-      "type": "currency",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "number": 1,
-          "direction": "right"
-        },
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "match": {
-          "text": "bodily injury to others",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "_collision_deductible_raw",
-      "method": {
-        "id": "region",
-        "start": "left",
-        "offsetX": 3.4,
-        "offsetY": -0.1,
-        "width": 1,
-        "height": 0.2
-      },
-      "anchor": {
-        "match": {
-          "text": "collision",
-          "type": "endsWith"
-        }
-      }
-    },
-    {
-      "id": "collision_limit",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "number": 1,
-          "direction": "right"
-        }
-      },
-      "anchor": {
-        "match": {
-          "text": "collision",
-          "type": "endsWith"
-        }
-      }
-    },
-    {
-      "id": "_comprehensive_deductible_raw",
-      "method": {
-        "id": "region",
-        "start": "left",
-        "offsetX": 3.4,
-        "offsetY": -0.1,
-        "width": 1,
-        "height": 0.2
-      },
-      "anchor": {
-        "match": {
-          "text": "comprehensive",
-          "type": "endsWith"
-        }
-      }
-    },
-    {
-      "id": "comprehensive_limit",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "number": 1,
-          "direction": "right"
-        }
-      },
-      "anchor": {
-        "match": {
-          "text": "comprehensive",
-          "type": "endsWith"
-        }
-      }
-    },
-    {
-      "id": "_premium_period_raw",
-      "method": {
-        "id": "region",
-        "start": "below",
-        "offsetX": -0.55,
-        "offsetY": 0,
-        "width": 0.55,
-        "height": 0.15
-      },
-      "anchor": {
-        "match": {
-          "text": "premium",
-          "type": "equals"
-        }
-      }
-    },
-    {
-      "id": "policy_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "start": {
-          "text": "total",
-          "type": "equals"
-        },
-        "match": {
-          "text": "premium",
-          "type": "equals"
-        }
-      }
-    },
-    {
-      "id": "total",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "start": {
-          "text": "total",
-          "type": "equals"
-        },
-        "match": {
-          "text": "premium",
-          "type": "equals"
-        }
+        "match": [
+          {
+            "text": "item 1:",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -370,14 +163,18 @@
         "height": 0.5
       },
       "anchor": {
-        "match": {
-          "type": "equals",
-          "text": "operator name"
-        },
-        "end": {
-          "text": "supplemental information",
-          "type": "equals"
-        }
+        "match": [
+          {
+            "type": "equals",
+            "text": "operator name"
+          }
+        ],
+        "end": [
+          {
+            "text": "supplemental information",
+            "type": "equals"
+          }
+        ]
       }
     },
     {
@@ -388,18 +185,24 @@
         "pattern": "\\d{2} (\\d{2})"
       },
       "anchor": {
-        "start": {
-          "text": "description of your auto",
-          "type": "startsWith"
-        },
-        "match": {
-          "pattern": "\\d{2} \\d{2}",
-          "type": "regex"
-        },
-        "end": {
-          "text": "item 4",
-          "type": "startsWith"
-        }
+        "start": [
+          {
+            "text": "description of your auto",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "pattern": "\\d{2} \\d{2}",
+            "type": "regex"
+          }
+        ],
+        "end": [
+          {
+            "text": "item 4",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -410,18 +213,24 @@
         "pattern": "\\d{2} \\d{2} (\\w+)"
       },
       "anchor": {
-        "start": {
-          "text": "description of your auto",
-          "type": "startsWith"
-        },
-        "match": {
-          "pattern": "\\d{2} \\d{2}",
-          "type": "regex"
-        },
-        "end": {
-          "text": "item 4",
-          "type": "startsWith"
-        }
+        "start": [
+          {
+            "text": "description of your auto",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "pattern": "\\d{2} \\d{2}",
+            "type": "regex"
+          }
+        ],
+        "end": [
+          {
+            "text": "item 4",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -432,18 +241,24 @@
         "pattern": "\\d{2} \\d{2} \\w+ (.*)$"
       },
       "anchor": {
-        "start": {
-          "text": "description of your auto",
-          "type": "startsWith"
-        },
-        "match": {
-          "pattern": "\\d{2} \\d{2}",
-          "type": "regex"
-        },
-        "end": {
-          "text": "item 4",
-          "type": "startsWith"
-        }
+        "start": [
+          {
+            "text": "description of your auto",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "pattern": "\\d{2} \\d{2}",
+            "type": "regex"
+          }
+        ],
+        "end": [
+          {
+            "text": "item 4",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -453,14 +268,255 @@
         "id": "passthrough"
       },
       "anchor": {
-        "start": {
-          "text": "description",
-          "type": "startsWith"
+        "start": [
+          {
+            "text": "Description",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "pattern": "^.{12}\\d{5}$",
+            "type": "regex"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bodily_injury_liability_per_person",
+      "type": "currency",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 2,
+        "offsetY": -0.1,
+        "width": 1.5,
+        "height": 0.4,
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "optional bodily injury",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bodily_injury_liability_per_person",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
         },
-        "match": {
-          "pattern": "^.{12}\\d{5}$",
-          "type": "regex"
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "bodily injury to others",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bodily_injury_liability_per_accident",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "optional bodily injury",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bodily_injury_liability_per_accident",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "bodily injury to others",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "property_damage_liability_per_accident",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "damage to someone else",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "personal_injury_protection_per_person",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "personal injury protection",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "uninsured_underinsured_motorist_bodily_injury_per_person",
+      "type": "currency",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 2,
+        "offsetY": -0.15,
+        "width": 1.5,
+        "height": 0.6,
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "bodily injury caused by an",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "uninsured_underinsured_motorist_bodily_injury_per_accident",
+      "type": "currency",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 2,
+        "offsetY": -0.15,
+        "width": 1.5,
+        "height": 0.6,
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "bodily injury caused by an",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "_comprehensive_deductible_raw",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 3.4,
+        "offsetY": -0.1,
+        "width": 1,
+        "height": 0.2
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "comprehensive",
+            "type": "endsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "_collision_deductible_raw",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 3.4,
+        "offsetY": -0.1,
+        "width": 1,
+        "height": 0.2
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "collision",
+            "type": "endsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "collision_limit",
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
         }
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "collision",
+            "type": "endsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "comprehensive_limit",
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "comprehensive",
+            "type": "endsWith"
+          }
+        ]
       }
     }
   ],

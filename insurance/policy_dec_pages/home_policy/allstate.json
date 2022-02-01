@@ -12,334 +12,379 @@
       }
     ]
   },
-    "fields": [
-      {
-        "id": "named_insured",
-        "type": "name",
-        "match": "all",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "stop": {
-            "type": "includes",
-            "text": "Mailing address"
-          }
+  "fields": [
+    {
+      "id": "policy_number",
+      "anchor": {
+        "start": {
+          "text": "Summary",
+          "type": "includes"
         },
-        "anchor": {
-          "match": {
-            "type": "includes",
-            "text": "named insured"
-          },
-          "end": {
-            "text": "mailing address",
-            "type": "startsWith"
-          }
-        }
-      },
-      {
-        "id": "policy_premium",
-        "type": "currency",
-        "anchor": {
-          "match": {
-            "text": "premium for property",
-            "type": "includes"
-          }
-        },
-        "method": {
-          "id": "row",
-          "tiebreaker": ">"
-        }
-      },
-      {
-        "id": "total",
-        "type": "currency",
-        "anchor": {
-          "start": {
-            "text": "Total Premium",
-            "type": "includes"
-          },
-          "match": {
-            "text": "Total",
-            "type": "equals"
-          }
-        },
-        "method": {
-          "id": "row",
-          "tiebreaker": ">"
-        }
-      },
-      {
-        "id": "policy_number",
-        "anchor": {
-          "start": {
-            "text": "Summary",
-            "type": "includes"
-          },
-          "match": {
+        "match": [
+          {
             "text": "policy number",
             "type": "includes"
           }
-        },
-        "method": {
-          "id": "label",
-          "position": "below"
-        }
+        ]
       },
-      {
-        "id": "effective_date",
-        "type": "date",
-        "anchor": {
-          "start": {
-            "type": "includes",
-            "text": "Summary"
-          },
-          "match": {
-            "type": "includes",
-            "text": "policy period"
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "named_insured",
+      "type": "name",
+      "match": "all",
+      "anchor": {
+        "match": [
+          {
+            "type": "regex",
+            "pattern": "[A-Z]{50,100}$"
           }
-        },
-        "method": {
-          "id": "label",
-          "position": "below",
-          "stop": {
-            "type": "includes",
-            "text": "your allstate agency is"
-          },
-          "tiebreaker": "<"
+        ]
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": {
+          "type": "regex",
+          "pattern": "[0-9]"
+        }
+      }
+    },
+    {
+      "id": "named_insured",
+      "match": "all",
+      "type": "name",
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": {
+          "type": "includes",
+          "text": "Mailing address"
         }
       },
-      {
-        "id": "expiration_date",
-        "type": "date",
-        "anchor": {
-          "start": {
-            "type": "includes",
-            "text": "Summary"
-          },
-          "match": {
-            "type": "includes",
-            "text": "Policy period"
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "named insured"
+        },
+        "end": {
+          "text": "mailing address",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "location of property insured:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "location of property insured"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "anchor": {
+        "start": {
+          "type": "includes",
+          "text": "Summary"
+        },
+        "match": {
+          "type": "includes",
+          "text": "Policy period"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": {
+          "type": "includes",
+          "text": "Your Allstate agency is"
+        },
+        "tiebreaker": "<"
+      }
+    },
+    {
+      "id": "expiration_date",
+      "type": "date",
+      "anchor": {
+        "start": {
+          "type": "includes",
+          "text": "Summary"
+        },
+        "match": {
+          "type": "includes",
+          "text": "Policy period"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": {
+          "type": "includes",
+          "text": "Your Allstate agency is"
+        },
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "text": "Premium for property",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "text": "Total Premium",
+          "type": "includes"
+        },
+        "match": {
+          "text": "Total",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "fee_names",
+      "match": "all",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "start": {
+          "text": "Total Premium",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "fee",
+            "type": "includes"
           }
-        },
-        "method": {
-          "id": "label",
-          "position": "below",
-          "stop": {
-            "type": "includes",
-            "text": "your allstate agency is"
-          },
-          "tiebreaker": ">"
+        ],
+        "end": {
+          "text": "Total",
+          "type": "equals"
         }
-      },
-      {
-        "id": "address",
-        "type": "address",
-        "anchor": {
-          "match": {
-            "type": "startsWith",
-            "text": "location of property insured:"
+      }
+    },
+    {
+      "id": "fee_values",
+      "match": "all",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "text": "Total Premium",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "fee",
+            "type": "includes"
           }
-        },
-        "method": {
-          "id": "label",
-          "position": "right"
+        ],
+        "end": {
+          "text": "Total",
+          "type": "equals"
         }
       },
-      {
-        "id": "dwelling_limit",
-        "anchor": {
-          "start": {
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "other_structures_limit",
+      "anchor": {
+        "start": {
+          "text": "Coverage detail",
+          "type": "includes"
+        },
+        "match": {
+          "text": "other structures protection",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "dwelling_limit",
+      "anchor": {
+        "start": {
+          "text": "Coverage detail",
+          "type": "includes"
+        },
+        "match": {
+          "text": "dwelling protection",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "personal_property_limit",
+      "anchor": {
+        "start": {
+          "text": "Coverage detail",
+          "type": "includes"
+        },
+        "match": {
+          "text": "personal property protection",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "medical_payment_to_others_limit",
+      "anchor": {
+        "start": {
+          "text": "Coverage detail",
+          "type": "includes"
+        },
+        "match": {
+          "text": "guest medical protection",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "loss_of_use_limit",
+      "anchor": {
+        "start": {
+          "text": "Coverage detail",
+          "type": "includes"
+        },
+        "match": {
+          "text": "additional living expense",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "personal_liability_limit",
+      "anchor": {
+        "start": {
+          "text": "Coverage detail",
+          "type": "includes"
+        },
+        "match": {
+          "text": "family liability protection",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "deductible",
+      "anchor": {
+        "start": [
+          {
             "text": "Coverage detail",
             "type": "includes"
           },
-          "match": {
+          {
             "text": "dwelling protection",
             "type": "includes"
           }
-        },
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "tiebreaker": ">"
+        ],
+        "match": {
+          "text": "All other perils",
+          "type": "includes"
         }
       },
-      {
-        "id": "other_structures_limit",
-        "anchor": {
-          "start": {
-            "text": "Coverage detail",
-            "type": "includes"
-          },
-          "match": {
-            "text": "other structures protection",
-            "type": "includes"
-          }
-        },
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "tiebreaker": ">"
-        }
-      },
-      {
-        "id": "personal_property_limit",
-        "anchor": {
-          "start": {
-            "text": "Coverage detail",
-            "type": "includes"
-          },
-          "match": {
-            "text": "personal property protection",
-            "type": "includes"
-          }
-        },
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "tiebreaker": ">"
-        }
-      },
-      {
-        "id": "loss_of_use_limit",
-        "anchor": {
-          "start": {
-            "text": "Coverage detail",
-            "type": "includes"
-          },
-          "match": {
-            "text": "additional living expense",
-            "type": "includes"
-          }
-        },
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "tiebreaker": ">"
-        }
-      },
-      {
-        "id": "personal_liability_limit",
-        "anchor": {
-          "start": {
-            "text": "Coverage detail",
-            "type": "includes"
-          },
-          "match": {
-            "text": "family liability protection",
-            "type": "includes"
-          }
-        },
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "tiebreaker": ">"
-        }
-      },
-      {
-        "id": "medical_payment_to_others_limit",
-        "anchor": {
-          "start": {
-            "text": "Coverage detail",
-            "type": "includes"
-          },
-          "match": {
-            "text": "guest medical protection",
-            "type": "includes"
-          }
-        },
-        "type": "currency",
-        "method": {
-          "id": "row",
-          "tiebreaker": ">"
-        }
-      },
-      {
-        "id": "fee_names",
-        "match": "all",
-        "method": {
-          "id": "passthrough"
-        },
-        "anchor": {
-          "start": {
-            "text": "total premium",
-            "type": "includes"
-          },
-          "match": {
-            "text": "fee",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "fee_values",
-        "match": "all",
-        "type": "currency",
-        "anchor": {
-          "start": {
-            "text": "total premium",
-            "type": "includes"
-          },
-          "match": {
-            "text": "fee",
-            "type": "includes"
-          },
-          "end": {
-            "text": "discounts",
-            "type": "includes"
-          }
-        },
-        "method": {
-          "id": "row",
-          "tiebreaker": ">"
-        }
-      },
-      {
-        "id": "deductible",
-        "anchor": {
-          "start": [
-            {
-              "text": "coverage detail",
-              "type": "includes"
-            },
-            {
-              "text": "dwelling protection",
-              "type": "includes"
-            }
-          ],
-          "match": {
-            "text": "all other perils",
-            "type": "includes"
-          }
-        },
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "left"
-        }
-      },
-      {
-        "id": "deductible_wind_hail",
-        "anchor": {
-          "start": [
-            {
-              "text": "coverage detail",
-              "type": "includes"
-            },
-            {
-              "text": "dwelling protection",
-              "type": "includes"
-            }
-          ],
-          "match": {
-            "text": "windstorm and hail",
-            "type": "includes"
-          }
-        },
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "left"
-        }
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "left"
       }
-    ]
-  }
+    },
+    {
+      "id": "deductible_wind_hail",
+      "anchor": {
+        "start": [
+          {
+            "text": "Coverage detail",
+            "type": "includes"
+          },
+          {
+            "text": "dwelling protection",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "Windstorm and Hail",
+          "type": "includes"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "left"
+      }
+    }
+  ]
+}

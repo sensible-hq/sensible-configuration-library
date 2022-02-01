@@ -1,0 +1,396 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "geico",
+              "type": "includes"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "policy_number",
+        "match": "first",
+        "method": {
+          "id": "passthrough",
+          "wordFilters": [
+            "Policy number: "
+          ]
+        },
+        "anchor": {
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "Policy number:"
+            }
+          ]
+        }
+      },
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "box",
+          "offsetX": 0,
+          "offsetY": 0.25
+        },
+        "anchor": {
+          "match": [
+            {
+              "type": "equals",
+              "text": "Policy Number"
+            }
+          ],
+          "end": [
+            {
+              "type": "startsWith",
+              "text": "YOU AS NAMED INSURED AND ADDRESS"
+            }
+          ]
+        }
+      },
+      {
+        "id": "_fee_names_raw",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "startsWith",
+              "text": "YOU AS NAMED INSURED AND ADDRESS"
+            }
+          ],
+          "end": [
+            {
+              "type": "startsWith",
+              "text": "TOTAL PREMIUM"
+            }
+          ],
+          "match": [
+            {
+              "type": "includes",
+              "text": "fee"
+            }
+          ]
+        }
+      },
+      {
+        "id": "fee_values",
+        "match": "all",
+        "type": "currency",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "startsWith",
+              "text": "YOU AS NAMED INSURED AND ADDRESS"
+            }
+          ],
+          "end": [
+            {
+              "type": "startsWith",
+              "text": "TOTAL PREMIUM"
+            }
+          ],
+          "match": [
+            {
+              "type": "includes",
+              "text": "fee"
+            }
+          ]
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "Total premium"
+            }
+          ]
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "passthrough",
+          "tiebreaker": "<"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Coverage dates:"
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "offsetX": 0,
+          "offsetY": 0.2
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "startsWith",
+              "text": "POLICY PERIOD"
+            }
+          ],
+          "match": {
+            "type": "equals",
+            "text": "FROM"
+          },
+          "end": [
+            {
+              "type": "startsWith",
+              "text": "YOU AS NAMED INSURED AND ADDRESS"
+            }
+          ]
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "method": {
+          "id": "passthrough",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Coverage dates:"
+          }
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "offsetX": 0,
+          "offsetY": 0.2
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "startsWith",
+              "text": "POLICY PERIOD"
+            }
+          ],
+          "match": {
+            "type": "equals",
+            "text": "TO"
+          },
+          "end": [
+            {
+              "type": "startsWith",
+              "text": "YOU AS NAMED INSURED AND ADDRESS"
+            }
+          ]
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "[0-9]"
+            }
+          ],
+          "stop": "gap"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "POLICYHOLDER INFORMATION"
+          }
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "method": {
+          "id": "box",
+          "offsetX": 0,
+          "offsetY": 0.5,
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "[0-9]"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "YOU AS NAMED INSURED AND ADDRESS"
+          }
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "POLICYHOLDER INFORMATION"
+            }
+          ]
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "method": {
+          "id": "box",
+          "offsetX": 0,
+          "offsetY": 0.5
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "YOU AS NAMED INSURED AND ADDRESS"
+          }
+        }
+      },
+      {
+        "id": "personal_property_limit",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "AMOUNT OF COVERAGE",
+              "type": "includes"
+            },
+            {
+              "text": "Personal Property",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "personal_liability_limit",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "AMOUNT OF COVERAGE",
+              "type": "includes"
+            },
+            {
+              "text": "personal liability",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "medical_payment_to_others_limit",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "AMOUNT OF COVERAGE",
+              "type": "includes"
+            },
+            {
+              "text": "medical payments",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "loss_of_use_limit",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "AMOUNT OF COVERAGE",
+            "type": "includes"
+          },
+          "match": [
+            {
+              "text": "Loss of Use",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "deductible",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "AMOUNT OF COVERAGE",
+              "type": "includes"
+            },
+            {
+              "text": "deductible",
+              "type": "includes"
+            }
+          ]
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "fee_names",
+        "method": {
+          "id": "split",
+          "source_id": "_fee_names_raw",
+          "separator": " $",
+          "index": 0
+        }
+      }
+    ]
+  }

@@ -1,0 +1,609 @@
+{
+    "fields": [
+      {
+        "id": "load_id",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Load #",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "rate",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "Settlement Details",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "text": "Flat Rate",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "broker_contact_name",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "Carrier Shipment Confirmation",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "text": "Brokered By",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "broker_contact_email",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "Send Invoice to",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "text": "E-mail",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "broker_contact_phone",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "Send Invoice to",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "text": "Telephone",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "carrier_name",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "Carrier Shipment Confirmation",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "text": "Carrier",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "carrier_contact",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "Carrier Shipment Confirmation",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "text": "Carrier Contact",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "shipper_commodities",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "Carrier Shipment Confirmation",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "text": "Commodity",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "temperature",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "Carrier Shipment Confirmation",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "text": "Temperature",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "weight",
+        "type": "weight",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "Carrier Shipment Confirmation",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "text": "Weight (lbs)",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "_quantity",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "Carrier Shipment Confirmation",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "text": "Quantity",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "shipper_name",
+        "match": "all",
+        "type": "paragraph",
+        "method": {
+          "id": "documentRange",
+          "includeAnchor": false,
+          "stop": {
+            "text": "Phone",
+            "type": "equals"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "Send Invoice To",
+            "type": "equals"
+          },
+          "match": {
+            "text": "Load",
+            "type": "includes"
+          },
+          "end": {
+            "text": "Unload",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "_pickup_address_raw",
+        "match": "all",
+        "type": "paragraph",
+        "method": {
+          "id": "documentRange",
+          "includeAnchor": false,
+          "stop": {
+            "text": "Date",
+            "type": "equals"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "Send Invoice To",
+            "type": "equals"
+          },
+          "match": {
+            "text": "Load",
+            "type": "includes"
+          },
+          "end": {
+            "text": "Unload",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "pickup_date",
+        "match": "all",
+        "type": "date",
+        "method": {
+          "id": "documentRange",
+          "includeAnchor": false
+        },
+        "anchor": {
+          "start": {
+            "text": "Load",
+            "type": "equals"
+          },
+          "match": {
+            "text": "Date",
+            "type": "includes"
+          },
+          "end": {
+            "text": "Unload",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "shipper_phone",
+        "match": "all",
+        "type": "string",
+        "method": {
+          "id": "regex",
+          "pattern": "([0-9]{3}-[0-9]{3}-[0-9]{4})$",
+          "flags": "i"
+        },
+        "anchor": {
+          "start": {
+            "text": "Load",
+            "type": "equals"
+          },
+          "match": {
+            "text": "Phone",
+            "type": "includes"
+          },
+          "end": {
+            "text": "Unload",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "delivery_date",
+        "match": "all",
+        "type": "date",
+        "method": {
+          "id": "documentRange",
+          "includeAnchor": false
+        },
+        "anchor": {
+          "start": {
+            "text": "Unload",
+            "type": "equals"
+          },
+          "match": {
+            "text": "Date",
+            "type": "includes"
+          },
+          "end": {
+            "text": "Settlement Details",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "consignee_name",
+        "match": "all",
+        "type": "paragraph",
+        "method": {
+          "id": "documentRange",
+          "includeAnchor": false,
+          "stop": {
+            "text": "Phone",
+            "type": "equals"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "Send Invoice To",
+            "type": "equals"
+          },
+          "match": {
+            "text": "Unload",
+            "type": "includes"
+          },
+          "end": {
+            "text": "Settlement Details",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "consignee_phone",
+        "match": "all",
+        "type": "string",
+        "method": {
+          "id": "regex",
+          "pattern": "([0-9]{3}-[0-9]{3}-[0-9]{4})$",
+          "flags": "i"
+        },
+        "anchor": {
+          "start": {
+            "text": "Unload",
+            "type": "equals"
+          },
+          "match": {
+            "text": "Phone",
+            "type": "includes"
+          },
+          "end": {
+            "text": "Settlement Details",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "_delivery_address_raw",
+        "match": "all",
+        "type": "paragraph",
+        "method": {
+          "id": "documentRange",
+          "includeAnchor": false,
+          "stop": {
+            "text": "Date",
+            "type": "equals"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "Send Invoice To",
+            "type": "equals"
+          },
+          "match": {
+            "text": "Unload",
+            "type": "includes"
+          },
+          "end": {
+            "text": "Settlement Details",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "general_notes",
+        "type": "paragraph",
+        "method": {
+          "id": "documentRange",
+          "includeAnchor": false,
+          "stop": {
+            "text": "This Carrier Shipment",
+            "type": "includes"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "Shipping Comments",
+            "type": "includes"
+          },
+          "match": {
+            "text": "THANK YOU",
+            "type": "includes"
+          },
+          "end": {
+            "text": "This Carrier Shipment Confirmation",
+            "type": "includes"
+          }
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "pallets",
+        "method": {
+          "id": "split",
+          "separator": " ",
+          "source_id": "_quantity",
+          "index": 0
+        }
+      },
+      {
+        "id": "_pickup_adress_line_1",
+        "method": {
+          "id": "split",
+          "separator": "\n",
+          "source_id": "_pickup_address_raw",
+          "index": 1
+        }
+      },
+      {
+        "id": "_pickup_adress_line_2",
+        "method": {
+          "id": "split",
+          "separator": "\n",
+          "source_id": "_pickup_address_raw",
+          "index": 2
+        }
+      },
+      {
+        "id": "_pickup_city",
+        "method": {
+          "id": "split",
+          "separator": ", ",
+          "source_id": "_pickup_adress_line_2",
+          "index": 0
+        }
+      },
+      {
+        "id": "_pickup_raw_state_zip_code",
+        "method": {
+          "id": "split",
+          "separator": ", ",
+          "source_id": "_pickup_adress_line_2",
+          "index": 1
+        }
+      },
+      {
+        "id": "_pickup_state",
+        "method": {
+          "id": "split",
+          "separator": " ",
+          "source_id": "_pickup_raw_state_zip_code",
+          "index": 0
+        }
+      },
+      {
+        "id": "pickup_zip_code",
+        "method": {
+          "id": "split",
+          "separator": " ",
+          "source_id": "_pickup_raw_state_zip_code",
+          "index": 1
+        }
+      },
+      {
+        "id": "_pickup_city_state",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_pickup_city",
+            "_pickup_state"
+          ],
+          "delimiter": ", "
+        }
+      },
+      {
+        "id": "pickup_address",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_pickup_adress_line_1",
+            "_pickup_city_state"
+          ],
+          "delimiter": " "
+        }
+      },
+      {
+        "id": "_delivery_adress_line_1",
+        "method": {
+          "id": "split",
+          "separator": "\n",
+          "source_id": "_delivery_address_raw",
+          "index": 1
+        }
+      },
+      {
+        "id": "_delivery_adress_line_2",
+        "method": {
+          "id": "split",
+          "separator": "\n",
+          "source_id": "_delivery_address_raw",
+          "index": 2
+        }
+      },
+      {
+        "id": "_delivery_city",
+        "method": {
+          "id": "split",
+          "separator": ", ",
+          "source_id": "_delivery_adress_line_2",
+          "index": 0
+        }
+      },
+      {
+        "id": "_delivery_raw_state_zip_code",
+        "method": {
+          "id": "split",
+          "separator": ", ",
+          "source_id": "_delivery_adress_line_2",
+          "index": 1
+        }
+      },
+      {
+        "id": "_delivery_state",
+        "method": {
+          "id": "split",
+          "separator": " ",
+          "source_id": "_delivery_raw_state_zip_code",
+          "index": 0
+        }
+      },
+      {
+        "id": "delivery_zip_code",
+        "method": {
+          "id": "split",
+          "separator": " ",
+          "source_id": "_delivery_raw_state_zip_code",
+          "index": 1
+        }
+      },
+      {
+        "id": "_delivery_city_state",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_delivery_city",
+            "_delivery_state"
+          ],
+          "delimiter": ", "
+        }
+      },
+      {
+        "id": "delivery_address",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_delivery_adress_line_1",
+            "_delivery_city_state"
+          ],
+          "delimiter": " "
+        }
+      },
+      {
+        "id": "broker_name",
+        "method": {
+          "id": "constant",
+          "value": "ld_logistic"
+        }
+      }
+    ]
+  }

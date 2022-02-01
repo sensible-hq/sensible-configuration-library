@@ -1,0 +1,309 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "progressive",
+              "type": "includes"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "policy_number",
+        "anchor": {
+          "match": [
+            {
+              "text": "policy number",
+              "type": "includes"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "fee_names",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Progressive Home Advantage"
+          },
+          "match": [
+            {
+              "text": "fee",
+              "type": "includes"
+            }
+          ],
+          "end": {
+            "text": "Total",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "fee_values",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Progressive Home Advantage"
+          },
+          "match": [
+            {
+              "text": "fee",
+              "type": "includes"
+            }
+          ],
+          "end": {
+            "text": "Total",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Progressive Home Advantage"
+          },
+          "match": {
+            "text": "Total",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "last"
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Progressive Home Advantage"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "From"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": "<"
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Progressive Home Advantage"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "Through"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "type": "includes",
+              "text": "progressive"
+            }
+          ],
+          "end": {
+            "type": "includes",
+            "text": "Policy Number"
+          }
+        },
+        "method": {
+          "id": "region",
+          "isAbsoluteOffset": true,
+          "start": "below",
+          "offsetX": 0.2,
+          "offsetY": 1.5,
+          "width": 2,
+          "height": 1,
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "[0-9]"
+            }
+          ]
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "match": "first",
+        "anchor": {
+          "match": [
+            {
+              "type": "includes",
+              "text": "progressive"
+            }
+          ]
+        },
+        "method": {
+          "id": "region",
+          "isAbsoluteOffset": true,
+          "start": "below",
+          "offsetX": 0.2,
+          "offsetY": 1.5,
+          "width": 2,
+          "height": 1
+        }
+      },
+      {
+        "id": "personal_property_limit",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Progressive Home Advantage"
+          },
+          "match": [
+            {
+              "text": "Coverage",
+              "type": "startsWith"
+            },
+            {
+              "text": "Personal Property",
+              "type": "includes"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "personal_liability_limit",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Progressive Home Advantage"
+          },
+          "match": [
+            {
+              "text": "Coverage",
+              "type": "startsWith"
+            },
+            {
+              "text": "Personal Liability",
+              "type": "includes"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "medical_payment_to_others_limit",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Progressive Home Advantage"
+          },
+          "match": [
+            {
+              "text": "Coverage",
+              "type": "startsWith"
+            },
+            {
+              "text": "Medical Payments to Others",
+              "type": "includes"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "loss_of_use_limit",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "Progressive Home Advantage"
+          },
+          "match": [
+            {
+              "text": "Coverage",
+              "type": "startsWith"
+            },
+            {
+              "text": "Loss of Use",
+              "type": "includes"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "deductible",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Progressive Home Advantage",
+              "type": "includes"
+            },
+            {
+              "text": "Description of Dwelling",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "Deductible",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      }
+    ]
+  }

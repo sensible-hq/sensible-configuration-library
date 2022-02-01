@@ -1,0 +1,830 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "root insurance",
+              "type": "includes"
+            },
+            {
+              "text": "root",
+              "type": "includes"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "Policy number",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_premium",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "annual premium per vehicle",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Total annual policy Premium",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "fee_names",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Coverage premiums, limits and deductibles"
+          },
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "fee"
+            }
+          ],
+          "end": [
+            {
+              "type": "startsWith",
+              "text": "Policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "fee_values",
+        "match": "all",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Coverage premiums, limits and deductibles"
+          },
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "fee"
+            }
+          ],
+          "end": [
+            {
+              "type": "startsWith",
+              "text": "Policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "annual premium per vehicle",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Total annual policy Premium",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": [
+            {
+              "type": "regex",
+              "pattern": "Total .* Premium",
+              "flags": "i"
+            }
+          ]
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": "<"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Your coverage begins on"
+          }
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Your coverage begins on"
+          }
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap",
+          "lineFilters": [
+            {
+              "type": "includes",
+              "text": "@"
+            },
+            {
+              "type": "regex",
+              "pattern": "\\d"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "equals",
+                "text": "Named Insured"
+              },
+              {
+                "type": "equals",
+                "text": "Drivers listed"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap",
+          "lineFilters": [
+            {
+              "type": "includes",
+              "text": "@"
+            },
+            {
+              "type": "regex",
+              "pattern": "!\\d"
+            }
+          ]
+        },
+        "anchor": {
+          "match": [
+            {
+              "type": "equals",
+              "text": "Named Insured"
+            }
+          ]
+        }
+      },
+      {
+        "id": "vehicle_year",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "(?:19|20)\\d{2}"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Vehicles"
+            }
+          ],
+          "match": [
+            {
+              "pattern": "^(?:19|20)\\d{2} .*",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ]
+        }
+      },
+      {
+        "id": "vehicle_make",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "(?:19|20)\\d{2} ([\\w-]+) .*$"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Vehicles"
+            }
+          ],
+          "match": [
+            {
+              "type": "regex",
+              "pattern": "^(?:19|20)\\d{2} .*"
+            }
+          ],
+          "end": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ]
+        }
+      },
+      {
+        "id": "vehicle_model",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "(?:19|20)\\d{2} [\\w-]+ (.*) \\(.*\\)$"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Vehicles"
+            }
+          ],
+          "match": [
+            {
+              "type": "regex",
+              "pattern": "^(?:19|20)\\d{2} .*"
+            }
+          ],
+          "end": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ]
+        }
+      },
+      {
+        "id": "vin",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "(?:19|20)\\d{2} [\\w-]+ .* \\((.*)\\)$"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Vehicles"
+            }
+          ],
+          "match": [
+            {
+              "type": "regex",
+              "pattern": "^(?:19|20)\\d{2} .*"
+            }
+          ],
+          "end": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ]
+        }
+      },
+      {
+        "id": "rental_reimbursement_per_day",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ],
+          "match": {
+            "type": "equals",
+            "text": "Rental"
+          },
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "_collision_limit",
+        "method": {
+          "id": "regex",
+          "pattern": "Actual Cash Value",
+          "flags": "i"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ],
+          "match": [
+            {
+              "type": "equals",
+              "text": "collision"
+            }
+          ],
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "collision_deductible",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ],
+          "match": [
+            {
+              "type": "equals",
+              "text": "collision"
+            }
+          ],
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "_comprehensive_limit",
+        "method": {
+          "id": "regex",
+          "pattern": "Actual Cash Value",
+          "flags": "i"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ],
+          "match": [
+            {
+              "type": "equals",
+              "text": "Comprehensive"
+            }
+          ],
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "comprehensive_deductible",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ],
+          "match": [
+            {
+              "type": "equals",
+              "text": "Comprehensive"
+            }
+          ],
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "uninsured_underinsured_property_damage_per_accident",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ],
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "equals",
+                "text": "Uninsured motorist property damage"
+              }
+            ]
+          },
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "uninsured_underinsured_property_damage_deductible",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Uninsured motorist property damage"
+            }
+          ],
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "includes",
+                "text": "each accident"
+              }
+            ]
+          },
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "uninsured_underinsured_motorist_bodily_injury_per_person",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ],
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "endsWith",
+                "text": "motorist bodily injury"
+              }
+            ]
+          },
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "uninsured_underinsured_motorist_bodily_injury_per_accident",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "endsWith",
+              "text": "motorist bodily injury"
+            }
+          ],
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "includes",
+                "text": "each person"
+              }
+            ]
+          },
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "personal_injury_protection_per_person",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ],
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "equals",
+                "text": "Personal injury protection"
+              }
+            ]
+          },
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "property_damage_liability_per_accident",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ],
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "equals",
+                "text": "Property damage liability"
+              }
+            ]
+          },
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "bodily_injury_liability_per_person",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ],
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "equals",
+                "text": "Bodily injury liability"
+              }
+            ]
+          },
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "bodily_injury_liability_per_accident",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Bodily injury liability"
+            }
+          ],
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "includes",
+                "text": "each person"
+              }
+            ]
+          },
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "medical_payment_to_others_limit",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ],
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "equals",
+                "text": "Medical payments"
+              },
+              {
+                "type": "equals",
+                "text": "Medical Expenses"
+              }
+            ]
+          },
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "_roadside_assistance",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "equals",
+              "text": "Coverage premiums, limits and deductibles"
+            }
+          ],
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "equals",
+                "text": "Roadside assistance"
+              }
+            ]
+          },
+          "end": [
+            {
+              "type": "equals",
+              "text": "Personal auto policy"
+            }
+          ]
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "collision_limit",
+        "method": {
+          "id": "mapper",
+          "source_id": "_collision_limit",
+          "mappings": {
+            "actual cash value": "Actual Cash Value"
+          }
+        }
+      },
+      {
+        "id": "comprehensive_limit",
+        "method": {
+          "id": "mapper",
+          "source_id": "_comprehensive_limit",
+          "mappings": {
+            "actual cash value": "Actual Cash Value"
+          }
+        }
+      },
+      {
+        "id": "roadside_assistance",
+        "type": "boolean",
+        "method": {
+          "id": "mapper",
+          "source_id": "_roadside_assistance",
+          "mappings": {
+            "Roadside assistance": "yes"
+          }
+        }
+      }
+    ]
+  }

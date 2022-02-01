@@ -1,0 +1,863 @@
+{
+    "fields": [
+      {
+        "id": "load_id",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "confirmation - #",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "rate",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "service for load",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "text": "total",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "broker_contact_name",
+        "method": {
+          "id": "regex",
+          "pattern": "was booked with (.+), [+(]",
+          "flags": "i"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "c.h. robinson communication",
+              "type": "includes"
+            }
+          ],
+          "match": [
+            {
+              "pattern": "load was booked with",
+              "type": "regex",
+              "flags": "i"
+            }
+          ]
+        }
+      },
+      {
+        "id": "broker_contact_email",
+        "method": {
+          "id": "regex",
+          "pattern": "(\\S+@\\S+\\.[a-z]+)",
+          "flags": "i"
+        },
+        "anchor": {
+          "match": "c.h. robinson communication"
+        }
+      },
+      {
+        "id": "broker_contact_phone",
+        "method": {
+          "id": "regex",
+          "pattern": "(\\(?\\d{3}\\)?[- .]?\\d{3}[- .]?\\d{4})",
+          "flags": "i"
+        },
+        "anchor": {
+          "match": "c.h. robinson communication"
+        }
+      },
+      {
+        "id": "_trailer_raw",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Equipment:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "weight",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Commodity",
+              "type": "equals"
+            },
+            {
+              "text": "Est wgt",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "pallets",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Commodity",
+              "type": "equals"
+            },
+            {
+              "text": "Pallets",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "temperature",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Commodity",
+              "type": "equals"
+            },
+            {
+              "text": "Temp",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "shipper_name",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Receiver",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "shipper_number",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper",
+              "type": "startsWith"
+            },
+            {
+              "text": "Pickup#",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Receiver",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_address",
+        "match": "all",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 1,
+          "offsetY": -0.1,
+          "width": 3,
+          "height": 0.5
+        },
+        "anchor": {
+          "start": {
+            "text": "Shipper",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "Address:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Receiver",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_address",
+        "match": "all",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 0.3,
+          "offsetY": -0.1,
+          "width": 3,
+          "height": 0.5
+        },
+        "anchor": {
+          "start": {
+            "text": "Shipper",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "Address:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Receiver",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_address",
+        "match": "all",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 1,
+          "offsetY": -0.1,
+          "width": 2.9,
+          "height": 0.61
+        },
+        "anchor": {
+          "start": {
+            "text": "Shipper",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "Address:",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "Receiver",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "pickup_address",
+        "match": "all",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 1,
+          "offsetY": -0.1,
+          "width": 2.9,
+          "height": 0.61
+        },
+        "anchor": {
+          "start": {
+            "text": "Shipper",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "Address:",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "Receiver",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "pickup_zip_code",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z]{2} ([0-9]{5}|[0-9]{5}[- ][0-9]{4})$",
+          "flags": "i",
+          "stop": {
+            "text": "Phone",
+            "type": "startsWith"
+          }
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper",
+              "type": "startsWith"
+            },
+            {
+              "text": "Address:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Receiver",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "shipper_phone",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper",
+              "type": "startsWith"
+            },
+            {
+              "text": "Phone:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Receiver",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_date",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper",
+              "type": "startsWith"
+            },
+            {
+              "text": "Pick up date",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Receiver",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_time",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper",
+              "type": "startsWith"
+            },
+            {
+              "text": "Pick up time:",
+              "type": "equals"
+            }
+          ],
+          "end": {
+            "text": "Receiver",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_instructions",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": {
+            "text": "Receiver #1:",
+            "type": "equals"
+          }
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper Instructions",
+              "type": "equals"
+            }
+          ],
+          "end": {
+            "text": "Receiver",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "consignee_name",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Receiver",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "Service for load",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "consignee_number",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Receiver",
+              "type": "startsWith"
+            },
+            {
+              "text": "Delivery#",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "Service for load",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "consignee_phone",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Receiver",
+              "type": "startsWith"
+            },
+            {
+              "text": "Phone:",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "Service for load",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "delivery_date",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Receiver",
+              "type": "startsWith"
+            },
+            {
+              "text": "Delivery date",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "Service for load",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "delivery_address",
+        "match": "all",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 1,
+          "offsetY": -0.1,
+          "width": 2.9,
+          "height": 0.61
+        },
+        "anchor": {
+          "start": {
+            "text": "Receiver",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "Address:",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "Service for load",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "delivery_address",
+        "match": "all",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 0.3,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.5
+        },
+        "anchor": {
+          "start": {
+            "text": "Receiver",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "Address:",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "Service for load",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "delivery_zip_code",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z]{2} ([0-9]{5}|[0-9]{5}-[0-9]{4})$",
+          "flags": "i",
+          "stop": {
+            "text": "Phone",
+            "type": "startsWith"
+          }
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Receiver",
+              "type": "startsWith"
+            },
+            {
+              "text": "Address:",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "Service for load",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "delivery_time",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Receiver",
+              "type": "startsWith"
+            },
+            {
+              "text": "Delivery time:",
+              "type": "equals"
+            }
+          ],
+          "end": [
+            {
+              "text": "Service for load",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "delivery_instructions",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": {
+            "pattern": "^(receiver #|service for load)",
+            "type": "regex",
+            "flags": "i"
+          }
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Receiver Instructions",
+              "type": "equals"
+            }
+          ],
+          "end": [
+            {
+              "text": "Service for load",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "_customer_requirements",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.07
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Customer Requirements",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "carrier_name",
+        "method": {
+          "id": "regex",
+          "pattern": "at (.+) -"
+        },
+        "anchor": {
+          "match": [
+            {
+              "pattern": "at (.+) -",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "trailer_number",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "trailer #",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "truck_number",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "tractor #",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "_shipper_driving_instructions",
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "text": "Receiver's Driving Instructions",
+            "type": "includes"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "Directions",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "Shipper's Driving Instructions",
+              "type": "includes"
+            }
+          ],
+          "end": [
+            {
+              "text": "Receiver",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "_receiver_driving_instructions",
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "text": "Fuel Surcharge Information",
+            "type": "includes"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "Directions",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "Receiver's Driving Instructions",
+              "type": "includes"
+            }
+          ],
+          "end": [
+            {
+              "text": "Fuel",
+              "type": "includes"
+            }
+          ]
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "broker_name",
+        "method": {
+          "id": "constant",
+          "value": "ch_robinson"
+        }
+      },
+      {
+        "id": "trailer_type",
+        "method": {
+          "id": "split",
+          "separator": " - ",
+          "source_id": "_trailer_raw",
+          "index": 0
+        }
+      },
+      {
+        "id": "general_notes",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_customer_requirements",
+            "_shipper_driving_instructions",
+            "_receiver_driving_instructions"
+          ],
+          "delimiter": "\n"
+        }
+      },
+      {
+        "id": "trailer_size",
+        "method": {
+          "id": "split",
+          "separator": " - ",
+          "source_id": "_trailer_raw",
+          "index": 1
+        }
+      }
+    ]
+  }

@@ -14,10 +14,6 @@
           {
             "text": "usaa",
             "type": "includes"
-          },
-          {
-            "text": "named insured and address",
-            "type": "includes"
           }
         ]
       }
@@ -31,10 +27,99 @@
         "position": "below"
       },
       "anchor": {
-        "match": {
-          "text": "policy number",
-          "type": "startsWith"
-        }
+        "match": [
+          {
+            "text": "Policy Number",
+            "type": "startsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "vehicle total premium",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "pattern": "\\d{1,2} month premium",
+            "type": "regex",
+            "flags": "i"
+          }
+        ]
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "pattern": "\\d{1,2} month premium",
+            "type": "regex",
+            "flags": "i"
+          }
+        ]
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "vehicle total premium",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "premium_period",
+      "method": {
+        "id": "regex",
+        "pattern": "(\\d{1,2})-month",
+        "flags": "i"
+      },
+      "anchor": {
+        "match": [
+          {
+            "pattern": "\\d{1,2}-month",
+            "type": "regex",
+            "flags": "i"
+          }
+        ]
       }
     },
     {
@@ -46,20 +131,20 @@
         "tiebreaker": "<"
       },
       "anchor": {
-        "start": [
+        "match": [
           {
-            "text": "policy period",
+            "text": "Policy Period",
             "type": "startsWith"
           },
           {
             "text": "standard time",
             "type": "includes"
+          },
+          {
+            "text": "effective",
+            "type": "startsWith"
           }
-        ],
-        "match": {
-          "text": "effective",
-          "type": "startsWith"
-        }
+        ]
       }
     },
     {
@@ -71,20 +156,36 @@
         "tiebreaker": ">"
       },
       "anchor": {
-        "start": [
+        "match": [
           {
-            "text": "policy period",
+            "text": "Policy Period",
             "type": "startsWith"
           },
           {
             "text": "standard time",
             "type": "includes"
+          },
+          {
+            "text": "effective",
+            "type": "startsWith"
           }
-        ],
-        "match": {
-          "text": "effective",
-          "type": "startsWith"
-        }
+        ]
+      }
+    },
+    {
+      "id": "address",
+      "type": "address",
+      "method": {
+        "id": "box",
+        "position": "below"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "Named insured and address",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -97,32 +198,24 @@
         "flags": "i"
       },
       "anchor": {
-        "start": {
-          "text": "operators",
-          "type": "equals"
-        },
-        "match": {
-          "pattern": "^\\d{2} (\\w+)",
-          "type": "regex"
-        },
-        "end": {
-          "text": "description of",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "address",
-      "type": "address",
-      "method": {
-        "id": "box",
-        "position": "below"
-      },
-      "anchor": {
-        "match": {
-          "text": "named insured and address",
-          "type": "startsWith"
-        }
+        "start": [
+          {
+            "text": "Operators",
+            "type": "equals"
+          }
+        ],
+        "match": [
+          {
+            "pattern": "^\\d{2} (\\w+)",
+            "type": "regex"
+          }
+        ],
+        "end": [
+          {
+            "text": "description of",
+            "type": "includes"
+          }
+        ]
       }
     },
     {
@@ -133,18 +226,24 @@
         "pattern": "\\d{2} (\\d{2}) \\w+"
       },
       "anchor": {
-        "start": {
-          "text": "identification Number",
-          "type": "startsWith"
-        },
-        "match": {
-          "pattern": "\\d{2} \\d{2} \\w+",
-          "type": "regex"
-        },
-        "end": {
-          "text": "The vehicle(s) described",
-          "type": "startsWith"
-        }
+        "start": [
+          {
+            "text": "Identification Number",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "pattern": "\\d{2} \\d{2} \\w+",
+            "type": "regex"
+          }
+        ],
+        "end": [
+          {
+            "text": "The Vehicle(s) described",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -155,18 +254,24 @@
         "pattern": "\\d{2} \\d{2} (\\w+)"
       },
       "anchor": {
-        "start": {
-          "text": "identification number",
-          "type": "startsWith"
-        },
-        "match": {
-          "pattern": "\\d{2} \\d{2}",
-          "type": "regex"
-        },
-        "end": {
-          "text": "the vehicle(s) described",
-          "type": "startsWith"
-        }
+        "start": [
+          {
+            "text": "Identification Number",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "pattern": "\\d{2} \\d{2}",
+            "type": "regex"
+          }
+        ],
+        "end": [
+          {
+            "text": "The Vehicle(s) described",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -178,14 +283,18 @@
         "tiebreaker": "second"
       },
       "anchor": {
-        "start": {
-          "text": "description of vehicle",
-          "type": "startsWith"
-        },
-        "match": {
-          "pattern": "^.{12}\\d{5}$",
-          "type": "regex"
-        }
+        "start": [
+          {
+            "text": "Description of Vehicle",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "pattern": "^.{12}\\d{5}$",
+            "type": "regex"
+          }
+        ]
       }
     },
     {
@@ -195,29 +304,18 @@
         "id": "passthrough"
       },
       "anchor": {
-        "start": {
-          "text": "description",
-          "type": "startsWith"
-        },
-        "match": {
-          "pattern": "^.{12}\\d{5}$",
-          "type": "regex"
-        }
-      }
-    },
-    {
-      "id": "premium_period",
-      "method": {
-        "id": "regex",
-        "pattern": "(\\d{1,2})-month",
-        "flags": "i"
-      },
-      "anchor": {
-        "match": {
-          "pattern": "\\d{1,2}-month",
-          "type": "regex",
-          "flags": "i"
-        }
+        "start": [
+          {
+            "text": "Description",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "pattern": "^.{12}\\d{5}$",
+            "type": "regex"
+          }
+        ]
       }
     },
     {
@@ -229,10 +327,12 @@
         "tiebreaker": ">"
       },
       "anchor": {
-        "match": {
-          "text": "bodily injury",
-          "type": "startsWith"
-        }
+        "match": [
+          {
+            "text": "bodily injury",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -244,14 +344,18 @@
         "tiebreaker": ">"
       },
       "anchor": {
-        "start": {
-          "text": "bodily",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "ea acc",
-          "type": "includes"
-        }
+        "start": [
+          {
+            "text": "bodily",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "text": "ea acc",
+            "type": "includes"
+          }
+        ]
       }
     },
     {
@@ -263,14 +367,18 @@
         "tiebreaker": ">"
       },
       "anchor": {
-        "start": {
-          "text": "bodily",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "ea acc",
-          "type": "includes"
-        }
+        "start": [
+          {
+            "text": "bodily",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "text": "ea acc",
+            "type": "includes"
+          }
+        ]
       }
     },
     {
@@ -282,14 +390,64 @@
         "tiebreaker": ">"
       },
       "anchor": {
-        "start": {
-          "text": "property damage",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "ea acc",
-          "type": "includes"
-        }
+        "start": [
+          {
+            "text": "property damage",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "text": "ea acc",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "medical_payment_to_others_limit",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "medical payments",
+            "type": "includes"
+          }
+        ],
+        "match": [
+          {
+            "text": "ea per",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "medical_payment_to_others_limit",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "medical payments",
+            "type": "includes"
+          }
+        ],
+        "match": [
+          {
+            "text": "ea per",
+            "type": "includes"
+          }
+        ]
       }
     },
     {
@@ -301,82 +459,18 @@
         "tiebreaker": ">"
       },
       "anchor": {
-        "start": {
-          "text": "b2-personal",
-          "type": "includes"
-        },
-        "match": {
-          "type": "includes",
-          "text": "ea person"
-        }
-      }
-    },
-    {
-      "id": "uninsured_underinsured_motorist_bodily_injury_per_person",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "start": {
-          "pattern": "(UM/UIM|UNINSURED)",
-          "type": "regex"
-        },
-        "match": {
-          "text": "bodily",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "uninsured_underinsured_motorist_bodily_injury_per_accident",
-      "type": "currency",
-      "method": {
-        "id": "label",
-        "position": "right"
-      },
-      "anchor": {
         "start": [
           {
-            "pattern": "(UM/UIM|UNINSURED)",
-            "type": "regex"
-          },
-          {
-            "text": "bodily",
+            "text": "b2-personal",
             "type": "includes"
           }
         ],
-        "match": {
-          "text": "ea acc",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "uninsured_underinsured_motorist_bodily_injury_per_accident",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "start": [
+        "match": [
           {
-            "pattern": "(UM/UIM|UNINSURED)",
-            "type": "regex"
-          },
-          {
-            "text": "bodily",
-            "type": "includes"
+            "type": "includes",
+            "text": "ea person"
           }
-        ],
-        "match": {
-          "text": "ea acc",
-          "type": "includes"
-        }
+        ]
       }
     },
     {
@@ -397,14 +491,18 @@
             "type": "startsWith"
           }
         ],
-        "match": {
-          "text": "d",
-          "type": "includes"
-        },
-        "end": {
-          "text": "Part D",
-          "type": "includes"
-        }
+        "match": [
+          {
+            "text": "d",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "Part D",
+            "type": "includes"
+          }
+        ]
       }
     },
     {
@@ -416,49 +514,109 @@
         "tiebreaker": ">"
       },
       "anchor": {
-        "start": {
-          "pattern": "(UM/UIM|UNINSURED)",
-          "type": "regex"
-        },
-        "match": {
-          "text": "property",
-          "type": "startsWith"
-        }
+        "start": [
+          {
+            "pattern": "(UM/UIM|UNINSURED)",
+            "type": "regex"
+          }
+        ],
+        "match": [
+          {
+            "text": "property",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
-      "id": "comprehensive_limit",
+      "id": "uninsured_underinsured_motorist_bodily_injury_per_person",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "start": [
+          {
+            "pattern": "(UM/UIM|UNINSURED)",
+            "type": "regex"
+          }
+        ],
+        "match": [
+          {
+            "text": "bodily",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "uninsured_underinsured_motorist_bodily_injury_per_accident",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "start": [
+          {
+            "pattern": "(UM/UIM|UNINSURED)",
+            "type": "regex"
+          },
+          {
+            "text": "bodily",
+            "type": "includes"
+          }
+        ],
+        "match": [
+          {
+            "text": "ea acc",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "uninsured_underinsured_motorist_bodily_injury_per_accident",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "start": [
+          {
+            "pattern": "(UM/UIM|UNINSURED)",
+            "type": "regex"
+          },
+          {
+            "text": "bodily",
+            "type": "includes"
+          }
+        ],
+        "match": [
+          {
+            "text": "ea acc",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "_collision_limit",
       "method": {
         "id": "row",
         "tiebreaker": "first"
       },
       "anchor": {
-        "match": {
-          "text": "comprehensive",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "comprehensive_deductible",
-      "type": "currency",
-      "method": {
-        "id": "regex",
-        "pattern": "D[ ]?(\\d+)"
-      },
-      "anchor": {
-        "start": {
-          "text": "comprehensive loss",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "d",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "collision",
-          "type": "includes"
-        }
+        "match": [
+          {
+            "text": "collision",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -469,92 +627,86 @@
         "pattern": "D[ ]?(\\d+)"
       },
       "anchor": {
-        "start": {
-          "text": "collision loss",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "d",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total premium",
-          "type": "includes"
-        }
+        "match": [
+          {
+            "text": "collision loss",
+            "type": "startsWith"
+          },
+          {
+            "text": "D",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "total premium",
+            "type": "includes"
+          }
+        ]
       }
     },
     {
-      "id": "collision_limit",
+      "id": "_comprehensive_limit",
       "method": {
         "id": "row",
         "tiebreaker": "first"
       },
       "anchor": {
-        "match": {
-          "text": "collision",
-          "type": "startsWith"
+        "match": [
+          {
+            "text": "comprehensive",
+            "type": "startsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "comprehensive_deductible",
+      "type": "currency",
+      "method": {
+        "id": "regex",
+        "pattern": "D[ ]?(\\d+)"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "comprehensive loss",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "text": "D",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "Collision",
+            "type": "includes"
+          }
+        ]
+      }
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "collision_limit",
+      "method": {
+        "id": "mapper",
+        "source_id": "_collision_limit",
+        "mappings": {
+          "ACV LESS": "Actual Cash Value"
         }
       }
     },
     {
-      "id": "policy_premium",
-      "type": "currency",
+      "id": "comprehensive_limit",
       "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "match": {
-          "text": "vehicle total premium",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "policy_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "match": {
-          "pattern": "\\d{1,2} month premium",
-          "type": "regex",
-          "flags": "i"
-        }
-      }
-    },
-    {
-      "id": "total",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "match": {
-          "pattern": "\\d{1,2} month premium",
-          "type": "regex",
-          "flags": "i"
-        }
-      }
-    },
-    {
-      "id": "total",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "match": {
-          "text": "vehicle total premium",
-          "type": "includes"
+        "id": "mapper",
+        "source_id": "_comprehensive_limit",
+        "mappings": {
+          "ACV LESS": "Actual Cash Value"
         }
       }
     }

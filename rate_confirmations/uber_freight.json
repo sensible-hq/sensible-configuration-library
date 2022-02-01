@@ -1,0 +1,639 @@
+{
+    "fields": [
+      {
+        "id": "_load_id",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": "Load Number"
+        }
+      },
+      {
+        "id": "rate",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": "total"
+        }
+      },
+      {
+        "id": "carrier_name",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "Booked by",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "broker_contact_email",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "email",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "broker_contact_phone",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "24/7 Phone",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "trailer_type",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "load details",
+              "type": "startsWith"
+            },
+            {
+              "text": "Equipment",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "pallets",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Load details",
+              "type": "equals"
+            },
+            {
+              "text": "packaging count",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "weight",
+        "type": "weight",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Load details",
+              "type": "equals"
+            },
+            {
+              "text": "weight",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "shipper_name",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "Shipper",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "shipper_number",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "Reference number",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_weight",
+        "match": "all",
+        "type": "weight",
+        "method": {
+          "id": "label",
+          "position": "left"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "lbs",
+              "type": "endsWith"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_pickup_fulldatetime_raw",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "type": "regex",
+              "pattern": "[0,1][0-9]/[0-3]?[0-9](/[0-9]{4})? @ ",
+              "flags": "i"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_address",
+        "type": "address",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "type": "equals",
+              "text": "Shipper"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_zip_code",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": ", [a-z]{2} (.+)$",
+          "flags": "i"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "type": "regex",
+              "pattern": ", [a-z]{2} (.+)$",
+              "flags": "i"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_instructions",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": {
+            "text": "commodity",
+            "type": "equals"
+          }
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "Pickup notes",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "consignee_name",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Delivery",
+              "type": "startsWith"
+            },
+            {
+              "text": "Shipper",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "consignee_number",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Delivery",
+              "type": "startsWith"
+            },
+            {
+              "text": "Reference number",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_delivery_fulldatetime_raw",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Delivery",
+              "type": "startsWith"
+            },
+            {
+              "type": "regex",
+              "pattern": "[0,1][0-9]/[0-3]?[0-9](/[0-9]{4})? @ ",
+              "flags": "i"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "delivery_address",
+        "type": "address",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Delivery",
+              "type": "startsWith"
+            },
+            {
+              "type": "equals",
+              "text": "Shipper"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "dropoff_weight",
+        "match": "all",
+        "type": "weight",
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Delivery",
+              "type": "startsWith"
+            },
+            {
+              "text": "PO number",
+              "type": "includes"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "delivery_zip_code",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": ", [a-z]{2} (.+)$",
+          "flags": "i"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Delivery",
+              "type": "startsWith"
+            },
+            {
+              "type": "regex",
+              "pattern": ", [a-z]{2} (.+)$",
+              "flags": "i"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "delivery_instructions",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": {
+            "text": "commodity",
+            "type": "equals"
+          }
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "Delivery",
+              "type": "startsWith"
+            },
+            {
+              "text": "Dropoff Notes notes",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "Booked by",
+            "type": "startsWith"
+          }
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "_pickup_datetime_raw",
+        "method": {
+          "id": "split",
+          "source_id": "_pickup_fulldatetime_raw",
+          "separator": " - ",
+          "index": 0
+        }
+      },
+      {
+        "id": "_pickup_window_datetime_raw",
+        "method": {
+          "id": "split",
+          "source_id": "_pickup_fulldatetime_raw",
+          "separator": " - ",
+          "index": 1
+        }
+      },
+      {
+        "id": "_pickup_date_raw",
+        "method": {
+          "id": "split",
+          "source_id": "_pickup_datetime_raw",
+          "separator": " @ ",
+          "index": 0
+        }
+      },
+      {
+        "id": "_pickup_window_date_raw",
+        "method": {
+          "id": "split",
+          "source_id": "_pickup_window_datetime_raw",
+          "separator": " @ ",
+          "index": 0
+        }
+      },
+      {
+        "id": "_pickup_time_raw",
+        "method": {
+          "id": "split",
+          "source_id": "_pickup_datetime_raw",
+          "separator": " @ ",
+          "index": 1
+        }
+      },
+      {
+        "id": "_pickup_window_time_raw",
+        "method": {
+          "id": "split",
+          "source_id": "_pickup_window_datetime_raw",
+          "separator": " @ ",
+          "index": 1
+        }
+      },
+      {
+        "id": "pickup_date",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_pickup_date_raw",
+            "_pickup_window_date_raw"
+          ],
+          "delimiter": " - "
+        }
+      },
+      {
+        "id": "pickup_time",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_pickup_time_raw",
+            "_pickup_window_time_raw"
+          ],
+          "delimiter": " - "
+        }
+      },
+      {
+        "id": "_delivery_datetime_raw",
+        "method": {
+          "id": "split",
+          "source_id": "_delivery_fulldatetime_raw",
+          "separator": " - ",
+          "index": 0
+        }
+      },
+      {
+        "id": "_delivery_window_datetime_raw",
+        "method": {
+          "id": "split",
+          "source_id": "_delivery_fulldatetime_raw",
+          "separator": " - ",
+          "index": 1
+        }
+      },
+      {
+        "id": "_delivery_date_raw",
+        "method": {
+          "id": "split",
+          "source_id": "_delivery_datetime_raw",
+          "separator": " @ ",
+          "index": 0
+        }
+      },
+      {
+        "id": "_delivery_window_date_raw",
+        "method": {
+          "id": "split",
+          "source_id": "_delivery_window_datetime_raw",
+          "separator": " @ ",
+          "index": 0
+        }
+      },
+      {
+        "id": "_delivery_time_raw",
+        "method": {
+          "id": "split",
+          "source_id": "_delivery_datetime_raw",
+          "separator": " @ ",
+          "index": 1
+        }
+      },
+      {
+        "id": "_delivery_window_time_raw",
+        "method": {
+          "id": "split",
+          "source_id": "_delivery_window_datetime_raw",
+          "separator": " @ ",
+          "index": 1
+        }
+      },
+      {
+        "id": "delivery_date",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_delivery_date_raw",
+            "_delivery_window_date_raw"
+          ],
+          "delimiter": " - "
+        }
+      },
+      {
+        "id": "delivery_time",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_delivery_time_raw",
+            "_delivery_window_time_raw"
+          ],
+          "delimiter": " - "
+        }
+      },
+      {
+        "id": "broker_name",
+        "method": {
+          "id": "constant",
+          "value": "uber_freight"
+        }
+      }
+    ]
+  }
