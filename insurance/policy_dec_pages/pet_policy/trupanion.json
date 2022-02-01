@@ -1,0 +1,241 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "type": "includes",
+          "text": "trupanion"
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "policy_number",
+        "match": "first",
+        "type": "string",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "Policy",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_premium",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "premium",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "total",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "effective",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_premium_period_raw",
+        "method": {
+          "id": "regex",
+          "pattern": "Total (.+) Premium",
+          "flags": ""
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Total"
+          }
+        }
+      },
+      {
+        "id": "continuous_until_canceled",
+        "method": {
+          "id": "regex",
+          "pattern": "Continuous Until Cancelled"
+        },
+        "anchor": {
+          "match": {
+            "pattern": "Continuous Until Cancelled",
+            "type": "regex"
+          }
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "match": "all",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "left",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "match": {
+            "text": "policy",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "address",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "address:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coinsurance",
+        "type": "percentage",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "text": "Co-Insurance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pet_name",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        },
+        "anchor": {
+          "match": {
+            "text": "Pet Name",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pet_type",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        },
+        "anchor": {
+          "match": {
+            "text": "type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_pet_sex",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        },
+        "anchor": {
+          "match": {
+            "text": "Sex",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "breed_type",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        },
+        "anchor": {
+          "match": {
+            "text": "breed",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "breed_size",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        },
+        "anchor": {
+          "match": {
+            "text": "type",
+            "type": "startsWith"
+          }
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "pet_sex",
+        "method": {
+          "id": "mapper",
+          "source_id": "_pet_sex",
+          "mappings": {
+            "F": "Female",
+            "M": "Male",
+            "U": "Unknown"
+          }
+        }
+      },
+      {
+        "id": "premium_period",
+        "method": {
+          "id": "mapper",
+          "source_id": "_premium_period_raw",
+          "mappings": {
+            "Monthly": "1"
+          }
+        }
+      }
+    ]
+  }

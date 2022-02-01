@@ -2,19 +2,16 @@
   "fingerprint": {
     "tests": [
       {
-        "page": "any",
-        "match": [
-          {
-            "text": "usaa",
-            "type": "includes"
-          }
-        ]
+        "type": "includes",
+        "text": "usaa"
       }
     ]
   },
   "fields": [
     {
       "id": "named_insured",
+      "match": "all",
+      "type": "name",
       "method": {
         "id": "documentRange",
         "stop": {
@@ -37,22 +34,17 @@
     {
       "id": "address",
       "type": "address",
-      "method": {
-        "id": "documentRange",
-        "stop": {
-          "type": "startsWith",
-          "text": "policy period"
-        },
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 0,
-          "width": 3
-        }
-      },
       "anchor": {
         "match": {
           "type": "startsWith",
           "text": "named insured"
+        }
+      },
+      "method": {
+        "id": "documentRange",
+        "stop": {
+          "text": "policy period",
+          "type": "startsWith"
         }
       }
     },

@@ -2,28 +2,26 @@
   "fingerprint": {
     "tests": [
       {
-        "page": "any",
-        "match": [
-          {
-            "text": "liberty mutual",
-            "type": "includes"
-          }
-        ]
+        "type": "includes",
+        "text": "Liberty Mutual",
+        "isCaseSensitive": true
       }
     ]
   },
   "fields": [
     {
-      "id": "premium_period",
-      "type": "number",
+      "id": "policy_number",
       "anchor": {
+        "start": "Insurance Information",
         "match": {
-          "type": "regex",
-          "pattern": "^Total(.)* Premium:$"
+          "type": "startsWith",
+          "text": "policy number:"
         }
       },
       "method": {
-        "id": "passthrough"
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
       }
     },
     {
@@ -37,7 +35,6 @@
       },
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": "first"
       }
     },
@@ -56,34 +53,50 @@
       }
     },
     {
-      "id": "named_insured",
-      "match": "all",
+      "id": "premium_period",
+      "type": "number",
       "anchor": {
-        "start": "insurance information",
         "match": {
-          "type": "startsWith",
-          "text": "named insured:"
+          "type": "regex",
+          "pattern": "^Total(.)* Premium:$"
         }
       },
       "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first"
+        "id": "passthrough"
       }
     },
     {
-      "id": "policy_number",
-      "anchor": {
-        "start": "Insurance Information",
-        "match": {
-          "type": "startsWith",
-          "text": "policy number:"
-        }
-      },
+      "id": "effective_date",
+      "type": "date",
       "method": {
         "id": "row",
         "position": "right",
-        "tiebreaker": "first"
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "policy period",
+            "type": "startsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "expiration_date",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "policy period",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -110,42 +123,25 @@
       }
     },
     {
-      "id": "effective_date",
-      "type": "date",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "<"
-      },
+      "id": "named_insured",
+      "type": "name",
+      "match": "all",
       "anchor": {
+        "start": "insurance information",
         "match": {
-          "text": "policy period",
-          "type": "startsWith"
+          "type": "startsWith",
+          "text": "named insured:"
         }
-      }
-    },
-    {
-      "id": "expiration_date",
-      "type": "date",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
       },
-      "anchor": {
-        "match": {
-          "text": "policy period",
-          "type": "startsWith"
-        }
+      "method": {
+        "id": "label",
+        "position": "right"
       }
     },
     {
       "id": "personal_property_limit",
       "anchor": {
-        "start": {
-          "text": "coverage information",
-          "type": "includes"
-        },
+        "start": "coverage information",
         "match": {
           "text": "personal property",
           "type": "includes"
@@ -164,7 +160,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -201,10 +196,7 @@
     {
       "id": "deductible",
       "anchor": {
-        "start": {
-          "text": "policy deductibles",
-          "type": "includes"
-        },
+        "start": "policy deductibles",
         "match": {
           "text": "losses covered",
           "type": "startsWith"

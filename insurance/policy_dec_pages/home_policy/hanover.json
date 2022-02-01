@@ -16,73 +16,47 @@
     {
       "id": "policy_number",
       "anchor": {
-        "start": {
-          "text": "declaration",
-          "type": "includes"
-        },
+        "start": "declaration",
         "match": {
           "type": "includes",
           "text": "policy number"
         },
-        "end": {
-          "text": "named insured",
+        "end": "named insured"
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 1
+        }
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "text": "standard policy premium",
           "type": "startsWith"
         }
       },
       "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 1
-        }
-      }
-    },
-    {
-      "id": "effective_date",
-      "type": "date",
-      "anchor": {
-        "match": {
-          "type": "startsWith",
-          "text": "policy period"
-        }
-      },
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 1
-        },
-        "tiebreaker": "<"
-      }
-    },
-    {
-      "id": "expiration_date",
-      "type": "date",
-      "anchor": {
-        "match": {
-          "type": "startsWith",
-          "text": "policy period"
-        }
-      },
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 1
-        },
-        "tiebreaker": ">"
+        "id": "label",
+        "position": "right"
       }
     },
     {
       "id": "named_insured",
+      "match": "all",
       "type": "name",
       "anchor": {
         "match": {
           "type": "startsWith",
           "text": "named insured and mailing address"
+        },
+        "end": {
+          "text": "policy period-",
+          "type": "startsWith"
         }
       },
       "method": {
@@ -102,10 +76,12 @@
       "id": "address",
       "type": "address",
       "anchor": {
-        "match": {
-          "type": "startsWith",
-          "text": "the residence premises covered"
-        }
+        "match": [
+          {
+            "type": "startsWith",
+            "text": "the residence premises covered"
+          }
+        ]
       },
       "method": {
         "id": "label",
@@ -113,21 +89,48 @@
       }
     },
     {
-      "id": "deductible",
-      "type": "currency",
+      "id": "effective_date",
+      "type": "date",
       "anchor": {
-        "start": {
-          "text": "declaration",
-          "type": "includes"
-        },
         "match": {
-          "text": "deductible",
-          "type": "includes"
+          "type": "startsWith",
+          "text": "policy period"
         }
       },
       "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 1
+        },
+        "tiebreaker": "<"
+      }
+    },
+    {
+      "id": "expiration_date",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "policy period"
+        }
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 1
+        },
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": "total policy premium",
+      "method": {
         "id": "label",
-        "position": "below"
+        "position": "right"
       }
     },
     {
@@ -146,39 +149,26 @@
       }
     },
     {
-      "id": "other_structures_limit",
+      "id": "deductible",
       "type": "currency",
       "anchor": {
+        "start": "declaration",
         "match": {
-          "text": "other structures",
+          "text": "deductible",
           "type": "includes"
         }
       },
       "method": {
         "id": "label",
-        "position": "right"
+        "position": "below"
       }
     },
     {
-      "id": "personal_property_limit",
+      "id": "medical_payment_to_others_limit",
       "type": "currency",
       "anchor": {
         "match": {
-          "text": "personal property",
-          "type": "includes"
-        }
-      },
-      "method": {
-        "id": "label",
-        "position": "right"
-      }
-    },
-    {
-      "id": "loss_of_use_limit",
-      "type": "currency",
-      "anchor": {
-        "match": {
-          "text": "loss of use",
+          "text": "medical pay to others",
           "type": "includes"
         }
       },
@@ -202,11 +192,11 @@
       }
     },
     {
-      "id": "medical_payment_to_others_limit",
+      "id": "loss_of_use_limit",
       "type": "currency",
       "anchor": {
         "match": {
-          "text": "medical pay to others",
+          "text": "loss of use",
           "type": "includes"
         }
       },
@@ -216,12 +206,12 @@
       }
     },
     {
-      "id": "policy_premium",
+      "id": "personal_property_limit",
       "type": "currency",
       "anchor": {
         "match": {
-          "text": "standard policy premium",
-          "type": "startsWith"
+          "text": "personal property",
+          "type": "includes"
         }
       },
       "method": {
@@ -230,9 +220,14 @@
       }
     },
     {
-      "id": "total",
+      "id": "other_structures_limit",
       "type": "currency",
-      "anchor": "total policy premium",
+      "anchor": {
+        "match": {
+          "text": "other structures",
+          "type": "includes"
+        }
+      },
       "method": {
         "id": "label",
         "position": "right"

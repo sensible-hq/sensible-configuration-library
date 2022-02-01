@@ -2,13 +2,8 @@
   "fingerprint": {
     "tests": [
       {
-        "page": "any",
-        "match": [
-          {
-            "text": "state farm",
-            "type": "includes"
-          }
-        ]
+        "type": "startsWith",
+        "text": "state farm"
       }
     ]
   },
@@ -28,6 +23,81 @@
       }
     },
     {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": "policy premium",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "premium_period",
+      "type": "number",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "effective date",
+            "type": "equals"
+          }
+        ]
+      }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "left"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "effective date",
+            "type": "startsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "expiration_date",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "left",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "expiration of policy",
+            "type": "startsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "Named Insured and Mailing Address"
+        }
+      },
+      "method": {
+        "id": "documentRange",
+        "stop": {
+          "text": "The Policy Period begins",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "named_insured",
       "type": "name",
       "match": "all",
@@ -40,67 +110,6 @@
       "method": {
         "id": "label",
         "position": "below"
-      }
-    },
-    {
-      "id": "address",
-      "type": "address",
-      "anchor": {
-        "match": {
-          "type": "equals",
-          "text": "named insured and mailing address"
-        }
-      },
-      "method": {
-        "id": "documentRange",
-        "stop": {
-          "text": "the policy period begins",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "effective_date",
-      "type": "date",
-      "method": {
-        "id": "row",
-        "position": "left",
-        "tiebreaker": "first"
-      },
-      "anchor": {
-        "match": {
-          "text": "effective date",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "expiration_date",
-      "type": "date",
-      "method": {
-        "id": "row",
-        "position": "left",
-        "tiebreaker": "first"
-      },
-      "anchor": {
-        "match": {
-          "text": "expiration of policy",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_period",
-      "type": "number",
-      "method": {
-        "id": "label",
-        "position": "below"
-      },
-      "anchor": {
-        "match": {
-          "text": "effective date",
-          "type": "equals"
-        }
       }
     },
     {
@@ -124,7 +133,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -171,16 +179,6 @@
         "id": "row",
         "position": "right",
         "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "policy_premium",
-      "type": "currency",
-      "anchor": "policy premium",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first"
       }
     }
   ]

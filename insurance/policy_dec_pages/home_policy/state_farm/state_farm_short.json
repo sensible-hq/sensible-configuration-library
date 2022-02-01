@@ -2,17 +2,8 @@
   "fingerprint": {
     "tests": [
       {
-        "page": "any",
-        "match": [
-          {
-            "text": "statefarm",
-            "type": "includes"
-          },
-          {
-            "text": "state farm",
-            "type": "includes"
-          }
-        ]
+        "type": "includes",
+        "text": "statefarm"
       }
     ]
   },
@@ -26,8 +17,16 @@
         }
       },
       "method": {
-        "id": "box",
-        "position": "left"
+        "id": "box"
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": "policy premium",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
       }
     },
     {
@@ -60,21 +59,6 @@
       }
     },
     {
-      "id": "effective_date",
-      "type": "date",
-      "anchor": {
-        "match": {
-          "type": "startsWith",
-          "text": "effective date"
-        }
-      },
-      "method": {
-        "id": "box",
-        "position": "right",
-        "tiebreaker": "<"
-      }
-    },
-    {
       "id": "expiration_date",
       "type": "date",
       "anchor": {
@@ -87,6 +71,21 @@
         "id": "box",
         "position": "right",
         "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "effective date"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "tiebreaker": "<"
       }
     },
     {
@@ -104,138 +103,75 @@
       }
     },
     {
+      "id": "total",
+      "type": "currency",
+      "anchor": "policy premium",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
       "id": "dwelling_limit",
-      "anchor": {
-        "match": {
-          "text": "building property",
-          "type": "includes"
-        }
-      },
+      "anchor": "building property",
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "left",
-        "tiebreaker": "first"
-      }
-    },
-    {
-      "id": "personal_property_limit",
-      "anchor": {
-        "match": {
-          "text": "personal property",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "left",
-        "tiebreaker": "first"
-      }
-    },
-    {
-      "id": "personal_liability_limit",
-      "anchor": {
-        "match": {
-          "text": "personal liability",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "left",
-        "tiebreaker": "first"
-      }
-    },
-    {
-      "id": "medical_payment_to_others_limit",
-      "anchor": {
-        "match": {
-          "text": "medical payments",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "left",
-        "tiebreaker": "first"
-      }
-    },
-    {
-      "id": "loss_of_use_limit",
-      "anchor": {
-        "match": {
-          "text": "loss of use",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "left",
-        "tiebreaker": "first"
-      }
-    },
-    {
-      "id": "other_structures_limit",
-      "anchor": {
-        "match": {
-          "text": "other structures",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "left",
-        "tiebreaker": "first"
+        "position": "left"
       }
     },
     {
       "id": "deductible",
-      "anchor": {
-        "match": {
-          "text": "deductibles",
-          "type": "includes"
-        }
-      },
+      "anchor": "deductibles",
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
     {
-      "id": "policy_premium",
+      "id": "medical_payment_to_others_limit",
+      "anchor": "medical payments",
       "type": "currency",
-      "anchor": {
-        "match": {
-          "text": "policy premium",
-          "type": "includes"
-        }
-      },
       "method": {
         "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
+        "position": "left"
       }
     },
     {
-      "id": "total",
+      "id": "personal_liability_limit",
+      "anchor": "personal liability",
       "type": "currency",
-      "anchor": {
-        "match": {
-          "text": "policy premium",
-          "type": "includes"
-        }
-      },
       "method": {
         "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
+        "position": "left"
+      }
+    },
+    {
+      "id": "loss_of_use_limit",
+      "anchor": "loss of use",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "left"
+      }
+    },
+    {
+      "id": "personal_property_limit",
+      "anchor": "personal property",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "left"
+      }
+    },
+    {
+      "id": "other_structures_limit",
+      "anchor": "other structures",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "left"
       }
     }
   ]

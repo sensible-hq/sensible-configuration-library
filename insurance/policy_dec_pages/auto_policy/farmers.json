@@ -6,9 +6,8 @@
         "match": [
           {
             "text": "farmers",
-            "type": "startsWith"
+            "type": "includes"
           }
-          
         ]
       }
     ]
@@ -21,10 +20,79 @@
         "position": "right"
       },
       "anchor": {
-        "match": {
-          "text": "policy number:",
-          "type": "startsWith"
-        }
+        "match": [
+          {
+            "text": "Policy Number:",
+            "type": "startsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "Policy Premium",
+            "type": "startsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fee_names",
+      "match": "all",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "fee",
+            "type": "endsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "fee_values",
+      "match": "all",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "fee",
+            "type": "endsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "Policy premium and fees",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -36,10 +104,12 @@
         "tiebreaker": "first"
       },
       "anchor": {
-        "match": {
-          "text": "effective:",
-          "type": "equals"
-        }
+        "match": [
+          {
+            "text": "Effective:",
+            "type": "equals"
+          }
+        ]
       }
     },
     {
@@ -51,10 +121,12 @@
         "tiebreaker": "first"
       },
       "anchor": {
-        "match": {
-          "text": "expiration:",
-          "type": "equals"
-        }
+        "match": [
+          {
+            "text": "Expiration:",
+            "type": "equals"
+          }
+        ]
       }
     },
     {
@@ -69,25 +141,12 @@
         "height": 0.6
       },
       "anchor": {
-        "match": {
-          "text": "named insured",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "policy_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      },
-      "anchor": {
-        "match": {
-          "text": "policy premium",
-          "type": "startsWith"
-        }
+        "match": [
+          {
+            "text": "Named insured",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -99,18 +158,18 @@
         "position": "below"
       },
       "anchor": {
-        "start": {
-          "text": "household drivers",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "Name",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "vehicle information",
-          "type": "startsWith"
-        }
+        "start": [
+          {
+            "text": "Household Drivers",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "text": "Name",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -122,7 +181,7 @@
       },
       "anchor": {
         "start": {
-          "text": "vehicle information",
+          "text": "Vehicle information",
           "type": "includes"
         },
         "match": {
@@ -144,7 +203,7 @@
       },
       "anchor": {
         "start": {
-          "text": "vehicle information",
+          "text": "Vehicle information",
           "type": "includes"
         },
         "match": {
@@ -166,7 +225,7 @@
       },
       "anchor": {
         "start": {
-          "text": "vehicle information",
+          "text": "Vehicle information",
           "type": "includes"
         },
         "match": {
@@ -186,52 +245,18 @@
         "id": "passthrough"
       },
       "anchor": {
-        "start": {
-          "text": "vehicle information",
-          "type": "startsWith"
-        },
-        "match": {
-          "pattern": "[A-Z0-9]{12}\\d{5}$",
-          "type": "regex"
-        }
-      }
-    },
-    {
-      "id": "comprehensive_deductible",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first"
-      },
-      "anchor": {
-        "start": {
-          "text": "vehicle information",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "comprehensive:",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "collision_deductible",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first"
-      },
-      "anchor": {
-        "start": {
-          "text": "vehicle information",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "collision:",
-          "type": "startsWith"
-        }
+        "start": [
+          {
+            "text": "Vehicle information",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "pattern": "[A-Z0-9]{12}\\d{5}$",
+            "type": "regex"
+          }
+        ]
       }
     },
     {
@@ -243,14 +268,18 @@
         "tiebreaker": ">"
       },
       "anchor": {
-        "start": {
-          "text": "coverage information",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "bodily injury",
-          "type": "includes"
-        }
+        "start": [
+          {
+            "text": "Coverage information",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "text": "bodily injury",
+            "type": "includes"
+          }
+        ]
       }
     },
     {
@@ -265,10 +294,12 @@
         }
       },
       "anchor": {
-        "match": {
-          "text": "Bodily Injury Liability",
-          "type": "startsWith"
-        }
+        "match": [
+          {
+            "text": "Bodily Injury Liability",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -280,14 +311,18 @@
         "tiebreaker": ">"
       },
       "anchor": {
-        "start": {
-          "text": "coverage information",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "Property Damage Liability",
-          "type": "includes"
-        }
+        "start": [
+          {
+            "text": "Coverage Information",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "text": "Property Damage Liability",
+            "type": "includes"
+          }
+        ]
       }
     },
     {
@@ -300,13 +335,15 @@
       },
       "anchor": {
         "start": {
-          "text": "coverage information",
+          "text": "Coverage Information",
           "type": "includes"
         },
-        "match": {
-          "text": "uninsured",
-          "type": "startsWith"
-        }
+        "match": [
+          {
+            "text": "Uninsured",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -320,18 +357,20 @@
       "anchor": {
         "start": [
           {
-            "text": "coverage information",
+            "text": "Coverage Information",
             "type": "includes"
           },
           {
-            "text": "uninsured",
+            "text": "Uninsured",
             "type": "startsWith"
           }
         ],
-        "match": {
-          "text": "injury",
-          "type": "startsWith"
-        }
+        "match": [
+          {
+            "text": "injury",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -343,58 +382,58 @@
         "tiebreaker": "first"
       },
       "anchor": {
-        "match": {
-          "text": "rental reimbursement",
-          "type": "startsWith"
-        }
+        "match": [
+          {
+            "text": "Rental Reimbursement",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
-      "id": "fee_names",
-      "match": "all",
-      "method": {
-        "id": "passthrough"
-      },
-      "anchor": {
-        "start": {
-          "text": "fee detail",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "fee",
-          "type": "endsWith"
-        }
-      }
-    },
-    {
-      "id": "fee_values",
-      "match": "all",
+      "id": "collision_deductible",
       "type": "currency",
       "method": {
         "id": "row",
         "position": "right",
-        "tiebreaker": ">"
+        "tiebreaker": "first"
       },
       "anchor": {
-        "match": {
-          "text": "fee",
-          "type": "endsWith"
-        }
+        "start": [
+          {
+            "text": "Vehicle information",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "text": "Collision:",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
-      "id": "total",
+      "id": "comprehensive_deductible",
       "type": "currency",
       "method": {
         "id": "row",
         "position": "right",
-        "tiebreaker": ">"
+        "tiebreaker": "first"
       },
       "anchor": {
-        "match": {
-          "text": "policy premium and fees",
-          "type": "startsWith"
-        }
+        "start": [
+          {
+            "text": "Vehicle information",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "text": "Comprehensive:",
+            "type": "startsWith"
+          }
+        ]
       }
     }
   ]

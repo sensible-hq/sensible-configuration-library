@@ -1,0 +1,369 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "farmers",
+              "type": "includes"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "policy_number",
+        "match": "first",
+        "anchor": {
+          "match": [
+            {
+              "type": "equals",
+              "text": "Policy number:"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "Effective:"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "Expiration:"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "match": "all",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Named Insured(s):"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "includeAnchor": true,
+          "stop": {
+            "type": "regex",
+            "pattern": "^(\\d)"
+          },
+          "wordFilters": [
+            "Named Insured(s):"
+          ],
+          "lineFilters": [
+            {
+              "type": "includes",
+              "text": "Total"
+            }
+          ]
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "anchor": {
+          "match": [
+            {
+              "type": "equals",
+              "text": "Property Insured:"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right",
+          "stop": "gap"
+        }
+      },
+      {
+        "id": "policy_premium",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Premiums"
+          },
+          "match": [
+            {
+              "type": "includes",
+              "text": "Premium"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Premiums"
+          },
+          "match": [
+            {
+              "type": "includes",
+              "text": "Premium"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        }
+      },
+      {
+        "id": "dwelling_limit",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Property Coverage"
+          },
+          "match": {
+            "text": "Dwelling",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "other_structures_limit",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Property Coverage"
+          },
+          "match": {
+            "text": "Structures",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "personal_property_limit",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Property Coverage"
+          },
+          "match": {
+            "text": "Personal Property",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "loss_of_use_limit",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Property Coverage"
+          },
+          "match": {
+            "text": "Loss of Use",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "personal_liability_limit",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Liability Coverage"
+          },
+          "match": {
+            "text": "Personal Liability",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "medical_payment_to_others_limit",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Liability Coverage"
+          },
+          "match": {
+            "text": "Medical Payments",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "deductible",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Deductible"
+          },
+          "match": {
+            "text": "Applicable to each covered loss",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "deductible_wind_hail",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "Deductible"
+          },
+          "match": {
+            "text": "Hurricane",
+            "type": "includes"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "_fee_names_raw",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "startsWith",
+              "text": "YOU AS NAMED INSURED AND ADDRESS"
+            }
+          ],
+          "end": [
+            {
+              "type": "startsWith",
+              "text": "TOTAL PREMIUM"
+            }
+          ],
+          "match": [
+            {
+              "type": "includes",
+              "text": "fee"
+            }
+          ]
+        }
+      },
+      {
+        "id": "fee_values",
+        "match": "all",
+        "type": "currency",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": [
+            {
+              "type": "startsWith",
+              "text": "YOU AS NAMED INSURED AND ADDRESS"
+            }
+          ],
+          "end": [
+            {
+              "type": "startsWith",
+              "text": "TOTAL PREMIUM"
+            }
+          ],
+          "match": [
+            {
+              "type": "includes",
+              "text": "fee"
+            }
+          ]
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "fee_names",
+        "method": {
+          "id": "split",
+          "source_id": "_fee_names_raw",
+          "separator": " $",
+          "index": 0
+        }
+      }
+    ]
+  }

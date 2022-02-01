@@ -14,16 +14,38 @@
   },
   "fields": [
     {
-      "id": "_premium_period_raw",
-      "method": {
-        "id": "regex",
-        "pattern": "Total (.*) Premium:"
-      },
+      "id": "policy_number",
       "anchor": {
-        "match": {
-          "type": "equals",
-          "text": "policy declarations"
-        }
+        "match": [
+          {
+            "type": "equals",
+            "text": "insurance information"
+          },
+          {
+            "type": "equals",
+            "text": "policy number:"
+          }
+        ]
+      },
+      "method": {
+        "id": "row"
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": {
+        "match": [
+          {
+            "type": "regex",
+            "pattern": "Total .* policy premium",
+            "flags": "i"
+          }
+        ]
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
       }
     },
     {
@@ -36,16 +58,20 @@
         "flags": "i"
       },
       "anchor": {
-        "start": {
-          "text": "Named Insured:",
-          "type": "startsWith"
-        },
-        "match": {
-          "type": "regex",
-          "pattern": "\\d\\. "
-        },
+        "start": [
+          {
+            "text": "Named Insured:",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "type": "regex",
+            "pattern": "\\d\\. "
+          }
+        ],
         "end": {
-          "text": "policy number:",
+          "text": "Policy Number:",
           "type": "startsWith"
         }
       }
@@ -66,21 +92,17 @@
       }
     },
     {
-      "id": "policy_number",
+      "id": "expiration_date",
+      "type": "date",
       "anchor": {
-        "start": {
-          "type": "equals",
-          "text": "insurance information"
-        },
         "match": {
           "type": "equals",
-          "text": "policy number:"
+          "text": "policy period:"
         }
       },
       "method": {
         "id": "row",
-        "position": "right",
-        "tiebreaker": "first"
+        "tiebreaker": ">"
       }
     },
     {
@@ -94,163 +116,56 @@
       },
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": "<"
       }
     },
     {
-      "id": "expiration_date",
-      "type": "date",
+      "id": "_premium_period_raw",
+      "method": {
+        "id": "regex",
+        "pattern": "Total (.*) Premium:"
+      },
       "anchor": {
         "match": {
           "type": "equals",
-          "text": "policy period:"
+          "text": "Policy declarations"
         }
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": {
+        "match": [
+          {
+            "type": "regex",
+            "pattern": "Total .* policy premium",
+            "flags": "i"
+          }
+        ]
       },
       "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
+        "id": "label",
+        "position": "right"
       }
     },
     {
       "id": "dwelling_limit",
       "anchor": {
-        "start": {
-          "text": "coverage information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "dwelling",
-          "type": "includes"
-        }
+        "match": [
+          {
+            "text": "Coverage Information",
+            "type": "equals"
+          },
+          {
+            "text": "Dwelling",
+            "type": "includes"
+          }
+        ]
       },
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "other_structures_limit",
-      "anchor": {
-        "start": {
-          "text": "coverage information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "other structures",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "personal_property_limit",
-      "anchor": {
-        "start": {
-          "text": "coverage information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "personal property",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "loss_of_use_limit",
-      "type": "currency",
-      "anchor": {
-        "start": {
-          "text": "coverage information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "loss of use",
-          "type": "includes"
-        },
-        "end": {
-          "text": "additional coverages",
-          "type": "includes"
-        }
-      },
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first"
-      }
-    },
-    {
-      "id": "loss_of_use_limit",
-      "type": "string",
-      "anchor": {
-        "start": {
-          "text": "coverage information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "loss of use",
-          "type": "includes"
-        },
-        "end": {
-          "text": "additional coverages",
-          "type": "includes"
-        }
-      },
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first"
-      }
-    },
-    {
-      "id": "personal_liability_limit",
-      "anchor": {
-        "start": {
-          "text": "coverage information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "personal liability",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "medical_payment_to_others_limit",
-      "anchor": {
-        "start": {
-          "text": "coverage information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "medical payments",
-          "type": "includes"
-        }
-      },
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -259,30 +174,165 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">",
         "includeAnchor": true
       },
       "anchor": {
+        "match": [
+          {
+            "text": "Policy deductibles",
+            "type": "equals"
+          },
+          {
+            "text": "subject to a deductible of",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
+      "id": "medical_payment_to_others_limit",
+      "anchor": {
+        "match": [
+          {
+            "text": "Coverage Information",
+            "type": "equals"
+          },
+          {
+            "text": "medical payments",
+            "type": "includes"
+          }
+        ]
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "personal_liability_limit",
+      "anchor": {
+        "match": [
+          {
+            "text": "Coverage Information",
+            "type": "equals"
+          },
+          {
+            "text": "personal liability",
+            "type": "includes"
+          }
+        ]
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "loss_of_use_limit",
+      "type": "currency",
+      "anchor": {
         "start": {
-          "text": "policy deductibles",
+          "text": "Coverage Information",
           "type": "equals"
         },
-        "match": {
-          "text": "subject to a deductible of",
-          "type": "includes"
-        }
+        "match": [
+          {
+            "text": "Loss of Use",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "Additional Coverages",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "loss_of_use_limit",
+      "type": "string",
+      "anchor": {
+        "start": {
+          "text": "Coverage Information",
+          "type": "equals"
+        },
+        "match": [
+          {
+            "text": "Loss of Use",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "Additional Coverages",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "personal_property_limit",
+      "anchor": {
+        "match": [
+          {
+            "text": "Coverage Information",
+            "type": "equals"
+          },
+          {
+            "text": "Personal Property",
+            "type": "includes"
+          }
+        ]
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "other_structures_limit",
+      "anchor": {
+        "match": [
+          {
+            "text": "Coverage Information",
+            "type": "equals"
+          },
+          {
+            "text": "Other Structures",
+            "type": "includes"
+          }
+        ]
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
       }
     },
     {
       "id": "deductible_wind_hail",
       "anchor": {
-        "start": {
-          "text": "policy deductibles",
-          "type": "equals"
-        },
+        "start": [
+          {
+            "text": "Policy deductibles",
+            "type": "equals"
+          }
+        ],
         "match": {
-          "text": "hurricane",
+          "text": "Hurricane",
           "type": "includes"
         },
         "end": {
@@ -291,36 +341,6 @@
         }
       },
       "type": "currency",
-      "method": {
-        "id": "label",
-        "position": "right"
-      }
-    },
-    {
-      "id": "policy_premium",
-      "type": "currency",
-      "anchor": {
-        "match": {
-          "type": "regex",
-          "pattern": "Total .* policy premium",
-          "flags": "i"
-        }
-      },
-      "method": {
-        "id": "label",
-        "position": "right"
-      }
-    },
-    {
-      "id": "total",
-      "type": "currency",
-      "anchor": {
-        "match": {
-          "type": "regex",
-          "pattern": "Total .* policy premium",
-          "flags": "i"
-        }
-      },
       "method": {
         "id": "label",
         "position": "right"

@@ -2,18 +2,61 @@
   "fingerprint": {
     "tests": [
       {
-        "page": "any",
-        "match": [
-          {
-            "text": "travelers",
-            "type": "includes"
-          }
-          
-        ]
+        "type": "includes",
+        "text": "travelers"
       }
     ]
   },
   "fields": [
+    {
+      "id": "policy_number",
+      "anchor": {
+        "match": {
+          "text": "your policy number",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "policy_premium",
+      "type": "currency",
+      "anchor": "total premium for this policy",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "total",
+      "type": "currency",
+      "anchor": "total premium for this policy",
+      "method": {
+        "id": "row",
+        "tiebreaker": ">"
+      }
+    },
+    {
+      "id": "address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "residence premises"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": {
+          "type": "startsWith",
+          "text": "mortgagee"
+        }
+      }
+    },
     {
       "id": "named_insured",
       "type": "name",
@@ -54,55 +97,31 @@
       }
     },
     {
-      "id": "address",
-      "type": "address",
+      "id": "effective_date",
+      "type": "date",
       "anchor": {
         "match": {
-          "type": "equals",
-          "text": "residence premises"
-        }
-      },
-      "method": {
-        "id": "label",
-        "position": "below",
-        "stop": {
-          "type": "startsWith",
-          "text": "mortgagee"
-        }
-      }
-    },
-    {
-      "id": "policy_number",
-      "anchor": {
-        "match": {
-          "text": "your policy number",
-          "type": "includes"
+          "type": "includes",
+          "text": "Policy period"
         }
       },
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": "first"
       }
     },
     {
-      "id": "policy_premium",
-      "type": "currency",
-      "anchor": "total premium for this policy",
+      "id": "expiration_date",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "Policy period"
+        }
+      },
       "method": {
         "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "total",
-      "type": "currency",
-      "anchor": "total premium for this policy",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": ">"
+        "tiebreaker": "second"
       }
     },
     {
@@ -121,7 +140,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -141,7 +159,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -161,7 +178,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -181,7 +197,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -201,7 +216,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -221,7 +235,6 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
@@ -241,53 +254,16 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
       }
     },
     {
       "id": "deductible_wind_hail",
-      "anchor": {
-        "match": {
-          "text": "hail deductible",
-          "type": "includes"
-        }
-      },
+      "anchor": "hail deductible",
       "type": "currency",
       "method": {
         "id": "row",
-        "position": "right",
         "tiebreaker": ">"
-      }
-    },
-    {
-      "id": "effective_date",
-      "type": "date",
-      "anchor": {
-        "match": {
-          "type": "includes",
-          "text": "policy period"
-        }
-      },
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first"
-      }
-    },
-    {
-      "id": "expiration_date",
-      "type": "date",
-      "anchor": {
-        "match": {
-          "type": "includes",
-          "text": "policy period"
-        }
-      },
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "second"
       }
     }
   ]
