@@ -79,6 +79,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Applied Underwriters](./insurance/loss_runs/workers_comp/applied_underwriters.json)
 - [Atlas](./insurance/loss_runs/workers_comp/atlas.json)
 - [Benchmark](./insurance/loss_runs/workers_comp/benchmark.json)
+- [Berkshire](./insurance/loss_runs/workers_comp/berkshire.json)
 - [Compwest](./insurance/loss_runs/workers_comp/compwest.json)
 - [ICW](./insurance/loss_runs/workers_comp/icw.json)
 - [Statefund](./insurance/loss_runs/workers_comp/statefund.json)
