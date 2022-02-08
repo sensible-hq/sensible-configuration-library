@@ -75,15 +75,15 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [ACORD 140 (09/2007)](./insurance/acords/acord_140/2007_09.json)
 
 #### Loss Runs
-- [Amtrust](./insurance/loss_runs/amtrust.json)
-- [Applied Underwriters](./insurance/loss_runs/applied_underwriters.json)
-- [Atlas](./insurance/loss_runs/atlas.json)
-- [Benchmark](./insurance/loss_runs/benchmark.json)
-- [Compwest](./insurance/loss_runs/compwest.json)
-- [ICW](./insurance/loss_runs/icw.json)
-- [Statefund](./insurance/loss_runs/statefund.json)
-- [Travelers](./insurance/loss_runs/travelers.json)
-- [Zenith](./insurance/loss_runs/zenith.json)
+- [Amtrust](./insurance/loss_runs/workers_comp/amtrust.json)
+- [Applied Underwriters](./insurance/loss_runs/workers_comp/applied_underwriters.json)
+- [Atlas](./insurance/loss_runs/workers_comp/atlas.json)
+- [Benchmark](./insurance/loss_runs/workers_comp/benchmark.json)
+- [Compwest](./insurance/loss_runs/workers_comp/compwest.json)
+- [ICW](./insurance/loss_runs/workers_comp/icw.json)
+- [Statefund](./insurance/loss_runs/workers_comp/statefund.json)
+- [Travelers](./insurance/loss_runs/workers_comp/travelers.json)
+- [Zenith](./insurance/loss_runs/workers_comp/zenith.json)
 
 ### Tax Forms
 - [1040](./tax_forms/1040.json)
