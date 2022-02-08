@@ -106,7 +106,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 
 ## Using a configuration
-To use the library, you'll need a Sensible account. If you don't have an account, please reach out to hello@sensible.so with a short description of your use case to start a free trial. 
+To use the library, you can sign up for a [free Sensible account](https://dev.sensible.so/register). 
 
 Once you have a Sensible account, copy and paste the configuration you want to use into your configuration editor and publish it. Upload PDFs corresponding to the configuration, and changes field names, add fields, or remove fields to extract the data you want from your PDFs.
 
