@@ -20,6 +20,40 @@
     {
       "id": "producer",
       "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "producer",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "producer",
+      "method": {
+        "id": "box",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "producer",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "producer_address",
+      "method": {
         "id": "box",
         "position": "right"
       },
@@ -36,6 +70,24 @@
     },
     {
       "id": "insured",
+      "method": {
+        "id": "box",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "insured",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insured_address",
+      "type": "address",
       "method": {
         "id": "box",
         "position": "right"
@@ -92,6 +144,26 @@
       }
     },
     {
+      "id": "contact.phone",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "wordFilters": [
+          "phone"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "ext):",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "contact.fax",
       "method": {
         "id": "box",
@@ -112,9 +184,46 @@
       }
     },
     {
+      "id": "contact.fax",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "no):",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "contact.email",
       "method": {
         "id": "box",
+        "position": "right",
+        "wordFilters": [
+          "e-mail"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "address:",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact.email",
+      "method": {
+        "id": "label",
         "position": "right",
         "wordFilters": [
           "e-mail"
@@ -448,7 +557,7 @@
       }
     },
     {
-      "id": "coverages.general_aggregate_appies.policy_1",
+      "id": "coverages.general_aggregate_applies.policy_1",
       "method": {
         "id": "checkbox",
         "position": "left"
@@ -469,7 +578,7 @@
       }
     },
     {
-      "id": "coverages.general_aggregate_appies.project_1",
+      "id": "coverages.general_aggregate_applies.project_1",
       "method": {
         "id": "checkbox",
         "position": "left"
@@ -490,7 +599,7 @@
       }
     },
     {
-      "id": "coverages.general_aggregate_appies.location_1",
+      "id": "coverages.general_aggregate_applies.location_1",
       "method": {
         "id": "checkbox",
         "position": "left"
@@ -511,7 +620,7 @@
       }
     },
     {
-      "id": "coverages.general_aggregate_appies.other_1",
+      "id": "coverages.general_aggregate_applies.other_1",
       "method": {
         "id": "checkbox",
         "position": "left"
@@ -681,6 +790,29 @@
       }
     },
     {
+      "id": "coverages.limits.each_occurrence_1",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "limits",
+          "type": "equals"
+        },
+        "match": {
+          "text": "each occurrence",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "damage to",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "coverages.limits.damage_to_rented_premises_1",
       "type": "currency",
       "method": {
@@ -702,6 +834,29 @@
         },
         "end": {
           "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.damage_to_rented_premises_1",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "limits",
+          "type": "equals"
+        },
+        "match": {
+          "text": "premises",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "med",
           "type": "startsWith"
         }
       }
@@ -811,6 +966,29 @@
       }
     },
     {
+      "id": "coverages.limits.products_completed_aggregate_1",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "/op agg",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "combined",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "coverages.insurer_letter_2",
       "method": {
         "id": "box",
@@ -868,7 +1046,7 @@
           "type": "startsWith"
         },
         "match": {
-          "text": "autos only",
+          "text": "all owned",
           "type": "endsWith"
         },
         "end": {
@@ -910,7 +1088,7 @@
           "type": "startsWith"
         },
         "match": {
-          "text": "hired",
+          "text": "hired autos",
           "type": "endsWith"
         },
         "end": {
@@ -1714,6 +1892,27 @@
         },
         "match": {
           "text": "statute",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.per_statute_4",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "tory limits",
           "type": "endsWith"
         },
         "end": {
