@@ -1455,7 +1455,7 @@
       }
     },
     {
-      "id": "contact_information",
+      "id": "_contact_information",
       "type": "table",
       "anchor": {
         "match": {
@@ -3572,6 +3572,17 @@
           "text": "national producer number",
           "type": "startsWith"
         }
+      }
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "contact_information",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_contact_information"
+        ]
       }
     }
   ]
