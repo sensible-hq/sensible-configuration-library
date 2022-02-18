@@ -217,13 +217,10 @@
     },
     {
       "id": "agency.office_phone",
+      "type": "phoneNumber",
       "method": {
         "id": "box",
-        "position": "right",
-        "wordFilters": [
-          "office",
-          "phone"
-        ]
+        "position": "right"
       },
       "anchor": {
         "match": {
@@ -234,15 +231,10 @@
     },
     {
       "id": "agency.office_phone",
+      "type": "phoneNumber",
       "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "right",
-          "width": 2.4,
-          "offsetX": 0
-        }
+        "id": "box",
+        "position": "right"
       },
       "anchor": {
         "match": {
@@ -253,15 +245,10 @@
     },
     {
       "id": "agency.mobile_phone",
+      "type": "phoneNumber",
       "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "right",
-          "offsetX": 0,
-          "width": 2.75
-        }
+        "id": "box",
+        "position": "right"
       },
       "anchor": {
         "start": {
@@ -280,8 +267,9 @@
     },
     {
       "id": "agency.fax",
+      "type": "phoneNumber",
       "method": {
-        "id": "label",
+        "id": "box",
         "position": "right"
       },
       "anchor": {
@@ -289,15 +277,11 @@
           {
             "text": "producer name",
             "type": "includes"
-          },
-          {
-            "text": "fax",
-            "type": "includes"
           }
         ],
         "match": {
-          "text": "no):",
-          "type": "endsWith"
+          "text": "fax",
+          "type": "startsWith"
         }
       }
     },
@@ -418,6 +402,7 @@
     },
     {
       "id": "applicant.office_phone",
+      "type": "phoneNumber",
       "method": {
         "id": "box",
         "position": "right"
@@ -431,6 +416,7 @@
     },
     {
       "id": "applicant.mobile_phone",
+      "type": "phoneNumber",
       "method": {
         "id": "box",
         "position": "right"
@@ -1141,7 +1127,7 @@
       }
     },
     {
-      "id": "policy_information.employers_liability_line_1",
+      "id": "policy_information.employers_liability_each_accident",
       "type": "currency",
       "anchor": {
         "start": {
@@ -1163,7 +1149,7 @@
       }
     },
     {
-      "id": "policy_information.employers_liability_line_1",
+      "id": "policy_information.employers_liability_each_accident",
       "type": "currency",
       "anchor": {
         "start": [
@@ -1188,7 +1174,7 @@
       }
     },
     {
-      "id": "policy_information.employers_liability_line_2",
+      "id": "policy_information.employers_liability_disease_policy_limit",
       "type": "currency",
       "anchor": {
         "start": {
@@ -1210,7 +1196,7 @@
       }
     },
     {
-      "id": "policy_information.employers_liability_line_2",
+      "id": "policy_information.employers_liability_disease_policy_limit",
       "type": "currency",
       "anchor": {
         "start": [
@@ -1235,7 +1221,7 @@
       }
     },
     {
-      "id": "policy_information.employers_liability_line_3",
+      "id": "policy_information.employers_liability_disease_each_employee",
       "type": "currency",
       "anchor": {
         "start": {
@@ -1257,7 +1243,7 @@
       }
     },
     {
-      "id": "policy_information.employers_liability_line_3",
+      "id": "policy_information.employers_liability_disease_each_employee",
       "type": "currency",
       "anchor": {
         "start": [
@@ -1320,7 +1306,7 @@
       }
     },
     {
-      "id": "policy_information.deductible.idemnity",
+      "id": "policy_information.deductible.indemnity",
       "method": {
         "id": "checkbox",
         "position": "left"
@@ -1331,7 +1317,7 @@
           "type": "startsWith"
         },
         "match": {
-          "text": "idemnity",
+          "text": "indemnity",
           "type": "includes"
         }
       }
@@ -1555,7 +1541,7 @@
       }
     },
     {
-      "id": "contact_information",
+      "id": "_contact_information",
       "type": "table",
       "anchor": {
         "match": {
@@ -1761,50 +1747,362 @@
       "id": "premium_table.total.factor",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
+        "position": "left",
+        "offsetX": 1.7
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "total",
-          "type": "startsWith"
+          "type": "equals"
         },
         "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
     },
     {
-      "id": "premium_table.total.factor",
+      "id": "premium_table.increased_limits.factor",
       "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
-          "text": "total",
+          "text": "increased limits",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.deductible.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "deductible",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.experience_or_merit_modification.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "experience or",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.terrorism.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "terrorism",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.catastrophe.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "catastrophe",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.assigned_risk_subcharge.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "assigned risk",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.arap.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "arap",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.add_for_min_premium.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "add for",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.schedule_rating.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "schedule rating",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.ccap.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "ccpap",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.standard_premium.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "standard premium",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.premium_discount.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "premium discount",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -1814,209 +2112,55 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "total",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
     },
     {
-      "id": "premium_table.total.factored_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "total",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.increased_limits.factor",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "increased limits",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.increased_limits.factor",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "total",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.increased_limits.factored_premium",
+      "id": "premium_table.increased_limit.factored_premium",
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
-          "text": "increased limits",
+          "text": "increased limit",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.increased_limits.factored_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "increased limits",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.deductible.factor",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "deductible",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.deductible.factor",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "deductible",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -2026,103 +2170,26 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "deductible",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.deductible.factored_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "deductible",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.experience_or_merit_modification.factor",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "experience or merit",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.experience_or_merit_modification.factor",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "experience or merit",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -2132,103 +2199,26 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
-          "text": "experience or merit",
+          "text": "experience or",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.experience_or_merit_modification.factored_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "experience or merit",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.terrorism.factor",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "terrorism",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.terrorism.factor",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "terrorism",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -2238,103 +2228,26 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "terrorism",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.terrorism.factored_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "terrorism",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.catastrophe.factor",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "catastrophe",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.catastrophe.factor",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "catastrophe",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -2344,209 +2257,55 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "catastrophe",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
     },
     {
-      "id": "premium_table.catastrophe.factored_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "catastrophe",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.assigned_risk_surcharge.factor",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "assigned risk surcharge",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.assigned_risk_surcharge.factor",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "assigned risk surcharge",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.assigned_risk_surcharge.factored_premium",
+      "id": "premium_table.assigned_risk_subcharge.factored_premium",
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
-          "text": "assigned risk surcharge",
+          "text": "assigned risk",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.assigned_risk_surcharge.factored_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "assigned risk surcharge",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.arap.factor",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "arap",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.arap.factor",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "arap",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -2556,103 +2315,55 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "arap",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
     },
     {
-      "id": "premium_table.arap.factored_premium",
+      "id": "premium_table.add_for_min_premium.factored_premium",
       "type": "currency",
       "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "arap",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.schedule_rating.factor",
-      "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
-          "text": "schedule rating",
+          "text": "add for min",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.schedule_rating.factor",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "schedule rating",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -2662,103 +2373,26 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "schedule rating",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.schedule_rating.factored_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "schedule rating",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.ccpap.factor",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "ccpap",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.ccpap.factor",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "ccpap",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -2768,103 +2402,26 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "ccpap",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.ccpap.factored_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "ccpap",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.standard_premium.factor",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "standard premium",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.standard_premium.factor",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "standard premium",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -2874,103 +2431,26 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "standard premium",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.standard_premium.factored_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "standard premium",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.premium_discount.factor",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "premium discount",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.premium_discount.factor",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "premium discount",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -2980,51 +2460,26 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "premium discount",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.premium_discount.factored_premium",
-      "type": "currency",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "premium discount",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -3033,50 +2488,22 @@
       "id": "premium_table.expense_constant.factor",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
+        "position": "left",
+        "offsetX": 1.7
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "expense constant",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.expense_constant.factor",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "expense constant",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -3086,103 +2513,55 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "expense constant",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
     },
     {
-      "id": "premium_table.expense_constant.factored_premium",
+      "id": "premium_table.taxes_and_assessments.factor",
       "type": "currency",
       "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "expense constant",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.taxes_and_assessments.factor",
-      "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
+        "position": "left",
+        "offsetX": 1.7
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "taxes",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.taxes_and_assessments.factor",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 1.6,
-          "width": 0.6
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "taxes",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -3192,51 +2571,126 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 2
-        }
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "taxes",
           "type": "startsWith"
         },
         "end": {
-          "text": "total estimated annual premium",
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
     },
     {
-      "id": "premium_table.taxes_and_assessments.factored_premium",
+      "id": "premium_table.estimated_annual_premium.factored_premium",
       "type": "currency",
       "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first",
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": 2.2,
-          "width": 1.69
-        }
+        "id": "box",
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
         "match": {
-          "text": "taxes",
+          "text": "estimated annual premium",
           "type": "startsWith"
-        },
-        "end": {
-          "text": "total estimated annual premium",
+        }
+      }
+    },
+    {
+      "id": "premium_table.total_estimated_annual_premium",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 2.3
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "total est annual premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.minimum_premium",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "minimum premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.deposit_premium",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 2.3
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "deposit premium",
           "type": "startsWith"
         }
       }
@@ -3386,7 +2840,7 @@
       }
     },
     {
-      "id": "general_information.hazerdous_material",
+      "id": "general_information.hazardous_material",
       "method": {
         "id": "box",
         "position": "right",
@@ -4410,6 +3864,17 @@
           "text": "national producer number",
           "type": "startsWith"
         }
+      }
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "contact_information",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_contact_information"
+        ]
       }
     }
   ]

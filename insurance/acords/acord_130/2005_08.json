@@ -173,53 +173,73 @@
           }
         }
       ]
+    },
+    {
+      "id": "contact_information",
+      "range": {
+        "anchor": {
+          "start": {
+            "text": "contact information",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "includes",
+            "text": "Phone:"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "Remarks"
+          }
+        }
+      },
+      "fields": [
+        {
+          "id": "type",
+          "anchor": "phone:",
+          "method": {
+            "id": "box",
+            "position": "left",
+            "offsetX": -0.2
+          }
+        },
+        {
+          "id": "phone",
+          "anchor": "phone:",
+          "method": {
+            "id": "box",
+            "position": "right"
+          }
+        },
+        {
+          "id": "name",
+          "anchor": "name",
+          "method": {
+            "id": "box",
+            "position": "right"
+          }
+        },
+        {
+          "id": "email",
+          "anchor": "e-mail",
+          "method": {
+            "id": "box",
+            "position": "right"
+          }
+        }
+      ]
     }
   ],
   "fields": [
     {
       "id": "agency.name_and_address",
       "method": {
-        "id": "documentRange",
-        "stop": {
-          "text": "producer",
-          "type": "startsWith"
-        },
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": -0.1,
-          "width": 3
-        }
-      },
-      "anchor": {
-        "match": {
-          "text": "agency name and address",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "agency.producer_name",
-      "method": {
-        "id": "label",
+        "id": "box",
         "position": "right"
       },
       "anchor": {
         "match": {
-          "text": "producer name:",
+          "text": "agency",
           "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "agency.cs_representative_name",
-      "method": {
-        "id": "label",
-        "position": "right"
-      },
-      "anchor": {
-        "match": {
-          "text": "cs representative",
-          "type": "includes"
         }
       }
     },
@@ -232,45 +252,20 @@
       },
       "anchor": {
         "match": {
-          "text": "ext):",
+          "text": "ext)",
           "type": "includes"
         }
       }
     },
     {
-      "id": "agency.mobile_phone",
+      "id": "agency.fax",
       "type": "phoneNumber",
       "method": {
         "id": "box",
         "position": "right"
       },
       "anchor": {
-        "start": {
-          "text": "producer name",
-          "type": "includes"
-        },
-        "match": {
-          "text": "phone:",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "status of submission",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "agency.fax",
-      "method": {
-        "id": "label",
-        "position": "right"
-      },
-      "anchor": {
         "start": [
-          {
-            "text": "producer name",
-            "type": "includes"
-          },
           {
             "text": "fax",
             "type": "includes"
@@ -352,7 +347,7 @@
       },
       "anchor": {
         "match": {
-          "text": "company:",
+          "text": "company",
           "type": "startsWith"
         }
       }
@@ -365,7 +360,7 @@
       },
       "anchor": {
         "match": {
-          "text": "underwriter:",
+          "text": "underwriter",
           "type": "startsWith"
         }
       }
@@ -378,7 +373,7 @@
       },
       "anchor": {
         "match": {
-          "text": "applicant name:",
+          "text": "applicant name",
           "type": "startsWith"
         }
       }
@@ -391,35 +386,7 @@
       },
       "anchor": {
         "match": {
-          "text": "applicant name:",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "applicant.office_phone",
-      "type": "phoneNumber",
-      "method": {
-        "id": "box",
-        "position": "right"
-      },
-      "anchor": {
-        "match": {
-          "text": "office phone:",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "applicant.mobile_phone",
-      "type": "phoneNumber",
-      "method": {
-        "id": "box",
-        "position": "right"
-      },
-      "anchor": {
-        "match": {
-          "text": "mobile phone:",
+          "text": "applicant name",
           "type": "startsWith"
         }
       }
@@ -428,86 +395,16 @@
       "id": "applicant.address",
       "type": "address",
       "method": {
-        "id": "box",
-        "position": "below"
+        "id": "region",
+        "start": "right",
+        "offsetX": 0.1,
+        "offsetY": -0.1,
+        "height": 0.45,
+        "width": 2.5
       },
       "anchor": {
         "match": {
-          "text": "mailing address",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "applicant.address",
-      "type": "address",
-      "method": {
-        "id": "documentRange",
-        "stop": {
-          "type": "startsWith",
-          "text": "e-mail address"
-        },
-        "xRangeFilter": {
-          "start": "left",
-          "offsetX": -0.2,
-          "width": 2
-        }
-      },
-      "anchor": {
-        "match": {
-          "text": "mailing address",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "applicant.years_in_business",
-      "method": {
-        "id": "box",
-        "position": "right"
-      },
-      "anchor": {
-        "match": {
-          "text": "yrs in bus:",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "applicant.sic",
-      "method": {
-        "id": "box",
-        "position": "right"
-      },
-      "anchor": {
-        "match": {
-          "text": "sic:",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "applicant.naics",
-      "method": {
-        "id": "box",
-        "position": "right"
-      },
-      "anchor": {
-        "match": {
-          "text": "naics:",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "applicant.website_address",
-      "method": {
-        "id": "box",
-        "position": "right"
-      },
-      "anchor": {
-        "match": {
-          "text": "address:",
+          "text": "mailing",
           "type": "startsWith"
         }
       }
@@ -520,20 +417,59 @@
       },
       "anchor": {
         "match": {
-          "text": "e-mail address:",
+          "text": "e-mail",
           "type": "startsWith"
         }
       }
     },
     {
-      "id": "applicant.org_type.sole_proprietorship",
+      "id": "applicant.years_in_business",
+      "method": {
+        "id": "box",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "yrs in bus",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "applicant.sic",
+      "method": {
+        "id": "box",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "sic",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "applicant.naics",
+      "method": {
+        "id": "box",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "naics",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "applicant.org_type.individual",
       "method": {
         "id": "checkbox",
         "position": "left"
       },
       "anchor": {
         "match": {
-          "text": "sole proprietor",
+          "text": "individual",
           "type": "startsWith"
         }
       }
@@ -667,7 +603,7 @@
       },
       "anchor": {
         "match": {
-          "text": "id number:",
+          "text": "id number",
           "type": "startsWith"
         }
       }
@@ -686,14 +622,14 @@
       }
     },
     {
-      "id": "applicant.nccl_risk_id_number",
+      "id": "applicant.ncci_risk_id_number",
       "method": {
         "id": "box",
         "position": "below"
       },
       "anchor": {
         "match": {
-          "text": "ncci risk",
+          "text": "ncci id",
           "type": "startsWith"
         }
       }
@@ -834,9 +770,8 @@
     {
       "id": "payment_plan.semi_annual",
       "method": {
-        "id": "checkbox",
-        "position": "right",
-        "offsetX": 0.45
+        "id": "nearestCheckbox",
+        "position": "right"
       },
       "anchor": {
         "start": {
@@ -862,6 +797,45 @@
         },
         "match": {
           "text": "quarterly",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "payment_plan.custom_label",
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": 0.5,
+        "offsetY": -0.1,
+        "width": 0.9,
+        "height": 0.2
+      },
+      "anchor": {
+        "start": {
+          "text": "payment plan",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "annual",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "payment_plan.custom",
+      "method": {
+        "id": "checkbox",
+        "position": "right",
+        "offsetX": 0.4
+      },
+      "anchor": {
+        "start": {
+          "text": "payment plan",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "annual",
           "type": "startsWith"
         }
       }
@@ -923,7 +897,8 @@
       "method": {
         "id": "checkbox",
         "position": "left",
-        "offsetY": 0.5
+        "offsetY": 0.2,
+        "offsetX": -0.1
       },
       "anchor": {
         "start": {
@@ -931,7 +906,7 @@
           "type": "endsWith"
         },
         "match": {
-          "text": "audit",
+          "text": "semi-annual",
           "type": "startsWith"
         }
       }
@@ -947,7 +922,7 @@
       },
       "method": {
         "id": "fixedTable",
-        "columnCount": 3,
+        "columnCount": 2,
         "columns": [
           {
             "id": "location_number",
@@ -956,13 +931,8 @@
             "isRequired": true
           },
           {
-            "id": "highest_floor",
-            "index": 1,
-            "type": "number"
-          },
-          {
             "id": "address",
-            "index": 2
+            "index": 1
           }
         ],
         "stop": {
@@ -1099,6 +1069,7 @@
     },
     {
       "id": "policy_information.employers_liability_each_accident",
+      "type": "currency",
       "anchor": {
         "start": {
           "text": "policy information",
@@ -1120,6 +1091,7 @@
     },
     {
       "id": "policy_information.employers_liability_disease_policy_limit",
+      "type": "currency",
       "anchor": {
         "start": {
           "text": "policy information",
@@ -1141,6 +1113,7 @@
     },
     {
       "id": "policy_information.employers_liability_disease_each_employee",
+      "type": "currency",
       "anchor": {
         "start": {
           "text": "policy information",
@@ -1199,7 +1172,7 @@
       }
     },
     {
-      "id": "policy_information.deductible.indemnity",
+      "id": "policy_information.deductible.idemnity",
       "method": {
         "id": "checkbox",
         "position": "left"
@@ -1231,8 +1204,13 @@
           "type": "includes"
         },
         "match": {
-          "text": "amount",
-          "type": "startsWith"
+          "text": "AMOUNT",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        },
+        "end": {
+          "text": "rating information",
+          "type": "includes"
         }
       }
     },
@@ -1378,23 +1356,31 @@
       "id": "policy_information.specify_additional_coverages",
       "method": {
         "id": "box",
-        "position": "below"
+        "position": "below",
+        "lineFilters": [
+          {
+            "text": "specify additional coverages",
+            "type": "includes"
+          }
+        ]
       },
       "anchor": {
         "start": [
           {
-            "text": "policy information",
-            "type": "includes"
-          },
-          {
-            "text": "other coverages",
+            "text": "rating information",
             "type": "includes"
           }
         ],
-        "match": {
-          "text": "specify additional",
-          "type": "startsWith"
-        }
+        "match": [
+          {
+            "text": "specify additional",
+            "type": "startsWith"
+          },
+          {
+            "text": "endorsements",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -1448,47 +1434,6 @@
         "match": {
           "text": "total deposit premium all states",
           "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "_contact_information",
-      "type": "table",
-      "anchor": {
-        "match": {
-          "text": "contact information",
-          "type": "equals"
-        }
-      },
-      "method": {
-        "id": "fixedTable",
-        "startOnRow": 1,
-        "columnCount": 5,
-        "columns": [
-          {
-            "id": "type",
-            "index": 0
-          },
-          {
-            "id": "name",
-            "index": 1
-          },
-          {
-            "id": "office_phone",
-            "index": 2
-          },
-          {
-            "id": "mobile_phone",
-            "index": 3
-          },
-          {
-            "id": "email",
-            "index": 4
-          }
-        ],
-        "stop": {
-          "text": "individuals included",
-          "type": "includes"
         }
       }
     },
@@ -1557,83 +1502,70 @@
       }
     },
     {
-      "id": "rating_information.state",
-      "anchor": {
-        "match": {
-          "type": "startsWith",
-          "text": "rating information - state:"
-        }
-      },
-      "method": {
-        "id": "label",
-        "position": "right"
-      }
-    },
-    {
       "id": "rating_information.table",
       "anchor": {
         "match": {
-          "text": "rating information - state",
-          "type": "startsWith"
+          "text": "rating information",
+          "type": "equals"
         }
       },
       "type": "table",
       "method": {
         "id": "fixedTable",
-        "columnCount": 11,
+        "columnCount": 10,
         "columns": [
           {
+            "id": "state",
+            "index": 0
+          },
+          {
             "id": "location_number",
-            "index": 0,
+            "index": 1,
             "type": "number",
             "isRequired": true
           },
           {
             "id": "class_code",
-            "index": 1,
+            "index": 2,
             "type": "number"
           },
           {
             "id": "description_code",
-            "index": 2
-          },
-          {
-            "id": "category",
             "index": 3
           },
           {
-            "id": "full_time_employees",
-            "index": 4,
-            "type": "number"
+            "id": "category",
+            "index": 4
           },
           {
-            "id": "part_time_employees",
+            "id": "full_time_employees",
             "index": 5,
             "type": "number"
           },
           {
-            "id": "sic",
-            "index": 6
-          },
-          {
-            "id": "naics",
-            "index": 7
+            "id": "part_time_employees",
+            "index": 6,
+            "type": "number"
           },
           {
             "id": "estimated_annual_remuneration_payroll",
-            "index": 8,
+            "index": 7,
             "type": "currency"
           },
           {
             "id": "rate",
-            "index": 9
+            "index": 8
           },
           {
             "id": "estimated_annual_manual_premium",
-            "index": 10,
+            "index": 9,
             "type": "currency"
           }
-        ]
+        ],
+        "stop": {
+          "text": "factored premium",
+          "type": "includes"
+        }
       }
     },
     {
@@ -1644,12 +1576,12 @@
       },
       "anchor": {
         "start": {
-          "text": "Premium",
+          "text": "rating information",
           "type": "startsWith"
         },
         "match": {
           "text": "state:",
-          "type": "includes"
+          "type": "startsWith"
         }
       }
     },
@@ -1766,6 +1698,34 @@
       }
     },
     {
+      "id": "premium_table.loss_constant.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "loss constant",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "premium_table.assigned_risk_subcharge.factor",
       "method": {
         "id": "box",
@@ -1813,6 +1773,34 @@
         ],
         "match": {
           "text": "arap",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.add_for_min_premium.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "add for",
           "type": "startsWith"
         },
         "end": {
@@ -2050,6 +2038,35 @@
       }
     },
     {
+      "id": "premium_table.loss_constant.factored_premium",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 2.3
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "loss constant",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "premium_table.assigned_risk_subcharge.factored_premium",
       "type": "currency",
       "method": {
@@ -2099,6 +2116,35 @@
         ],
         "match": {
           "text": "arap",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.add_for_min_premium.factored_premium",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 2.3
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "add for min",
           "type": "startsWith"
         },
         "end": {
@@ -2242,7 +2288,7 @@
           "type": "startsWith"
         },
         "end": {
-          "text": "deposit premium",
+          "text": "estimated annual premium",
           "type": "startsWith"
         }
       }
@@ -2271,7 +2317,7 @@
           "type": "startsWith"
         },
         "end": {
-          "text": "deposit premium",
+          "text": "estimated annual premium",
           "type": "startsWith"
         }
       }
@@ -2293,14 +2339,14 @@
           {
             "text": "factored premium",
             "type": "startsWith"
-          }
+          },
         ],
         "match": {
           "text": "taxes",
           "type": "startsWith"
         },
         "end": {
-          "text": "deposit premium",
+          "text": "estimated annual premium",
           "type": "startsWith"
         }
       }
@@ -2322,14 +2368,39 @@
           {
             "text": "factored premium",
             "type": "startsWith"
-          }
+          },
         ],
         "match": {
           "text": "taxes",
           "type": "startsWith"
         },
         "end": {
-          "text": "deposit premium",
+          "text": "estimated annual premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.estimated_annual_premium.factored_premium",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 2.3
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "estimated annual premium",
           "type": "startsWith"
         }
       }
@@ -2339,15 +2410,22 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "below"
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "Premium",
-          "type": "equals"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
         "match": {
-          "text": "total estimated annual premium",
+          "text": "total est annual premium",
           "type": "startsWith"
         }
       }
@@ -2357,13 +2435,20 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "below"
+        "position": "left",
+        "offsetX": 1.7
       },
       "anchor": {
-        "start": {
-          "text": "Premium",
-          "type": "equals"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "minimum premium",
           "type": "startsWith"
@@ -2375,13 +2460,20 @@
       "type": "currency",
       "method": {
         "id": "box",
-        "position": "below"
+        "position": "left",
+        "offsetX": 2.3
       },
       "anchor": {
-        "start": {
-          "text": "Premium",
-          "type": "equals"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "deposit premium",
           "type": "startsWith"
@@ -2392,12 +2484,11 @@
       "id": "remarks",
       "method": {
         "id": "box",
-        "position": "below",
-        "offsetY": 0.3
+        "position": "below"
       },
       "anchor": {
         "start": {
-          "text": "Premium",
+          "text": "General information",
           "type": "equals"
         },
         "match": {
@@ -2413,11 +2504,10 @@
     {
       "id": "nature_of_business_and_description_of_operations",
       "method": {
-        "id": "box",
-        "position": "below",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 1
+        "id": "documentRange",
+        "stop": {
+          "type": "startsWith",
+          "text": "General Information"
         }
       },
       "anchor": {
@@ -2432,8 +2522,8 @@
           }
         ],
         "match": {
-          "text": "give comments and description",
-          "type": "startsWith"
+          "text": "MACHINERY, SUB-CONTRACTS",
+          "type": "includes"
         }
       }
     },
@@ -2446,26 +2536,6 @@
           "direction": "right",
           "number": 1
         }
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "does applicant own, operate or lease aircraft",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "general_information.aircraft_or_watercraft_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "1"
-        ]
       },
       "anchor": {
         "start": {
@@ -2500,30 +2570,6 @@
       }
     },
     {
-      "id": "general_information.hazerdous_material_explanation",
-      "method": {
-        "id": "region",
-        "start": "left",
-        "width": 7.3,
-        "height": 0.17,
-        "offsetX": -0.2,
-        "offsetY": 0.05,
-        "wordFilters": [
-          "2"
-        ]
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "transporting of hazardous material? (e.g. landfills, wastes, fuel tanks, etc)",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
       "id": "general_information.underground_work",
       "method": {
         "id": "box",
@@ -2532,26 +2578,6 @@
           "direction": "right",
           "number": 1
         }
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "15 feet?",
-          "type": "endsWith"
-        }
-      }
-    },
-    {
-      "id": "general_information.underground_work_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "3"
-        ]
       },
       "anchor": {
         "start": {
@@ -2586,26 +2612,6 @@
       }
     },
     {
-      "id": "general_information.work_over_water_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "4"
-        ]
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "any work performed on barges, vessels, docks, bridge over water?",
-          "type": "includes"
-        }
-      }
-    },
-    {
       "id": "general_information.other_business_engagement",
       "method": {
         "id": "box",
@@ -2614,26 +2620,6 @@
           "direction": "right",
           "number": 1
         }
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "is applicant engaged in any other type of business?",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "general_information.other_business_engagement_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "5"
-        ]
       },
       "anchor": {
         "start": {
@@ -2668,26 +2654,6 @@
       }
     },
     {
-      "id": "general_information.subcontractors_used_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "6"
-        ]
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "are sub-contractors used?",
-          "type": "includes"
-        }
-      }
-    },
-    {
       "id": "general_information.work_sublet_without_insurance",
       "method": {
         "id": "box",
@@ -2703,27 +2669,7 @@
           "type": "equals"
         },
         "match": {
-          "text": "any work sublet without certificates of insurance?",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "general_information.work_sublet_without_insurance_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "7"
-        ]
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "any work sublet without certificates of insurance?",
+          "text": "any work sublet without certificates of",
           "type": "includes"
         }
       }
@@ -2737,26 +2683,6 @@
           "direction": "right",
           "number": 1
         }
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "is a written safety program in operation?",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "general_information.written_safety_program_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "8"
-        ]
       },
       "anchor": {
         "start": {
@@ -2791,26 +2717,6 @@
       }
     },
     {
-      "id": "general_information.group_transportation_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "9"
-        ]
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "any group transportation provided?",
-          "type": "includes"
-        }
-      }
-    },
-    {
       "id": "general_information.employees_under_16_over_60",
       "method": {
         "id": "box",
@@ -2819,26 +2725,6 @@
           "direction": "right",
           "number": 1
         }
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "any employees under 16 or over 60 years of age?",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "general_information.employees_under_16_over_60_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "10"
-        ]
       },
       "anchor": {
         "start": {
@@ -2873,26 +2759,6 @@
       }
     },
     {
-      "id": "general_information.seasonal_employees_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "11"
-        ]
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "any seasonal employees?",
-          "type": "includes"
-        }
-      }
-    },
-    {
       "id": "general_information.volunteer_or_donated_labor",
       "method": {
         "id": "box",
@@ -2901,26 +2767,6 @@
           "direction": "right",
           "number": 1
         }
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "is there any volunteer or donated labor?",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "general_information.volunteer_or_donated_labor_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "12"
-        ]
       },
       "anchor": {
         "start": {
@@ -2955,26 +2801,6 @@
       }
     },
     {
-      "id": "general_information.employees_with_physical_handicaps_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "13"
-        ]
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "any employees with physical handicaps?",
-          "type": "includes"
-        }
-      }
-    },
-    {
       "id": "general_information.employees_out_of_state",
       "method": {
         "id": "box",
@@ -2983,26 +2809,6 @@
           "direction": "right",
           "number": 1
         }
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "do employees travel out of state?",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "general_information.employees_out_of_state_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "14"
-        ]
       },
       "anchor": {
         "start": {
@@ -3037,26 +2843,6 @@
       }
     },
     {
-      "id": "general_information.sponsors_athletic_teams_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "15"
-        ]
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "are athletic teams sponsored?",
-          "type": "includes"
-        }
-      }
-    },
-    {
       "id": "general_information.requires_employee_physical",
       "method": {
         "id": "box",
@@ -3065,26 +2851,6 @@
           "direction": "right",
           "number": 1
         }
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "are physicals required after offers of employment are made?",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "general_information.requires_employee_physical_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "16"
-        ]
       },
       "anchor": {
         "start": {
@@ -3119,26 +2885,6 @@
       }
     },
     {
-      "id": "general_information.has_other_insurance_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "17"
-        ]
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "any other insurance with this insurer?",
-          "type": "includes"
-        }
-      }
-    },
-    {
       "id": "general_information.prior_college_declined",
       "method": {
         "id": "box",
@@ -3147,26 +2893,6 @@
           "direction": "right",
           "number": 1
         }
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "any prior coverage declined",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "general_information.prior_college_declined_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "18"
-        ]
       },
       "anchor": {
         "start": {
@@ -3201,26 +2927,6 @@
       }
     },
     {
-      "id": "general_information.provides_employee_health_plans_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "19"
-        ]
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "are employee health plans provided?",
-          "type": "includes"
-        }
-      }
-    },
-    {
       "id": "general_information.employees_perform_for_other_businesses",
       "method": {
         "id": "box",
@@ -3236,27 +2942,7 @@
           "type": "equals"
         },
         "match": {
-          "text": "do any employees perform work for other businesses or subsidiaries?",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "general_information.employees_perform_for_other_businesses_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "20"
-        ]
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "do any employees perform work for other businesses or subsidiaries?",
+          "text": "labor interchange with",
           "type": "includes"
         }
       }
@@ -3270,26 +2956,6 @@
           "direction": "right",
           "number": 1
         }
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "do you lease employees to or from other employers?",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "general_information.leases_employees_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "21"
-        ]
       },
       "anchor": {
         "start": {
@@ -3324,26 +2990,6 @@
       }
     },
     {
-      "id": "general_information.employees_work_from_home_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "22"
-        ]
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "do any employees predominantly work at home?",
-          "type": "includes"
-        }
-      }
-    },
-    {
       "id": "general_information.tax_liens_or_bankruptcy",
       "method": {
         "id": "box",
@@ -3352,26 +2998,6 @@
           "direction": "right",
           "number": 1
         }
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "any tax liens or bankruptcy",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "general_information.tax_liens_or_bankruptcy_explanation",
-      "method": {
-        "id": "box",
-        "position": "below",
-        "wordFilters": [
-          "23"
-        ]
       },
       "anchor": {
         "start": {
@@ -3400,31 +3026,7 @@
           "type": "equals"
         },
         "match": {
-          "text": "if yes, explain including entity name",
-          "type": "includes"
-        }
-      }
-    },
-    {
-      "id": "general_information.undisputed_and_unpaid_workers_comp_explanation",
-      "method": {
-        "id": "region",
-        "start": "left",
-        "width": 7.3,
-        "height": 0.17,
-        "offsetX": -0.2,
-        "offsetY": 0.05,
-        "wordFilters": [
-          "24"
-        ]
-      },
-      "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
-        "match": {
-          "text": "if yes, explain including entity name",
+          "text": "commonly managed or owned",
           "type": "includes"
         }
       }
@@ -3432,12 +3034,16 @@
     {
       "id": "signature.applicant_signature",
       "method": {
-        "id": "box",
-        "position": "below"
+        "id": "signature",
+        "height": 0.1,
+        "width": 2.5,
+        "offsetX": 0,
+        "offsetY": 0.1,
+        "start": "left"
       },
       "anchor": {
         "start": {
-          "text": "signature",
+          "text": "remarks",
           "type": "startsWith"
         },
         "match": {
@@ -3450,30 +3056,30 @@
       "id": "signature.date",
       "method": {
         "id": "box",
-        "position": "below"
+        "position": "right"
       },
       "anchor": {
         "start": {
-          "text": "signature",
+          "text": "applicant's signature",
           "type": "startsWith"
         },
         "match": {
           "text": "date",
-          "type": "startsWith"
+          "type": "equals"
         }
       }
     },
     {
       "id": "signature.producer_signature",
       "method": {
-        "id": "box",
-        "position": "below"
+        "id": "signature",
+        "height": 0.1,
+        "width": 2.5,
+        "offsetX": 0,
+        "offsetY": 0.1,
+        "start": "left"
       },
       "anchor": {
-        "start": {
-          "text": "signature",
-          "type": "startsWith"
-        },
         "match": {
           "text": "producer's signature",
           "type": "startsWith"
@@ -3487,25 +3093,10 @@
         "position": "below"
       },
       "anchor": {
-        "start": {
-          "text": "signature",
-          "type": "startsWith"
-        },
         "match": {
           "text": "national producer number",
           "type": "startsWith"
         }
-      }
-    }
-  ],
-  "computed_fields": [
-    {
-      "id": "contact_information",
-      "method": {
-        "id": "zip",
-        "source_ids": [
-          "_contact_information"
-        ]
       }
     }
   ]
