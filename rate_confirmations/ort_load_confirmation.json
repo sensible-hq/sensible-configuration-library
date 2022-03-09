@@ -1,0 +1,542 @@
+{
+    "fields": [
+      {
+        "id": "load_id",
+        "anchor": {
+          "match": {
+            "text": "Load Number:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "rate",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "Total Cost",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        }
+      },
+      {
+        "id": "broker_mc",
+        "anchor": "not found on ort samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "broker_contact_name",
+        "anchor": {
+          "match": {
+            "text": "Phone",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "above"
+        }
+      },
+      {
+        "id": "broker_contact_phone",
+        "type": "phoneNumber",
+        "anchor": {
+          "match": {
+            "text": "Phone",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "left"
+        }
+      },
+      {
+        "id": "broker_contact_email",
+        "anchor": {
+          "match": {
+            "text": "Phone",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "load_mode",
+        "anchor": "not found on ort samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "trailer_type",
+        "anchor": {
+          "match": {
+            "text": "Equipment Type:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "Equipment Type: ([a-zA-Z ]+)"
+        }
+      },
+      {
+        "id": "trailer_size",
+        "anchor": {
+          "match": {
+            "text": "Equipment Type:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "[\\d]+"
+        }
+      },
+      {
+        "id": "temperature",
+        "anchor": "not found on ort samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "pallets",
+        "anchor": "not found on ort samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "size",
+        "anchor": "not found on ort samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "weight",
+        "type": "weight",
+        "anchor": {
+          "start": {
+            "text": "Shipment Information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "Weight",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "Carrier Fees",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetY": 0.3
+        }
+      },
+      {
+        "id": "pickup_weight",
+        "anchor": "not found on ort samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "shipper_name",
+        "match": "all",
+        "anchor": {
+          "match": {
+            "text": "Shipper Pickup",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "shipper_phone",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "Contact:",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "shipper_number",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper References",
+              "type": "startsWith"
+            },
+            {
+              "text": "Pickup/Delivery Number:",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "pickup_date",
+        "type": "date",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "Expected Date:",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "pickup_time",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "Appointment Time:",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "pickup_address",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper Pickup",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 0,
+          "offsetY": 0.3,
+          "height": 0.45,
+          "width": 2.8
+        }
+      },
+      {
+        "id": "pickup_zip_code",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper Pickup",
+              "type": "startsWith"
+            },
+            {
+              "type": "regex",
+              "pattern": "[A-Z]+ ([0-9].+$)"
+            }
+          ],
+          "end": "Expected Date"
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z]+ ([0-9].+$)"
+        }
+      },
+      {
+        "id": "pickup_instructions",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "text": "Shipper Pickup",
+              "type": "startsWith"
+            },
+            {
+              "text": "Pickup instructions:",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "includeAnchor": true,
+          "wordFilters": [
+            "Pickup Instructions:"
+          ],
+          "stop": {
+            "text": "Shipper References",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "consignee_name",
+        "match": "all",
+        "anchor": {
+          "match": {
+            "text": "Consignee Delivery",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "consignee_phone",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "text": "Consignee Delivery",
+              "type": "startsWith"
+            },
+            {
+              "text": "Contact:",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "consignee_number",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "text": "Consignee References",
+              "type": "startsWith"
+            },
+            {
+              "text": "Pickup/Delivery Number:",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "delivery_date",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "text": "Consignee Delivery",
+              "type": "startsWith"
+            },
+            {
+              "text": "Expected Date:",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "delivery_time",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "text": "Consignee Delivery",
+              "type": "startsWith"
+            },
+            {
+              "text": "Appointment Time:",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "dropoff_weight",
+        "anchor": "not found on ort samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "delivery_address",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "text": "Consignee Delivery",
+              "type": "startsWith"
+            },
+            {
+              "type": "regex",
+              "pattern": "^[a-zA-Z]+"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": {
+            "text": "Expected Date",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "delivery_zip_code",
+        "match": "all",
+        "anchor": {
+          "match": [
+            {
+              "text": "Consignee Delivery",
+              "type": "startsWith"
+            },
+            {
+              "type": "regex",
+              "pattern": "[A-Z]+ ([0-9].+$)"
+            }
+          ],
+          "end": "Expected Date"
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z]+ ([0-9].+$)"
+        }
+      },
+      {
+        "id": "delivery_instructions",
+        "match": "all",
+        "anchor": {
+          "match": {
+            "text": "Delivery instructions:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "includeAnchor": true,
+          "wordFilters": [
+            "Delivery Instructions:"
+          ],
+          "stop": {
+            "text": "Consignee References",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_notes",
+        "anchor": "not found on ort samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "carrier_name",
+        "anchor": {
+          "match": {
+            "text": "Carrier:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "Contact:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "trailer_id",
+        "anchor": "not found on ort samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "trucker_id",
+        "anchor": "not found on ort samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "broker_name",
+        "method": {
+          "id": "constant",
+          "value": "OpenRoad Transportation"
+        }
+      }
+    ]
+  }
