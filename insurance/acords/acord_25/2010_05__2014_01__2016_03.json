@@ -21,7 +21,10 @@
       "id": "producer",
       "method": {
         "id": "label",
-        "position": "below"
+        "position": "below",
+        "typeFilters": [
+          "address"
+        ]
       },
       "anchor": {
         "match": {
@@ -38,7 +41,10 @@
       "id": "producer",
       "method": {
         "id": "box",
-        "position": "right"
+        "position": "right",
+        "typeFilters": [
+          "address"
+        ]
       },
       "anchor": {
         "match": {
@@ -55,32 +61,22 @@
       "id": "producer_address",
       "type": "address",
       "method": {
-        "id": "box",
-        "position": "right"
-      },
-      "anchor": {
-        "match": [
-          {
-            "text": "producer",
-            "type": "startsWith"
-          },
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.05,
+        "width": 3.8,
+        "height": 0.7,
+        "lineFilters": [
           {
             "text": "Fax:",
-            "type": "startsWith",
-            "isCaseSensitive": true
+            "type": "includes"
+          },
+          {
+            "text": "Phone:",
+            "type": "includes"
           }
-        ],
-        "end": {
-          "text": "coverages",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "producer_address",
-      "method": {
-        "id": "box",
-        "position": "right"
+        ]
       },
       "anchor": {
         "match": {
@@ -102,8 +98,9 @@
       "anchor": {
         "match": [
           {
-            "text": "insured",
-            "type": "equals"
+            "text": "INSURED",
+            "type": "startsWith",
+            "isCaseSensitive": true
           }
         ],
         "end": {
@@ -116,12 +113,16 @@
       "id": "insured",
       "method": {
         "id": "box",
-        "position": "right"
+        "position": "right",
+        "typeFilters": [
+          "address"
+        ]
       },
       "anchor": {
         "match": {
-          "text": "insured",
-          "type": "equals"
+          "text": "INSURED",
+          "type": "startsWith",
+          "isCaseSensitive": true
         },
         "end": {
           "text": "coverages",
@@ -2020,7 +2021,7 @@
           "matches": [
             {
               "text": "y/n",
-              "type": "startsWith"
+              "type": "endsWith"
             },
             {
               "text": "y / n",
@@ -2613,8 +2614,17 @@
           "type": "startsWith"
         },
         "match": {
-          "text": "authorized representative",
-          "type": "startsWith"
+          "type": "any",
+          "matches": [
+            {
+            "text": "authorized representative",
+            "type": "startsWith"
+            },
+            {
+              "text": "authorized",
+              "type": "startsWith"
+            }
+          ]
         },
         "end": {
           "text": "acord",
