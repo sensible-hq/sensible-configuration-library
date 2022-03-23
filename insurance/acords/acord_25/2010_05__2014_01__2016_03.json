@@ -294,7 +294,7 @@
       },
       "anchor": {
         "match": {
-          "pattern": "insurer a:?",
+          "pattern": "insurer a ?:?",
           "type": "regex",
           "flags": "i"
         },
@@ -312,7 +312,7 @@
       },
       "anchor": {
         "match": {
-          "pattern": "insurer a:?",
+          "pattern": "insurer a ?:?",
           "type": "regex",
           "flags": "i"
         },
@@ -372,7 +372,7 @@
       },
       "anchor": {
         "match": {
-          "pattern": "insurer b:?",
+          "pattern": "insurer b ?:?",
           "type": "regex",
           "flags": "i"
         },
@@ -390,7 +390,7 @@
       },
       "anchor": {
         "match": {
-          "pattern": "insurer b:?",
+          "pattern": "insurer b ?:?",
           "type": "regex",
           "flags": "i"
         },
@@ -429,7 +429,7 @@
       },
       "anchor": {
         "match": {
-          "pattern": "insurer c:?",
+          "pattern": "insurer c ?:?",
           "type": "regex",
           "flags": "i"
         },
@@ -486,7 +486,7 @@
       },
       "anchor": {
         "match": {
-          "pattern": "insurer d:?",
+          "pattern": "insurer d ?:?",
           "type": "regex",
           "flags": "i"
         },
@@ -543,7 +543,7 @@
       },
       "anchor": {
         "match": {
-          "pattern": "insurer e:?",
+          "pattern": "insurer e ?:?",
           "type": "regex",
           "flags": "i"
         },
@@ -595,13 +595,14 @@
     {
       "id": "insurers_affording_coverage.insurer_f",
       "method": {
-        "id": "box",
+        "id": "label",
         "position": "right"
       },
       "anchor": {
         "match": {
-          "text": "insurer f",
-          "type": "startsWith"
+          "pattern": "insurer f ?:?",
+          "type": "regex",
+          "flags": "i"
         },
         "end": {
           "text": "coverages",
@@ -846,9 +847,9 @@
       "id": "coverages.subrogation_waived_1",
       "method": {
         "id": "box",
-        "position": "below",
+        "position": "right",
         "offsetY": 0.5,
-        "offsetX": 0.08
+        "offsetX": -0.08
       },
       "anchor": {
         "start": {
@@ -956,32 +957,6 @@
       "id": "coverages.limits.each_occurrence_1",
       "type": "currency",
       "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "coverages",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "each occurrence",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "certificate holder",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "coverages.limits.each_occurrence_1",
-      "type": "currency",
-      "method": {
         "id": "row",
         "position": "right",
         "tiebreaker": "last"
@@ -1005,32 +980,6 @@
       "id": "coverages.limits.damage_to_rented_premises_1",
       "type": "currency",
       "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "coverages",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "damage to rented",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "certificate holder",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "coverages.limits.damage_to_rented_premises_1",
-      "type": "currency",
-      "method": {
         "id": "row",
         "position": "right",
         "tiebreaker": "last"
@@ -1041,7 +990,7 @@
           "type": "equals"
         },
         "match": {
-          "text": "premises",
+          "text": "damage to rented",
           "type": "startsWith"
         },
         "end": {
@@ -1077,12 +1026,8 @@
       "id": "coverages.limits.personal_and_advertising_injury_1",
       "type": "currency",
       "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
+        "id": "row",
+        "position": "right"
       },
       "anchor": {
         "start": {
@@ -1115,32 +1060,6 @@
         "match": {
           "text": "general aggregate",
           "type": "startsWith"
-        },
-        "end": {
-          "text": "certificate holder",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "coverages.limits.products_completed_aggregate_1",
-      "type": "currency",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
-      },
-      "anchor": {
-        "start": {
-          "text": "coverages",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "/op agg",
-          "type": "endsWith"
         },
         "end": {
           "text": "certificate holder",
@@ -1389,8 +1308,8 @@
       "id": "coverages.subrogation_waived_2",
       "method": {
         "id": "box",
-        "position": "below",
-        "offsetX": 0.08,
+        "position": "right",
+        "offsetX": -0.08,
         "offsetY": 1.5
       },
       "anchor": {
@@ -1498,12 +1417,8 @@
       "id": "coverages.limits.combined_single_limit_2",
       "type": "currency",
       "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "number": 1,
-          "direction": "right"
-        }
+        "id": "row",
+        "position": "right"
       },
       "anchor": {
         "start": {
@@ -1524,9 +1439,8 @@
       "id": "coverages.limits.bodily_injury_per_person_2",
       "type": "currency",
       "method": {
-        "id": "box",
-        "position": "right",
-        "offsetX": 0.2
+        "id": "row",
+        "position": "right"
       },
       "anchor": {
         "start": {
@@ -1534,7 +1448,7 @@
           "type": "startsWith"
         },
         "match": {
-          "text": "bodily injury",
+          "text": "bodily injury (per person)",
           "type": "startsWith"
         },
         "end": {
@@ -1547,9 +1461,8 @@
       "id": "coverages.limits.bodily_injury_per_accident_2",
       "type": "currency",
       "method": {
-        "id": "box",
-        "position": "right",
-        "offsetX": 0.2
+        "id": "row",
+        "position": "right"
       },
       "anchor": {
         "start": {
@@ -1807,8 +1720,8 @@
       "id": "coverages.subrogation_waived_3",
       "method": {
         "id": "box",
-        "position": "below",
-        "offsetX": 0.08,
+        "position": "right",
+        "offsetX": -0.08,
         "offsetY": 2.2
       },
       "anchor": {
@@ -1916,12 +1829,8 @@
       "id": "coverages.limits.each_occurrence_3",
       "type": "currency",
       "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
+        "id": "row",
+        "position": "right"
       },
       "anchor": {
         "start": [
@@ -1948,12 +1857,8 @@
       "id": "coverages.limits.aggregate_3",
       "type": "currency",
       "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
+        "id": "row",
+        "position": "right"
       },
       "anchor": {
         "start": [
@@ -2069,8 +1974,8 @@
       "id": "coverages.subrogation_waived_4",
       "method": {
         "id": "box",
-        "position": "below",
-        "offsetX": 0.08,
+        "position": "right",
+        "offsetX": -0.08,
         "offsetY": 2.77
       },
       "anchor": {
@@ -2241,12 +2146,8 @@
       "id": "coverages.limits.each_accident_4",
       "type": "currency",
       "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "number": 1,
-          "direction": "right"
-        }
+        "id": "row",
+        "position": "right"
       },
       "anchor": {
         "start": {
@@ -2267,12 +2168,8 @@
       "id": "coverages.limits.disease_each_employee_4",
       "type": "currency",
       "method": {
-        "id": "box",
-        "position": "above",
-        "offsetBoxes": {
-          "number": 1,
-          "direction": "right"
-        }
+        "id": "row",
+        "position": "right"
       },
       "anchor": {
         "start": {
@@ -2386,8 +2283,8 @@
       "id": "coverages.subrogation_waived_5",
       "method": {
         "id": "box",
-        "position": "below",
-        "offsetX": 0.08,
+        "position": "right",
+        "offsetX": -0.08,
         "offsetY": 3.32
       },
       "anchor": {
