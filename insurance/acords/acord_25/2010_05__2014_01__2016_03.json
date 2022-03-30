@@ -2614,22 +2614,19 @@
     },
     {
       "id": "coverages.insurer_letter_5",
+      "match": "all",
       "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "number": 5,
-          "direction": "below"
-        }
+        "id": "passthrough"
       },
       "anchor": {
         "start": {
-          "text": "coverages",
+          "text": "description of operations below",
           "type": "startsWith"
         },
         "match": {
-          "text": "ltr",
-          "type": "endsWith"
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
         },
         "end": {
           "text": "certificate holder",
@@ -2639,19 +2636,62 @@
     },
     {
       "id": "coverages.type_of_insurance_5",
+      "match": "all",
       "method": {
-        "id": "box",
+        "id": "row",
         "position": "right",
-        "offsetY": 3.51
+        "tiebreaker": "first",
+        "xRangeFilter": {
+          "start": "left",
+          "offsetX": 0,
+          "width": 2.6
+        },
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^[a-z]$",
+            "flags": "i"
+          }
+        ]
       },
       "anchor": {
         "start": {
-          "text": "coverages",
+          "text": "description of operations below",
           "type": "startsWith"
         },
         "match": {
-          "text": "type of insurance",
-          "type": "endsWith"
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance_5",
+      "match": "all",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "TYPE OF INSURANCE",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
         },
         "end": {
           "text": "certificate holder",
@@ -2661,20 +2701,54 @@
     },
     {
       "id": "coverages.additional_insured_5",
+      "match": "all",
       "method": {
-        "id": "box",
-        "position": "left",
-        "offsetX": -0.8,
-        "offsetY": 3.32
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "INSD",
+            "type": "equals"
+          }
+        }
       },
       "anchor": {
         "start": {
-          "text": "coverages",
+          "text": "description of operations below",
           "type": "startsWith"
         },
         "match": {
-          "text": "policy number",
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "certificate holder",
           "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.additional_insured_5",
+      "match": "all",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "INSD",
+            "type": "startsWith"
+          }
+        },
+        "offsetX": -0.16
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
         },
         "end": {
           "text": "certificate holder",
@@ -2684,20 +2758,54 @@
     },
     {
       "id": "coverages.subrogation_waived_5",
+      "match": "all",
       "method": {
-        "id": "box",
-        "position": "right",
-        "offsetX": -0.08,
-        "offsetY": 3.32
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "WVD",
+            "type": "equals"
+          }
+        }
       },
       "anchor": {
         "start": {
-          "text": "coverages",
+          "text": "description of operations below",
           "type": "startsWith"
         },
         "match": {
-          "text": "wvd",
-          "type": "endsWith"
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.subrogation_waived_5",
+      "match": "all",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "WVD",
+            "type": "endsWith"
+          }
+        },
+        "offsetX": 0.15
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
         },
         "end": {
           "text": "certificate holder",
@@ -2707,22 +2815,26 @@
     },
     {
       "id": "coverages.policy_number_5",
+      "match": "all",
       "method": {
-        "id": "box",
-        "position": "right",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 5
-        }
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "Policy Number",
+            "type": "equals"
+          }
+        },
+        "offsetX": -0.4
       },
       "anchor": {
         "start": {
-          "text": "coverages",
+          "text": "description of operations below",
           "type": "startsWith"
         },
         "match": {
-          "text": "policy number",
-          "type": "endsWith"
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
         },
         "end": {
           "text": "certificate holder",
@@ -2733,32 +2845,21 @@
     {
       "id": "coverages.policy_effective_date_5",
       "type": "date",
+      "match": "all",
       "method": {
-        "id": "box",
+        "id": "row",
         "position": "right",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 5
-        },
-        "tiebreaker": "<"
+        "tiebreaker": "first"
       },
       "anchor": {
         "start": {
-          "text": "coverages",
+          "text": "description of operations below",
           "type": "startsWith"
         },
         "match": {
-          "type": "any",
-          "matches": [
-            {
-              "text": "policy eff",
-              "type": "startsWith"
-            },
-            {
-              "text": "eff date",
-              "type": "startsWith"
-            }
-          ]
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
         },
         "end": {
           "text": "certificate holder",
@@ -2769,23 +2870,21 @@
     {
       "id": "coverages.policy_expiration_date_5",
       "type": "date",
+      "match": "all",
       "method": {
-        "id": "box",
+        "id": "row",
         "position": "right",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 5
-        },
-        "tiebreaker": ">"
+        "tiebreaker": "last"
       },
       "anchor": {
         "start": {
-          "text": "coverages",
+          "text": "description of operations below",
           "type": "startsWith"
         },
         "match": {
-          "text": "policy exp",
-          "type": "endsWith"
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
         },
         "end": {
           "text": "certificate holder",
@@ -2794,21 +2893,29 @@
       }
     },
     {
-      "id": "coverages.limits.per_aggregate_5",
+      "id": "coverages.limits.5",
       "type": "currency",
+      "match": "all",
       "method": {
         "id": "row",
         "position": "right",
-        "tiebreaker": "first"
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "/20\\d{2}$"
+          }
+        ]
       },
       "anchor": {
         "start": {
-          "text": "coverages",
+          "text": "description of operations below",
           "type": "startsWith"
         },
         "match": {
-          "text": "per aggregate",
-          "type": "equals"
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
         },
         "end": {
           "text": "certificate holder",
@@ -2817,21 +2924,30 @@
       }
     },
     {
-      "id": "coverages.limits.on_hook_or_in_tow_5",
+      "id": "coverages.limits.5",
       "type": "currency",
+      "match": "all",
       "method": {
-        "id": "row",
-        "position": "right",
-        "tiebreaker": "first"
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "type": "equals",
+            "text": "LIMITS",
+            "isCaseSensitive": true
+          }
+        },
+        "tiebreaker": "last",
+        "offsetX": 1
       },
       "anchor": {
         "start": {
-          "text": "coverages",
+          "text": "description of operations below",
           "type": "startsWith"
         },
         "match": {
-          "text": "on hook",
-          "type": "startsWith"
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
         },
         "end": {
           "text": "certificate holder",
