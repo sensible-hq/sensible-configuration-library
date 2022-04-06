@@ -1,0 +1,640 @@
+{
+    "fields": [
+      {
+        "id": "load_id",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "convoy id",
+              "type": "endsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "rate",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "payout:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "broker_mc",
+        "anchor": "not found on ort samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "broker_contact_name",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not yet found on convoy sample, not configured"
+      },
+      {
+        "id": "broker_contact_phone",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not yet found on convoy sample, not configured"
+      },
+      {
+        "id": "broker_contact_email",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not yet found on convoy sample, not configured"
+      },
+      {
+        "id": "load_mode",
+        "anchor": {
+          "match": [
+            {
+              "text": "load details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "[A-Z0-9 ()']*,.?",
+              "type": "regex",
+              "flags": "i"
+            }
+          ]
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Za-z ]+$"
+        }
+      },
+      {
+        "id": "trailer_type",
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z ()]+",
+          "flags": "i"
+        },
+        "anchor": {
+          "start": {
+            "text": "reference id",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "^\\d{2,3}'",
+            "type": "regex"
+          },
+          "end": {
+            "text": "accessorials",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "trailer_size",
+        "method": {
+          "id": "regex",
+          "pattern": "^\\d{2,3}'"
+        },
+        "anchor": {
+          "start": {
+            "text": "reference id",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "^\\d{2,3}'",
+            "type": "regex"
+          },
+          "end": {
+            "text": "accessorials",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "temperature",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not yet found on convoy sample, not configured"
+      },
+      {
+        "id": "pallets",
+        "type": "number",
+        "method": {
+          "id": "label",
+          "position": "left",
+          "wordFilters": [
+            "pieces",
+            "count:"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "total # of pos",
+                "type": "includes"
+              },
+              {
+                "text": "pallet",
+                "type": "includes"
+              },
+              {
+                "text": "pieces",
+                "type": "includes"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "size",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not yet found on convoy sample, not configured"
+      },
+      {
+        "id": "weight",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "weight",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_weight",
+        "anchor": "not yet found on convoy samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "shipper_name",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3
+          }
+        },
+        "anchor": {
+          "start": "stop details",
+          "match": [
+            {
+              "text": "pickup",
+              "type": "endsWith"
+            },
+            {
+              "pattern": "\\d\\d:\\d\\d",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "shipper_phone",
+        "type": "phoneNumber",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "start": "stop details",
+          "match": {
+            "text": "Pickup",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "shipper_number",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "pickup no.",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_date",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "start": "stop details",
+          "match": {
+            "text": "pickup",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "_pickup_time_raw",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "typeFilters": [
+            "address",
+            "phoneNumber"
+          ],
+          "lineFilters": [
+            {
+              "text": "appointment no",
+              "type": "startsWith"
+            },
+            {
+              "text": "NOTES",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "stop": "gap"
+        },
+        "anchor": {
+          "start": "stop details",
+          "match": {
+            "text": "pickup no",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "NOTES",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "pickup_address",
+        "match": "all",
+        "type": "address",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "start": "stop details",
+          "match": {
+            "text": "Pickup",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_instructions",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "start": "stop details",
+          "match": [
+            {
+              "text": "Pickup",
+              "type": "endsWith"
+            },
+            {
+              "text": "NOTES",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "consignee_name",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2.7,
+          "height": 1,
+          "offsetX": 0,
+          "offsetY": 0.4,
+          "typeFilters": [
+            "address",
+            "date",
+            "phoneNumber"
+          ],
+          "lineFilters": [
+            {
+              "text": "appointment no",
+              "type": "startsWith"
+            },
+            {
+              "text": "dropoff no",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "stop details",
+          "match": [
+            {
+              "text": "delivery",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "consignee_phone",
+        "type": "phoneNumber",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "start": "stop details",
+          "match": {
+            "text": "delivery",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "consignee_number",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "dropoff no.",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "delivery_date",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap",
+          "lineFilters": [
+            {
+              "text": "dropoff no",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "stop details",
+          "match": {
+            "text": "delivery",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "delivery_time",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": "stop details",
+          "match": [
+            {
+              "pattern": "20\\d\\d",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d\\d,",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "dropoff_weight",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not yet found on convoy format, not configured"
+      },
+      {
+        "id": "delivery_address",
+        "match": "all",
+        "type": "address",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "start": "stop details",
+          "match": {
+            "text": "delivery",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "delivery_instructions",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 3.5,
+          "height": 2,
+          "offsetX": -0.1,
+          "offsetY": 1.5,
+          "typeFilters": [
+            "address",
+            "currency"
+          ],
+          "wordFilters": [
+            "notes:"
+          ]
+        },
+        "anchor": {
+          "start": "stop details",
+          "match": [
+            {
+              "text": "delivery",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "general_notes",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not yet found on convoy format, not configured"
+      },
+      {
+        "id": "carrier_name",
+        "method": {
+          "id": "label",
+          "position": "left"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "CONVOY",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "pattern": "\\| [A-Z]",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "trailer_id",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not yet found on convoy format, not configured"
+      },
+      {
+        "id": "trucker_id",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not yet found on convoy format, not configured"
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "broker_name",
+        "method": {
+          "id": "constant",
+          "value": "Convoy"
+        }
+      },
+      {
+        "id": "_pickup_time_line",
+        "method": {
+          "id": "split",
+          "source_id": "_pickup_time_raw",
+          "separator": ", ",
+          "index": 1
+        }
+      },
+      {
+        "id": "pickup_time",
+        "method": {
+          "id": "split",
+          "source_id": "_pickup_time_line",
+          "separator": " ",
+          "index": 0
+        }
+      },
+      {
+        "id": "pickup_city_st_zip",
+        "method": {
+          "id": "split",
+          "source_id": "pickup_address",
+          "index": 1,
+          "separator": "\n"
+        }
+      },
+      {
+        "id": "pickup_st_zip",
+        "method": {
+          "id": "split",
+          "source_id": "pickup_city_st_zip",
+          "index": 1,
+          "separator": ", "
+        }
+      },
+      {
+        "id": "pickup_zip_code",
+        "method": {
+          "id": "split",
+          "source_id": "pickup_st_zip",
+          "index": 1,
+          "separator": " "
+        }
+      },
+      {
+        "id": "delivery_city_st_zip",
+        "method": {
+          "id": "split",
+          "source_id": "delivery_address",
+          "index": 1,
+          "separator": "\n"
+        }
+      },
+      {
+        "id": "delivery_st_zip",
+        "method": {
+          "id": "split",
+          "source_id": "delivery_city_st_zip",
+          "index": 1,
+          "separator": ", "
+        }
+      },
+      {
+        "id": "delivery_zip_code",
+        "method": {
+          "id": "split",
+          "source_id": "delivery_st_zip",
+          "index": 1,
+          "separator": " "
+        }
+      },
+      {
+        "id": "suppress",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "pickup_city_st_zip",
+            "pickup_st_zip",
+            "delivery_city_st_zip",
+            "delivery_st_zip",
+            "_pickup_time_raw",
+            "_pickup_time_line"
+          ]
+        }
+      }
+    ]
+  }
