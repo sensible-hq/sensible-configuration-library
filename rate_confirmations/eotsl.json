@@ -1,0 +1,524 @@
+{
+    "preprocessors": [
+      {
+        "type": "splitLines",
+        "minSpaces": 2
+      }
+    ],
+    "fields": [
+      {
+        "id": "load_id",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "load#:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "rate",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "rate:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "broker_mc",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "MC:",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "broker_contact_name",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "FROM:",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "broker_contact_phone",
+        "type": "phoneNumber",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "PHONE:",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "broker_contact_email",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not found on eotsl sample"
+      },
+      {
+        "id": "load_mode",
+        "anchor": "not configured, not found on eotsl sample",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "_trailer_raw",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not found on eotsl sample"
+      },
+      {
+        "id": "temperature",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not found on eotsl sample"
+      },
+      {
+        "id": "pallets",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "text": "pieces:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "size",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not found on eotsl sample"
+      },
+      {
+        "id": "weight",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "text": "weight:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "pickup_weight",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not found on eotsl sample"
+      },
+      {
+        "id": "shipper_name",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "load at:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "shipper_phone",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent",
+          "stop": "gap",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "[A-Z\\.]"
+            }
+          ]
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "load at:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "shipper_number",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not yet found on eotsl sample"
+      },
+      {
+        "id": "pickup_date",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 0.8,
+          "offsetY": 1,
+          "width": 1.3,
+          "height": 0.3
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "load at:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "pickup_time",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 1.7,
+          "offsetY": 1,
+          "width": 1.3,
+          "height": 0.3
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "load at:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "pickup_address",
+        "match": "all",
+        "type": "address",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent",
+          "stop": "gap"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "load at:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "pickup_instructions",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "bol#:",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "consignee_name",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "consignee:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "consignee_phone",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent",
+          "stop": "gap",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "[A-Z\\.]"
+            }
+          ]
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "consignee:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "consignee_number",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not yet found on eotsl format"
+      },
+      {
+        "id": "delivery_date",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 0.3,
+          "offsetY": 1,
+          "width": 2,
+          "height": 0.35
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "consignee:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "delivery_time",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 1.8,
+          "offsetY": 1,
+          "width": 2,
+          "height": 0.35,
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "consignee:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "dropoff_weight",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not yet found on eotsl format"
+      },
+      {
+        "id": "delivery_address",
+        "match": "all",
+        "type": "address",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap",
+          "textAlignment": "hangingIndent"
+        },
+        "anchor": {
+          "match": {
+            "text": "consignee:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "delivery_instructions",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not yet found on eotsl sample"
+      },
+      {
+        "id": "carrier_name",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "carrier:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "trailer_id",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not yet found on eotsl"
+      },
+      {
+        "id": "trucker_id",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not configured, not yet found on eotsl"
+      },
+      {
+        "id": "general_notes",
+        "match": "all",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        },
+        "anchor": {
+          "match": {
+            "text": "order comments:",
+            "type": "startsWith"
+          }
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "broker_name",
+        "method": {
+          "id": "constant",
+          "value": "Everyone on Time Safely Logistics"
+        }
+      },
+      {
+        "id": "trailer_type",
+        "method": {
+          "id": "split",
+          "separator": " - ",
+          "source_id": "_trailer_raw",
+          "index": 0
+        }
+      },
+      {
+        "id": "trailer_size",
+        "method": {
+          "id": "split",
+          "separator": " - ",
+          "source_id": "_trailer_raw",
+          "index": 1
+        }
+      },
+      {
+        "id": "pickup_city_st_zip",
+        "method": {
+          "id": "split",
+          "source_id": "pickup_address",
+          "index": 1,
+          "separator": "\n"
+        }
+      },
+      {
+        "id": "pickup_zip_code",
+        "method": {
+          "id": "split",
+          "source_id": "pickup_city_st_zip",
+          "index": 2,
+          "separator": " "
+        }
+      },
+      {
+        "id": "delivery_city_st_zip",
+        "method": {
+          "id": "split",
+          "source_id": "delivery_address",
+          "index": 1,
+          "separator": "\n"
+        }
+      },
+      {
+        "id": "delivery_zip_code",
+        "method": {
+          "id": "split",
+          "source_id": "delivery_city_st_zip",
+          "index": 2,
+          "separator": " "
+        }
+      },
+      {
+        "id": "suppress",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "delivery_city_st_zip",
+            "pickup_city_st_zip"
+          ]
+        }
+      }
+    ]
+  }
