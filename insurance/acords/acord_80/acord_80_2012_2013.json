@@ -1,0 +1,2840 @@
+{
+  "preprocessors": [
+    {
+      "type": "mergeLines",
+      "directlyAdjacentThreshold": 0.15,
+      "adjacentThreshold": 1
+    }
+  ],
+  "fields": [
+    {
+      "id": "MailingAddressSame",
+      "anchor": {
+        "match": {
+          "text": "check if same as mailing address",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "Email",
+      "anchor": {
+        "start": "E-MAIL",
+        "match": {
+          "text": "address:",
+          "type": "includes"
+        },
+        "end": "code"
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "wordFilters": [
+          "e-mail"
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "text": "effective date",
+          "type": "includes"
+        },
+        "end": {
+          "text": "status of transaction",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "text": "effective date",
+          "type": "includes"
+        },
+        "end": {
+          "text": "status of transaction",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "agency_name",
+      "anchor": {
+        "match": {
+          "text": "agency",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "agency_address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "text": "agency",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "contact_name",
+      "anchor": {
+        "match": [
+          {
+            "text": "Contact",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "wordFilters": [
+          "name:"
+        ]
+      }
+    },
+    {
+      "id": "insured_name",
+      "anchor": {
+        "match": "named insured",
+        "end": {
+          "text": "applicant information",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "insured_address",
+      "type": "address",
+      "anchor": {
+        "match": "named insured",
+        "end": {
+          "text": "applicant information",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "Occupation",
+      "anchor": {
+        "match": {
+          "text": "applicant's occupation",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "applicant_name",
+      "anchor": {
+        "match": {
+          "text": "applicant's name",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "above"
+      }
+    },
+    {
+      "id": "applicant_name",
+      "anchor": {
+        "match": {
+          "text": "applicant's name",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "applicant_address",
+      "type": "address",
+      "anchor": {
+        "match": "applicant's mailing"
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "applicant_dob",
+      "type": "date",
+      "anchor": {
+        "match": "date of birth"
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "applicant_ssn",
+      "type": "date",
+      "anchor": {
+        "match": "social security #"
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "coapplicant_name",
+      "anchor": {
+        "match": "co-applicant's name"
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "coapplicant_address",
+      "type": "address",
+      "anchor": {
+        "match": "co-applicant's address"
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "coapplicant_address_same_as_applicant",
+      "anchor": {
+        "match": "check if same as applicant"
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "coapplicant_dob",
+      "type": "date",
+      "anchor": {
+        "start": "co-applicant's name",
+        "match": "date of birth"
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "coapplicant_ssn",
+      "type": "date",
+      "anchor": {
+        "start": "co-applicant's name",
+        "match": "social security #"
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "dwelling_limit",
+      "type": "currency",
+      "anchor": {
+        "start": "limits of liability",
+        "match": {
+          "text": "dwelling",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "forms and endorsements",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "other_structures_limit",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "text": "limits of liability",
+          "type": "includes"
+        },
+        "match": {
+          "text": "other structures",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "forms and endorsements",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first",
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "personal_property_limit",
+      "type": "currency",
+      "anchor": {
+        "start": "limits of liability",
+        "match": {
+          "text": "personal property",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "loss_of_use_limit",
+      "type": "currency",
+      "anchor": {
+        "start": "limits of liability",
+        "match": [
+          {
+            "text": "actual loss",
+            "type": "includes"
+          },
+          {
+            "text": "sustained",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "blanket_limit",
+      "type": "currency",
+      "anchor": {
+        "start": "limits of liability",
+        "match": "blanket"
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "personal_liability_each_occurrence",
+      "type": "number",
+      "anchor": {
+        "start": "limits of liability",
+        "match": {
+          "text": "personal liability",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "medical_payments_per_person",
+      "type": "currency",
+      "anchor": {
+        "start": "limits of liability",
+        "match": "medical payments ea"
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "replacement_cost_full_value",
+      "type": "number",
+      "anchor": {
+        "start": "limits of liability",
+        "match": [
+          {
+            "text": "full value",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 3
+        }
+      }
+    },
+    {
+      "id": "replacement_cost_dwelling",
+      "type": "currency",
+      "anchor": {
+        "start": "limits of liability",
+        "match": [
+          {
+            "text": "repl cost - dw",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 3
+        }
+      }
+    },
+    {
+      "id": "replacement_cost_contents",
+      "type": "currency",
+      "anchor": {
+        "start": "limits of liability",
+        "match": [
+          {
+            "text": "repl cost - contents",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 3
+        }
+      }
+    },
+    {
+      "id": "deductible_base_amount",
+      "type": "currency",
+      "anchor": {
+        "start": "deductible",
+        "match": [
+          {
+            "text": "base",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "deductible_base_percent",
+      "type": "number",
+      "anchor": {
+        "start": "deductible",
+        "match": [
+          {
+            "text": "base",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 2,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "deductible_wind_hail_amount",
+      "type": "currency",
+      "anchor": {
+        "start": "deductible",
+        "match": [
+          {
+            "text": "wind / hail",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "deductible_wind_hail_percent",
+      "type": "number",
+      "anchor": {
+        "start": "deductible",
+        "match": [
+          {
+            "text": "wind",
+            "type": "includes"
+          }
+        ],
+        "end": {
+          "text": "forms and endorsements",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 2,
+          "direction": "right"
+        }
+      }
+    },
+    {
+      "id": "deductible_theft_amount",
+      "type": "currency",
+      "anchor": {
+        "start": "deductible",
+        "match": [
+          {
+            "text": "theft",
+            "type": "equals"
+          }
+        ],
+        "end": {
+          "text": "forms and endorsements",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "deductible_theft_percent",
+      "type": "percentage",
+      "anchor": {
+        "start": "deductible",
+        "match": [
+          {
+            "text": "theft",
+            "type": "includes"
+          }
+        ],
+        "end": {
+          "text": "forms and endorsements",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 2,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "deductible_named_hurricane_amount",
+      "type": "currency",
+      "anchor": {
+        "start": "deductible",
+        "match": [
+          {
+            "text": "named",
+            "type": "includes"
+          },
+          {
+            "text": "hurricane",
+            "type": "includes"
+          }
+        ],
+        "end": {
+          "text": "forms and endorsements",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "deductible_named_hurricane_percent",
+      "type": "percentage",
+      "anchor": {
+        "start": "deductible",
+        "match": [
+          {
+            "text": "named",
+            "type": "startsWith"
+          }
+        ],
+        "end": {
+          "text": "forms and endorsements",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 2,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "ExposureAnimals",
+      "anchor": {
+        "match": [
+          {
+            "text": "animals or exotic pets",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      }
+    },
+    {
+      "id": "ExposureAnimalsBiteHistory",
+      "match": "all",
+      "anchor": {
+        "match": [
+          {
+            "text": "bite history",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "ExposureLandAcres",
+      "anchor": {
+        "match": [
+          {
+            "text": "property situated on more than one acre",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 1
+        }
+      }
+    },
+    {
+      "id": "ExposureTrampoline",
+      "anchor": {
+        "match": [
+          {
+            "text": "trampoline",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      }
+    },
+    {
+      "id": "deductible_annual_hurricane_amount",
+      "type": "currency",
+      "anchor": {
+        "start": "deductible",
+        "match": [
+          {
+            "text": "annual",
+            "type": "includes"
+          }
+        ],
+        "end": {
+          "text": "forms and endorsements",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "deductible_annual_hurricane_percent",
+      "type": "percentage",
+      "anchor": {
+        "start": "deductible",
+        "match": [
+          {
+            "text": "annual",
+            "type": "includes"
+          }
+        ],
+        "end": {
+          "text": "forms and endorsements",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 2,
+          "direction": "right"
+        },
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "construction_type.masonry_veneer",
+      "anchor": {
+        "start": "rating / underwriting",
+        "match": {
+          "text": "masonry veneer",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "construction_type.frame",
+      "anchor": {
+        "start": "rating / underwriting",
+        "match": "frame"
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "construction_type.masonry",
+      "anchor": {
+        "start": "rating / underwriting",
+        "match": {
+          "text": "masonry",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "construction_type.masonry_veneer.percent",
+      "type": "number",
+      "anchor": {
+        "start": "rating / underwriting",
+        "match": "masonry veneer"
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      }
+    },
+    {
+      "id": "construction_type.frame.percent",
+      "type": "number",
+      "anchor": {
+        "start": "rating / underwriting",
+        "match": "frame"
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      }
+    },
+    {
+      "id": "construction_type.masonry.percent",
+      "type": "number",
+      "anchor": {
+        "start": "rating / underwriting",
+        "match": {
+          "text": "masonry",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      }
+    },
+    {
+      "id": "siding.aluminum",
+      "anchor": {
+        "start": "siding",
+        "match": {
+          "text": "aluminum siding",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "siding.aluminum.percent",
+      "type": "number",
+      "anchor": {
+        "start": "siding",
+        "match": {
+          "text": "aluminum siding",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      }
+    },
+    {
+      "id": "siding.stucco",
+      "anchor": {
+        "start": "siding",
+        "match": {
+          "text": "stucco",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.1
+      }
+    },
+    {
+      "id": "siding.stucco.percent",
+      "type": "number",
+      "anchor": {
+        "start": "siding",
+        "match": {
+          "text": "stucco",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      }
+    },
+    {
+      "id": "siding.vinyl",
+      "anchor": {
+        "start": "siding",
+        "match": {
+          "text": "vinyl",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "siding.vinyl.percent",
+      "type": "number",
+      "anchor": {
+        "start": "siding",
+        "match": {
+          "text": "vinyl",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      }
+    },
+    {
+      "id": "siding.cedar",
+      "anchor": {
+        "start": "siding",
+        "match": [
+          {
+            "text": "cedar",
+            "type": "includes"
+          },
+          {
+            "text": "shingle",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "siding.cedar.percent",
+      "type": "number",
+      "anchor": {
+        "start": "siding",
+        "match": {
+          "text": "cedar",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      }
+    },
+    {
+      "id": "siding.eifscb",
+      "anchor": {
+        "start": "siding",
+        "match": {
+          "text": "eifscb",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "siding.eifscb.percent",
+      "type": "number",
+      "anchor": {
+        "start": "siding",
+        "match": {
+          "text": "eifscb",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      }
+    },
+    {
+      "id": "siding.eifss",
+      "anchor": {
+        "start": "siding",
+        "match": {
+          "text": "eifss",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "siding.eifss.percent",
+      "type": "number",
+      "anchor": {
+        "start": "siding",
+        "match": {
+          "text": "eifss",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "box",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      }
+    },
+    {
+      "id": "course_of_construction.builders_risk",
+      "anchor": {
+        "start": "course of construction",
+        "match": {
+          "text": "builders risk",
+          "type": "includes"
+        },
+        "end": {
+          "text": "location schedule",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "course_of_construction.renovation",
+      "anchor": {
+        "start": "course of construction",
+        "match": {
+          "text": "renovation",
+          "type": "includes"
+        },
+        "end": {
+          "text": "location schedule",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "course_of_construction.reconstruction",
+      "anchor": {
+        "start": "course of construction",
+        "match": {
+          "text": "reconstruction",
+          "type": "includes"
+        },
+        "end": {
+          "text": "location schedule",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "occupancy.owner",
+      "anchor": {
+        "start": "occupancy",
+        "match": {
+          "text": "owner",
+          "type": "includes"
+        },
+        "end": {
+          "text": "location schedule",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "occupancy.tenant",
+      "anchor": {
+        "start": "occupancy",
+        "match": {
+          "text": "tenant",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "occupancy.unoccupied",
+      "anchor": {
+        "start": "occupancy",
+        "match": {
+          "text": "unoccupied",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "occupancy.vacant",
+      "anchor": {
+        "start": "occupancy",
+        "match": {
+          "text": "vacant",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "residence_type.dwelling",
+      "anchor": {
+        "start": "residence type",
+        "match": {
+          "text": "dwelling",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "rating credits",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "residence_type.apartment",
+      "anchor": {
+        "start": "residence type",
+        "match": {
+          "text": "apartment",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "residence_type.condminium",
+      "anchor": {
+        "start": "residence type",
+        "match": {
+          "text": "condominium",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "residence_type.townhouse",
+      "anchor": {
+        "start": "residence type",
+        "match": {
+          "text": "townhouse",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "residence_type.rowhouse",
+      "anchor": {
+        "start": "residence type",
+        "match": {
+          "text": "rowhouse",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "residence_type.coop",
+      "anchor": {
+        "start": "residence type",
+        "match": {
+          "text": "co-op",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "housekeeping_condition.excellent",
+      "anchor": {
+        "start": "housekeeping condition",
+        "match": {
+          "text": "excellent",
+          "type": "includes"
+        },
+        "end": {
+          "text": "plumbing condition",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "housekeeping_condition.average",
+      "anchor": {
+        "start": "housekeeping condition",
+        "match": {
+          "text": "average",
+          "type": "equals"
+        },
+        "end": {
+          "text": "plumbing condition",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "housekeeping_condition.good",
+      "anchor": {
+        "start": "housekeeping condition",
+        "match": {
+          "text": "good",
+          "type": "includes"
+        },
+        "end": {
+          "text": "plumbing condition",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "housekeeping_condition.below_avg",
+      "anchor": {
+        "start": "housekeeping condition",
+        "match": {
+          "text": "below avg",
+          "type": "includes"
+        },
+        "end": {
+          "text": "plumbing condition",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "plumbing_condition.excellent",
+      "anchor": {
+        "start": "plumbing condition",
+        "match": {
+          "text": "excellent",
+          "type": "includes"
+        },
+        "end": {
+          "text": "roof condition",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "plumbing_condition.average",
+      "anchor": {
+        "start": "plumbing condition",
+        "match": {
+          "text": "average",
+          "type": "includes"
+        },
+        "end": {
+          "text": "roof condition",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "plumbing_condition.good",
+      "anchor": {
+        "start": "plumbing condition",
+        "match": {
+          "text": "good",
+          "type": "includes"
+        },
+        "end": {
+          "text": "roof condition",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "plumbing_condition.below_avg",
+      "anchor": {
+        "start": "plumbing condition",
+        "match": {
+          "text": "below avg",
+          "type": "includes"
+        },
+        "end": {
+          "text": "roof condition",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "plumbing_condition.known_leaks",
+      "anchor": {
+        "start": "plumbing condition",
+        "match": {
+          "text": "any known leaks",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "box",
+        "offsetX": 0.3,
+        "position": "right"
+      }
+    },
+    {
+      "id": "roof_condition.excellent",
+      "anchor": {
+        "start": "roof condition",
+        "match": {
+          "text": "excellent",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "roof_condition.average",
+      "anchor": {
+        "start": "roof condition",
+        "match": {
+          "text": "average",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "roof_condition.good",
+      "anchor": {
+        "start": "roof condition",
+        "match": {
+          "text": "good",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "roof_condition.below_avg",
+      "anchor": {
+        "start": {
+          "text": "roof condition",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "below",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "roof_material",
+      "anchor": {
+        "start": "roof condition",
+        "match": {
+          "text": "roof material",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "distance_to_tidal_water",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "text": "distance to tidal water",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "distance_to_tidal_water.miles",
+      "anchor": {
+        "match": [
+          {
+            "text": "distance to tidal water",
+            "type": "includes"
+          },
+          {
+            "text": "miles",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "distance_to_tidal_water.miles",
+      "anchor": {
+        "match": [
+          {
+            "text": "distance to tidal water",
+            "type": "includes"
+          },
+          {
+            "text": "feet",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "right",
+        "offsetX": -0.75
+      }
+    },
+    {
+      "id": "distance_to_tidal_water.feet",
+      "anchor": {
+        "match": [
+          {
+            "text": "distance to tidal water",
+            "type": "includes"
+          },
+          {
+            "text": "feet",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "distance_to_tidal_water.feet",
+      "anchor": {
+        "match": [
+          {
+            "text": "distance to tidal water",
+            "type": "includes"
+          },
+          {
+            "text": "feet",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "right",
+        "offsetX": -0.3
+      }
+    },
+    {
+      "id": "security.visible_from_road",
+      "anchor": {
+        "match": [
+          {
+            "text": "security",
+            "type": "startsWith"
+          },
+          {
+            "text": "road",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "security.occupied_daily",
+      "anchor": {
+        "match": [
+          {
+            "text": "security",
+            "type": "equals"
+          },
+          {
+            "text": "occupied daily",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "security.visible_to_neighbors",
+      "anchor": {
+        "match": [
+          {
+            "text": "security",
+            "type": "equals"
+          },
+          {
+            "text": "neighbors",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "protection_device_type.central_smoke",
+      "anchor": {
+        "match": [
+          {
+            "text": "protection device type",
+            "type": "equals"
+          },
+          {
+            "text": "central",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 0.6
+      }
+    },
+    {
+      "id": "protection_device_type.central_temp",
+      "anchor": {
+        "match": [
+          {
+            "text": "protection device type",
+            "type": "equals"
+          },
+          {
+            "text": "central",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 1
+      }
+    },
+    {
+      "id": "protection_device_type.central_burg",
+      "anchor": {
+        "match": [
+          {
+            "text": "protection device type",
+            "type": "equals"
+          },
+          {
+            "text": "central",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 1.3
+      }
+    },
+    {
+      "id": "protection_device_type.direct_smoke",
+      "anchor": {
+        "match": [
+          {
+            "text": "protection device type",
+            "type": "equals"
+          },
+          {
+            "text": "direct",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 0.6
+      }
+    },
+    {
+      "id": "protection_device_type.direct_temp",
+      "anchor": {
+        "match": [
+          {
+            "text": "protection device type",
+            "type": "equals"
+          },
+          {
+            "text": "direct",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 1
+      }
+    },
+    {
+      "id": "protection_device_type.direct_burg",
+      "anchor": {
+        "match": [
+          {
+            "text": "protection device type",
+            "type": "equals"
+          },
+          {
+            "text": "direct",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 1.3
+      }
+    },
+    {
+      "id": "protection_device_type.local_smoke",
+      "anchor": {
+        "match": [
+          {
+            "text": "protection device type",
+            "type": "equals"
+          },
+          {
+            "text": "local",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 0.6
+      }
+    },
+    {
+      "id": "protection_device_type.local_temp",
+      "anchor": {
+        "match": [
+          {
+            "text": "protection device type",
+            "type": "equals"
+          },
+          {
+            "text": "local",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 1
+      }
+    },
+    {
+      "id": "protection_device_type.local_burg",
+      "anchor": {
+        "match": [
+          {
+            "text": "protection device type",
+            "type": "equals"
+          },
+          {
+            "text": "local",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 1.3
+      }
+    },
+    {
+      "id": "door_lock.deadbolt",
+      "anchor": {
+        "match": [
+          {
+            "text": "door lock",
+            "type": "equals"
+          },
+          {
+            "text": "deadbolt",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "door_lock.spring",
+      "anchor": {
+        "match": [
+          {
+            "text": "door lock",
+            "type": "equals"
+          },
+          {
+            "text": "spring",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "sprinkler.partial",
+      "anchor": {
+        "match": [
+          {
+            "text": "sprinkler",
+            "type": "equals"
+          },
+          {
+            "text": "partial",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "sprinkler.full",
+      "anchor": {
+        "match": [
+          {
+            "text": "sprinkler",
+            "type": "equals"
+          },
+          {
+            "text": "full",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "primary_heat",
+      "anchor": {
+        "match": [
+          {
+            "text": "primary heat",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "wiring.copper",
+      "anchor": {
+        "match": [
+          {
+            "text": "wiring",
+            "type": "endsWith"
+          },
+          {
+            "text": "copper",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "wiring.aluminum",
+      "anchor": {
+        "match": [
+          {
+            "text": "wiring",
+            "type": "endsWith"
+          },
+          {
+            "text": "aluminum",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "wiring.knob_and_tube",
+      "anchor": {
+        "match": [
+          {
+            "text": "wiring",
+            "type": "endsWith"
+          },
+          {
+            "text": "knob",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "electrical_systems.circuit_breakers",
+      "anchor": {
+        "match": [
+          {
+            "text": "electrical systems",
+            "type": "equals"
+          },
+          {
+            "text": "circuit breakers",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "electrical_systems.fuses",
+      "anchor": {
+        "match": [
+          {
+            "text": "electrical systems",
+            "type": "equals"
+          },
+          {
+            "text": "fuses",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "year_built",
+      "anchor": {
+        "match": [
+          {
+            "text": "year built",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "number_of_families",
+      "anchor": {
+        "match": [
+          {
+            "text": "# families",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "market_value",
+      "type": "currency",
+      "anchor": {
+        "match": [
+          {
+            "text": "market value",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "replacement_cost",
+      "type": "currency",
+      "anchor": {
+        "match": [
+          {
+            "text": "replacement cost",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "left"
+      }
+    },
+    {
+      "id": "RentalPeriodInWeeks",
+      "anchor": {
+        "match": [
+          {
+            "text": "weeks rented",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "total_living_area",
+      "type": "number",
+      "anchor": {
+        "match": [
+          {
+            "text": "total living area",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "rating_credits.non_smoker",
+      "anchor": {
+        "match": [
+          {
+            "text": "rating credits",
+            "type": "equals"
+          },
+          {
+            "text": "non-smoker",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "rating_credits.manned_security",
+      "anchor": {
+        "match": [
+          {
+            "text": "rating credits",
+            "type": "equals"
+          },
+          {
+            "text": "manned security",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "rating_credits.lightning_protection",
+      "anchor": {
+        "match": [
+          {
+            "text": "rating credits",
+            "type": "equals"
+          },
+          {
+            "text": "lightning protection",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "rating_credits.off_premise_theft_excl",
+      "anchor": {
+        "match": [
+          {
+            "text": "rating credits",
+            "type": "equals"
+          },
+          {
+            "text": "off premise theft",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "swimming_pool.none",
+      "anchor": {
+        "match": [
+          {
+            "text": "bldg code",
+            "type": "includes"
+          },
+          {
+            "text": "NONE",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        ],
+        "end": {
+          "text": "above ground",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "right",
+        "offsetX": 0.2
+      }
+    },
+    {
+      "id": "swimming_pool.above_ground",
+      "anchor": {
+        "match": [
+          {
+            "text": "swimming pool",
+            "type": "equals"
+          },
+          {
+            "text": "above ground",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "swimming_pool.in_ground",
+      "anchor": {
+        "match": [
+          {
+            "text": "swimming pool",
+            "type": "equals"
+          },
+          {
+            "text": "in ground",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "swimming_pool.approved_fence",
+      "anchor": {
+        "match": [
+          {
+            "text": "swimming pool",
+            "type": "equals"
+          },
+          {
+            "text": "approved fence",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "swimming_pool.diving_board",
+      "anchor": {
+        "match": [
+          {
+            "text": "swimming pool",
+            "type": "equals"
+          },
+          {
+            "text": "diving board",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "swimming_pool.slide",
+      "anchor": {
+        "match": [
+          {
+            "text": "swimming pool",
+            "type": "equals"
+          },
+          {
+            "text": "slide",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "foundation.none",
+      "anchor": {
+        "match": [
+          {
+            "text": "foundation",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "right",
+        "offsetX": 0.55
+      }
+    },
+    {
+      "id": "foundation.open",
+      "anchor": {
+        "match": [
+          {
+            "text": "foundation",
+            "type": "equals"
+          },
+          {
+            "text": "open",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "foundation.closed",
+      "anchor": {
+        "match": [
+          {
+            "text": "foundation",
+            "type": "equals"
+          },
+          {
+            "text": "closed",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "renovations.wiring_part",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "wiring",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 0.8
+      }
+    },
+    {
+      "id": "renovations.wiring_complete",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "wiring",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 1.1
+      }
+    },
+    {
+      "id": "renovations.wiring_year",
+      "type": "number",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "wiring",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 3
+        }
+      }
+    },
+    {
+      "id": "renovations.plumbing_part",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "plumbing",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 0.8
+      }
+    },
+    {
+      "id": "renovations.plumbing_complete",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "plumbing",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 1.1
+      }
+    },
+    {
+      "id": "renovations.plumbing_year",
+      "type": "number",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "plumbing",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 3
+        }
+      }
+    },
+    {
+      "id": "renovations.heating_part",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "heating",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 0.8
+      }
+    },
+    {
+      "id": "renovations.heating_complete",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "heating",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 1.1
+      }
+    },
+    {
+      "id": "renovations.heating_year",
+      "type": "number",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "heating",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 3
+        }
+      }
+    },
+    {
+      "id": "renovations.roofing_part",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "roofing",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 0.8
+      }
+    },
+    {
+      "id": "renovations.roofing_complete",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "roofing",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 1.1
+      }
+    },
+    {
+      "id": "renovations.roofing_year",
+      "type": "number",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "roofing",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 3
+        }
+      }
+    },
+    {
+      "id": "renovations.roofing_year",
+      "type": "number",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "roofing",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "renovations.exterior_paint_year",
+      "type": "number",
+      "anchor": {
+        "match": [
+          {
+            "text": "renovations",
+            "type": "equals"
+          },
+          {
+            "text": "exterior paint",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "wind_class.resistive",
+      "anchor": {
+        "match": [
+          {
+            "text": "wind class",
+            "type": "equals"
+          },
+          {
+            "text": "resistive",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "wind_class.semi_resistive",
+      "anchor": {
+        "match": [
+          {
+            "text": "wind class",
+            "type": "equals"
+          },
+          {
+            "text": "semi-resistive",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "windstorm.storm_shutters_a",
+      "anchor": {
+        "match": [
+          {
+            "text": "windstorm",
+            "type": "equals"
+          },
+          {
+            "text": "storm shutters",
+            "type": "equals"
+          },
+          {
+            "text": "a",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "windstorm.storm_shutters_a",
+      "anchor": {
+        "match": [
+          {
+            "text": "windstorm",
+            "type": "equals"
+          },
+          {
+            "text": "storm shutters",
+            "type": "equals"
+          },
+          {
+            "text": "b",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.8
+      }
+    },
+    {
+      "id": "windstorm.storm_shutters_b",
+      "anchor": {
+        "match": [
+          {
+            "text": "windstorm",
+            "type": "equals"
+          },
+          {
+            "text": "storm shutters",
+            "type": "equals"
+          },
+          {
+            "text": "b",
+            "type": "equals"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "windstorm.hurricane_resistive_glass",
+      "anchor": {
+        "match": [
+          {
+            "text": "windstorm",
+            "type": "equals"
+          },
+          {
+            "text": "storm shutters",
+            "type": "equals"
+          },
+          {
+            "text": "hurricane resistive",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "coapplicant_first_name",
+      "method": {
+        "id": "split",
+        "source_id": "coapplicant_name",
+        "index": 0,
+        "separator": " "
+      }
+    },
+    {
+      "id": "coapplicant_last_name",
+      "method": {
+        "id": "split",
+        "source_id": "coapplicant_name",
+        "index": 2,
+        "separator": " "
+      }
+    },
+    {
+      "id": "coapplicant_last_name",
+      "method": {
+        "id": "split",
+        "source_id": "coapplicant_name",
+        "index": 1,
+        "separator": " "
+      }
+    }
+  ]
+}
