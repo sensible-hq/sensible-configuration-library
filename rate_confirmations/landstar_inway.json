@@ -1,0 +1,723 @@
+{
+    "fields": [
+      {
+        "id": "load_id",
+        "anchor": {
+          "match": [
+            {
+              "text": "fb #:",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "rate",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "text": "carrier pay:",
+              "type": "includes"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "broker_mc",
+        "anchor": "not found on landstar samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "broker_contact_name",
+        "anchor": {
+          "match": {
+            "text": "agency contact",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "broker_contact_phone",
+        "type": "phoneNumber",
+        "anchor": {
+          "match": [
+            {
+              "text": "agency phone",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "broker_contact_email",
+        "anchor": "not found on landstar samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "load_mode",
+        "anchor": "not found on landstar samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "trailer_type",
+        "anchor": {
+          "match": {
+            "text": "Equipment:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "trailer_size",
+        "anchor": "not found on landstar samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "temperature",
+        "anchor": "not found on landstar samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "pallets",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "pieces",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 2.2
+          }
+        }
+      },
+      {
+        "id": "size",
+        "anchor": "not found on landstar samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "weight",
+        "type": "weight",
+        "anchor": {
+          "match": {
+            "text": "weight",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 2.2
+          }
+        }
+      },
+      {
+        "id": "pickup_weight",
+        "anchor": "not found on landstar samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "shipper_name",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "pick-up",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "name/address",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^[A-Z]+",
+              "type": "regex"
+            }
+          ],
+          "end": {
+            "text": "delivery date",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "(^[A-Z ]+) "
+        }
+      },
+      {
+        "id": "shipper_phone",
+        "type": "phoneNumber",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "pick-up",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "phone",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "delivery date",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "shipper_number",
+        "anchor": "not found on landstar samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "pickup_date",
+        "type": "date",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "pick-up",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "date:",
+              "type": "endsWith"
+            }
+          ],
+          "end": {
+            "text": "delivery date",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "pickup_time",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "pick-up",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "date:",
+              "type": "endsWith"
+            }
+          ],
+          "end": {
+            "text": "delivery date",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "\\d\\d:\\d\\d"
+        }
+      },
+      {
+        "id": "_pickup_street",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "pick-up",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "address:",
+              "type": "endsWith"
+            },
+            {
+              "pattern": "[A-Z ]+ ",
+              "type": "regex"
+            }
+          ],
+          "end": {
+            "text": "delivery date",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z ]+ ([0-9A-Z ]+)"
+        }
+      },
+      {
+        "id": "_pickup_citystzip",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "pick-up",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "phone:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "delivery date",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z]+, [A-Z]+ [0-9-]+$"
+        }
+      },
+      {
+        "id": "pickup_zip_code",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "pick-up",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "name/address",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^[A-Z]+",
+              "type": "regex"
+            },
+            {
+              "type": "regex",
+              "pattern": "[A-Z]+ ([0-9].+$)"
+            }
+          ],
+          "end": {
+            "text": "delivery date",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z]+ ([0-9].+$)"
+        }
+      },
+      {
+        "id": "pickup_instructions",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "pick-up",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "instructions:",
+              "type": "endsWith"
+            }
+          ],
+          "end": {
+            "text": "delivery date",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 0.2,
+          "offsetY": -0.2,
+          "height": 0.3,
+          "width": 4.7
+        }
+      },
+      {
+        "id": "consignee_name",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "delivery date",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "name/address",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^[A-Z]+",
+              "type": "regex"
+            }
+          ],
+          "end": {
+            "text": "additional",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "(^[A-Z ]+) "
+        }
+      },
+      {
+        "id": "consignee_phone",
+        "type": "phoneNumber",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "delivery date",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "phone",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "additional",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "consignee_number",
+        "anchor": "not found on landstar samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "delivery_date",
+        "type": "date",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "delivery date",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "date:",
+              "type": "endsWith"
+            }
+          ],
+          "end": {
+            "text": "additional",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "delivery_time",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "delivery date",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "date:",
+              "type": "endsWith"
+            }
+          ],
+          "end": {
+            "text": "additional",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "\\d\\d:\\d\\d"
+        }
+      },
+      {
+        "id": "dropoff_weight",
+        "anchor": "not found on landstar samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "_delivery_street",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "delivery date",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "address:",
+              "type": "endsWith"
+            },
+            {
+              "pattern": "[A-Z ]+ ",
+              "type": "regex"
+            }
+          ],
+          "end": {
+            "text": "additional",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z ]+ ([0-9A-Z ]+)"
+        }
+      },
+      {
+        "id": "_delivery_citystzip",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "delivery date",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "phone:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "additional",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z ]+, [A-Z]+ [0-9-]+$"
+        }
+      },
+      {
+        "id": "delivery_zip_code",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "delivery date",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "name/address",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^[A-Z]+",
+              "type": "regex"
+            },
+            {
+              "type": "regex",
+              "pattern": "[A-Z]+ ([0-9].+$)"
+            }
+          ],
+          "end": {
+            "text": "additional",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z]+ ([0-9].+$)"
+        }
+      },
+      {
+        "id": "delivery_instructions",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "delivery date",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "instructions:",
+              "type": "endsWith"
+            }
+          ],
+          "end": {
+            "text": "additional",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 0.2,
+          "offsetY": -0.2,
+          "height": 0.3,
+          "width": 4.7
+        }
+      },
+      {
+        "id": "general_notes",
+        "anchor": {
+          "match": [
+            {
+              "text": "additional",
+              "type": "endsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "box",
+          "position": "below",
+          "wordFilters": [
+            "INSTRUCTIONS:"
+          ],
+          "lineFilters": [
+            {
+              "text": "total carrier pay",
+              "type": "startsWith"
+            },
+            {
+              "text": "get paid in 2 days",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "carrier_name",
+        "anchor": {
+          "start": {
+            "text": "landstar agent",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "carrier:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "trailer_id",
+        "anchor": "not found on landstar samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "trucker_id",
+        "anchor": "not found on landstar samples, not configured",
+        "method": {
+          "id": "passthrough"
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "broker_name",
+        "method": {
+          "id": "constant",
+          "value": "LANDSTAR"
+        }
+      },
+      {
+        "id": "pickup_address",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_pickup_street",
+            "_pickup_citystzip"
+          ]
+        }
+      },
+      {
+        "id": "delivery_address",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_delivery_street",
+            "_delivery_citystzip"
+          ]
+        }
+      },
+      {
+        "id": "hide_fields",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_pickup_street",
+            "_pickup_citystzip",
+            "_delivery_street",
+            "_delivery_citystzip"
+          ]
+        }
+      }
+    ]
+  }
