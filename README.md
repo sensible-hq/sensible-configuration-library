@@ -75,15 +75,25 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [ACORD 140 (09/2007)](./insurance/acords/acord_140/2007_09.json)
 
 #### Loss Runs
+- [AIG](./insurance/loss_runs/workers_comp/aig.json)
 - [Amtrust](./insurance/loss_runs/workers_comp/amtrust.json)
 - [Applied Underwriters](./insurance/loss_runs/workers_comp/applied_underwriters.json)
 - [Atlas](./insurance/loss_runs/workers_comp/atlas.json)
 - [Benchmark](./insurance/loss_runs/workers_comp/benchmark.json)
+- [Berkley National](./insurance/loss_runs/workers_comp/berkleynational.json)
+- [Berkley Prime](./insurance/loss_runs/workers_comp/berkleyprime.json)
 - [Berkshire](./insurance/loss_runs/workers_comp/berkshire.json)
+- [Canal](./insurance/loss_runs/workers_comp/canal.json)
 - [Compwest](./insurance/loss_runs/workers_comp/compwest.json)
+- [Hallmark](./insurance/loss_runs/workers_comp/hallmark.json)
+- [IAT](./insurance/loss_runs/workers_comp/iat.json)
 - [ICW](./insurance/loss_runs/workers_comp/icw.json)
+- [Northland](./insurance/loss_runs/workers_comp/northland.json)
+- [Spirit](./insurance/loss_runs/workers_comp/spirit.json)
 - [Statefund](./insurance/loss_runs/workers_comp/statefund.json)
+- [Sutton](./insurance/loss_runs/workers_comp/sutton.json)
 - [Travelers](./insurance/loss_runs/workers_comp/travelers.json)
+- [United Specialty](./insurance/loss_runs/workers_comp/united_specialty.json)
 - [Zenith](./insurance/loss_runs/workers_comp/zenith.json)
 
 ### Tax Forms
