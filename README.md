@@ -97,7 +97,13 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Zenith](./insurance/loss_runs/workers_comp/zenith.json)
 
 ### Tax Forms
-- [1040](./tax_forms/1040.json)
+- [1040 (2018)](./tax_forms/1040/2018/1040_2018.json)
+- [1040 (2019)](./tax_forms/1040/2019/1040_2019.json)
+- [1040 (Senior 2019)](./tax_forms/1040/2019/senior_1040_2019.json)
+- [1040 (2020)](./tax_forms/1040/2020/1040_2020.json)
+- [1040 (Senior 2020)](./tax_forms/1040/2020/senior_1040_2020.json)
+- [1040 (2021)](./tax_forms/1040/2021/1040_2021.json)
+- [1040 (Senior 2021)](./tax_forms/1040/2021/senior_1040_2021.json)
 - [1065](./tax_forms/1065.json)
 - [1099](./tax_forms/1099.json)
 - [1120](./tax_forms/1120.json)
