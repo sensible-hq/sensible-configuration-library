@@ -121,6 +121,15 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [TQL](./rate_confirmations/tql.json)
 - [Uber Freight](./rate_confirmations/uber_freight.json)
 
+### VOEs
+- [Blend](./VOEs/blend/blend.json)
+- [CCC Verify](./VOEs/ccc_verify/ccc_verify.json)
+- [Equifax](./VOEs/equifax/equifax.json)
+- [Lender's One](./VOEs/lenders_one/lenders_one.json)
+- [Truework](./VOEs/truework/truework.json)
+- [Veritax](./VOEs/veritax/veritax.json)
+- [Xactus](./VOEs/xactus/xactus.json)
+
 
 ## Using a configuration
 To use the library, you can sign up for a [free Sensible account](https://dev.sensible.so/register). 
