@@ -1,0 +1,3302 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "acord 24",
+              "type": "includes"
+            },
+            {
+              "text": "CERTIFICATE OF PROPERTY INSURANCE",
+              "type": "includes",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "producer",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "producer",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "address",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "producer",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "producer",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "producer_address",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 0,
+          "offsetY": 0.05,
+          "width": 3.8,
+          "height": 0.7,
+          "lineFilters": [
+            {
+              "text": "Fax:",
+              "type": "includes"
+            },
+            {
+              "text": "Phone:",
+              "type": "includes"
+            }
+          ],
+          "sortLines": "readingOrderLeftToRight"
+        },
+        "anchor": {
+          "match": {
+            "text": "producer",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insured",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "INSURED",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insured",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "INSURED",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insured_address",
+        "type": "address",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "tiebreaker": "last",
+          "sortLines": "readingOrderLeftToRight"
+        },
+        "anchor": {
+          "match": {
+            "text": "insured",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contact.name",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "wordFilters": [
+            "contact"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "name:",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contact.name",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "contact",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contact.phone",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "wordFilters": [
+            "phone"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "ext):",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contact.phone",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "wordFilters": [
+            "phone"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "ext):",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contact.phone",
+        "type": "phoneNumber",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "(A/C, No, Ext):",
+                "type": "startsWith"
+              },
+              {
+                "text": "(AIC, No, Ext)",
+                "type": "startsWith"
+              }
+            ]
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contact.fax",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "wordFilters": [
+            "fax"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "no):",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contact.fax",
+        "type": "phoneNumber",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "(A/C, No):",
+                "type": "startsWith"
+              },
+              {
+                "text": "(AJC. No):",
+                "type": "startsWith"
+              }
+            ]
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contact.email",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "wordFilters": [
+            "e-mail"
+          ],
+          "whitespaceFilter": "all"
+        },
+        "anchor": {
+          "match": {
+            "text": "address:",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contact.email",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "whitespaceFilter": "all"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "e-mail",
+              "type": "startsWith"
+            },
+            {
+              "text": "address:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "producer.customer_id",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "wordFilters": [
+            "PRODUCER"
+          ],
+          "whitespaceFilter": "all"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "producer",
+              "type": "startsWith"
+            },
+            {
+              "text": "customer id",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_a",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "pattern": "insurer a ?:?",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_a.naic",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "NAIC",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "insurer A",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_b",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "pattern": "insurer b ?:?",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_b",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "pattern": "insurer b ?:?",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_b.naic",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "NAIC",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "insurer B",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_c",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "pattern": "insurer c ?:?",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_c",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "pattern": "insurer c ?:?",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_c.naic",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "NAIC",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "insurer C",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_d",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "pattern": "insurer d ?:?",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_d",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "pattern": "insurer d ?:?",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_d.naic",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "NAIC",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "insurer D",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_e",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "pattern": "insurer e ?:?",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_e",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "pattern": "insurer e ?:?",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_e.naic",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "NAIC",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "insurer E",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_f",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "pattern": "insurer f ?:?",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurers_affording_coverage.insurer_f.naic",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "NAIC",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "insurer F",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "certificate_number",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "certificate number:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "location_description",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "location of premises",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "location_description",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "match": {
+            "text": "location of premises",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurer_letter.property",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "number": 1,
+            "direction": "below"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "ltr",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "type_of_insurance.property",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetX": -0.21,
+          "offsetY": -0.04,
+          "width": 0.15,
+          "height": 0.08
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "property",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.causes_of_loss.basic",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "causes of loss",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "basic",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.causes_of_loss.broad",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "causes of loss",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "broad",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.causes_of_loss.special",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "causes of loss",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "special",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.causes_of_loss.earthquake",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "causes of loss",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "earthquake",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.causes_of_loss.wind",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "causes of loss",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "wind",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.causes_of_loss.flood",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "causes of loss",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "flood",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.causes_of_loss.custom_1.name",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "causes of loss",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "FLOOD",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.causes_of_loss.custom_1.selected",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetY": 0.2,
+          "offsetX": -0.09
+        },
+        "anchor": {
+          "start": {
+            "text": "causes of loss",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "FLOOD",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.causes_of_loss.custom_2",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 0.6,
+          "height": 0.17,
+          "offsetX": 0,
+          "offsetY": 0.26
+        },
+        "anchor": {
+          "start": {
+            "text": "causes of loss",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "FLOOD",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.causes_of_loss.custom_2.selected",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetY": 0.3,
+          "offsetX": -0.09
+        },
+        "anchor": {
+          "start": {
+            "text": "causes of loss",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "FLOOD",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.deductibles.building",
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "deductibles",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "building",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.deductibles.contents",
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "deductibles",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "contents",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.deductibles.earthquake",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0.3,
+            "width": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "deductibles",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "earthquake",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.deductibles.wind",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0.7,
+            "width": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "deductibles",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "wind",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.deductibles.flood",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0.3,
+            "width": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "deductibles",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "flood",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.deductibles.custom_1",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 0.8,
+          "height": 0.17,
+          "offsetX": 0.62,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "deductibles",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "FLOOD",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.deductibles.custom_2",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 0.8,
+          "height": 0.17,
+          "offsetX": 0.62,
+          "offsetY": 0.27
+        },
+        "anchor": {
+          "start": {
+            "text": "deductibles",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "FLOOD",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.policy_number",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          },
+          "lineFilters": [
+            {
+              "text": "replacement cost",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "policy number",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.policy_effective_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          },
+          "tiebreaker": "<"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "policy eff",
+                "type": "startsWith"
+              },
+              {
+                "text": "eff date",
+                "type": "startsWith"
+              }
+            ]
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.policy_expiration_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          },
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "policy exp",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.covered_property.building",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "building",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.covered_property.personal_property",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "personal property",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.covered_property.business_income",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "business income",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.covered_property.extra_expense",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "extra expense",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.covered_property.rental_value",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "rental value",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.covered_property.blanket_building",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "blanket building",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.covered_property.blanket_pers_prop",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "blanket pers prop",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.covered_property.blanket_bldg_pp",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "blanket bldg",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.covered_property.custom_1.name",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "BLANKET BLDG & PP",
+            "type": "equals"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.covered_property.custom_1.selected",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetY": 0.2,
+          "offsetX": -0.09
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "BLANKET BLDG & PP",
+            "type": "equals"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.covered_property.custom_2.name",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 0.9,
+          "height": 0.17,
+          "offsetX": -0.01,
+          "offsetY": 0.28
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "BLANKET BLDG & PP",
+            "type": "equals"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.covered_property.custom_2.selected",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetY": 0.35,
+          "offsetX": -0.09
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "BLANKET BLDG & PP",
+            "type": "equals"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.limits.building",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "limits",
+            "type": "equals"
+          },
+          "match": {
+            "text": "building",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.limits.personal_property",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "limits",
+            "type": "equals"
+          },
+          "match": {
+            "text": "personal prop",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.limits.business_income",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "limits",
+            "type": "equals"
+          },
+          "match": {
+            "text": "business income",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.limits.extra_expense",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "limits",
+            "type": "equals"
+          },
+          "match": {
+            "text": "extra expense",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.limits.rental_valuue",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "limits",
+            "type": "equals"
+          },
+          "match": {
+            "text": "rental value",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.limits.blanket_building",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "limits",
+            "type": "equals"
+          },
+          "match": {
+            "text": "blanket building",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.limits.blanket_pers_prop",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "limits",
+            "type": "equals"
+          },
+          "match": {
+            "text": "blanket pers",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.limits.blanket_bldg_pp",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "limits",
+            "type": "equals"
+          },
+          "match": {
+            "text": "blanket bldg &",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.limits.custom_1",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1.2,
+          "height": 0.17,
+          "offsetX": 1,
+          "offsetY": 0.09,
+          "lineFilters": [
+            {
+              "text": "$",
+              "type": "equals"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "limits",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "blanket bldg &",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property.limits.custom_2",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1.2,
+          "height": 0.17,
+          "offsetX": 1,
+          "offsetY": 0.26
+        },
+        "anchor": {
+          "start": {
+            "text": "limits",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "blanket bldg &",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurer_letter.inland_marine",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "number": 2,
+            "direction": "below"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "ltr",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "type_of_insurance.inland_marine",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "property",
+            "type": "equals"
+          },
+          "match": {
+            "text": "inland marine",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "inland_marine.causes_of_loss.named_perils",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "inland marine",
+            "type": "equals"
+          },
+          "match": {
+            "text": "named perils",
+            "type": "equals"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "inland_marine.type_of_policy",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "property",
+            "type": "equals"
+          },
+          "match": {
+            "text": "type of policy",
+            "type": "equals"
+          },
+          "end": {
+            "text": "crime",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "inland_marine.policy_number",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "property",
+            "type": "equals"
+          },
+          "match": {
+            "text": "policy number",
+            "type": "equals"
+          },
+          "end": {
+            "text": "crime",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "inland_marine.policy_effective_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          },
+          "tiebreaker": "<"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "policy eff",
+                "type": "startsWith"
+              },
+              {
+                "text": "eff date",
+                "type": "startsWith"
+              }
+            ]
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "inland_marine.policy_expiration_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          },
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "policy exp",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "inland_marine.covered_property.general_aggregate",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "general aggregate",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "inland_marine.covered_property.prod_comp",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "prod/comp",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "inland_marine.covered_property.personal_adv_injury",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "personal/adv",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "inland_marine.covered_property.each_occurrence",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "each occurrence",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "inland_marine.limits.general_aggregate",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "general aggregate",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "inland_marine.limits.prod_comp",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "prod/comp",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "inland_marine.limits.personal_adv_injury",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "personal/adv",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "inland_marine.limits.each_occurrence",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "covered property",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "each occurrence",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurer_letter.crime",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "ltr",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "type_of_insurance.crime",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "crime",
+            "type": "equals"
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "crime.type_of_policy",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "crime",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "type of policy",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "crime.policy_number",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          },
+          "lineFilters": [
+            {
+              "type": "startsWith",
+              "text": "includes"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "policy number",
+            "type": "equals"
+          },
+          "end": {
+            "text": "inland marine",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "crime.policy_effective_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          },
+          "tiebreaker": "<"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "policy eff",
+                "type": "startsWith"
+              },
+              {
+                "text": "eff date",
+                "type": "startsWith"
+              }
+            ]
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "crime.policy_expiration_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          },
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "policy exp",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "crime.covered_property.custom_1",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "covered property",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "inland marine",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "crime",
+            "type": "equals"
+          },
+          "end": {
+            "text": "boiler",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "crime.covered_property.custom_2",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "covered property",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "crime",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "type of policy",
+            "type": "equals"
+          },
+          "end": {
+            "text": "boiler",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "crime.covered_property.custom_3",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "covered property",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "crime",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "type of policy",
+              "type": "equals"
+            },
+            {
+              "text": "$",
+              "type": "equals"
+            },
+            {
+              "text": "$",
+              "type": "equals"
+            }
+          ],
+          "end": {
+            "text": "boiler",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "crime.limits.custom_1",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "limits",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "inland marine",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "crime",
+            "type": "equals"
+          },
+          "end": {
+            "text": "boiler",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "crime.limits.custom_2",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "limits",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "crime",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "type of policy",
+            "type": "equals"
+          },
+          "end": {
+            "text": "boiler",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "crime.limits.custom_3",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "limits",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "crime",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "type of policy",
+              "type": "equals"
+            },
+            {
+              "text": "$",
+              "type": "equals"
+            },
+            {
+              "text": "$",
+              "type": "equals"
+            }
+          ],
+          "end": {
+            "text": "boiler",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurer_letter.boiler_and_machinery",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "ltr",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "type_of_insurance.boiler_and_machinery",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "boiler & machinery",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "boiler_and_machinery.policy_number",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "boiler & machinery",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "boiler_and_machinery.policy_effective_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          },
+          "tiebreaker": "<"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "policy eff",
+                "type": "startsWith"
+              },
+              {
+                "text": "eff date",
+                "type": "startsWith"
+              }
+            ]
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "boiler_and_machinery.policy_expiration_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          },
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "policy exp",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "boiler_and_machinery.covered_property.custom_1",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "covered property",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "crime",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "boiler & machinery",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "boiler_and_machinery.limits.custom_1",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "limits",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "crime",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "boiler & machinery",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurer_letter.additional",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            },
+            {
+              "text": "deductible",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "pattern": "^[A-F]$",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insurer_letter.additional",
+        "match": "all",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "pattern": "^[A-F]$",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "type_of_insurance.additional",
+        "match": "all",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "type of insurance",
+              "type": "equals"
+            }
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            },
+            {
+              "text": "deductible",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "$",
+            "type": "equals"
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "type_of_insurance.additional",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0.1,
+            "width": 2
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "pattern": "^[A-F]$",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_number.additional",
+        "match": "all",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "policy number"
+            },
+            "end": {
+              "text": "inland marine",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.6
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "pattern": "^[A-F]$",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_number.additional",
+        "match": "all",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "policy number"
+            },
+            "end": {
+              "text": "inland marine",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            },
+            {
+              "text": "deductible",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "pattern": "^[A-F]$",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_effective_date.additional",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            },
+            {
+              "text": "deductible",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "pattern": "^[A-F]$",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_effective_date.additional",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "pattern": "^[A-F]$",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_expiration_date.additional",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            },
+            {
+              "text": "deductible",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "pattern": "^[A-F]$",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_expiration_date.additional",
+        "type": "date",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "pattern": "^[A-F]$",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "covered_property.additional",
+        "match": "all",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "covered property",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "pattern": "^X$",
+              "type": "regex"
+            }
+          ],
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "covered_property.additional",
+        "match": "all",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "covered property",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            },
+            {
+              "text": "deductible",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "pattern": "\\d,\\d",
+              "type": "regex"
+            }
+          ],
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "covered_property.additional",
+        "match": "all",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "covered property",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "pattern": "^[A-F]$",
+              "type": "regex",
+              "flags": "i"
+            }
+          ],
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "limits.additional",
+        "match": "all",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "limits",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            },
+            {
+              "text": "deductible",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "pattern": "\\d,\\d",
+              "type": "regex"
+            }
+          ],
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "limits.additional",
+        "match": "all",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "limits",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "pattern": "^X$",
+              "type": "regex"
+            }
+          ],
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "limits.additional",
+        "match": "all",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "limits",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "equipment breakdown",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "pattern": "^[A-F]$",
+              "type": "regex",
+              "flags": "i"
+            }
+          ],
+          "end": {
+            "text": "special conditions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "special_conditions_other_coverages",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "special conditions",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "special_conditions_other_coverages",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "width": 5,
+          "height": 0.5,
+          "offsetX": -2.6,
+          "offsetY": 0.03
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "special conditions",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "certificate_holder",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "certificate holder",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "cancellation",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "cancellation",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "cancellation",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 4,
+          "height": 0.6,
+          "offsetX": 0.05,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "cancellation",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "authorized_representative",
+        "method": {
+          "id": "signature",
+          "start": "below",
+          "width": 4,
+          "height": 0.3,
+          "offsetX": -0.65,
+          "offsetY": 0.05
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "authorized representative",
+                "type": "startsWith"
+              },
+              {
+                "text": "authorized",
+                "type": "startsWith"
+              }
+            ]
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      }
+    ]
+  }
