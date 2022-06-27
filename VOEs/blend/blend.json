@@ -1,0 +1,1841 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "first",
+          "match": [
+            {
+              "text": "blend",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "Income Report",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        {
+          "page": "last",
+          "match": [
+            {
+              "text": "blend",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "Income Report",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "reference_number",
+        "anchor": {
+          "match": {
+            "text": "Reference #",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "year",
+        "anchor": {
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "20\\d{2}$"
+        }
+      },
+      {
+        "id": "employer",
+        "anchor": {
+          "match": {
+            "text": "Employer name",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "pattern": "employer address|pay rate",
+            "type": "regex",
+            "flags": "i"
+          },
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 4.9
+          },
+          "wordFilters": [
+            "Pay Type",
+            "Pay Rate"
+          ],
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^\\d{2}"
+            }
+          ],
+          "offsetY": -0.1
+        }
+      },
+      {
+        "id": "employer_address",
+        "type": "address",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "employer address",
+                "type": "startsWith"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 1.4,
+          "offsetY": -0.15,
+          "width": 2.4,
+          "height": 0.55
+        }
+      },
+      {
+        "id": "employee_name",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "borrower name",
+                "type": "startsWith"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "ssn",
+        "anchor": {
+          "match": {
+            "text": "not configured, not found",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "hire_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "Original Hire Date",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "present_position",
+        "anchor": {
+          "match": {
+            "text": "Job Title",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "employment_status",
+        "anchor": {
+          "match": {
+            "text": "employment status",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "current_as_of",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "CURRENT AS OF",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "rate_of_pay",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "Pay rate",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "date_of_applicants_last_pay_increase",
+        "type": "date",
+        "anchor": "Not configured, not found",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "amount_of_applicants_last_pay_increase",
+        "type": "currency",
+        "anchor": "Not configured, not found",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "year_1",
+        "type": "number",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": {
+            "pattern": "^20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "year_2",
+        "type": "number",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "year_3",
+        "type": "number",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "average_hours",
+        "anchor": {
+          "match": {
+            "text": "hours worked per pay period",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "basepay_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": {
+            "pattern": "^20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "base",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "basepay_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": {
+            "pattern": "^20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "base",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "basepay_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "base",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "basepay_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "base",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "basepay_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "base",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "basepay_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "base",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overtime_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": {
+            "pattern": "^20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "overtime",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overtime_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": {
+            "pattern": "^20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "overtime",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overtime_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "overtime",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overtime_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "overtime",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overtime_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "overtime",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overtime_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "overtime",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "commission_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": {
+            "pattern": "^20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "commission",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "commission_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": {
+            "pattern": "^20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "commission",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "commission_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "commission",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "commission_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "commission",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "commission_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "commission",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "commission_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "commission",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "bonus_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": {
+            "pattern": "^20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "bonus",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "bonus_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": {
+            "pattern": "^20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "bonus",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "bonus_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "bonus",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "bonus_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "bonus",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "bonus_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "bonus",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "bonus_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "bonus",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": {
+            "pattern": "^20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": {
+            "pattern": "^20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "incentive_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "incentive_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "incentive_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "sickpay_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "sickpay_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "sickpay_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "vacationpay_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "vacationpay_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "vacationpay_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "paid_time_off_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "paid_time_off_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "paid_time_off_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "totalpay_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": {
+            "pattern": "^20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "total",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "totalpay_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": {
+            "pattern": "^20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "total",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "totalpay_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "total",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "totalpay_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|The statement",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "total",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "totalpay_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "total",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "totalpay_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "ANNUAL INCOME SUMMARY",
+            "type": "equals"
+          },
+          "match": [
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "annual income summary",
+            "match": {
+              "text": "total",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      }
+    ]
+  }

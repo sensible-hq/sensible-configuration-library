@@ -1,0 +1,674 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "every",
+          "match": [
+            {
+              "text": "Verification of Income Report",
+              "type": "endsWith",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "truework",
+              "type": "endsWith"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "reference_number",
+        "anchor": "reference number",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": -3,
+          "offsetY": 0,
+          "width": 3.5,
+          "height": 0.3
+        }
+      },
+      {
+        "id": "year",
+        "anchor": {
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "20\\d{2}$"
+        }
+      },
+      {
+        "id": "employer",
+        "anchor": {
+          "match": {
+            "text": "Employer",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "employer_address",
+        "type": "address",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "employer address",
+                "type": "startsWith"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 4,
+          "offsetY": -0.2,
+          "width": 3.7,
+          "height": 0.5
+        }
+      },
+      {
+        "id": "employee_name",
+        "anchor": {
+          "match": {
+            "text": "full name",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row"
+        }
+      },
+      {
+        "id": "ssn",
+        "anchor": {
+          "match": {
+            "text": "last 4 of ssn",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row"
+        }
+      },
+      {
+        "id": "hire_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "dates of",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "present_position",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "job title",
+                "type": "startsWith"
+              },
+              {
+                "text": "job",
+                "type": "equals"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "offsetY": -0.1,
+          "stop": {
+            "text": "employment",
+            "type": "startsWith"
+          },
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3.75
+          },
+          "lineFilters": [
+            {
+              "type": "equals",
+              "text": "title"
+            }
+          ]
+        }
+      },
+      {
+        "id": "employment_status",
+        "anchor": {
+          "match": {
+            "text": "status",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row"
+        }
+      },
+      {
+        "id": "current_as_of",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "current as of",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "rate_of_pay",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "base",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "date_of_applicants_last_pay_increase",
+        "type": "date",
+        "anchor": "not configured, not found",
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "amount_of_applicants_last_pay_increase",
+        "type": "currency",
+        "anchor": "not configured, not found",
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "year_1",
+        "type": "number",
+        "anchor": {
+          "start": "employment type",
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "base"
+            }
+          ]
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 1.4,
+          "offsetY": -0.65,
+          "height": 0.45,
+          "width": 1
+        }
+      },
+      {
+        "id": "year_2",
+        "type": "number",
+        "anchor": {
+          "start": "employment type",
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "base"
+            }
+          ]
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 3.3,
+          "offsetY": -0.65,
+          "height": 0.45,
+          "width": 1
+        }
+      },
+      {
+        "id": "year_3",
+        "type": "number",
+        "anchor": {
+          "start": "employment type",
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "base"
+            }
+          ]
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 5.1,
+          "offsetY": -0.65,
+          "height": 0.45,
+          "width": 1.2
+        }
+      },
+      {
+        "id": "average_hours",
+        "anchor": "Not configured, not found",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "basepay_1",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "base"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "basepay_2",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "base"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "basepay_3",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "base"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "third"
+        }
+      },
+      {
+        "id": "overtime_1",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "overtime"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "overtime_2",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "overtime"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "overtime_3",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "overtime"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "third"
+        }
+      },
+      {
+        "id": "commission_1",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "commission"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "commission_2",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "commission"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "commission_3",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "commission"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "third"
+        }
+      },
+      {
+        "id": "bonus_1",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "bonus"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "bonus_2",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "bonus"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "bonus_3",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "bonus"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "third"
+        }
+      },
+      {
+        "id": "other_income_1",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "other"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "other_income_2",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "other"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "other_income_3",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "other"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "third"
+        }
+      },
+      {
+        "id": "incentive_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "incentive_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "incentive_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "sickpay_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "sickpay_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "sickpay_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "vacationpay_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "vacationpay_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "vacationpay_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "paid_time_off_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "paid_time_off_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "paid_time_off_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "totalpay_1",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "total"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "totalpay_2",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "total"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "totalpay_3",
+        "type": "currency",
+        "anchor": {
+          "start": "employment type",
+          "match": {
+            "type": "startsWith",
+            "text": "total"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "third"
+        }
+      }
+    ]
+  }

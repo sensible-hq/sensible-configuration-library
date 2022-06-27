@@ -1,0 +1,1238 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "first",
+          "match": [
+            {
+              "text": "Report Requested:",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "Report Tracking Number:",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "CCC Verify",
+              "type": "includes",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        {
+          "page": "last",
+          "match": [
+            {
+              "text": "Information Accurate As Of",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "This report provided by cccverify",
+              "type": "startsWith"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "reference_number",
+        "anchor": "report tracking number:",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "reference_number",
+        "anchor": "report tracking number:",
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "year",
+        "anchor": {
+          "match": {
+            "text": "report requested",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "20\\d{2}"
+        }
+      },
+      {
+        "id": "employer",
+        "anchor": {
+          "start": "data source",
+          "match": {
+            "text": "name:",
+            "type": "startsWith"
+          },
+          "end": "employee"
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "employer_address",
+        "type": "address",
+        "anchor": {
+          "start": "data source",
+          "match": {
+            "text": "address:",
+            "type": "startsWith"
+          },
+          "end": "employee"
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "employee_name",
+        "anchor": {
+          "match": {
+            "text": "first name:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "lineFilters": [
+            {
+              "type": "startsWith",
+              "text": "last name:"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ssn",
+        "anchor": {
+          "match": {
+            "type": "regex",
+            "pattern": "\\*- ?\\d{4}$"
+          }
+        },
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "hire_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "first Hire Date",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "present_position",
+        "anchor": {
+          "match": {
+            "text": "Job Title",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "employment_status",
+        "anchor": {
+          "match": {
+            "text": "work status:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "current_as_of",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "information accurate as of",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "rate_of_pay",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "pay:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "date_of_applicants_last_pay_increase",
+        "type": "date",
+        "anchor": "Not configured, not found",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "amount_of_applicants_last_pay_increase",
+        "type": "currency",
+        "anchor": "Not configured, not found",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "year_1",
+        "type": "number",
+        "anchor": {
+          "start": "Year-to-Date Income Details",
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "^20\\d{2}"
+        }
+      },
+      {
+        "id": "year_2",
+        "type": "number",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "year_3",
+        "type": "number",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "average_hours",
+        "anchor": "Not configured, not found",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "basepay_1",
+        "type": "currency",
+        "anchor": {
+          "start": "Year-to-Date Income Details",
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "second",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "basepay_2",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "second",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "basepay_3",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "second",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "overtime_1",
+        "type": "currency",
+        "anchor": {
+          "start": "Year-to-Date Income Details",
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "third",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "overtime_2",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "third",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "overtime_3",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "third",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "commission_1",
+        "type": "currency",
+        "anchor": {
+          "start": "Year-to-Date Income Details",
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 2.3,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "first",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "commission_2",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 2.3,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "first",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "commission_3",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 2.3,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "first",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "bonus_1",
+        "type": "currency",
+        "anchor": {
+          "start": "Year-to-Date Income Details",
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "last",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "bonus_2",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "last",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "bonus_3",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "last",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "other_income_1",
+        "type": "currency",
+        "anchor": {
+          "start": "Year-to-Date Income Details",
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 4.5,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "third",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "other_income_2",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 4.5,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "third",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "other_income_3",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 4.5,
+          "offsetY": -0.1,
+          "width": 2.3,
+          "height": 0.2,
+          "tiebreaker": "third",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "incentive_1",
+        "type": "currency",
+        "anchor": {
+          "start": "Year-to-Date Income Details",
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 2.3,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "second",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "incentive_2",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 2.3,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "second",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "incentive_3",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 2.3,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "second",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "sickpay_1",
+        "type": "currency",
+        "anchor": {
+          "start": "Year-to-Date Income Details",
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 2.3,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "last",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "sickpay_2",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 2.3,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "last",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "sickpay_3",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 2.3,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "last",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "vacationpay_1",
+        "type": "currency",
+        "anchor": {
+          "start": "Year-to-Date Income Details",
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 4.5,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "first",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "vacationpay_2",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 4.5,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "first",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "vacationpay_3",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 4.5,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "first",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "paid_time_off_1",
+        "type": "currency",
+        "anchor": {
+          "start": "Year-to-Date Income Details",
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 4.5,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "second",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "paid_time_off_2",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 4.5,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "second",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "paid_time_off_3",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 4.5,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "second",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "totalpay_1",
+        "type": "currency",
+        "anchor": {
+          "start": "Year-to-Date Income Details",
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 4.5,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "last",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "totalpay_2",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 4.5,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "last",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "totalpay_3",
+        "type": "currency",
+        "anchor": {
+          "start": [
+            {
+              "text": "Year-to-Date Income Details",
+              "type": "startsWith"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            },
+            {
+              "pattern": "^20\\d{2}$|^20\\d{2} ",
+              "type": "regex"
+            }
+          ],
+          "match": {
+            "pattern": "^20\\d{2}$|^20\\d{2} ",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 4.5,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.2,
+          "tiebreaker": "last",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      }
+    ]
+  }

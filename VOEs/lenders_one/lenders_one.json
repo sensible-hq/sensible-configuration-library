@@ -1,0 +1,1655 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "first",
+          "match": [
+            {
+              "pattern": "L\\s?E\\s?N\\s?D\\s?E\\s?R\\s?S\\s?O\\s?N\\s?E",
+              "type": "regex"
+            },
+            {
+              "text": "Verification of Employment Report",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        {
+          "page": "last",
+          "match": [
+            {
+              "text": "*** END OF REPORT",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "reference_number",
+        "anchor": {
+          "match": {
+            "text": "reference number",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "year",
+        "anchor": {
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "20\\d{2}$"
+        }
+      },
+      {
+        "id": "employer",
+        "anchor": {
+          "match": {
+            "text": "Employer:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "employer_address",
+        "type": "address",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "employer address:",
+                "type": "startsWith"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 2.15,
+          "offsetY": -0.1,
+          "width": 2.2,
+          "height": 0.35
+        }
+      },
+      {
+        "id": "employee_name",
+        "anchor": {
+          "match": {
+            "text": "employee name:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row"
+        }
+      },
+      {
+        "id": "ssn",
+        "type": {
+          "id": "custom",
+          "pattern": "\\d{4}$"
+        },
+        "anchor": {
+          "match": {
+            "pattern": "^...-..-\\d{4}$",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "^...-..-\\d{4}$"
+        }
+      },
+      {
+        "id": "hire_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "Original Hire Date",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "present_position",
+        "anchor": {
+          "match": {
+            "text": "Job Title",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "employment_status",
+        "anchor": {
+          "match": {
+            "text": "employment status",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row"
+        }
+      },
+      {
+        "id": "current_as_of",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "information current as of",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "rate_of_pay",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "rate of pay:",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "date_of_applicants_last_pay_increase",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "date of pay increase",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "Last",
+              "type": "equals"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "amount_of_applicants_last_pay_increase",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "amount of pay increase",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "Last",
+              "type": "equals"
+            }
+          }
+        }
+      },
+      {
+        "id": "year_1",
+        "type": "number",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "left"
+        }
+      },
+      {
+        "id": "year_2",
+        "type": "number",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "year_3",
+        "type": "number",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "average_hours",
+        "anchor": {
+          "match": {
+            "text": "average hours per pay period:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "basepay_1",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "base pay",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "basepay_1",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "base pay",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "basepay_2",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "base pay",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "basepay_2",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "base pay",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "basepay_3",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "base pay",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "basepay_3",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "base pay",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overtime_1",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "overtime",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overtime_1",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "overtime",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overtime_2",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "overtime",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overtime_2",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "overtime",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overtime_3",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "overtime",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overtime_3",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "overtime",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "commission_1",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "commission",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "commission_1",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "commission",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.3,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "commission_2",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "commission",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "commission_2",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "commission",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.3,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "commission_3",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "commission",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "commission_3",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "commission",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.3,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "bonus_1",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "bonuses",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "bonus_1",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "bonuses",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "bonus_2",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "bonuses",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "bonus_2",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "bonuses",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "bonus_3",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "bonuses",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "bonus_3",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "bonuses",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_1",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "employee name",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_1",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "employee name",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_1",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "employee name",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.3,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_2",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "employee name",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_2",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "employee name",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_2",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "employee name",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.3,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_3",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "employee name",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_3",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "employee name",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.2,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income_3",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "employee name",
+            "match": {
+              "text": "other",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.3,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "incentive_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "incentive_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "incentive_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "sickpay_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "sickpay_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "sickpay_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "vacationpay_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "vacationpay_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "vacationpay_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "paid_time_off_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "paid_time_off_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "paid_time_off_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "totalpay_1",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "total pay",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "totalpay_1",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "total pay",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.15,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "totalpay_2",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "total pay",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "totalpay_2",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "total pay",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.15,
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "totalpay_3",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "total pay",
+              "type": "startsWith"
+            }
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "totalpay_3",
+        "type": "currency",
+        "anchor": {
+          "match": [
+            {
+              "type": "endsWith",
+              "text": "YTD",
+              "isCaseSensitive": true
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            }
+          ],
+          "end": {
+            "type": "startsWith",
+            "text": "on leave dates"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "total pay",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": -0.15,
+          "whitespaceFilter": "all"
+        }
+      }
+    ]
+  }

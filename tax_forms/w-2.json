@@ -1,489 +1,4635 @@
 {
-    "fingerprint": {
-      "tests": [
-        {
-          "page": "any",
-          "match": [
+  "fingerprint": {
+    "tests": [
+      {
+        "page": "first",
+        "match": [
+          {
+            "pattern": "wage & tax|wage and tax|w\\s?-\\s?2$",
+            "type": "regex",
+            "flags": "i"
+          }
+        ]
+      },
+      {
+        "page": "last",
+        "match": [
+          {
+            "pattern": "wage & tax|wage and tax|w\\s?-\\s?2$",
+            "type": "regex",
+            "flags": "i"
+          }
+        ]
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "year",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
             {
-              "text": "w-2",
+              "type": "regex",
+              "pattern": "^20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "tax statement 20\\d{2}",
+              "flags": "i"
+            },
+            {
+              "type": "regex",
+              "pattern": "20\\d{2}$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^20\\d{2}"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "regex",
+        "pattern": "20\\d{2}"
+      }
+    },
+    {
+      "id": "employer_name",
+      "match": "mostFrequent",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "employer's name",
+              "type": "includes"
+            },
+            {
+              "text": "employers name",
               "type": "includes"
             }
           ]
         }
-      ]
-    },
-    "fields": [
-      {
-        "id": "ssn",
-        "method": {
-          "id": "box",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "Employee's social security number",
-            "type": "includes"
-          }
-        }
       },
-      {
-        "id": "ein",
-        "method": {
-          "id": "box",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "employer identification number",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "wages_tips_other_compensation",
-        "type": "currency",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "lineFilters": [
-            {
-              "type": "regex",
-              "pattern": "^1$|^1\\.$"
-            }
-          ]
-        },
-        "anchor": {
-          "match": {
-            "text": "wages, tips, other",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "federal_income_tax_withheld",
-        "type": "currency",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "lineFilters": [
-            {
-              "type": "regex",
-              "pattern": "^2$|^2\\.$"
-            }
-          ]
-        },
-        "anchor": {
-          "match": {
-            "text": "federal income tax withheld",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "employer_name",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "lineFilters": [
-            {
-              "type": "regex",
-              "pattern": "^\\d|\\d$"
-            }
-          ]
-        },
-        "anchor": {
-          "match": {
-            "text": "Employer's name, address, and ZIP code",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "employer_address",
-        "type": "address",
-        "method": {
-          "id": "box",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "Employer's name, address, and ZIP code",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "social_security_wages",
-        "type": "currency",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "lineFilters": [
-            {
-              "type": "regex",
-              "pattern": "^3$|^3\\.$"
-            }
-          ]
-        },
-        "anchor": {
-          "match": {
-            "text": "social security wages",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "social_security_tax_withheld",
-        "type": "currency",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "lineFilters": [
-            {
-              "type": "regex",
-              "pattern": "^4$|^4\\.$"
-            }
-          ]
-        },
-        "anchor": {
-          "match": {
-            "text": "social security tax withheld",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "medicare_wages_and_tips",
-        "type": "currency",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "lineFilters": [
-            {
-              "type": "regex",
-              "pattern": "^5$|^5\\.$"
-            }
-          ]
-        },
-        "anchor": {
-          "match": {
-            "text": "medicare wages and tips",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "medicare_tax_withheld",
-        "type": "currency",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "lineFilters": [
-            {
-              "type": "regex",
-              "pattern": "^6$|^6\\.$"
-            }
-          ]
-        },
-        "anchor": {
-          "match": {
-            "text": "medicare tax withheld",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "social_security_tips",
-        "type": "currency",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "lineFilters": [
-            {
-              "type": "regex",
-              "pattern": "^7$|^7\\.$"
-            }
-          ]
-        },
-        "anchor": {
-          "match": {
+      "method": {
+        "id": "box",
+        "position": "below",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^c$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^x$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^CDFF$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^C46P$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^e$"
+          },
+          {
+            "type": "includes",
+            "text": "omb no"
+          },
+          {
+            "type": "includes",
+            "text": "employer use only"
+          },
+          {
+            "type": "equals",
+            "text": "A",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "S",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "d",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "includes",
+            "text": "social security tax withheld"
+          },
+          {
+            "type": "equals",
+            "text": "reissued statement"
+          },
+          {
+            "type": "regex",
+            "pattern": "^batch\\s?#",
+            "flags": "i"
+          },
+          {
+            "type": "startsWith",
+            "text": "7 social security"
+          },
+          {
+            "type": "includes",
             "text": "social security tips",
-            "type": "includes"
+            "editDistance": 1
+          },
+          {
+            "type": "regex",
+            "pattern": "po box|p.o. box|po drawer|p.o. drawer",
+            "flags": "i"
+          },
+          {
+            "type": "startsWith",
+            "text": "9 advanced eic payment"
+          },
+          {
+            "type": "includes",
+            "text": "social security wage"
+          },
+          {
+            "type": "includes",
+            "text": "and zip code"
+          },
+          {
+            "type": "equals",
+            "text": "code",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "includes",
+            "text": "medicare"
+          },
+          {
+            "type": "regex",
+            "pattern": "^[0-9\\.]*$"
+          },
+          {
+            "type": "regex",
+            "pattern": "\\d{5}$"
+          },
+          {
+            "type": "regex",
+            "pattern": "\\d{5}-\\d{4}$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{2}"
+          },
+          {
+            "type": "regex",
+            "pattern": "statutory|starnory",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "employee's name"
+          },
+          {
+            "type": "includes",
+            "text": "control number"
+          },
+          {
+            "type": "regex",
+            "pattern": "^suite \\d*$",
+            "flags": "i"
+          },
+          {
+            "type": "equals",
+            "text": "USA",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "retirement"
+          },
+          {
+            "type": "equals",
+            "text": "sick pay"
+          },
+          {
+            "type": "equals",
+            "text": "third-party"
+          },
+          {
+            "type": "equals",
+            "text": "employee"
+          },
+          {
+            "type": "equals",
+            "text": "plan"
+          },
+          {
+            "type": "equals",
+            "text": "return postage guaranteed"
+          },
+          {
+            "type": "regex",
+            "pattern": "^dept$|^dept\\.$|^corp$|^corp\\.$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^9$"
+          },
+          {
+            "type": "includes",
+            "text": "verification code"
+          },
+          {
+            "type": "includes",
+            "text": "employer's fed id"
+          },
+          {
+            "type": "includes",
+            "text": "employee's ssa number"
+          },
+          {
+            "type": "includes",
+            "text": "social security tips"
+          },
+          {
+            "type": "includes",
+            "text": "allocated tips"
+          },
+          {
+            "type": "regex",
+            "pattern": "-\\d{4}$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^b$"
+          },
+          {
+            "type": "includes",
+            "text": "corrected statement"
           }
-        }
-      },
-      {
-        "id": "allocated_tips",
-        "type": "currency",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "lineFilters": [
-            {
-              "type": "regex",
-              "pattern": "^8$|^8\\.$"
-            }
-          ]
-        },
-        "anchor": {
-          "match": {
-            "text": "allocated tips",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "control_number",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "lineFilters": [
-            {
-              "type": "regex",
-              "pattern": "^d$|^d\\.$"
-            }
-          ]
-        },
-        "anchor": {
-          "match": {
-            "text": "control number",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "dependent_care_benefits",
-        "type": "currency",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "lineFilters": [
-            {
-              "type": "regex",
-              "pattern": "^10$|^10\\.$"
-            }
-          ]
-        },
-        "anchor": {
-          "match": {
-            "text": "dependent care benefits",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "employee_name",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "lineFilters": [
-            {
-              "type": "regex",
-              "pattern": "^e$|^e\\.$"
-            },
-            {
-              "type": "regex",
-              "pattern": "^Last name$"
-            },
-            {
-              "type": "regex",
-              "pattern": "^Suff"
-            },
-            {
-              "type": "regex",
-              "pattern": "^\\d|\\d$"
-            },
-            {
-              "type": "regex",
-              "pattern": "Employee's address"
-            }
-          ]
-        },
-        "anchor": {
-          "match": {
-            "text": "Employee's first name and initial",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "employee_address",
-        "type": "address",
-        "method": {
-          "id": "box",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "Employee's first name and initial",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "nonqualified_plans",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "lineFilters": [
-            {
-              "type": "regex",
-              "pattern": "^11$|^11\\.$"
-            }
-          ]
-        },
-        "anchor": {
-          "match": {
-            "text": "nonqualified plans",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "box13.statutory_employee",
-        "method": {
-          "id": "checkbox",
-          "position": "left",
-          "offsetY": 0.2,
-          "offsetX": 0.1
-        },
-        "anchor": {
-          "match": {
-            "text": "statutory",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "box13.retirement_plan",
-        "method": {
-          "id": "checkbox",
-          "position": "left",
-          "offsetY": 0.2,
-          "offsetX": 0.6
-        },
-        "anchor": {
-          "match": {
-            "text": "statutory",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "box13.third_paty_sick_pay",
-        "method": {
-          "id": "checkbox",
-          "position": "left",
-          "offsetY": 0.2,
-          "offsetX": 1.1
-        },
-        "anchor": {
-          "match": {
-            "text": "statutory",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "state",
-        "method": {
-          "id": "label",
-          "position": "below"
-        },
-        "anchor": {
-          "match": {
-            "text": "state",
-            "type": "endsWith"
-          }
-        }
-      },
-      {
-        "id": "employers_state_id_number",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "textAlignment": "hangingIndent"
-        },
-        "anchor": {
-          "match": {
-            "text": "Employer's state ID number",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "state_wages_tips",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "textAlignment": "hangingIndent"
-        },
-        "anchor": {
-          "match": {
-            "text": "state wages, tips",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "state_income_tax",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "textAlignment": "hangingIndent"
-        },
-        "anchor": {
-          "match": {
-            "text": "state income tax",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "local_wages_tips",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "textAlignment": "hangingIndent"
-        },
-        "anchor": {
-          "match": {
-            "text": "local wages, tips",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "local_income_tax",
-        "type": "currency",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "textAlignment": "hangingIndent"
-        },
-        "anchor": {
-          "match": {
-            "text": "local income tax",
-            "type": "includes"
-          }
-        }
-      },
-      {
-        "id": "locality_name",
-        "method": {
-          "id": "label",
-          "position": "below",
-          "textAlignment": "hangingIndent"
-        },
-        "anchor": {
-          "match": {
-            "text": "locality name",
-            "type": "includes"
-          }
-        }
+        ],
+        "typeFilters": [
+          "address"
+        ],
+        "sortLines": "readingOrderLeftToRight"
       }
-    ]
-  }
+    },
+    {
+      "id": "employer_name",
+      "match": "mostFrequent",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "employer's name",
+              "type": "includes"
+            },
+            {
+              "text": "employers name",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 3.5,
+        "height": 0.7,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^c$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^x$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^e$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^d$"
+          },
+          {
+            "type": "includes",
+            "text": "omb no"
+          },
+          {
+            "type": "regex",
+            "pattern": "po box|p.o. box|po drawer|p.o. drawer",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "social security tax withheld"
+          },
+          {
+            "type": "equals",
+            "text": "reissued statement"
+          },
+          {
+            "type": "regex",
+            "pattern": "^batch\\s?#",
+            "flags": "i"
+          },
+          {
+            "type": "startsWith",
+            "text": "7 social security"
+          },
+          {
+            "type": "includes",
+            "text": "social security tips",
+            "editDistance": 1
+          },
+          {
+            "type": "regex",
+            "pattern": "po box|p.o. box|po drawer|p.o. drawer",
+            "flags": "i"
+          },
+          {
+            "type": "startsWith",
+            "text": "9 advanced eic payment"
+          },
+          {
+            "type": "includes",
+            "text": "social security wage"
+          },
+          {
+            "type": "includes",
+            "text": "medicare"
+          },
+          {
+            "type": "includes",
+            "text": "employer use only"
+          },
+          {
+            "type": "equals",
+            "text": "A",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "d",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "includes",
+            "text": "omb no"
+          },
+          {
+            "type": "regex",
+            "pattern": "^[0-9\\.]*$"
+          },
+          {
+            "type": "regex",
+            "pattern": "\\d{5}$"
+          },
+          {
+            "type": "regex",
+            "pattern": "\\d{5}-\\d{4}$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{2}"
+          },
+          {
+            "type": "regex",
+            "pattern": "statutory|starnory",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "employee's name"
+          },
+          {
+            "type": "regex",
+            "pattern": "^7$|^8$|^9$"
+          },
+          {
+            "type": "includes",
+            "text": "control number"
+          },
+          {
+            "type": "regex",
+            "pattern": "^suite \\d*$",
+            "flags": "i"
+          },
+          {
+            "type": "equals",
+            "text": "USA",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "retirement"
+          },
+          {
+            "type": "equals",
+            "text": "sick pay"
+          },
+          {
+            "type": "equals",
+            "text": "third-party"
+          },
+          {
+            "type": "equals",
+            "text": "employee"
+          },
+          {
+            "type": "equals",
+            "text": "plan"
+          },
+          {
+            "type": "equals",
+            "text": "return postage guaranteed"
+          },
+          {
+            "type": "regex",
+            "pattern": "^dept$|^dept\\.$|^corp$|^corp\\.$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^9$"
+          },
+          {
+            "type": "includes",
+            "text": "verification code"
+          },
+          {
+            "type": "includes",
+            "text": "and zip code"
+          },
+          {
+            "type": "includes",
+            "text": "employee's ssa number"
+          },
+          {
+            "type": "includes",
+            "text": "social security tips"
+          },
+          {
+            "type": "includes",
+            "text": "allocated tips"
+          },
+          {
+            "type": "regex",
+            "pattern": "-\\d{4}$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^b$"
+          },
+          {
+            "type": "equals",
+            "text": "Compensation"
+          },
+          {
+            "type": "includes",
+            "text": "corrected statement"
+          }
+        ],
+        "typeFilters": [
+          "address"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "employer_name",
+      "match": "mostFrequent",
+      "anchor": {
+        "match": {
+          "text": "payor's name, address, and zip",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 3.5,
+        "height": 0.55,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^c$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^e$"
+          },
+          {
+            "type": "equals",
+            "text": "e."
+          },
+          {
+            "type": "regex",
+            "pattern": "^d$"
+          },
+          {
+            "type": "includes",
+            "text": "omb no"
+          },
+          {
+            "type": "regex",
+            "pattern": "po box|p.o. box|po drawer|p.o. drawer",
+            "flags": "i"
+          },
+          {
+            "type": "equals",
+            "text": "reissued statement"
+          },
+          {
+            "type": "regex",
+            "pattern": "^batch\\s?#",
+            "flags": "i"
+          },
+          {
+            "type": "startsWith",
+            "text": "7 social security"
+          },
+          {
+            "type": "includes",
+            "text": "social security tips",
+            "editDistance": 1
+          },
+          {
+            "type": "startsWith",
+            "text": "9 advanced eic payment"
+          },
+          {
+            "type": "regex",
+            "pattern": "po box|p.o. box|po drawer|p.o. drawer",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "social security tax withheld"
+          },
+          {
+            "type": "includes",
+            "text": "social security wage"
+          },
+          {
+            "type": "includes",
+            "text": "medicare"
+          },
+          {
+            "type": "includes",
+            "text": "payee"
+          },
+          {
+            "type": "includes",
+            "text": "omb no"
+          },
+          {
+            "type": "regex",
+            "pattern": "^[0-9\\.]*$"
+          },
+          {
+            "type": "regex",
+            "pattern": "\\d{5}$"
+          },
+          {
+            "type": "regex",
+            "pattern": "\\d{5}-\\d{4}$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{2}"
+          },
+          {
+            "type": "regex",
+            "pattern": "statutory|starnory",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "employee's name"
+          },
+          {
+            "type": "regex",
+            "pattern": "^7$|^8$|^9$"
+          },
+          {
+            "type": "includes",
+            "text": "control number"
+          },
+          {
+            "type": "regex",
+            "pattern": "^suite \\d*$",
+            "flags": "i"
+          },
+          {
+            "type": "equals",
+            "text": "USA",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "retirement"
+          },
+          {
+            "type": "equals",
+            "text": "sick pay"
+          },
+          {
+            "type": "equals",
+            "text": "third-party"
+          },
+          {
+            "type": "equals",
+            "text": "employee"
+          },
+          {
+            "type": "equals",
+            "text": "plan"
+          },
+          {
+            "type": "equals",
+            "text": "return postage guaranteed"
+          },
+          {
+            "type": "regex",
+            "pattern": "^9$"
+          },
+          {
+            "type": "includes",
+            "text": "verification code"
+          },
+          {
+            "type": "includes",
+            "text": "employee's ssa number"
+          },
+          {
+            "type": "includes",
+            "text": "social security tips"
+          },
+          {
+            "type": "includes",
+            "text": "allocated tips"
+          },
+          {
+            "type": "regex",
+            "pattern": "-\\d{4}$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^b$"
+          },
+          {
+            "type": "equals",
+            "text": "Compensation"
+          },
+          {
+            "type": "includes",
+            "text": "corrected statement"
+          }
+        ],
+        "typeFilters": [
+          "address"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "employer_address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "text": "employer's name",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below",
+        "sortLines": "readingOrderLeftToRight",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^12a$"
+          }
+        ]
+      }
+    },
+    {
+      "id": "employer_address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "text": "employer's name",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 3.5,
+        "height": 0.95,
+        "sortLines": "readingOrderLeftToRight",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^12a$"
+          }
+        ]
+      }
+    },
+    {
+      "id": "employer_address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "text": "payor's name, address, and zip",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 3.5,
+        "height": 0.6,
+        "sortLines": "readingOrderLeftToRight",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^12a$"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ein",
+      "match": "mostFrequent",
+      "type": {
+        "id": "custom",
+        "pattern": "^\\d{2}-\\d{7}$|^\\d{2} ?- ?\\d{7}$|^.{9,10}$",
+        "type": "string"
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "employer's identification number",
+              "type": "includes"
+            },
+            {
+              "text": "employer identification number",
+              "type": "includes"
+            },
+            {
+              "text": "Employer id number",
+              "type": "includes"
+            },
+            {
+              "text": "Employer id no",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below",
+        "whitespaceFilter": "all",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "[a-w]|[y-z]",
+            "flags": "i"
+          }
+        ]
+      }
+    },
+    {
+      "id": "ein",
+      "match": "mostFrequent",
+      "type": {
+        "id": "custom",
+        "pattern": "^\\d{2}-\\d{7}$|^.{9,10}$",
+        "type": "string"
+      },
+      "anchor": {
+        "match": {
+          "pattern": "^\\d{2}-\\d{7}$",
+          "type": "regex"
+        }
+      },
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "ein",
+      "match": "mostFrequent",
+      "type": {
+        "id": "custom",
+        "pattern": "\\d{2}-\\d{7}|^\\d{2} ?- ?\\d{7}$",
+        "type": "string"
+      },
+      "anchor": {
+        "match": {
+          "text": "employer identification number (ein)",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "ein",
+      "match": "mostFrequent",
+      "type": {
+        "id": "custom",
+        "pattern": "\\d{2}-\\d{7}|^\\d{9}$",
+        "type": "string"
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "employer's identification number",
+              "type": "includes"
+            },
+            {
+              "text": "employer identification number",
+              "type": "includes"
+            },
+            {
+              "text": "Employer id number",
+              "type": "includes"
+            },
+            {
+              "text": "Employer id no",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0.05,
+        "width": 1.6,
+        "height": 0.15
+      }
+    },
+    {
+      "id": "ssn",
+      "match": "mostFrequent",
+      "type": {
+        "id": "custom",
+        "pattern": "\\d{3}-\\d{2}-\\d{4}",
+        "type": "string"
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "employee's social security",
+              "type": "includes"
+            },
+            {
+              "text": "employee soc. sec",
+              "type": "includes"
+            },
+            {
+              "text": "employee's ssn",
+              "type": "endsWith"
+            },
+            {
+              "text": "employee's ssa number",
+              "type": "includes"
+            },
+            {
+              "text": "a employee's social",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "ssn",
+      "match": "mostFrequent",
+      "type": {
+        "id": "custom",
+        "pattern": "^\\d{3}-\\d{2}-\\d{4}|^.{7}\\d{4}$|^.{5}\\d{4}$|-\\d{4}$|^\\d{3}\\s?-\\s?\\d{2}\\s?-\\s?\\d{4}",
+        "type": "string"
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "employee's social security",
+              "type": "includes"
+            },
+            {
+              "text": "employee soc. sec",
+              "type": "includes"
+            },
+            {
+              "text": "employee's ssn",
+              "type": "endsWith"
+            },
+            {
+              "text": "employee's ssa number",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "ssn",
+      "match": "mostFrequent",
+      "type": {
+        "id": "custom",
+        "pattern": "^\\d{3}-\\d{2}-\\d{4}|^.{7}\\d{4}$|^.{6}-\\d{4}$|^[Xx\\d]{3}\\s?.\\s?[Xx\\d]{2}\\s?.?\\s?[Xx\\d]{4}$",
+        "type": "string"
+      },
+      "anchor": {
+        "match": {
+          "pattern": "^\\d{3}-\\d{2}-\\d{4}$|\\d{3}-\\d{2}-\\d{4}$|^.{6}-\\d{4}$|^\\d{3}-\\d{2}-\\d{4}|^[Xx\\d]{3}\\s?.\\s?[Xx\\d]{2}\\s?.?\\s?[Xx\\d]{4}$",
+          "type": "regex"
+        }
+      },
+      "method": {
+        "id": "regex",
+        "pattern": "\\d{3}-\\d{2}-\\d{4}|^.{6}-\\d{4}$|^[Xx\\d]{3}\\s?.?\\?[Xx\\d]{2}\\s?.?\\?[Xx\\d]{4}$|^[Xx\\d]{3}\\s?.\\s?[Xx\\d]{2}\\s?.?\\s?[Xx\\d]{4}$",
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "employee_name",
+      "match": "mostFrequent",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "employee's name",
+              "type": "includes"
+            },
+            {
+              "text": "employee's first name",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below",
+        "lineFilters": [
+          {
+            "type": "includes",
+            "text": "last name"
+          },
+          {
+            "type": "regex",
+            "pattern": "po box|p.o. box|po drawer|p.o. drawer",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "employer's identification"
+          },
+          {
+            "type": "includes",
+            "text": "social security number"
+          },
+          {
+            "type": "includes",
+            "text": "retirement"
+          },
+          {
+            "type": "includes",
+            "text": "sick pay"
+          },
+          {
+            "type": "includes",
+            "text": "employee plan"
+          },
+          {
+            "type": "includes",
+            "text": "this information"
+          },
+          {
+            "type": "includes",
+            "text": "required"
+          },
+          {
+            "type": "includes",
+            "text": "report"
+          },
+          {
+            "type": "includes",
+            "text": "internal"
+          },
+          {
+            "type": "includes",
+            "text": "negligence"
+          },
+          {
+            "type": "includes",
+            "text": "penalty"
+          },
+          {
+            "type": "includes",
+            "text": "taxable"
+          },
+          {
+            "type": "includes",
+            "text": "posed on"
+          },
+          {
+            "type": "equals",
+            "text": "X"
+          },
+          {
+            "type": "equals",
+            "text": "d",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "code",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "includes",
+            "text": "control number"
+          },
+          {
+            "type": "includes",
+            "text": "revenue"
+          },
+          {
+            "type": "includes",
+            "text": "Suff.",
+            "editDistance": 1
+          },
+          {
+            "type": "equals",
+            "text": "Suff,"
+          },
+          {
+            "type": "regex",
+            "pattern": "^Su[rf]{2}[,.]$",
+            "flags": "i"
+          },
+          {
+            "type": "equals",
+            "text": "suffix"
+          },
+          {
+            "type": "equals",
+            "text": "suff"
+          },
+          {
+            "type": "includes",
+            "text": "zip code"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d"
+          },
+          {
+            "type": "regex",
+            "pattern": "\\d$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^APT .$|Apt \\d",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^e$",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "/"
+          },
+          {
+            "type": "includes",
+            "text": "state i.d"
+          },
+          {
+            "type": "includes",
+            "text": "employer"
+          },
+          {
+            "type": "equals",
+            "text": "form"
+          },
+          {
+            "type": "equals",
+            "text": "USA",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "includes",
+            "text": "this information"
+          },
+          {
+            "type": "includes",
+            "text": "you fail"
+          },
+          {
+            "type": "includes",
+            "text": "is being"
+          },
+          {
+            "type": "regex",
+            "pattern": "employed plan|employee plan",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "this income"
+          },
+          {
+            "type": "includes",
+            "text": ", a"
+          },
+          {
+            "type": "equals",
+            "text": "return postage guaranteed"
+          },
+          {
+            "type": "regex",
+            "pattern": "^dept$|^dept\\.$|^corp$|^corp\\.$",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "employee"
+          },
+          {
+            "type": "includes",
+            "text": "third party"
+          },
+          {
+            "type": "includes",
+            "text": "third-party"
+          },
+          {
+            "type": "startsWith",
+            "text": "plan"
+          },
+          {
+            "type": "regex",
+            "pattern": "^[\\. ]*$"
+          },
+          {
+            "type": "equals",
+            "text": "bsmt"
+          },
+          {
+            "type": "includes",
+            "text": "***"
+          }
+        ],
+        "typeFilters": [
+          "address"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "employee_name",
+      "match": "mostFrequent",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "employee's name",
+              "type": "includes"
+            },
+            {
+              "text": "employee's first name",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 3.3,
+        "height": 0.7,
+        "lineFilters": [
+          {
+            "type": "includes",
+            "text": "last name"
+          },
+          {
+            "type": "includes",
+            "text": "state id number"
+          },
+          {
+            "type": "includes",
+            "text": "employer's identification"
+          },
+          {
+            "type": "includes",
+            "text": "social security number"
+          },
+          {
+            "type": "includes",
+            "text": "retirement"
+          },
+          {
+            "type": "includes",
+            "text": "sick pay"
+          },
+          {
+            "type": "includes",
+            "text": "employee plan"
+          },
+          {
+            "type": "includes",
+            "text": "this information"
+          },
+          {
+            "type": "includes",
+            "text": "required"
+          },
+          {
+            "type": "includes",
+            "text": "report"
+          },
+          {
+            "type": "includes",
+            "text": "internal"
+          },
+          {
+            "type": "includes",
+            "text": "negligence"
+          },
+          {
+            "type": "includes",
+            "text": "penalty"
+          },
+          {
+            "type": "includes",
+            "text": "taxable"
+          },
+          {
+            "type": "includes",
+            "text": "posed on"
+          },
+          {
+            "type": "equals",
+            "text": "X"
+          },
+          {
+            "type": "equals",
+            "text": "code",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "d",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "includes",
+            "text": "control number"
+          },
+          {
+            "type": "includes",
+            "text": "revenue"
+          },
+          {
+            "type": "includes",
+            "text": "Suff."
+          },
+          {
+            "type": "regex",
+            "pattern": "^Su[rf]{2}[,.]$",
+            "flags": "i"
+          },
+          {
+            "type": "equals",
+            "text": "suffix"
+          },
+          {
+            "type": "equals",
+            "text": "suff"
+          },
+          {
+            "type": "includes",
+            "text": "zip code"
+          },
+          {
+            "type": "includes",
+            "text": "dependent"
+          },
+          {
+            "type": "includes",
+            "text": "nonqualified"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d"
+          },
+          {
+            "type": "regex",
+            "pattern": "\\d$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^APT .$|Apt \\d",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "po box|p.o. box|po drawer|p.o. drawer",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^e$",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "/"
+          },
+          {
+            "type": "includes",
+            "text": "state i.d"
+          },
+          {
+            "type": "includes",
+            "text": "employer"
+          },
+          {
+            "type": "equals",
+            "text": "form"
+          },
+          {
+            "type": "equals",
+            "text": "USA",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "includes",
+            "text": "this information"
+          },
+          {
+            "type": "includes",
+            "text": "you fail"
+          },
+          {
+            "type": "includes",
+            "text": "is being"
+          },
+          {
+            "type": "regex",
+            "pattern": "employed plan|employee plan",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "this income"
+          },
+          {
+            "type": "includes",
+            "text": ", a"
+          },
+          {
+            "type": "equals",
+            "text": "return postage guaranteed"
+          },
+          {
+            "type": "regex",
+            "pattern": "^dept$|^dept\\.$|^corp$|^corp\\.$",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "employee"
+          },
+          {
+            "type": "includes",
+            "text": "third party"
+          },
+          {
+            "type": "includes",
+            "text": "third-party"
+          },
+          {
+            "type": "startsWith",
+            "text": "plan"
+          },
+          {
+            "type": "equals",
+            "text": "bsmt"
+          },
+          {
+            "type": "includes",
+            "text": "***"
+          }
+        ],
+        "typeFilters": [
+          "address"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "employee_name",
+      "match": "mostFrequent",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "Payee's name, address, and ZIP",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 3.5,
+        "height": 0.75,
+        "lineFilters": [
+          {
+            "type": "includes",
+            "text": "last name"
+          },
+          {
+            "type": "includes",
+            "text": "employer's identification"
+          },
+          {
+            "type": "includes",
+            "text": "social security number"
+          },
+          {
+            "type": "includes",
+            "text": "retirement"
+          },
+          {
+            "type": "includes",
+            "text": "sick pay"
+          },
+          {
+            "type": "includes",
+            "text": "employee plan"
+          },
+          {
+            "type": "includes",
+            "text": "this information"
+          },
+          {
+            "type": "includes",
+            "text": "required"
+          },
+          {
+            "type": "includes",
+            "text": "report"
+          },
+          {
+            "type": "includes",
+            "text": "internal"
+          },
+          {
+            "type": "includes",
+            "text": "negligence"
+          },
+          {
+            "type": "includes",
+            "text": "penalty"
+          },
+          {
+            "type": "includes",
+            "text": "taxable"
+          },
+          {
+            "type": "includes",
+            "text": "posed on"
+          },
+          {
+            "type": "equals",
+            "text": "X"
+          },
+          {
+            "type": "equals",
+            "text": "d",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "code",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "includes",
+            "text": "control number"
+          },
+          {
+            "type": "includes",
+            "text": "revenue"
+          },
+          {
+            "type": "includes",
+            "text": "Suff."
+          },
+          {
+            "type": "regex",
+            "pattern": "^Su[rf]{2}[,.]$",
+            "flags": "i"
+          },
+          {
+            "type": "equals",
+            "text": "suffix"
+          },
+          {
+            "type": "includes",
+            "text": "zip code"
+          },
+          {
+            "type": "includes",
+            "text": "dependent"
+          },
+          {
+            "type": "includes",
+            "text": "nonqualified"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d"
+          },
+          {
+            "type": "regex",
+            "pattern": "\\d$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^APT .$|Apt \\d",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "po box|p.o. box|po drawer|p.o. drawer",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^e$",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "/"
+          },
+          {
+            "type": "includes",
+            "text": "state i.d"
+          },
+          {
+            "type": "includes",
+            "text": "employer"
+          },
+          {
+            "type": "equals",
+            "text": "form"
+          },
+          {
+            "type": "equals",
+            "text": "USA",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "includes",
+            "text": "this information"
+          },
+          {
+            "type": "includes",
+            "text": "you fail"
+          },
+          {
+            "type": "includes",
+            "text": "is being"
+          },
+          {
+            "type": "regex",
+            "pattern": "employed plan|employee plan",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "this income"
+          },
+          {
+            "type": "includes",
+            "text": ", a"
+          },
+          {
+            "type": "equals",
+            "text": "return postage guaranteed"
+          },
+          {
+            "type": "regex",
+            "pattern": "^dept$|^dept\\.$|^corp$|^corp\\.$",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "employee"
+          },
+          {
+            "type": "includes",
+            "text": "third party"
+          },
+          {
+            "type": "includes",
+            "text": "third-party"
+          },
+          {
+            "type": "startsWith",
+            "text": "plan"
+          },
+          {
+            "type": "equals",
+            "text": "bsmt"
+          },
+          {
+            "type": "includes",
+            "text": "***"
+          }
+        ],
+        "typeFilters": [
+          "address"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "employee_address",
+      "match": "mostFrequent",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "employee's name",
+              "type": "includes"
+            },
+            {
+              "text": "employee's first name",
+              "type": "includes"
+            },
+            {
+              "type": "equals",
+              "text": "employee"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "employee_address",
+      "match": "mostFrequent",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "employee's address and zip code",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "sortLines": "readingOrderLeftToRight",
+        "lineFilters": [
+          {
+            "type": "includes",
+            "text": "employee's first",
+            "editDistance": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "employee_address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "employee's name",
+              "type": "includes"
+            },
+            {
+              "text": "employee's first name",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 3.5,
+        "height": 0.9,
+        "sortLines": "readingOrderLeftToRight",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d{2}-\\d{7}$"
+          }
+        ]
+      }
+    },
+    {
+      "id": "employee_address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "employee's name",
+              "type": "includes"
+            },
+            {
+              "text": "employee's first name",
+              "type": "includes"
+            },
+            {
+              "type": "equals",
+              "text": "employee"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below",
+        "stop": "gap",
+        "textAlignment": "hangingIndent",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "employee_address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "payee's name, address, and zip",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 3.5,
+        "height": 0.9,
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "wages_tips_other_comp",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "1 wages, tips, other comp.",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wages, tips, other compenation",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Wages, tips, other comp.",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wgs, tips, other compn",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wages, tips, other comp.",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Wages, tips, other",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wgs, tips, other",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wages, tips other",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wages, tips",
+              "type": "startsWith"
+            },
+            {
+              "text": "1 wgs, tips",
+              "type": "startsWith"
+            },
+            {
+              "text": "wgs, tips",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 0.1,
+        "offsetY": 0.05,
+        "wordFilters": [
+          "-"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^1$|^1.$"
+          },
+          {
+            "type": "includes",
+            "text": "wages"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "includes",
+            "text": "other"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{8,9}$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "wages_tips_other_comp",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "1 wages, tips, other comp.",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wages, tips, other compensation",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wgs, tips, other compn",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wages, tips, other comp.",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Wages, tips, other compensation",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Wages, tips, other comp.",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wgs, tips, other compn",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "tips, other compn",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "tips, other comp.",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "tips, other compensation",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "other compn",
+              "type": "endsWith",
+              "editDistance": 2
+            },
+            {
+              "text": "other comp.",
+              "type": "endsWith",
+              "editDistance": 2
+            },
+            {
+              "text": "other compensation",
+              "type": "endsWith",
+              "editDistance": 2
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": -0.1,
+        "offsetY": 0.05,
+        "wordFilters": [
+          "-"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^1$|^1.$"
+          },
+          {
+            "type": "includes",
+            "text": "wages"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "includes",
+            "text": "other"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{8,9}$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "wages_tips_other_comp",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "1 wages, tips, other comp.",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wages, tips, other compenation",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Wages, tips, other comp.",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wgs, tips, other compn",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wages, tips, other comp.",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Wages, tips, other",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wgs, tips, other",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wages, tips other",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wages, tips",
+              "type": "startsWith"
+            },
+            {
+              "text": "1 wgs, tips",
+              "type": "startsWith"
+            },
+            {
+              "text": "wgs, tips",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 0.1,
+        "offsetY": 0.05,
+        "wordFilters": [
+          "-"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^1$|^1.$"
+          },
+          {
+            "type": "includes",
+            "text": "wages"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "includes",
+            "text": "other"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{8,9}$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "wages_tips_other_comp",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "1 wages, tips, other comp.",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wages, tips, other compensation",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wgs, tips, other compn",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wages, tips, other comp.",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Wages, tips, other compensation",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Wages, tips, other comp.",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wgs, tips, other compn",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "tips, other compn",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "tips, other comp.",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "tips, other compensation",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "other compn",
+              "type": "endsWith",
+              "editDistance": 2
+            },
+            {
+              "text": "other comp.",
+              "type": "endsWith",
+              "editDistance": 2
+            },
+            {
+              "text": "other compensation",
+              "type": "endsWith",
+              "editDistance": 2
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": -0.1,
+        "offsetY": 0.05,
+        "wordFilters": [
+          "-"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^1$|^1.$"
+          },
+          {
+            "type": "includes",
+            "text": "wages"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "includes",
+            "text": "other"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{8,9}$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}-\\d{4}$"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "wages_tips_other_comp",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "1 wages, tips, other comp.",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wages, tips, other compenation",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Wages, tips, other comp.",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wgs, tips, other compn",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wages, tips, other comp.",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Wages, tips, other",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wgs, tips, other",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wages, tips other",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wages, tips",
+              "type": "startsWith"
+            },
+            {
+              "text": "1 wgs, tips",
+              "type": "startsWith"
+            },
+            {
+              "text": "wgs, tips",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 1.8,
+        "height": 0.25,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "type": "regex",
+            "pattern": "[a-z]",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "wages"
+          },
+          {
+            "type": "includes",
+            "text": "other"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{8,9}$"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "wages_tips_other_comp",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "1 wages, tips, other comp.",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wages, tips, other compenation",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Wages, tips, other comp.",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wgs, tips, other compn",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wages, tips, other comp.",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Wages, tips, other",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wgs, tips, other",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "1 wages, tips other",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wages, tips",
+              "type": "startsWith"
+            },
+            {
+              "text": "1 wgs, tips",
+              "type": "startsWith"
+            },
+            {
+              "text": "wgs, tips",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 1.8,
+        "height": 0.25,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "type": "regex",
+            "pattern": "[a-z]",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "wages"
+          },
+          {
+            "type": "includes",
+            "text": "other"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{8,9}$"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "social_security_wages",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "3 social security wages",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "social security wages",
+              "type": "startsWith",
+              "editDistance": 3
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 0.1,
+        "offsetY": 0.05,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "type": "regex",
+            "pattern": "[a-z]",
+            "flags": "i"
+          },
+          {
+            "text": "medicare",
+            "type": "includes"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "regex",
+            "pattern": "^2$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}",
+            "flags": "i"
+          },
+          {
+            "type": "equals",
+            "text": "34"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "medicare",
+            "type": "includes"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "social_security_wages",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "3 social security wages",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "social security wages",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "security wages",
+              "type": "endsWith",
+              "editDistance": 3
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": -0.1,
+        "offsetY": 0.05,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "type": "regex",
+            "pattern": "[a-z]",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "medicare",
+            "type": "includes"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "regex",
+            "pattern": "^2$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}",
+            "flags": "i"
+          },
+          {
+            "type": "equals",
+            "text": "34"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "medicare",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "social_security_wages",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "3 social security wages",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "social security wages",
+              "type": "startsWith",
+              "editDistance": 3
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 0.1,
+        "offsetY": 0.05,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "text": "medicare",
+            "type": "includes"
+          },
+          {
+            "type": "regex",
+            "pattern": "[a-z]",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "regex",
+            "pattern": "^2$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}",
+            "flags": "i"
+          },
+          {
+            "type": "equals",
+            "text": "34"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "medicare",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "social_security_wages",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "3 social security wages",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "social security wages",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "security wages",
+              "type": "endsWith",
+              "editDistance": 3
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": -0.1,
+        "offsetY": 0.05,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "text": "medicare",
+            "type": "includes"
+          },
+          {
+            "type": "regex",
+            "pattern": "[a-z]",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "regex",
+            "pattern": "^2$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}",
+            "flags": "i"
+          },
+          {
+            "type": "equals",
+            "text": "34"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "medicare",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "social_security_wages",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "3 social security wages",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "social security wages",
+              "type": "startsWith",
+              "editDistance": 3
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 1.8,
+        "height": 0.2,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "medicare",
+            "type": "includes"
+          },
+          {
+            "type": "equals",
+            "text": "34"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "regex",
+            "pattern": "^2$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}",
+            "flags": "i"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "medicare",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "social_security_wages",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "3 social security wages",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "social security wages",
+              "type": "startsWith",
+              "editDistance": 3
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 1.8,
+        "height": 0.2,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "equals",
+            "text": "34"
+          },
+          {
+            "text": "medicare",
+            "type": "includes"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "regex",
+            "pattern": "^2$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}",
+            "flags": "i"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "medicare",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "social_security_tax_withheld",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "4 social security tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "social security tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 ss tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "ss tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 Soc. sec. tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Soc. sec. tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 social security tax",
+              "type": "startsWith",
+              "editDistance": 2
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 0.1,
+        "offsetY": 0.05,
+        "whitespaceFilter": "all",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^4$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^6$",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "startsWith",
+            "text": "6 medicare"
+          },
+          {
+            "type": "equals",
+            "text": "34"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "regex",
+            "pattern": "^2$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}",
+            "flags": "i"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "social_security_tax_withheld",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "4 social security tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "social security tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 ss tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 Soc. sec. tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Soc. sec. tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "security tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "ss tax withheld",
+              "type": "endsWith"
+            },
+            {
+              "text": "sec. tax withheld",
+              "type": "endsWith",
+              "editDistance": 2
+            },
+            {
+              "text": "4 social security tax",
+              "type": "endsWith",
+              "editDistance": 2
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": -0.1,
+        "offsetY": 0.05,
+        "whitespaceFilter": "all",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^4$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^6$",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "startsWith",
+            "text": "6 medicare"
+          },
+          {
+            "type": "equals",
+            "text": "34"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "regex",
+            "pattern": "^2$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}",
+            "flags": "i"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "social_security_tax_withheld",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "4 social security tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "social security tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 ss tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "ss tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 Soc. sec. tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Soc. sec. tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 social security tax",
+              "type": "startsWith",
+              "editDistance": 2
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 0.1,
+        "offsetY": 0.05,
+        "whitespaceFilter": "all",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^4$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^6$",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "startsWith",
+            "text": "6 medicare"
+          },
+          {
+            "type": "equals",
+            "text": "34"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "regex",
+            "pattern": "^2$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}",
+            "flags": "i"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "social_security_tax_withheld",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "4 social security tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "social security tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 ss tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 Soc. sec. tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Soc. sec. tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "security tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "ss tax withheld",
+              "type": "endsWith"
+            },
+            {
+              "text": "sec. tax withheld",
+              "type": "endsWith",
+              "editDistance": 2
+            },
+            {
+              "text": "4 social security tax",
+              "type": "endsWith",
+              "editDistance": 2
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": -0.1,
+        "offsetY": 0.05,
+        "whitespaceFilter": "all",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^4$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^6$",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "startsWith",
+            "text": "6 medicare"
+          },
+          {
+            "type": "equals",
+            "text": "34"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "regex",
+            "pattern": "^2$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}",
+            "flags": "i"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          }
+        ]
+      }
+    },
+    {
+      "id": "social_security_tax_withheld",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "4 social security tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "social security tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 ss tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "ss tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 Soc. sec. tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Soc. sec. tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 social security tax",
+              "type": "startsWith",
+              "editDistance": 2
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 1.9,
+        "height": 0.2,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^6$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "[a-z]",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "equals",
+            "text": "34"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "regex",
+            "pattern": "^2$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}",
+            "flags": "i"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "social_security_tax_withheld",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "4 social security tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "social security tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 ss tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "ss tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 Soc. sec. tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "Soc. sec. tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "4 social security tax",
+              "type": "startsWith",
+              "editDistance": 2
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 1.9,
+        "height": 0.2,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^6$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "[a-z]",
+            "flags": "i"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "type": "equals",
+            "text": "34"
+          },
+          {
+            "type": "includes",
+            "text": "federal"
+          },
+          {
+            "type": "regex",
+            "pattern": "^2$",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{3}-\\d{2}",
+            "flags": "i"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "medicare_wages_and_tips",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "5 medicare wages and tips",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare wages and tips",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "5 medicare wages",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare wages",
+              "type": "startsWith",
+              "editDistance": 1
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 0.1,
+        "offsetY": 0.05,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^5$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{2}-\\d{7}$"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "8 allocated",
+            "type": "startsWith"
+          },
+          {
+            "text": "1 wages",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "medicare_wages_and_tips",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "5 medicare wages and tips",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare wages and tips",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wages and tips",
+              "type": "endsWith",
+              "editDistance": 1
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": -0.1,
+        "offsetY": 0.05,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^5$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{2}-\\d{7}$"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "8 allocated",
+            "type": "startsWith"
+          },
+          {
+            "text": "1 wages",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "medicare_wages_and_tips",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "5 medicare wages and tips",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare wages and tips",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "5 medicare wages",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare wages",
+              "type": "startsWith",
+              "editDistance": 1
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 0.1,
+        "offsetY": 0.05,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^5$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{2}-\\d{7}$"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "8 allocated",
+            "type": "startsWith"
+          },
+          {
+            "text": "1 wages",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "medicare_wages_and_tips",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "5 medicare wages and tips",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare wages and tips",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "wages and tips",
+              "type": "endsWith",
+              "editDistance": 1
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": -0.1,
+        "offsetY": 0.05,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^5$"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{2}-\\d{7}$"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "8 allocated",
+            "type": "startsWith"
+          },
+          {
+            "text": "1 wages",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "medicare_wages_and_tips",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "5 medicare wages and tips",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare wages and tips",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "5 medicare wages",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare wages",
+              "type": "startsWith",
+              "editDistance": 1
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 1.8,
+        "height": 0.2,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "type": "regex",
+            "pattern": "[a-z]",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{2}-\\d{7}$"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "8 allocated",
+            "type": "startsWith"
+          },
+          {
+            "text": "1 wages",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "medicare_wages_and_tips",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "5 medicare wages and tips",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare wages and tips",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "5 medicare wages",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare wages",
+              "type": "startsWith",
+              "editDistance": 1
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 1.8,
+        "height": 0.2,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "type": "regex",
+            "pattern": "[a-z]",
+            "flags": "i"
+          },
+          {
+            "type": "regex",
+            "pattern": "^\\d{2}-\\d{7}$"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "8 allocated",
+            "type": "startsWith"
+          },
+          {
+            "text": "1 wages",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "medicare_tax_withheld",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "6 medicare tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "6 medicare tax",
+              "type": "startsWith",
+              "editDistance": 2
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 0.15,
+        "offsetY": 0.05,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^6$"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "medicare_tax_withheld",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "6 medicare tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": -0.15,
+        "offsetY": 0.05,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^6$"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "medicare_tax_withheld",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "6 medicare tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "6 medicare tax",
+              "type": "startsWith",
+              "editDistance": 2
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 0.15,
+        "offsetY": 0.05,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^6$"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "medicare_tax_withheld",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "6 medicare tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare tax withheld",
+              "type": "endsWith",
+              "editDistance": 3
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": -0.15,
+        "offsetY": 0.05,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^6$"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "medicare_tax_withheld",
+      "match": "mostFrequent",
+      "type": {
+        "id": "currency",
+        "relaxedWithCents": true
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "6 medicare tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "6 medicare tax",
+              "type": "startsWith",
+              "editDistance": 2
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 1.9,
+        "height": 0.25,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "type": "regex",
+            "pattern": "[a-z]",
+            "flags": "i"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "allocated",
+            "type": "includes",
+            "editDistance": 1
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "medicare_tax_withheld",
+      "match": "mostFrequent",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "6 medicare tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "medicare tax withheld",
+              "type": "startsWith",
+              "editDistance": 3
+            },
+            {
+              "text": "6 medicare tax",
+              "type": "startsWith",
+              "editDistance": 2
+            }
+          ]
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0,
+        "width": 1.9,
+        "height": 0.25,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$|^\\d\\.$|^\\d,$"
+          },
+          {
+            "type": "regex",
+            "pattern": "[a-z]",
+            "flags": "i"
+          },
+          {
+            "text": "4 social",
+            "type": "startsWith"
+          },
+          {
+            "text": "3 social",
+            "type": "startsWith"
+          },
+          {
+            "type": "includes",
+            "text": "omb"
+          },
+          {
+            "text": "6 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "5 medicare",
+            "type": "startsWith"
+          },
+          {
+            "text": "allocated",
+            "type": "includes",
+            "editDistance": 1
+          }
+        ],
+        "whitespaceFilter": "all"
+      }
+    }
+  ]
+}
