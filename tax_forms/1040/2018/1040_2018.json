@@ -1,0 +1,1936 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "first",
+          "match": [
+            {
+              "pattern": "u.s.\\s+individual\\s+income\\s+tax\\s+return",
+              "type": "regex",
+              "flags": "i"
+            },
+            {
+              "text": "2018",
+              "type": "endsWith"
+            },
+            {
+              "pattern": "your signature",
+              "type": "regex",
+              "flags": "i"
+            }
+          ]
+        },
+        {
+          "page": "last",
+          "match": [
+            {
+              "text": "wages, salaries, tips",
+              "type": "includes"
+            },
+            {
+              "text": "line 19 you want refunded to you",
+              "type": "includes"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "Year",
+        "anchor": {
+          "match": {
+            "type": "regex",
+            "pattern": "^20\\d{2}$|1040 \\(20\\d{2}\\)$"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "20\\d{2}"
+        }
+      },
+      {
+        "id": "filing_status.single",
+        "anchor": {
+          "match": {
+            "text": "single",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "first name",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "filing_status.single",
+        "anchor": {
+          "match": {
+            "text": "filing",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "first name",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left",
+          "offsetX": 0.87
+        }
+      },
+      {
+        "id": "filing_status.married_filing_jointly",
+        "anchor": {
+          "match": {
+            "text": "married filing jointly",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "first name",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "filing_status.married_filing_jointly",
+        "anchor": {
+          "match": {
+            "text": "filing",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "first name",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left",
+          "offsetX": 3.05
+        }
+      },
+      {
+        "id": "filing_status.married_filing_separately",
+        "anchor": {
+          "match": {
+            "text": "married filing separately",
+            "type": "includes"
+          },
+          "end": {
+            "text": "first name",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "filing_status.married_filing_separately",
+        "anchor": {
+          "match": {
+            "text": "filing",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "first name",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left",
+          "offsetX": 5.17
+        }
+      },
+      {
+        "id": "filing_status.head_of_household",
+        "anchor": {
+          "match": {
+            "text": "head of household",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "first name",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "filing_status.head_of_household",
+        "anchor": {
+          "match": {
+            "text": "status",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "first name",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left",
+          "offsetX": 0.87
+        }
+      },
+      {
+        "id": "filing_status.qualifying_widow",
+        "anchor": {
+          "match": {
+            "text": "qualifying widow",
+            "type": "includes"
+          },
+          "end": {
+            "text": "first name",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "filing_status.qualifying_widow",
+        "anchor": {
+          "match": {
+            "text": "status",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "first name",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left",
+          "offsetX": 3.05
+        }
+      },
+      {
+        "id": "name",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "your first name",
+                "type": "startsWith"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.5,
+          "offsetY": -0.05,
+          "width": 6.4,
+          "height": 0.375,
+          "lineFilters": [
+            {
+              "type": "includes",
+              "text": "your first name"
+            },
+            {
+              "type": "includes",
+              "text": "last name"
+            },
+            {
+              "type": "includes",
+              "text": "if joint return"
+            },
+            {
+              "type": "includes",
+              "text": "spouse"
+            },
+            {
+              "type": "includes",
+              "text": "social security"
+            },
+            {
+              "type": "includes",
+              "text": "standard deduction"
+            },
+            {
+              "type": "includes",
+              "text": "someone can claim"
+            },
+            {
+              "type": "includes",
+              "text": "you were born"
+            },
+            {
+              "type": "includes",
+              "text": "you are blind"
+            },
+            {
+              "type": "regex",
+              "pattern": "\\d{3}-"
+            }
+          ]
+        }
+      },
+      {
+        "id": "ssn",
+        "anchor": {
+          "match": {
+            "text": "your social security number",
+            "type": "startsWith",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": 0,
+          "width": 2,
+          "height": 0.25,
+          "lineFilters": [
+            {
+              "text": "social security",
+              "type": "includes",
+              "editDistance": 2
+            }
+          ]
+        }
+      },
+      {
+        "id": "spouse_name",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "if joint return, spouse",
+                "type": "startsWith",
+                "editDistance": 3
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.5,
+          "offsetY": -0.05,
+          "width": 6.4,
+          "height": 0.375,
+          "lineFilters": [
+            {
+              "type": "includes",
+              "text": "home address",
+              "editDistance": 2
+            },
+            {
+              "type": "includes",
+              "text": "apt. no.",
+              "editDistance": 1
+            },
+            {
+              "type": "includes",
+              "text": "last name"
+            },
+            {
+              "type": "includes",
+              "text": "if joint return"
+            },
+            {
+              "type": "includes",
+              "text": "spouse"
+            },
+            {
+              "type": "includes",
+              "text": "social security"
+            },
+            {
+              "type": "includes",
+              "text": "health care"
+            },
+            {
+              "type": "equals",
+              "text": "X",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "spouse_ssn",
+        "anchor": {
+          "match": {
+            "text": "spouse's social security",
+            "type": "startsWith",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": 0,
+          "width": 2,
+          "height": 0.25,
+          "lineFilters": [
+            {
+              "text": "social security",
+              "type": "includes"
+            },
+            {
+              "text": "presidential",
+              "type": "includes"
+            },
+            {
+              "type": "includes",
+              "text": "health care"
+            },
+            {
+              "type": "equals",
+              "text": "X",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "home_street_address",
+        "anchor": {
+          "match": {
+            "text": "home address (number and",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.3,
+          "offsetY": 0,
+          "width": 5.3,
+          "height": 0.27,
+          "lineFilters": [
+            {
+              "type": "includes",
+              "text": "city, town"
+            },
+            {
+              "type": "includes",
+              "text": "home address"
+            },
+            {
+              "type": "includes",
+              "text": "client copy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "home_apartment_number",
+        "anchor": {
+          "match": {
+            "text": "apt. no.",
+            "type": "startsWith",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "includes",
+              "text": "client copy"
+            }
+          ]
+        }
+      },
+      {
+        "id": "home_city_state_zipcode",
+        "anchor": {
+          "match": {
+            "text": "city, town, or post office",
+            "type": "startsWith",
+            "editDistance": 2
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.3,
+          "offsetY": -0.02,
+          "width": 6.2,
+          "height": 0.3,
+          "xMajorSort": true,
+          "lineFilters": [
+            {
+              "type": "includes",
+              "text": "client copy"
+            },
+            {
+              "type": "startsWith",
+              "text": "state"
+            },
+            {
+              "type": "includes",
+              "text": "zip code"
+            },
+            {
+              "type": "equals",
+              "text": "here"
+            },
+            {
+              "type": "includes",
+              "text": "four dependents",
+              "editDistance": 1
+            },
+            {
+              "type": "includes",
+              "text": "see instr.",
+              "editDistance": 1
+            },
+            {
+              "type": "startsWith",
+              "text": "city, town",
+              "editDistance": 1
+            },
+            {
+              "type": "startsWith",
+              "text": "foreign",
+              "editDistance": 1
+            },
+            {
+              "type": "regex",
+              "pattern": "\\(\\d\\)"
+            },
+            {
+              "type": "includes",
+              "text": "social security",
+              "editDistance": 1
+            },
+            {
+              "type": "includes",
+              "text": "relationship to you",
+              "editDistance": 1
+            },
+            {
+              "type": "includes",
+              "text": "if qualifies for",
+              "editDistance": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": "wages_salaries_tips",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "wages, salaries, tips, etc",
+            "type": "includes",
+            "editDistance": 2
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^1$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "tax_exempt_interest",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "tax-exempt interest",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^2a$"
+            },
+            {
+              "type": "includes",
+              "text": "taxable interest",
+              "editDistance": 1
+            }
+          ],
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3.9
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "tax_exempt_interest",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "b taxable interest",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "left",
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "taxable_interest",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "taxable interest",
+                "type": "includes"
+              },
+              {
+                "text": "taxable int.",
+                "type": "includes"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^2b$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "qualified_dividends",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "qualified dividends",
+                "type": "includes",
+                "editDistance": 1
+              }
+            ]
+          },
+          "end": {
+            "text": "ira distributions",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^3a$"
+            },
+            {
+              "type": "includes",
+              "text": "ordinary dividends",
+              "editDistance": 1
+            }
+          ],
+          "whitespaceFilter": "all",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3.9
+          }
+        }
+      },
+      {
+        "id": "qualified_dividends",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "b ordinary dividends",
+                "type": "includes",
+                "editDistance": 1
+              }
+            ]
+          },
+          "end": {
+            "text": "ira distributions",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "left",
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "ordinary_dividends",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "ordinary dividends",
+                "type": "includes"
+              },
+              {
+                "text": "ordinary div.",
+                "type": "includes"
+              },
+              {
+                "text": "ordinary divs.",
+                "type": "includes"
+              }
+            ]
+          },
+          "end": {
+            "type": "includes",
+            "text": "ira distributions",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^3b$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "ira_distributions",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "ira distributions",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^4a$"
+            },
+            {
+              "type": "includes",
+              "text": "taxable amount",
+              "editDistance": 1
+            }
+          ],
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3.9
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "ira_distributions",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "b taxable amount",
+            "type": "includes",
+            "editDistance": 1
+          },
+          "end": [
+            {
+              "text": "b taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "b taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "left",
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "ira_distributions_taxable_amount",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "taxable amount",
+            "type": "includes",
+            "editDistance": 1
+          },
+          "end": [
+            {
+              "text": "taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^4b$"
+            }
+          ],
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3.5
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "pensions_and_annuities",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "pensions and annuities",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^5a$"
+            },
+            {
+              "type": "includes",
+              "text": "taxable amount",
+              "editDistance": 1
+            }
+          ],
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3.9
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "pensions_and_annuities",
+        "type": "number",
+        "anchor": {
+          "match": [
+            {
+              "text": "b taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "b taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            }
+          ],
+          "end": [
+            {
+              "text": "b taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "b taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "b taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "left",
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "pensions_and_annuities_taxable_amount",
+        "type": "number",
+        "anchor": {
+          "match": [
+            {
+              "text": "taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            }
+          ],
+          "end": [
+            {
+              "text": "taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^5b$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "social_security_benefits",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "social security benefits",
+                "type": "includes",
+                "editDistance": 1
+              },
+              {
+                "text": "soc. sec. ben.",
+                "type": "includes"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^6a$"
+            },
+            {
+              "type": "includes",
+              "text": "taxable amount",
+              "editDistance": 1
+            }
+          ],
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3.5
+          },
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "social_security_benefits",
+        "type": "number",
+        "anchor": {
+          "match": [
+            {
+              "type": "includes",
+              "text": "b taxable amount",
+              "editDistance": 1
+            },
+            {
+              "type": "includes",
+              "text": "b taxable amount",
+              "editDistance": 1
+            },
+            {
+              "type": "includes",
+              "text": "b taxable amount",
+              "editDistance": 1
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "left",
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "social_security_benefits_taxable_amount",
+        "type": "number",
+        "anchor": {
+          "match": [
+            {
+              "text": "taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "taxable amount",
+              "type": "includes",
+              "editDistance": 1
+            }
+          ],
+          "end": {
+            "type": "includes",
+            "text": "other income",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^6b$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "capital_gain_or_loss",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "capital gain or (loss)",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "capital_gain_or_loss",
+        "type": "number",
+        "anchor": {
+          "start": {
+            "text": "capital gain or (loss)",
+            "type": "includes",
+            "editDistance": 1
+          },
+          "match": {
+            "pattern": "^7$",
+            "type": "regex"
+          },
+          "end": {
+            "pattern": "other income",
+            "type": "regex",
+            "flags": "i"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_income",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "other income from schedule 1",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^8$"
+            },
+            {
+              "type": "includes",
+              "text": "line"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "total_income",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "type": "includes",
+                "text": "this is your total income",
+                "editDistance": 1
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^9$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "adjustments_to_income",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "total adjustments to income",
+                "type": "includes",
+                "editDistance": 2
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^10c$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "adjusted_gross_income",
+        "match": "last",
+        "type": "number",
+        "anchor": {
+          "start": {
+            "type": "includes",
+            "text": "adjusted gross income",
+            "editDistance": 1
+          },
+          "match": {
+            "pattern": "^7$",
+            "type": "regex"
+          },
+          "end": {
+            "text": "standard deduction or itemized",
+            "type": "includes",
+            "editDistance": 2
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "standard_deduction",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "standard deduction or itemized",
+                "type": "includes",
+                "editDistance": 1
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^8$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "qualified_business_deduction",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "qualified business income deduction",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^9$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "taxable_income",
+        "type": "number",
+        "anchor": {
+          "start": {
+            "text": "qualified business income deduction",
+            "type": "includes",
+            "editDistance": 1
+          },
+          "match": {
+            "text": "taxable income.",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^10$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "tax",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "tax (see instr.)",
+                "type": "includes",
+                "editDistance": 1
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "4972"
+            },
+            {
+              "type": "regex",
+              "pattern": "8814"
+            },
+            {
+              "type": "regex",
+              "pattern": "^1$"
+            },
+            {
+              "type": "regex",
+              "pattern": "^2$"
+            },
+            {
+              "type": "includes",
+              "text": "if any from",
+              "editDistance": 1
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "child_tax_credit",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "child tax credit",
+            "type": "includes",
+            "editDistance": 2
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "schedule 3",
+              "flags": "i"
+            },
+            {
+              "type": "regex",
+              "pattern": "^12$",
+              "flags": "i"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "other_tax_including_self_employment",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "other taxes, including self-employment tax",
+            "type": "includes",
+            "editDistance": 2
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^23$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "total_tax",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "total tax. add lines",
+            "type": "includes",
+            "editDistance": 2
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^15$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "federal_income_tax_withheld",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "federal income tax withheld",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^16$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "earned_income_credit",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "earned income credit",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^27$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "additional_child_tax_credit",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "additional child tax credit",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^28$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "american_opportunity_credit",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "american opportunity credit",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^29$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "total_other_payments",
+        "match": "last",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "these are your total other payments",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^32$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "total_payments",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "these are your total payments",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^18$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overpaid_amount",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "amount you overpaid",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^19$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "overpaid_refund_amount",
+        "match": "last",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "you want refunded to you",
+            "type": "includes",
+            "editDistance": 2
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^20a$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "routing_number",
+        "anchor": {
+          "match": {
+            "text": "routing number",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "whitespaceFilter": "all",
+          "lineFilters": [
+            {
+              "type": "includes",
+              "text": ". ."
+            },
+            {
+              "type": "includes",
+              "text": ".."
+            },
+            {
+              "type": "includes",
+              "text": "G"
+            },
+            {
+              "type": "includes",
+              "text": "c"
+            },
+            {
+              "type": "includes",
+              "text": "a"
+            },
+            {
+              "type": "includes",
+              "text": "▶"
+            },
+            {
+              "type": "includes",
+              "text": "type:"
+            },
+            {
+              "type": "includes",
+              "text": "checking"
+            },
+            {
+              "type": "includes",
+              "text": "savings"
+            }
+          ]
+        }
+      },
+      {
+        "id": "account_type.checking",
+        "anchor": {
+          "match": {
+            "text": "checking",
+            "type": "endsWith",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "account_type.savings",
+        "anchor": {
+          "match": {
+            "text": "savings",
+            "type": "endsWith",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "account_number",
+        "anchor": {
+          "match": {
+            "text": "account number",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "lineFilters": [
+            {
+              "type": "includes",
+              "text": ". ."
+            },
+            {
+              "type": "includes",
+              "text": ".."
+            },
+            {
+              "type": "includes",
+              "text": "l"
+            }
+          ]
+        }
+      },
+      {
+        "id": "account_number",
+        "anchor": {
+          "match": {
+            "text": "account number",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right",
+          "lineFilters": [
+            {
+              "type": "includes",
+              "text": ". ."
+            },
+            {
+              "type": "includes",
+              "text": ".."
+            },
+            {
+              "type": "includes",
+              "text": "l"
+            }
+          ]
+        }
+      },
+      {
+        "id": "amount_you_owe",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "amount you owe. subtract",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^22$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "estimated_tax_penalty",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "estimated tax penalty",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^23$"
+            }
+          ],
+          "whitespaceFilter": "all"
+        }
+      },
+      {
+        "id": "signed",
+        "anchor": {
+          "match": {
+            "pattern": "your signature|(y)\\s*(o)\\s*(u)\\s*(r)\\s*(s)\\s*(i)\\s*(g)\\s*(n)\\s*(a)\\s*(t)\\s*(u)\\s*(r)\\s*(e)",
+            "type": "regex",
+            "flags": "i"
+          }
+        },
+        "method": {
+          "id": "signature",
+          "start": "left",
+          "offsetX": 0.1,
+          "offsetY": 0.1,
+          "width": 2,
+          "height": 0.1
+        }
+      },
+      {
+        "id": "signed_date",
+        "type": "date",
+        "anchor": {
+          "start": {
+            "text": "third party",
+            "type": "startsWith"
+          },
+          "match": {
+            "pattern": "date|(d)\\s*(a)\\s*(t)\\s*(e)",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": [
+            {
+              "type": "startsWith",
+              "text": "date"
+            },
+            {
+              "type": "startsWith",
+              "text": "date"
+            }
+          ]
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": 0,
+          "width": 1,
+          "height": 0.35
+        }
+      },
+      {
+        "id": "signed_date",
+        "type": "date",
+        "anchor": {
+          "start": {
+            "text": "third party",
+            "type": "startsWith"
+          },
+          "match": {
+            "pattern": "date|(d)\\s*(a)\\s*(t)\\s*(e)",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": [
+            {
+              "type": "startsWith",
+              "text": "date"
+            },
+            {
+              "type": "startsWith",
+              "text": "date"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "spouse_signed",
+        "anchor": {
+          "match": {
+            "text": "spouse's signature",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "signature",
+          "start": "left",
+          "offsetX": 0.1,
+          "offsetY": 0.1,
+          "width": 2,
+          "height": 0.1
+        }
+      },
+      {
+        "id": "spouse_signed_date",
+        "type": "date",
+        "anchor": {
+          "start": "third party",
+          "match": {
+            "type": "startsWith",
+            "text": "spouse's occupation"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": -0.2
+        }
+      }
+    ]
+  }
