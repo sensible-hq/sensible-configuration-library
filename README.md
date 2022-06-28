@@ -11,18 +11,18 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 #### Policy declaration pages
 
 ##### Auto
-- [Allstate](./insurance/policy_dec_pages/auto_policy/allstate.json)
-- [Branch](./insurance/policy_dec_pages/auto_policy/branch.json)
-- [Farmer's](./insurance/policy_dec_pages/auto_policy/farmers.json)
-- [Geico](./insurance/policy_dec_pages/auto_policy/geico.json)
-- [Liberty Mutual](./insurance/policy_dec_pages/auto_policy/liberty_mutual.json)
-- [Nationwide](./insurance/policy_dec_pages/auto_policy/nationwide.json)
-- [Progressive](./insurance/policy_dec_pages/auto_policy/progressive.json)
-- [Root Insurance](./insurance/policy_dec_pages/auto_policy/root_insurance.json)
-- [State Farm](./insurance/policy_dec_pages/auto_policy/state_farm.json)
-- [Traveler's](./insurance/policy_dec_pages/auto_policy/travelers.json)
+- [Allstate](./insurance/policy_dec_pages/auto_policy/allstate/allstate.json)
+- [Branch](./insurance/policy_dec_pages/auto_policy/branch/branch.json)
+- [Farmer's](./insurance/policy_dec_pages/auto_policy/farmers/farmers.json)
+- [Geico](./insurance/policy_dec_pages/auto_policy/geico/geico.json)
+- [Liberty Mutual](./insurance/policy_dec_pages/auto_policy/liberty_mutual/liberty_mutual.json)
+- [Nationwide](./insurance/policy_dec_pages/auto_policy/nationwide/nationwide.json)
+- [Progressive](./insurance/policy_dec_pages/auto_policy/progressive/progressive.json)
+- [Root Insurance](./insurance/policy_dec_pages/auto_policy/root_insurance/root_insurance.json)
+- [State Farm](./insurance/policy_dec_pages/auto_policy/state_farm/state_farm.json)
+- [Traveler's](./insurance/policy_dec_pages/auto_policy/travelers/travelers.json)
 - [USAA](./insurance/policy_dec_pages/auto_policy/usaa/usaa.json)
-- [USAA (MA)](./insurance/policy_dec_pages/auto_policy/usaa/usaa_ma.json)
+
 
 ##### Home
 - [Allstate](./insurance/policy_dec_pages/home_policy/allstate.json)
