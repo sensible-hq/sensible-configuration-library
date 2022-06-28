@@ -13,6 +13,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 ##### Auto
 - [Allstate](./insurance/policy_dec_pages/auto_policy/allstate/allstate.json)
 - [Branch](./insurance/policy_dec_pages/auto_policy/branch/branch.json)
+- [Dairyland](./insurance/policy_dec_pages/auto_policy/Dairyland/Dairyland.json)
 - [Farmer's](./insurance/policy_dec_pages/auto_policy/farmers/farmers.json)
 - [Geico](./insurance/policy_dec_pages/auto_policy/geico/geico.json)
 - [Liberty Mutual](./insurance/policy_dec_pages/auto_policy/liberty_mutual/liberty_mutual.json)
@@ -20,6 +21,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [Progressive](./insurance/policy_dec_pages/auto_policy/progressive/progressive.json)
 - [Root Insurance](./insurance/policy_dec_pages/auto_policy/root_insurance/root_insurance.json)
 - [State Farm](./insurance/policy_dec_pages/auto_policy/state_farm/state_farm.json)
+- [The General](./insurance/policy_dec_pages/auto_policy/the_general/the_general.json)
 - [Traveler's](./insurance/policy_dec_pages/auto_policy/travelers/travelers.json)
 - [USAA](./insurance/policy_dec_pages/auto_policy/usaa/usaa.json)
 
