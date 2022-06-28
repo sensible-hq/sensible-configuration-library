@@ -69,6 +69,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [ACORD 23 (03/2016)](./insurance/acords/acord_23/2010_05__2016_03.json)
 - [ACORD 24 (03/2016)](./insurance/acords/acord_24/2009_09__2016_03.json)
 - [ACORD 25 (03/2016)](./insurance/acords/acord_25/2010_05__2014_01__2016_03.json)
+- [ACORD 27 (03/2016)](./insurance/acords/acord_27/2016_03.json)
 - [ACORD 75 (09/2013)](./insurance/acords/acord_75/2013_09.json)
 - [ACORD 125 (12/2014)](./insurance/acords/acord_125/2014_12.json)
 - [ACORD 126 (05/2007)](./insurance/acords/acord_126/2007_05.json)

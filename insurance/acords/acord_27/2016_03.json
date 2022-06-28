@@ -1,0 +1,825 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "acord 27",
+              "type": "includes"
+            },
+            {
+              "text": "EVIDENCE OF PROPERTY INSURANCE",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "agency",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap",
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "agency",
+            "type": "equals"
+          },
+          "end": {
+            "text": "fax",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "agency",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "width": 3,
+          "height": 0.7,
+          "offsetX": -0.1,
+          "offsetY": 0.1,
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "agency",
+            "type": "equals"
+          },
+          "end": {
+            "text": "fax",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "agency_address",
+        "type": "address",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        },
+        "anchor": {
+          "match": {
+            "text": "agency",
+            "type": "equals"
+          },
+          "end": {
+            "text": "fax",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency_address",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "width": 3,
+          "height": 0.7,
+          "offsetX": -0.1,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "agency",
+            "type": "equals"
+          },
+          "end": {
+            "text": "fax",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "phone",
+        "type": "phoneNumber",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "text": "phone",
+            "type": "equals"
+          },
+          "end": {
+            "text": "fax",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "phone",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "text": "phone",
+            "type": "equals"
+          },
+          "end": {
+            "text": "fax",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "fax",
+        "type": "phoneNumber",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "text": "fax",
+            "type": "equals"
+          },
+          "end": {
+            "text": "insured",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "fax",
+        "type": "phoneNumber",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "fax",
+            "type": "equals"
+          },
+          "end": {
+            "text": "insured",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "email",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "wordFilters": [
+            "e-mail"
+          ],
+          "whitespaceFilter": "all"
+        },
+        "anchor": {
+          "match": {
+            "text": "address:",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "insured",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "company",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "company",
+            "type": "equals"
+          },
+          "end": {
+            "text": "insured",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "code",
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "code:",
+            "type": "equals"
+          },
+          "end": {
+            "text": "insured",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "sub_code",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "sub code:",
+            "type": "equals"
+          },
+          "end": {
+            "text": "insured",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.customer_id",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "agency",
+              "type": "startsWith"
+            },
+            {
+              "text": "customer id",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "insured",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.customer_id",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "agency",
+              "type": "startsWith"
+            },
+            {
+              "text": "customerid#:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "insured",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insured",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "INSURED",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insured_address",
+        "type": "address",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "INSURED",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "loan_number",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "loan number",
+            "type": "equals"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "policy number",
+            "type": "equals"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "effective date",
+            "type": "equals"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "expiration date",
+            "type": "equals"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "this_replaces_prior_evidence_dated",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "this replaces prior evidence dated:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "continued_until_terminated",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "terminated if checked",
+            "type": "equals"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property_information.location_description",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "location/description",
+            "type": "equals"
+          },
+          "end": {
+            "text": "coverage info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverage_information.perils_insured",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "perils insured",
+            "type": "equals"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverage_information.perils_insured",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.3
+        },
+        "anchor": {
+          "match": {
+            "text": "perils insured",
+            "type": "equals"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverage_information.basic",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "basic",
+            "type": "equals"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverage_information.broad",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "broad",
+            "type": "equals"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverage_information.special",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "special",
+            "type": "equals"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverage_info_raw",
+        "type": "table",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "coverage information",
+                "type": "equals"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "table",
+          "columns": [
+            {
+              "id": "coverages",
+              "terms": [
+                "COVERAGE / PERILS / FORMS",
+                "COVERAGES/PERILS/FORMS",
+                "coverage information"
+              ],
+              "isRequired": true
+            },
+            {
+              "id": "amount_of_insurance",
+              "terms": [
+                "amount of insurance"
+              ],
+              "type": "currency"
+            },
+            {
+              "id": "deductible",
+              "terms": [
+                "deductible"
+              ],
+              "type": "currency"
+            }
+          ],
+          "stop": {
+            "type": "startsWith",
+            "text": "remarks"
+          }
+        }
+      },
+      {
+        "id": "remarks",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "remarks",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "cancellation",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "cancellation",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.additional_insured",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "additional insured",
+            "type": "equals"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.mortgagee",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "mortgagee",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.lenders_loss_payable",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "lender's loss payable",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.loss_payee",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "loss payee",
+            "type": "equals"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.name",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2,
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "name and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.address",
+        "type": "address",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "name and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "loan_number",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "cancellation",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "loan #",
+            "type": "equals"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "authorized_representative",
+        "method": {
+          "id": "signature",
+          "start": "below",
+          "width": 3,
+          "height": 0.2,
+          "offsetX": -0.65,
+          "offsetY": 0.01
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "authorized representative",
+                "type": "startsWith"
+              }
+            ]
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "coverage_info",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "coverage_info_raw"
+          ]
+        }
+      }
+    ]
+  }
