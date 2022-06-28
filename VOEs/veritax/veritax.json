@@ -1,0 +1,2111 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "first",
+          "match": [
+            {
+              "text": "Requesting User Information:",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "Employment Verification Result",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        {
+          "page": "last",
+          "match": [
+            {
+              "text": "VOE Comment",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "reference_number",
+        "anchor": {
+          "match": {
+            "text": "D1C Report Id:",
+            "type": "startsWith",
+            "editDistance": 2
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "year",
+        "anchor": {
+          "match": {
+            "pattern": "\\d{2}/\\d{2}/\\d{4}$",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "\\d{4}$"
+        }
+      },
+      {
+        "id": "employer",
+        "anchor": "company name:",
+        "method": {
+          "id": "documentRange",
+          "offsetY": -0.1,
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": -0.2,
+            "width": 3.75
+          },
+          "stop": {
+            "type": "regex",
+            "pattern": "^phone",
+            "flags": "i"
+          },
+          "includeAnchor": true,
+          "wordFilters": [
+            "Company name:"
+          ]
+        }
+      },
+      {
+        "id": "employer_address",
+        "type": "address",
+        "anchor": {
+          "start": "employer information",
+          "match": {
+            "text": "address:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "employee_name",
+        "anchor": {
+          "start": "borrower information",
+          "match": {
+            "text": "name:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "ssn",
+        "anchor": {
+          "start": "borrower information",
+          "match": {
+            "text": "ssn:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "hire_date",
+        "type": "date",
+        "anchor": {
+          "start": "employment:",
+          "match": {
+            "text": "start date",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "present_position",
+        "anchor": {
+          "match": {
+            "text": "job title",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row"
+        }
+      },
+      {
+        "id": "employment_status",
+        "anchor": {
+          "match": {
+            "text": "previous employer:",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "current_as_of",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "order completed date:"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "current_as_of",
+        "type": "date",
+        "anchor": {
+          "start": "voe comment",
+          "match": {
+            "type": "regex",
+            "pattern": "^Entered\\s?:",
+            "flags": "i"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "rate_of_pay",
+        "type": "currency",
+        "anchor": {
+          "start": "pay rate info:",
+          "match": {
+            "text": "amount",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "date_of_applicants_last_pay_increase",
+        "type": "date",
+        "anchor": "Not configured, not found",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "amount_of_applicants_last_pay_increase",
+        "type": "currency",
+        "anchor": "not found not configuredd",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "year_1",
+        "type": "number",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "20\\d{2}$"
+        }
+      },
+      {
+        "id": "year_2",
+        "type": "number",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "20\\d{2}$"
+        }
+      },
+      {
+        "id": "year_3",
+        "type": "number",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "text": "voe comment",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "regex",
+          "pattern": "20\\d{2}$"
+        }
+      },
+      {
+        "id": "average_hours",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "what are the average hours worked per week?",
+                "type": "includes"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "average_hours",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "average hours per week",
+                "type": "includes"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "average_hours",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "average hours per week",
+                "type": "includes"
+              }
+            ]
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "basepay_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "basepay_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "basepay_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "text": "voe comment",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "overtime_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "overtime_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "overtime_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "text": "voe comment",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "commission_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "third"
+        }
+      },
+      {
+        "id": "commission_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "third"
+        }
+      },
+      {
+        "id": "commission_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "text": "voe comment",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "third"
+        }
+      },
+      {
+        "id": "Bonuses1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 2.85,
+          "offsetY": -0.1,
+          "width": 0.7,
+          "height": 0.185,
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "bonus_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            "match": {
+              "type": "equals",
+              "text": "commissions bonuses"
+            }
+          },
+          "offsetX": 0.3,
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "bonus_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            "match": {
+              "type": "equals",
+              "text": "bonuses"
+            }
+          },
+          "tiebreaker": "last"
+        }
+      },
+      {
+        "id": "bonus_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 2.7,
+          "offsetY": -0.1,
+          "width": 0.8,
+          "height": 0.185,
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "bonus_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            "match": {
+              "type": "equals",
+              "text": "commissions bonuses"
+            }
+          },
+          "offsetX": 0.3,
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "bonus_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            "match": {
+              "type": "equals",
+              "text": "bonuses"
+            }
+          },
+          "tiebreaker": "last"
+        }
+      },
+      {
+        "id": "bonus_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "text": "voe comment",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 2.7,
+          "offsetY": -0.1,
+          "width": 0.8,
+          "height": 0.185,
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "bonus_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "text": "voe comment",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            "match": {
+              "type": "equals",
+              "text": "commissions bonuses"
+            }
+          },
+          "offsetX": 0.3,
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "bonus_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "text": "voe comment",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            "match": {
+              "type": "equals",
+              "text": "bonuses"
+            }
+          },
+          "tiebreaker": "last"
+        }
+      },
+      {
+        "id": "other_income_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "other income 1",
+              "type": "equals"
+            }
+          },
+          "offsetX": 0.25
+        }
+      },
+      {
+        "id": "other_income_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "misc other comp",
+              "type": "equals"
+            }
+          },
+          "offsetX": 0.2
+        }
+      },
+      {
+        "id": "other_income_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "other income 1 other income 2",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.15
+        }
+      },
+      {
+        "id": "other_income_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            "match": {
+              "text": "other",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.15
+        }
+      },
+      {
+        "id": "other_income_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "other income 1",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.25
+        }
+      },
+      {
+        "id": "other_income_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "misc other comp",
+              "type": "equals"
+            }
+          },
+          "offsetX": 0.2
+        }
+      },
+      {
+        "id": "other_income_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "other income 1 other income 2",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.15
+        }
+      },
+      {
+        "id": "other_income_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            "match": {
+              "text": "other",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.15
+        }
+      },
+      {
+        "id": "other_income_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "text": "voe comment",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "other income 1",
+              "type": "startsWith"
+            }
+          },
+          "offsetX": 0.25
+        }
+      },
+      {
+        "id": "other_income_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "text": "voe comment",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "misc other comp",
+              "type": "equals"
+            }
+          },
+          "offsetX": 0.2
+        }
+      },
+      {
+        "id": "other_income_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "text": "voe comment",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "other income 1 other income 2",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.15
+        }
+      },
+      {
+        "id": "other_income_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "text": "voe comment",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            "match": {
+              "text": "other",
+              "type": "equals"
+            }
+          },
+          "offsetX": -0.15
+        }
+      },
+      {
+        "id": "incentive_1",
+        "type": "currency",
+        "anchor": "Not configured, not found",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "incentive_2",
+        "type": "currency",
+        "anchor": "Not configured, not found",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "incentive_3",
+        "type": "currency",
+        "anchor": "Not configured, not found",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "sickpay_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "sickpay_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "sickpay_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "vacationpay_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "vacationpay_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "vacationpay_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "paid_time_off_1",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "paid_time_off_2",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "paid_time_off_3",
+        "type": "currency",
+        "anchor": "not found yett",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "totalpay_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": {
+            "pattern": "20\\d{2}$",
+            "type": "regex"
+          },
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "last"
+        }
+      },
+      {
+        "id": "totalpay_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "last"
+        }
+      },
+      {
+        "id": "totalpay_3",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "type": "regex",
+            "pattern": "income\\s?/\\s?compensation",
+            "flags": "i"
+          },
+          "match": [
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            }
+          ],
+          "end": [
+            {
+              "type": "regex",
+              "pattern": "income\\s?/\\s?compensation",
+              "flags": "i"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "pattern": "20\\d{2}$",
+              "type": "regex"
+            },
+            {
+              "text": "voe comment",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "last"
+        }
+      }
+    ]
+  }

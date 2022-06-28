@@ -67,6 +67,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 Find the ACORD year/month at the bottom left corner of each ACORD page. Often the differences between versions are minor and can use the same configuration.
 
 - [ACORD 23 (03/2016)](./insurance/acords/acord_23/2010_05__2016_03.json)
+- [ACORD 24 (03/2016)](./insurance/acords/acord_24/2009_09__2016_03.json)
 - [ACORD 25 (03/2016)](./insurance/acords/acord_25/2010_05__2014_01__2016_03.json)
 - [ACORD 75 (09/2013)](./insurance/acords/acord_75/2013_09.json)
 - [ACORD 125 (12/2014)](./insurance/acords/acord_125/2014_12.json)
@@ -98,7 +99,13 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Zenith](./insurance/loss_runs/workers_comp/zenith.json)
 
 ### Tax Forms
-- [1040](./tax_forms/1040.json)
+- [1040 (2018)](./tax_forms/1040/2018/1040_2018.json)
+- [1040 (2019)](./tax_forms/1040/2019/1040_2019.json)
+- [1040 (Senior 2019)](./tax_forms/1040/2019/senior_1040_2019.json)
+- [1040 (2020)](./tax_forms/1040/2020/1040_2020.json)
+- [1040 (Senior 2020)](./tax_forms/1040/2020/senior_1040_2020.json)
+- [1040 (2021)](./tax_forms/1040/2021/1040_2021.json)
+- [1040 (Senior 2021)](./tax_forms/1040/2021/senior_1040_2021.json)
 - [1065](./tax_forms/1065.json)
 - [1099](./tax_forms/1099.json)
 - [1120](./tax_forms/1120.json)
@@ -116,9 +123,18 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [TQL](./rate_confirmations/tql.json)
 - [Uber Freight](./rate_confirmations/uber_freight.json)
 
+### VOEs
+- [Blend](./VOEs/blend/blend.json)
+- [CCC Verify](./VOEs/ccc_verify/ccc_verify.json)
+- [Equifax](./VOEs/equifax/equifax.json)
+- [Lender's One](./VOEs/lenders_one/lenders_one.json)
+- [Truework](./VOEs/truework/truework.json)
+- [Veritax](./VOEs/veritax/veritax.json)
+- [Xactus](./VOEs/xactus/xactus.json)
+
 
 ## Using a configuration
-To use the library, you can sign up for a [free Sensible account](https://dev.sensible.so/register). 
+To use the library, you can sign up for a [free Sensible account](https://app.sensible.so/register). 
 
 Once you have a Sensible account, copy and paste the configuration you want to use into your configuration editor and publish it. Upload PDFs corresponding to the configuration, and changes field names, add fields, or remove fields to extract the data you want from your PDFs.
 
