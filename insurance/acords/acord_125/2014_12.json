@@ -5,23 +5,6 @@
       "minSpaces": 3
     }
   ],
-  "fingerprint": {
-    "tests": [
-      {
-        "page": "any",
-        "match": [
-          {
-            "text": "acord 125",
-            "type": "includes"
-          },
-          {
-            "text": "commercial insurance application",
-            "type": "includes"
-          }
-        ]
-      }
-    ]
-  },
   "fields": [
     {
       "id": "agency",
@@ -54,6 +37,28 @@
         "match": {
           "text": "name:",
           "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact_name",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "agency",
+          "type": "equals"
+        },
+        "match": {
+          "text": "contact",
+          "type": "equals"
+        },
+        "end": {
+          "text": "sections attached",
+          "type": "equals"
         }
       }
     },
@@ -105,6 +110,25 @@
         "match": {
           "text": "address:",
           "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "contact_email",
+      "type": {
+        "id": "custom",
+        "pattern": "^[0-9?A-z0-9?]+(\\.)?[0-9?A-z0-9?]+@[A-z]+\\.[A-z]{3}.?[A-z]{0,3}$"
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first",
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "match": {
+          "text": "e-mail",
+          "type": "equals"
         }
       }
     },
