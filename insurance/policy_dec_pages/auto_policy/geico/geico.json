@@ -371,7 +371,13 @@
       "method": {
         "id": "row",
         "position": "right",
-        "tiebreaker": "first"
+        "tiebreaker": "first",
+        "lineFilters": [
+          {
+            "type": "includes",
+            "text": "."
+          }
+        ]
       },
       "anchor": {
         "match": [
@@ -418,7 +424,13 @@
       "method": {
         "id": "row",
         "position": "right",
-        "tiebreaker": "first"
+        "tiebreaker": "first",
+        "lineFilters": [
+          {
+            "type": "includes",
+            "text": "."
+          }
+        ]
       },
       "anchor": {
         "match": [
@@ -434,7 +446,7 @@
       }
     },
     {
-      "id": "medical_payment_to_others_limit",
+      "id": "others_medical_payment_limit",
       "type": "currency",
       "method": {
         "id": "row",
@@ -600,7 +612,13 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "tiebreaker": ">"
+        "tiebreaker": "<",
+        "lineFilters": [
+          {
+            "type": "includes",
+            "text": "."
+          }
+        ]
       },
       "anchor": {
         "match": [
@@ -653,7 +671,13 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "tiebreaker": "first"
+        "tiebreaker": "first",
+        "lineFilters": [
+          {
+            "type": "includes",
+            "text": "."
+          }
+        ]
       },
       "anchor": {
         "match": [
@@ -675,7 +699,13 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "tiebreaker": ">"
+        "tiebreaker": ">",
+        "lineFilters": [
+          {
+            "type": "includes",
+            "text": "."
+          }
+        ]
       },
       "anchor": {
         "match": [
@@ -728,7 +758,13 @@
       "type": "currency",
       "method": {
         "id": "row",
-        "tiebreaker": "first"
+        "tiebreaker": "first",
+        "lineFilters": [
+          {
+            "type": "includes",
+            "text": "."
+          }
+        ]
       },
       "anchor": {
         "match": [
@@ -892,6 +928,10 @@
             {
               "pattern": "Uninsured/Underinsured .* Property",
               "type": "regex"
+            },
+            {
+              "text": "Uninsured Motorists - Property Damage",
+              "type": "includes"
             }
           ]
         }
