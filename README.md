@@ -90,6 +90,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Hallmark](./insurance/loss_runs/workers_comp/hallmark.json)
 - [IAT](./insurance/loss_runs/workers_comp/iat.json)
 - [ICW](./insurance/loss_runs/workers_comp/icw.json)
+- [Knight Specialty](./insurance/loss_runs/workers_comp/knight_specialty.json)
 - [Northland](./insurance/loss_runs/workers_comp/northland.json)
 - [Spirit](./insurance/loss_runs/workers_comp/spirit.json)
 - [Statefund](./insurance/loss_runs/workers_comp/statefund.json)
