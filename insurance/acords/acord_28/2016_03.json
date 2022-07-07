@@ -1,0 +1,2962 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "acord 28",
+              "type": "includes"
+            },
+            {
+              "text": "EVIDENCE OF COMMERCIAL PROPERTY INSURANCE",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "producer_name",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "contact person and address",
+            "type": "equals"
+          },
+          "end": {
+            "text": "fax",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "producer_name",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 3,
+          "height": 0.56,
+          "offsetX": -0.05,
+          "offsetY": 0.06,
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "contact person and address",
+            "type": "equals"
+          },
+          "end": {
+            "text": "fax",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "producer_address",
+        "type": "address",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap",
+          "sortLines": "readingOrderLeftToRight"
+        },
+        "anchor": {
+          "match": {
+            "text": "contact person and address",
+            "type": "equals"
+          },
+          "end": {
+            "text": "fax",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "producer_address",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 3,
+          "height": 0.47,
+          "offsetX": -0.05,
+          "offsetY": 0.17,
+          "sortLines": "readingOrderLeftToRight",
+          "wordFilters": [
+            "c/o"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "contact person and address",
+            "type": "equals"
+          },
+          "end": {
+            "text": "fax",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "phone",
+        "type": "phoneNumber",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "text": "phone",
+            "type": "equals"
+          },
+          "end": {
+            "text": "fax",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "phone",
+        "type": "phoneNumber",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "text": "(A/C. No. Ext):",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "fax",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "phone",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2.5
+          }
+        },
+        "anchor": {
+          "match": {
+            "text": "phone",
+            "type": "equals"
+          },
+          "end": {
+            "text": "fax",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "fax",
+        "type": "phoneNumber",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "fax",
+                "type": "equals"
+              },
+              {
+                "text": "(A/C. No):",
+                "type": "startsWith"
+              }
+            ]
+          },
+          "end": {
+            "text": "code",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "fax",
+        "type": "phoneNumber",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "fax",
+            "type": "equals"
+          },
+          "end": {
+            "text": "code",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "email",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "wordFilters": [
+            "e-mail"
+          ],
+          "whitespaceFilter": "all"
+        },
+        "anchor": {
+          "match": {
+            "text": "address:",
+            "type": "includes"
+          },
+          "end": {
+            "text": "code",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "company_name",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2.15,
+          "height": 0.5,
+          "offsetX": -0.05,
+          "offsetY": 0.08,
+          "typeFilters": [
+            "address"
+          ],
+          "sortLines": "readingOrderLeftToRight"
+        },
+        "anchor": {
+          "match": {
+            "text": "company name and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "policy type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "company_name",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2.15,
+          "height": 0.5,
+          "offsetX": -0.05,
+          "offsetY": 0.08,
+          "typeFilters": [
+            "address"
+          ],
+          "sortLines": "readingOrderLeftToRight"
+        },
+        "anchor": {
+          "match": {
+            "text": "company name and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "policy type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "company_address",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2.15,
+          "height": 0.5,
+          "offsetX": -0.05,
+          "offsetY": 0.08
+        },
+        "anchor": {
+          "match": {
+            "text": "company name and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "policy type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "naic_no",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "naic no:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "policy type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "code",
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "code:",
+            "type": "equals"
+          },
+          "end": {
+            "text": "customer id",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "sub_code",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "sub code:",
+            "type": "equals"
+          },
+          "end": {
+            "text": "customer id",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.customer_id",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 3
+          }
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "customer id",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "named insured",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.customer_id",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "agency",
+              "type": "startsWith"
+            },
+            {
+              "text": "customerid#:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "named insured",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insured",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "named insured and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insured",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "named insured and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "insured_address",
+        "type": "address",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "named insured and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_type",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "policy type",
+            "type": "equals"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "loan_number",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "loan number",
+            "type": "equals"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "policy number",
+            "type": "equals"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "effective date",
+            "type": "equals"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "effective date",
+            "type": "equals"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "expiration date",
+            "type": "equals"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_named_insured",
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "additional named insured",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "this_replaces_prior_evidence_dated",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "this replaces prior evidence dated:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "continued_until_terminated",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "terminated if checked",
+            "type": "equals"
+          },
+          "end": {
+            "text": "property info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property_information.location_description",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "location / description",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverage info",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property_information.building",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "building",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "location / description",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property_information.building",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetX": 0.07
+        },
+        "anchor": {
+          "match": {
+            "text": "building",
+            "type": "includes"
+          },
+          "end": {
+            "text": "location / description",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property_information.business_personal_property",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "business personal property",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "location / description",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "property_information.business_personal_property",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": -1.95
+        },
+        "anchor": {
+          "match": {
+            "text": "business personal property",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "location / description",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverage_information.perils_insured",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "perils insured",
+            "type": "equals"
+          },
+          "end": {
+            "text": "commercial property coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverage_information.basic",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "basic",
+            "type": "equals"
+          },
+          "end": {
+            "text": "commercial property coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverage_information.broad",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "broad",
+            "type": "equals"
+          },
+          "end": {
+            "text": "commercial property coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverage_information.special",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "special",
+                "type": "equals"
+              },
+              {
+                "text": "special",
+                "type": "endsWith"
+              }
+            ]
+          },
+          "end": {
+            "text": "commercial property coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverage_information.commercial_property_coverage_amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 6
+          }
+        },
+        "anchor": {
+          "match": {
+            "text": "commercial property coverage",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverage_information.ded",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "ded",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "business income",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "business_income",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "business income",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "business_income",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetX": 0.03
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "business income",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "rental_value",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "rental value",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "rental_value",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetX": 0.05
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "rental value",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "business_income_and_rental_value.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.3
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "rental value",
+                "type": "equals"
+              },
+              {
+                "text": "rental value",
+                "type": "endsWith"
+              }
+            ]
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "business_income_and_rental_value.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.7
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "rental value",
+                "type": "equals"
+              },
+              {
+                "text": "rental value",
+                "type": "endsWith"
+              }
+            ]
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "business_income_and_rental_value.limit",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "if yes, limit:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "blanket coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "business_income_and_rental_value.actual_loss_sustained",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "actual loss sustained",
+            "type": "includes"
+          },
+          "end": {
+            "text": "blanket coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "business_income_and_rental_value.num_months",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "# of months:",
+            "type": "includes"
+          },
+          "end": {
+            "text": "blanket coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "blanket_coverage.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetX": 3.35
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "blanket coverage",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "blanket_coverage.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetX": 3.73
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "blanket coverage",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "blanket_coverage.values_reported",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "if yes, indicate",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "terrorism coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "terrorism_coverage.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2.2
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "terrorism coverage",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "terrorism_coverage.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2.6
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "terrorism coverage",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "terrorism_coverage.disclosure_notice",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "attach disclosure notice",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "limited fungus coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "terrorism_coverage.terrorism_specific_exclusion.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.95
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "terrorism-specific exclusion",
+            "type": "includes"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "terrorism_coverage.terrorism_specific_exclusion.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.3
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "terrorism-specific exclusion",
+            "type": "includes"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "terrorism_coverage.domestic_terrorism_excluded.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.3
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "domestic terrorism excluded",
+            "type": "includes"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "terrorism_coverage.domestic_terrorism_excluded.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.76
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "domestic terrorism excluded",
+            "type": "includes"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "limited_fungus_coverage.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "limited fungus coverage",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "limited_fungus_coverage.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2.4
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "limited fungus coverage",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "limited_fungus_coverage.limit",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2
+          },
+          "wordFilters": [
+            "X"
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "if yes, limit:",
+            "type": "includes"
+          },
+          "end": {
+            "text": "fungus exclusion",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "limited_fungus_coverage.ded",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "terrorism coverage",
+            "type": "equals"
+          },
+          "match": {
+            "text": "ded",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "fungus exclusion",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "fungus_exclusion.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.6
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "fungus exclusion",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "fungus_exclusion.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "fungus exclusion",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "fungus_exclusion.form_used",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 1,
+            "width": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "fungus exclusion",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "replacement_cost.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2.34
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "replacement cost",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "replacement_cost.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2.73
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "replacement cost",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agreed_value.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2.6
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "agreed value",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agreed_value.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 3
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "agreed value",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coinsurance.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2.6
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "coinsurance",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coinsurance.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 3
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "coinsurance",
+            "type": "equals"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coinsurance.percentage",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "agreed value",
+            "type": "equals"
+          },
+          "match": {
+            "text": "if yes,",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "equipment breakdown",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "equipment_breakdown.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.56
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "equipment breakdown",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "equipment_breakdown.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.95
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "equipment breakdown",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "equipment_breakdown.limit",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coinsurance",
+            "type": "equals"
+          },
+          "match": {
+            "text": "if yes, limit",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "ordinance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "equipment_breakdown.limit",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "coinsurance",
+            "type": "equals"
+          },
+          "match": {
+            "text": "if yes, limit:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "ordinance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "equipment_breakdown.ded",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "coinsurance",
+            "type": "equals"
+          },
+          "match": {
+            "text": "ded",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "ordinance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "equipment_breakdown.ded",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "coinsurance",
+            "type": "equals"
+          },
+          "match": {
+            "text": "ded:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "ordinance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.29
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "ordinance",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.67
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "ordinance",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.limit",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "ordinance",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "if yes, limit",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "demolition",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.limit",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "ordinance",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "if yes, limit:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "demolition",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.ded",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "ordinance",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "ded",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "demolition",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.ded",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "ordinance",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "ded:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "demolition",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.demolition_costs.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.55
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "demolition costs",
+            "type": "includes"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.demolition_costs.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.93
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "demolition costs",
+            "type": "includes"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.demolition_costs.limit",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "demolition costs",
+            "type": "includes"
+          },
+          "match": {
+            "text": "if yes, limit",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cost of construction",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.demolition_costs.limit",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "ordinance",
+              "type": "includes"
+            },
+            {
+              "text": "ded:",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "if yes, limit:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cost of construction",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.demolition_costs.ded",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "ordinance",
+              "type": "includes"
+            }
+          ],
+          "match": [
+            {
+              "text": "ded",
+              "type": "startsWith"
+            },
+            {
+              "text": "ded:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "cost of construction",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.demolition_costs.ded",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "ordinance",
+              "type": "includes"
+            }
+          ],
+          "match": [
+            {
+              "text": "ded",
+              "type": "startsWith"
+            },
+            {
+              "text": "ded:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "cost of construction",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.incr_cost_of_construction.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.2
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "cost of construction",
+            "type": "includes"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.incr_cost_of_construction.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.56
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "cost of construction",
+            "type": "includes"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.incr_cost_of_construction.limit",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "cost of construction",
+            "type": "includes"
+          },
+          "match": {
+            "text": "if yes, limit",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "earth movement",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.incr_cost_of_construction.limit",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "cost of construction",
+            "type": "includes"
+          },
+          "match": {
+            "pattern": "if yes, limit:?;?",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "earth movement",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.incr_cost_of_construction.ded",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "cost of construction",
+            "type": "includes"
+          },
+          "match": {
+            "text": "ded",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "earth movement",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "ordinance_or_law.incr_cost_of_construction.ded",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "cost of construction",
+            "type": "includes"
+          },
+          "match": {
+            "text": "ded:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "earth movement",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "earth_movement.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.8
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "earth movement",
+            "type": "includes"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "earth_movement.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2.2
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "earth movement",
+            "type": "includes"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "earth_movement.limit",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "earth movement",
+            "type": "includes"
+          },
+          "match": {
+            "text": "if yes, limit",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "flood",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "earth_movement.ded",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "earth movement",
+            "type": "includes"
+          },
+          "match": {
+            "text": "ded",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "flood",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "flood.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2.4
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "flood",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "flood.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2.8
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "flood",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "flood.limit",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "flood",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "if yes, limit",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "wind",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "flood.ded",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "flood",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "ded",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "wind",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "wind_hail_incl.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "wind",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "yes",
+            "type": "equals"
+          },
+          "end": {
+            "text": "named storm",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "wind_hail_incl.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetX": 0.05
+        },
+        "anchor": {
+          "start": {
+            "text": "flood",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "no",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "named storm",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "wind_hail_incl.subject_to_diff_provisions.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "wind",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "subject to different",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "named storm",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "wind_hail_incl.subject_to_diff_provisions.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.56
+        },
+        "anchor": {
+          "start": {
+            "text": "wind",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "subject to different",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "named storm",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "wind_hail_incl.limit",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "wind",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "if yes, limit",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "named storm",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "wind_hail_incl.limit",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "wind",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "if yes, limit:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "named storm",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "wind_hail_incl.ded",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "wind",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "ded",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "named storm",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "wind_hail_incl.ded",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "wind",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "ded:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "named storm",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "named_storm_incl.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "subject to different",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "yes",
+            "type": "equals"
+          },
+          "end": {
+            "text": "permission to waive",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "named_storm_incl.yes",
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left",
+          "offsetX": 0.06,
+          "offsetY": 0
+        },
+        "anchor": {
+          "start": {
+            "text": "subject to different",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "yes",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "permission to waive",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "named_storm_incl.subject_to_diff_provisions.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "subject to different",
+              "type": "startsWith"
+            },
+            {
+              "text": "subject to different",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "permission to waive",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "named_storm_incl.subject_to_diff_provisions.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.6
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "subject to different",
+              "type": "startsWith"
+            },
+            {
+              "text": "subject to different",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "permission to waive",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "named_storm_incl.limit",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "named storm",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "if yes, limit",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "permission to waive",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "named_storm_incl.ded",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "named storm",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "ded",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "permission to waive",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "permission_to_waive_subrogation.yes",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.3
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "permission to waive",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "permission_to_waive_subrogation.not_applicable",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.7
+        },
+        "anchor": {
+          "start": {
+            "text": "coverage information",
+            "type": "equals"
+          },
+          "match": {
+            "text": "permission to waive",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "cancellation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "cancellation",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "cancellation",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 28",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.contract_of_sale",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "contract of sale",
+            "type": "equals"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.mortgagee",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "mortgagee",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.lenders_loss_payable",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "lender's loss payable",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.loss_payee",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "loss payee",
+            "type": "equals"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.custom_name",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "lender's loss payable",
+            "type": "equals"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.custom_selected",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetX": -0.15,
+          "offsetY": 0.14
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "lender's loss payable",
+            "type": "equals"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.name",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2,
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "name and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.address",
+        "type": "address",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "name and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "lender_servicing_agent.name",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2,
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "lender servicing agent",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "lender_servicing_agent.address",
+        "type": "address",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "equals"
+          },
+          "match": {
+            "text": "lender servicing agent",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "authorized_representative",
+        "method": {
+          "id": "signature",
+          "start": "below",
+          "width": 2,
+          "height": 0.25,
+          "offsetX": -0.4,
+          "offsetY": 0.05
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "authorized representative",
+                "type": "startsWith"
+              }
+            ]
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      }
+    ]
+  }
