@@ -20,12 +20,19 @@
         "position": "right"
       },
       "anchor": {
-        "match": [
-          {
-            "text": "Policy Number:",
-            "type": "startsWith"
-          }
-        ]
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "Policy Number:",
+              "type": "startsWith"
+            },
+            {
+              "text": "policy no.",
+              "type": "startsWith"
+            }
+          ]
+        }
       }
     },
     {

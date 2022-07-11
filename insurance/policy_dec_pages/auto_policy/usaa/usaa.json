@@ -294,7 +294,11 @@
             "pattern": "^.{12}\\d{5}$",
             "type": "regex"
           }
-        ]
+        ],
+        "end": {
+          "type": "equals",
+          "text": "Coverages"
+        }
       }
     },
     {
@@ -306,7 +310,7 @@
       "anchor": {
         "start": [
           {
-            "text": "Description",
+            "text": "Description of Vehicle",
             "type": "startsWith"
           }
         ],
@@ -315,7 +319,11 @@
             "pattern": "^.{12}\\d{5}$",
             "type": "regex"
           }
-        ]
+        ],
+        "end": {
+          "type": "equals",
+          "text": "Coverages"
+        }
       }
     },
     {
@@ -405,7 +413,7 @@
       }
     },
     {
-      "id": "medical_payment_to_others_limit",
+      "id": "others_medical_payment_limit",
       "type": "currency",
       "method": {
         "id": "label",
@@ -428,7 +436,7 @@
       }
     },
     {
-      "id": "medical_payment_to_others_limit",
+      "id": "others_medical_payment_limit",
       "type": "currency",
       "method": {
         "id": "row",
@@ -469,6 +477,27 @@
           {
             "type": "includes",
             "text": "ea person"
+          }
+        ]
+      }
+    },
+    {
+      "id": "personal_injury_protection_per_person",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": [
+          {
+            "type": "includes",
+            "text": "personal injury protection"
+          },
+          {
+            "type": "equals",
+            "text": "maximum benefits"
           }
         ]
       }
@@ -605,6 +634,31 @@
       }
     },
     {
+      "id": "rental_reimbursement_per_day",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "Coverages",
+          "type": "equals"
+        },
+        "end": "vehicle total premium",
+        "match": [
+          {
+            "text": "Extended Transportation Expenses",
+            "type": "startsWith"
+          },
+          {
+            "text": "A day",
+            "type": "includes"
+          }
+        ]
+      }
+    },
+    {
       "id": "_collision_limit",
       "method": {
         "id": "row",
@@ -629,7 +683,7 @@
       "anchor": {
         "match": [
           {
-            "text": "collision loss",
+            "text": "collision",
             "type": "startsWith"
           },
           {
@@ -652,12 +706,19 @@
         "tiebreaker": "first"
       },
       "anchor": {
-        "match": [
-          {
-            "text": "comprehensive",
-            "type": "startsWith"
-          }
-        ]
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "type": "startsWith",
+              "text": "comprehensive"
+            },
+            {
+              "type": "startsWith",
+              "text": "other than coll"
+            }
+          ]
+        }
       }
     },
     {
@@ -668,12 +729,19 @@
         "pattern": "D[ ]?(\\d+)"
       },
       "anchor": {
-        "start": [
-          {
-            "text": "comprehensive loss",
-            "type": "startsWith"
-          }
-        ],
+        "start": {
+          "type": "any",
+          "matches": [
+            {
+              "type": "startsWith",
+              "text": "comprehensive"
+            },
+            {
+              "type": "startsWith",
+              "text": "other than coll"
+            }
+          ]
+        },
         "match": [
           {
             "text": "D",
@@ -687,6 +755,89 @@
           }
         ]
       }
+    },
+    {
+      "id": "_roadside_assistance",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "start": [
+          {
+            "type": "equals",
+            "text": "Coverages"
+          }
+        ],
+        "match": {
+          "type": "includes",
+          "text": "Towing and Labor"
+        },
+        "end": {
+          "type": "equals",
+          "text": "Vehicle Total Premium"
+        }
+      }
+    },
+    {
+      "id": "roadside_assistance_value",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "start": [
+          {
+            "type": "equals",
+            "text": "Coverages"
+          }
+        ],
+        "match": [
+          {
+            "type": "includes",
+            "text": "Towing and Labor"
+          },
+          {
+            "type": "includes",
+            "text": "Towing costs"
+          }
+        ],
+        "end": {
+          "type": "equals",
+          "text": "Vehicle Total Premium"
+        }
+      }
+    },
+    {
+      "id": "roadside_assistance_value",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "type": "equals",
+            "text": "Coverages"
+          }
+        ],
+        "match": [
+          {
+            "type": "includes",
+            "text": "Towing and Labor"
+          },
+          {
+            "type": "includes",
+            "text": "disablement"
+          }
+        ],
+        "end": {
+          "type": "equals",
+          "text": "Vehicle Total Premium"
+        }
+      }
     }
   ],
   "computed_fields": [
@@ -696,7 +847,8 @@
         "id": "mapper",
         "source_id": "_collision_limit",
         "mappings": {
-          "ACV LESS": "Actual Cash Value"
+          "ACV LESS": "Actual Cash Value",
+          "ACV": "Actual Cash Value"
         }
       }
     },
@@ -706,7 +858,19 @@
         "id": "mapper",
         "source_id": "_comprehensive_limit",
         "mappings": {
-          "ACV LESS": "Actual Cash Value"
+          "ACV LESS": "Actual Cash Value",
+          "ACV": "Actual Cash Value"
+        }
+      }
+    },
+    {
+      "id": "roadside_assistance",
+      "type": "boolean",
+      "method": {
+        "id": "mapper",
+        "source_id": "_roadside_assistance",
+        "mappings": {
+          "TOWING AND LABOR": "yes"
         }
       }
     }
