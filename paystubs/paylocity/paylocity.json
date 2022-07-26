@@ -1,0 +1,396 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "type": "includes",
+          "text": "paylocity"
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "employer_name",
+        "anchor": {
+          "match": {
+            "text": "employee id",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 1.2,
+          "offsetY": -0.6,
+          "width": 4,
+          "height": 0.35
+        }
+      },
+      {
+        "id": "employee_name",
+        "anchor": {
+          "match": {
+            "text": "employee id",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "above"
+        }
+      },
+      {
+        "id": "employee_address",
+        "type": "address",
+        "anchor": {
+          "match": {
+            "text": "employee id",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": -0.5,
+          "offsetY": -1.9,
+          "width": 4,
+          "height": 0.6
+        }
+      },
+      {
+        "id": "pay_date",
+        "type": "date",
+        "anchor": "check date",
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "pay_period_start_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "period beginning",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "pay_period_start_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "period beginning",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "pay_period_end_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "period ending",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "pay_period_end_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "period ending",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "net_pay",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "earnings",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "net pay",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "hours.regular",
+        "type": "number",
+        "anchor": {
+          "start": {
+            "text": "period ending",
+            "type": "includes"
+          },
+          "match": {
+            "text": "regular",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "period ending",
+            "match": {
+              "text": "hours",
+              "type": "equals"
+            }
+          }
+        }
+      },
+      {
+        "id": "hours.sick",
+        "anchor": "not yet found on paylocity sample",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "hours.paid_time_off",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "paid time",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "period ending",
+            "match": {
+              "text": "hours",
+              "type": "equals"
+            }
+          }
+        }
+      },
+      {
+        "id": "hours.vacation",
+        "type": "number",
+        "anchor": {
+          "start": {
+            "text": "earnings",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "holiday",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "period ending",
+            "match": {
+              "text": "hours",
+              "type": "equals"
+            }
+          }
+        }
+      },
+      {
+        "id": "pay_this_period.regular",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "Regular",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "period ending",
+            "match": {
+              "text": "amount",
+              "type": "startsWith"
+            }
+          }
+        }
+      },
+      {
+        "id": "pay_this_period.sick",
+        "anchor": "not found on sample",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "pay_this_period.paid_time_off",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "earnings",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "paid time",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "period ending",
+            "match": {
+              "text": "amount",
+              "type": "equals"
+            }
+          }
+        }
+      },
+      {
+        "id": "pay_this_period.vacation",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "earnings",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "holiday",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "period ending",
+            "match": {
+              "text": "amount",
+              "type": "equals"
+            }
+          }
+        }
+      },
+      {
+        "id": "ytd.regular",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "earnings",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "regular",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "period ending",
+            "match": {
+              "text": "ytd",
+              "type": "equals"
+            }
+          }
+        }
+      },
+      {
+        "id": "ytd.sick",
+        "anchor": "not found on sample",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "ytd.paid_time_off",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "earnings",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "paid time",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "period ending",
+            "match": {
+              "text": "ytd",
+              "type": "equals"
+            }
+          }
+        }
+      },
+      {
+        "id": "ytd.vacation",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "earnings",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "holiday",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "period ending",
+            "match": {
+              "text": "ytd",
+              "type": "equals"
+            }
+          }
+        }
+      },
+      {
+        "id": "ytd.gross",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "earnings",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "gross earnings",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": "period ending",
+            "match": {
+              "text": "ytd",
+              "type": "equals"
+            }
+          }
+        }
+      }
+    ]
+  }
