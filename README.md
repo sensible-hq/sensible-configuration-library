@@ -136,6 +136,10 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Veritax](./VOEs/veritax/veritax.json)
 - [Xactus](./VOEs/xactus/xactus.json)
 
+### Paystubs
+- [ADP](./paystubs/adp/adp.json)
+- [Gusto](./paystubs/gusto/gusto.json)
+- [Paylocity](./paystubs/paylocity/paylocity.json)
 
 ## Using a configuration
 To use the library, you can sign up for a [free Sensible account](https://app.sensible.so/register). 
