@@ -1,0 +1,306 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "type": "startsWith",
+          "text": "Earnings Statement",
+          "isCaseSensitive": true
+        },
+        {
+          "type": "startsWith",
+          "text": "Employee Taxes Withheld",
+          "isCaseSensitive": true
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "employer_name",
+        "anchor": {
+          "match": {
+            "text": "Company",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "employee_name",
+        "anchor": {
+          "match": {
+            "text": "Employee",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "employee_address",
+        "type": "address",
+        "anchor": {
+          "match": {
+            "text": "Employee",
+            "type": "startsWith"
+          },
+          "end": "Employee Earnings"
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "stop": "gap"
+        }
+      },
+      {
+        "id": "pay_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "Pay Day:",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "pay_period_start_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "Pay period:",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "pay_period_end_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "Pay period:",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "net_pay",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "Net Pay",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "start": {
+              "text": "Summary",
+              "type": "startsWith"
+            },
+            "match": {
+              "text": "Current",
+              "type": "startsWith"
+            }
+          }
+        }
+      },
+      {
+        "id": "hours.regular",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "Regular Hours | Salaried",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": "Hours"
+        }
+      },
+      {
+        "id": "hours.sick",
+        "type": "number",
+        "anchor": "not yet found on gusto sample",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "hours.paid_time_off",
+        "type": "number",
+        "anchor": "not yet found on gusto sample",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "hours.vacation",
+        "type": "number",
+        "anchor": {
+          "match": {
+            "text": "paid holidays",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": "Hours"
+        }
+      },
+      {
+        "id": "pay_this_period.regular",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "Regular Hours | Salaried",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": "Current"
+        }
+      },
+      {
+        "id": "pay_this_period.sick",
+        "type": "currency",
+        "anchor": "not yet found on gusto sample",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "pay_this_period.paid_time_off",
+        "type": "currency",
+        "anchor": "not yet found on gusto sample",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "pay_this_period.vacation",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "paid holidays",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "employee taxes",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": "current"
+        }
+      },
+      {
+        "id": "pay_this_period.gross",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "gross earnings",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "employee taxes",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": "current"
+        }
+      },
+      {
+        "id": "ytd.regular",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "Regular Hours | Salaried",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "employee taxes",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": "Year To Date"
+        }
+      },
+      {
+        "id": "ytd.sick",
+        "type": "currency",
+        "anchor": "not yet found on gusto sample",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "ytd.paid_time_off",
+        "type": "currency",
+        "anchor": "not yet found on gusto sample",
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "ytd.vacation",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "paid holidays",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "employee taxes",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": "year to date"
+        }
+      },
+      {
+        "id": "ytd.gross",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "gross earnings",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "employee taxes",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": "year to date"
+        }
+      }
+    ]
+  }
