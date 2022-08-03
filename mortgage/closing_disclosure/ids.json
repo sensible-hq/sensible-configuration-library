@@ -1,0 +1,5419 @@
+{
+  "preprocessors": [
+    {
+      "type": "mergeLines",
+      "directlyAdjacentThreshold": 0.16,
+      "adjacentThreshold": 0.8,
+      "yOverlapThreshold": 0.7
+    }
+  ],
+  "fields": [
+    {
+      "id": "closing_information.date_issued",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "date issued",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "closing_information.closing_date",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "closing date",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "closing_information.disbursement_date",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "disbursement date",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "_closing_information.settlement_agent_raw",
+      "method": {
+        "id": "documentRange",
+        "stop": {
+          "text": "file #",
+          "type": "includes"
+        },
+        "xRangeFilter": {
+          "start": "right",
+          "offsetX": 0,
+          "width": 1.8
+        }
+      },
+      "anchor": {
+        "match": {
+          "text": "settlement agent",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "loan costs",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "closing_information.file_number",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "file #",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "closing_information.sale_price",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "sale price",
+          "type": "startsWith"
+        },
+        "end": "can this amount increase"
+      }
+    },
+    {
+      "id": "closing_information.appraised_prop_value",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "Appraised Prop. Value",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "transaction_information.seller",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": "transaction information",
+        "match": {
+          "text": "seller",
+          "type": "endsWith"
+        },
+        "end": "lender"
+      }
+    },
+    {
+      "id": "transaction_information.seller_address",
+      "type": "address",
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": 0.1,
+        "offsetY": -0.17,
+        "width": 1.9,
+        "height": 0.7
+      },
+      "anchor": {
+        "start": "transaction information",
+        "match": {
+          "text": "seller",
+          "type": "endsWith"
+        },
+        "end": "lender"
+      }
+    },
+    {
+      "id": "_transaction_information.lender_raw",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "stop": "gap"
+      },
+      "anchor": {
+        "match": {
+          "text": "lender",
+          "type": "endsWith"
+        },
+        "end": "can this amount increase"
+      }
+    },
+    {
+      "id": "_transaction_information.lender_raw",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "lender",
+          "type": "endsWith"
+        },
+        "end": "can this amount increase"
+      }
+    },
+    {
+      "id": "_transaction_information.lender_raw",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "stop": "gap"
+      },
+      "anchor": {
+        "match": {
+          "text": "lender",
+          "type": "startsWith"
+        },
+        "end": "can this amount increase"
+      }
+    },
+    {
+      "id": "loan_information.loan_term",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "start": "loan information",
+        "match": {
+          "text": "loan term",
+          "type": "includes"
+        },
+        "end": "can this amount increase"
+      }
+    },
+    {
+      "id": "loan_information.loan_term",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": "loan information",
+        "match": {
+          "text": "loan term",
+          "type": "includes"
+        },
+        "end": "can this amount increase"
+      }
+    },
+    {
+      "id": "transaction_information.purpose",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "purpose",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "transaction_information.purpose",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "purpose",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "transaction_information.product",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "product",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "transaction_information.product",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "product",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "transaction_information.loan_type.conventional",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left",
+        "offsetX": 0.2
+      },
+      "anchor": {
+        "match": {
+          "text": "Loan Type",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "transaction_information.loan_type.fha",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "FHA",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "transaction_information.loan_type.va",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "Loan Type",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "VA",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "transaction_information.loan_id_number",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "loan id #",
+          "type": "includes"
+        },
+        "end": "can this amount increase"
+      }
+    },
+    {
+      "id": "transaction_information.loan_id_number",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "loan id #",
+          "type": "includes"
+        },
+        "end": "can this amount increase"
+      }
+    },
+    {
+      "id": "transaction_information.mic_number",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "mic #",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_terms.loan_amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "loan terms",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "loan amount",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "loan_terms.can_loan_amount_increase",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "second"
+      },
+      "anchor": {
+        "start": {
+          "text": "loan terms",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "loan amount",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "loan_terms.interest_rate",
+      "type": "percentage",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "loan terms",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "interest rate",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "loan_terms.can_interest_rate_increase",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "second"
+      },
+      "anchor": {
+        "start": {
+          "text": "loan terms",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "interest rate",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "loan_terms.monthly_principal_and_interest",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "loan terms",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "monthly principal & interest",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "loan_terms.monthly_principal_and_interest",
+      "type": "currency",
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": 0.2,
+        "offsetY": 0,
+        "width": 1.3,
+        "height": 0.3
+      },
+      "anchor": {
+        "start": {
+          "text": "loan terms",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "monthly principal & interest",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "loan_terms.can_monthly_principal_and_interest_increase",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "loan terms",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "monthly principal & interest",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "loan_terms.can_monthly_principal_and_interest_increase",
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": 1.5,
+        "offsetY": 0,
+        "width": 1.4,
+        "height": 0.3
+      },
+      "anchor": {
+        "start": {
+          "text": "loan terms",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "monthly principal & interest",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "loan_terms.does_loan_have_prepayment_penalty",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "loan terms",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "prepayment penalty",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "loan_terms.does_loan_have_balloon_payment",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "loan terms",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "balloon payment",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.principal_and_interest",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "pattern": "Years 1-\\d{1,2}|Years 1 - \\d{1,2}",
+            "type": "regex"
+          }
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "principal & interest",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.principal_and_interest",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "pattern": "Years 1-\\d{1,2}|Years 1 - \\d{1,2}",
+            "type": "regex"
+          }
+        },
+        "offsetX": 0.4
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "principal & interest",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.mortgage_insurance",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "pattern": "Years 1-\\d{1,2}|Years 1 - \\d{1,2}",
+            "type": "regex"
+          }
+        },
+        "offsetX": 0.1
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "mortgage insurance",
+          "type": "equals"
+        },
+        "end": {
+          "text": "Costs at Closing",
+          "type": "equals",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "projected_payments.mortgage_insurance",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "pattern": "Years 1-\\d{1,2}|Years 1 - \\d{1,2}",
+            "type": "regex"
+          }
+        },
+        "offsetX": 0.5
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "mortgage insurance",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "Costs at Closing",
+          "type": "equals",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimated_escrow",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "pattern": "Years 1-\\d{1,2}|Years 1 - \\d{1,2}",
+            "type": "regex"
+          }
+        },
+        "offsetX": 0.1,
+        "offsetY": 0.05
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "estimated escrow",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimated_escrow",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "pattern": "Years 1-\\d{1,2}|Years 1 - \\d{1,2}",
+            "type": "regex"
+          }
+        },
+        "offsetX": 0.4,
+        "offsetY": 0.05
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "estimated escrow",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimated_escrow",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "pattern": "Years 1-\\d{1,2}|Years 1 - \\d{1,2}",
+            "type": "regex"
+          }
+        },
+        "offsetX": 0.1
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "estimated escrow",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimated_escrow",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "pattern": "Years 1-\\d{1,2}|Years 1 - \\d{1,2}",
+            "type": "regex"
+          }
+        },
+        "offsetX": 0.5
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "estimated escrow",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimated_total_monthly_payment",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "pattern": "Years 1-\\d{1,2}|Years 1 - \\d{1,2}",
+            "type": "regex"
+          }
+        },
+        "offsetX": 0.1,
+        "offsetY": -0.1
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "monthly payment",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimated_total_monthly_payment",
+      "type": "currency",
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": 2.7,
+        "offsetY": -0.1,
+        "width": 1.1,
+        "height": 0.3
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "estimated total monthly",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimated_taxes_insurance_and_assessments.monthly",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "above"
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "monthly",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimated_taxes_insurance_and_assessments.monthly",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "above"
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "a month",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimate_includes.property_taxes",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "This estimate includes",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimate_includes.property_taxes.in_escrow",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "in escrow",
+            "type": "startsWith"
+          }
+        },
+        "offsetX": -0.2
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "property taxes",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimate_includes.property_taxes.in_escrow",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "in escrow",
+            "type": "startsWith"
+          }
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "property taxes",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimate_includes.homeowners_insurance",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "homeowner's",
+          "type": "includes"
+        },
+        "end": {
+          "text": "costs at closing",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimate_includes.homeowners_insurance.in_escrow",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "in escrow",
+            "type": "startsWith"
+          }
+        },
+        "offsetX": -0.2
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "homeowner's insurance",
+          "type": "includes"
+        },
+        "end": {
+          "text": "costs at closing",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimate_includes.homeowners_insurance.in_escrow",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "in escrow",
+            "type": "startsWith"
+          }
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "homeowner's insurance",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimate_includes.other",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "Other:",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimate_includes.other.in_escrow",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "in escrow",
+            "type": "startsWith"
+          }
+        },
+        "offsetX": -0.2
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "other:",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "projected_payments.estimate_includes.other.in_escrow",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "in escrow",
+            "type": "startsWith"
+          }
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "projected payments",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "other:",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "costs_at_closing.closing_costs",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "costs at closing",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "closing costs",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "loan costs",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "costs_at_closing.cash_at_close",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "costs at closing",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "cash to close",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "loan costs",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "costs_at_closing.from_borrower",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "costs at closing",
+            "type": "startsWith"
+          },
+          {
+            "text": "includes closing costs",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "From",
+          "type": "includes"
+        },
+        "end": {
+          "text": "page 1 of",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "costs_at_closing.to_borrower",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "costs at closing",
+            "type": "startsWith"
+          },
+          {
+            "text": "includes closing costs",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "To",
+          "type": "includes",
+          "isCaseSensitive": true
+        },
+        "end": {
+          "text": "page 1 of",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.origination_charges",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "origination charges",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "services borrower did not",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.origination_charges_1",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "origination charges",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did not",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.origination_charges_1.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "origination charges",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did not",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.origination_charges_1.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "origination charges",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did not",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.origination_charges_2",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "origination charges",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did not",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.origination_charges_2.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "origination charges",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did not",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.origination_charges_2.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "origination charges",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did not",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "borrower did not shop for",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "borrower did shop for",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_1",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 4,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "01"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_1.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_1.borrower_paid.before_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "before closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_1.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_1.paid_by_others",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "paid by",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25,
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_2",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 4,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "02"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_2.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_2.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_2.paid_by_others",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "paid by",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25,
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_3",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 4,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "03"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_3.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_3.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_3.paid_by_others",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "paid by",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25,
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_4",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 4,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "04"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "04",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_4.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "04",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_4.paid_by_others",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "paid by",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25,
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "04",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_5",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 4,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "05",
+          "105"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "pattern": "1?05",
+          "type": "regex"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_5.paid_by_others",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "pattern": "1?05",
+          "type": "regex"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_5.paid_by_others",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "paid by",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25,
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "pattern": "1?05",
+          "type": "regex"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_6",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 4,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "06"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "pattern": "06",
+          "type": "regex"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_6.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "pattern": "06",
+          "type": "regex"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_6.paid_by_others",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "paid by",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25,
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "pattern": "06",
+          "type": "regex"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_7",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 4,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "07"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "pattern": "07",
+          "type": "regex"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_7.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "pattern": "07",
+          "type": "regex"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_not_shop_for_7.paid_by_others",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "paid by",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25,
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did not",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "pattern": "07",
+          "type": "regex"
+        },
+        "end": {
+          "text": "services borrower did shop",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "borrower did shop for",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "TOTAL LOAN COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_1",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 4,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "01"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "borrower did shop for",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "TOTAL LOAN COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_1.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did shop",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total loan costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_1.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did shop",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total loan costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_2",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 4,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "02"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "borrower did shop for",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "TOTAL LOAN COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_2.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did shop",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total loan costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_2.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did shop",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total loan costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_3",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 4,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "03"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "borrower did shop for",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "TOTAL LOAN COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_3.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did shop",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total loan costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_3.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did shop",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total loan costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_4",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 4,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "04"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "borrower did shop for",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "04",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "TOTAL LOAN COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_4.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did shop",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "04",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total loan costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_4.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did shop",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "04",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total loan costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_5",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 4,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "05"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "borrower did shop for",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "05",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "TOTAL LOAN COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_5.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did shop",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "05",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total loan costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_5.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did shop",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "05",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total loan costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_6",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 4,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "06"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "borrower did shop for",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "06",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "TOTAL LOAN COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_6.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did shop",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "06",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total loan costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.services_borrower_did_shop_for_6.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "services borrower did shop",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "06",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total loan costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.total_loan_costs",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "total loan costs",
+          "type": "includes"
+        },
+        "end": {
+          "text": "OTHER COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "loan_costs.total_loan_costs.subtotals.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "D. TOTAL",
+            "type": "includes",
+            "isCaseSensitive": true
+          }
+        ],
+        "match": {
+          "text": "loan costs subtotals",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "other costs",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.total_loan_costs.subtotals.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "D. TOTAL",
+            "type": "includes",
+            "isCaseSensitive": true
+          }
+        ],
+        "match": {
+          "text": "loan costs subtotals",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "other costs",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "loan_costs.total_loan_costs.subtotals.borrower_paid.before_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "before closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "loan costs",
+            "type": "equals"
+          },
+          {
+            "text": "D. TOTAL",
+            "type": "includes",
+            "isCaseSensitive": true
+          }
+        ],
+        "match": {
+          "text": "loan costs subtotals",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "other costs",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "other_costs.taxes_and_other_government_fees",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "taxes and other government fees",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "prepaids",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.taxes_and_other_government_fees_1",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 1.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "01"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "taxes and other government fees",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "pattern": "01",
+          "type": "regex"
+        },
+        "end": {
+          "text": "prepaids",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.taxes_and_other_government_fees_1.deed",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "taxes and other government fees",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "deed",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "prepaids",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.taxes_and_other_government_fees_1.mortgage",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "taxes and other government fees",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "mortgage",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "prepaids",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.taxes_and_other_government_fees_1.borrower_paid.at_closing",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42,
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "taxes and other government fees",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "mortgage",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "prepaids",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.taxes_and_other_government_fees_1.borrower_paid.at_closing",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25,
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "taxes and other government fees",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "mortgage",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "prepaids",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.taxes_and_other_government_fees_1.paid_by_others",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "paid by",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25,
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "taxes and other government fees",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "mortgage",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "prepaids",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "prepaids",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_1",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "03"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_1.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_1.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_2",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "03"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_2.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_2.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_3",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "03"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_3.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_3.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_4",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "04"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "04",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_4.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "04",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_4.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "04",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_5",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "05"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "05",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_5.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "05",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.prepaids_5.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "prepaids",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "05",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "other_costs.initial_escrow_payment_at_closing",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "initial escrow payment at closing",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "H. Other",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "other_costs.initial_escrow_payment_at_closing_1",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "01"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "initial escrow payment at closing",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "H. Other",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "other_costs.initial_escrow_payment_at_closing_1.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "initial escrow payment at closing",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "H. Other",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "other_costs.initial_escrow_payment_at_closing_2",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "02"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "initial escrow payment at closing",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "H. Other",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "other_costs.initial_escrow_payment_at_closing_2.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "initial escrow payment at closing",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "H. Other",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "other_costs.initial_escrow_payment_at_closing_3",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "03"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "initial escrow payment at closing",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "H. Other",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "other_costs.initial_escrow_payment_at_closing_3.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "initial escrow payment at closing",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "H. Other",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "other_costs.initial_escrow_payment_at_closing_4",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "04"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "initial escrow payment at closing",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "04",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "H. Other",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "other_costs.initial_escrow_payment_at_closing_4.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "initial escrow payment at closing",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "04",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "H. Other",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "other_costs.initial_escrow_payment_at_closing_8",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "08"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "initial escrow payment at closing",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "08",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "H. Other",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "other_costs.initial_escrow_payment_at_closing_8.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.42
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "initial escrow payment at closing",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "08",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "H. Other",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "other_costs.other",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "other",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "TOTAL OTHER COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "other_costs.other_1",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "01"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "other",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "TOTAL OTHER COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "other_costs.other_1.seller_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": [
+            {
+              "text": "at closing",
+              "type": "equals"
+            },
+            {
+              "text": "at closing",
+              "type": "equals"
+            }
+          ]
+        },
+        "offsetX": 0.28
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "H. Other",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "01",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total other costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "other_costs.other_2",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "02"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "other",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "TOTAL OTHER COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "other_costs.other_2.seller_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": [
+            {
+              "text": "at closing",
+              "type": "equals"
+            },
+            {
+              "text": "at closing",
+              "type": "equals"
+            }
+          ]
+        },
+        "offsetX": 0.28
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "H. Other",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "02",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total other costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "other_costs.other_3",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "03"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "other",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "TOTAL OTHER COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "other_costs.other_3.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": [
+            {
+              "text": "at closing",
+              "type": "equals"
+            }
+          ]
+        },
+        "offsetX": 0.28
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "H. Other",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "03",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total other costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "other_costs.other_4",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "04"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "other",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "04",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "TOTAL OTHER COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "other_costs.other_4.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": [
+            {
+              "text": "at closing",
+              "type": "equals"
+            }
+          ]
+        },
+        "offsetX": 0.28
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "H. Other",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "04",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total other costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "other_costs.other_5",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "05"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "other",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "05",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "TOTAL OTHER COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "other_costs.other_5.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": [
+            {
+              "text": "at closing",
+              "type": "equals"
+            }
+          ]
+        },
+        "offsetX": 0.28
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "H. Other",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "05",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total other costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "other_costs.other_6",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.5,
+        "height": 0.15,
+        "offsetX": -0.01,
+        "offsetY": -0.07,
+        "wordFilters": [
+          "06"
+        ],
+        "sortLines": "readingOrderLeftToRight"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "other",
+            "type": "endsWith"
+          }
+        ],
+        "match": {
+          "text": "06",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "TOTAL OTHER COSTS",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "other_costs.other_6.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": [
+            {
+              "text": "at closing",
+              "type": "equals"
+            }
+          ]
+        },
+        "offsetX": 0.28
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "H. Other",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "06",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total other costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "other_costs.total_other_costs",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "total other costs",
+          "type": "includes"
+        },
+        "end": {
+          "text": "total closing costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "other_costs.total_other_costs.other_costs_subtotal.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.4
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "total other costs",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "other costs subtotals",
+          "type": "includes"
+        },
+        "end": {
+          "text": "total closing costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "other_costs.total_other_costs.other_costs_subtotal.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.28
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "total other costs",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "other costs subtotals",
+          "type": "includes"
+        },
+        "end": {
+          "text": "total closing costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "other_costs.total_other_costs.other_costs_subtotal.borrower_paid.before_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "before closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.45
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "total other costs",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "other costs subtotals",
+          "type": "includes"
+        },
+        "end": {
+          "text": "total closing costs",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "other_costs.total_closing_costs",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "total closing costs",
+          "type": "includes"
+        },
+        "end": {
+          "pattern": "payoffs and payments|calculating cash to close",
+          "type": "regex",
+          "flags": "i"
+        }
+      }
+    },
+    {
+      "id": "other_costs.total_closing_costs.closing_costs_subtotal.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.35
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "total closing costs",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "closing costs subtotals",
+          "type": "includes"
+        },
+        "end": {
+          "pattern": "payoffs and payments|calculating cash to close",
+          "type": "regex",
+          "flags": "i"
+        }
+      }
+    },
+    {
+      "id": "other_costs.total_closing_costs.closing_costs_subtotal.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.28
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "total closing costs",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "closing costs subtotals",
+          "type": "includes"
+        },
+        "end": {
+          "pattern": "payoffs and payments|calculating cash to close",
+          "type": "regex",
+          "flags": "i"
+        }
+      }
+    },
+    {
+      "id": "other_costs.total_closing_costs.closing_costs_subtotal.seller_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": [
+            {
+              "text": "at closing",
+              "type": "equals"
+            },
+            {
+              "text": "at closing",
+              "type": "equals"
+            }
+          ]
+        },
+        "offsetX": 0.28
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "total closing costs",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "closing costs subtotal",
+          "type": "includes"
+        },
+        "end": {
+          "pattern": "payoffs and payments|calculating cash to close",
+          "type": "regex",
+          "flags": "i"
+        }
+      }
+    },
+    {
+      "id": "other_costs.total_closing_costs.closing_costs_subtotal.paid_by_others",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "paid by",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.25,
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "total closing costs",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "closing costs subtotals",
+          "type": "includes"
+        },
+        "end": {
+          "pattern": "payoffs and payments|calculating cash to close",
+          "type": "regex",
+          "flags": "i"
+        }
+      }
+    },
+    {
+      "id": "other_costs.total_closing_costs.lender_credits.seller_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": [
+            {
+              "text": "at closing",
+              "type": "equals"
+            },
+            {
+              "text": "at closing",
+              "type": "equals"
+            }
+          ]
+        },
+        "offsetX": 0.28
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "total closing costs",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "lender credits",
+          "type": "includes"
+        },
+        "end": {
+          "pattern": "payoffs and payments|calculating cash to close",
+          "type": "regex",
+          "flags": "i"
+        }
+      }
+    },
+    {
+      "id": "other_costs.total_closing_costs.lender_credits.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.35
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "total closing costs",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "lender credits",
+          "type": "includes"
+        },
+        "end": {
+          "pattern": "payoffs and payments|calculating cash to close",
+          "type": "regex",
+          "flags": "i"
+        }
+      }
+    },
+    {
+      "id": "other_costs.total_closing_costs.lender_credits.borrower_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "at closing",
+            "type": "equals"
+          }
+        },
+        "offsetX": 0.28
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "total closing costs",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "lender credits",
+          "type": "includes"
+        },
+        "end": {
+          "pattern": "payoffs and payments|calculating cash to close",
+          "type": "regex",
+          "flags": "i"
+        }
+      }
+    },
+    {
+      "id": "other_costs.total_closing_costs.lender_credits.seller_paid.at_closing",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": [
+            {
+              "text": "at closing",
+              "type": "equals"
+            },
+            {
+              "text": "at closing",
+              "type": "equals"
+            }
+          ]
+        },
+        "offsetX": 0.28
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "other costs",
+            "type": "equals"
+          },
+          {
+            "text": "total closing costs",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "lender credits",
+          "type": "includes"
+        },
+        "end": {
+          "pattern": "payoffs and payments|calculating cash to close",
+          "type": "regex",
+          "flags": "i"
+        }
+      }
+    },
+    {
+      "id": "_payoffs_and_payments",
+      "type": "table",
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "to",
+            "minX": 0.5,
+            "maxX": 5.9
+          },
+          {
+            "id": "amount",
+            "minX": 6,
+            "maxX": 8,
+            "type": "currency",
+            "isRequired": true
+          }
+        ],
+        "stop": 6
+      },
+      "anchor": {
+        "start": {
+          "text": "payoffs and payments",
+          "type": "equals"
+        },
+        "match": {
+          "text": "to",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "payoffs_and_payments.total_payoffs_and_payments",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "payoffs and payments",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "total payoffs and payments",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "calculating cash to close",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "_calculating_cash_to_close",
+      "type": "table",
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "description",
+            "minX": 0.5,
+            "maxX": 2.54
+          },
+          {
+            "id": "loan estimate",
+            "minX": 2.6,
+            "maxX": 3.4,
+            "type": "accountingCurrency",
+            "isRequired": true
+          },
+          {
+            "id": "final",
+            "minX": 3.44,
+            "maxX": 4.22,
+            "type": "accountingCurrency"
+          },
+          {
+            "id": "did_this_change",
+            "minX": 4.23,
+            "maxX": 4.47
+          }
+        ],
+        "stop": {
+          "text": "summaries of transactions",
+          "type": "equals"
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "calculating cash to close",
+          "type": "equals"
+        },
+        "match": {
+          "text": "loan estimate",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "summaries_of_transactions.due_from_borrower_at_closing",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "due from borrower at closing",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "summaries_of_transactions.due_to_seller_at_closing",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "due to seller at closing",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "summaries_of_transactions.paid_already_by_or_on_behalf_of_borrower_at_closing",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "on behalf of borrower at closing",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "summaries_of_transactions.borrowers_transaction.calculation.total_due_from_borrower_at_closing",
+      "type": "accountingCurrency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          },
+          {
+            "text": "CALCULATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        ],
+        "match": {
+          "text": "due from borrower at closing",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "summaries_of_transactions.borrowers_transaction.calculation.total_paid_already_by_or_on_behalf_of_borrower_at_closing",
+      "type": "accountingCurrency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          },
+          {
+            "text": "CALCULATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        ],
+        "match": {
+          "text": "paid already by or on behalf",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "summaries_of_transactions.due_from_seller_at_closing",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "due from seller at closing",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "summaries_of_transactions.sellers_transaction.calculation.total_due_to_seller_at_closing",
+      "type": "accountingCurrency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          },
+          {
+            "text": "CALCULATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        ],
+        "match": {
+          "text": "due to seller at closing",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "summaries_of_transactions.sellers_transaction.calculation.total_due_from_seller_at_closing",
+      "type": "accountingCurrency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          },
+          {
+            "text": "CALCULATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        ],
+        "match": {
+          "text": "due from seller at closing",
+          "type": "includes"
+        }
+      }
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "transaction_information.lender",
+      "method": {
+        "id": "split",
+        "source_id": "_transaction_information.lender_raw",
+        "index": 0,
+        "separator": " Loan ID"
+      }
+    },
+    {
+      "id": "closing_information.settlement_agent",
+      "method": {
+        "id": "split",
+        "source_id": "_closing_information.settlement_agent_raw",
+        "index": 0,
+        "separator": " Seller"
+      }
+    },
+    {
+      "id": "closing_information.settlement_agent",
+      "method": {
+        "id": "split",
+        "source_id": "closing_information.settlement_agent",
+        "index": 0,
+        "separator": " Lender"
+      }
+    },
+    {
+      "id": "calculating_cash_to_close",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_calculating_cash_to_close"
+        ]
+      }
+    },
+    {
+      "id": "payoffs_and_payments",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_payoffs_and_payments"
+        ]
+      }
+    },
+    {
+      "id": "clean_output",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": [
+          "_payoffs_and_payments",
+          "_calculating_cash_to_close"
+        ]
+      }
+    }
+  ]
+}
