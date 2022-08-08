@@ -86,6 +86,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Berkley Prime](./insurance/loss_runs/workers_comp/berkleyprime.json)
 - [Berkshire](./insurance/loss_runs/workers_comp/berkshire.json)
 - [Canal](./insurance/loss_runs/workers_comp/canal.json)
+- [Chubb](./insurance/loss_runs/workers_comp/chubb.json)
 - [Compwest](./insurance/loss_runs/workers_comp/compwest.json)
 - [Hallmark](./insurance/loss_runs/workers_comp/hallmark.json)
 - [IAT](./insurance/loss_runs/workers_comp/iat.json)
