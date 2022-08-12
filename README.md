@@ -145,7 +145,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [US Express](./rate_confirmations/us_express/us_express.json)
 - [XPO](./rate_confirmations/xpo.json)
 
-### VOEs
+### Verifications of employement
 
 - [Blend](./verifications_of_employment/blend/blend.json)
 - [CCC Verify](./verifications_of_employment/ccc_verify/ccc_verify.json)
