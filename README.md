@@ -87,7 +87,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [ACORD 130 (05/2017)](./acords/acord_130/acord_130_2017_05.json)
 - [ACORD 140 (09/2007)](./acords/acord_140/acord_140_2007_09.json)
 
-#### Loss Runs
+#### Loss runs
 
 - [AIG](./loss_runs/aig/aig.json)
 - [Amtrust](./loss_runs/amtrust/amtrust.json)
@@ -110,7 +110,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [United Specialty](./loss_runs/united_specialty/united_specialty.json)
 - [Zenith](./loss_runs/zenith/zenith.json)
 
-### Tax Forms
+### Tax forms
 
 - [1040 (2018)](./tax_forms/1040/2018/1040_2018.json)
 - [1040 (2019)](./tax_forms/1040/2019/1040_2019.json)
@@ -155,11 +155,11 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Veritax](./verifications_of_employment/veritax/veritax.json)
 - [Xactus](./verifications_of_employment/xactus/xactus.json)
 
-### Paystubs
+### Pay stubs
 
 - [ADP](./pay_stubs/adp/adp.json)
 - [Gusto](./pay_stubs/gusto/gusto.json)
-- [Paylocity](./pay_stubs/paylocity/paylocity.json)
+- [Paylocity](./pay_stubs/paylocity/paylocity.json)\
 
 ## Using a configuration
 
