@@ -5086,7 +5086,10 @@
             "isRequired": true
           }
         ],
-        "stop": 6
+        "stop": 6,
+        "wordFilters": [
+          "01"
+        ]
       },
       "anchor": {
         "start": {
@@ -5192,6 +5195,129 @@
       }
     },
     {
+      "id": "_summaries_of_transactions_tables.due_from_borrower_at_closing",
+      "type": "table",
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "due_from_borrower_at_closing",
+            "minX": 0.5,
+            "maxX": 3,
+            "type": {
+              "id": "custom",
+              "pattern": "^\\d{2} [A-Za-z ()0-9]+$"
+            },
+            "isRequired": true
+          },
+          {
+            "id": "amount",
+            "minX": 3.28,
+            "maxX": 4.15,
+            "type": "currency"
+          }
+        ],
+        "stop": {
+          "text": "adjustments",
+          "type": "equals"
+        }
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "due from borrower at closing",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "_summaries_of_transactions_tables.due_from_borrower_at_closing.adjustments",
+      "type": "table",
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "adjustments",
+            "minX": 0.5,
+            "maxX": 3,
+            "type": {
+              "id": "custom",
+              "pattern": "^\\d{2} [A-Za-z ()0-9]+$"
+            },
+            "isRequired": true
+          },
+          {
+            "id": "amount",
+            "minX": 3.28,
+            "maxX": 4.15,
+            "type": "currency"
+          }
+        ],
+        "stop": {
+          "text": "adjustments for items paid by seller",
+          "type": "startsWith"
+        }
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "adjustments",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "_summaries_of_transactions_tables.due_from_borrower_at_closing.adjustments_for_items_paid_by_seller_in_advance",
+      "type": "table",
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "adjustments_for_items_paid_by_seller_in_advance",
+            "minX": 0.5,
+            "maxX": 3,
+            "type": {
+              "id": "custom",
+              "pattern": "^\\d[A-Za-z /()0-9]+$"
+            }
+          },
+          {
+            "id": "amount",
+            "minX": 3.28,
+            "maxX": 4.15,
+            "type": "currency",
+            "isRequired": true
+          }
+        ],
+        "stop": {
+          "text": "16",
+          "type": "startsWith"
+        }
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "adjustments for items paid by seller",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "summaries_of_transactions.due_to_seller_at_closing",
       "type": "currency",
       "method": {
@@ -5213,6 +5339,88 @@
       }
     },
     {
+      "id": "_summaries_of_transactions_tables.due_to_seller_at_closing",
+      "type": "table",
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "due_to_seller_at_closing",
+            "minX": 4.3,
+            "maxX": 6.7,
+            "type": {
+              "id": "custom",
+              "pattern": "^\\d{2} [A-Za-z ()0-9]+$"
+            },
+            "isRequired": true
+          },
+          {
+            "id": "amount",
+            "minX": 6.8,
+            "maxX": 8,
+            "type": "currency"
+          }
+        ],
+        "stop": {
+          "text": "adjustments for items paid by seller",
+          "type": "startsWith"
+        }
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "due to seller at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "_summaries_of_transactions_tables.due_to_seller_at_closing.adjustments_for_items_paid_by_seller_in_advance",
+      "type": "table",
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "adjustments_for_items_paid_by_seller_in_advance",
+            "minX": 4.3,
+            "maxX": 6.7,
+            "type": {
+              "id": "custom",
+              "pattern": "^\\d[A-Za-z /()0-9]+$"
+            }
+          },
+          {
+            "id": "amount",
+            "minX": 6.8,
+            "maxX": 8,
+            "type": "currency",
+            "isRequired": true
+          }
+        ],
+        "stop": {
+          "text": "16",
+          "type": "includes"
+        }
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "adjustments for items paid by seller in advance",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
       "id": "summaries_of_transactions.paid_already_by_or_on_behalf_of_borrower_at_closing",
       "type": "currency",
       "method": {
@@ -5230,6 +5438,170 @@
         "match": {
           "text": "on behalf of borrower at closing",
           "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "_summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing",
+      "type": "table",
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "paid_already_by_or_on_behalf_of_borrower_at_closing",
+            "minX": 0.5,
+            "maxX": 3,
+            "type": {
+              "id": "custom",
+              "pattern": "^\\d{2} [A-Za-z ()0-9]+$"
+            },
+            "isRequired": true
+          },
+          {
+            "id": "amount",
+            "minX": 3.28,
+            "maxX": 4.15,
+            "type": "currency"
+          }
+        ],
+        "stop": {
+          "text": "other credits",
+          "type": "equals"
+        }
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "paid already by or on behalf of borrower",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "_summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing.other_credits",
+      "type": "table",
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "other_credits",
+            "minX": 0.5,
+            "maxX": 3,
+            "type": {
+              "id": "custom",
+              "pattern": "^\\d{2} [A-Za-z ()0-9]+$"
+            },
+            "isRequired": true
+          },
+          {
+            "id": "amount",
+            "minX": 3.28,
+            "maxX": 4.15,
+            "type": "currency"
+          }
+        ],
+        "stop": {
+          "text": "adjustments",
+          "type": "equals"
+        }
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "paid already by or on behalf of borrower",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "other credits",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "_summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing.adjustments",
+      "type": "table",
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "adjustments",
+            "minX": 0.5,
+            "maxX": 3,
+            "type": {
+              "id": "custom",
+              "pattern": "^\\d{2} [A-Za-z ()0-9]+$"
+            },
+            "isRequired": true
+          },
+          {
+            "id": "amount",
+            "minX": 3.28,
+            "maxX": 4.15,
+            "type": "currency"
+          }
+        ],
+        "stop": {
+          "text": "adjustments for items unpaid by seller",
+          "type": "equals"
+        }
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "paid already by or on behalf of borrower",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "adjustments",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "_summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing.adjustments_for_items_unpaid_by_seller",
+      "type": "table",
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "adjustments_for_items_unpaid_by_seller",
+            "minX": 0.45,
+            "maxX": 3,
+            "type": {
+              "id": "custom",
+              "pattern": "^\\d+[A-Za-z /()0-9]+$"
+            }
+          },
+          {
+            "id": "amount",
+            "minX": 3.28,
+            "maxX": 4.17,
+            "type": "currency",
+            "isRequired": true
+          }
+        ],
+        "stop": {
+          "text": "calculation",
+          "type": "equals"
+        }
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "paid already by or on behalf of borrower",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "adjustments for items unpaid by seller",
+          "type": "equals"
         }
       }
     },
@@ -5302,6 +5674,88 @@
         ],
         "match": {
           "text": "due from seller at closing",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "_summaries_of_transactions_tables.due_from_seller_at_closing",
+      "type": "table",
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "due_from_seller_at_closing",
+            "minX": 4.3,
+            "maxX": 6.7,
+            "type": {
+              "id": "custom",
+              "pattern": "^\\d{2} [A-Za-z /()0-9]+$"
+            },
+            "isRequired": true
+          },
+          {
+            "id": "amount",
+            "minX": 6.8,
+            "maxX": 8,
+            "type": "currency"
+          }
+        ],
+        "stop": {
+          "text": "adjustments for items unpaid by seller",
+          "type": "includes"
+        }
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "due from seller at closing",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
+      "id": "_summaries_of_transactions_tables.due_from_seller_at_closing.adjustments_for_items_unpaid_by_seller",
+      "type": "table",
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "adjustments_for_items_unpaid_by_seller",
+            "minX": 4.3,
+            "maxX": 6.7,
+            "type": {
+              "id": "custom",
+              "pattern": "^\\d[A-Za-z /()0-9]+$"
+            }
+          },
+          {
+            "id": "amount",
+            "minX": 6.8,
+            "maxX": 8,
+            "type": "currency",
+            "isRequired": true
+          }
+        ],
+        "stop": {
+          "text": "calculation",
+          "type": "equals"
+        }
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "summaries of transactions",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "adjustments for items unpaid by seller",
           "type": "includes"
         }
       }
@@ -5406,12 +5860,122 @@
       }
     },
     {
+      "id": "summaries_of_transactions_tables.due_from_borrower_at_closing",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_summaries_of_transactions_tables.due_from_borrower_at_closing"
+        ]
+      }
+    },
+    {
+      "id": "summaries_of_transactions_tables.due_from_borrower_at_closing.adjustments",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_summaries_of_transactions_tables.due_from_borrower_at_closing.adjustments"
+        ]
+      }
+    },
+    {
+      "id": "summaries_of_transactions_tables.due_from_borrower_at_closing.adjustments_for_items_paid_by_seller_in_advance",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_summaries_of_transactions_tables.due_from_borrower_at_closing.adjustments_for_items_paid_by_seller_in_advance"
+        ]
+      }
+    },
+    {
+      "id": "summaries_of_transactions_tables.due_to_seller_at_closing",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_summaries_of_transactions_tables.due_to_seller_at_closing"
+        ]
+      }
+    },
+    {
+      "id": "summaries_of_transactions_tables.due_from_seller_at_closing.adjustments_for_items_paid_by_seller_in_advance",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_summaries_of_transactions_tables.due_to_seller_at_closing.adjustments_for_items_paid_by_seller_in_advance"
+        ]
+      }
+    },
+    {
+      "id": "summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing"
+        ]
+      }
+    },
+    {
+      "id": "summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing.other_credits",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing.other_credits"
+        ]
+      }
+    },
+    {
+      "id": "summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing.adjustments",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing.adjustments"
+        ]
+      }
+    },
+    {
+      "id": "summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing.adjustments_for_items_unpaid_by_seller",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing.adjustments_for_items_unpaid_by_seller"
+        ]
+      }
+    },
+    {
+      "id": "summaries_of_transactions_tables.due_from_seller_at_closing",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_summaries_of_transactions_tables.due_from_seller_at_closing"
+        ]
+      }
+    },
+    {
+      "id": "summaries_of_transactions_tables.due_from_seller_at_closing.adjustments_for_items_unpaid_by_seller",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_summaries_of_transactions_tables.due_from_seller_at_closing.adjustments_for_items_unpaid_by_seller"
+        ]
+      }
+    },
+    {
       "id": "clean_output",
       "method": {
         "id": "suppressOutput",
         "source_ids": [
           "_payoffs_and_payments",
-          "_calculating_cash_to_close"
+          "_calculating_cash_to_close",
+          "_summaries_of_transactions_tables.due_from_borrower_at_closing",
+          "_summaries_of_transactions_tables.due_from_borrower_at_closing.adjustments",
+          "_summaries_of_transactions_tables.due_from_borrower_at_closing.adjustments_for_items_paid_by_seller_in_advance",
+          "_summaries_of_transactions_tables.due_to_seller_at_closing",
+          "_summaries_of_transactions_tables.due_to_seller_at_closing.adjustments_for_items_paid_by_seller_in_advance",
+          "_summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing",
+          "_summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing.other_credits",
+          "_summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing.adjustments",
+          "_summaries_of_transactions_tables.paid_already_by_or_on_behalf_of_borrower_at_closing.adjustments_for_items_unpaid_by_seller",
+          "_summaries_of_transactions_tables.due_from_seller_at_closing",
+          "_summaries_of_transactions_tables.due_from_seller_at_closing.adjustments_for_items_unpaid_by_seller"
         ]
       }
     }
