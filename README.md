@@ -142,7 +142,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Paylocity](./paystubs/paylocity/paylocity.json)
 
 ### Closing Disclosures
-- [IDS](./mortgage/closing_disclosure/ids.json)
+- [IDS](./mortgage/closing_disclosure/closing_disclosure.json)
 
 ## Using a configuration
 To use the library, you can sign up for a [free Sensible account](https://app.sensible.so/register). 
