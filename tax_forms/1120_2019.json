@@ -1,0 +1,6233 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "1120",
+              "type": "includes"
+            },
+            {
+              "text": "U.S. Corporation Income Tax Return",
+              "type": "includes"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "name",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "name",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "ein",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "employer identification number",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "street_address",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "number, street, and room or",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "date_incorporated",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "date incorporated",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "city_state_zip_address",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "city or town, state or province",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "total_assets",
+        "type": "currency",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -0.75,
+          "offsetY": 0.05,
+          "width": 2,
+          "height": 0.2
+        },
+        "anchor": {
+          "match": {
+            "text": "total assets",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "return_type.initial_return",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "Initial return",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "return_type.final_return",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "final return",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "return_type.name_change",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "name change",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "return_type.address_change",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "address change",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "gross_receipts_or_sales",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^1a"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "gross receipts or sales",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "returns_and_allowances",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^1b"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "returns and allowances",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "balance",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^1c"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "balance.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "cost_of_goods_sold",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^2$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "cost of goods sold",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "gross_profit",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^3$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "gross profit.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^4$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "dividends and inclusions",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "interest",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^5$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "interest",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "gross_rents",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^6$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "gross rents",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "gross_royalties",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "gross royalties",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "capital_gain_net_income",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^8$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "capital gain net income",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "net_gain_or_loss",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^9$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "net gain or (loss)",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "other_income",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^10$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "other income",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "total_income",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^11$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "total income.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "compensation_of_officers",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^12$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "compensation of officers",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "salaries_and_wages",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^13$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "salaries and wages",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "repairs_and_maintenance",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^14$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "repairs and maintenance",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "bad_debts",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^15$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "bad debts",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "rents",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^16$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "repairs and maintenance",
+          "match": {
+            "text": "rents",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "taxes_and_licenses",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^17$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "taxes and licenses",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "line15_interest",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^18$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "interest (see",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "charitable_contributions",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^19$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "charitable contributions",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "depreciation_from_form_4562",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^20$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "depreciation from form 4562",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "depletion",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^21$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "depletion",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "advertising",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^22$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "advertising",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "pension_profit_sharing",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^23$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "pension, profit-sharing",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "employee_benefit_programs",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^24$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "employee benefit programs",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "other_deductions",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^26$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "other deductions",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "total_deductions",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^27$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "total deductions.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "taxable_income_before_net_operating_loss",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^28$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "taxable income before net operating loss",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "net_operating_loss_deduction",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^29a$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "Net operating loss deduction (see",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^29b$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "special deductions (schedule c",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "add_lines_29a_and_29b",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^29c$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "add lines 29a and 29b",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "taxable_income",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^30$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "taxable income.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "total_tax",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^31$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "total tax (schedule j",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "net_965_tax_liability",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^32$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "net 965 tax liability",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "total_payments_credits_and_section_965_tax_liability",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^33$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "total payments, credits, and section",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "estimated_tax_penalty",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^34$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "estimated tax penalty",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "amount_owed",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^35$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "amount owed.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "overpayment",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^36$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "overpayment.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "line37_enter_amount_from_line_36_you_want_credited",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^37$"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "enter amount from line 36",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "signature_of_officer_present",
+        "method": {
+          "id": "signature",
+          "start": "left",
+          "offsetX": 0,
+          "offsetY": -0.35,
+          "width": 2.5,
+          "height": 0.3
+        },
+        "anchor": {
+          "match": {
+            "text": "signature of officer",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "signature_of_officer_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "above"
+        },
+        "anchor": {
+          "start": "Under penalties of perjury, I declare that",
+          "match": {
+            "text": "date",
+            "type": "equals"
+          },
+          "end": "rint/Type preparer's name"
+        }
+      },
+      {
+        "id": "officer_title",
+        "method": {
+          "id": "label",
+          "position": "above"
+        },
+        "anchor": {
+          "start": "Under penalties of perjury, I declare that",
+          "match": {
+            "text": "title",
+            "type": "equals"
+          },
+          "end": "print/Type preparer's name"
+        }
+      },
+      {
+        "id": "preparers_name",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "Print/Type preparer's name",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "preparers_signature_present",
+        "method": {
+          "id": "signature",
+          "start": "left",
+          "offsetX": 0,
+          "offsetY": 0,
+          "width": 2,
+          "height": 0.3
+        },
+        "anchor": {
+          "match": {
+            "text": "preparer's signature",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "preparers_signature_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "preparer's signature",
+            "type": "includes"
+          },
+          "match": {
+            "text": "date",
+            "type": "equals"
+          },
+          "end": "firm's name"
+        }
+      },
+      {
+        "id": "firms_name",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "Firm's name",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "firms_ein",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "Firm's ein",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "firms_address",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "Firm's address",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "firms_phone",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "phone no.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_less_than_20%.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends from less-than-20%",
+            "type": "includes"
+          },
+          "end": "dividends on certain debt"
+        }
+      },
+      {
+        "id": "schC.dividends_from_less_than_20%.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends from less-than-20%",
+            "type": "includes"
+          },
+          "end": "dividends on certain debt"
+        }
+      },
+      {
+        "id": "schC.dividends_from_20%_or_more.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends from 20%-or-more-owned domestic",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_20%_or_more.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends from 20%-or-more-owned domestic",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_on_certain_debt_financed_stock.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends on certain debt-financed stock of domestic",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_on_certain_debt_financed_stock.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends on certain debt-financed stock of domestic",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_on_certain_preferred_stock.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends on certain preferred stock of less",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_on_certain_preferred_stock.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends on certain preferred stock of less",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_on_certain_preferred_stock_of_20%_or_more.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends on certain preferred stock of 20%-or-more",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_on_certain_preferred_stock_of_20%_or_more.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends on certain preferred stock of 20%-or-more",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_less_than_20%_owned_foreign_corporations.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "Dividends from less-than-20%-owned foreign corporations",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_less_than_20%_owned_foreign_corporations.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "Dividends from less-than-20%-owned foreign corporations",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_20%_or_more_owned_foreign_corporations.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "Dividends from 20%",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_20%_or_more_owned_foreign_corporations.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "Dividends from 20%",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_wholly_owned_foreign_subsidiaries.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "Dividends from wholly owned foreign subsidiaries",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_wholly_owned_foreign_subsidiaries.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "Dividends from wholly owned foreign subsidiaries",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.subtotal.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "subtotal.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.subtotal.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "subtotal.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_domestic_corporations.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "Dividends from domestic corporations received",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_domestic_corporations.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "Dividends from domestic corporations received",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_affiliated_group_members.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends from affiliated group members",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_affiliated_group_members.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends from affiliated group members",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_certain_fscs.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends from certain fscs",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_certain_fscs.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends from certain fscs",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_certain_fscs.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends from certain fscs",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_certain_fscs.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends from certain fscs",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.foreign_source_portion_of_dividends.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "foreign-source portion of dividends",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.foreign_source_portion_of_dividends.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "foreign-source portion of dividends",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.dividends_from_foreign_corporations.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "dividends from foreign corporations",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.section_965a_inclusion.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "Section 965(a) inclusion",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.section_965a_inclusion.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "Section 965(a) inclusion",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.subpart_f_inclusions.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.25
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "subpart f inclusions",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.16a_subpart_f_inclusions.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.25
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "subpart f inclusions",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.16a_subpart_f_inclusions.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.25
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "subpart f inclusions",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.16b_subpart_f_inclusions.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.15
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "subpart f inclusions derived from hybrid",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.16c_subpart_f_inclusions.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.15
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "other inclusions from cfcs under subpart",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.global_intagible_low_taxed_income.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "global intangible low",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.gross_up_for_foreign_taxes_deemed_paid.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "gross-up for foreign taxes deemed",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.ic_disc_and_former_disc.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "ic-disc and former disc",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.other_dividends.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "other dividends",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.deduction_for_dividends_paid_on_certain_preferred_stock.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "deduction for dividends paid on certain preferred stock of public",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.section_250_deduction.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "section 250 deduction",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.total_dividends_and_inclusions.dividends_and_inclusions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "dividends and",
+              "type": "endsWith"
+            }
+          },
+          "offsetY": 0.15
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "total dividends and inclusions",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schC.total_special_deductions.special_deductions",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "special deductions",
+              "type": "endsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": "dividends, inclusions, and special deductions",
+          "match": {
+            "text": "total special deductions",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.income_tax",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^2$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "income tax",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.base_erosion",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^3$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "base erosion minimum tax",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.add_lines_2_and_3",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^4$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "add lines 2 and 3",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.foreign_tax_credit",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^5a$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "foreign tax credit",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.credit_from_form_8834",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^5b$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "credit from form 8834",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.general_business_credit",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^5c$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "general business credit",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.credit_for_prior_year_minimum_tax",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^5d$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "credit for prior year minimum tax",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.bond_credits",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^5e$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "bond credits from form 8912",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.total_credits",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^6$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "total credits.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.subtract_line_6_from_line_4",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "subtract line 6 from line 4",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.personal_holding_company_tax",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^8$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "personal holding company tax",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.recapture_of_investment_credit",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^9a$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "recapture of investment credit",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.recapture_of_low_income_housing_credit",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^9b$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "recapture of low-income housing credit",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.9c_interest_due_under_look_back_method",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^9c$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "9c",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schJ.9d_interest_due_under_look_back_method",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^9d$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "9d",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.alternative_tax_on_qualifying_shipping_activities",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^9e$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "alternative tax on qualifying shipping activities",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.interest_tax_due_under_section_452a",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^9f$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "interest/tax due under section",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.9g_other",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^9g$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "other (see instructions",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.total_lines_9a_through_9g",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^10$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "total. add lines 9a",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.total_tax",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^11$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "total tax.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.net_965_tax_liability_paid",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^12$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "net 965 tax liability",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.ovrpayment_credited_to_this_year",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^13$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "overpayment credited to",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.estimated_tax_payments",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^14$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "estimated tax payments",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "schJ.refund_applied_for_form_4466",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^15$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "refund applied for on form 4466",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.combine_lines_13_14_15",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^16$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "combine lines 13, 14",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.tax_deposited_with_form_7004",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^17$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "tax deposited with form 7004",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.withholding",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^18$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "withholding (see",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.total_payments",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^19$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "total payments.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.refundable_credits_from_form_2439",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^20a$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "form 2439",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.refundable_credits_from_form_4136",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^20b$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "form 4136",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.refundable_credits_reserved_for_future_use",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^20c$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.refundable_credits_from_other",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^20d$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "other (attach statement",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.total_credits_20a-20d",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^21$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "total credits. add lines 20a through",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.net_965_tax_liability_from_form_965_b",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^22$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "net 965 tax liability from form 965-b",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schJ.total_payments_credits_and_section_965_net_tax_liability",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^23$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": "tax computation and payment",
+          "match": {
+            "text": "line 33",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.checking_account_method.cash",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "cash",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "schK.checking_account_method.accrual",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "accrual",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "schK.checking_account_method.other",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "other (specify)",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schK.business_activity_code_number",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "lineFilters": [
+            {
+              "type": "equals",
+              "text": "▶"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "business activity code no.",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.business_activity",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "lineFilters": [
+            {
+              "type": "equals",
+              "text": "▶"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "business activity",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "schK.product_or_service",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "lineFilters": [
+            {
+              "type": "equals",
+              "text": "▶"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "product or service",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.is_corporation_subsidiary",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "is the corporation a subsidiary in an",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.parent_company_ein",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "equals",
+              "text": "▶"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "ein of the parent corporation",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.at_end_of_tax_year.did_any_corporation_own_20%_or_more",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetY": 0.3,
+          "offsetX": 0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Did any foreign or domestic corporation, partnership",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.at_end_of_tax_year.individual_or_estate_owned_20%_or_more",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetY": 0.2,
+          "offsetX": 0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "did any individual or estate own directly 20",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.at_end_of_tax_year.corporation_owned_directly_20%_or_more",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetY": 0.3,
+          "offsetX": 4.4
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "At the end of the tax year, did the corporation:",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_table.name_of_corporation_1",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -2,
+          "offsetY": 0.1,
+          "width": 3.9,
+          "height": 0.35
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "(i) Name of Corporation",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_table.ein_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "identification number",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_table.country_of_incorporation_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "country of",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_table.percentage_owned_in_voting_stock_1",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -0.55,
+          "offsetY": 0.1,
+          "width": 1.3,
+          "height": 0.35
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "owned in voting",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_table.name_of_corporation_2",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -2,
+          "offsetY": 0.45,
+          "width": 3.9,
+          "height": 0.35
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "(i) Name of Corporation",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_table.ein_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.6
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "identification number",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_table.country_of_incorporation_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.6
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "country of",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_table.percentage_owned_in_voting_stock_2",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -0.55,
+          "offsetY": 0.45,
+          "width": 1.3,
+          "height": 0.35
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "owned in voting",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_table.name_of_corporation_3",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -2,
+          "offsetY": 0.8,
+          "width": 3.9,
+          "height": 0.35
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "(i) Name of Corporation",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_table.ein_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.9
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "identification number",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_table.country_of_incorporation_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.9
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "country of",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_table.percentage_owned_in_voting_stock_3",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -0.55,
+          "offsetY": 0.78,
+          "width": 1.3,
+          "height": 0.35
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "owned in voting",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.entity_table.name_of_entity_1",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -2,
+          "offsetY": 0.1,
+          "width": 3.9,
+          "height": 0.35
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "(i) Name of entity",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.entity_table.ein_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "other information (see instructions)",
+              "type": "includes"
+            },
+            {
+              "text": "name of entity",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "identification number",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.entity_table.country_of_organization_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "organization",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "schK.entity_table.maximum_percentage_owned_1",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -0.55,
+          "offsetY": 0.1,
+          "width": 1.3,
+          "height": 0.35
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "percentage owned in",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.entity_table.name_of_entity_2",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -2,
+          "offsetY": 0.45,
+          "width": 3.9,
+          "height": 0.35
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "(i) Name of entity",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.entity_table.ein_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.6
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "other information (see instructions)",
+              "type": "includes"
+            },
+            {
+              "text": "name of entity",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "identification number",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.entity_table.country_of_organization_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.6
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "organization",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "schK.entity_table.maximum_percentage_owned_2",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -0.55,
+          "offsetY": 0.45,
+          "width": 1.3,
+          "height": 0.35
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "percentage owned in",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.entity_table.name_of_entity_3",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -2,
+          "offsetY": 0.8,
+          "width": 3.9,
+          "height": 0.35
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "(i) Name of entity",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.entity_table.ein_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.9
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "other information (see instructions)",
+              "type": "includes"
+            },
+            {
+              "text": "name of entity",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "identification number",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.entity_table.country_of_organization_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.9
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "organization",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "schK.entity_table.maximum_percentage_owned_3",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -0.55,
+          "offsetY": 0.8,
+          "width": 1.3,
+          "height": 0.35
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "percentage owned in",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.did_corporation_pay_dividends_in_excess_of_corporations_earnings_and_profits",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.2,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "During this tax year, did the corporation pay dividends (other",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.did_one_foreign_person_own_at_least_25%_of_total_voting_power",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.2,
+          "offsetY": 0.15
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "At any time during the tax year, did one foreign person own, directly or indirectly,",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.foreigner_percentage_owned",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 0.99
+          },
+          "lineFilters": [
+            {
+              "type": "startsWith",
+              "text": "▶"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "percentage owned",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.foreigner_country",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "startsWith",
+              "text": "▶"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Owner's country",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.number_of_forms_5472",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "startsWith",
+              "text": "▶"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Enter the number of Forms 5472 attached",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.amount_of_tax_exempt_interest_received_or_accrued_during_tax_year",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "startsWith",
+              "text": "▶"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Enter the amount of tax-exempt interest received or accrued during the tax year",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.number_of_shareholders_at_end_of_tax_year",
+        "type": "number",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "startsWith",
+              "text": "▶"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Enter the number of shareholders at the end of the tax year",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.available_nol_carryover_from_prior_tax_years",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "lineFilters": [
+            {
+              "type": "startsWith",
+              "text": "▶"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "page 1, line 29a.)",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporations_end_of_year_total_receipts_and_assets_less_than_250000",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 5.2
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less than $250,000?",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.amount_of_cash_distributions_and_value_of_property_distributions",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "and the book value of property distributions (other than cash) made during the tax year",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.is_corporation_required_to_fill_out_utp",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.05
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Is the corporation required to file Schedule UTP",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_made_payments_this_year_that_require_1099",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2.15
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "that would require it to file Form(s) 1099?",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.did_corporation_file_1099",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 3.55
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "If “Yes,” did or will the corporation file required Form(s) 1099?",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.did_corporation_have_a_change_in_ownership_80_percent_or_more",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.2,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "During this tax year, did the corporation have an 80%-or-more change in ownership, including",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.did_corporation_dispose_of_over_65_percent_of_its_assets",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.2,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "During or subsequent to this tax year, but before the filing of this return,",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.did_corporation_recieve_assets_in_section_351_transfer",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.2,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Did the corporation receive assets in a section 351 transfer in which any of the transferred assets",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.did_corporation_make_any_payments_that_would_require_1042",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.2,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "did the corporation make any payments that would require it to file Forms 1042",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.corporation_operating_on_cooperative_basis",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 4
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Is the corporation operating on a cooperative basis?",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.did_corporation_pay_or_accrue_any_interest_for_which_deduction_is_not_allowed",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.2,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "During the tax year, did the corporation pay or accrue any interest or royalty for",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.does_corporation_have_gross_receipts_of_atleast_500_million_in_any_of_last_3_years",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.2,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Does the corporation have gross receipts of at least $500 million in any of the 3",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.did_corporation_have_election_under_section_163",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.2,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Did the corporation have an election under section 163",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.does_corporation_satisfy_one_or_more_of_the_following",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2.9
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Does the corporation satisfy one or more of the following? See instructions",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.is_corporation_attaching_form_8996",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 2.6
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Is the corporation attaching Form 8996 to certify as a Qualified Opportunity Fund?",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schK.foreign_company_acquired_all_properties_held",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetY": 0.4,
+          "offsetX": 0.2
+        },
+        "anchor": {
+          "start": {
+            "text": "other information (see instructions)",
+            "type": "includes"
+          },
+          "match": {
+            "text": "did a foreign corporation directly or indirectly acquire substantially all of the properties",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.cash.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "cash",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "schL.cash.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "cash",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "schL.trade_notes_and_accounts_receivalble.a",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(a)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Trade notes and accounts receivable",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.trade_notes_and_accounts_receivable.c",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(c)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Trade notes and accounts receivable",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_allowance_for_bad_debts.a",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(a)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Less allowance for bad debts",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_allowance_for_bad_debts.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Less allowance for bad debts",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_allowance_for_bad_debts.c",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(c)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Less allowance for bad debts",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_allowance_for_bad_debts.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Less allowance for bad debts",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.inventories.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "inventories",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.inventories.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "inventories",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.us_government_obligations.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "u.s. government obligations",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.us_government_obligations.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "u.s. government obligations",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.tax_exempt_securities.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "tax-exempt securities",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.tax_exempt_securities.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "tax-exempt securities",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.other_current_assets.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "other current assets",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.other_current_assets.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "other current assets",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.loans_to_shareholders.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "loans to shareholders",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.loans_to_shareholders.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "loans to shareholders",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.mortgage_and_real_estate_loans.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Mortgage and real estate loans",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.mortgage_and_real_estate_loans.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Mortgage and real estate loans",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.other_investments.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "other investments (atta",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.other_investments.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "other investments (atta",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.buildings_and_other_depreciable_assets.a",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(a)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "buildings and other depreciable assets",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.buildings_and_other_depreciable_assets.c",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(c)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "buildings and other depreciable assets",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_accumulated_depreciation.a",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(a)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less accumulated depreciation",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_accumulated_depreciation.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less accumulated depreciation",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_accumulated_depreciation.c",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(c)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less accumulated depreciation",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_accumulated_depreciation.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less accumulated depreciation",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.depletable_assets.a",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(a)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "depletable assets",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.depletable_assets.c",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(c)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "depletable assets",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_accumulated_depletion.a",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(a)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less accumulated depletion",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_accumulated_depletion.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less accumulated depletion",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_accumulated_depletion.c",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(c)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less accumulated depletion",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_accumulated_depletion.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less accumulated depletion",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.land.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Land (net of any amortization)",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.land.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Land (net of any amortization)",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.intangible_assets.a",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(a)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "intangible assets",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.intangible_assets.c",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(c)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "intangible assets",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_accumulated_amortization.a",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(a)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less accumulated amortization",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_accumulated_amortization.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less accumulated amortization",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_accumulated_amortization.c",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(c)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less accumulated amortization",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_accumulated_amortization.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less accumulated amortization",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.other_assets.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "other assets (attach",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.other_assets.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "other assets (attach",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.total_assets.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "total assets",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.total_assets.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "total assets",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.accounts_payable.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "accounts payable",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.accounts_payable.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "accounts payable",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.mortgages_notes_bonds_payable_less_than_1_year.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Mortgages, notes, bonds payable in less than 1 year",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.mortgages_notes_bonds_payable_less_than_1_year.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Mortgages, notes, bonds payable in less than 1 year",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.other_current_liabilities.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "other current liabilities",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.other_current_liabilities.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "other current liabilities",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.loans_from_shareholders.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "loans from shareholders",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.loans_from_shareholders.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "loans from shareholders",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.mortgages_notes_bonds_payable_more_than_1_year.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "mortgages, notes, bonds payable in 1 year or more",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.mortgages_notes_bonds_payable_more_than_1_year.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "mortgages, notes, bonds payable in 1 year or more",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.other_liabilities.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "other liabilities",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.other_liabilities.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "other liabilities",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.capital_stock.prefered_stock.a",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(a)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "preferred stock",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.capital_stock.prefered_stock.c",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(c)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "preferred stock",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.capital_stock.common_stock.a",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(a)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "common stock",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.capital_stock.common_stock.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "common stock",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.capital_stock.common_stock.c",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(c)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "common stock",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.capital_stock.common_stock.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "common stock",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.additional_paid_in_capital.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "additional paid-in capital",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.additional_paid_in_capital.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "additional paid-in capital",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.retained_earnings_appropriated.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Retained earnings—Appropriated",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.retained_earnings_appropriated.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Retained earnings—Appropriated",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.retained_earnings_unappropriated.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Retained earnings—Unappropriated",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.retained_earnings_unappropriated.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Retained earnings—Unappropriated",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.adjustments_to_shareholders_equity.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Adjustments to shareholders' equity",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.adjustments_to_shareholders_equity.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Adjustments to shareholders' equity",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_cost_of_treasury_stock.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less cost of treasury",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.less_cost_of_treasury_stock.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "less cost of treasury",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.total_liabilities_and_shareholders_equity.b",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(b)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Total liabilities and shareholders' equity",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schL.total_liabilities_and_shareholders_equity.d",
+        "type": "currency",
+        "method": {
+          "id": "intersection",
+          "verticalAnchor": {
+            "match": {
+              "text": "(d)",
+              "type": "startsWith"
+            }
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "balance sheets per books",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Total liabilities and shareholders' equity",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schM1.net_income_per_books",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "Reconciliation of Income (Loss) per Books With Income",
+            "type": "includes"
+          },
+          "match": {
+            "text": "net income (loss)",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schM1.federal_income_tax_per_books",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "Reconciliation of Income (Loss) per Books With Income",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Federal income tax per books",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schM1.excess_of_capital_losses",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$"
+            }
+          ],
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 2.15
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "Reconciliation of Income (Loss) per Books With Income",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Federal income tax per books",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schM1.excess_of_capital_losses_over_capital_gains",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$"
+            }
+          ],
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 2.15
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "Reconciliation of Income (Loss) per Books With Income",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Excess of capital losses over capital gains",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schM1.expenses.depreciation",
+        "match": "last",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$"
+            }
+          ],
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2.5
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Reconciliation of Income (Loss) per Books With Income",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "depreciation",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schM1.expenses.charitable_contributions",
+        "match": "last",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$"
+            }
+          ],
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2.5
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Reconciliation of Income (Loss) per Books With Income",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "charitable contributions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schM1.expenses.travel_and_entertainment",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^7$"
+            }
+          ],
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2.5
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Reconciliation of Income (Loss) per Books With Income",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "travel and entertainment",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schM1.tax_exempt_interest",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Reconciliation of Income (Loss) per Books With Income",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "tax-exempt interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schM1.deductions.depreciation",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Reconciliation of Income (Loss) per Books With Income",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "depreciation",
+            "type": "startsWith"
+          },
+          "end": "charitable contributions"
+        }
+      },
+      {
+        "id": "schM1.deductions.charitable_contributions",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Reconciliation of Income (Loss) per Books With Income",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "charitable contributions",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schM1.Line10_income",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "Reconciliation of Income (Loss) per Books With Income",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "Income (page 1, line 28)",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schM2.balance_at_beginning_of_year",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3.6
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "analysis of unappropriated retained earnings per books",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "balance at beginning of year",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schM2.net_income_per_books",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3.6
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "analysis of unappropriated retained earnings per books",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "net income (loss)",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schM2.line4",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3.6
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "analysis of unappropriated retained earnings per books",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "add lines 1, 2, and 3",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "schM2.distributions.cash",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "analysis of unappropriated retained earnings per books",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "a Cash",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schM2.distributions.stock",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "analysis of unappropriated retained earnings per books",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "b stock",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schM2.distributions.property",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "analysis of unappropriated retained earnings per books",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "c property",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schM2.Line7",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "analysis of unappropriated retained earnings per books",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "add lines 5 and 6",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "schM2.balance_at_end_of_year",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "analysis of unappropriated retained earnings per books",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "text": "balance at end of year",
+            "type": "includes"
+          }
+        }
+      }
+    ]
+  }

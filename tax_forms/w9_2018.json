@@ -1,0 +1,340 @@
+
+{
+  "fingerprint": {
+    "tests": [
+      {
+        "page": "any",
+        "match": [
+          {
+            "text": "Identification Number and Certification",
+            "type": "includes"
+          }
+        ]
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "name",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "name (as shown",
+          "type": "includes"
+        },
+        "end": {
+          "text": "Business name",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "name",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": 0.19,
+        "height": 0.05,
+        "width": 6
+      },
+      "anchor": {
+        "match": {
+          "text": "name (as shown",
+          "type": "includes"
+        },
+        "end": {
+          "text": "Business name",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "business_name",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.18,
+        "height": 0.05,
+        "width": 6
+      },
+      "anchor": {
+        "match": {
+          "text": "business name/",
+          "type": "includes"
+        },
+        "end": {
+          "text": "check appropriate box",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "federal_tax_classification.individual_sole_proprietor_single_member_llc",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "match": {
+          "text": "individual/sole proprietor",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "federal_tax_classification.c_corporation",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "match": {
+          "text": "c corporation",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "federal_tax_classification.s_corporation",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "match": {
+          "text": "s corporation",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "federal_tax_classification.partnership",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "match": {
+          "text": "partnership",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "federal_tax_classification.trust_estate",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "match": {
+          "text": "trust/estate",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "federal_tax_classification.llc",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "match": {
+          "text": "Limited liability company",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "street_address",
+      "method": {
+        "id": "box",
+        "position": "below",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$"
+          }
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "address (number",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "city_state_zip_address",
+      "method": {
+        "id": "box",
+        "position": "below",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$"
+          }
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "and zip code",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "requesters_name",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.05,
+        "offsetY": 0,
+        "height": 1,
+        "width": 3,
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d$"
+          }
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "Requester's name and address",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "requesters_address",
+      "type": "address",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.05,
+        "offsetY": 0,
+        "height": 1,
+        "width": 3
+      },
+      "anchor": {
+        "match": {
+          "text": "Requester's name and address",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "ssn",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.05,
+        "offsetY": 0.1,
+        "height": 0.4,
+        "width": 2.4,
+        "xMajorSort": true,
+        "whitespaceFilter": "all"
+      },
+      "anchor": {
+        "match": {
+          "text": "social security number",
+          "type": "equals"
+        },
+        "end": {
+          "text": "employer identification number",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "ein",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.05,
+        "offsetY": 0.1,
+        "height": 0.4,
+        "width": 2.4,
+        "xMajorSort": true,
+        "whitespaceFilter": "all"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "social security number",
+            "type": "equals"
+          },
+          {
+            "text": "or",
+            "type": "equals"
+          }
+        ],
+        "match": {
+          "text": "employer identification number",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "is_signed",
+      "anchor": "Signature of",
+      "method": {
+        "id": "signature",
+        "start": "left",
+        "offsetX": 0.7,
+        "offsetY": -0.1,
+        "width": 2.5,
+        "height": 0.3
+      }
+    },
+    {
+      "id": "date_signed",
+      "type": "date",
+      "anchor": {
+        "start": {
+          "text": "Signature of",
+          "type": "includes"
+        },
+        "match": {
+          "text": "Date",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0.3,
+        "offsetY": -0.2,
+        "width": 2.2,
+        "height": 0.3,
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "date_signed",
+      "type": "date",
+      "anchor": {
+        "start": {
+          "text": "Signature of",
+          "type": "includes"
+        },
+        "match": {
+          "text": "Date",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right",
+        "whitespaceFilter": "all"
+      }
+    }
+  ]
+}

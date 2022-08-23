@@ -1,0 +1,381 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "type": "includes",
+          "text": "Lemonade",
+          "isCaseSensitive": true
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "regex",
+          "pattern": "#[A-Za-z0-9-]*"
+        },
+        "anchor": {
+          "start": {
+            "text": "squeezed version",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "#[A-Za-z0-9-]*.",
+            "type": "regex"
+          }
+        }
+      },
+      {
+        "id": "policy_premium",
+        "type": "currency",
+        "method": {
+          "id": "documentRange",
+          "includeAnchor": true,
+          "stop": {
+            "text": "your policy covers",
+            "type": "startsWith"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "squeezed version",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "(\\$\\d{1,3}.\\d{2}|\\$\\d{1,3}) per (month|year)",
+            "type": "regex"
+          },
+          "end": {
+            "text": "your policy covers",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "total",
+        "type": "currency",
+        "method": {
+          "id": "documentRange",
+          "includeAnchor": true,
+          "stop": {
+            "text": "your policy covers",
+            "type": "startsWith"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "squeezed version",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "(\\$\\d{1,3}.\\d{2}|\\$\\d{1,3}) per (month|year)",
+            "type": "regex"
+          },
+          "end": {
+            "text": "your policy covers",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Za-z]* \\d{1,2}[(st|nd|rd|th)]{2}, \\d{4}"
+        },
+        "anchor": {
+          "start": {
+            "text": "squeezed version",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "start date",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Za-z]* \\d{1,2}[(st|nd|rd|th)]{2}, \\d{4}"
+        },
+        "anchor": {
+          "start": {
+            "text": "squeezed version",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "[A-Za-z]* \\d{1,2}[(st|nd|rd|th)]{2}, \\d{4} unless",
+            "type": "regex"
+          }
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Za-z]* \\d{1,2}[(st|nd|rd|th)]{2}, \\d{4}"
+        },
+        "anchor": {
+          "start": {
+            "text": "squeezed version",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "[A-Za-z]* \\d{1,2}[(st|nd|rd|th)]{2}, \\d{4}. During",
+            "type": "regex"
+          }
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Za-z]* \\d{1,2}[(st|nd|rd|th)]{2}, \\d{4}$"
+        },
+        "anchor": {
+          "start": {
+            "text": "squeezed version",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "the start date",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "continuous_until_canceled",
+        "method": {
+          "id": "regex",
+          "pattern": "automatically renew"
+        },
+        "anchor": {
+          "start": {
+            "text": "squeezed version",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "automatically renew",
+            "type": "regex"
+          }
+        }
+      },
+      {
+        "id": "named_insured",
+        "type": "name",
+        "match": "all",
+        "method": {
+          "id": "regex",
+          "pattern": "[A-Z]{1}[a-z]* [A-Z]{1}[a-z]*"
+        },
+        "anchor": {
+          "start": {
+            "text": "squeezed version",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "with you, \\w* \\w*,",
+            "type": "regex"
+          }
+        }
+      },
+      {
+        "id": "_address_raw",
+        "type": "address",
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "text": "the start date",
+            "type": "startsWith"
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "squeezed version",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "covers",
+            "type": "includes"
+          },
+          "end": {
+            "text": "the start date",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "reimbursement",
+        "type": "percentage",
+        "method": {
+          "id": "regex",
+          "pattern": "\\d{1,2}%"
+        },
+        "anchor": {
+          "start": {
+            "text": "how claim payments work",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "We'll pay \\d{1,2}%",
+            "type": "regex"
+          }
+        }
+      },
+      {
+        "id": "annual_deductible",
+        "type": "currency",
+        "method": {
+          "id": "regex",
+          "pattern": "\\$\\d{2,4} Deductible"
+        },
+        "anchor": {
+          "start": {
+            "text": "how claim payments work",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "\\$\\d{2,4} Deductible",
+            "type": "regex"
+          }
+        }
+      },
+      {
+        "id": "annual_deductible",
+        "type": "currency",
+        "method": {
+          "id": "regex",
+          "pattern": "Annual \\$\\d{2,4}"
+        },
+        "anchor": {
+          "start": {
+            "text": "how claim payments work",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "Annual \\$\\d{2,4}",
+            "type": "regex"
+          }
+        }
+      },
+      {
+        "id": "_pet_type_raw",
+        "method": {
+          "id": "regex",
+          "pattern": "\\w*, permanently"
+        },
+        "anchor": {
+          "start": {
+            "text": "squeezed version",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "\\w*, permanently",
+            "type": "regex"
+          },
+          "end": {
+            "text": "the start date",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_pet_type_raw",
+        "method": {
+          "id": "regex",
+          "pattern": "\\w*,$"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "squeezed version",
+              "type": "endsWith"
+            },
+            {
+              "text": "covers",
+              "type": "includes"
+            }
+          ],
+          "match": {
+            "pattern": "\\w*,$",
+            "type": "regex"
+          },
+          "end": {
+            "text": "the start date",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_breed_raw",
+        "method": {
+          "id": "regex",
+          "pattern": "-old \\w*"
+        },
+        "anchor": {
+          "start": {
+            "text": "squeezed version",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "-old \\w",
+            "type": "regex"
+          }
+        }
+      },
+      {
+        "id": "breed_size",
+        "method": {
+          "id": "regex",
+          "pattern": "-old \\w*"
+        },
+        "anchor": {
+          "start": {
+            "text": "squeezed version",
+            "type": "endsWith"
+          },
+          "match": {
+            "pattern": "-old \\w",
+            "type": "regex"
+          }
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "address",
+        "type": "address",
+        "method": {
+          "id": "split",
+          "source_id": "_address_raw",
+          "separator": "at ",
+          "index": 1
+        }
+      },
+      {
+        "id": "pet_type",
+        "method": {
+          "id": "split",
+          "source_id": "_pet_type_raw",
+          "separator": ",",
+          "index": 0
+        }
+      },
+      {
+        "id": "breed_type",
+        "method": {
+          "id": "split",
+          "source_id": "_breed_raw",
+          "separator": " ",
+          "index": 1
+        }
+      }
+    ]
+  }
