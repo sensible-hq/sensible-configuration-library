@@ -161,6 +161,9 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Gusto](./pay_stubs/gusto/gusto.json)
 - [Paylocity](./pay_stubs/paylocity/paylocity.json)\
 
+### Real Estate
+- [Closing Disclosure](./real_estate/closing_disclosure/closing_disclosure.json)
+
 ## Using a configuration
 
 To use the library, you can sign up for a [free Sensible account](https://app.sensible.so/register).
