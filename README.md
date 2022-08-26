@@ -90,6 +90,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 #### Loss runs
 
 - [AIG](./loss_runs/aig/aig.json)
+- [AMIC](./loss_runs/amic/amic.json)
 - [Amtrust](./loss_runs/amtrust/amtrust.json)
 - [Applied Underwriters](./loss_runs/applied_underwriters/applied_underwriters.json)
 - [Atlas](./loss_runs/atlas/atlas.json)
@@ -98,10 +99,12 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Berkley Prime](./loss_runs/berkley_prime/berkley_prime.json)
 - [Berkshire](./loss_runs/berkshire/berkshire.json)
 - [Canal](./loss_runs/canal/canal.json)
+- [Chubb](./loss_runs/chubb/chubb.json)
 - [Compwest](./loss_runs/compwest/compwest.json)
 - [Hallmark](./loss_runs/hallmark/hallmark.json)
 - [IAT](./loss_runs/iat/iat.json)
 - [ICW](./loss_runs/icw/icw.json)
+- [Knight Specialty](./loss_runs/knight_specialty/knight_specialty.json)
 - [Northland](./loss_runs/northland/northland.json)
 - [Spirit](./loss_runs/spirit/spirit.json)
 - [Statefund](./loss_runs/statefund/statefund.json)
