@@ -167,6 +167,11 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 ### Real Estate
 - [Closing Disclosure](./real_estate/closing_disclosure/closing_disclosure.json)
 
+### Explanation of Benefits
+- [Cigna](./eobs/cigna/cigna_2022.json)
+- [Medicaid](./eobs/medicaid/medicaid.json)
+- [Tricare](./eobs/tricare/tricare.json)
+
 ## Using a configuration
 
 To use the library, you can sign up for a [free Sensible account](https://app.sensible.so/register).

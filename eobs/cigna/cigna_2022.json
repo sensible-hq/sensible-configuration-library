@@ -1,0 +1,465 @@
+{
+    "fields": [],
+    "sections": [
+      {
+        "id": "payment_voucher",
+        "range": {
+          "anchor": {
+            "start": {
+              "text": "Explanation of payment",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            "match": {
+              "type": "equals",
+              "text": "Claim for"
+            }
+          },
+          "stop": {
+            "text": "Total",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "requireStop": true,
+          "offsetY": -3
+        },
+        "fields": [
+          {
+            "id": "date_of_remittance",
+            "type": "date",
+            "anchor": {
+              "match": {
+                "text": "date",
+                "type": "endsWith"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "below"
+            }
+          },
+          {
+            "id": "date_of_remittance",
+            "type": "date",
+            "anchor": {
+              "match": {
+                "text": "date",
+                "type": "endsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "below",
+              "width": 2,
+              "height": 0.25,
+              "offsetX": -0.55,
+              "offsetY": 0.02
+            }
+          },
+          {
+            "id": "npi",
+            "anchor": "not found, not configured",
+            "method": {
+              "id": "passthrough"
+            }
+          },
+          {
+            "id": "check_number",
+            "type": {
+              "id": "custom",
+              "pattern": "(\\d+) ?/?"
+            },
+            "anchor": {
+              "match": {
+                "text": "check number",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "below"
+            }
+          },
+          {
+            "id": "hospital_subtotal",
+            "type": "currency",
+            "anchor": {
+              "match": {
+                "text": "Total",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": 3
+            }
+          },
+          {
+            "id": "interest",
+            "anchor": "not found, not configured",
+            "method": {
+              "id": "passthrough"
+            }
+          },
+          {
+            "id": "federal_tax_withheld",
+            "anchor": "not found, not configured",
+            "method": {
+              "id": "passthrough"
+            }
+          },
+          {
+            "id": "offset",
+            "anchor": "not found, not configured",
+            "method": {
+              "id": "passthrough"
+            }
+          },
+          {
+            "id": "check_amount",
+            "type": "currency",
+            "anchor": {
+              "match": {
+                "text": "check amount",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "below"
+            }
+          }
+        ],
+        "sections": [
+          {
+            "id": "claims_details",
+            "range": {
+              "anchor": {
+                "match": {
+                  "text": "claim received for",
+                  "type": "startsWith"
+                },
+                "end": {
+                  "text": "Total",
+                  "type": "equals",
+                  "isCaseSensitive": true
+                }
+              }
+            },
+            "fields": [
+              {
+                "id": "patient_account_number",
+                "type": {
+                  "id": "custom",
+                  "pattern": "(\\d+) ? Provider"
+                },
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "patient ?#",
+                    "flags": "i"
+                  }
+                },
+                "method": {
+                  "id": "label",
+                  "position": "right"
+                }
+              },
+              {
+                "id": "patient_name",
+                "anchor": {
+                  "match": {
+                    "text": "claim received for",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "label",
+                  "position": "right"
+                }
+              },
+              {
+                "id": "ssn",
+                "anchor": "not found, not configured",
+                "method": {
+                  "id": "passthrough"
+                }
+              },
+              {
+                "id": "claim_number",
+                "anchor": {
+                  "match": {
+                    "pattern": "reference ?#",
+                    "type": "regex",
+                    "flags": "i"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": "first"
+                }
+              },
+              {
+                "id": "dates_of_service.begin",
+                "match": "all",
+                "type": "date",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^\\d{2}/\\d{2}/\\d{2}"
+                  }
+                },
+                "method": {
+                  "id": "passthrough"
+                }
+              },
+              {
+                "id": "dates_of_service.end",
+                "match": "all",
+                "anchor": "not found, not configured",
+                "method": {
+                  "id": "passthrough"
+                }
+              },
+              {
+                "id": "procedure",
+                "match": "all",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^\\d{2}/\\d{2}/\\d{2}"
+                  }
+                },
+                "method": {
+                  "id": "label",
+                  "position": "right"
+                }
+              },
+              {
+                "id": "number_of_services",
+                "match": "all",
+                "anchor": "not found, not configured",
+                "method": {
+                  "id": "passthrough"
+                }
+              },
+              {
+                "id": "total_charges",
+                "type": "currency",
+                "match": "all",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^\\d{2}/\\d{2}/\\d{2}"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 0
+                }
+              },
+              {
+                "id": "allowed_covered_charges",
+                "type": "currency",
+                "match": "all",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^\\d{2}/\\d{2}/\\d{2}"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 3
+                }
+              },
+              {
+                "id": "cost_share",
+                "type": "currency",
+                "match": "all",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^\\d{2}/\\d{2}/\\d{2}"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 6
+                }
+              },
+              {
+                "id": "copay",
+                "type": "currency",
+                "match": "all",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^\\d{2}/\\d{2}/\\d{2}"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 4
+                }
+              },
+              {
+                "id": "payment",
+                "match": "all",
+                "type": "currency",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^\\d{2}/\\d{2}/\\d{2}"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 5
+                }
+              },
+              {
+                "id": "totals.total_charges",
+                "type": "currency",
+                "anchor": {
+                  "match": {
+                    "type": "equals",
+                    "text": "Total",
+                    "isCaseSensitive": true
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 0
+                }
+              },
+              {
+                "id": "totals.allowed_covered_charges",
+                "type": "currency",
+                "anchor": {
+                  "match": {
+                    "type": "equals",
+                    "text": "Total",
+                    "isCaseSensitive": true
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 3
+                }
+              },
+              {
+                "id": "totals.cost_share",
+                "type": "currency",
+                "anchor": {
+                  "match": {
+                    "type": "equals",
+                    "text": "Total",
+                    "isCaseSensitive": true
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 6
+                }
+              },
+              {
+                "id": "totals.copay",
+                "type": "currency",
+                "anchor": {
+                  "match": {
+                    "type": "equals",
+                    "text": "Total",
+                    "isCaseSensitive": true
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 4
+                }
+              },
+              {
+                "id": "totals.payment",
+                "type": "currency",
+                "anchor": {
+                  "match": {
+                    "type": "equals",
+                    "text": "Total",
+                    "isCaseSensitive": true
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 5
+                }
+              },
+              {
+                "id": "patients_responsibility",
+                "type": "currency",
+                "anchor": {
+                  "match": {
+                    "type": "equals",
+                    "text": "Total",
+                    "isCaseSensitive": true
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 7
+                }
+              }
+            ],
+            "computed_fields": [
+              {
+                "id": "claims",
+                "method": {
+                  "id": "zip",
+                  "source_ids": [
+                    "dates_of_service.begin",
+                    "dates_of_service.end",
+                    "procedure",
+                    "number_of_services",
+                    "total_charges",
+                    "allowed_covered_charges",
+                    "cost_share",
+                    "copay",
+                    "payment"
+                  ]
+                }
+              },
+              {
+                "id": "clean_output",
+                "method": {
+                  "id": "suppressOutput",
+                  "source_ids": [
+                    "dates_of_service.begin",
+                    "dates_of_service.end",
+                    "procedure",
+                    "number_of_services",
+                    "total_charges",
+                    "allowed_covered_charges",
+                    "cost_share",
+                    "copay",
+                    "payment"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
