@@ -84,3 +84,27 @@ jobs:
           aws_bucket_name: sensible-so-utility-bucket-exp1-us-west-2
           source: 'output'
           destination: 'CONFIG_LIBRARY'
+      - name: upload to us-west-2 dev
+        uses: 3dwardCh3nG/upload-to-s3-action@v1.2.1
+        with:
+          aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_bucket_name: sensible-so-utility-bucket-dev-us-west-2
+          source: 'output'
+          destination: 'CONFIG_LIBRARY'
+      - name: upload to us-west-2 prod
+        uses: 3dwardCh3nG/upload-to-s3-action@v1.2.1
+        with:
+          aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_bucket_name: sensible-so-utility-bucket-prod-us-west-2
+          source: 'output'
+          destination: 'CONFIG_LIBRARY'
+      - name: upload to eu-west-2 prod
+        uses: 3dwardCh3nG/upload-to-s3-action@v1.2.1
+        with:
+          aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_bucket_name: sensible-so-utility-bucket-prod-eu-west-2
+          source: 'output'
+          destination: 'CONFIG_LIBRARY'
