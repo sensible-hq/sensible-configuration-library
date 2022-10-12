@@ -77,10 +77,10 @@ jobs:
           echo $MANIFEST >> output/manifest.txt
 
       - name: upload to us-west-2 exp1
-        uses: shallwefootball/s3-upload-action@master
+        uses: 3dwardCh3nG/upload-to-s3-action@v1.3.0
         with:
           aws_key_id: ${{ secrets.AWS_KEY_ID }}
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws_bucket: sensible-so-utility-bucket-exp1-us-west-2
-          source_dir: output
-          destination_dir: CONFIG_LIBRARY
+          source: 'output'
+          destination: 'CONFIG_LIBRARY'
