@@ -72,7 +72,7 @@ jobs:
                   },
                   files: $jsonFiles
               }')
-          done | jq -s | jq tostring )
+          done | jq -s )
           mkdir output
           echo $MANIFEST >> output/manifest.txt
 
