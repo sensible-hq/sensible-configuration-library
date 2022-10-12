@@ -73,7 +73,8 @@ jobs:
                   files: $jsonFiles
               }')
           done | jq -s | jq tostring )
-          echo $MANIFEST >> ./output/manifest.txt
+          mkdir output
+          echo $MANIFEST >> output/manifest.txt
 
       - name: upload to us-west-2 exp1
         uses: shallwefootball/s3-upload-action@master
