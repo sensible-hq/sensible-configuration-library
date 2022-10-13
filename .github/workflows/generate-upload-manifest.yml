@@ -18,7 +18,7 @@ jobs:
         run: sudo apt-get install jq
       - name: Make manifest
         run: |
-          ch mod +700 ./.github/generate-manifest.sh
+          chmod +700 ./.github/generate-manifest.sh
           mkdir output
           echo $(. .github/generate-manifest.sh) >> output/manifest.json
       - name: upload to ${{ matrix.env }}
