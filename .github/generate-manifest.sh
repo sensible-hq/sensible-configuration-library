@@ -1,6 +1,7 @@
 #!/bin/bash
+mkdir output
 DOWNLOAD_URL_PREFIX="https://raw.githubusercontent.com/sensible-hq/sensible-configuration-library/main/" 
-LINES=$(find -name "*.*" | grep -v "\/\." | grep ".json\|.pdf\|.png")
+LINES=$(find . -name "*.*" | grep -v "\/\." | grep ".json\|.pdf\|.png")
 CONFIGS=$(echo "$LINES" | grep "config.json")
 MANIFEST=$(
 for config in $CONFIGS; do
@@ -56,5 +57,5 @@ for config in $CONFIGS; do
         },
         files: $jsonFiles
     }')
-done | jq -s )
-
+done | jq -s ) 
+echo $MANIFEST >> output/manifest.json

@@ -18,9 +18,8 @@ jobs:
         run: sudo apt-get install jq
       - name: Make manifest
         run: |
-          chmod +700 ./.github/generate-manifest.sh
-          mkdir output
-          echo $(. .github/generate-manifest.sh) >> output/manifest.json
+          chmod +700 .github/generate-manifest.sh
+          . .github/generate-manifest.sh
       - name: upload to ${{ matrix.env }}
         uses: 3dwardCh3nG/upload-to-s3-action@v1.2.1
         with:
