@@ -1,0 +1,28 @@
+name: generate-upload-manifest
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  generate-manifest:
+    strategy:
+      matrix:
+        env: [prod-us-west-2, dev-us-west-2, exp1-us-west-2, prod-eu-west-2]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+      - name: install jq
+        run: sudo apt-get install jq
+      - name: Make manifest
+        run: . .github/generate-manifest.sh
+      - name: upload to ${{ matrix.env }}
+        uses: 3dwardCh3nG/upload-to-s3-action@v1.2.1
+        with:
+          aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_bucket_name: sensible-so-utility-bucket-${{ matrix.env }}
+          source: 'output'
+          destination: 'CONFIG_LIBRARY'
