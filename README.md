@@ -70,6 +70,17 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [Nationwide](./pet_policy_declaration_pages/nationwide/nationwide.json)
 - [Trupanion](./pet_policy_declaration_pages/trupanion/trupanion.json)
 
+##### Package
+
+- [Auto Owners](./package_policy_declaration_pages/auto_owners/auto_owners.json)
+- [Chubb](./package_policy_declaration_pages/chubb/chubb.json)
+- [CNA](./package_policy_declaration_pages/cna/cna.json)
+- [Erie](./package_policy_declaration_pages/erie/erie.json)
+- [Nationwide](./package_policy_declaration_pages/nationwide/nationwide.json)
+- [Society](./package_policy_declaration_pages/society/society.json)
+
+
+
 #### ACORDs
 
 Find the ACORD year/month at the bottom left corner of each ACORD page. Often the differences between versions are minor and can use the same configuration.
