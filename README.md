@@ -172,6 +172,15 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Medicaid](./eobs/medicaid/medicaid.json)
 - [Tricare](./eobs/tricare/tricare.json)
 
+### Bank Statements
+- [Ally (Combined Customer Statement)](./bank_statements/ally/ally_combined_customer_statement.json)
+- [Bank of America](./bank_statements/bank_of_america/boa.json.json)
+- [Chase (Consolidated Balance Summary)](./bank_statements/chase/chase_consolidated_balance_summary.json)
+- [Well Fargo (Checking)](./bank_statements/wells_fargo/wells_fargo_checking.json)
+- [Well Fargo (Savings)](./bank_statements/wells_fargo/wells_fargo_savings.json)
+- [Well Fargo (Combined Statement of Accounts)](./bank_statements/wells_fargo/wells_fargo_combined_statement_of_accounts.json)
+
+
 ## Using a configuration
 
 To use the library, you can sign up for a [free Sensible account](https://app.sensible.so/register).
