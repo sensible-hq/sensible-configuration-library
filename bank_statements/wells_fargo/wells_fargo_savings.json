@@ -1,0 +1,387 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "type": "any",
+          "matches": [
+            {
+              "text": "Savings",
+              "type": "endsWith",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        {
+          "text": "page 1",
+          "type": "includes"
+        },
+        {
+            "text": "you and wells fargo",
+            "type": "includes"
+          }
+      ]
+    },
+    "fields": [
+      {
+        "id": "start_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": "<"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "fee period"
+          }
+        }
+      },
+      {
+        "id": "end_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "fee period"
+          }
+        }
+      },
+      {
+        "id": "customer_name",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -5.5,
+          "offsetY": 0.1,
+          "width": 3.4,
+          "height": 1.8,
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "questions?"
+          }
+        }
+      },
+      {
+        "id": "customer_address",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -5.5,
+          "offsetY": 0.1,
+          "width": 3.4,
+          "height": 1.8
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "questions?"
+          }
+        }
+      },
+      {
+        "id": "_account_summary_table_raw",
+        "type": "table",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "doesn't apply to wells fargo single account format"
+          }
+        }
+      }
+    ],
+    "sections": [
+      {
+        "id": "accounts",
+        "range": {
+          "anchor": {
+            "match": {
+              "text": "Wells Fargo",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          },
+          "stop": {
+            "text": "fee period",
+            "type": "startsWith"
+          },
+          "requireStop": true
+        },
+        "fields": [
+          {
+            "id": "account_type",
+            "method": {
+              "id": "label",
+              "position": "right",
+              "lineFilters": [
+                {
+                  "text": "card reserve",
+                  "type": "includes"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "text": "Wells Fargo",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            }
+          },
+          {
+            "id": "account_number",
+            "anchor": {
+              "match": {
+                "text": "account number:",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "beginning_balance",
+            "type": {
+              "id": "currency",
+              "relaxedWithCents": true,
+              "removeSpaces": true
+            },
+            "anchor": {
+              "match": {
+                "text": "beginning balance",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right"
+            }
+          },
+          {
+            "id": "deposits",
+            "type": {
+              "id": "currency",
+              "relaxedWithCents": true,
+              "removeSpaces": true
+            },
+            "anchor": {
+              "match": {
+                "text": "deposits",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right"
+            }
+          },
+          {
+            "id": "withdrawals",
+            "type": {
+              "id": "currency",
+              "relaxedWithCents": true,
+              "removeSpaces": true
+            },
+            "anchor": {
+              "match": {
+                "text": "withdrawals",
+                "type": "startsWith"
+              },
+              "end": "ending balance"
+            },
+            "method": {
+              "id": "row",
+              "position": "right"
+            }
+          },
+          {
+            "id": "end_balance",
+            "type": {
+              "id": "currency",
+              "relaxedWithCents": true,
+              "removeSpaces": true
+            },
+            "anchor": {
+              "match": {
+                "text": "ending balance",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right"
+            }
+          },
+          {
+            "id": "_deposits_table_raw",
+            "type": "table",
+            "anchor": {
+              "match": [
+                {
+                  "text": "transaction history",
+                  "type": "startsWith"
+                }
+              ]
+            },
+            "method": {
+              "id": "textTable",
+              "columns": [
+                {
+                  "id": "date",
+                  "minX": 0.5,
+                  "maxX": 1.4
+                },
+                {
+                  "id": "description",
+                  "minX": 1.4,
+                  "maxX": 5.5
+                },
+                {
+                  "id": "amount",
+                  "minX": 5.5,
+                  "maxX": 6.5,
+                  "type": {
+                    "id": "currency",
+                    "relaxedWithCents": true,
+                    "removeSpaces": true
+                  },
+                  "isRequired": true
+                }
+              ],
+              "stop": {
+                "text": "ending balance on",
+                "type": "startsWith"
+              }
+            }
+          },
+          {
+            "id": "_withdrawals_table_raw",
+            "type": "table",
+            "anchor": {
+              "match": [
+                {
+                  "text": "transaction history",
+                  "type": "startsWith"
+                }
+              ]
+            },
+            "method": {
+              "id": "textTable",
+              "columns": [
+                {
+                  "id": "date",
+                  "minX": 0.5,
+                  "maxX": 1.4
+                },
+                {
+                  "id": "description",
+                  "minX": 1.4,
+                  "maxX": 5.5
+                },
+                {
+                  "id": "amount",
+                  "minX": 6.5,
+                  "maxX": 7.4,
+                  "type": {
+                    "id": "currency",
+                    "relaxedWithCents": true,
+                    "removeSpaces": true
+                  },
+                  "isRequired": true
+                }
+              ],
+              "stop": {
+                "text": "ending balance on",
+                "type": "startsWith"
+              }
+            }
+          },
+          {
+            "id": "_transaction_table_raw",
+            "type": "table",
+            "anchor": "not applicable to Wells Fargo",
+            "method": {
+              "id": "passthrough"
+            }
+          }
+        ],
+        "computed_fields": [
+          {
+            "id": "deposits_table",
+            "method": {
+              "id": "zip",
+              "source_ids": [
+                "_deposits_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "withdrawals_table",
+            "method": {
+              "id": "zip",
+              "source_ids": [
+                "_withdrawals_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "transaction_table",
+            "method": {
+              "id": "zip",
+              "source_ids": [
+                "_transaction_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "suppress",
+            "method": {
+              "id": "suppressOutput",
+              "source_ids": [
+                "_deposits_table_raw",
+                "_withdrawals_table_raw",
+                "_transaction_table_raw"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "account_summary_table",
+        "type": "table",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "_account_summary_table_raw"
+          ]
+        }
+      },
+      {
+        "id": "suppress",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_account_summary_table_raw"
+          ]
+        }
+      }
+    ]
+  }
