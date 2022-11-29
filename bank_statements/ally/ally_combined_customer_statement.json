@@ -1,0 +1,458 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "text": "COMBINED CUSTOMER STATEMENT",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "start_date",
+        "type": "date",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": "not found on this format"
+        }
+      },
+      {
+        "id": "end_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "statement date"
+          }
+        }
+      },
+      {
+        "id": "customer_name",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -5.75,
+          "offsetY": 0,
+          "width": 3.2,
+          "height": 1.8,
+          "typeFilters": [
+            "address"
+          ],
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "[a-z\\d/]{20}"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "customer care information"
+          }
+        }
+      },
+      {
+        "id": "customer_address",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -5.75,
+          "offsetY": 0,
+          "width": 3.2,
+          "height": 1.8,
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "[a-z\\d/]{20}"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "customer care information"
+          }
+        }
+      },
+      {
+        "id": "_account_summary_table_raw",
+        "type": "table",
+        "method": {
+          "id": "textTable",
+          "columns": [
+            {
+              "id": "account_name",
+              "minX": 0.5,
+              "maxX": 3.25
+            },
+            {
+              "id": "account_number",
+              "minX": 3.25,
+              "maxX": 5.2
+            },
+            {
+              "id": "beginning_balance",
+              "minX": 5.2,
+              "maxX": 6.75,
+              "type": {
+                "id": "currency",
+                "relaxedWithCents": true,
+                "removeSpaces": true
+              },
+              "isRequired": true
+            },
+            {
+              "id": "end_balance",
+              "minX": 6.75,
+              "maxX": 8.3,
+              "type": {
+                "id": "currency",
+                "relaxedWithCents": true,
+                "removeSpaces": true
+              }
+            }
+          ],
+          "stop": [
+            {
+              "text": "total account balances",
+              "type": "startsWith"
+            },
+            {
+              "type": "first"
+            },
+            {
+              "type": "first"
+            },
+            {
+              "type": "first"
+            }
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "account name"
+          }
+        }
+      }
+    ],
+    "sections": [
+      {
+        "id": "accounts",
+        "range": {
+          "anchor": {
+            "match": {
+              "text": "summary for:",
+              "type": "startsWith"
+            }
+          },
+          "offsetY": -0.15
+        },
+        "fields": [
+          {
+            "id": "account_type",
+            "method": {
+              "id": "label",
+              "position": "above"
+            },
+            "anchor": {
+              "match": {
+                "text": "summary for:",
+                "type": "startsWith"
+              }
+            }
+          },
+          {
+            "id": "account_number",
+            "anchor": {
+              "match": {
+                "text": "account number:",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "beginning_balance",
+            "type": {
+              "id": "currency",
+              "relaxedWithCents": true,
+              "removeSpaces": true
+            },
+            "anchor": {
+              "match": {
+                "text": "beginning balance",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right"
+            }
+          },
+          {
+            "id": "deposits",
+            "type": {
+              "id": "currency",
+              "relaxedWithCents": true,
+              "removeSpaces": true
+            },
+            "anchor": {
+              "match": {
+                "text": "deposits",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right"
+            }
+          },
+          {
+            "id": "withdrawals",
+            "type": {
+              "id": "currency",
+              "relaxedWithCents": true,
+              "removeSpaces": true
+            },
+            "anchor": {
+              "match": {
+                "text": "withdrawals",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right"
+            }
+          },
+          {
+            "id": "end_balance",
+            "type": {
+              "id": "currency",
+              "relaxedWithCents": true,
+              "removeSpaces": true
+            },
+            "anchor": {
+              "match": {
+                "text": "ending balance",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last"
+            }
+          },
+          {
+            "id": "_deposits_table_raw",
+            "type": "table",
+            "anchor": {
+              "match": {
+                "text": "Activity",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "fixedTable",
+              "columnCount": 5,
+              "columns": [
+                {
+                  "id": "date",
+                  "index": 0
+                },
+                {
+                  "id": "description",
+                  "index": 1
+                },
+                {
+                  "id": "amount",
+                  "index": 2,
+                  "type": {
+                    "id": "currency",
+                    "relaxedWithCents": true,
+                    "removeSpaces": true
+                  },
+                  "isRequired": true
+                }
+              ],
+              "stop": {
+                "text": "total deposits",
+                "type": "startsWith"
+              }
+            }
+          },
+          {
+            "id": "_withdrawals_table_raw",
+            "type": "table",
+            "anchor": {
+              "match": {
+                "text": "Activity",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "fixedTable",
+              "columnCount": 5,
+              "columns": [
+                {
+                  "id": "date",
+                  "index": 0
+                },
+                {
+                  "id": "description",
+                  "index": 1
+                },
+                {
+                  "id": "amount",
+                  "index": 3,
+                  "type": {
+                    "id": "currency",
+                    "relaxedWithCents": true,
+                    "removeSpaces": true
+                  },
+                  "isRequired": true
+                }
+              ],
+              "stop": [
+                {
+                  "text": "ending balance",
+                  "type": "startsWith"
+                },
+                {
+                  "type": "first"
+                },
+                {
+                  "type": "first"
+                },
+                {
+                  "type": "first"
+                },
+                {
+                  "type": "first"
+                }
+              ]
+            }
+          },
+          {
+            "id": "_transaction_table_raw",
+            "type": "table",
+            "anchor": {
+              "match": {
+                "text": "TRANSACTION DETAIL",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "textTable",
+              "columns": [
+                {
+                  "id": "date",
+                  "minX": 0.3,
+                  "maxX": 1
+                },
+                {
+                  "id": "description",
+                  "minX": 1,
+                  "maxX": 6.3
+                },
+                {
+                  "id": "amount",
+                  "minX": 6.3,
+                  "maxX": 8.1,
+                  "type": {
+                    "id": "currency",
+                    "relaxedWithCents": true,
+                    "removeSpaces": true
+                  },
+                  "isRequired": true
+                }
+              ],
+              "stop": {
+                "text": "ending balance",
+                "type": "startsWith"
+              }
+            }
+          }
+        ],
+        "computed_fields": [
+          {
+            "id": "deposits_table",
+            "method": {
+              "id": "zip",
+              "source_ids": [
+                "_deposits_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "withdrawals_table",
+            "method": {
+              "id": "zip",
+              "source_ids": [
+                "_withdrawals_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "transaction_table",
+            "method": {
+              "id": "zip",
+              "source_ids": [
+                "_transaction_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "suppress",
+            "method": {
+              "id": "suppressOutput",
+              "source_ids": [
+                "_deposits_table_raw",
+                "_withdrawals_table_raw",
+                "_transaction_table_raw"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "account_summary_table",
+        "type": "table",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "_account_summary_table_raw"
+          ]
+        }
+      },
+      {
+        "id": "suppress",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_account_summary_table_raw"
+          ]
+        }
+      }
+    ]
+  }
