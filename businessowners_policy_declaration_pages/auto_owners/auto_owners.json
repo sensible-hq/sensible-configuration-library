@@ -1,0 +1,1106 @@
+{
+  "fingerprint": {
+    "tests": [
+      {
+        "page": "any",
+        "match": [
+          {
+            "pattern": "Auto-Owners Insurance Company",
+            "type": "regex"
+          }
+        ]
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "account_company_name",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.2,
+        "height": 0.8,
+        "offsetX": 0.4,
+        "offsetY": -0.1,
+        "typeFilters": [
+          "address"
+        ],
+        "lineFilters": [
+          {
+            "text": "C/O",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "insured",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "_policy_type.gl",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "start": {
+          "text": "COMMON POLICY INFORMATION",
+          "type": "equals"
+        },
+        "match": {
+          "text": "COMMERCIAL GENERAL LIABILITY COVERAGE",
+          "type": "equals",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "_policy_type.gl",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "match": {
+          "text": "BUSINESS LIABILITY PROTECTION",
+          "type": "equals",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "_policy_type.property",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "start": {
+          "text": "COMMON POLICY INFORMATION",
+          "type": "equals"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "COMMERCIAL PROPERTY COVERAGE",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "COMMERCIAL INLAND MARINE COVERAGE",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "_policy_type.property",
+      "type": {
+        "id": "custom",
+        "pattern": "(PROPERTY COVERAGE)"
+      },
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "match": {
+          "text": "PROPERTY COVERAGES -",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "policy_number",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "POLICY NUMBER",
+          "type": "equals",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "deductible",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "DEDUCTIBLE",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        },
+        "offsetX": 0.05
+      },
+      "anchor": {
+        "start": {
+          "text": "DEDUCTIBLE",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "type": "regex",
+          "pattern": "^\\$"
+        },
+        "end": {
+          "type": "startsWith",
+          "text": "forms that apply to this"
+        }
+      }
+    },
+    {
+      "id": "deductible",
+      "type": "currency",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "DEDUCTIBLE",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        },
+        "offsetX": 0.2
+      },
+      "anchor": {
+        "start": {
+          "text": "DEDUCTIBLE",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "type": "regex",
+          "pattern": "^\\$"
+        }
+      }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "method": {
+        "id": "box",
+        "position": "above",
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "match": {
+          "text": "policy term",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "expiration_date",
+      "type": "date",
+      "method": {
+        "id": "box",
+        "position": "above",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "match": {
+          "text": "policy term",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "annual_gross_premium",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "TOTAL",
+          "type": "equals",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "annual_gross_premium",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "match": {
+          "text": "TOTAL POLICY PREMIUM",
+          "type": "equals",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "each_occurence.amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "COMMERCIAL GENERAL LIABILITY COVERAGE",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "each occurrence",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "each_occurence.amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "BUSINESS LIABILITY PROTECTION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "LIABILITY EACH",
+              "type": "includes",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "aggregate.amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "COMMERCIAL GENERAL LIABILITY COVERAGE",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "general aggregate",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "aggregate.amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "BUSINESS LIABILITY PROTECTION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "AGGREGATE LIMIT",
+          "type": "includes",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "damage_to_rented_premises.amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "COMMERCIAL GENERAL LIABILITY COVERAGE",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "damage to premises",
+              "type": "startsWith"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "damage_to_rented_premises.amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "BUSINESS LIABILITY",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "damage legal liability",
+              "type": "includes"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "damage_to_rented_premises.amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "BUSINESS LIABILITY",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "tenants fire legal",
+              "type": "startsWith"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "medical_expense_per_person.amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "COMMERCIAL GENERAL LIABILITY COVERAGE",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "medical payments",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "medical_expense_per_person.amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "BUSINESS LIABILITY PROTECTION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "pattern": "Medical Expenses? - Per Person",
+          "type": "regex"
+        }
+      }
+    },
+    {
+      "id": "medical_expense_per_person.amount_endorsement",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": "not found, not configured"
+    },
+    {
+      "id": "personal_injury.amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "COMMERCIAL GENERAL LIABILITY COVERAGE",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "personal and advertising injury",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "personal_injury.amount",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "BUSINESS LIABILITY PROTECTION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "Personal Injury",
+          "type": "equals",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "products.amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "COMMERCIAL GENERAL LIABILITY COVERAGE",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "products-completed operations aggregate",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "products.amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "BUSINESS LIABILITY PROTECTION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "PRODUCTS - COMPLETED",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "building.amount",
+      "match": "all",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "GARAGE PROPERTY",
+              "type": "includes",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "STANDARD PROPERTY",
+              "type": "includes",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ENHANCED PROPERTY",
+              "type": "includes",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "COMMERCIAL PROPERTY",
+              "type": "includes",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "match": {
+          "text": "BUILDING",
+          "type": "equals",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "building.amount",
+      "match": "all",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "third"
+      },
+      "anchor": {
+        "start": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "COMMERCIAL INLAND MARINE COVERAGE",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        "match": {
+          "text": "Building Limit - Replacement Cost",
+          "type": "equals",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "building.amount",
+      "match": "all",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "LOCATION",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "BUILDING - REPLACEMENT",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "building.location",
+      "match": "all",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "TOTAL",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "COMMERCIAL PROPERTY COVERAGE",
+            "type": "includes",
+            "isCaseSensitive": true
+          }
+        ],
+        "match": [
+          {
+            "type": "equals",
+            "text": "BUILDING",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "startsWith",
+            "text": "LOCATION",
+            "isCaseSensitive": true,
+            "reverse": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "building.location",
+      "match": "all",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "TOTAL",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "COMMERCIAL INLAND MARINE COVERAGE",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        ],
+        "match": [
+          {
+            "type": "equals",
+            "text": "Building Limit - Replacement Cost",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "startsWith",
+            "text": "COMMERCIAL INLAND MARINE",
+            "isCaseSensitive": true,
+            "reverse": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "building.location",
+      "match": "all",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 2.2,
+        "height": 0.25,
+        "offsetX": -0.2,
+        "offsetY": -0.65
+      },
+      "anchor": {
+        "start": {
+          "text": "LOCATION",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "BUILDING - REPLACEMENT",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "business_personal_property.amount",
+      "match": "all",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "TOTAL",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "COMMERCIAL PROPERTY COVERAGE",
+            "type": "includes",
+            "isCaseSensitive": true
+          }
+        ],
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "PROPERTY IN THE OPEN",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "PERSONAL PROPERTY",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "business_personal_property.amount",
+      "match": "all",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "LOCATION",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "BUSINESS PERSONAL PROPERTY",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "business_personal_property.location",
+      "match": "all",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "TOTAL",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "COMMERCIAL PROPERTY COVERAGE",
+            "type": "includes",
+            "isCaseSensitive": true
+          }
+        ],
+        "match": [
+          {
+            "type": "regex",
+            "pattern": "PROPERTY IN THE OPEN|PERSONAL PROPERTY"
+          },
+          {
+            "type": "startsWith",
+            "text": "LOCATION",
+            "isCaseSensitive": true,
+            "reverse": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "business_personal_property.location",
+      "match": "all",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 2.2,
+        "height": 0.25,
+        "offsetX": -0.2,
+        "offsetY": -1.35
+      },
+      "anchor": {
+        "start": {
+          "text": "LOCATION",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "BUSINESS PERSONAL PROPERTY -",
+          "type": "equals",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "combined_single_limit_per_accident.amount",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "COMMERCIAL GENERAL LIABILITY COVERAGE",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "hired auto & non-owned auto",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "blanket_bldg_bpp.amount",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": "not found, not configured"
+    },
+    {
+      "id": "bodily_injury_per_person.amount",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": "not found, not configured"
+    },
+    {
+      "id": "bodily_injury_per_accident.amount",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": "not found, not configured"
+    },
+    {
+      "id": "property_damage_per_accident.amount",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": "not found, not configured"
+    },
+    {
+      "id": "business_income_term",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": "not found, not configured"
+    },
+    {
+      "id": "umbrella.deductible",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": "not found, not configured"
+    },
+    {
+      "id": "umbrella.annual_gross_premium",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": "not found, not configured"
+    },
+    {
+      "id": "umbrella.each_occurrence.amount",
+      "type": "currency",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": "not found, not configured"
+    },
+    {
+      "id": "umbrella.aggregate.amount",
+      "type": "currency",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": "not found, not configured"
+    },
+    {
+      "id": "_waiver_subrogation",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "match": {
+          "text": "blanket waiver of subrogation",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "_blanket_additional_insured",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "match": {
+          "text": "blanket additional insured",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "audit type",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "_hired_car_liability",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "start": {
+          "text": "COVERAGE",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "hired auto",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "audit type",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "_hired_car_liability",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "start": {
+          "text": "COVERAGE",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "hired auto",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "total policy premium",
+          "type": "startsWith"
+        }
+      }
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "_policy_type",
+      "method": {
+        "id": "concat",
+        "source_ids": [
+          "_policy_type.gl",
+          "_policy_type.property"
+        ],
+        "delimiter": ","
+      }
+    },
+    {
+      "id": "policy_type",
+      "method": {
+        "id": "mapper",
+        "source_id": "_policy_type",
+        "mappings": {
+          "COMMERCIAL GENERAL LIABILITY COVERAGE,COMMERCIAL PROPERTY COVERAGE": "Commercial Package Policy (GL, Auto, Property)",
+          "BUSINESS LIABILITY PROTECTION,PROPERTY COVERAGE": "Commercial Package Policy (GL, Auto, Property)",
+          "COMMERCIAL GENERAL LIABILITY COVERAGE,COMMERCIAL INLAND MARINE COVERAGE": "Commercial Package Policy (GL, Auto, Property)",
+          "COMMERCIAL GENERAL LIABILITY COVERAGE": "General Liability"
+        }
+      }
+    },
+    {
+      "id": "carrier",
+      "method": {
+        "id": "constant",
+        "value": "Auto-Owners"
+      }
+    },
+    {
+      "id": "issuing_carrier",
+      "method": {
+        "id": "constant",
+        "value": "Auto-Owners Insurance Company"
+      }
+    },
+    {
+      "id": "waiver_subrogation",
+      "method": {
+        "id": "mapper",
+        "source_id": "_waiver_subrogation",
+        "mappings": {
+          "Blanket Waiver of Subrogation": "yes"
+        }
+      }
+    },
+    {
+      "id": "blanket_additional_insured",
+      "method": {
+        "id": "mapper",
+        "source_id": "_blanket_additional_insured",
+        "mappings": {
+          "Blanket Additional Insured - Lessor of Leased Equipment": "yes",
+          "Blanket Additional Insured - Managers or Lessors of Premises": "yes"
+        }
+      }
+    },
+    {
+      "id": "hired_car_liability",
+      "method": {
+        "id": "mapper",
+        "source_id": "_hired_car_liability",
+        "mappings": {
+          "Hired Auto & Non-Owned Auto": "yes",
+          "Hired Auto & Non-Owned Auto Liability": "yes"
+        }
+      }
+    },
+    {
+      "id": "building_limits",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "building.amount",
+          "building.location"
+        ]
+      }
+    },
+    {
+      "id": "business_personal_property_limits",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "business_personal_property.amount",
+          "business_personal_property.location"
+        ]
+      }
+    },
+    {
+      "id": "clean_output",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": [
+          "_waiver_subrogation",
+          "_hired_car_liability",
+          "_blanket_additional_insured",
+          "_policy_type.gl",
+          "_policy_type.property",
+          "_policy_type",
+          "building.location",
+          "building.amount",
+          "business_personal_property.location",
+          "business_personal_property.amount"
+        ]
+      }
+    }
+  ]
+}

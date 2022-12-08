@@ -1,0 +1,758 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "pattern": "SOCIETY INSURANCE",
+              "type": "regex"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "account_company_name",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "width": 3,
+          "height": 0.9,
+          "offsetX": -1.5,
+          "offsetY": 0.01,
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "named insured",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "described premises",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "_policy_type.gl",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "AND MEDICAL EXPENSES",
+                "type": "endsWith",
+                "isCaseSensitive": true
+              }
+            ]
+          },
+          "end": {
+            "text": "total premium",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "_policy_type.property",
+        "method": {
+          "id": "regex",
+          "pattern": "- ?(PROPERTY)"
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "PROPERTY",
+                "type": "endsWith",
+                "isCaseSensitive": true
+              }
+            ]
+          },
+          "end": {
+            "text": "total premium",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "_policy_type.property",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "SECTION I – PROPERTY",
+                "type": "equals",
+                "isCaseSensitive": true
+              }
+            ]
+          },
+          "end": {
+            "text": "total premium",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "issuing_carrier",
+        "method": {
+          "id": "region",
+          "start": "above",
+          "width": 6,
+          "height": 0.25,
+          "offsetX": -3,
+          "offsetY": -0.45
+        },
+        "anchor": {
+          "match": {
+            "text": "BUSINESSOWNERS",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "policy no:",
+                "type": "startsWith"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "deductible",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.26,
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "described premises",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "type": "equals",
+              "text": "property deductible"
+            }
+          ],
+          "end": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "total premium",
+                "type": "equals"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "deductible",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetX": 1,
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "described premises",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "type": "equals",
+              "text": "property deductible"
+            },
+            {
+              "text": "location 1",
+              "type": "includes"
+            }
+          ],
+          "end": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "total premium",
+                "type": "equals"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": "<"
+        },
+        "anchor": {
+          "match": {
+            "text": "policy period:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "match": {
+            "text": "policy period:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "annual_gross_premium",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "text": "total premium",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "each_occurence.amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "AND MEDICAL EXPENSES",
+            "type": "endsWith",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "liability and medical expenses",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "aggregate.amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "AND MEDICAL EXPENSES",
+            "type": "endsWith",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "other than products",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "damage_to_rented_premises.amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "AND MEDICAL EXPENSES",
+            "type": "endsWith",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "text": "damage to premises",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "medical_expense_per_person.amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "AND MEDICAL EXPENSES",
+            "type": "endsWith",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "text": "medical expenses",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "medical_expense_per_person.amount_endorsement",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not found, not configured"
+      },
+      {
+        "id": "personal_injury.amount",
+        "type": "currency",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not found, not configured"
+      },
+      {
+        "id": "products.amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "AND MEDICAL EXPENSES",
+            "type": "endsWith",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "products/completed operations aggregate",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "building.amount",
+        "match": "all",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "whitespaceFilter": "all"
+        },
+        "anchor": {
+          "start": {
+            "text": "described premises",
+            "type": "equals"
+          },
+          "match": {
+            "text": "buildings",
+            "type": "equals"
+          },
+          "end": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "total premium",
+                "type": "equals"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "building.location",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 0.8,
+          "height": 0.22,
+          "offsetX": -2.2,
+          "offsetY": -0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "described premises",
+              "type": "equals"
+            },
+            {
+              "text": "type of property",
+              "type": "equals"
+            }
+          ],
+          "match": {
+            "text": "buildings",
+            "type": "equals"
+          },
+          "end": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "total premium",
+                "type": "equals"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "business_personal_property.amount",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last",
+          "whitespaceFilter": "all"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "described premises",
+              "type": "equals"
+            },
+            {
+              "text": "type of property",
+              "type": "equals"
+            }
+          ],
+          "match": {
+            "text": "business personal",
+            "type": "startsWith"
+          },
+          "end": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "total premium",
+                "type": "equals"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "business_personal_property.location",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 0.8,
+          "height": 0.22,
+          "offsetX": -1.9,
+          "offsetY": -0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "described premises",
+              "type": "equals"
+            },
+            {
+              "text": "type of property",
+              "type": "equals"
+            }
+          ],
+          "match": [
+            {
+              "text": "business personal",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "total premium",
+                "type": "equals"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "combined_single_limit_per_accident.amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "left",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "AND MEDICAL EXPENSES",
+              "type": "endsWith",
+              "isCaseSensitive": true
+            },
+            {
+              "pattern": "BP0404|BP0420",
+              "type": "regex"
+            },
+            {
+              "text": "per occurrence",
+              "type": "equals",
+              "reverse": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "blanket_bldg_bpp.amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "blanket insurance",
+              "type": "equals"
+            },
+            {
+              "text": "building and business personal property",
+              "type": "endsWith"
+            }
+          ],
+          "end": {
+            "text": "AND MEDICAL EXPENSES",
+            "type": "endsWith",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "business_income_term",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "pattern": "\\*?\\*?business income",
+            "type": "regex",
+            "flags": "i"
+          },
+          "end": {
+            "text": "property deductible",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "umbrella.deductible",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not found, not configured"
+      },
+      {
+        "id": "umbrella.annual_gross_premium",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not found, not configured"
+      },
+      {
+        "id": "umbrella.each_occurrence.amount",
+        "type": "currency",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not found, not configured"
+      },
+      {
+        "id": "umbrella.aggregate.amount",
+        "type": "currency",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not found, not configured"
+      },
+      {
+        "id": "_waiver_subrogation",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": {
+            "text": "Waiver Of Subrogation Required By Contract",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "_blanket_additional_insured",
+        "method": {
+          "id": "regex",
+          "pattern": "(Additional Insured) -",
+          "flags": "i"
+        },
+        "anchor": {
+          "match": {
+            "text": "Additional Insured -",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "_hired_car_liability",
+        "method": {
+          "id": "regex",
+          "pattern": "Hired Auto Liability"
+        },
+        "anchor": {
+          "match": {
+            "text": "Hired Auto Liability",
+            "type": "endsWith",
+            "isCaseSensitive": true
+          }
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "_policy_type",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_policy_type.gl",
+            "_policy_type.property"
+          ],
+          "delimiter": ","
+        }
+      },
+      {
+        "id": "policy_type",
+        "method": {
+          "id": "mapper",
+          "source_id": "_policy_type",
+          "mappings": {
+            "SECTION II - LIABILITY AND MEDICAL EXPENSES,PROPERTY": "Commercial Package Policy (GL, Auto, Property)",
+            "SECTION II – LIABILITY AND MEDICAL EXPENSES,SECTION I – PROPERTY": "Commercial Package Policy (GL, Auto, Property)",
+            "LIABILITY AND MEDICAL EXPENSES,PROPERTY": "Commercial Package Policy (GL, Auto, Property)"
+          }
+        }
+      },
+      {
+        "id": "carrier",
+        "method": {
+          "id": "constant",
+          "value": "Society"
+        }
+      },
+      {
+        "id": "waiver_subrogation",
+        "method": {
+          "id": "mapper",
+          "source_id": "_waiver_subrogation",
+          "mappings": {
+            "Waiver Of Subrogation Required By Contract": "yes"
+          }
+        }
+      },
+      {
+        "id": "blanket_additional_insured",
+        "method": {
+          "id": "mapper",
+          "source_id": "_blanket_additional_insured",
+          "mappings": {
+            "Additional Insured": "yes"
+          }
+        }
+      },
+      {
+        "id": "hired_car_liability",
+        "method": {
+          "id": "mapper",
+          "source_id": "_hired_car_liability",
+          "mappings": {
+            "Hired Auto Liability": "yes"
+          }
+        }
+      },
+      {
+        "id": "building_limits",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "building.amount",
+            "building.location"
+          ]
+        }
+      },
+      {
+        "id": "business_personal_property_limits",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "business_personal_property.amount",
+            "business_personal_property.location"
+          ]
+        }
+      },
+      {
+        "id": "clean_output",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_waiver_subrogation",
+            "_hired_car_liability",
+            "_blanket_additional_insured",
+            "_policy_type.gl",
+            "_policy_type.property",
+            "_policy_type",
+            "building.location",
+            "building.amount",
+            "business_personal_property.location",
+            "business_personal_property.amount"
+          ]
+        }
+      }
+    ]
+  }

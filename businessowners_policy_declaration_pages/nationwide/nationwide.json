@@ -1,0 +1,828 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "pattern": "nationwide|in an effort to keep insurance premiums",
+          "type": "regex",
+          "flags": "i"
+        },
+        {
+          "pattern": "NATIONWIDE MUTUAL INSURANCE COMPANY",
+          "type": "regex"
+        }
+      ]
+    },
+    "preprocessors": [
+      {
+        "type": "ocr",
+        "pageOffset": 0,
+        "matchAll": true,
+        "match": {
+          "text": "policy number",
+          "type": "includes"
+        }
+      }
+    ],
+    "fields": [
+      {
+        "id": "account_company_name",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 3.5,
+          "height": 0.4,
+          "offsetX": 0,
+          "offsetY": -0.1,
+          "typeFilters": [
+            "address"
+          ],
+          "wordFilters": [
+            "named insured:",
+            "see named insured schedule"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "text": "named insured",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "total policy premium",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "account_company_name",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "named insured:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "total policy premium",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "_policy_type.gl",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "BUSINESSOWNERS POLICY",
+                "type": "endsWith",
+                "isCaseSensitive": true
+              }
+            ]
+          },
+          "end": {
+            "text": "total policy premium",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "_policy_type.property",
+        "method": {
+          "id": "regex",
+          "pattern": "- ?(PROPERTY)"
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "PROPERTY",
+                "type": "endsWith",
+                "isCaseSensitive": true
+              }
+            ]
+          },
+          "end": {
+            "text": "total policy premium",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "_policy_type",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "width": 0.6,
+          "height": 4.8,
+          "offsetX": -0.55,
+          "offsetY": -6
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "(NATIONWIDE)",
+                "type": "includes",
+                "isCaseSensitive": true
+              }
+            ]
+          },
+          "end": {
+            "text": "named insured:",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "issuing_carrier",
+        "method": {
+          "id": "region",
+          "start": "above",
+          "width": 3.2,
+          "height": 0.6,
+          "offsetX": -3,
+          "offsetY": -0.65,
+          "typeFilters": [
+            "address"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "BUSINESSOWNERS POLICY",
+                "type": "endsWith",
+                "isCaseSensitive": true
+              },
+              {
+                "text": "COMMERCIAL GENERAL LIABILITY DECLARATIONS",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2.4,
+          "height": 0.25,
+          "offsetX": 0.1,
+          "offsetY": -0.1,
+          "wordFilters": [
+            "policy number:"
+          ]
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "policy number:",
+                "type": "startsWith"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "policy number:",
+                "type": "startsWith"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "deductible",
+        "type": "currency",
+        "method": {
+          "id": "label",
+          "position": "left"
+        },
+        "anchor": {
+          "match": [
+            {
+              "type": "includes",
+              "text": "deductible"
+            }
+          ],
+          "end": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "COVERAGES",
+                "type": "equals",
+                "isCaseSensitive": true
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": {
+          "id": "custom",
+          "pattern": "\\d{2}-\\d{2}-\\d{2}|\\d{2}/\\d{2}/\\d{2}"
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "from",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "expiration_date",
+        "type": {
+          "id": "custom",
+          "pattern": "\\d{2}-\\d{2}-\\d{2}|\\d{2}/\\d{2}/\\d{2}"
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "To",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "annual_gross_premium",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "text": "total policy premium",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "annual_gross_premium",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "match": {
+            "text": "total advance premium",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "each_occurence.amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "LIMITS OF INSURANCE",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "each occurrence limit",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "aggregate.amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "LIMITS OF INSURANCE",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "general aggregate",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "damage_to_rented_premises.amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "LIMITS OF INSURANCE",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "type": "any",
+              "matches": [
+                {
+                  "text": "tenants property damage",
+                  "type": "startsWith"
+                },
+                {
+                  "text": "damage to premises",
+                  "type": "startsWith"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "medical_expense_per_person.amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "LIMITS OF INSURANCE",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "medical payments coverage",
+                "type": "startsWith"
+              },
+              {
+                "text": "medical expense limit (any one person)",
+                "type": "startsWith"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "medical_expense_per_person.amount_endorsement",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not found, not configured"
+      },
+      {
+        "id": "personal_injury.amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "LIMITS OF INSURANCE",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "text": "personal and advertising",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "products.amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "LIMITS OF INSURANCE",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "products - completed operations aggregate",
+                "type": "startsWith"
+              },
+              {
+                "text": "products-completed operations aggregate",
+                "type": "startsWith"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "building.amount",
+        "match": "all",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "COVERAGES",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "building - replacement cost",
+            "type": "startsWith"
+          },
+          "end": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "ADDITIONAL COVERAGES",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "building.location",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 4.3,
+          "height": 0.2,
+          "offsetX": 0,
+          "offsetY": -0.1,
+          "sortLines": "readingOrderLeftToRight",
+          "wordFilters": [
+            "Description of"
+          ]
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "building - replacement cost",
+              "type": "startsWith"
+            },
+            {
+              "text": "description of premises",
+              "type": "startsWith",
+              "reverse": true
+            }
+          ],
+          "end": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "ADDITIONAL COVERAGES",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "business_personal_property.amount",
+        "match": "all",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "text": "COVERAGES",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "business personal property - replacement",
+            "type": "startsWith"
+          },
+          "end": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "ADDITIONAL COVERAGES",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "business_personal_property.location",
+        "match": "all",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 4.3,
+          "height": 0.2,
+          "offsetX": 0,
+          "offsetY": -0.1,
+          "sortLines": "readingOrderLeftToRight",
+          "wordFilters": [
+            "Description of"
+          ]
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "business personal property - replacement",
+              "type": "startsWith"
+            },
+            {
+              "text": "description of premises",
+              "type": "startsWith",
+              "reverse": true
+            }
+          ],
+          "end": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "ADDITIONAL COVERAGES",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "combined_single_limit_per_accident.amount",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "OPTIONAL COVERAGES",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "hired auto liability coverage",
+              "type": "equals"
+            }
+          ]
+        }
+      },
+      {
+        "id": "blanket_bldg_bpp.amount",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": {
+            "text": "BLANKET BUILDINGS/BLANKET PERSONAL PROPERTY",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "business_income_term",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "business income -",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "optional coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "umbrella.deductible",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not found, not configured"
+      },
+      {
+        "id": "umbrella.annual_gross_premium",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not found, not configured"
+      },
+      {
+        "id": "umbrella.each_occurrence.amount",
+        "type": "currency",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not found, not configured"
+      },
+      {
+        "id": "umbrella.aggregate.amount",
+        "type": "currency",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": "not found, not configured"
+      },
+      {
+        "id": "_waiver_subrogation",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": {
+            "text": "Waiver Of Subrogation Required By Contract",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "_blanket_additional_insured",
+        "method": {
+          "id": "regex",
+          "pattern": "(Additional Insured)",
+          "flags": "i"
+        },
+        "anchor": {
+          "match": {
+            "text": "ADDITIONAL INSURED",
+            "type": "includes",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "_hired_car_liability",
+        "method": {
+          "id": "regex",
+          "pattern": "Hired Auto Liability"
+        },
+        "anchor": {
+          "match": {
+            "text": "Hired Auto Liability",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "_policy_type",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_policy_type.gl",
+            "_policy_type.property"
+          ],
+          "delimiter": ","
+        }
+      },
+      {
+        "id": "policy_type",
+        "method": {
+          "id": "mapper",
+          "source_id": "_policy_type",
+          "mappings": {
+            "PREMIER BUSINESSOWNERS POLICY": "Commercial Package Policy (GL, Auto, Property)",
+            "COMMERCIAL GENERAL LIABILITY": "General Liability"
+          }
+        }
+      },
+      {
+        "id": "carrier",
+        "method": {
+          "id": "constant",
+          "value": "Nationwide"
+        }
+      },
+      {
+        "id": "waiver_subrogation",
+        "method": {
+          "id": "mapper",
+          "source_id": "_waiver_subrogation",
+          "mappings": {
+            "Waiver Of Subrogation Required By Contract": "yes"
+          }
+        }
+      },
+      {
+        "id": "blanket_additional_insured",
+        "method": {
+          "id": "mapper",
+          "source_id": "_blanket_additional_insured",
+          "mappings": {
+            "Additional Insured": "yes",
+            "ADDITIONAL INSURED": "yes"
+          }
+        }
+      },
+      {
+        "id": "hired_car_liability",
+        "method": {
+          "id": "mapper",
+          "source_id": "_hired_car_liability",
+          "mappings": {
+            "Hired Auto Liability": "yes"
+          }
+        }
+      },
+      {
+        "id": "building_limits",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "building.amount",
+            "building.location"
+          ]
+        }
+      },
+      {
+        "id": "business_personal_property_limits",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "business_personal_property.amount",
+            "business_personal_property.location"
+          ]
+        }
+      },
+      {
+        "id": "clean_output",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_waiver_subrogation",
+            "_hired_car_liability",
+            "_blanket_additional_insured",
+            "_policy_type.gl",
+            "_policy_type.property",
+            "_policy_type",
+            "building.location",
+            "building.amount",
+            "business_personal_property.location",
+            "business_personal_property.amount"
+          ]
+        }
+      }
+    ]
+  }
