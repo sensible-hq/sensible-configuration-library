@@ -1,505 +1,520 @@
 {
-    "fingerprint": {
-      "tests": [
-        {
-          "page": "first",
-          "match": [
+  "fingerprint": {
+    "tests": [
+      {
+        "text": "Loss Detail Report",
+        "type": "startsWith",
+        "isCaseSensitive": true
+      },
+      {
+        "text": "Days to Report:",
+        "type": "startsWith",
+        "isCaseSensitive": true
+      },
+      {
+        "text": "General Agent",
+        "type": "startsWith",
+        "isCaseSensitive": true
+      },
+      {
+        "text": "Canal Insurance Company",
+        "type": "includes",
+        "isCaseSensitive": true
+      }
+    ]
+  },
+  "preprocessors": [
+    {
+      "type": "ocr",
+      "match": {
+        "text": "#",
+        "type": "includes"
+      },
+      "matchAll": true,
+      "pageOffset": 0
+    }
+  ],
+  "fields": [
+    {
+      "id": "loss_run_policy",
+      "type": "sections",
+      "range": {
+        "anchor": {
+          "match": {
+            "text": "name insured",
+            "type": "startsWith"
+          }
+        },
+        "stop": {
+          "type": "any",
+          "matches": [
             {
-              "text": "Loss Detail Report",
               "type": "startsWith",
-              "isCaseSensitive": true
+              "text": "total occurrences"
             }
           ]
         },
+        "requireStop": true
+      },
+      "fields": [
         {
-          "page": "every",
-          "match": [
-            {
-              "text": "Occurrence",
+          "id": "insured",
+          "method": {
+            "id": "label",
+            "position": "right"
+          },
+          "anchor": {
+            "match": {
+              "text": "Name Insured:",
+              "type": "startsWith"
+            }
+          }
+        },
+        {
+          "id": "policy_number",
+          "method": {
+            "id": "label",
+            "position": "right"
+          },
+          "anchor": {
+            "match": {
               "type": "startsWith",
-              "isCaseSensitive": true
+              "text": "policy number"
+            }
+          }
+        },
+        {
+          "id": "policy_start_date",
+          "type": "date",
+          "method": {
+            "id": "label",
+            "position": "right",
+            "tiebreaker": "<"
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "policy term"
+            }
+          }
+        },
+        {
+          "id": "policy_end_date",
+          "type": "date",
+          "method": {
+            "id": "label",
+            "position": "right",
+            "tiebreaker": ">"
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "policy term"
+            }
+          }
+        },
+        {
+          "id": "open_claims",
+          "type": "number",
+          "method": {
+            "id": "passthrough"
+          },
+          "anchor": "not configured, not found"
+        },
+        {
+          "id": "closed_claims",
+          "type": "number",
+          "method": {
+            "id": "passthrough"
+          },
+          "anchor": "not configured, not found"
+        },
+        {
+          "id": "total_claims",
+          "type": "number",
+          "method": {
+            "id": "label",
+            "position": "right"
+          },
+          "anchor": {
+            "match": {
+              "text": "occurrence",
+              "type": "startsWith"
+            }
+          }
+        },
+        {
+          "id": "claims_details",
+          "type": "sections",
+          "range": {
+            "anchor": {
+              "match": {
+                "type": "startsWith",
+                "text": "claim no"
+              }
+            },
+            "offsetY": -0.2
+          },
+          "fields": [
+            {
+              "id": "claimant",
+              "method": {
+                "id": "passthrough"
+              },
+              "anchor": "not found on canal sample, not configured"
             },
             {
-              "text": "General Agent",
-              "type": "startsWith",
-              "isCaseSensitive": true
-            }
-          ]
-        },
-        {
-          "page": "last",
-          "match": [
+              "id": "claim_number",
+              "method": {
+                "id": "label",
+                "position": "right"
+              },
+              "anchor": {
+                "match": {
+                  "type": "startsWith",
+                  "text": "claim no:"
+                }
+              }
+            },
             {
-              "text": "Canal Insurance Company",
-              "type": "endsWith",
-              "isCaseSensitive": true
+              "id": "loss_date",
+              "type": "date",
+              "method": {
+                "id": "label",
+                "position": "right"
+              },
+              "anchor": {
+                "match": {
+                  "type": "startsWith",
+                  "text": "date of loss"
+                }
+              }
+            },
+            {
+              "id": "claim_date",
+              "type": "date",
+              "method": {
+                "id": "passthrough"
+              },
+              "anchor": "not configured, not found"
+            },
+            {
+              "id": "claim_type",
+              "method": {
+                "id": "label",
+                "position": "left"
+              },
+              "anchor": {
+                "match": {
+                  "type": "endsWith",
+                  "text": "summary"
+                }
+              }
+            },
+            {
+              "id": "claim_status",
+              "method": {
+                "id": "label",
+                "position": "right"
+              },
+              "anchor": {
+                "match": {
+                  "type": "startsWith",
+                  "text": "status:"
+                }
+              }
+            },
+            {
+              "id": "accident_description",
+              "type": "paragraph",
+              "method": {
+                "id": "documentRange",
+                "stop": {
+                  "type": "startsWith",
+                  "text": "VIN",
+                  "isCaseSensitive": true
+                },
+                "wordFilters": [
+                  "description:"
+                ]
+              },
+              "anchor": {
+                "match": {
+                  "type": "startsWith",
+                  "text": "Closed Date:",
+                  "isCaseSensitive": true
+                }
+              }
+            },
+            {
+              "id": "nature_of_injuries",
+              "method": {
+                "id": "passthrough"
+              },
+              "anchor": "not configured, not found"
+            },
+            {
+              "id": "cause",
+              "method": {
+                "id": "passthrough"
+              },
+              "anchor": "not configured, not found"
+            },
+            {
+              "id": "body_parts",
+              "type": "date",
+              "method": {
+                "id": "passthrough"
+              },
+              "anchor": "not configured, not found"
+            },
+            {
+              "id": "paid.total",
+              "type": "currency",
+              "method": {
+                "id": "passthrough"
+              },
+              "anchor": "not configured, not found"
+            },
+            {
+              "id": "paid.medical",
+              "type": "currency",
+              "method": {
+                "id": "passthrough"
+              },
+              "anchor": "not configured, not found"
+            },
+            {
+              "id": "paid.indemnity",
+              "type": "currency",
+              "method": {
+                "id": "intersection",
+                "verticalAnchor": {
+                  "start": {
+                    "text": "Coverage",
+                    "type": "equals",
+                    "isCaseSensitive": true
+                  },
+                  "match": {
+                    "text": "Ind. Paid",
+                    "type": "equals",
+                    "isCaseSensitive": true
+                  }
+                },
+                "offsetX": -0.05
+              },
+              "anchor": {
+                "start": {
+                  "text": "Net Incurred",
+                  "type": "equals",
+                  "isCaseSensitive": true
+                },
+                "match": {
+                  "type": "regex",
+                  "pattern": "^[A-Z]"
+                },
+                "end": {
+                  "text": "Total",
+                  "type": "equals",
+                  "isCaseSensitive": true
+                }
+              }
+            },
+            {
+              "id": "paid.expense",
+              "type": "currency",
+              "method": {
+                "id": "intersection",
+                "verticalAnchor": {
+                  "start": {
+                    "text": "Coverage",
+                    "type": "equals",
+                    "isCaseSensitive": true
+                  },
+                  "match": {
+                    "text": "Exp. Paid",
+                    "type": "equals",
+                    "isCaseSensitive": true
+                  }
+                },
+                "offsetX": -0.05
+              },
+              "anchor": {
+                "start": {
+                  "text": "Net Incurred",
+                  "type": "equals",
+                  "isCaseSensitive": true
+                },
+                "match": {
+                  "type": "regex",
+                  "pattern": "^[A-Z]"
+                },
+                "end": {
+                  "text": "Total",
+                  "type": "equals",
+                  "isCaseSensitive": true
+                }
+              }
+            },
+            {
+              "id": "reserves.total",
+              "type": "currency",
+              "method": {
+                "id": "passthrough"
+              },
+              "anchor": "not configured, not found"
+            },
+            {
+              "id": "reserves.indemnity",
+              "type": "currency",
+              "method": {
+                "id": "intersection",
+                "verticalAnchor": {
+                  "start": {
+                    "text": "Coverage",
+                    "type": "equals",
+                    "isCaseSensitive": true
+                  },
+                  "match": {
+                    "text": "Ind. Reserve",
+                    "type": "equals",
+                    "isCaseSensitive": true
+                  }
+                },
+                "offsetX": -0.05
+              },
+              "anchor": {
+                "start": {
+                  "text": "Net Incurred",
+                  "type": "equals",
+                  "isCaseSensitive": true
+                },
+                "match": {
+                  "type": "regex",
+                  "pattern": "^[A-Z]"
+                },
+                "end": {
+                  "text": "Total",
+                  "type": "equals",
+                  "isCaseSensitive": true
+                }
+              }
+            },
+            {
+              "id": "reserves.medical",
+              "type": "currency",
+              "method": {
+                "id": "passthrough"
+              },
+              "anchor": "not configured, not found"
+            },
+            {
+              "id": "reserves.expense",
+              "type": "currency",
+              "method": {
+                "id": "intersection",
+                "verticalAnchor": {
+                  "start": {
+                    "text": "Coverage",
+                    "type": "equals",
+                    "isCaseSensitive": true
+                  },
+                  "match": {
+                    "text": "Exp. Reserve",
+                    "type": "equals",
+                    "isCaseSensitive": true
+                  }
+                },
+                "offsetX": -0.07
+              },
+              "anchor": {
+                "start": {
+                  "text": "Net Incurred",
+                  "type": "equals",
+                  "isCaseSensitive": true
+                },
+                "match": {
+                  "type": "regex",
+                  "pattern": "^[A-Z]"
+                },
+                "end": {
+                  "text": "Total",
+                  "type": "equals",
+                  "isCaseSensitive": true
+                }
+              }
+            },
+            {
+              "id": "recoveries.total",
+              "type": "currency",
+              "method": {
+                "id": "passthrough"
+              },
+              "anchor": "not configured, not found"
+            },
+            {
+              "id": "incurred.total",
+              "type": "currency",
+              "method": {
+                "id": "intersection",
+                "verticalAnchor": {
+                  "start": {
+                    "text": "Coverage",
+                    "type": "equals",
+                    "isCaseSensitive": true
+                  },
+                  "match": {
+                    "text": "Gross Incurred",
+                    "type": "equals",
+                    "isCaseSensitive": true
+                  }
+                },
+                "offsetX": -0.2
+              },
+              "anchor": {
+                "start": {
+                  "text": "Net Incurred",
+                  "type": "equals",
+                  "isCaseSensitive": true
+                },
+                "match": {
+                  "type": "regex",
+                  "pattern": "^[A-Z]"
+                },
+                "end": {
+                  "text": "Total",
+                  "type": "equals",
+                  "isCaseSensitive": true
+                }
+              }
+            },
+            {
+              "id": "incurred.medical",
+              "type": "currency",
+              "method": {
+                "id": "passthrough"
+              },
+              "anchor": "not configured, not found"
+            },
+            {
+              "id": "incurred.indemnity",
+              "type": "currency",
+              "method": {
+                "id": "passthrough"
+              },
+              "anchor": "not configured, not found"
+            },
+            {
+              "id": "incurred.expense",
+              "type": "currency",
+              "method": {
+                "id": "passthrough"
+              },
+              "anchor": "not configured, not found"
             }
           ]
         }
       ]
-    },
-    "sections": [
-      {
-        "id": "loss_run_policy",
-        "range": {
-          "anchor": {
-            "match": {
-              "text": "name insured",
-              "type": "startsWith"
-            }
-          },
-          "stop": {
-            "type": "any",
-            "matches": [
-              {
-                "type": "startsWith",
-                "text": "total occurrences"
-              }
-            ]
-          },
-          "requireStop": true
-        },
-        "fields": [
-          {
-            "id": "insured",
-            "method": {
-              "id": "label",
-              "position": "right"
-            },
-            "anchor": {
-              "match": {
-                "text": "Name Insured:",
-                "type": "startsWith"
-              }
-            }
-          },
-          {
-            "id": "policy_start_date",
-            "type": "date",
-            "method": {
-              "id": "label",
-              "position": "right",
-              "tiebreaker": "<"
-            },
-            "anchor": {
-              "match": {
-                "type": "startsWith",
-                "text": "policy term"
-              }
-            }
-          },
-          {
-            "id": "policy_end_date",
-            "type": "date",
-            "method": {
-              "id": "label",
-              "position": "right",
-              "tiebreaker": ">"
-            },
-            "anchor": {
-              "match": {
-                "type": "startsWith",
-                "text": "policy term"
-              }
-            }
-          },
-          {
-            "id": "policy_premium",
-            "method": {
-              "id": "passthrough"
-            },
-            "anchor": "not configured, not found"
-          },
-          {
-            "id": "policy_number",
-            "method": {
-              "id": "label",
-              "position": "right"
-            },
-            "anchor": {
-              "match": {
-                "type": "startsWith",
-                "text": "policy number"
-              }
-            }
-          },
-          {
-            "id": "open_claims",
-            "type": "number",
-            "method": {
-              "id": "passthrough"
-            },
-            "anchor": "not configured, not found"
-          },
-          {
-            "id": "closed_claims",
-            "type": "number",
-            "method": {
-              "id": "passthrough"
-            },
-            "anchor": "not configured, not found"
-          },
-          {
-            "id": "total_claims",
-            "type": "number",
-            "method": {
-              "id": "label",
-              "position": "right"
-            },
-            "anchor": {
-              "match": {
-                "text": "Total Occurrences:",
-                "type": "startsWith"
-              }
-            }
-          }
-        ],
-        "sections": [
-          {
-            "id": "claims_details",
-            "range": {
-              "anchor": {
-                "match": {
-                  "type": "startsWith",
-                  "text": "claim no"
-                }
-              },
-              "offsetY": -0.2
-            },
-            "fields": [
-              {
-                "id": "claim_number",
-                "method": {
-                  "id": "label",
-                  "position": "right"
-                },
-                "anchor": {
-                  "match": {
-                    "type": "startsWith",
-                    "text": "claim no:"
-                  }
-                }
-              },
-              {
-                "id": "claim_type",
-                "match": "all",
-                "method": {
-                  "id": "label",
-                  "position": "left"
-                },
-                "anchor": {
-                  "match": {
-                    "type": "endsWith",
-                    "text": "summary"
-                  }
-                }
-              },
-              {
-                "id": "loss_date",
-                "type": "date",
-                "method": {
-                  "id": "label",
-                  "position": "right"
-                },
-                "anchor": {
-                  "match": {
-                    "type": "startsWith",
-                    "text": "date of loss:"
-                  }
-                }
-              },
-              {
-                "id": "claim_date",
-                "type": "date",
-                "method": {
-                  "id": "passthrough"
-                },
-                "anchor": "not configured, not found"
-              },
-              {
-                "id": "claimant",
-                "match": "all",
-                "method": {
-                  "id": "passthrough"
-                },
-                "anchor": "not configured, not found"
-              },
-              {
-                "id": "claim_status",
-                "match": "all",
-                "method": {
-                  "id": "label",
-                  "position": "right"
-                },
-                "anchor": {
-                  "match": {
-                    "type": "startsWith",
-                    "text": "status:"
-                  }
-                }
-              },
-              {
-                "id": "claim_amount_paid.total",
-                "type": "currency",
-                "method": {
-                  "id": "passthrough"
-                },
-                "anchor": "not configured, not found"
-              },
-              {
-                "id": "claim_amount_paid.medical",
-                "type": "currency",
-                "method": {
-                  "id": "passthrough"
-                },
-                "anchor": "not configured, not found"
-              },
-              {
-                "id": "claim_amount_paid.indemnity",
-                "type": "currency",
-                "method": {
-                  "id": "intersection",
-                  "verticalAnchor": {
-                    "start": {
-                      "text": "Coverage",
-                      "type": "equals",
-                      "isCaseSensitive": true
-                    },
-                    "match": {
-                      "text": "Ind. Paid",
-                      "type": "equals",
-                      "isCaseSensitive": true
-                    }
-                  },
-                  "offsetX": -0.05
-                },
-                "anchor": {
-                  "start": {
-                    "text": "Net Incurred",
-                    "type": "equals",
-                    "isCaseSensitive": true
-                  },
-                  "match": {
-                    "type": "regex",
-                    "pattern": "^[A-Z]"
-                  },
-                  "end": {
-                    "text": "Total",
-                    "type": "equals",
-                    "isCaseSensitive": true
-                  }
-                }
-              },
-              {
-                "id": "claim_amount_paid.expense",
-                "type": "currency",
-                "method": {
-                  "id": "intersection",
-                  "verticalAnchor": {
-                    "start": {
-                      "text": "Coverage",
-                      "type": "equals",
-                      "isCaseSensitive": true
-                    },
-                    "match": {
-                      "text": "Exp. Paid",
-                      "type": "equals",
-                      "isCaseSensitive": true
-                    }
-                  },
-                  "offsetX": -0.05
-                },
-                "anchor": {
-                  "start": {
-                    "text": "Net Incurred",
-                    "type": "equals",
-                    "isCaseSensitive": true
-                  },
-                  "match": {
-                    "type": "regex",
-                    "pattern": "^[A-Z]"
-                  },
-                  "end": {
-                    "text": "Total",
-                    "type": "equals",
-                    "isCaseSensitive": true
-                  }
-                }
-              },
-              {
-                "id": "claim_amount_reserves.total",
-                "type": "currency",
-                "method": {
-                  "id": "passthrough"
-                },
-                "anchor": "not configured, not found"
-              },
-              {
-                "id": "claim_amount_reserves.indemnity",
-                "type": "currency",
-                "method": {
-                  "id": "intersection",
-                  "verticalAnchor": {
-                    "start": {
-                      "text": "Coverage",
-                      "type": "equals",
-                      "isCaseSensitive": true
-                    },
-                    "match": {
-                      "text": "Ind. Reserve",
-                      "type": "equals",
-                      "isCaseSensitive": true
-                    }
-                  },
-                  "offsetX": -0.05
-                },
-                "anchor": {
-                  "start": {
-                    "text": "Net Incurred",
-                    "type": "equals",
-                    "isCaseSensitive": true
-                  },
-                  "match": {
-                    "type": "regex",
-                    "pattern": "^[A-Z]"
-                  },
-                  "end": {
-                    "text": "Total",
-                    "type": "equals",
-                    "isCaseSensitive": true
-                  }
-                }
-              },
-              {
-                "id": "claim_amount_reserves.expense",
-                "type": "currency",
-                "method": {
-                  "id": "intersection",
-                  "verticalAnchor": {
-                    "start": {
-                      "text": "Coverage",
-                      "type": "equals",
-                      "isCaseSensitive": true
-                    },
-                    "match": {
-                      "text": "Exp. Reserve",
-                      "type": "equals",
-                      "isCaseSensitive": true
-                    }
-                  },
-                  "offsetX": -0.07
-                },
-                "anchor": {
-                  "start": {
-                    "text": "Net Incurred",
-                    "type": "equals",
-                    "isCaseSensitive": true
-                  },
-                  "match": {
-                    "type": "regex",
-                    "pattern": "^[A-Z]"
-                  },
-                  "end": {
-                    "text": "Total",
-                    "type": "equals",
-                    "isCaseSensitive": true
-                  }
-                }
-              },
-              {
-                "id": "claim_amount_recoveries.total",
-                "type": "currency",
-                "method": {
-                  "id": "passthrough"
-                },
-                "anchor": "not configured, not found"
-              },
-              {
-                "id": "claim_amount_incurred.total",
-                "type": "currency",
-                "method": {
-                  "id": "intersection",
-                  "verticalAnchor": {
-                    "start": {
-                      "text": "Coverage",
-                      "type": "equals",
-                      "isCaseSensitive": true
-                    },
-                    "match": {
-                      "text": "Gross Incurred",
-                      "type": "equals",
-                      "isCaseSensitive": true
-                    }
-                  },
-                  "offsetX": -0.2
-                },
-                "anchor": {
-                  "start": {
-                    "text": "Net Incurred",
-                    "type": "equals",
-                    "isCaseSensitive": true
-                  },
-                  "match": {
-                    "type": "regex",
-                    "pattern": "^[A-Z]"
-                  },
-                  "end": {
-                    "text": "Total",
-                    "type": "equals",
-                    "isCaseSensitive": true
-                  }
-                }
-              },
-              {
-                "id": "claim_amount_incurred.medical",
-                "type": "currency",
-                "method": {
-                  "id": "passthrough"
-                },
-                "anchor": "not configured, not found"
-              },
-              {
-                "id": "claim_amount_incurred.indemnity",
-                "type": "currency",
-                "method": {
-                  "id": "passthrough"
-                },
-                "anchor": "not configured, not found"
-              },
-              {
-                "id": "claim_amount_incurred.expense",
-                "type": "currency",
-                "method": {
-                  "id": "passthrough"
-                },
-                "anchor": "not configured, not found"
-              },
-              {
-                "id": "accident_description",
-                "type": "paragraph",
-                "method": {
-                  "id": "documentRange",
-                  "stop": {
-                    "type": "startsWith",
-                    "text": "VIN",
-                    "isCaseSensitive": true
-                  },
-                  "wordFilters": [
-                    "description:"
-                  ]
-                },
-                "anchor": {
-                  "match": {
-                    "type": "startsWith",
-                    "text": "Closed Date:",
-                    "isCaseSensitive": true
-                  }
-                }
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "fields": []
-  }
+    }
+  ]
+}
