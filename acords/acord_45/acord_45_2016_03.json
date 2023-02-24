@@ -1,0 +1,640 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "ADDITIONAL INTEREST SCHEDULE",
+              "type": "equals",
+              "isCaseSensitive": true,
+              "minimumHeight": 0.15
+            },
+            {
+              "text": "ACORD 45 (2016/03)",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        {
+          "page": "every",
+          "match": [
+            {
+              "text": "ACORD 45 (2016/03)",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      ]
+    },
+    "preprocessors": [
+      {
+        "type": "ocr",
+        "matchAll": true,
+        "pageOffset": 0,
+        "match": {
+          "text": "-",
+          "type": "equals"
+        }
+      }
+    ],
+    "fields": [
+      {
+        "id": "agency_customer_id",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "text": "agency customer id",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetX": 2,
+          "darknessThreshold": 0.9
+        },
+        "anchor": {
+          "match": {
+            "text": "ADDITIONAL INTEREST SCHEDULE",
+            "type": "equals",
+            "isCaseSensitive": true,
+            "minimumHeight": 0.15
+          }
+        }
+      },
+      {
+        "id": "agency",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "darknessThreshold": 0.9
+        },
+        "anchor": {
+          "match": {
+            "text": "agency",
+            "type": "endsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "ADDITIONAL INTEREST SCHEDULE",
+            "type": "equals",
+            "isCaseSensitive": true,
+            "minimumHeight": 0.15
+          },
+          "match": {
+            "text": "policy number",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "carrier",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "ADDITIONAL INTEREST SCHEDULE",
+            "type": "equals",
+            "isCaseSensitive": true,
+            "minimumHeight": 0.15
+          },
+          "match": {
+            "text": "carrier",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "naic_code",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "ADDITIONAL INTEREST SCHEDULE",
+            "type": "equals",
+            "isCaseSensitive": true,
+            "minimumHeight": 0.15
+          },
+          "match": {
+            "text": "naic",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "premises information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "ADDITIONAL INTEREST SCHEDULE",
+            "type": "equals",
+            "isCaseSensitive": true,
+            "minimumHeight": 0.15
+          },
+          "match": {
+            "text": "effective date",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "named_insured",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "named insured",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "additional_interest",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "start": {
+              "text": "ADDITIONAL INTEREST SCHEDULE",
+              "type": "equals",
+              "isCaseSensitive": true,
+              "minimumHeight": 0.15
+            },
+            "match": {
+              "text": "INTEREST",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          }
+        },
+        "fields": [
+          {
+            "id": "interest.additional_insured",
+            "anchor": {
+              "match": {
+                "text": "INSURED",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.breach_of_warranty",
+            "anchor": {
+              "match": {
+                "text": "warranty",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.co-owner",
+            "anchor": {
+              "match": {
+                "text": "co-owner",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.employee_as_a_lessor",
+            "anchor": {
+              "match": {
+                "text": "as lessor",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.leaseback_owner",
+            "anchor": {
+              "match": {
+                "text": "leaseback",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.lenders_loss_payable",
+            "anchor": {
+              "match": {
+                "text": "loss payable",
+                "type": "endsWith"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.lienholder",
+            "anchor": {
+              "match": {
+                "text": "lienholder",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.loss_payee",
+            "anchor": {
+              "match": {
+                "text": "loss payee",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.mortgagee",
+            "anchor": {
+              "match": {
+                "text": "mortgagee",
+                "type": "endsWith"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.owner",
+            "anchor": {
+              "match": {
+                "text": "owner",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.registrant",
+            "anchor": {
+              "match": {
+                "text": "registrant",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.trustee",
+            "anchor": {
+              "match": {
+                "text": "trustee",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.reason_for_interest",
+            "anchor": {
+              "match": {
+                "text": "reason for interest:",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "name_and_address",
+            "anchor": {
+              "match": {
+                "text": "name and address",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": 0,
+              "offsetY": 0.1,
+              "height": 0.8,
+              "width": 4
+            }
+          },
+          {
+            "id": "rank",
+            "anchor": {
+              "match": {
+                "text": "rank:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "evidence.certificate",
+            "anchor": {
+              "match": {
+                "text": "certificate",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "evidence.policy",
+            "anchor": {
+              "match": {
+                "text": "policy",
+                "type": "endsWith"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "evidence.send_bill",
+            "anchor": {
+              "match": {
+                "text": "send bill",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "reference_loan_number",
+            "anchor": {
+              "match": {
+                "text": "loan #:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "lien_amount",
+            "anchor": {
+              "match": {
+                "text": "lien amount:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "interest_end_date",
+            "anchor": {
+              "match": {
+                "text": "interest end date:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "phone",
+            "anchor": {
+              "match": {
+                "text": "phone",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "email",
+            "anchor": {
+              "match": {
+                "text": "e-mail address:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "interest_in_item_number.location",
+            "anchor": {
+              "match": {
+                "text": "location:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "interest_in_item_number.building",
+            "anchor": {
+              "match": {
+                "text": "building:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "interest_in_item_number.vehicle",
+            "anchor": {
+              "match": {
+                "text": "vehicle:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "interest_in_item_number.boat",
+            "anchor": {
+              "match": {
+                "text": "boat:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "interest_in_item_number.airport",
+            "anchor": {
+              "match": {
+                "text": "airport:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "interest_in_item_number.aircraft",
+            "anchor": {
+              "match": {
+                "text": "aircraft:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "interest_in_item_number.sched_number",
+            "anchor": {
+              "match": {
+                "text": "sched #",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "interest_in_item_number.item",
+            "anchor": {
+              "match": {
+                "text": "item:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "interest_in_item_number.item_class",
+            "anchor": {
+              "match": {
+                "text": "item class:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "interest_in_item_number.item_description",
+            "anchor": {
+              "match": {
+                "text": "item description",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          }
+        ]
+      }
+    ]
+  }
