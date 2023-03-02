@@ -1,0 +1,2860 @@
+{
+    "fields": [
+      {
+        "id": "agency_customer_id",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "AGENCY CUSTOMER ID:",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "date",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "DATE (",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "agency",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "AGENCY",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "carrier",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "CARRIER",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "naic_code",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "NAIC CODE",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "policy_number",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "POLICY NUMBER",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "effective_date",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "EFFECTIVE DATE",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "named_insured",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "NAMED INSURED",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "_driver_information",
+        "type": "table",
+        "anchor": {
+          "match": {
+            "text": "driver information",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "fixedTable",
+          "columnCount": 14,
+          "columns": [
+            {
+              "id": "driver_num",
+              "type": "number",
+              "index": 0,
+              "isRequired": true
+            },
+            {
+              "id": "name",
+              "index": 1
+            },
+            {
+              "id": "sex",
+              "index": 2
+            },
+            {
+              "id": "marital_status",
+              "index": 3
+            },
+            {
+              "id": "date_of_birth",
+              "index": 4
+            },
+            {
+              "id": "yrs_exp",
+              "index": 5
+            },
+            {
+              "id": "year_lic",
+              "index": 6
+            },
+            {
+              "id": "drivers_license_num_ssn",
+              "index": 7
+            },
+            {
+              "id": "state_lic",
+              "index": 8
+            },
+            {
+              "id": "date_hire",
+              "index": 9
+            },
+            {
+              "id": "broaden_no_fault",
+              "index": 10
+            },
+            {
+              "id": "doc",
+              "index": 11
+            },
+            {
+              "id": "use_veh_num",
+              "index": 12
+            },
+            {
+              "id": "percent_use",
+              "index": 13
+            }
+          ],
+          "stop": {
+            "type": "includes",
+            "text": "marital status"
+          }
+        }
+      },
+      {
+        "id": "driver_information",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "_driver_information"
+          ]
+        }
+      },
+      {
+        "id": "clean",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_driver_information"
+          ]
+        }
+      },
+      {
+        "id": "driver_information",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "start": {
+              "text": "driver information",
+              "type": "startsWith"
+            },
+            "match": {
+              "pattern": "\\d{2}/\\d{2}/\\d{4}",
+              "type": "regex"
+            },
+            "end": {
+              "text": "marital status",
+              "type": "includes"
+            }
+          },
+          "stop": {
+            "text": "marital status",
+            "type": "includes"
+          },
+          "offsetY": -0.07
+        },
+        "fields": [
+          {
+            "id": "driver_num",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "left",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "name",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "left",
+              "offsetBoxes": {
+                "direction": "left",
+                "number": 3
+              }
+            }
+          },
+          {
+            "id": "name",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -2.9,
+              "offsetY": -0.12,
+              "width": 2.2,
+              "height": 0.3
+            }
+          },
+          {
+            "id": "sex",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "left",
+              "offsetBoxes": {
+                "direction": "left",
+                "number": 2
+              }
+            }
+          },
+          {
+            "id": "marital_status",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "left",
+              "offsetBoxes": {
+                "direction": "left",
+                "number": 1
+              }
+            }
+          },
+          {
+            "id": "date_of_birth",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "passthrough"
+            }
+          },
+          {
+            "id": "yrs_exp",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right",
+              "offsetBoxes": {
+                "direction": "right",
+                "number": 1
+              }
+            }
+          },
+          {
+            "id": "year_lic",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right",
+              "offsetBoxes": {
+                "direction": "right",
+                "number": 2
+              }
+            }
+          },
+          {
+            "id": "drivers_license_num_ssn",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right",
+              "offsetBoxes": {
+                "direction": "right",
+                "number": 3
+              }
+            }
+          },
+          {
+            "id": "state_lic",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right",
+              "offsetBoxes": {
+                "direction": "right",
+                "number": 4
+              }
+            }
+          },
+          {
+            "id": "date_hire",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right",
+              "offsetBoxes": {
+                "direction": "right",
+                "number": 5
+              }
+            }
+          },
+          {
+            "id": "broaden_no_fault",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right",
+              "offsetBoxes": {
+                "direction": "right",
+                "number": 6
+              }
+            }
+          },
+          {
+            "id": "doc",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right",
+              "offsetBoxes": {
+                "direction": "right",
+                "number": 7
+              }
+            }
+          },
+          {
+            "id": "use_veh_num",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right",
+              "offsetBoxes": {
+                "direction": "right",
+                "number": 8
+              }
+            }
+          },
+          {
+            "id": "percent_use",
+            "anchor": {
+              "match": {
+                "pattern": "\\d{2}/\\d{2}/\\d{4}",
+                "type": "regex"
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right",
+              "offsetBoxes": {
+                "direction": "right",
+                "number": 9
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "general_information.any_vehicles_not_solely_owned_by_and_registered_to_the_applicant",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "not solely owned",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.any_vehicles_not_solely_owned_by_and_registered_to_the_applicant.veh_num_1",
+        "anchor": {
+          "start": {
+            "text": "not solely owned",
+            "type": "includes"
+          },
+          "match": {
+            "text": "veh #",
+            "type": "equals"
+          },
+          "end": [
+            {
+              "text": "veh #",
+              "type": "equals"
+            },
+            {
+              "text": "veh #",
+              "type": "equals"
+            }
+          ]
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.any_vehicles_not_solely_owned_by_and_registered_to_the_applicant.name_of_other_owner_1",
+        "anchor": {
+          "start": {
+            "text": "not solely owned",
+            "type": "includes"
+          },
+          "match": {
+            "text": "name of other owner",
+            "type": "equals"
+          },
+          "end": [
+            {
+              "text": "veh #",
+              "type": "equals"
+            },
+            {
+              "text": "veh #",
+              "type": "equals"
+            }
+          ]
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.any_vehicles_not_solely_owned_by_and_registered_to_the_applicant.veh_num_2",
+        "anchor": {
+          "start": {
+            "text": "not solely owned",
+            "type": "includes"
+          },
+          "match": [
+            {
+              "text": "veh #",
+              "type": "equals"
+            },
+            {
+              "text": "veh #",
+              "type": "equals"
+            }
+          ],
+          "end": [
+            {
+              "text": "name of other owner",
+              "type": "equals"
+            },
+            {
+              "text": "name of other owner",
+              "type": "equals"
+            }
+          ]
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.any_vehicles_not_solely_owned_by_and_registered_to_the_applicant.name_of_other_owner_2",
+        "anchor": {
+          "start": {
+            "text": "not solely owned",
+            "type": "includes"
+          },
+          "match": [
+            {
+              "text": "name of other owner",
+              "type": "equals"
+            },
+            {
+              "text": "name of other owner",
+              "type": "equals"
+            }
+          ],
+          "end": {
+            "text": "use their autos in the business",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.do_over_50_percent_of_employees_use_their_autos_in_business",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "use their autos in the business",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.is_there_a_vehicle_maintenance_program_in_operation",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "vehicle maintenance program in op",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.is_there_a_vehicle_maintenance_program_in_operation.explanation",
+        "anchor": {
+          "match": {
+            "text": "vehicle maintenance program in op",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "lineFilters": [
+            {
+              "pattern": "^\\d{1,}\\.",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "general_information.are_any_vehicles_leased_to_others",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "are any vehicles leased to others",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.are_any_vehicles_leased_to_others.explanation",
+        "anchor": {
+          "match": {
+            "text": "are any vehicles leased to others",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "lineFilters": [
+            {
+              "pattern": "^\\d{1,}\\.",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "general_information.any_car_modified_special_equipment",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "any car modified",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.any_car_modified_special_equipment.veh_num_1",
+        "anchor": {
+          "start": {
+            "text": "any car modified",
+            "type": "includes"
+          },
+          "match": {
+            "text": "veh #",
+            "type": "equals"
+          },
+          "end": [
+            {
+              "text": "veh #",
+              "type": "equals"
+            },
+            {
+              "text": "veh #",
+              "type": "equals"
+            }
+          ]
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.any_car_modified_special_equipment.description_1",
+        "anchor": {
+          "start": {
+            "text": "any car modified",
+            "type": "includes"
+          },
+          "match": {
+            "text": "description",
+            "type": "equals"
+          },
+          "end": [
+            {
+              "text": "veh #",
+              "type": "equals"
+            },
+            {
+              "text": "veh #",
+              "type": "equals"
+            }
+          ]
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.any_car_modified_special_equipment.cost_1",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "any car modified",
+            "type": "includes"
+          },
+          "match": {
+            "text": "cost",
+            "type": "equals"
+          },
+          "end": [
+            {
+              "text": "veh #",
+              "type": "equals"
+            },
+            {
+              "text": "veh #",
+              "type": "equals"
+            }
+          ]
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.any_car_modified_special_equipment.veh_num_2",
+        "anchor": {
+          "start": {
+            "text": "any car modified",
+            "type": "includes"
+          },
+          "match": [
+            {
+              "text": "veh #",
+              "type": "equals"
+            },
+            {
+              "text": "veh #",
+              "type": "equals"
+            }
+          ],
+          "end": [
+            {
+              "text": "name of other owner",
+              "type": "equals"
+            },
+            {
+              "text": "name of other owner",
+              "type": "equals"
+            }
+          ]
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.any_car_modified_special_equipment.description_2",
+        "anchor": {
+          "start": {
+            "text": "any car modified",
+            "type": "includes"
+          },
+          "match": [
+            {
+              "text": "description",
+              "type": "equals"
+            },
+            {
+              "text": "description",
+              "type": "equals"
+            }
+          ],
+          "end": {
+            "text": "are icc",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.any_car_modified_special_equipment.cost_2",
+        "type": "currency",
+        "anchor": {
+          "start": {
+            "text": "any car modified",
+            "type": "includes"
+          },
+          "match": [
+            {
+              "text": "cost",
+              "type": "equals"
+            },
+            {
+              "text": "cost",
+              "type": "equals"
+            }
+          ],
+          "end": {
+            "text": "are icc",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.are_icc_puc_or_other_filings_required",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "are icc",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.do_operations_involve_transporting_hazardous_material",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "do operations involve transporting",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.do_operations_involve_transporting_hazardous_material.explanation",
+        "anchor": {
+          "match": {
+            "text": "do operations involve transporting hazardous",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "lineFilters": [
+            {
+              "pattern": "^\\d{1,}\\.",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "general_information.any_hold_harmless_agreements",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "any hold harmless agreements",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.any_hold_harmless_agreements.explanation",
+        "anchor": {
+          "match": {
+            "text": "any hold harmless agreements",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "lineFilters": [
+            {
+              "pattern": "^\\d{1,}\\.",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "general_information.any_vehicles_used_by_family_members",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "any vehicles used by family",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.any_vehicles_used_by_family_members.explanation",
+        "anchor": {
+          "match": {
+            "text": "any vehicles used by family",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "lineFilters": [
+            {
+              "pattern": "^\\d{1,}\\.",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "general_information.does_the_applicant_obtain_mvr",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "does the applicant obtain mvr",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.does_the_applicant_obtain_mvr.explanation",
+        "anchor": {
+          "match": {
+            "text": "does the applicant obtain mvr",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "lineFilters": [
+            {
+              "pattern": "^\\d{1,}\\.",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "general_information.does_the_applicant_have_a_specific_driver_recruiting_method",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "does the applicant have a specific driver recruiting",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.does_the_applicant_have_a_specific_driver_recruiting_method.explanation",
+        "anchor": {
+          "match": {
+            "text": "does the applicant have a specific driver recruiting",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "lineFilters": [
+            {
+              "pattern": "^\\d{1,}\\.",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "general_information.are_any_drivers_not_covered_by_workers_comp",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "are any drivers not covered by workers comp",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.are_any_drivers_not_covered_by_workers_comp.explanation",
+        "anchor": {
+          "match": {
+            "text": "are any drivers not covered by workers comp",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "lineFilters": [
+            {
+              "pattern": "^\\d{1,}\\.",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "general_information.any_vehicles_owned_but_not_scheduled",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "any vehicles owned but not scheduled",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.any_vehicles_owned_but_not_scheduled.explanation",
+        "anchor": {
+          "match": {
+            "text": "any vehicles owned but not scheduled",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "lineFilters": [
+            {
+              "pattern": "^\\d{1,}\\.",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "general_information.any_drivers_with_convictions_for_moving_traffic_violations",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "any drivers with convictions",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.any_drivers_with_convictions_for_moving_traffic_violations.drv_num",
+        "anchor": {
+          "start": {
+            "text": "any drivers with convictions",
+            "type": "includes"
+          },
+          "match": {
+            "text": "drv #",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.any_drivers_with_convictions_for_moving_traffic_violations.date",
+        "anchor": {
+          "start": {
+            "text": "any drivers with convictions",
+            "type": "includes"
+          },
+          "match": {
+            "text": "date",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "signature",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.any_drivers_with_convictions_for_moving_traffic_violations.type",
+        "anchor": {
+          "start": {
+            "text": "any drivers with convictions",
+            "type": "includes"
+          },
+          "match": {
+            "text": "type",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.any_drivers_with_convictions_for_moving_traffic_violations.place",
+        "anchor": {
+          "start": {
+            "text": "any drivers with convictions",
+            "type": "includes"
+          },
+          "match": {
+            "text": "place",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.any_drivers_with_convictions_for_moving_traffic_violations.num_yrs_rev",
+        "anchor": {
+          "start": {
+            "text": "any drivers with convictions",
+            "type": "includes"
+          },
+          "match": {
+            "text": "# yrs rev",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.has_agent_inspected_vehicles",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "has agent inspected vehicles",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.has_agent_inspected_vehicles.explanation",
+        "anchor": {
+          "match": {
+            "text": "has agent inspected vehicles",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "lineFilters": [
+            {
+              "pattern": "^\\d{1,}\\.",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "general_information.are_all_vehicles_to_be_included_in_this_policy_part_of_a_fleet",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "are all vehicles to be included in this policy part of a fleet",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.are_all_vehicles_to_be_included_in_this_policy_part_of_a_fleet.explanation",
+        "anchor": {
+          "match": {
+            "text": "are all vehicles to be included in this policy part of a fleet",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "lineFilters": [
+            {
+              "pattern": "^\\d{1,}\\.",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "general_information.have_electronic_monitoring_devices",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "anchor": {
+          "match": {
+            "text": "electronic monitoring devices",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_information.have_electronic_monitoring_devices.percentage",
+        "type": "number",
+        "anchor": {
+          "start": {
+            "text": "electronic monitoring devices",
+            "type": "includes"
+          },
+          "match": {
+            "text": "what percentage of vehicles",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "general_information.have_electronic_monitoring_devices.monitor_driver_safety",
+        "anchor": {
+          "start": {
+            "text": "electronic monitoring devices",
+            "type": "includes"
+          },
+          "match": {
+            "text": "monitor driver safety",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "general_information.have_electronic_monitoring_devices.navigation",
+        "anchor": {
+          "start": {
+            "text": "electronic monitoring devices",
+            "type": "includes"
+          },
+          "match": {
+            "text": "navigation",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "general_information.have_electronic_monitoring_devices.track_fuel_consumption",
+        "anchor": {
+          "start": {
+            "text": "electronic monitoring devices",
+            "type": "includes"
+          },
+          "match": {
+            "text": "track fuel consumption",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "general_information.have_electronic_monitoring_devices.monitor_vehicle_maintenance",
+        "anchor": {
+          "start": {
+            "text": "electronic monitoring devices",
+            "type": "includes"
+          },
+          "match": {
+            "text": "monitor vehicle maintenance",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "general_information.have_electronic_monitoring_devices.mileage_tracking",
+        "anchor": {
+          "start": {
+            "text": "electronic monitoring devices",
+            "type": "includes"
+          },
+          "match": {
+            "text": "mileage tracking",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "general_information.have_electronic_monitoring_devices.location_tracking",
+        "anchor": {
+          "start": {
+            "text": "electronic monitoring devices",
+            "type": "includes"
+          },
+          "match": {
+            "text": "location tracking",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "general_information.description_of_garage",
+        "anchor": {
+          "match": {
+            "text": "description of garage",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_information.maximum_dollar_value_subject_to_loss",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "maximum dollar value",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "additional_interest_certificate_recipient",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "start": {
+              "text": "additional interest",
+              "type": "startsWith"
+            },
+            "match": {
+              "text": "interest",
+              "type": "equals"
+            },
+            "end": {
+              "text": "remarks",
+              "type": "startsWith"
+            }
+          },
+          "stop": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        },
+        "fields": [
+          {
+            "id": "interest.additional_insured",
+            "anchor": {
+              "match": {
+                "text": "additional",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.employee_as_lessor",
+            "anchor": {
+              "match": {
+                "text": "employee",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.lenders_loss_payable",
+            "anchor": {
+              "match": {
+                "text": "payable",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.lienholder",
+            "anchor": {
+              "match": {
+                "text": "lienholder",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.loss_payee",
+            "anchor": {
+              "match": {
+                "text": "loss payee",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.owner",
+            "anchor": {
+              "match": {
+                "text": "owner",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.registrant",
+            "anchor": {
+              "match": {
+                "text": "registrant",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "ceriticate",
+            "anchor": {
+              "match": {
+                "text": "certificate",
+                "type": "endsWith"
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "rank",
+            "anchor": {
+              "match": {
+                "text": "rank:",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "name_and_address",
+            "anchor": {
+              "match": {
+                "text": "name and address",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.01,
+              "offsetY": 0.06,
+              "height": 0.8,
+              "width": 4
+            }
+          },
+          {
+            "id": "reference_loan_num",
+            "anchor": {
+              "match": {
+                "text": "loan #:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "interest_in_item_number",
+            "anchor": {
+              "match": {
+                "text": "interest in item number",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.4,
+              "offsetY": 0.3,
+              "height": 0.8,
+              "width": 1.9
+            }
+          },
+          {
+            "id": "vehicle",
+            "anchor": {
+              "match": {
+                "text": "vehicle:",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "location",
+            "anchor": {
+              "match": {
+                "text": "location:",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          }
+        ]
+      },
+      {
+        "id": "remarks_1",
+        "anchor": {
+          "match": {
+            "text": "remarks",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "vehicle description",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2,
+          "lineFilters": [
+            {
+              "pattern": "^\\d{1,}\\.",
+              "type": "regex"
+            }
+          ]
+        }
+      },
+      {
+        "id": "vehicle_description",
+        "type": "sections",
+        "range": {
+          "stop": {
+            "type": "startsWith",
+            "text": "WORK / SCHOOL"
+          },
+          "anchor": {
+            "match": {
+              "text": "MAKE:",
+              "type": "equals"
+            }
+          }
+        },
+        "fields": [
+          {
+            "id": "veh_num",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "VEH #",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "year",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "YEAR",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "make",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "MAKE:",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "model",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "MODEL:",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "body_type",
+            "anchor": {
+              "match": {
+                "type": "endsWith",
+                "text": "TYPE:",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "vin",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "V.I.N.:",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "vehicle_type_spec",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "VEHICLE TYPE",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "vehicle_type_coml",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "VEHICLE TYPE",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "right"
+            }
+          },
+          {
+            "id": "vehicle_type_pp",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "VEHICLE TYPE",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left",
+              "offsetX": -0.4
+            }
+          },
+          {
+            "id": "sym_age",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "SYM / AGE",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "comp_otc_sym",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "OTC SYM",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "width": 0.35,
+              "height": 0.2,
+              "offsetX": 0,
+              "offsetY": 0
+            }
+          },
+          {
+            "id": "coli_sym",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "SYM",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "width": 0.35,
+              "height": 0.2,
+              "offsetX": -0.1,
+              "offsetY": 0
+            }
+          },
+          {
+            "id": "street",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "STREET (Required in KY)",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "city",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "CITY",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "county",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "COUNTY",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "state",
+            "anchor": {
+              "end": "LIC",
+              "match": {
+                "type": "equals",
+                "text": "STATE",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "zip",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "ZIP",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "lic",
+            "anchor": {
+              "start": "LIC",
+              "match": {
+                "type": "equals",
+                "text": "LIC",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right",
+              "wordFilters": [
+                "STATE"
+              ]
+            }
+          },
+          {
+            "id": "county",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "COUNTY",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "terr",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "TERR",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "gvw_gcw",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "GVW / GCW",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "class",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "CLASS",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "sic",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "SIC",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "factor",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "FACTOR",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "seat",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "SEAT CP",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "radius",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "RADIUS",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "farthest_terminal",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "FARTHEST TERMINAL",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "cost_new",
+            "type": "currency",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "COST NEW",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right"
+            }
+          },
+          {
+            "id": "use_pleasure",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "PLEASURE",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "use_farm",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "FARM",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "commercial_checkbox",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "COMM'L",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "retail_checkbox",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "RETAIL",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "service_checkbox",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "SERVICE",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "for_hire",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "FOR HIRE",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "check_coverages_liab",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "LIAB",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "check_coverages_no_fault",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "NO-",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "check_coverages_add",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "ADD'L NO-",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "check_coverages_med",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "MED PAY",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "check_coverages_motor",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "UNINS",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "check_coverages_undrins",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "UNDRINS",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "check_coverages_towing",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "TOWING",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "check_coverages_c_of_l",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "UNINS",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "right",
+              "offsetX": -0.01,
+              "offsetY": -0.01
+            }
+          },
+          {
+            "id": "check_coverages_f",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "UNDRINS",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "right"
+            }
+          },
+          {
+            "id": "check_coverages_ft",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "TOWING",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "right"
+            }
+          },
+          {
+            "id": "check_coverages_ftw",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "FTW",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "check_coverages_lsp",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "LSP",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "check_coverages_comp",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "TOWING",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "right",
+              "offsetX": 0.6
+            }
+          },
+          {
+            "id": "check_coverages_coll",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "FTW",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "right"
+            }
+          },
+          {
+            "id": "check_coverages_reimb",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "REIMB",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "check_coverages_fg",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "FG",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "check_coverages_aa",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "AA",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "deductibles_acv",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "ACV",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "deductibles_st_amt",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "ST AMT",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "deductibles_comp_otc",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "ACV",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "right"
+            }
+          },
+          {
+            "id": "deductibles_c_of_l",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "ACV",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "right",
+              "offsetX": 0.6
+            }
+          },
+          {
+            "id": "deductibles_currency_1",
+            "type": "currency",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "DEDUCTIBLES",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "left"
+            }
+          },
+          {
+            "id": "deductibles_currency_2",
+            "type": "currency",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "DEDUCTIBLES",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right",
+              "offsetX": 0.8
+            }
+          },
+          {
+            "id": "deductibles_currency_3",
+            "type": "currency",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "DEDUCTIBLES",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "right",
+              "offsetX": 0.8,
+              "offsetY": 0.3
+            }
+          },
+          {
+            "id": "drive_to_work_or_school_near",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "< 15 MILES",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "drive_to_work_or_school_far",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "15 MILES +",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "nft_vfh_dr_cr",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "DR/CR:",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "right",
+              "width": 3,
+              "height": 0.12,
+              "offsetX": 0.1,
+              "offsetY": -0.09
+            }
+          },
+          {
+            "id": "total_prem",
+            "type": "currency",
+            "anchor": {
+              "match": {
+                "type": "equals",
+                "text": "TOTAL PREM:",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "box",
+              "position": "left"
+            }
+          }
+        ]
+      },
+      {
+        "id": "remarks_2",
+        "anchor": {
+          "match": {
+            "text": "remarks",
+            "type": "startsWith"
+          },
+          "start": {
+            "text": "vehicle description",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        }
+      },
+      {
+        "id": "producers_signature",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "producer's signature"
+          }
+        },
+        "method": {
+          "id": "signature",
+          "start": "left",
+          "width": 1.5,
+          "height": 0.2,
+          "offsetX": 0,
+          "offsetY": 0.04
+        }
+      },
+      {
+        "id": "producers_name",
+        "anchor": {
+          "start": {
+            "text": "SIGNATURE",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "producer's name"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "applicants_signature",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "applicant's signature"
+          }
+        },
+        "method": {
+          "id": "signature",
+          "start": "left",
+          "width": 1.5,
+          "height": 0.2,
+          "offsetX": 0,
+          "offsetY": 0.04
+        }
+      },
+      {
+        "id": "signature.date",
+        "anchor": {
+          "start": {
+            "text": "SIGNATURE",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "type": "equals",
+            "text": "date"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "national_producer_number",
+        "anchor": {
+          "start": {
+            "text": "SIGNATURE",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "national producer number"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "state_producer_license_number",
+        "anchor": {
+          "start": {
+            "text": "SIGNATURE",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "state producer license"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "lineFilters": [
+            {
+              "text": "(",
+              "type": "startsWith"
+            }
+          ]
+        }
+      }
+    ]
+  }

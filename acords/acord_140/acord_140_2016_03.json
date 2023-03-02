@@ -1,0 +1,5849 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "BLANKET SUMMARY",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ACORD 140 (2016/03)",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        {
+          "page": "every",
+          "match": [
+            {
+              "text": "ACORD 140 (2016/03)",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "agency_customer_id",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "text": "agency customer id",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetX": 2.5
+        },
+        "anchor": {
+          "match": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "agency",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "agency name",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "premises information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "policy number",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "premises information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "carrier",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "carrier",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "premises information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "naic_code",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "naic",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "premises information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "effective date",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "premises information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "named_insured",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "named insured",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "premises information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "blanket_summary.blkt_number_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "blkt #",
+            "type": "startsWith"
+          },
+          "end": [
+            {
+              "text": "blkt #",
+              "type": "startsWith"
+            },
+            {
+              "text": "blkt #",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "blanket_summary.amount_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": [
+            {
+              "text": "amount",
+              "type": "startsWith"
+            },
+            {
+              "text": "amount",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "text": "amount",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "blanket_summary.type_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": [
+            {
+              "text": "type",
+              "type": "startsWith"
+            },
+            {
+              "text": "type",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "text": "type",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "blanket_summary.blkt_number_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "blkt #",
+            "type": "startsWith"
+          },
+          "end": [
+            {
+              "text": "blkt #",
+              "type": "startsWith"
+            },
+            {
+              "text": "blkt #",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "blanket_summary.amount_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": [
+            {
+              "text": "amount",
+              "type": "startsWith"
+            },
+            {
+              "text": "amount",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "text": "amount",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "blanket_summary.type_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": [
+            {
+              "text": "type",
+              "type": "startsWith"
+            },
+            {
+              "text": "type",
+              "type": "startsWith"
+            }
+          ],
+          "match": [
+            {
+              "text": "type",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "blanket_summary.blkt_number_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "text": "blkt #",
+              "type": "startsWith"
+            },
+            {
+              "text": "blkt #",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "premises information",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "blanket_summary.amount_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "text": "amount",
+              "type": "startsWith"
+            },
+            {
+              "text": "amount",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "premises information",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "blanket_summary.type_3",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "text": "type",
+              "type": "startsWith"
+            },
+            {
+              "text": "type",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "premises information",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "blanket_summary.blkt_number_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "text": "blkt #",
+              "type": "startsWith"
+            },
+            {
+              "text": "blkt #",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "premises information",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "blanket_summary.amount_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "text": "amount",
+              "type": "startsWith"
+            },
+            {
+              "text": "amount",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "premises information",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "blanket_summary.type_4",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": {
+            "text": "PROPERTY SECTION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": [
+            {
+              "text": "type",
+              "type": "startsWith"
+            },
+            {
+              "text": "type",
+              "type": "startsWith"
+            }
+          ],
+          "end": [
+            {
+              "text": "premises information",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "_premises_information",
+        "type": "table",
+        "method": {
+          "id": "fixedTable",
+          "columnCount": 10,
+          "startOnRow": 1,
+          "columns": [
+            {
+              "id": "subject_of_insurance",
+              "index": 0
+            },
+            {
+              "id": "amount",
+              "index": 1,
+              "isRequired": true,
+              "type": "currency"
+            },
+            {
+              "id": "coins_percentage",
+              "index": 2
+            },
+            {
+              "id": "valuation",
+              "index": 3
+            },
+            {
+              "id": "causes_of_loss",
+              "index": 4
+            },
+            {
+              "id": "inflation_guard_percentage",
+              "index": 5
+            },
+            {
+              "id": "ded",
+              "index": 6,
+              "type": "currency"
+            },
+            {
+              "id": "ded_type",
+              "index": 7
+            },
+            {
+              "id": "blkt_number",
+              "index": 8
+            },
+            {
+              "id": "forms_and_conditions_to_apply",
+              "index": 9
+            }
+          ],
+          "stop": {
+            "text": "additional information",
+            "type": "startsWith"
+          }
+        },
+        "anchor": {
+          "match": {
+            "text": "subject of insurance",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "sinkhole coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_premises_information",
+        "type": "table",
+        "method": {
+          "id": "textTable",
+          "detectMultipleLinesPerRow": true,
+          "columns": [
+            {
+              "id": "subject_of_insurance",
+              "minX": 0.4,
+              "maxX": 2
+            },
+            {
+              "id": "amount",
+              "minX": 2.03,
+              "maxX": 2.97,
+              "isRequired": true,
+              "type": "currency"
+            },
+            {
+              "id": "coins_percentage",
+              "minX": 2.99,
+              "maxX": 3.34
+            },
+            {
+              "id": "valuation",
+              "minX": 3.37,
+              "maxX": 3.67
+            },
+            {
+              "id": "causes_of_loss",
+              "minX": 3.68,
+              "maxX": 4.46
+            },
+            {
+              "id": "inflation_guard_percentage",
+              "minX": 4.49,
+              "maxX": 4.93
+            },
+            {
+              "id": "ded",
+              "minX": 4.94,
+              "maxX": 5.45,
+              "type": "currency"
+            },
+            {
+              "id": "ded_type",
+              "minX": 5.46,
+              "maxX": 5.89
+            },
+            {
+              "id": "blkt_number",
+              "minX": 5.9,
+              "maxX": 6.14
+            },
+            {
+              "id": "forms_and_conditions_to_apply",
+              "minX": 6.18,
+              "maxX": 8
+            }
+          ],
+          "stop": {
+            "text": "additional information",
+            "type": "startsWith"
+          }
+        },
+        "anchor": {
+          "match": {
+            "text": "subject of insurance",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "sinkhole coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "premises_information",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "_premises_information"
+          ]
+        }
+      },
+      {
+        "id": "clean_premises",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_premises_information"
+          ]
+        }
+      },
+      {
+        "id": "premises_information.premises_number",
+        "type": "number",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "premises #",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "subject of insurance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "premises_information.street_address",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "street address:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "subject of insurance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "premises_information.building_number",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "building #:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "subject of insurance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "premises_information.building_number",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "building #:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "subject of insurance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "premises_information.building_description",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "bldg description:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "subject of insurance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_information.business_income_extra_expense",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetX": -0.1
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional information"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "business income"
+          },
+          "end": {
+            "text": "additional coverages, options",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_information.value_reporting_information",
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetX": -0.1
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional information"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "value reporting information"
+          },
+          "end": {
+            "text": "additional coverages, options",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.spoilage_coverage",
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetY": 0.45,
+          "offsetX": 0.2
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "equals",
+            "text": "spoilage"
+          },
+          "end": {
+            "text": "construction type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.description_of_property_covered",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "includes",
+            "text": "description of property covered"
+          },
+          "end": {
+            "text": "construction type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.limit",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "includes",
+            "text": "limit"
+          },
+          "end": {
+            "text": "sinkhole coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.deductible",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "includes",
+            "text": "deductible"
+          },
+          "end": {
+            "text": "construction type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.refig_maint_agreement",
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetY": 0.42,
+          "offsetX": 0.24
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "equals",
+            "text": "refrig maint"
+          },
+          "end": {
+            "text": "construction type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.options.breakdown_or_contamination",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "breakdown or contamination"
+          },
+          "end": {
+            "text": "construction type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.options.power_outage",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "power outage"
+          },
+          "end": {
+            "text": "construction type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.options.selling_price",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "selling"
+          },
+          "end": {
+            "text": "construction type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.options.selling_price",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "equals",
+            "text": "price"
+          },
+          "end": {
+            "text": "construction type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.sinkhole_coverage.accept",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "accept coverage"
+          },
+          "end": {
+            "text": "mine subsidence",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.sinkhole_coverage.limit",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "end": [
+            {
+              "type": "startsWith",
+              "text": "accept coverage"
+            },
+            {
+              "type": "startsWith",
+              "text": "accept coverage"
+            }
+          ],
+          "match": {
+            "type": "startsWith",
+            "text": "accept coverage"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.mine_subsidence_coverage.accept",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "accept coverage"
+            },
+            {
+              "type": "startsWith",
+              "text": "accept coverage"
+            }
+          ],
+          "end": {
+            "text": "property has been designated",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.mine_subsidence_coverage.limit",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "accept coverage"
+            },
+            {
+              "type": "startsWith",
+              "text": "accept coverage"
+            }
+          ],
+          "end": {
+            "text": "property has been designated",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.mine_subsidence_coverage.designates_historical_landmark",
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "property has been designated an"
+            }
+          ],
+          "end": {
+            "text": "distance to",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.number_of_open_sides_on_structure",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "endsWith",
+            "text": "structure:"
+          },
+          "end": {
+            "text": "construction type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.policy_inclusions",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "offsetX": -6,
+          "offsetY": 0.01,
+          "width": 7,
+          "height": 0.4,
+          "lineFilters": [
+            {
+              "text": "property has been designated",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "endsWith",
+            "text": "structure:"
+          },
+          "end": {
+            "text": "construction type",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.construction_type",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "endsWith",
+            "text": "construction type"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.distance_to_hydrant",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "endsWith",
+            "text": "hydrant"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.distance_to_fire_station_test",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": -0.32,
+          "offsetY": 0.05,
+          "width": 0.14,
+          "height": 0.15
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "endsWith",
+            "text": "fire stat"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.distance_to_fire_station",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "endsWith",
+            "text": "fire stat"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.fire_district",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "fire district"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.code_number",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "code number"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.protection_class",
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": -0.01,
+          "offsetY": 0.05
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "prot cl"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.number_of_stories",
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "# stories"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.number_of_basements",
+        "type": "number",
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "left",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "yr built"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.year_built",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "yr built"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.total_area",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "total area"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.wiring",
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "building improvements"
+          },
+          "match": {
+            "text": "wiring",
+            "type": "includes"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.wiring_year",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "building improvements"
+          },
+          "match": {
+            "text": "wiring, yr:",
+            "type": "includes"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.plumbing",
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "building improvements"
+          },
+          "match": {
+            "text": "plumbing",
+            "type": "includes"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.plumbing_year",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "building improvements"
+          },
+          "match": {
+            "text": "plumbing, yr:",
+            "type": "includes"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.roofing",
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "building improvements"
+          },
+          "match": {
+            "text": "roofing",
+            "type": "includes"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.roofing_year",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "building improvements"
+          },
+          "match": {
+            "text": "roofing, yr:",
+            "type": "includes"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.heating",
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "building improvements"
+          },
+          "match": {
+            "text": "HEATING, YR",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.heating_year",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "building improvements"
+          },
+          "match": {
+            "text": "heating, yr:",
+            "type": "includes"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.other",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "building improvements"
+          },
+          "match": {
+            "text": "other",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.other_year",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "building improvements"
+          },
+          "match": {
+            "text": "yr:",
+            "type": "equals"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_code_grade",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "wordFilters": [
+            "bldg",
+            "code"
+          ]
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "building improvements"
+          },
+          "match": {
+            "text": "grade",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.tax_code",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "tax code",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.roof_type",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "roof type",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.other_occupancies",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "other occupancies",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.wind_class.resistive",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "resistive",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.wind_class.semi_resistive",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "semi-",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.heating_source_incl_woodburning_stove",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "heating source incl",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.heating_source_incl_woodburning_stove.manufacturer",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "manufacturer:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.heating_source_incl_woodburning_stove.date_installed",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "installed:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.primary_heat.boiler",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "primary heat"
+          },
+          "match": {
+            "text": "boiler",
+            "type": "startsWith"
+          },
+          "end": [
+            {
+              "text": "boiler",
+              "type": "startsWith"
+            },
+            {
+              "text": "boiler",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "additional_coverages.primary_heat.solid_fuel",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "primary heat"
+          },
+          "match": {
+            "text": "solid fuel",
+            "type": "startsWith"
+          },
+          "end": [
+            {
+              "text": "solid fuel",
+              "type": "startsWith"
+            },
+            {
+              "text": "solid fuel",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "additional_coverages.primary_heat.boiler_insurance_placed_elsewhere",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "primary heat"
+          },
+          "match": {
+            "text": "insurance placed elsewhere",
+            "type": "includes"
+          },
+          "end": [
+            {
+              "text": "insurance placed elsewhere",
+              "type": "includes"
+            },
+            {
+              "text": "insurance placed elsewhere",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "additional_coverages.secondary_heat.boiler",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "primary heat"
+          },
+          "end": {
+            "text": "right exposure",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "boiler",
+              "type": "startsWith"
+            },
+            {
+              "text": "boiler",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "additional_coverages.secondary_heat.solid_fuel",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "primary heat"
+          },
+          "end": {
+            "text": "right exposure",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "solid fuel",
+              "type": "startsWith"
+            },
+            {
+              "text": "solid fuel",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "additional_coverages.seecondary_heat.boiler_insurance_placed_elsewhere",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "primary heat"
+          },
+          "end": {
+            "text": "right exposure",
+            "type": "includes"
+          },
+          "match": [
+            {
+              "text": "insurance placed elsewhere",
+              "type": "includes"
+            },
+            {
+              "text": "insurance placed elsewhere",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "additional_coverages.right_exposure_and_distance",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "right exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.left_exposure_and_distance",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "left exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.left_exposure_and_distance",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": 0.05,
+          "width": 1.8,
+          "height": 0.15
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "left exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.front_exposure_and_distance",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "front exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.rear_exposure_and_distance",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "rear exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.burglar_alarm_type",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "burglar alarm type",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.certificate_number",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "certificate #",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.expiration_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "expiration date",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.central_station",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "central",
+            "type": "equals"
+          },
+          "end": {
+            "text": "clock hourly",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.with_keys",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "with keys",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "clock hourly",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.local_gong",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "LOCAL",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.burglar_alarm_installed_and_serviced_by",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "burglar alarm installed",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "clock hourly",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.extent",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "extent",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.grade",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "primary heat"
+          },
+          "match": {
+            "text": "grade",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.number_of_guards_and_watchmen",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "# guards",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.clock_hourly",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "clock hourly",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.premises_fire_protection",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "premises fire protection",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.sprinkler_percentage",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "%",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.fire_alarm_manufacturer",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "construction type"
+          },
+          "match": {
+            "text": "fire alarm manufacturer",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.central_station_second_1",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "clock hourly"
+          },
+          "match": {
+            "text": "central station",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.local_gong_second_1",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "clock hourly"
+          },
+          "match": {
+            "text": "local gong",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.rank",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "rank:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.name_and_address",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "width": 4.3,
+          "height": 0.63,
+          "offsetX": -0.54,
+          "offsetY": 0.05
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "name and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.reference_number",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "loan #",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.reference_number",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 1.45
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "loan #",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.certificate_required",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "certificate",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.interest.lenders_loss_payable",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "lender's loss payable",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.interest.loss_payee",
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "loss payee",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.interest.mortgagee",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "mortgagee",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.location_number",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "xMajorSort": true
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "location:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.building_number",
+        "method": {
+          "id": "label",
+          "position": "right",
+          "xMajorSort": true
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "building:",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.scheduled_item_number",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "item:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.scheduled_item_number",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 0.77
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "item:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.item_class",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "wordFilters": [
+            "item"
+          ]
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "class:",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.item_description",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "item description",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_premises_information.premises_number",
+        "type": "number",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "premises #:",
+            "type": "startsWith"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          }
+        }
+      },
+      {
+        "id": "additional_premises_information.street_address",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "street address",
+            "type": "startsWith"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          }
+        }
+      },
+      {
+        "id": "additional_premises_information.building_number",
+        "type": "number",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "building #:",
+            "type": "startsWith"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          }
+        }
+      },
+      {
+        "id": "additional_premises_information.building_description",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "bldg description",
+            "type": "startsWith"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          }
+        }
+      },
+      {
+        "id": "_additional_premises_information",
+        "type": "table",
+        "method": {
+          "id": "fixedTable",
+          "columnCount": 10,
+          "startOnRow": 1,
+          "columns": [
+            {
+              "id": "subject_of_insurance",
+              "index": 0
+            },
+            {
+              "id": "amount",
+              "index": 1,
+              "isRequired": true,
+              "type": "currency"
+            },
+            {
+              "id": "coins_percentage",
+              "index": 2
+            },
+            {
+              "id": "valuation",
+              "index": 3
+            },
+            {
+              "id": "causes_of_loss",
+              "index": 4
+            },
+            {
+              "id": "inflation_guard_percentage",
+              "index": 5
+            },
+            {
+              "id": "ded",
+              "index": 6,
+              "type": "currency"
+            },
+            {
+              "id": "ded_type",
+              "index": 7
+            },
+            {
+              "id": "blkt_number",
+              "index": 8
+            },
+            {
+              "id": "forms_and_conditions_to_apply",
+              "index": 9
+            }
+          ],
+          "stop": {
+            "text": "additional information",
+            "type": "startsWith"
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "subject of insurance",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_additionalpremises_information",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "_additionalpremises_information"
+          ]
+        }
+      },
+      {
+        "id": "clean_premises",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_premises_information"
+          ]
+        }
+      },
+      {
+        "id": "additional_premises_information.business_income_extra_expense",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "business income",
+            "type": "startsWith"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          }
+        }
+      },
+      {
+        "id": "additional_premises_information.value_reporting_information",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "additional interest",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "value reporting information",
+            "type": "startsWith"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "additional coverages"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.spoilage_coverage_2",
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetY": 0.43,
+          "offsetX": 0.2
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "spoilage",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.description_of_property_covered_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "description of property covered",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.limit_2",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "limit",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "sinkhole coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.deductible_2",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "deductible",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "sinkhole coverage",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.refig_maint_agreement_2",
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetY": 0.42,
+          "offsetX": 0.24
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "refrig maint",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.options.breakdown_or_contamination_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "type": "startsWith",
+            "text": "breakdown or contamination"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.options.power_outage_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "type": "startsWith",
+            "text": "power outage"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.options.selling_price_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "type": "startsWith",
+            "text": "selling"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.options.selling_price_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "type": "equals",
+            "text": "price"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.sinkhole_coverage.accept_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "type": "startsWith",
+            "text": "accept coverage"
+          },
+          "end": {
+            "text": "mine subsidence",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.sinkhole_coverage.limit_2",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": [
+            {
+              "type": "startsWith",
+              "text": "accept coverage"
+            },
+            {
+              "type": "startsWith",
+              "text": "accept coverage"
+            }
+          ],
+          "match": {
+            "type": "startsWith",
+            "text": "accept coverage"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.mine_subsidence_coverage.accept_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "accept coverage"
+            },
+            {
+              "type": "startsWith",
+              "text": "accept coverage"
+            }
+          ],
+          "end": {
+            "text": "property has been designated",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.mine_subsidence_coverage.limit_2",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "last"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "accept coverage"
+            },
+            {
+              "type": "startsWith",
+              "text": "accept coverage"
+            }
+          ],
+          "end": {
+            "text": "property has been designated",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.mine_subsidence_coverage.designates_historical_landmark_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "type": "startsWith",
+              "text": "property has been designated an"
+            }
+          ],
+          "end": {
+            "text": "distance to",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.number_of_open_sides_on_structure_2",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "structure:",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.construction_type_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "construction type",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.distance_to_hydrant_2",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "hydrant",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.distance_to_fire_station_2",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "fire stat",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.fire_district_code_number_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "fire district",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.protection_class_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "prot cl",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.number_of_stories_2",
+        "type": "number",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "prot cl",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.number_of_basements_2",
+        "type": "number",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetBoxes": {
+            "direction": "left",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "yr built",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.year_built_2",
+        "type": "number",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "yr built",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.total_area_2",
+        "type": "number",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "total area",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.wiring_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "wiring",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.wiring_year_2",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "wiring, yr:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.plumbing_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "plumbing",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.plumbing_year_2",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "plumbing, yr:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.roofing_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "roofing",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.roofing_year_2",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "roofing, yr:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.heating_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "heating yr",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.heating_year_2",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "heating, yr:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.other_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "other:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_improvements.other_year_2",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "yr:",
+            "type": "equals"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.building_code_grade_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "wordFilters": [
+            "bldg",
+            "code"
+          ]
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "grade",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.tax_code_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "tax code",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.roof_type_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "roof type",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.other_occupancies_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "other occupancies",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.wind_class.resistive_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "resistive",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.wind_class.semi_resistive_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "resistive",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.heating_source_incl_woodburning_stove_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "heating source incl",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.heating_source_incl_woodburning_stove.manufacturer_2",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "manufacturer:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.heating_source_incl_woodburning_stove.date_installed_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "installed:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.primary_heat.boiler_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "boiler",
+            "type": "startsWith"
+          },
+          "end": [
+            {
+              "text": "boiler",
+              "type": "startsWith"
+            },
+            {
+              "text": "boiler",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "additional_coverages.primary_heat.solid_fuel_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "solid fuel",
+            "type": "startsWith"
+          },
+          "end": [
+            {
+              "text": "solid fuel",
+              "type": "startsWith"
+            },
+            {
+              "text": "solid fuel",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "additional_coverages.primary_heat.boiler_insurance_placed_elsewhere_2",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "insurance placed elsewhere",
+            "type": "includes"
+          },
+          "end": [
+            {
+              "text": "insurance placed elsewhere",
+              "type": "includes"
+            },
+            {
+              "text": "insurance placed elsewhere",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "additional_coverages.secondary_heat.boiler_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "text": "right exposure",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "boiler",
+              "type": "startsWith"
+            },
+            {
+              "text": "boiler",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "additional_coverages.secondary_heat.solid_fuel_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "text": "right exposure",
+            "type": "startsWith"
+          },
+          "match": [
+            {
+              "text": "solid fuel",
+              "type": "startsWith"
+            },
+            {
+              "text": "solid fuel",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "additional_coverages.seecondary_heat.boiler_insurance_placed_elsewhere_2",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "end": {
+            "text": "right exposure",
+            "type": "includes"
+          },
+          "match": [
+            {
+              "text": "insurance placed elsewhere",
+              "type": "includes"
+            },
+            {
+              "text": "insurance placed elsewhere",
+              "type": "includes"
+            }
+          ]
+        }
+      },
+      {
+        "id": "additional_coverages.right_exposure_and_distance_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "right exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.left_exposure_and_distance_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "left exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.front_exposure_and_distance_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "front exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.rear_exposure_and_distance_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "rear exposure",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.burglar_alarm_type_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "burglar alarm",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.certificate_number_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "certificate #",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.expiration_date_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "expiration date",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.central_station_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "CENTRAL",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.with_keys_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "with keys",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.local_gong_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "LOCAL",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.burglar_alarm_installed_and_serviced_by_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "burglar alarm installed",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.extent_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "extent",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.grade_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            },
+            {
+              "text": "extent",
+              "type": "endsWith"
+            }
+          ],
+          "match": {
+            "text": "grade",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.number_of_guards_and_watchmen_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "# guards",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.clock_hourly_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "clock hourly",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.central_station_second_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "central station",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.local_gong_second_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "local gong",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "remarks",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.premises_fire_protection_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "premises fire protection",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.sprinkler_percentage_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "%",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.fire_alarm_manufacturer_2",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "fire alarm manufacturer",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.central_station_second_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            },
+            {
+              "text": "central station",
+              "type": "startsWith"
+            },
+            {
+              "text": "central station",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "central station",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_coverages.local_gong_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional coverages",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "local gong",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "additional interest",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.rank_2",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "rank:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.name_and_address_2",
+        "method": {
+          "id": "region",
+          "start": "below",
+          "width": 4,
+          "height": 0.5,
+          "offsetX": -0.55,
+          "offsetY": 0.05
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "name and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.reference_number_2",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "loan #",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.reference_number_2",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 1.45
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "loan #",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.certificate_required_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "certificate",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.interes.lenders_loss_payee_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "lender's loss",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.interes.loss_payee_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "loss",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.interes.mortgagee_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "mortgagee",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.location_number_2",
+        "type": "number",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "location:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.building_number_2",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "additional interest",
+              "type": "endsWith"
+            },
+            {
+              "text": "additional interest",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "building:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.scheduled_item_number_2",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "item:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.item_class_2",
+        "method": {
+          "id": "box",
+          "position": "right",
+          "wordFilters": [
+            "item"
+          ]
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "class:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.item_description_2",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "item description",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interests.remarks",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "REMARKS",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "acord 140",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "signature.producers_signature",
+        "method": {
+          "id": "signature",
+          "start": "below",
+          "width": 2,
+          "height": 0.2,
+          "offsetX": -0.2,
+          "offsetY": 0
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "producer's signature",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "applicant's signature",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "signature.producers_signature",
+        "method": {
+          "id": "signature",
+          "start": "below",
+          "width": 3,
+          "height": 0.2,
+          "offsetX": -0.55,
+          "offsetY": -0.3
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "applicant's signature",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "signature.producers_name",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "producer's name",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "applicant's signature",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "signature.producers_name",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2.13,
+          "height": 0.25,
+          "offsetX": 0.1,
+          "offsetY": 0.03
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "producer's name",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "applicant's signature",
+            "type": "equals"
+          }
+        }
+      },
+      {
+        "id": "signature.state_producer_license_number",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "text": "(",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "state producer",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 125",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "signature.applicants_signature",
+        "method": {
+          "id": "signature",
+          "start": "below",
+          "width": 5.27,
+          "height": 0.17,
+          "offsetX": -0.57,
+          "offsetY": 0
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "applicant's signature",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "signature.date",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "REMARKS",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "date",
+            "type": "equals"
+          },
+          "end": {
+            "text": "acord 125",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "signature.national_producers_number",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "national producer",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 125",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "signature.national_producers_number",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "PROPERTY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ADDITIONAL",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "national producer",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord 125",
+            "type": "startsWith"
+          }
+        }
+      }
+    ]
+  }
