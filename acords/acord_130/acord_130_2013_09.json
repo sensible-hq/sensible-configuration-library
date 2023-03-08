@@ -2,14 +2,25 @@
   "fingerprint": {
     "tests": [
       {
-        "page": "any",
+        "page": "first",
         "match": [
           {
-            "text": "acord 130",
-            "type": "includes"
+            "text": "WORKERS COMPENSATION APPLICATION",
+            "type": "includes",
+            "isCaseSensitive": true
           },
           {
-            "text": "workers compensation application",
+            "text": "AGENCY NAME AND ADDRESS",
+            "type": "includes",
+            "isCaseSensitive": true
+          }
+        ]
+      },
+      {
+        "page": "every",
+        "match": [
+          {
+            "text": "ACORD 130 (2013/09)",
             "type": "includes"
           }
         ]
@@ -283,6 +294,33 @@
       }
     },
     {
+      "id": "agency.fax",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0.55,
+        "offsetY": -0.1,
+        "width": 1,
+        "height": 0.1
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "producer name",
+            "type": "includes"
+          },
+          {
+            "text": "fax",
+            "type": "includes"
+          }
+        ],
+        "match": {
+          "text": "no):",
+          "type": "endsWith"
+        }
+      }
+    },
+    {
       "id": "agency.email",
       "method": {
         "id": "label",
@@ -503,7 +541,10 @@
       "id": "applicant.website_address",
       "method": {
         "id": "box",
-        "position": "right"
+        "position": "right",
+        "wordFilters": [
+          "website"
+        ]
       },
       "anchor": {
         "match": {
@@ -646,7 +687,10 @@
       "id": "applicant.credit_bureau_name",
       "method": {
         "id": "box",
-        "position": "right"
+        "position": "right",
+        "wordFilters": [
+          "bureau name:"
+        ]
       },
       "anchor": {
         "start": {
@@ -867,6 +911,40 @@
       }
     },
     {
+      "id": "payment_plan.custom_plan",
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetY": 0.1,
+        "offsetX": 0.4,
+        "width": 0.7,
+        "height": 0.1
+      },
+      "anchor": {
+        "match": {
+          "text": "payment plan",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "payment_plan.custom_plan.checkbox",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "payment plan",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "annual",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "audit.expiration",
       "method": {
         "id": "checkbox",
@@ -937,6 +1015,40 @@
       }
     },
     {
+      "id": "audit.custom",
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetY": 0.3,
+        "offsetX": 0.8,
+        "width": 0.7,
+        "height": 0.1
+      },
+      "anchor": {
+        "match": {
+          "text": "audit",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "audit.custom.checkbox",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "payment plan",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "semi-annual",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "locations",
       "type": "table",
       "anchor": {
@@ -963,6 +1075,44 @@
           {
             "id": "address",
             "index": 2
+          }
+        ],
+        "stop": {
+          "text": "policy information",
+          "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "locations",
+      "type": "table",
+      "anchor": {
+        "match": {
+          "text": "locations",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "table",
+        "columns": [
+          {
+            "id": "location_number",
+            "isRequired": true,
+            "terms": [
+              "loc #"
+            ]
+          },
+          {
+            "id": "highest_floor",
+            "terms": [
+              "highest"
+            ]
+          },
+          {
+            "id": "address",
+            "terms": [
+              "street"
+            ]
           }
         ],
         "stop": {
@@ -1104,6 +1254,53 @@
           "text": "policy information",
           "type": "includes"
         },
+        "match": [
+          {
+            "text": "employer's liability",
+            "type": "endsWith"
+          },
+          {
+            "text": "each accident",
+            "type": "endsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "label",
+        "position": "left"
+      }
+    },
+    {
+      "id": "policy_information.employers_liability_each_accident",
+      "anchor": {
+        "start": {
+          "text": "policy information",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "employer's liability",
+            "type": "endsWith"
+          },
+          {
+            "text": "each accident",
+            "type": "endsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "position": "left",
+        "tiebreaker": "last"
+      }
+    },
+    {
+      "id": "policy_information.employers_liability_each_accident",
+      "anchor": {
+        "start": {
+          "text": "policy information",
+          "type": "includes"
+        },
         "match": {
           "text": "employer's liability",
           "type": "endsWith"
@@ -1116,6 +1313,29 @@
           "direction": "below",
           "number": 1
         }
+      }
+    },
+    {
+      "id": "policy_information.employers_liability_disease_policy_limit",
+      "anchor": {
+        "start": {
+          "text": "policy information",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "employer's liability",
+            "type": "endsWith"
+          },
+          {
+            "text": "disease-policy limit",
+            "type": "endsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "label",
+        "position": "left"
       }
     },
     {
@@ -2283,7 +2503,6 @@
     },
     {
       "id": "premium_table.taxes_and_assessments.factor",
-      "type": "currency",
       "method": {
         "id": "box",
         "position": "left",
@@ -2470,6 +2689,12 @@
         "position": "below",
         "wordFilters": [
           "1"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -2556,6 +2781,12 @@
         "position": "below",
         "wordFilters": [
           "3"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -2597,6 +2828,12 @@
         "position": "below",
         "wordFilters": [
           "4"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -2638,6 +2875,12 @@
         "position": "below",
         "wordFilters": [
           "5"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -2679,6 +2922,12 @@
         "position": "below",
         "wordFilters": [
           "6"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -2720,6 +2969,12 @@
         "position": "below",
         "wordFilters": [
           "7"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -2761,6 +3016,12 @@
         "position": "below",
         "wordFilters": [
           "8"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -2802,6 +3063,12 @@
         "position": "below",
         "wordFilters": [
           "9"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
