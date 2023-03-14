@@ -103,6 +103,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [ACORD 130 (07/2019 FL)](./acords/acord_130/acord_130_2019_07_fl.json)
 - [ACORD 140 (09/2007)](./acords/acord_140/acord_140_2007_09.json)
 - [ACORD 140 (03/2016)](./acords/acord_140/acord_140_2016_03.json)
+- [ACORD 304 (06/2008)](./acords/acord_304/acord_304_2008_06.json)
 
 #### Loss runs
 
