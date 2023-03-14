@@ -180,7 +180,8 @@
           "method": {
             "id": "box",
             "position": "left",
-            "offsetX": 6.3
+            "offsetX": 6.3,
+            "darknessThreshold": 0.9
           }
         }
       ]
@@ -198,7 +199,7 @@
         "xRangeFilter": {
           "start": "left",
           "offsetX": -0.1,
-          "width": 3
+          "width": 3.2
         }
       },
       "anchor": {
@@ -437,6 +438,19 @@
     {
       "id": "applicant.office_phone",
       "type": "phoneNumber",
+      "method": {
+        "id": "box",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "office phone:",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "applicant.office_phone",
       "method": {
         "id": "box",
         "position": "right"
@@ -1636,6 +1650,23 @@
       }
     },
     {
+      "id": "total_estimated.annual_premium_all_states",
+      "method": {
+        "id": "box",
+        "position": "below"
+      },
+      "anchor": {
+        "start": {
+          "text": "total estimated annual premium",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "total estimated annual premium all states",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "total_estimated.minimum_premium_all_states",
       "type": "currency",
       "method": {
@@ -1654,8 +1685,42 @@
       }
     },
     {
+      "id": "total_estimated.minimum_premium_all_states",
+      "method": {
+        "id": "box",
+        "position": "below"
+      },
+      "anchor": {
+        "start": {
+          "text": "total estimated annual premium",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "total minimum premium all states",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "total_estimated.deposit_premium_all_states",
       "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "below"
+      },
+      "anchor": {
+        "start": {
+          "text": "total estimated annual premium",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "total deposit premium all states",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "total_estimated.deposit_premium_all_states",
       "method": {
         "id": "box",
         "position": "below"
@@ -2188,8 +2253,64 @@
       }
     },
     {
+      "id": "premium_table.total.factored_premium",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 2.3
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "total",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "premium_table.increased_limit.factored_premium",
       "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 2.3
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "increased limit",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.increased_limit.factored_premium",
       "method": {
         "id": "box",
         "position": "left",
@@ -2364,6 +2485,34 @@
     {
       "id": "premium_table.ccpap.factored_premium",
       "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 2.3
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "state",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "ccpap",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.ccpap.factored_premium",
       "method": {
         "id": "box",
         "position": "left",
@@ -2577,6 +2726,23 @@
       }
     },
     {
+      "id": "premium_table.total_estimated_annual_premium",
+      "method": {
+        "id": "box",
+        "position": "below"
+      },
+      "anchor": {
+        "start": {
+          "text": "Premium",
+          "type": "equals"
+        },
+        "match": {
+          "text": "total estimated annual premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "premium_table.minimum_premium",
       "type": "currency",
       "method": {
@@ -2595,8 +2761,42 @@
       }
     },
     {
+      "id": "premium_table.minimum_premium",
+      "method": {
+        "id": "box",
+        "position": "below"
+      },
+      "anchor": {
+        "start": {
+          "text": "Premium",
+          "type": "equals"
+        },
+        "match": {
+          "text": "minimum premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "premium_table.deposit_premium",
       "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "below"
+      },
+      "anchor": {
+        "start": {
+          "text": "Premium",
+          "type": "equals"
+        },
+        "match": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.deposit_premium",
       "method": {
         "id": "box",
         "position": "below"
@@ -3110,6 +3310,12 @@
         "position": "below",
         "wordFilters": [
           "10"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -3151,6 +3357,12 @@
         "position": "below",
         "wordFilters": [
           "11"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -3192,6 +3404,12 @@
         "position": "below",
         "wordFilters": [
           "12"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -3233,6 +3451,12 @@
         "position": "below",
         "wordFilters": [
           "13"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -3274,6 +3498,12 @@
         "position": "below",
         "wordFilters": [
           "14"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -3315,6 +3545,12 @@
         "position": "below",
         "wordFilters": [
           "15"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -3356,6 +3592,12 @@
         "position": "below",
         "wordFilters": [
           "16"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -3397,6 +3639,12 @@
         "position": "below",
         "wordFilters": [
           "17"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -3438,6 +3686,12 @@
         "position": "below",
         "wordFilters": [
           "18"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -3479,6 +3733,12 @@
         "position": "below",
         "wordFilters": [
           "19"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -3602,6 +3862,12 @@
         "position": "below",
         "wordFilters": [
           "22"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
@@ -3643,6 +3909,12 @@
         "position": "below",
         "wordFilters": [
           "23"
+        ],
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^\\d+\\.$"
+          }
         ]
       },
       "anchor": {
