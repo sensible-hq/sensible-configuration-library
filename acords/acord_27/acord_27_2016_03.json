@@ -2,14 +2,20 @@
   "fingerprint": {
     "tests": [
       {
-        "page": "any",
+        "page": "first",
         "match": [
           {
-            "text": "acord 27",
-            "type": "includes"
-          },
-          {
             "text": "EVIDENCE OF PROPERTY INSURANCE",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        ]
+      },
+      {
+        "page": "every",
+        "match": [
+          {
+            "text": "ACORD 27 (2016/03)",
             "type": "equals",
             "isCaseSensitive": true
           }
@@ -18,6 +24,42 @@
     ]
   },
   "fields": [
+    {
+      "id": "agency",
+      "anchor": {
+        "match": {
+          "text": "AGENCY",
+          "type": "equals",
+          "isCaseSensitive": false
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "below",
+        "typeFilters": [
+          "address"
+        ],
+        "lineFilters": [
+          {
+            "type": "includes",
+            "text": "PHONE",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "includes",
+            "text": "a/c"
+          },
+          {
+            "type": "regex",
+            "pattern": "-\\d{4}$"
+          },
+          {
+            "type": "includes",
+            "text": "ext"
+          }
+        ]
+      }
+    },
     {
       "id": "agency",
       "method": {
@@ -44,9 +86,9 @@
       "method": {
         "id": "region",
         "start": "below",
-        "width": 3,
+        "width": 4,
         "height": 0.7,
-        "offsetX": -0.1,
+        "offsetX": -0.2,
         "offsetY": 0.1,
         "typeFilters": [
           "address"
@@ -88,9 +130,9 @@
       "method": {
         "id": "region",
         "start": "below",
-        "width": 3,
+        "width": 4,
         "height": 0.7,
-        "offsetX": -0.1,
+        "offsetX": -0.2,
         "offsetY": 0.1
       },
       "anchor": {
@@ -179,6 +221,24 @@
       }
     },
     {
+      "id": "fax",
+      "type": "phoneNumber",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "text": "No):",
+          "type": "includes"
+        },
+        "end": {
+          "text": "insured",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "email",
       "method": {
         "id": "label",
@@ -197,6 +257,64 @@
           "text": "insured",
           "type": "startsWith"
         }
+      }
+    },
+    {
+      "id": "email",
+      "anchor": {
+        "match": {
+          "text": "E-MAIL",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "lineFilters": [
+          {
+            "type": "includes",
+            "text": "address"
+          }
+        ]
+      }
+    },
+    {
+      "id": "email",
+      "anchor": {
+        "match": [
+          {
+            "text": "E-MAIL",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "ADDRESS:",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        ],
+        "end": [
+          {
+            "text": "E-MAIL",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "ADDRESS",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "CODE:",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        ]
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
       }
     },
     {
@@ -298,6 +416,29 @@
       }
     },
     {
+      "id": "agency.customer_id",
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": 0.01,
+        "offsetY": -0.1,
+        "width": 1,
+        "height": 0.15
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "customer id #",
+            "type": "startsWith"
+          }
+        ],
+        "end": {
+          "text": "insured",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "insured",
       "method": {
         "id": "box",
@@ -377,6 +518,24 @@
       "method": {
         "id": "label",
         "position": "below"
+      },
+      "anchor": {
+        "match": {
+          "text": "effective date",
+          "type": "equals"
+        },
+        "end": {
+          "text": "property info",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "effective_date",
+      "type": "date",
+      "method": {
+        "id": "box",
+        "position": "left"
       },
       "anchor": {
         "match": {
@@ -497,7 +656,8 @@
       "id": "coverage_information.basic",
       "method": {
         "id": "checkbox",
-        "position": "right"
+        "position": "right",
+        "offsetX": 0.2
       },
       "anchor": {
         "match": {
@@ -513,13 +673,13 @@
     {
       "id": "coverage_information.broad",
       "method": {
-        "id": "checkbox",
+        "id": "nearestCheckbox",
         "position": "right"
       },
       "anchor": {
         "match": {
           "text": "broad",
-          "type": "equals"
+          "type": "endsWith"
         },
         "end": {
           "text": "remarks",
@@ -545,7 +705,45 @@
       }
     },
     {
-      "id": "coverage_info_raw",
+      "id": "_coverage_information_raw",
+      "type": "table",
+      "anchor": {
+        "match": [
+          {
+            "pattern": "coverage ?/ ?perils ?/ ?forms",
+            "type": "regex",
+            "flags": "i"
+          }
+        ]
+      },
+      "method": {
+        "id": "textTable",
+        "columns": [
+          {
+            "id": "coverage_perils_forms",
+            "minX": 0.2,
+            "maxX": 6.1
+          },
+          {
+            "id": "amount_of_insurance",
+            "minX": 6.1,
+            "maxX": 7.35
+          },
+          {
+            "id": "deductible",
+            "minX": 7.35,
+            "maxX": 8.3
+          }
+        ],
+        "stop": {
+          "type": "startsWith",
+          "text": "REMARKS",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "_coverage_information_raw",
       "type": "table",
       "anchor": {
         "match": {
@@ -649,6 +847,27 @@
       }
     },
     {
+      "id": "additional_interest.additional_insured",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "additional interest",
+          "type": "equals"
+        },
+        "match": {
+          "text": "additional insured",
+          "type": "equals"
+        },
+        "end": {
+          "text": "acord",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "additional_interest.mortgagee",
       "method": {
         "id": "checkbox",
@@ -704,6 +923,27 @@
         "match": {
           "text": "loss payee",
           "type": "equals"
+        },
+        "end": {
+          "text": "acord",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "additional_interest.loss_payee",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "additional interest",
+          "type": "equals"
+        },
+        "match": {
+          "text": "loss payee",
+          "type": "endsWith"
         },
         "end": {
           "text": "acord",
@@ -817,7 +1057,7 @@
       "method": {
         "id": "zip",
         "source_ids": [
-          "coverage_info_raw"
+          "_coverage_information_raw"
         ]
       }
     }

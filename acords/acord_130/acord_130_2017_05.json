@@ -2,179 +2,27 @@
   "fingerprint": {
     "tests": [
       {
-        "page": "any",
+        "page": "first",
         "match": [
           {
-            "text": "acord 130",
-            "type": "includes"
-          },
+            "text": "WORKERS COMPENSATION APPLICATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        ]
+      },
+      {
+        "page": "every",
+        "match": [
           {
-            "text": "workers compensation application",
-            "type": "includes"
+            "text": "ACORD 130 (2017/05)",
+            "type": "startsWith",
+            "isCaseSensitive": true
           }
         ]
       }
     ]
   },
-  "sections": [
-    {
-      "id": "prior_carrier_information",
-      "range": {
-        "anchor": {
-          "start": {
-            "text": "prior carrier information",
-            "type": "startsWith"
-          },
-          "match": {
-            "type": "includes",
-            "text": "CO:"
-          },
-          "end": {
-            "type": "startsWith",
-            "text": "nature of business"
-          }
-        }
-      },
-      "fields": [
-        {
-          "id": "year",
-          "anchor": {
-            "match": {
-              "type": "startsWith",
-              "text": "CO:"
-            }
-          },
-          "method": {
-            "id": "box",
-            "position": "left",
-            "offsetX": -0.2
-          }
-        },
-        {
-          "id": "carrier",
-          "anchor": {
-            "match": {
-              "type": "startsWith",
-              "text": "CO:"
-            }
-          },
-          "method": {
-            "id": "box",
-            "position": "right"
-          }
-        },
-        {
-          "id": "carrier",
-          "anchor": {
-            "match": {
-              "type": "startsWith",
-              "text": "CO:"
-            }
-          },
-          "method": {
-            "id": "label",
-            "position": "right"
-          }
-        },
-        {
-          "id": "policy_number",
-          "anchor": {
-            "match": {
-              "type": "startsWith",
-              "text": "POL #"
-            }
-          },
-          "method": {
-            "id": "box",
-            "position": "right"
-          }
-        },
-        {
-          "id": "policy_number",
-          "anchor": {
-            "match": {
-              "type": "startsWith",
-              "text": "POL #:"
-            }
-          },
-          "method": {
-            "id": "label",
-            "position": "right"
-          }
-        },
-        {
-          "id": "annual_premium",
-          "anchor": {
-            "match": {
-              "type": "startsWith",
-              "text": "POL #"
-            }
-          },
-          "method": {
-            "id": "box",
-            "position": "left",
-            "offsetX": 3.5
-          }
-        },
-        {
-          "id": "mod",
-          "anchor": {
-            "match": {
-              "type": "startsWith",
-              "text": "POL #"
-            }
-          },
-          "method": {
-            "id": "box",
-            "position": "left",
-            "offsetX": 4.2
-          }
-        },
-        {
-          "id": "number_of_claims",
-          "anchor": {
-            "match": {
-              "type": "startsWith",
-              "text": "POL #"
-            }
-          },
-          "method": {
-            "id": "box",
-            "position": "left",
-            "offsetX": 4.7
-          }
-        },
-        {
-          "id": "amount_paid",
-          "anchor": {
-            "match": {
-              "type": "startsWith",
-              "text": "POL #"
-            }
-          },
-          "method": {
-            "id": "box",
-            "position": "left",
-            "offsetX": 5.3
-          }
-        },
-        {
-          "id": "reserve",
-          "anchor": {
-            "match": {
-              "type": "startsWith",
-              "text": "POL #"
-            }
-          },
-          "method": {
-            "id": "box",
-            "position": "left",
-            "offsetX": 6.3
-          }
-        }
-      ]
-    }
-  ],
   "fields": [
     {
       "id": "agency_name_and_address",
@@ -223,6 +71,11 @@
         "position": "right"
       },
       "anchor": {
+        "start": {
+          "text": "WORKERS COMPENSATION APPLICATION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
         "match": {
           "text": "ext):",
           "type": "includes"
@@ -294,6 +147,11 @@
       "anchor": {
         "start": [
           {
+            "text": "WORKERS COMPENSATION APPLICATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
             "text": "fax",
             "type": "includes"
           },
@@ -315,6 +173,11 @@
         "position": "right"
       },
       "anchor": {
+        "start": {
+          "text": "WORKERS COMPENSATION APPLICATION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
         "match": {
           "text": "code:",
           "type": "startsWith"
@@ -341,6 +204,11 @@
         "position": "right"
       },
       "anchor": {
+        "start": {
+          "text": "WORKERS COMPENSATION APPLICATION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
         "match": {
           "text": "agency customer id:",
           "type": "startsWith"
@@ -507,11 +375,22 @@
       "id": "applicant.website_address",
       "method": {
         "id": "box",
-        "position": "right"
+        "position": "right",
+        "lineFilters": [
+          {
+            "text": "address:",
+            "type": "equals"
+          }
+        ]
       },
       "anchor": {
+        "start": {
+          "text": "WORKERS COMPENSATION APPLICATION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
         "match": {
-          "text": "address:",
+          "text": "website",
           "type": "startsWith"
         }
       }
@@ -533,7 +412,8 @@
       "id": "applicant.org_type.sole_proprietorship",
       "method": {
         "id": "checkbox",
-        "position": "left"
+        "position": "left",
+        "offsetX": -0.1
       },
       "anchor": {
         "match": {
@@ -546,9 +426,15 @@
       "id": "applicant.org_type.partnership",
       "method": {
         "id": "checkbox",
-        "position": "left"
+        "position": "left",
+        "offsetX": -0.1
       },
       "anchor": {
+        "start": {
+          "text": "WORKERS COMPENSATION APPLICATION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
         "match": {
           "text": "partnership",
           "type": "startsWith"
@@ -559,9 +445,15 @@
       "id": "applicant.org_type.corporation",
       "method": {
         "id": "checkbox",
-        "position": "left"
+        "position": "left",
+        "offsetX": -0.1
       },
       "anchor": {
+        "start": {
+          "text": "WORKERS COMPENSATION APPLICATION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
         "match": {
           "text": "corporation",
           "type": "startsWith"
@@ -572,9 +464,15 @@
       "id": "applicant.org_type.s_corp",
       "method": {
         "id": "checkbox",
-        "position": "left"
+        "position": "left",
+        "offsetX": -0.1
       },
       "anchor": {
+        "start": {
+          "text": "WORKERS COMPENSATION APPLICATION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
         "match": {
           "text": "subchapter",
           "type": "startsWith"
@@ -585,9 +483,15 @@
       "id": "applicant.org_type.llc",
       "method": {
         "id": "checkbox",
-        "position": "left"
+        "position": "left",
+        "offsetX": -0.1
       },
       "anchor": {
+        "start": {
+          "text": "WORKERS COMPENSATION APPLICATION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
         "match": {
           "text": "llc",
           "type": "startsWith"
@@ -598,9 +502,15 @@
       "id": "applicant.org_type.joint_venture",
       "method": {
         "id": "checkbox",
-        "position": "left"
+        "position": "left",
+        "offsetX": -0.1
       },
       "anchor": {
+        "start": {
+          "text": "WORKERS COMPENSATION APPLICATION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
         "match": {
           "text": "joint venture",
           "type": "startsWith"
@@ -611,9 +521,15 @@
       "id": "applicant.org_type.trust",
       "method": {
         "id": "checkbox",
-        "position": "left"
+        "position": "left",
+        "offsetX": -0.1
       },
       "anchor": {
+        "start": {
+          "text": "WORKERS COMPENSATION APPLICATION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
         "match": {
           "text": "trust",
           "type": "startsWith"
@@ -624,9 +540,15 @@
       "id": "applicant.org_type.other",
       "method": {
         "id": "checkbox",
-        "position": "left"
+        "position": "left",
+        "offsetX": -0.1
       },
       "anchor": {
+        "start": {
+          "text": "WORKERS COMPENSATION APPLICATION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
         "match": {
           "text": "other",
           "type": "startsWith"
@@ -637,9 +559,15 @@
       "id": "applicant.org_type.unincorporated_association",
       "method": {
         "id": "checkbox",
-        "position": "left"
+        "position": "left",
+        "offsetX": -0.1
       },
       "anchor": {
+        "start": {
+          "text": "WORKERS COMPENSATION APPLICATION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
         "match": {
           "text": "unincorporated",
           "type": "startsWith"
@@ -874,6 +802,10 @@
         "match": {
           "text": "quarterly",
           "type": "startsWith"
+        },
+        "end": {
+          "text": "% down",
+          "type": "startsWith"
         }
       }
     },
@@ -901,10 +833,17 @@
         "position": "left"
       },
       "anchor": {
-        "start": {
-          "text": "audit",
-          "type": "endsWith"
-        },
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION APPLICATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "audit",
+            "type": "equals"
+          }
+        ],
         "match": {
           "text": "monthly",
           "type": "startsWith"
@@ -948,12 +887,13 @@
       }
     },
     {
-      "id": "locations",
+      "id": "_locations",
       "type": "table",
       "anchor": {
         "match": {
-          "text": "locations",
-          "type": "equals"
+          "text": "LOCATIONS",
+          "type": "equals",
+          "isCaseSensitive": true
         }
       },
       "method": {
@@ -977,9 +917,19 @@
           }
         ],
         "stop": {
-          "text": "policy information",
-          "type": "includes"
+          "text": "POLICY INFORMATION",
+          "type": "equals",
+          "isCaseSensitive": true
         }
+      }
+    },
+    {
+      "id": "locations",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_locations"
+        ]
       }
     },
     {
@@ -990,10 +940,17 @@
         "position": "below"
       },
       "anchor": {
-        "start": {
-          "text": "policy information",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION APPLICATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "policy information",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "proposed eff date",
           "type": "includes"
@@ -1008,10 +965,17 @@
         "position": "below"
       },
       "anchor": {
-        "start": {
-          "text": "policy information",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION APPLICATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "policy information",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "proposed exp date",
           "type": "includes"
@@ -1295,10 +1259,17 @@
         "position": "left"
       },
       "anchor": {
-        "start": {
-          "text": "policy information",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION APPLICATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "policy information",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "medical",
           "type": "includes"
@@ -1340,6 +1311,10 @@
         "match": {
           "text": "amount",
           "type": "startsWith"
+        },
+        "end": {
+          "text": "total estimated annual premium",
+          "type": "startsWith"
         }
       }
     },
@@ -1375,12 +1350,13 @@
       "anchor": {
         "start": [
           {
-            "text": "policy information",
-            "type": "startsWith"
+            "text": "WORKERS COMPENSATION APPLICATION",
+            "type": "equals",
+            "isCaseSensitive": true
           },
           {
-            "text": "other coverages",
-            "type": "includes"
+            "text": "policy information",
+            "type": "startsWith"
           }
         ],
         "match": {
@@ -1398,12 +1374,13 @@
       "anchor": {
         "start": [
           {
-            "text": "policy information",
-            "type": "startsWith"
+            "text": "WORKERS COMPENSATION APPLICATION",
+            "type": "equals",
+            "isCaseSensitive": true
           },
           {
-            "text": "other coverages",
-            "type": "includes"
+            "text": "policy information",
+            "type": "startsWith"
           }
         ],
         "match": {
@@ -1432,6 +1409,112 @@
         "match": {
           "text": "managed",
           "type": "includes"
+        }
+      }
+    },
+    {
+      "id": "policy_information.other_coverages.custom_1",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetY": 0.22,
+        "offsetX": -0.1
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION APPLICATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "policy information",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "managed",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "policy_information.other_coverages.custom_1_name",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION APPLICATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "policy information",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "voluntary",
+          "type": "equals"
+        },
+        "end": {
+          "text": "acord 130",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "policy_information.other_coverages.custom_2",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetY": 0.33,
+        "offsetX": -0.1
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION APPLICATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "policy information",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "managed",
+          "type": "equals"
+        }
+      }
+    },
+    {
+      "id": "policy_information.other_coverages.custom_2_name",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION APPLICATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "policy information",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "foreign cov",
+          "type": "equals"
         }
       }
     },
@@ -1544,9 +1627,15 @@
       "id": "_contact_information",
       "type": "table",
       "anchor": {
+        "start": {
+          "text": "WORKERS COMPENSATION APPLICATION",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
         "match": {
-          "text": "contact information",
-          "type": "equals"
+          "text": "CONTACT INFORMATION",
+          "type": "equals",
+          "isCaseSensitive": true
         }
       },
       "method": {
@@ -1583,7 +1672,16 @@
       }
     },
     {
-      "id": "individuals_included_excluded",
+      "id": "contact_information",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_contact_information"
+        ]
+      }
+    },
+    {
+      "id": "_individuals_included_excluded",
       "type": "table",
       "anchor": {
         "match": [
@@ -1647,6 +1745,15 @@
       }
     },
     {
+      "id": "individuals_included_excluded",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_individuals_included_excluded"
+        ]
+      }
+    },
+    {
       "id": "rating_information.state",
       "anchor": {
         "match": {
@@ -1660,7 +1767,7 @@
       }
     },
     {
-      "id": "rating_information.table",
+      "id": "_rating_information.table",
       "anchor": {
         "match": {
           "text": "rating information - state",
@@ -1732,16 +1839,31 @@
       }
     },
     {
+      "id": "rating_information.table",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_rating_information.table"
+        ]
+      }
+    },
+    {
       "id": "premium.state",
       "method": {
         "id": "label",
         "position": "right"
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "type": "startsWith",
+            "text": "rating information - state:"
+          },
+          {
+            "text": "premium",
+            "type": "startsWith"
+          }
+        ],
         "match": {
           "text": "state:",
           "type": "includes"
@@ -2234,7 +2356,7 @@
       "method": {
         "id": "box",
         "position": "left",
-        "offsetX": 2.3
+        "offsetX": 3
       },
       "anchor": {
         "start": [
@@ -2514,6 +2636,34 @@
       }
     },
     {
+      "id": "premium_table.taxes_and_assessments.factor",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 1.7
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "taxes",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "deposit premium",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
       "id": "premium_table.expense_constant.factored_premium",
       "type": "currency",
       "method": {
@@ -2534,35 +2684,6 @@
         ],
         "match": {
           "text": "expense constant",
-          "type": "startsWith"
-        },
-        "end": {
-          "text": "deposit premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.taxes_and_assessments.factor",
-      "type": "currency",
-      "method": {
-        "id": "box",
-        "position": "left",
-        "offsetX": 1.7
-      },
-      "anchor": {
-        "start": [
-          {
-            "text": "rating information",
-            "type": "startsWith"
-          },
-          {
-            "text": "factored premium",
-            "type": "startsWith"
-          }
-        ],
-        "match": {
-          "text": "taxes",
           "type": "startsWith"
         },
         "end": {
@@ -2601,12 +2722,12 @@
       }
     },
     {
-      "id": "premium_table.estimated_annual_premium.factored_premium",
-      "type": "currency",
+      "id": "premium_table.custom_1.factor",
       "method": {
         "id": "box",
         "position": "left",
-        "offsetX": 2.3
+        "offsetX": 2.25,
+        "offsetY": 0.15
       },
       "anchor": {
         "start": [
@@ -2620,7 +2741,56 @@
           }
         ],
         "match": {
-          "text": "estimated annual premium",
+          "text": "taxes",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.custom_1.factored_premium",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 3,
+        "offsetY": 0.15
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "taxes",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "premium_table.custom_1.name",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "factored premium",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "taxes",
           "type": "startsWith"
         }
       }
@@ -2645,7 +2815,7 @@
           }
         ],
         "match": {
-          "text": "total est annual premium",
+          "text": "total estimated annual premium",
           "type": "startsWith"
         }
       }
@@ -2701,60 +2871,6 @@
       }
     },
     {
-      "id": "premium_table.total_estimated_annual_premium",
-      "type": "currency",
-      "method": {
-        "id": "box",
-        "position": "below"
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "equals"
-        },
-        "match": {
-          "text": "total estimated annual premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.minimum_premium",
-      "type": "currency",
-      "method": {
-        "id": "box",
-        "position": "below"
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "equals"
-        },
-        "match": {
-          "text": "minimum premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "premium_table.deposit_premium",
-      "type": "currency",
-      "method": {
-        "id": "box",
-        "position": "below"
-      },
-      "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "equals"
-        },
-        "match": {
-          "text": "deposit premium",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
       "id": "remarks",
       "method": {
         "id": "box",
@@ -2762,10 +2878,16 @@
         "offsetY": 0.3
       },
       "anchor": {
-        "start": {
-          "text": "premium",
-          "type": "equals"
-        },
+        "start": [
+          {
+            "text": "rating information",
+            "type": "startsWith"
+          },
+          {
+            "text": "premium",
+            "type": "equals"
+          }
+        ],
         "match": {
           "text": "remarks (",
           "type": "startsWith"
@@ -2775,6 +2897,164 @@
           "type": "startsWith"
         }
       }
+    },
+    {
+      "id": "prior_carrier_information",
+      "type": "sections",
+      "range": {
+        "anchor": {
+          "start": {
+            "text": "prior carrier information",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "CO:"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "nature of business"
+          }
+        }
+      },
+      "fields": [
+        {
+          "id": "year",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "CO:"
+            }
+          },
+          "method": {
+            "id": "box",
+            "position": "left",
+            "offsetX": -0.2
+          }
+        },
+        {
+          "id": "carrier",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "CO:"
+            }
+          },
+          "method": {
+            "id": "box",
+            "position": "right"
+          }
+        },
+        {
+          "id": "carrier",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "CO:"
+            }
+          },
+          "method": {
+            "id": "label",
+            "position": "right"
+          }
+        },
+        {
+          "id": "policy_number",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "POL #"
+            }
+          },
+          "method": {
+            "id": "box",
+            "position": "right"
+          }
+        },
+        {
+          "id": "policy_number",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "POL #:"
+            }
+          },
+          "method": {
+            "id": "label",
+            "position": "right"
+          }
+        },
+        {
+          "id": "annual_premium",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "POL #"
+            }
+          },
+          "method": {
+            "id": "box",
+            "position": "left",
+            "offsetX": 3.5
+          }
+        },
+        {
+          "id": "mod",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "POL #"
+            }
+          },
+          "method": {
+            "id": "box",
+            "position": "left",
+            "offsetX": 4.2
+          }
+        },
+        {
+          "id": "number_of_claims",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "POL #"
+            }
+          },
+          "method": {
+            "id": "box",
+            "position": "left",
+            "offsetX": 4.7
+          }
+        },
+        {
+          "id": "amount_paid",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "POL #"
+            }
+          },
+          "method": {
+            "id": "box",
+            "position": "left",
+            "offsetX": 5.3
+          }
+        },
+        {
+          "id": "reserve",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "POL #"
+            }
+          },
+          "method": {
+            "id": "box",
+            "position": "left",
+            "offsetX": 6.3
+          }
+        }
+      ]
     },
     {
       "id": "nature_of_business.description",
@@ -2855,10 +3135,16 @@
         }
       },
       "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION",
+            "type": "startsWith"
+          },
+          {
+            "text": "general information",
+            "type": "equals"
+          }
+        ],
         "match": {
           "text": "transporting of hazardous material? (e.g. landfills, wastes, fuel tanks, etc)",
           "type": "endsWith"
@@ -3412,10 +3698,17 @@
         ]
       },
       "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "general information",
+            "type": "equals"
+          }
+        ],
         "match": {
           "text": "are athletic teams sponsored?",
           "type": "includes"
@@ -3638,10 +3931,16 @@
         }
       },
       "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION",
+            "type": "startsWith"
+          },
+          {
+            "text": "general information",
+            "type": "equals"
+          }
+        ],
         "match": {
           "text": "do you lease employees to or from other employers?",
           "type": "includes"
@@ -3658,10 +3957,17 @@
         ]
       },
       "anchor": {
-        "start": {
-          "text": "general information",
-          "type": "equals"
-        },
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "general information",
+            "type": "equals"
+          }
+        ],
         "match": {
           "text": "do you lease employees to or from other employers?",
           "type": "includes"
@@ -3800,16 +4106,23 @@
       "method": {
         "id": "signature",
         "start": "below",
-        "width": 2.75,
-        "height": 0.23,
-        "offsetX": -1.25,
+        "width": 2.7,
+        "height": 0.2,
+        "offsetX": -1.2,
         "offsetY": 0
       },
       "anchor": {
-        "start": {
-          "text": "signature",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "signature",
+            "type": "equals"
+          }
+        ],
         "match": {
           "text": "applicant's signature",
           "type": "startsWith"
@@ -3823,12 +4136,23 @@
         "position": "below"
       },
       "anchor": {
-        "start": {
-          "text": "signature",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "signature",
+            "type": "equals"
+          }
+        ],
         "match": {
           "text": "date",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "acord 130",
           "type": "startsWith"
         }
       }
@@ -3838,16 +4162,23 @@
       "method": {
         "id": "signature",
         "start": "below",
-        "width": 2.79,
-        "height": 0.23,
-        "offsetX": -0.58,
+        "width": 2.76,
+        "height": 0.2,
+        "offsetX": -0.54,
         "offsetY": 0
       },
       "anchor": {
-        "start": {
-          "text": "signature",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "signature",
+            "type": "equals"
+          }
+        ],
         "match": {
           "text": "producer's signature",
           "type": "startsWith"
@@ -3861,10 +4192,17 @@
         "position": "below"
       },
       "anchor": {
-        "start": {
-          "text": "signature",
-          "type": "startsWith"
-        },
+        "start": [
+          {
+            "text": "WORKERS COMPENSATION",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "signature",
+            "type": "equals"
+          }
+        ],
         "match": {
           "text": "national producer number",
           "type": "startsWith"
@@ -3874,11 +4212,14 @@
   ],
   "computed_fields": [
     {
-      "id": "contact_information",
+      "id": "cleanOutput",
       "method": {
-        "id": "zip",
+        "id": "suppressOutput",
         "source_ids": [
-          "_contact_information"
+          "_locations",
+          "_contact_information",
+          "_individuals_included_excluded",
+          "_rating_information.table"
         ]
       }
     }

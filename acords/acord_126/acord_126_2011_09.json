@@ -1,0 +1,6275 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "first",
+          "match": [
+            {
+              "text": "COMMERCIAL GENERAL LIABILITY SECTION",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        {
+          "page": "every",
+          "match": [
+            {
+              "text": "ACORD 126 (2011/09)",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "agency.customer_id",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "agency customer id:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency.customer_id",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "match": {
+            "text": "agency customer id:",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "above",
+          "offsetY": -0.15
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "NAIC CODE",
+              "type": "equals"
+            }
+          ],
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agency",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "agency",
+              "type": "equals"
+            }
+          ],
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "carrier",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "CARRIER",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "naic code",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "NAIC CODE",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "policy_number",
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "match": {
+            "text": "POLICY NUMBER",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "effective date",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "applicant_first_named_insured",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "match": {
+            "text": "FIRST NAMED INSURED",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "coverages",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.commercial_general_liability",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "commercial general",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.claims_made",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "claims made",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.occurrence",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "occurrence",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.owners_and_contractors_protective",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "owner's",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.deductibles.property_damage",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "property damage",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.deductibles.property_damage_amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 1.75,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "property damage",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.deductibles.bodily_injury",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "bodily injury",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.deductibles_bodily_injury_amount",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 1.25,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "bodily injury",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.deductibles.bodily_injury.per_claim",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "DEDUCTIBLES",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "CLAIM",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.deductibles.bodily_injury.per_occurrence",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "DEDUCTIBLES",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "OCCURRENCE",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.general_aggregate",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "general aggregate",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.general_aggregate.limit_applies_per.policy",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "LIMIT APPLIES PER:",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "POLICY",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.general_aggregate.limit_applies_per.location",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "LIMIT APPLIES PER:",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "LOCATION",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.general_aggregate.limit_applies_per.project",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "LIMIT APPLIES PER:",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "PROJECT",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.general_aggregate.limit_applies_per.other",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "LIMIT APPLIES PER:",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "OTHER:",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.products_and_completed_operations_aggregate",
+        "type": {
+          "id": "currency"
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 1.43,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products &",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.products_and_completed_operations_aggregate",
+        "type": {
+          "id": "currency"
+        },
+        "method": {
+          "id": "label",
+          "position": "right",
+          "tiebreaker": "last",
+          "wordFilters": [
+            ","
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products &",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.personal_and_advertising_injury",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 2.18,
+            "offsetX": 0
+          },
+          "whitespaceFilter": "spaces"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "personal &",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.personal_and_advertising_injury",
+        "type": "currency",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1,
+          "height": 0.15,
+          "offsetX": 2.2,
+          "offsetY": -0.1,
+          "whitespaceFilter": "spaces"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "personal &",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.each_occurrence",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 2.76,
+            "offsetX": 0
+          },
+          "whitespaceFilter": "all",
+          "wordFilters": [
+            ","
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "each occurrence",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.damage_to_rented_premises",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 1.58,
+            "offsetX": 0
+          },
+          "whitespaceFilter": "all"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "damage to rented",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.damage_to_rented_premises",
+        "type": "currency",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1,
+          "height": 0.15,
+          "offsetX": 2.2,
+          "offsetY": -0.1,
+          "whitespaceFilter": "spaces"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "damage to rented",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.medical_expense",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 2.15,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "medical expense",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.employee_benefits",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "width": 2.73,
+            "offsetX": 0
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "employee benefits",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.custom_limit.name",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "employee benefits",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.limits.custom_limit.amount",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1,
+          "height": 0.15,
+          "offsetX": 2.6,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "employee benefits",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.premiums.premises_operations",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "premises/operations",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.premiums.products",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "products",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.premiums.other",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "PREMIUMS",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "OTHER",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.premiums.total",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "PREMIUMS",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "total",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.other_coverages",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "other coverages,",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.wisconsin.um_coverage.is_available",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "applicable only in wisconsin",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "UIM COVERAGE",
+            "type": "endsWith",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "coverages.wisconsin.medical_payments_coverage.is_available",
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "applicable only in wisconsin",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "MEDICAL PAYMENTS COVERAGE",
+            "type": "endsWith",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "schedule of hazards",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_schedule_of_hazards",
+        "type": "table",
+        "anchor": {
+          "start": {
+            "text": "SCHEDULE OF HAZARDS",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "PREM/OPS",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "fixedTable",
+          "columnCount": 11,
+          "startOnRow": 2,
+          "columns": [
+            {
+              "id": "loc_num",
+              "index": 0
+            },
+            {
+              "id": "haz_num",
+              "index": 1
+            },
+            {
+              "id": "classification",
+              "index": 2
+            },
+            {
+              "id": "class_code",
+              "index": 3
+            },
+            {
+              "id": "premium_basis",
+              "index": 4
+            },
+            {
+              "id": "exposure",
+              "index": 5,
+              "type": "currency",
+              "isRequired": true
+            },
+            {
+              "id": "terr",
+              "index": 6
+            },
+            {
+              "id": "rate.prem_ops",
+              "index": 7
+            },
+            {
+              "id": "rate.products",
+              "index": 8
+            },
+            {
+              "id": "premium.prem_ops",
+              "index": 9
+            },
+            {
+              "id": "premium.products",
+              "index": 10
+            }
+          ],
+          "stop": {
+            "text": "RATING AND PREMIUM BASIS",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "schedule_of_hazards",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "_schedule_of_hazards"
+          ]
+        }
+      },
+      {
+        "id": "cleantable",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_schedule_of_hazards"
+          ]
+        }
+      },
+      {
+        "id": "claims_made.proposed_retroactive_date",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "retroactive date:",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claims_made.entry_date_uninterrupted_claims_made_coverage",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "uninterrupted claims made coverage",
+            "type": "includes"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claims_made.any_product_work_accident_location_been_excluded",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "any previous coverage?",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claims_made.any_product_work_accident_location_been_excluded",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "any previous coverage?",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claims_made.any_product_work_accident_location_been_excluded_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "any previous coverage?",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claims_made.tail_coverage_purchased",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "any previous policy?",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claims_made.tail_coverage_purchased",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "any previous policy?",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "claims_made.tail_coverage_purchased_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "explain all",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "any previous policy?",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "employee_benefits_liability.deductible_per_claim",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "1. ",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "employee_benefits_liability.deductible_per_claim",
+        "type": "currency",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 2.32
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "1. ",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "employee_benefits_liability.number_of_employees",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "2. ",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "employee_benefits_liability.number_of_employees_covered",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "3. ",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "employee_benefits_liability.retroactive_date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "4. ",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "employee_benefits_liability.retroactive_date",
+        "type": "date",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "4. ",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.applicant_draw_plans_for_others",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "does applicant draw plans",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "contractors.applicant_draw_plans_for_others",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "does applicant draw plans",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "contractors.applicant_draw_plans_for_others_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "does applicant draw plans",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "contractors.any_operations_include_blasting_or_explosive_material",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "2. do any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.any_operations_include_blasting_or_explosive_material",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "2. do any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.any_operations_include_blasting_or_explosive_material_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "2. do any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.any_operation_include_excavation",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "3. do any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.any_operation_include_excavation",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "3. do any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.any_operation_include_excavation_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "3. do any",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.subcontractors_carry_coverages_less",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "4. do your",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.subcontractors_carry_coverages_less",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "4. do your",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.subcontractors_carry_coverages_less_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "4. do your",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.subcontractors_allowed_to_work_without_insurance_certificate",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "5. are",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.subcontractors_allowed_to_work_without_insurance_certificate",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "5. are",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.subcontractors_allowed_to_work_without_insurance_certificate_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "5. are",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.applicant_lease_equipment_to_others",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "6. does",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.applicant_lease_equipment_to_others",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "6. does",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.applicant_lease_equipment_to_others_explanation",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "text": "# part",
+              "type": "startsWith"
+            },
+            {
+              "text": "# full",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "anchor": {
+          "start": {
+            "text": "contractors",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "6. does",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.describe_type_of_work_subcontracted",
+        "method": {
+          "id": "documentRange",
+          "offsetY": 0.1,
+          "stop": {
+            "text": "PRODUCTS",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "time staff:",
+              "type": "startsWith"
+            },
+            {
+              "text": "time staff",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "PRODUCTS",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "contractors.money_paid_to_subcontractors",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "contractors",
+              "type": "endsWith"
+            },
+            {
+              "text": "describe the type of work",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "contractors:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.percentage_of_work_subcontracted",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "contractors",
+              "type": "endsWith"
+            },
+            {
+              "text": "describe the type of work",
+              "type": "startsWith"
+            }
+          ],
+          "match": {
+            "text": "subcontracted",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "contractors.number_of_full_time_staff",
+        "type": "number",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "time staff:",
+            "type": "startsWith"
+          },
+          "end": [
+            {
+              "text": "time staff:",
+              "type": "startsWith"
+            },
+            {
+              "text": "time staff:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "contractors.number_of_full_time_staff",
+        "type": "number",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 0.5,
+          "height": 0.2,
+          "offsetX": 0.6,
+          "offsetY": -0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "time staff:",
+            "type": "startsWith"
+          },
+          "end": [
+            {
+              "text": "time staff:",
+              "type": "startsWith"
+            },
+            {
+              "text": "time staff:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "contractors.number_of_part_time_staff",
+        "type": "number",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "time staff:",
+              "type": "startsWith"
+            },
+            {
+              "text": "time staff:",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "products/completed operations",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "_products_completed_operations",
+        "type": "table",
+        "anchor": {
+          "match": {
+            "pattern": "PRODUCTS ?/",
+            "type": "regex"
+          }
+        },
+        "method": {
+          "id": "fixedTable",
+          "columnCount": 7,
+          "columns": [
+            {
+              "id": "products",
+              "index": 0
+            },
+            {
+              "id": "annual_gross_sales",
+              "type": "currency",
+              "isRequired": true,
+              "index": 1
+            },
+            {
+              "id": "number_of_units",
+              "index": 2
+            },
+            {
+              "id": "time_in_market",
+              "index": 3
+            },
+            {
+              "id": "expected_life",
+              "index": 4
+            },
+            {
+              "id": "intended_use",
+              "index": 5
+            },
+            {
+              "id": "principal_components",
+              "index": 6
+            }
+          ],
+          "stop": {
+            "type": "startsWith",
+            "text": "explain all"
+          }
+        }
+      },
+      {
+        "id": "products_completed_operations",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "_products_completed_operations"
+          ]
+        }
+      },
+      {
+        "id": "clean",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_products_completed_operations"
+          ]
+        }
+      },
+      {
+        "id": "products.applicant_installs_services_demonstrates_products",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "does applicant install, service",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.applicant_installs_services_demonstrates_products",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "does applicant install, service",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.applicant_installs_services_demonstrates_products_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "does applicant install, service",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.foreign_products",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "foreign products sold",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.foreign_products",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "foreign products sold",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.research_and_development_conducted",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "research and development",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.research_and_development_conducted",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "research and development",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.research_and_development_conducted_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "research and development",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.guarantees_warranties_hold_harmless_agreements",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "guarantees, warranties",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.guarantees_warranties_hold_harmless_agreements",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "guarantees, warranties",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.guarantees_warranties_hold_harmless_agreements_explanantion",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "guarantees, warranties",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_related_to_aircraft_space_industry",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "products related to aircraft",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_related_to_aircraft_space_industry",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "products related to aircraft",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_related_to_aircraft_space_industry_explanantion",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "products related to aircraft",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_recalled_discontinued_changed",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "products recalled",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_recalled_discontinued_changed",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "products recalled",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_recalled_discontinued_changed_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "products recalled",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_of_others_sold",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "products of others sold",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_of_others_sold",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "products of others sold",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_of_others_sold_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "products of others sold",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_under_label_of_others",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "products under label",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_under_label_of_others",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "products under label",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.products_under_label_of_others_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "products under label",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.vendors_coverage_required",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "vendors coverage required",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.vendors_coverage_required",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "vendors coverage required",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.vendors_coverage_required_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "vendors coverage required",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.any_named_insureds_sell_to_others",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "does any named insured sell",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.any_named_insureds_sell_to_others",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "does any named insured sell",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "products.any_named_insureds_sell_to_others_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "completed operations",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "does any named insured sell",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.interest.additional_insured",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "additional insured",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.interest.loss_payee",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "loss payee",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.interest.mortgagee",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "mortgagee",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.interest.lienholder",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "lienholder",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.interest.employee_as_lessor",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "employee as lessor",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.interest.lenders_loss_payable",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "loss payable",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.rank",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "rank:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.name_and_address",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 4.2,
+          "height": 0.84,
+          "offsetX": 0,
+          "offsetY": 0.07
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "name and address",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.reference_loan_number",
+        "method": {
+          "id": "box",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "loan #:",
+            "type": "includes"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.certificate",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "certificate",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.location",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "location:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.building",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "building:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.item_class",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "class:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.item",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "item:",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "additional_interest.item_description",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": {
+            "text": "certificate recipient",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "item description",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "general information",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_medical_facilities_provided",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "ANY MEDICAL FACILITIES PROVIDED",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_medical_facilities_provided",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "ANY MEDICAL FACILITIES PROVIDED",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_medical_facilities_provided_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "ANY MEDICAL FACILITIES PROVIDED",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_exposure_radioactive_nuclear_materials",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any exposure to radioactive",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_exposure_radioactive_nuclear_materials",
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any exposure to radioactive",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_exposure_radioactive_nuclear_materials_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any exposure to radioactive",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.hazardous_material",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "transporting of hazardous",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.hazardous_material",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "transporting of hazardous",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.hazardous_material_explanation",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 7.2,
+          "height": 0.35,
+          "offsetX": -0.22,
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "transporting of hazardous",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_operations_sold_acquired_discontinued",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any operations sold",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_operations_sold_acquired_discontinued",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any operations sold",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_operations_sold_acquired_discontinued_explanation",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "text": "4.",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any operations sold",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.equipment_loaned_or_rented",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.2
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "rent or loan equipment",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.equipment_loaned_or_rented",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "rent or loan equipment",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.equipment_loaned_or_rented.equipment_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "equipment",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.equipment_loaned_or_rented.instruction_given_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "instruction given",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.equipment_loaned_or_rented.small_tools_1",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "small tools",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.equipment_loaned_or_rented.large_equipment_1",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "large equipment",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.equipment_loaned_or_rented.equipment_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "equipment",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.equipment_loaned_or_rented.instruction_given_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "instruction given",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.equipment_loaned_or_rented.small_tools_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "text": "small tools",
+              "type": "startsWith"
+            },
+            {
+              "text": "small tools",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.equipment_loaned_or_rented.large_equipment_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "text": "large equipment",
+              "type": "startsWith"
+            },
+            {
+              "text": "large equipment",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.watercraft_docks_floats",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any watercraft",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.watercraft_docks_floats",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any watercraft",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.watercraft_docks_floats_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any watercraft",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.parking_facilities_owned_rented",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any parking facilities",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.parking_facilities_owned_rented",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any parking facilities",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.parking_facilities_owned_rented_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any parking facilities",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.fee_charged_for_parking",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "is a fee charged for parking",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.fee_charged_for_parking",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "is a fee charged for parking",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.fee_charged_for_parking_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "is a fee charged for parking",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.recreation_facilities_provided",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "recreation facilities provided",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.recreation_facilities_provided",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "recreation facilities provided",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.recreation_facilities_provided_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "recreation facilities provided",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lodging_operations",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any lodging operations",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lodging_operations",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any lodging operations",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lodging_operations",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "width": 0.7,
+          "height": 0.25,
+          "offsetX": 2.5,
+          "offsetY": -0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "any lodging operations",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lodging_operations.number_of_apartments",
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "# apts",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lodging_operations.total_apartment_area",
+        "method": {
+          "id": "label",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "total apt area",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lodging_operations.other_lodging_operations_description",
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "describe other lodging",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.swimming_pool_on_premises",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "there a swimming pool",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.swimming_pool_on_premises",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "there a swimming pool",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.swimming_pool_on_premises.approved_fence",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "approved fence",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.swimming_pool_on_premises.limited_access",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "limited access",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.swimming_pool_on_premises.diving board",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "diving board",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.swimming_pool_on_premises.slide",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "slide",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.swimming_pool_on_premises.above_ground",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "above ground",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.swimming_pool_on_premises.in_ground",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "in ground",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.swimming_pool_on_premises.life_guard",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "life guard",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.social_events",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "social events sponsored",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.social_events",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "social events sponsored",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.social_events",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "width": 0.7,
+          "height": 0.25,
+          "offsetX": 5.1,
+          "offsetY": -0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "social events sponsored",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.social_events_explanation",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "wordFilters": [
+            "approved fence"
+          ],
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^\\d+\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "social events sponsored",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.athletic_teams_sponsored",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "athletic teams sponsored",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.athletic_teams_sponsored",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "athletic teams sponsored",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.athletic_teams_sponsored.type_of_sport_1",
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "type of sport",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.athletic_teams_sponsored.contact_sport_1",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "sport (y",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.athletic_teams_sponsored.age_group.12_and_under_1",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "12 & under",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.athletic_teams_sponsored.age_group.13_to_18_1",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "13 - 18",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.athletic_teams_sponsored.age_group.over_18_1",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "over 18",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.athletic_teams_sponsored.type_of_sport_2",
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "text": "type of sport",
+              "type": "includes"
+            },
+            {
+              "text": "type of sport",
+              "type": "includes"
+            }
+          ],
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.athletic_teams_sponsored.contact_sport_2",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "text": "sport (y",
+              "type": "includes"
+            },
+            {
+              "text": "sport (y",
+              "type": "includes"
+            }
+          ],
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.athletic_teams_sponsored.age_group.12_and_under_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "text": "12 & under",
+              "type": "includes"
+            },
+            {
+              "text": "12 & under",
+              "type": "includes"
+            }
+          ],
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.athletic_teams_sponsored.age_group.13_to_18_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "text": "13 - 18",
+              "type": "includes"
+            },
+            {
+              "text": "13 - 18",
+              "type": "includes"
+            }
+          ],
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.athletic_teams_sponsored.age_group.over_18_2",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "text": "over 18",
+              "type": "includes"
+            },
+            {
+              "text": "over 18",
+              "type": "includes"
+            }
+          ],
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.structural_alterations_contemplated",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "structural alterations contemplated",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.structural_alterations_contemplated",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "structural alterations contemplated",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.structural_alterations_contemplated_explanation",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^\\d+\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "structural alterations contemplated",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_demolition_exposure_contemplated",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "demolition exposure contemplated",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_demolition_exposure_contemplated",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "demolition exposure contemplated",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.any_demolition_exposure_contemplated_explanation",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "lineFilters": [
+            {
+              "type": "regex",
+              "pattern": "^\\d+\\.$"
+            }
+          ]
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "demolition exposure contemplated",
+            "type": "includes"
+          },
+          "end": {
+            "text": "acord",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.applicant_involved_joint_ventures",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "active in joint ventures",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.applicant_involved_joint_ventures",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "active in joint ventures",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.applicant_involved_joint_ventures_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "active in joint ventures",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.lease_employees_other_employers",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "do you lease employees to",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.lease_employees_other_employers",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "do you lease employees to",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.lease_employees_other_employers.lease_to_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.15
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "lease to",
+            "type": "equals"
+          },
+          "end": {
+            "text": "labor interchange",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lease_employees_other_employers.lease_to.wc_coverage_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "text": "coverage carried",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "labor interchange",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lease_employees_other_employers.lease_to_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "lease to",
+            "type": "equals"
+          },
+          "end": {
+            "text": "labor interchange",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lease_employees_other_employers.lease_to.wc_coverage_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "text": "coverage carried",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "labor interchange",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lease_employees_other_employers.lease_from_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.15
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "lease from",
+            "type": "equals"
+          },
+          "end": {
+            "text": "labor interchange",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lease_employees_other_employers.lease_from.wc_coverage_1",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.1
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "text": "coverage carried",
+              "type": "startsWith"
+            },
+            {
+              "text": "coverage carried",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "labor interchange",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lease_employees_other_employers.lease_from_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "lease from",
+            "type": "equals"
+          },
+          "end": {
+            "text": "labor interchange",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.lease_employees_other_employers.lease_from.wc_coverage_2",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.3
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": [
+            {
+              "text": "coverage carried",
+              "type": "startsWith"
+            },
+            {
+              "text": "coverage carried",
+              "type": "startsWith"
+            }
+          ],
+          "end": {
+            "text": "labor interchange",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "general_information.labor_interchange_other_business_or_subsidiaries",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "labor interchange with any",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.labor_interchange_other_business_or_subsidiaries",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "labor interchange with any",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.labor_interchange_other_business_or_subsidiaries_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "labor interchange with any",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.day_care_facilities",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "day care facilities operated",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.day_care_facilities",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "day care facilities operated",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.day_care_facilities_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "day care facilities operated",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.crimes_occured_or_attempted",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "crimes occurred or been attempted",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.crimes_occured_or_attempted",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "crimes occurred or been attempted",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.crimes_occured_or_attempted_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "crimes occurred or been attempted",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.formal_safety_policy",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "formal, written safety",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.formal_safety_policy",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "formal, written safety",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.formal_safety_policy_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "formal, written safety",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.does_business_promotion_represent_premises_safety_or_security",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetX": 7.25
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "promotional literature",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.does_business_promotion_represent_premises_safety_or_security",
+        "type": {
+          "id": "custom",
+          "pattern": "^Y$|^N$"
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "promotional literature",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "general_information.does_business_promotion_represent_premises_safety_or_security_explanation",
+        "method": {
+          "id": "box",
+          "position": "below"
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "promotional literature",
+            "type": "includes"
+          }
+        }
+      },
+      {
+        "id": "remarks",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        },
+        "anchor": {
+          "start": [
+            {
+              "text": "certificate recipient",
+              "type": "endsWith"
+            },
+            {
+              "text": "GENERAL INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ],
+          "match": {
+            "text": "REMARKS",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      }
+    ]
+  }

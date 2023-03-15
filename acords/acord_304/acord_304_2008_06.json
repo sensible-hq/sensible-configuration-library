@@ -1,0 +1,574 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "first",
+          "match": [
+            {
+              "text": "NATIONAL FLOOD INSURANCE PROGRAM",
+              "type": "includes",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "FLOOD INSURANCE CANCELLATION",
+              "type": "includes",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        {
+          "page": "every",
+          "match": [
+            {
+              "text": "ACORD 304 (2008/06)",
+              "type": "includes"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "mailing_address_of_licensed_prop_or_casualty_insurance",
+        "anchor": {
+          "match": {
+            "text": "mailing address of licensed property",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "lineFilters": [
+            {
+              "text": "policy is being terminated",
+              "type": "endsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "phone",
+        "type": "phoneNumber",
+        "anchor": {
+          "match": {
+            "text": "No, Ext):",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "first mortgagee",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "fax",
+        "type": "phoneNumber",
+        "anchor": {
+          "match": {
+            "text": "No):",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "first mortgagee",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "insureds_name",
+        "anchor": {
+          "match": {
+            "text": "insured's name",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "typeFilters": [
+            "phoneNumber",
+            "address"
+          ]
+        }
+      },
+      {
+        "id": "insureds_address",
+        "type": "address",
+        "anchor": {
+          "match": {
+            "text": "insured's name",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "left"
+        }
+      },
+      {
+        "id": "insureds_phone",
+        "type": "phoneNumber",
+        "anchor": {
+          "match": {
+            "text": "insured's name",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "left"
+        }
+      },
+      {
+        "id": "current_policy_number",
+        "anchor": {
+          "match": {
+            "text": "current policy #",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "left"
+        }
+      },
+      {
+        "id": "policy_term_start",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "policy term is",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "left"
+        }
+      },
+      {
+        "id": "policy_term_end",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "to (mm",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "left"
+        }
+      },
+      {
+        "id": "policy_term_end",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "to (mm",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "cancellation_eff_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "cancellation",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "cancellation_eff_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "to (mm",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "tiebreaker": "second"
+        }
+      },
+      {
+        "id": "first_mortgagee",
+        "anchor": {
+          "match": {
+            "text": "first mortgagee",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "left",
+          "typeFilters": [
+            "address"
+          ]
+        }
+      },
+      {
+        "id": "first_mortgagee_address",
+        "type": "address",
+        "anchor": {
+          "match": {
+            "text": "first mortgagee",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "left"
+        }
+      },
+      {
+        "id": "loan_number",
+        "anchor": {
+          "match": {
+            "text": "loan number:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "mortgagee_fax",
+        "type": "phoneNumber",
+        "anchor": {
+          "match": {
+            "text": "No):",
+            "type": "endsWith"
+          },
+          "start": {
+            "text": "first mortgagee",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "mortgagee_fax",
+        "anchor": {
+          "match": {
+            "text": "No):",
+            "type": "endsWith"
+          },
+          "start": {
+            "text": "first mortgagee",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "mortgagee_phone",
+        "type": "phoneNumber",
+        "anchor": {
+          "match": {
+            "text": "No, Ext):",
+            "type": "endsWith"
+          },
+          "start": {
+            "text": "first mortgagee",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "insured_property_location",
+        "type": "address",
+        "anchor": {
+          "match": {
+            "text": "insured property location",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "left"
+        }
+      },
+      {
+        "id": "other_parties_notified",
+        "anchor": {
+          "match": {
+            "text": "other parties notified",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "left"
+        }
+      },
+      {
+        "id": "cancellation_reason_code",
+        "anchor": {
+          "match": {
+            "text": "cancellation reason code:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "insured_signed",
+        "method": {
+          "id": "signature",
+          "start": "left",
+          "offsetX": -1,
+          "offsetY": -0.2,
+          "width": 2.2,
+          "height": 0.1
+        },
+        "anchor": {
+          "match": {
+            "text": "signature of insured",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "make_refund_payable_to.insured",
+        "anchor": {
+          "match": {
+            "text": "insured",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "mail refund to",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "make_refund_payable_to.payor",
+        "anchor": {
+          "match": {
+            "text": "payor",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "mail refund to",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "make_refund_payable_to.agent",
+        "anchor": {
+          "match": {
+            "text": "payor",
+            "type": "endsWith"
+          },
+          "end": {
+            "text": "mail refund to",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right",
+          "offsetX": 0.6
+        }
+      },
+      {
+        "id": "mail_refund_to.insured",
+        "anchor": {
+          "match": {
+            "text": "insured",
+            "type": "endsWith"
+          },
+          "start": {
+            "text": "mail refund to",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "mail_refund_to.payor",
+        "anchor": {
+          "match": {
+            "text": "payor",
+            "type": "endsWith"
+          },
+          "start": {
+            "text": "mail refund to",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "mail_refund_to.agent",
+        "anchor": {
+          "match": {
+            "text": "payor",
+            "type": "endsWith"
+          },
+          "start": {
+            "text": "mail refund to",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right",
+          "offsetX": 0.6
+        }
+      },
+      {
+        "id": "insured_signed_date",
+        "type": "date",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 0.9,
+          "offsetY": -0.4,
+          "width": 1.7,
+          "height": 0.3
+        },
+        "anchor": {
+          "match": {
+            "text": "signature of insured",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agent_signed",
+        "method": {
+          "id": "signature",
+          "start": "left",
+          "offsetX": 0.1,
+          "offsetY": -0.25,
+          "width": 1.5,
+          "height": 0.15
+        },
+        "anchor": {
+          "match": {
+            "text": "signature of insurance agent",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "agent_signed_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "above",
+          "textAlignment": "right"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "signature of insurance agent",
+              "type": "startsWith"
+            },
+            {
+              "text": "date",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "agent_signed_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "above"
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "signature of insurance agent",
+              "type": "startsWith"
+            },
+            {
+              "text": "date",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "agent_signed_date",
+        "type": "date",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": -1,
+          "offsetY": -0.4,
+          "width": 1.2,
+          "height": 0.3
+        },
+        "anchor": {
+          "match": [
+            {
+              "text": "signature of insurance agent",
+              "type": "startsWith"
+            },
+            {
+              "text": "date",
+              "type": "startsWith"
+            }
+          ]
+        }
+      }
+    ]
+  }
