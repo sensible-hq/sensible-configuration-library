@@ -55,7 +55,7 @@
         "id": "region",
         "start": "left",
         "width": 3,
-        "height": 0.38,
+        "height": 0.52,
         "offsetY": -0.1,
         "offsetX": -0.2,
         "wordFilters": [
@@ -67,7 +67,7 @@
       },
     },
     {
-      "id": "primaryCitySTZip",
+      "id": "primaryCity",
       "type": "string",
       "anchor": {
         "start": {
@@ -75,21 +75,80 @@
           "type": "startsWith"
         },
         "match": {
-          "text": "Address (see instructions)",
+          "text": "City, town, or post office",
           "type": "equals"
         },
       },
       "method": {
         "id": "region",
         "start": "left",
-        "width": 3,
-        "height": 0.3,
-        "offsetY": 0.3,
+        "width": 1.8,
+        "height": 0.2,
+        "offsetY": 0.05,
         "offsetX": -0.2,
         "wordFilters": [
           "city, town, or post office",
           "state",
-          "zip code"
+          "zip code",
+          "2 Your social security number"
+        ]
+      },
+    },
+    {
+      "id": "primaryState",
+      "type": "string",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "state",
+          "type": "equals"
+        },
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 0.6,
+        "height": 0.2,
+        "offsetY": 0.05,
+        "offsetX": -0.1,
+        "wordFilters": [
+          "city, town, or post office",
+          "state",
+          "zip code",
+          "2 Your social security number",
+          "3 Spouse's social security number"
+        ]
+      },
+    },
+    {
+      "id": "primaryZip",
+      "type": "string",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "zip code",
+          "type": "equals"
+        },
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 0.6,
+        "height": 0.2,
+        "offsetY": 0.05,
+        "offsetX": 0,
+        "wordFilters": [
+          "city, town, or post office",
+          "state",
+          "zip code",
+          "2 Your social security number",
+          "3 Spouse's social security number"
         ]
       },
     },
@@ -109,9 +168,13 @@
         "id": "region",
         "start": "left",
         "width": 1,
-        "height": 0.1,
+        "height": 0.2,
         "offsetY": 0.08,
         "offsetX": 0.3,
+        "wordFilters": [
+          "2 Your social security number",
+          "For Privacy Act and Paperwork Reduction Act Notice, see instructions later."
+        ]
       },
     },
     {
@@ -130,9 +193,13 @@
         "id": "region",
         "start": "left",
         "width": 1,
-        "height": 0.1,
+        "height": 0.2,
         "offsetY": 0.08,
         "offsetX": 0.3,
+        "wordFilters": [
+          "3 Spouse's social security number",
+          "For Privacy Act and Paperwork Reduction Act Notice, see instructions later."
+        ]
       },
     },
     {
@@ -314,7 +381,7 @@
       "method": {
         "id": "region",
         "start": "left",
-        "width": 0.3,
+        "width": 0.6,
         "height": 0.3,
         "offsetY": -0.2,
         "offsetX": 1.3,
