@@ -1,0 +1,5554 @@
+{
+  "fingerprint": {
+    "tests": [
+      {
+        "page": "any",
+        "match": [
+          {
+            "text": "acord 25",
+            "type": "includes"
+          },
+          {
+            "text": "certificate of liability insurance",
+            "type": "includes"
+          }
+        ]
+      }
+    ]
+  },
+  "preprocessors": [
+    {
+      "type": "ocr",
+      "pageLinesLimit": 50,
+      "pageOffset": 0
+    }
+  ],
+  "fields": [
+    {
+      "id": "producer",
+      "method": {
+        "id": "label",
+        "position": "below",
+        "typeFilters": [
+          "address"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "producer",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "producer",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "typeFilters": [
+          "address"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "producer",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "producer_address",
+      "type": "address",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.05,
+        "width": 3.8,
+        "height": 0.8,
+        "lineFilters": [
+          {
+            "text": "Fax:",
+            "type": "includes"
+          },
+          {
+            "text": "Phone:",
+            "type": "includes"
+          }
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "producer",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insured",
+      "method": {
+        "id": "label",
+        "position": "below"
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "INSURED",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        ],
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insured",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.1,
+        "width": 3.5,
+        "height": 0.2,
+        "lineFilters": [
+          {
+            "text": "INSURED",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        ]
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "INSURED",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        ],
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insured",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "typeFilters": [
+          "address",
+          "phoneNumber"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "INSURED",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insured_address",
+      "type": "address",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "sortLines": "readingOrderLeftToRight",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "match": {
+          "text": "insured",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact.name",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "typeFilters": [
+          "phoneNumber"
+        ],
+        "wordFilters": [
+          "contact",
+          "FAX"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "name:",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact.name",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "wordFilters": [
+          "contact"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "name:",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact.name",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "typeFilters": [
+          "phoneNumber"
+        ],
+        "wordFilters": [
+          "contact"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "name:",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact.phone",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "wordFilters": [
+          "phone"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "ext):",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact.phone",
+      "type": "phoneNumber",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first",
+        "xRangeFilter": {
+          "offsetX": 0,
+          "start": "left",
+          "width": 2.6
+        }
+      },
+      "anchor": {
+        "match": {
+          "text": "phone",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact.phone",
+      "type": "phoneNumber",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "wordFilters": [
+          "phone"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "(A/C, No, Ext):",
+              "type": "startsWith"
+            },
+            {
+              "text": "(AC. No. Ext):",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact.phone",
+      "type": "phoneNumber",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "wordFilters": [
+          "phone"
+        ]
+      },
+      "anchor": {
+        "match": [
+          {
+            "text": "phone",
+            "type": "startsWith"
+          },
+          {
+            "pattern": "A/C.?,? N",
+            "type": "regex"
+          }
+        ],
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact.fax",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "wordFilters": [
+          "fax"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "no):",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact.fax",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "(A/C, No):",
+              "type": "startsWith"
+            },
+            {
+              "text": "INC. No)",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact.fax",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first",
+        "wordFilters": [
+          "(AC. NO)",
+          "(W/C. No):"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "pattern": "FAX",
+          "type": "regex"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact.email",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "wordFilters": [
+          "e-mail"
+        ],
+        "whitespaceFilter": "all"
+      },
+      "anchor": {
+        "match": {
+          "text": "address:",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "contact.email",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "wordFilters": [
+          "e-mail"
+        ],
+        "whitespaceFilter": "all"
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "address:",
+              "type": "endsWith"
+            },
+            {
+              "pattern": "address:?",
+              "type": "regex",
+              "flags": "i"
+            }
+          ]
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_a",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "pattern": "insurer a ?:?",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_a",
+      "method": {
+        "id": "box",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "pattern": "insurer a ?:?",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_a.naic",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "NAIC",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        },
+        "offsetX": -0.06
+      },
+      "anchor": {
+        "match": {
+          "text": "insurer a",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_a.naic",
+      "method": {
+        "id": "box",
+        "position": "below",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "below"
+        }
+      },
+      "anchor": {
+        "match": {
+          "text": "NAIC",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_b",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "pattern": "insurer b ?:?",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_b",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "insurer(s) affording",
+            "type": "startsWith"
+          }
+        }
+      },
+      "anchor": {
+        "match": {
+          "pattern": "insurer b ?:?",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_b.naic",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "NAIC",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        },
+        "offsetX": -0.03
+      },
+      "anchor": {
+        "match": {
+          "text": "insurer b",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_b.naic",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "NAIC",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        },
+        "offsetX": -0.18,
+        "offsetY": -0.02
+      },
+      "anchor": {
+        "match": {
+          "text": "insurer b",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_b.naic",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "NAIC",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        },
+        "offsetY": -0.02
+      },
+      "anchor": {
+        "match": {
+          "text": "insurer b",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_c",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "pattern": "insurer c ?:?",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_c",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first",
+        "xRangeFilter": {
+          "start": "left",
+          "offsetX": 0.8,
+          "width": 3
+        }
+      },
+      "anchor": {
+        "match": {
+          "pattern": "insurer c ?:?",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_c.naic",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "NAIC",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      "anchor": {
+        "match": {
+          "text": "insurer c",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_c.naic",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "NAIC",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        },
+        "offsetX": -0.2
+      },
+      "anchor": {
+        "match": {
+          "text": "insurer c",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_d",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "pattern": "insurer d ?:?",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_d.naic",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "NAIC",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      "anchor": {
+        "match": {
+          "text": "insurer d",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_d.naic",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "NAIC",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        },
+        "offsetX": -0.2
+      },
+      "anchor": {
+        "match": {
+          "text": "insurer d",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_e",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "wordFilters": [
+          "!"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "pattern": "insurer e ?:?",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_e.naic",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "NAIC",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      "anchor": {
+        "match": {
+          "text": "insurer e",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_f",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "match": {
+          "pattern": "insurer f ?:?",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insurers_affording_coverage.insurer_f.naic",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "NAIC",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      "anchor": {
+        "match": {
+          "text": "insurer f",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.insurer_letter_1",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.01,
+        "offsetY": 0.06,
+        "width": 0.2,
+        "height": 1
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "ltr",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.insurer_letter_1",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "below"
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "ltr",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.commercial_general_liability_1",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.2,
+        "offsetY": -0.04,
+        "width": 0.14,
+        "height": 0.08
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "commercial general liability",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.commercial_general_liability_1",
+      "method": {
+        "id": "checkbox",
+        "position": "right",
+        "offsetX": -1.63,
+        "offsetY": -0.04,
+        "width": 0.15,
+        "height": 0.08
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "commercial general liability",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.claims_made_1",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "claims-made",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.claims_made_1",
+      "method": {
+        "id": "checkbox",
+        "position": "right",
+        "offsetX": -0.82,
+        "offsetY": -0.05,
+        "width": 0.15,
+        "height": 0.09
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "claims-made",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.occur_1",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "occur",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.occur_1",
+      "method": {
+        "id": "checkbox",
+        "position": "right",
+        "offsetX": -0.5,
+        "offsetY": -0.05,
+        "width": 0.14,
+        "height": 0.09
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "occur",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.general_liability.custom_1",
+      "method": {
+        "id": "region",
+        "start": "above",
+        "width": 1.7,
+        "height": 0.18,
+        "offsetX": -0.8,
+        "offsetY": -0.38,
+        "wordFilters": [
+          "X"
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "gen'l aggregate",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.general_liability.custom_selected_1",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.02,
+        "offsetY": -0.37,
+        "width": 0.12,
+        "height": 0.09
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "gen'l aggregate",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.general_liability.custom_2",
+      "method": {
+        "id": "region",
+        "start": "below",
+        "width": 1.7,
+        "height": 0.18,
+        "offsetX": -0.8,
+        "offsetY": -0.3,
+        "wordFilters": [
+          "X"
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "gen'l aggregate",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.general_liability.custom_selected_2",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.02,
+        "offsetY": -0.23,
+        "width": 0.1,
+        "height": 0.09
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "gen'l aggregate",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.general_aggregate_applies.policy_1",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.2,
+        "offsetY": -0.05,
+        "width": 0.13,
+        "height": 0.1
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy",
+          "type": "equals"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.general_aggregate_applies.project_1",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "project",
+              "type": "equals"
+            },
+            {
+              "text": "ject",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.general_aggregate_applies.project_1",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.21,
+        "offsetY": -0.03,
+        "width": 0.15,
+        "height": 0.1
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "pro",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.general_aggregate_applies.location_1",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "loc",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.general_aggregate_applies.location_1",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.19,
+        "offsetY": -0.05,
+        "width": 0.15,
+        "height": 0.1
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "loc",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.general_aggregate_applies.location_1",
+      "method": {
+        "id": "checkbox",
+        "position": "right",
+        "offsetX": -0.4,
+        "offsetY": -0.05,
+        "width": 0.15,
+        "height": 0.1
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "loc",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.general_aggregate_applies.other_1",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "other",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.general_aggregate_applies.other_1",
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "other",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.additional_insured_1",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": -0.8,
+        "offsetY": 0.23
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy number",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.subrogation_waived_1",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetY": 0.5,
+        "offsetX": -0.08
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "wvd",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_number_1",
+      "method": {
+        "id": "region",
+        "start": "below",
+        "width": 1.55,
+        "height": 1,
+        "offsetX": -0.78,
+        "offsetY": 0.06
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy number",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_number_1",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 1
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy number",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_effective_date_1",
+      "type": "date",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "policy eff",
+                "type": "startsWith"
+              },
+              {
+                "text": "eff date",
+                "type": "startsWith"
+              }
+            ]
+          }
+        },
+        "offsetX": -0.1
+      },
+      "anchor": {
+        "start": {
+          "text": "type of insurance",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "each occurrence",
+              "type": "startsWith"
+            },
+            {
+              "text": "damage to rented",
+              "type": "startsWith"
+            },
+            {
+              "text": "personal &",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_effective_date_1",
+      "type": "date",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 1
+        },
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "policy eff",
+              "type": "startsWith"
+            },
+            {
+              "text": "eff date",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_expiration_date_1",
+      "type": "date",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 1
+        },
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy exp",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_expiration_date_1",
+      "type": "date",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 1
+        },
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy eff",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_expiration_date_1",
+      "type": "date",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "policy eff",
+                "type": "startsWith"
+              },
+              {
+                "text": "eff date",
+                "type": "startsWith"
+              }
+            ]
+          }
+        },
+        "offsetX": -0.1,
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "start": {
+          "text": "type of insurance",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "each occurrence",
+              "type": "startsWith"
+            },
+            {
+              "text": "damage to rented",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_expiration_date_1",
+      "type": "date",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "policy eff",
+                "type": "startsWith"
+              },
+              {
+                "text": "eff date",
+                "type": "startsWith"
+              },
+              {
+                "text": "policy exp",
+                "type": "startsWith"
+              }
+            ]
+          }
+        },
+        "offsetX": -0.1,
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "start": {
+          "text": "type of insurance",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "each occurrence",
+              "type": "startsWith"
+            },
+            {
+              "text": "damage to rented",
+              "type": "startsWith"
+            },
+            {
+              "text": "personal &",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.each_occurrence_1",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "limits",
+          "type": "equals"
+        },
+        "match": {
+          "text": "each occurrence",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "damage to",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.each_occurrence_1",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 1
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "each occurrence",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.damage_to_rented_premises_1",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "whitespaceFilter": "all"
+      },
+      "anchor": {
+        "start": {
+          "text": "limits",
+          "type": "equals"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "damage to rented",
+              "type": "startsWith"
+            },
+            {
+              "text": "premises",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "med",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.damage_to_rented_premises_1",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 1
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "damage to rented",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.medical_expenses_1",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "med exp",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.medical_expenses_1",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 1
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "med exp",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.personal_and_advertising_injury_1",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "personal &",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.personal_and_advertising_injury_1",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 1
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "personal &",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.general_aggregate_1",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "general aggregate",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.general_aggregate_1",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 1
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "general aggregate",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.products_completed_aggregate_1",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "/op agg",
+              "type": "endsWith"
+            },
+            {
+              "text": "products -",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.products_completed_aggregate_1",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 1
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "/op agg",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.custom_name_1",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 1.1,
+        "height": 0.16,
+        "offsetX": 0,
+        "offsetY": 0.08
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "products",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.custom_1",
+      "type": "currency",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 1.1,
+        "height": 0.17,
+        "offsetX": 1.2,
+        "offsetY": 0.08
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "products",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.insurer_letter_2",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.01,
+        "offsetY": 1.2,
+        "width": 0.2,
+        "height": 0.8
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "ltr",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.insurer_letter_2",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 2,
+          "direction": "below"
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "ltr",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.any_auto_2",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "any auto",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.any_auto_2",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.2,
+        "offsetY": -0.04,
+        "width": 0.14,
+        "height": 0.1
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "any auto",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.owned_autos_only_2",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.2,
+        "offsetY": 0.01,
+        "width": 0.14,
+        "height": 0.1
+      },
+      "anchor": {
+        "start": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "owned autos",
+              "type": "endsWith"
+            },
+            {
+              "text": "all owned",
+              "type": "endsWith"
+            },
+            {
+              "text": "owned",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.scheduled_autos_2",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "scheduled",
+              "type": "endsWith"
+            },
+            {
+              "text": "scheduled",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.scheduled_autos_2",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.2,
+        "offsetY": 0.01,
+        "width": 0.14,
+        "height": 0.1
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "scheduled",
+              "type": "endsWith"
+            },
+            {
+              "text": "scheduled",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.hired_autos_only_2",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "hired",
+              "type": "equals"
+            },
+            {
+              "text": "hired autos",
+              "type": "equals"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.hired_autos_only_2",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.2,
+        "offsetY": -0.03,
+        "width": 0.14,
+        "height": 0.08
+      },
+      "anchor": {
+        "start": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        },
+        "match": [
+          {
+            "text": "hired autos",
+            "type": "endsWith"
+          },
+          {
+            "text": "only",
+            "type": "equals"
+          }
+        ],
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.hired_autos_only_2",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.21,
+        "offsetY": 0.01,
+        "width": 0.16,
+        "height": 0.08
+      },
+      "anchor": {
+        "start": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "hired",
+              "type": "equals"
+            },
+            {
+              "text": "hired autos",
+              "type": "equals"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.non_owned_autos_only_2",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "non-owned",
+              "type": "endsWith"
+            },
+            {
+              "text": "non-owned",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.non_owned_autos_only_2",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.21,
+        "offsetY": 0.01,
+        "width": 0.16,
+        "height": 0.08
+      },
+      "anchor": {
+        "start": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "non-owned",
+              "type": "endsWith"
+            },
+            {
+              "text": "non-owned",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.custom_1",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 0.7,
+        "height": 0.2,
+        "offsetX": 0,
+        "offsetY": 0.11,
+        "wordFilters": [
+          "X"
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "hired",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "umbrella liab",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.custom_selected_1",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.2,
+        "offsetY": -0.19,
+        "width": 0.14,
+        "height": 0.07
+      },
+      "anchor": {
+        "start": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "umbrella liab",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.custom_2",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 0.7,
+        "height": 0.16,
+        "offsetX": 0,
+        "offsetY": 0.13
+      },
+      "anchor": {
+        "start": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "non-owned",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "umbrella liab",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.automobile_liability.custom_selected_2",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": 0.75,
+        "offsetY": -0.2,
+        "width": 0.1,
+        "height": 0.06
+      },
+      "anchor": {
+        "start": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "umbrella liab",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "worker",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.additional_insured_2",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": -0.8,
+        "offsetY": 1.36
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy number",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.subrogation_waived_2",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": -0.08,
+        "offsetY": 1.5
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "wvd",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_number_2",
+      "method": {
+        "id": "region",
+        "start": "below",
+        "width": 1.55,
+        "height": 0.7,
+        "offsetX": -0.78,
+        "offsetY": 1.2
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy number",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_number_2",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 2
+        },
+        "xRangeFilter": {
+          "start": "left",
+          "offsetX": -0.5,
+          "width": 1.8
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy number",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_number_2",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 2
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy number",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_effective_date_2",
+      "type": "date",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "text": "policy eff",
+            "type": "startsWith"
+          }
+        },
+        "offsetX": -0.3,
+        "offsetY": -0.02
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "automobile liability",
+              "type": "startsWith"
+            },
+            {
+              "text": "any auto",
+              "type": "startsWith"
+            },
+            {
+              "text": "scheduled",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_effective_date_2",
+      "type": "date",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 2
+        },
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "policy eff",
+              "type": "startsWith"
+            },
+            {
+              "text": "eff date",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_expiration_date_2",
+      "type": "date",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "policy exp",
+                "type": "startsWith"
+              }
+            ]
+          }
+        },
+        "tiebreaker": ">",
+        "offsetY": 0.02
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "automobile liability",
+              "type": "startsWith"
+            },
+            {
+              "text": "any auto",
+              "type": "startsWith"
+            },
+            {
+              "text": "scheduled",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_expiration_date_2",
+      "type": "date",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 2
+        },
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy exp",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_expiration_date_2",
+      "type": "date",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "start": {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "policy eff",
+                "type": "startsWith"
+              }
+            ]
+          }
+        },
+        "tiebreaker": ">",
+        "offsetY": 0.02
+      },
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "automobile liability",
+              "type": "startsWith"
+            },
+            {
+              "text": "any auto",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.combined_single_limit_2",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": [
+          {
+            "text": "combined single limit",
+            "type": "endsWith"
+          },
+          {
+            "text": "(ea acc",
+            "type": "startsWith"
+          }
+        ],
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.combined_single_limit_2",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "combined single limit",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.bodily_injury_per_person_2",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "bodily injury (per person)",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.bodily_injury_per_accident_2",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "bodily injury (per accident)",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.property_damage_2",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "(per accident)",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.custom_name_2",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 1.1,
+        "height": 0.17,
+        "offsetX": 0,
+        "offsetY": -0.25
+      },
+      "anchor": {
+        "start": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "each occurrence",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "workers comp",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.custom_2",
+      "type": "currency",
+      "method": {
+        "id": "region",
+        "start": "below",
+        "width": 1.1,
+        "height": 0.17,
+        "offsetX": 0.8,
+        "offsetY": 0.1
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "property damage",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.insurer_letter_3",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 3
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "ltr",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.umbrella_liability_3",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.2,
+        "offsetY": -0.03,
+        "width": 0.14,
+        "height": 0.08
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "umbrella",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.occur_3",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          {
+            "text": "(per accident)",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "occur",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.excess_liability_3",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.21,
+        "offsetY": -0.03,
+        "width": 0.14,
+        "height": 0.08
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "excess ",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.claims_made_3",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          {
+            "text": "(per accident)",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "claims",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "workers compensation",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.claims_made_3",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.2,
+        "offsetY": -0.03,
+        "width": 0.16,
+        "height": 0.08
+      },
+      "anchor": {
+        "start": {
+          "text": "automobile",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "claims",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "workers compensation",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.deductible_3",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.22,
+        "offsetY": -0.05,
+        "width": 0.16,
+        "height": 0.08
+      },
+      "anchor": {
+        "start": {
+          "text": "umbrella liab",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "ded",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.retention_3",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          {
+            "text": "(per accident)",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "retention",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.retention_3",
+      "method": {
+        "id": "checkbox",
+        "position": "right",
+        "offsetX": -0.72,
+        "offsetY": -0.05,
+        "width": 0.1,
+        "height": 0.08
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          {
+            "text": "(per accident)",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "retention",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.additional_insured_3",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 1
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "umbrella liab",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "retention",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.subrogation_waived_3",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 2
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "automobile liability",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "occur",
+          "type": "equals"
+        },
+        "end": {
+          "text": "workers comp",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.subrogation_waived_3",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": -0.08,
+        "offsetY": 2.6
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "wvd",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_number_3",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 3
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy number",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_effective_date_3",
+      "type": "date",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 3
+        },
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "policy eff",
+              "type": "startsWith"
+            },
+            {
+              "text": "eff date",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_expiration_date_3",
+      "type": "date",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 3
+        },
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy exp",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.each_occurrence_3",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "property damage",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "each occurrence",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.each_occurrence_3",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 1
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "property damage",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "each occurrence",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.aggregate_3",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          {
+            "text": "(per accident)",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "aggregate",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.aggregate_3",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 1
+        }
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "coverages",
+            "type": "startsWith"
+          },
+          {
+            "text": "(per accident)",
+            "type": "startsWith"
+          }
+        ],
+        "match": {
+          "text": "aggregate",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.custom_name_3",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 1.1,
+        "height": 0.16,
+        "offsetX": -0.07,
+        "offsetY": 0.07
+      },
+      "anchor": {
+        "start": {
+          "text": "umbrella liab",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "aggregate",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "workers comp",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.custom_3",
+      "type": "currency",
+      "method": {
+        "id": "region",
+        "start": "below",
+        "width": 1.1,
+        "height": 0.17,
+        "offsetX": 0.98,
+        "offsetY": 0.02
+      },
+      "anchor": {
+        "start": {
+          "text": "umbrella liab",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "aggregate",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "workers comp",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.insurer_letter_4",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 4
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "ltr",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance.workers_comp.any_member_excluded_4",
+      "method": {
+        "id": "region",
+        "start": "below",
+        "offsetX": -0.09,
+        "offsetY": 0.04,
+        "width": 0.2,
+        "height": 0.2
+      },
+      "anchor": {
+        "start": {
+          "text": "workers compensation",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "y/n",
+              "type": "endsWith"
+            },
+            {
+              "text": "y / n",
+              "type": "endsWith"
+            },
+            {
+              "text": "YIN",
+              "type": "equals"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.additional_insured_4",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": -0.8,
+        "offsetY": 2.77
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy number",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.additional_insured_4",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 1
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "Y / N",
+              "type": "equals"
+            },
+            {
+              "text": "Y/N",
+              "type": "equals"
+            },
+            {
+              "text": "YIN",
+              "type": "equals"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.subrogation_waived_4",
+      "type": {
+        "id": "custom",
+        "pattern": "^[A-Z]+$"
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "right",
+          "number": 2
+        },
+        "typeFilters": [
+          "date"
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "Y / N",
+              "type": "equals"
+            },
+            {
+              "text": "Y/N",
+              "type": "equals"
+            },
+            {
+              "text": "YIN",
+              "type": "equals"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_number_4",
+      "method": {
+        "id": "region",
+        "start": "below",
+        "width": 1.55,
+        "height": 0.4,
+        "offsetX": -0.78,
+        "offsetY": 2.6
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy number",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_number_4",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 4
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy number",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_effective_date_4",
+      "type": "date",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 4
+        },
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "policy eff",
+              "type": "startsWith"
+            },
+            {
+              "text": "eff date",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_effective_date_4",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "left",
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "oth",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_effective_date_4",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "<"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "NIA",
+              "type": "equals"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_expiration_date_4",
+      "type": "date",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 4
+        },
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy exp",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_expiration_date_4",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "left",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "oth",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_expiration_date_4",
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": ">"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "NIA",
+              "type": "equals"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.per_statute_4",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "statute",
+              "type": "endsWith"
+            },
+            {
+              "text": "tory limits",
+              "type": "endsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.per_statute_4",
+      "method": {
+        "id": "checkbox",
+        "position": "left",
+        "offsetX": -0.18,
+        "offsetY": -0.06,
+        "width": 0.1,
+        "height": 0.08
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "statute",
+              "type": "endsWith"
+            },
+            {
+              "text": "tory limits",
+              "type": "endsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.other_4",
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "oth-",
+              "type": "endsWith"
+            },
+            {
+              "text": "other",
+              "type": "equals"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.each_accident_4",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "e.l. each accident",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.each_accident_4",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "e.l. each accident",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.disease_each_employee_4",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "e.l. disease - ea",
+              "type": "startsWith"
+            },
+            {
+              "text": "e.l. disease ea",
+              "type": "startsWith"
+            },
+            {
+              "text": "e.l. disease . ea",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.disease_each_employee_4",
+      "type": "currency",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "e.l. disease - ea",
+              "type": "startsWith"
+            },
+            {
+              "text": "e.l. disease ea",
+              "type": "startsWith"
+            },
+            {
+              "text": "el, disease - ea",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.disease_policy_limit_4",
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "e.l. disease - policy",
+              "type": "startsWith"
+            },
+            {
+              "text": "e.l. disease policy",
+              "type": "startsWith"
+            },
+            {
+              "text": "e.l. disease-policy",
+              "type": "startsWith"
+            },
+            {
+              "text": "e.l. disease . policy",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.disease_policy_limit_4",
+      "type": "currency",
+      "method": {
+        "id": "box",
+        "position": "above",
+        "offsetBoxes": {
+          "number": 1,
+          "direction": "right"
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "e.l. disease - policy",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.insurer_letter_5",
+      "match": "all",
+      "method": {
+        "id": "regex",
+        "pattern": "^([A-M]):?$"
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "pattern": "^[A-M]:?$",
+              "type": "regex",
+              "flags": "i"
+            },
+            {
+              "pattern": "^[A-M] ",
+              "type": "regex",
+              "flags": "i"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance_5",
+      "match": "all",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "TYPE OF INSURANCE",
+            "isCaseSensitive": true
+          }
+        },
+        "offsetX": -0.5,
+        "wordFilters": [
+          "A"
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "pattern": "^[A-M]:?$",
+              "type": "regex",
+              "flags": "i"
+            },
+            {
+              "pattern": "^[A-M] ",
+              "type": "regex"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance_5",
+      "match": "all",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first",
+        "xRangeFilter": {
+          "start": "left",
+          "offsetX": 0,
+          "width": 2.6
+        },
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "^[a-z]$",
+            "flags": "i"
+          }
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance_5",
+      "match": "all",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "TYPE OF INSURANCE",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.type_of_insurance_5",
+      "match": "all",
+      "method": {
+        "id": "passthrough",
+        "lineFilters": [
+          {
+            "text": "description of operations below",
+            "type": "startsWith"
+          },
+          {
+            "text": "XXX",
+            "type": "equals"
+          },
+          {
+            "text": "limit",
+            "type": "equals"
+          },
+          {
+            "text": "deductible",
+            "type": "startsWith"
+          },
+          {
+            "text": "benefit",
+            "type": "endsWith"
+          },
+          {
+            "text": "accidental",
+            "type": "startsWith"
+          },
+          {
+            "text": "aggregate",
+            "type": "equals"
+          }
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "pattern": "^[A-Z ]{2}",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "description of operations / locations",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.additional_insured_5",
+      "match": "all",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "start": {
+            "text": "type of insurance",
+            "type": "equals"
+          },
+          "match": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "INSD",
+                "type": "equals"
+              },
+              {
+                "text": "INSR",
+                "type": "startsWith"
+              }
+            ]
+          }
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.additional_insured_5",
+      "match": "all",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "INSD",
+            "type": "startsWith"
+          }
+        },
+        "offsetX": -0.13
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "pattern": "^[A-M]$",
+              "type": "regex",
+              "flags": "i"
+            },
+            {
+              "pattern": "^[A-M] ",
+              "type": "regex"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.additional_insured_5",
+      "type": {
+        "id": "custom",
+        "pattern": "^.{1,2}$"
+      },
+      "match": "all",
+      "method": {
+        "id": "box",
+        "position": "below",
+        "offsetX": 1.2,
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 1
+        }
+      },
+      "anchor": {
+        "match": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "description of operations / locations",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.subrogation_waived_5",
+      "match": "all",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "WVD",
+            "type": "equals"
+          }
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.subrogation_waived_5",
+      "match": "all",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "WVD",
+            "type": "endsWith"
+          }
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_number_5",
+      "match": "all",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "Policy Number",
+            "type": "equals"
+          }
+        },
+        "offsetX": -0.3
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "pattern": "^[A-M]:?$",
+              "type": "regex",
+              "flags": "i"
+            },
+            {
+              "pattern": "^[A-M] ",
+              "type": "regex",
+              "flags": "i"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_number_5",
+      "match": "all",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "text": "Policy Number",
+            "type": "equals"
+          }
+        },
+        "offsetX": -0.4
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "pattern": "^[A-M]:?$",
+              "type": "regex",
+              "flags": "i"
+            },
+            {
+              "pattern": "^[A-M] ",
+              "type": "regex",
+              "flags": "i"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_number_5",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 5
+        }
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy number",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_effective_date_5",
+      "type": {
+        "id": "date",
+        "format": [
+          "%m/%d/%Y",
+          "%m/%d/%y"
+        ]
+      },
+      "match": "all",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "pattern": "^[A-M]:?$",
+              "type": "regex",
+              "flags": "i"
+            },
+            {
+              "pattern": "^[A-M] ",
+              "type": "regex",
+              "flags": "i"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.policy_expiration_date_5",
+      "type": "date",
+      "match": "all",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "pattern": "^[A-M]:?$",
+              "type": "regex",
+              "flags": "i"
+            },
+            {
+              "pattern": "^[A-M] ",
+              "type": "regex",
+              "flags": "i"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.5",
+      "type": "currency",
+      "match": "all",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "limit/deductible",
+              "type": "startsWith"
+            },
+            {
+              "text": "aggregate",
+              "type": "equals"
+            },
+            {
+              "text": "accidental",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "description of operations / locations",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.5",
+      "type": "currency",
+      "match": "all",
+      "method": {
+        "id": "passthrough",
+        "typeFilters": [
+          "date"
+        ],
+        "lineFilters": [
+          {
+            "text": "ded",
+            "type": "endsWith"
+          },
+          {
+            "text": "-",
+            "type": "includes"
+          }
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "pattern": "^[0-9]",
+          "type": "regex"
+        },
+        "end": {
+          "text": "deductible",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.5",
+      "type": "currency",
+      "match": "all",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "lineFilters": [
+          {
+            "text": "ded",
+            "type": "endsWith"
+          }
+        ]
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "description of operations below",
+            "type": "startsWith"
+          },
+          {
+            "text": "$",
+            "type": "includes"
+          }
+        ],
+        "match": [
+          {
+            "pattern": "\\$",
+            "type": "regex"
+          }
+        ],
+        "end": {
+          "text": "deductible",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.5",
+      "type": "currency",
+      "match": "all",
+      "method": {
+        "id": "label",
+        "position": "right"
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "description of operations below",
+            "type": "startsWith"
+          },
+          {
+            "pattern": "\\d{1,2}/\\d{1,2}",
+            "type": "regex"
+          }
+        ],
+        "match": {
+          "text": "limit:",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "description of operations / locations",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.5",
+      "type": "currency",
+      "match": "all",
+      "method": {
+        "id": "intersection",
+        "verticalAnchor": {
+          "match": {
+            "type": "equals",
+            "text": "LIMITS",
+            "isCaseSensitive": true
+          }
+        },
+        "tiebreaker": "last",
+        "offsetX": 1,
+        "lineFilters": [
+          {
+            "text": "ded",
+            "type": "includes"
+          }
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.5",
+      "type": "currency",
+      "match": "all",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "lineFilters": [
+          {
+            "text": "ded",
+            "type": "endsWith"
+          }
+        ]
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "description of operations below",
+            "type": "startsWith"
+          },
+          {
+            "pattern": "\\d{1,2}/\\d{1,2}",
+            "type": "regex"
+          }
+        ],
+        "match": {
+          "text": "$",
+          "type": "includes"
+        },
+        "end": {
+          "text": "description of operations / locations",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.5",
+      "type": "currency",
+      "match": "all",
+      "method": {
+        "id": "passthrough",
+        "typeFilters": [
+          "date"
+        ],
+        "lineFilters": [
+          {
+            "text": "ded",
+            "type": "endsWith"
+          }
+        ]
+      },
+      "anchor": {
+        "start": [
+          {
+            "text": "description of operations below",
+            "type": "startsWith"
+          }
+        ],
+        "match": [
+          {
+            "pattern": "^[0-9]",
+            "type": "regex"
+          }
+        ],
+        "end": {
+          "text": "description of operations / locations",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.5",
+      "type": "currency",
+      "match": "all",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "/20\\d{2}$"
+          },
+          {
+            "text": "ded",
+            "type": "endsWith"
+          }
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "pattern": "^[A-M]$",
+          "type": "regex"
+        },
+        "end": {
+          "text": "deductible",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.5",
+      "type": "currency",
+      "match": "all",
+      "method": {
+        "id": "row",
+        "position": "right"
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "limit",
+          "type": "equals"
+        },
+        "end": {
+          "text": "description of operations / locations",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.limits.5",
+      "type": "currency",
+      "match": "all",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "regex",
+            "pattern": "/20\\d{2}$"
+          }
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "pattern": "^[A-M]$",
+          "type": "regex",
+          "flags": "i"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.ded_5",
+      "type": "currency",
+      "match": "all",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "second"
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "limit/deductible",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "description of operations / locations",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.ded_5",
+      "match": "all",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first",
+        "lineFilters": [
+          {
+            "text": "limit",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "deductible:",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "description of operations / locations",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.ded_5",
+      "match": "all",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "tiebreaker": "first",
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "deductible:",
+              "type": "startsWith"
+            },
+            {
+              "text": "deductible $",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "description of operations / locations",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.ded_5",
+      "match": "all",
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "deductible",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "description of operations / locations",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.ded_5",
+      "match": "all",
+      "method": {
+        "id": "label",
+        "position": "right",
+        "tiebreaker": "first",
+        "whitespaceFilter": "spaces"
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "deductible:",
+              "type": "startsWith"
+            },
+            {
+              "text": "ded",
+              "type": "includes"
+            }
+          ]
+        },
+        "end": {
+          "text": "description of operations / locations",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.ded_5",
+      "match": "all",
+      "method": {
+        "id": "passthrough"
+      },
+      "anchor": {
+        "start": {
+          "text": "description of operations below",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "ded",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "description of operations / locations",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.description_of_operations",
+      "method": {
+        "id": "box",
+        "position": "below"
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "description of operations /",
+              "type": "startsWith"
+            },
+            {
+              "text": "locations/vehicles",
+              "type": "includes"
+            }
+          ]
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "certificate_holder",
+      "method": {
+        "id": "box",
+        "position": "below",
+        "offsetY": 0.2
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "certificate holder",
+          "type": "equals"
+        },
+        "end": {
+          "text": "acord",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "certificate_holder",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.05,
+        "width": 3.8,
+        "height": 0.8
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "certificate holder",
+          "type": "equals"
+        },
+        "end": {
+          "text": "acord",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "cancellation",
+      "method": {
+        "id": "box",
+        "position": "below",
+        "offsetY": 0.2
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "cancellation",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "acord",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "authorized_representative",
+      "method": {
+        "id": "signature",
+        "start": "below",
+        "width": 4,
+        "height": 0.33,
+        "offsetX": -0.65,
+        "offsetY": 0.05
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "authorized representative",
+              "type": "startsWith"
+            },
+            {
+              "text": "authorized",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "acord",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "authorized_representative",
+      "method": {
+        "id": "signature",
+        "start": "below",
+        "width": 1,
+        "height": 0.33,
+        "offsetX": -0.65,
+        "offsetY": 0.05
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "authorized representative",
+              "type": "startsWith"
+            },
+            {
+              "text": "authorized",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "acord",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "authorized_representative",
+      "method": {
+        "id": "signature",
+        "start": "below",
+        "width": 1,
+        "height": 0.33,
+        "offsetX": -0.65,
+        "offsetY": 0.05
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "authorized representative",
+              "type": "startsWith"
+            },
+            {
+              "text": "authorized",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "end": {
+          "text": "acord",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "authorized_representative",
+      "method": {
+        "id": "signature",
+        "start": "left",
+        "width": 2,
+        "height": 0.33,
+        "offsetX": 0,
+        "offsetY": 0.86
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "cancellation",
+          "type": "equals"
+        },
+        "end": {
+          "text": "acord",
+          "type": "startsWith"
+        }
+      }
+    }
+  ]
+}
