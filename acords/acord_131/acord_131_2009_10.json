@@ -1,0 +1,4574 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "every",
+          "match": [
+            {
+              "text": "ACORD 131 (2009/10)",
+              "type": "includes",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "agency_customer_id",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "agency customer id:"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "date",
+        "anchor": {
+          "match": {
+            "text": "date (mm/dd/yyyy)",
+            "type": "equals"
+          }
+        },
+        "type": "date",
+        "method": {
+          "id": "box",
+          "position": "below"
+        }
+      },
+      {
+        "id": "agency",
+        "anchor": {
+          "match": {
+            "text": "agency",
+            "type": "equals"
+          },
+          "end": {
+            "text": "policy information",
+            "type": "equals"
+          }
+        },
+        "type": "string",
+        "method": {
+          "id": "box",
+          "position": "below",
+          "tiebreaker": "last"
+        }
+      },
+      {
+        "id": "carrier",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "carrier"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below"
+        }
+      },
+      {
+        "id": "naic_code",
+        "anchor": "naic code",
+        "method": {
+          "id": "box",
+          "position": "below"
+        }
+      },
+      {
+        "id": "policy_number",
+        "anchor": {
+          "match": {
+            "text": "policy number",
+            "type": "equals"
+          },
+          "end": {
+            "text": "policy information",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "effective_date",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "effective date"
+          },
+          "end": {
+            "text": "name of insured",
+            "type": "endsWith"
+          }
+        },
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "name_of_insured",
+        "anchor": "named insured(s)",
+        "type": "string",
+        "method": {
+          "id": "box",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "policy_info.transaction_type.new",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "new"
+          },
+          "end": {
+            "type": "equals",
+            "text": "umbrella"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "policy_info.transaction_type.umbrella",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "umbrella"
+          },
+          "end": {
+            "type": "equals",
+            "text": "ocurrence"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "policy_info.transaction_type.renewal",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "renewal"
+          },
+          "end": {
+            "type": "equals",
+            "text": "excess"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "policy_info.transaction_type.excess",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "excess"
+          },
+          "end": {
+            "type": "equals",
+            "text": "claims made"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "policy_info.transaction_type.occurrence",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "occurrence"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "policy_info.transaction_type.claims_made",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "claims made"
+          },
+          "end": {
+            "type": "equals",
+            "text": "proposed"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "transaction_type.retroactive_date_proposed",
+        "anchor": {
+          "match": {
+            "text": "proposed",
+            "type": "equals"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "transaction_type.retroactive_date_current",
+        "anchor": {
+          "match": {
+            "text": "current",
+            "type": "equals"
+          },
+          "end": {
+            "text": "employee benefits liability",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "policy_information.expiring_pol",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "expiring pol #:"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 0.05,
+          "offsetY": -0.078,
+          "width": 1.53,
+          "height": 0.12
+        }
+      },
+      {
+        "id": "policy_info.limit_of_liability.each_occurrance",
+        "anchor": {
+          "match": {
+            "text": "limit of liability",
+            "type": "equals"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          },
+          "tiebreaker": "first",
+          "wordFilters": [
+            "ea occ",
+            "$",
+            "aggregate"
+          ]
+        }
+      },
+      {
+        "id": "policy_info.limit_of_liability.aggregate",
+        "anchor": {
+          "match": {
+            "text": "limit of liability",
+            "type": "equals"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          },
+          "tiebreaker": "second",
+          "wordFilters": [
+            "ea occ",
+            "$",
+            "aggregate"
+          ]
+        }
+      },
+      {
+        "id": "policy_info.retained limit",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "retained limit"
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "policy_info.first_dollar_defence",
+        "anchor": "first dollar defense (y / n)",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "employee_benefits_liability.limit_of_insurance",
+        "type": "currency",
+        "anchor": "limit of insurance (ea employee)",
+        "method": {
+          "id": "box"
+        }
+      },
+      {
+        "id": "employee_benefits_liability.aggregate_limit",
+        "type": "currency",
+        "anchor": "aggregate limit for ebl",
+        "method": {
+          "id": "box"
+        }
+      },
+      {
+        "id": "employee_benefits_liability.retained_limit_for_ebl",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "retained limit for ebl"
+          }
+        },
+        "method": {
+          "id": "box"
+        }
+      },
+      {
+        "id": "employee_benefits_liability.retroactive_date_for_ebl",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "retroactive date for ebl"
+          }
+        },
+        "method": {
+          "id": "box"
+        }
+      },
+      {
+        "id": "employee_benefits_liability.name_of_benefit_program",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "name of benefit program"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "automobile_liability.policy_number",
+        "anchor": "carrier / policy number",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "automobile_liability.eff_date",
+        "type": "date",
+        "anchor": "policy eff date",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "automobile_liability.exp_date",
+        "type": "date",
+        "anchor": "policy exp date",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "automobile_liability.limits.csl_ea_acc",
+        "type": "currency",
+        "anchor": "csl ea acc",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "automobile_liability.limits.bi_ea_acc",
+        "type": "currency",
+        "anchor": "bi ea acc",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "automobile_liability.limits.bi_ea_per",
+        "type": "currency",
+        "anchor": "bi ea per",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "automobile_liability.limits.pd_ea_acc",
+        "type": "currency",
+        "anchor": "pd ea acc",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "automobile_liability.annual_r_p.csl_ea_acc",
+        "anchor": "premium",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "automobile_liability.annual_r_p.bi_ea_acc",
+        "anchor": "premium",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "automobile_liability.annual_r_p.bi_ea_per",
+        "anchor": "premium",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "automobile_liability.annual_r_p.pd_ea_acc",
+        "anchor": "premium",
+        "type": "currency",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        }
+      },
+      {
+        "id": "automobile_liability.rating_mod",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "mod"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "general_liability.policy_type_occur",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "underlying insurance"
+          },
+          "match": {
+            "type": "equals",
+            "text": "occur"
+          },
+          "end": {
+            "type": "includes",
+            "text": "defense costs"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "general_liability.policy_type_claims_made",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "underlying insurance"
+          },
+          "match": {
+            "type": "equals",
+            "text": "made"
+          },
+          "end": {
+            "type": "includes",
+            "text": "defense costs"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "general_liability.policy_number",
+        "anchor": "carrier / policy number",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "general_liability.policy_eff_date",
+        "anchor": "policy eff date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "general_liability.policy_exp_date",
+        "anchor": "policy exp date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "general_liability.limits_e_a",
+        "type": "currency",
+        "anchor": "each occurrence",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "general_liability.limits_g_a",
+        "type": "currency",
+        "anchor": "general aggr",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "general_liability.limits_p_c_a",
+        "type": "currency",
+        "anchor": "prod & comp ops",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "general_liability.limits_p_a_i",
+        "type": "currency",
+        "anchor": "personal & adv",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "general_liability.limits_d_r",
+        "type": "currency",
+        "anchor": "damage to rented",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "general_liability.limits_m_e",
+        "type": "currency",
+        "anchor": "medical expense $",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "general_liabilty.prem_ops",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "prem / ops"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_liabilty.prem_products",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "products"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_liabilty.prem_other",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "other"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_liability.rating_mod",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "mod"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "employers_liability.policy_number",
+        "anchor": "carrier / policy number",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        }
+      },
+      {
+        "id": "employers_liability.policy_eff_date",
+        "anchor": "policy eff date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        }
+      },
+      {
+        "id": "employers_liability.policy_exp_date",
+        "anchor": "policy exp date",
+        "type": "date",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        }
+      },
+      {
+        "id": "employers_liability.limits_e_a",
+        "type": "currency",
+        "anchor": "each accident",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "employers_liability.limits_d_e_e",
+        "type": "currency",
+        "anchor": "each employee",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "employers_liability.limits_d_p_l",
+        "type": "currency",
+        "anchor": "policy limit",
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "empolyer_liability.ann_premium",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "annual renewal"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        }
+      },
+      {
+        "id": "employer_liability.rating_mod",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "mod"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        }
+      },
+      {
+        "id": "liquor_liability.policy_number",
+        "anchor": "carrier / policy number",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        }
+      },
+      {
+        "id": "liquor_liability.policy_eff_date",
+        "anchor": "policy eff date",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        }
+      },
+      {
+        "id": "liquor_liability.policy_exp_date",
+        "anchor": "policy exp date",
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        }
+      },
+      {
+        "id": "liqour_liability.limits",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "limits"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 14
+          }
+        }
+      },
+      {
+        "id": "liquor_liability.ann_premium",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "annual renewal"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        }
+      },
+      {
+        "id": "liquor_liability.rating_mod",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "mod"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        }
+      },
+      {
+        "id": "general_liability.defence_costs.within_aggregate_limits",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "within aggregate limits?"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "general_liability.defence_costsseparate_limits",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "a separate limit?"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "general_liability.defence_costs_unlimited",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "unlimited?"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "general_liability.edition_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "indicate the edition date"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_liability.product_insured_or_uninsured",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "underlying insurance"
+          },
+          "match": {
+            "text": "(y / n)",
+            "type": "includes"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "4."
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetX": 0.26
+        }
+      },
+      {
+        "id": "general_liability.product_insured_or_uninsured_comments",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "product, work, accident,"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "type": "startsWith",
+            "text": "4."
+          },
+          "offsetY": 0.15
+        }
+      },
+      {
+        "id": "general_liability.retroactive_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "indicate retroactive date"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_liability.entry_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "indicate entry date"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_liability.tail_coverage",
+        "anchor": {
+          "match": {
+            "text": "coverage purchased for any",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "general_liability.eff_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "eff. date:",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 0.118,
+          "offsetY": -0.07,
+          "height": 0.16,
+          "width": 0.8
+        }
+      },
+      {
+        "id": "general_liability.tail_coverage_comments",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "excess policy? (y / n)"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "type": "startsWith",
+            "text": "check all"
+          },
+          "offsetY": 0.15
+        }
+      },
+      {
+        "id": "underlying_insurance.any_auto",
+        "anchor": {
+          "match": {
+            "text": "any auto (symbol 1)",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.claims_made",
+        "anchor": {
+          "match": {
+            "text": "cgl - claims made",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "undelying_insurance.cgl_occurrence",
+        "anchor": "cgl - occurrence",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.coverage.aircraft_liability",
+        "anchor": "aircraft liability",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.aircraft_liability",
+        "anchor": "aircraft liability",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.5
+        }
+      },
+      {
+        "id": "underlying_insurance.coverage.aircraft_passenger_liability",
+        "anchor": "aircraft passenger liability",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.aircraft_passenger_liability",
+        "anchor": "aircraft passenger liability",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.9
+        }
+      },
+      {
+        "id": "underlying_insurance.coverage.additional_interests",
+        "anchor": "additional interests",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.additional_interests",
+        "anchor": "additional interests",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.3
+        }
+      },
+      {
+        "id": "underlying_insurance.coverage.care_custody_control",
+        "anchor": {
+          "match": {
+            "text": "care, custody, control",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.care_custody_control",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "care, custody, control"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.45
+        }
+      },
+      {
+        "id": "underlying_insurance.employee_benefit_liability",
+        "anchor": {
+          "match": {
+            "text": "employee benefit liability",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.employee_benefit_liability",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "employee benefit liability"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.45
+        }
+      },
+      {
+        "id": "underlying_insurance.coverage.foreign_liability_travel",
+        "anchor": "foreign liability / travel",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.foreign_liability_travel",
+        "anchor": "foreign liability / travel",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.45
+        }
+      },
+      {
+        "id": "underlying_insurance.coverage.garagekeepers_liability",
+        "anchor": "garagekeepers laibility",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.garagekeepers_liability",
+        "anchor": "garagekeepers liability",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.45
+        }
+      },
+      {
+        "id": "underlying_insurance.coverage.incidental_medical_malpractice",
+        "anchor": "incidental medical malpractice",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.incidental_medical_practise",
+        "anchor": "incidental medical malpractice",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.2
+        }
+      },
+      {
+        "id": "underlying_insurance.coverage.liquor_liability",
+        "anchor": "liquor liability",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.liquor_liability",
+        "anchor": "liquor liability",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.9
+        }
+      },
+      {
+        "id": "underlying_insurance.coverage.pollution_liability",
+        "anchor": "pollution liability",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.pollution_liability",
+        "anchor": "pollution liability",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.8
+        }
+      },
+      {
+        "id": "underlying_insurance.coverage.proffessional_liability",
+        "anchor": "professional liability (e&o)",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.professional_liability",
+        "anchor": "professional liability (e&o)",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.7
+        }
+      },
+      {
+        "id": "underlying_insurance.coverage.vendors_liability",
+        "anchor": "vendors liability",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.vendors_liability",
+        "anchor": "vendors liability",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1.2
+        }
+      },
+      {
+        "id": "underlying_insurance.coverage.watercraft_liability",
+        "anchor": "watercraft liability",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.watercraft_liability",
+        "anchor": "watercraft liability",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 1
+        }
+      },
+      {
+        "id": "underlying_insurance.coverage.exc_liab",
+        "anchor": "exc liab - 1st layer",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "underlying_insurance.exposure.exc_liab",
+        "anchor": "exc liab - 1st layer",
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": 0.82
+        }
+      },
+      {
+        "id": "underlying_insurance_coverage_information",
+        "anchor": {
+          "match": {
+            "text": "coverage) attach acord 101",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "type": "startsWith",
+            "text": "previous experience: (give"
+          }
+        }
+      },
+      {
+        "id": "underlying_insurance.previous_experience",
+        "anchor": {
+          "match": {
+            "text": "whether insured or not. ",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "type": "equals",
+            "text": "no such claims"
+          }
+        }
+      },
+      {
+        "id": "care_custody_control.loc",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "loc"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        }
+      },
+      {
+        "id": "care_custody_control.property_type.real",
+        "anchor": "real",
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "care_custody_control.property_type.personal",
+        "anchor": {
+          "match": {
+            "text": "personal",
+            "type": "equals"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "care_custody_control.value",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "value"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        }
+      },
+      {
+        "id": "care_custody_control.a*",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "a*"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "care_custody_control.b*",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "b*"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "care_custody_control.c*",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "c*"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "care_custody_control.d*",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "d*"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        }
+      },
+      {
+        "id": "care_custody_control.sq_ft",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "sq ft of bldg occ"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.2
+        }
+      },
+      {
+        "id": "occupancy_or_description_of personal_property",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "occupancy / description"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "type": "startsWith",
+            "text": "*applicant:"
+          },
+          "includeAnchor": false
+        }
+      },
+      {
+        "id": "vehicles.private_passenger.owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# owned"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "vehicles.private_passenger.non_owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# non-"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "vehicles.private_passenger.leased",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# leased"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "vehicles.private_passenger.property_hauled",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "property hauled"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "vehicles.private_passenger.radious_local",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "local"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "vehicles.private_passenger.radius_intermidiate",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "mediate"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "vehicles.private_passenger.radius_distance",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "distance"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_light.owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# owned"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_light.non_owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# non-"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_light.leased",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# leased"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_light.property_hauled",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "property hauled"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_light.radius_local",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "local"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_light.radius_intermediate",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "mediate"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_light.radius_long_distance",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "distance"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_medium.owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# owned"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_medium.non_owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# non-"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_medium.leased",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# leased"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_medium.property_hauled",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "property hauled"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_medium.radius_local",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "local"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_medium.raduis_intermediate",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "mediate"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_medium.radius_long_distance",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "distance"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 3
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_heavy.owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# owned"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_heavy.non_owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# non-"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_heavy.leased",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# leased"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_heavy.property_hauled",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "property hauled"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_heavy.raduis_local",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "local"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_heavy.radius_intermediate",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "mediate"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_heavy.radius_long_distance",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "distance"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 4
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_ex_heavy.owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# owned"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_ex_heavy.non_owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# non-"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_ex_heavy.leased",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# leased"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_ex_heavy.property hauled",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "property hauled"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_ex_heavy.radius_local",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "local"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_ex_heavy.radius_intermidiate",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "mediate"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_ex_heavy.radius_long_distance",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "distance"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 5
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_heavy.owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# owned"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_heavy.non_owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# non-"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_heavy.leased",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# leased"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_heavy.property_hauled",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "property hauled"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_heavy.radius_local",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "local"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_heavy.radius_intermidiate",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "mediate"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_heavy.radius_long_distance",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "distance"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 6
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_ex_heavy.owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# owned"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_ex_heavy.non_owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# non"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_ex_heavy.leased",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# leased"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_ex_heavy.property_hauled",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "property hauled"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_ex_heavy.radius_local",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "local"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_ex_heavy.radius_inter_mediate",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "mediate"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        }
+      },
+      {
+        "id": "vehicles.trucks_or_tractors_ex_heavy.radius_long_distance",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "distance"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 7
+          }
+        }
+      },
+      {
+        "id": "vehicles.buses.owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# owned"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        }
+      },
+      {
+        "id": "vehicles.buses.non_owned",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# non-"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        }
+      },
+      {
+        "id": "vehicles.buses.leased",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "# leased"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        }
+      },
+      {
+        "id": "vehicles.buses.property_hauled",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "property hauled"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        }
+      },
+      {
+        "id": "vehicles.buses.radius_local",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "local"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        }
+      },
+      {
+        "id": "vehicles.buses.radius_intermediate",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "mediate"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        }
+      },
+      {
+        "id": "vehicles.buses.radius_long_distance",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "vehicles"
+          },
+          "match": {
+            "type": "equals",
+            "text": "distance"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "page 2 of 5"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "below",
+            "number": 8
+          }
+        }
+      },
+      {
+        "id": "advertisers_liability.media_used",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "advertisers liability"
+          },
+          "match": {
+            "type": "includes",
+            "text": "media used:"
+          },
+          "end": {
+            "type": "equals",
+            "text": "aircraft liability"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "advertisers_liability.media_used_comments",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "advertisers liability"
+          },
+          "match": {
+            "type": "includes",
+            "text": "media used:"
+          },
+          "end": {
+            "type": "equals",
+            "text": "aircraft liability"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "additional_exposures.media_used_annual_costs",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "annual cost: $"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right"
+        }
+      },
+      {
+        "id": "adverstisers_liability.advertising_company",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "advertisers liability"
+          },
+          "match": {
+            "type": "includes",
+            "text": "advertising agency "
+          },
+          "end": {
+            "type": "equals",
+            "text": "aircraft liability"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "advertisers_liability.advertising_company_comments",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "advertisers liability"
+          },
+          "match": {
+            "type": "includes",
+            "text": "advertising agency "
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "width": 7.60,
+            "offsetX": 0
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "3"
+          }
+        }
+      },
+      {
+        "id": "advertisers_liability.coverage_provided",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "advertisers liability"
+          },
+          "match": {
+            "type": "includes",
+            "text": "provided under agency's"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "aircraft liability"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "advertisers_liability.coverage _provided_comments",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "advertisers liability"
+          },
+          "match": {
+            "type": "includes",
+            "text": "provided under agency's"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "width": 7.60,
+            "offsetX": 0
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "aircraft"
+          }
+        }
+      },
+      {
+        "id": "aircraft_liability.ownership_mode",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "aircraft liability"
+          },
+          "match": {
+            "type": "includes",
+            "text": "own / lease "
+          },
+          "end": {
+            "type": "equals",
+            "text": "auto liability"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "aircraft_liability.ownership_mode_comments",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "aircraft liability"
+          },
+          "match": {
+            "type": "includes",
+            "text": "own / lease"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "width": 7.60,
+            "offsetX": 0
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "auto"
+          }
+        }
+      },
+      {
+        "id": "auto_liability.type_of_cargo_hauled",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "additional exposures"
+          },
+          "match": {
+            "type": "includes",
+            "text": "are explosives"
+          },
+          "end": {
+            "type": "equals",
+            "text": "contractors liability"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "auto_liability.cargo_hauled_comments",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "auto liability"
+          },
+          "match": {
+            "type": "includes",
+            "text": "are explosives"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "width": 7.60,
+            "offsetX": 0
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "6."
+          }
+        }
+      },
+      {
+        "id": "aouto_liability.is_passanger_charged",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "auto liability"
+          },
+          "match": {
+            "type": "includes",
+            "text": "are passengers "
+          },
+          "end": {
+            "type": "equals",
+            "text": "contractor liability"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "auto_liability.is_passenger_charged.comments",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "auto liability"
+          },
+          "match": {
+            "type": "includes",
+            "text": "are passengers "
+          },
+          "end": {
+            "type": "equals",
+            "text": "contractor liability"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "width": 7.60,
+            "offsetX": 0
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "7."
+          }
+        }
+      },
+      {
+        "id": "auto_liability.units_not_insured",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "any units not"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "auto_liability.units_not_insured_comments",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "any units not"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "width": 7.60,
+            "offsetX": 0
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "8."
+          }
+        }
+      },
+      {
+        "id": "auto_liability.vehicles_leased_rented",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "are any vehicles"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "auto_liability.vehicles_leased_rented_comments",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "are any vehicles"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "width": 7.60,
+            "offsetX": 0
+          },
+          "stop": {
+            "text": "9.",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "auto_liability.hired_non_owned_coverages",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "are hired and non-owned"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "auto_liability.hired_non_owned_coverages.comments",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "are hired and non-owned"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "width": 7.60,
+            "offsetX": 0
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "contractors"
+          }
+        }
+      },
+      {
+        "id": "contractors_liability.bridge_dam_marine_work",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "is bridge, dam, or marine"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "contractors_liability.bridge_dam_marine_work.comments",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "is bridge, dam, or marine"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "width": 7.60,
+            "offsetX": 0
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "11."
+          }
+        }
+      },
+      {
+        "id": "contractors_liability.describe_typical_jobs",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "describe typical jobs performed"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "contractors_liability.describe_typical_jobs.comments",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "describe typical jobs performed"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "type": "startsWith",
+            "text": "12."
+          }
+        }
+      },
+      {
+        "id": "contractors_liability.describe_agreement",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "contractors liability"
+          },
+          "match": {
+            "type": "includes",
+            "text": "describe agreement "
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "contractors_liability.describe_agreement.commments",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "contractors liability"
+          },
+          "match": {
+            "type": "includes",
+            "text": "describe agreement "
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "type": "startsWith",
+            "text": "13."
+          }
+        }
+      },
+      {
+        "id": "contrators_liability.does_applicant_own_rent_cranes",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "13. does applicant own"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "contractors_liability.does_applicant_own_rent_cranes_comments",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "13. does applicant own"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "width": 7.62,
+            "offsetX": 0
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "14."
+          }
+        }
+      },
+      {
+        "id": "contractors_liability.subcontractors_carry_coverages",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "14. do subcontractors carry"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 2
+          }
+        }
+      },
+      {
+        "id": "contractors_liability.subcontractors_carry_coverages_comments",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "14. do subcontractors carry"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "width": 7.62,
+            "offsetX": 0
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "employers"
+          }
+        }
+      },
+      {
+        "id": "employer_liability.is_applicant_self_insured",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "15. is applicant self"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "employer_liability.is_applicant_self_insured_comments",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "15. is applicant self"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 7.60
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "16."
+          }
+        }
+      },
+      {
+        "id": "employer_liability.subject_to.jones_act",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "jones act"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "employers_liability.subject_to.fela",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "fela"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "employers_liability.subject_to.stop_gap",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "stop gap"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "employers_liability.subject_to.other",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "other:"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "incidental_malpractise_liability.is_hospital_first_aid_maintained",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "17. is a hospital"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "incidental_malpractise_liability.is_hospital_first_aid_maintained_comments",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "17. is a hospital"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "width": 7.60,
+            "offsetX": 0
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "18."
+          }
+        }
+      },
+      {
+        "id": "incidental_malpractise_liability.coverages_provided_for_doctors_nurses",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "18. are coverages provided"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "incidental_malpractise_liability.coverages_provided_for_doctors_nurses_comments",
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "18. are coverages provided"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "width": 7.60,
+            "offsetX": 0
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "19."
+          }
+        }
+      },
+      {
+        "id": "incidental_malpractise_liability.no_of_doctors",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "19. indicate"
+          },
+          "match": {
+            "type": "includes",
+            "text": "doctors:"
+          },
+          "end": {
+            "type": "equals",
+            "text": "nurses:"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "incidental_malpractise_liability.no_of_nurses",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "nurses:"
+          },
+          "end": {
+            "type": "equals",
+            "text": "beds"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "incidental_malpractise_liability.no_of_beds",
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "beds:"
+          },
+          "end": {
+            "type": "equals",
+            "text": "page 3 of 5"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "pollution_liability.current_or_past_products_hazards",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "contain hazardous materials"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "pollution_liability.current_or_past_products_hazards_comments",
+        "anchor": "contain hazardous materials",
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 7.6
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "21."
+          },
+          "wordFilters": [
+            "disposal methods?"
+          ]
+        }
+      },
+      {
+        "id": "pollution_liability.coverages_carried",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "coverages carried:"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "pollution_liability.standard_iso_pollution_exclusion",
+        "anchor": {
+          "match": {
+            "text": "iso pollution exclusion",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "pollution_liability.standard_sudden_and_accidental_only",
+        "anchor": {
+          "match": {
+            "text": "sudden & accidental",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "pollution_liability.pollution_endorsement",
+        "anchor": {
+          "match": {
+            "text": "pollution coverage endorsement",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "pollution_liability.separate_pollution_coverage",
+        "anchor": {
+          "match": {
+            "text": "separate pollution coverage",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "product_liability.products_installed_in_aircraft",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "engines, guidance systems"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "product_liability.products_installed_in_aircraft_comments",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "engines, guidance systems"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 7.6
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "23."
+          }
+        }
+      },
+      {
+        "id": "product_liability.foreign_products_operations_sold_distributed",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "operations, foreign products"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "product_liability_loss_three_years",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "past three (3)"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "product_liability.loss_past_three_years_comments",
+        "anchor": "past three (3)",
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 7.6
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "25."
+          }
+        }
+      },
+      {
+        "id": "product_liability.gross_sales_past_three_years",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "gross sales from each"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "protective_liability.describe_independent_contractors",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "describe independent contractors"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "protective_liability.independent_contractors.comments",
+        "anchor": "describe independent contractors",
+        "method": {
+          "id": "documentRange",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 7.6
+          },
+          "stop": {
+            "type": "startsWith",
+            "text": "WATERCRAFT LIABILITY",
+            "isCaseSensitive": true
+          }
+        }
+      },
+      {
+        "id": "watercraft_liability.applicant_owns_leases_watercraft",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "own or lease watercraft"
+          }
+        },
+        "method": {
+          "id": "box",
+          "offsetBoxes": {
+            "direction": "right",
+            "number": 1
+          }
+        }
+      },
+      {
+        "id": "remarks",
+        "anchor": {
+          "start": {
+            "type": "startsWith",
+            "text": "apartments / condominiums "
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "remarks (attach"
+          },
+          "end": {
+            "type": "equals",
+            "text": "page 4 of 5"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "type": "startsWith",
+            "text": "acord 131"
+          }
+        }
+      },
+      {
+        "id": "remarks_continuation",
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "page 4 of 5"
+          },
+          "match": {
+            "type": "startsWith",
+            "text": "remarks (attach"
+          },
+          "end": {
+            "type": "equals",
+            "text": "signature"
+          }
+        },
+        "method": {
+          "id": "documentRange",
+          "stop": {
+            "type": "equals",
+            "text": "signature"
+          }
+        }
+      },
+      {
+        "id": "signature.uninsured_motorists_coverage",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "motorists (um) coverage:"
+          },
+          "end": {
+            "type": "startsWith",
+            "text": "underinsured"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "width": 1.2,
+          "offsetX": 0.05,
+          "offsetY": -0.14,
+          "height": 0.20
+        }
+      },
+      {
+        "id": "signature.underinsured_motorists_coverage",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "motorists (uim) coverage:"
+          },
+          "end": {
+            "type": "includes",
+            "text": "louisiana"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "width": 1.2,
+          "offsetX": 0.05,
+          "offsetY": -0.14,
+          "height": 0.2
+        }
+      },
+      {
+        "id": "louisiana.select_um_limits",
+        "anchor": {
+          "start": {
+            "type": "includes",
+            "text": "louisiana"
+          },
+          "match": {
+            "type": "includes",
+            "text": "i select um limits"
+          },
+          "end": {
+            "type": "includes",
+            "text": "only in new"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetX": 0.4
+        }
+      },
+      {
+        "id": "louisiana.reject_um_coverage",
+        "anchor": {
+          "start": {
+            "type": "includes",
+            "text": "louisiana"
+          },
+          "match": {
+            "type": "includes",
+            "text": "i reject um"
+          },
+          "end": {
+            "type": "includes",
+            "text": "only in new"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetX": 0.4
+        }
+      },
+      {
+        "id": "new_hamsphire.select_um_limits",
+        "anchor": {
+          "start": {
+            "type": "includes",
+            "text": "only in new"
+          },
+          "match": {
+            "type": "includes",
+            "text": "i select um limits"
+          },
+          "end": {
+            "type": "includes",
+            "text": "only in vermont"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetX": 0.4
+        }
+      },
+      {
+        "id": "new_hamsphire.select_um_coverage",
+        "anchor": {
+          "start": {
+            "type": "includes",
+            "text": "only in new"
+          },
+          "match": {
+            "type": "includes",
+            "text": "i reject um"
+          },
+          "end": {
+            "type": "includes",
+            "text": "only in vermont"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetX": 0.4
+        }
+      },
+      {
+        "id": "vermont.select_um_limits",
+        "anchor": {
+          "start": {
+            "type": "includes",
+            "text": "only in vermont"
+          },
+          "match": {
+            "type": "includes",
+            "text": "i select um limits"
+          },
+          "end": {
+            "type": "includes",
+            "text": "only in wisconsin"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetX": 0.4
+        }
+      },
+      {
+        "id": "wisconsin.select_um_limits",
+        "anchor": {
+          "start": {
+            "type": "includes",
+            "text": "only in wisconsin"
+          },
+          "match": {
+            "type": "includes",
+            "text": "select um limits"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetX": 0.4
+        }
+      },
+      {
+        "id": "wisconsin.reject_um_coverage",
+        "anchor": {
+          "start": {
+            "type": "includes",
+            "text": "only in wisconsin"
+          },
+          "match": {
+            "type": "includes",
+            "text": "i reject um"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetX": 0.4
+        }
+      },
+      {
+        "id": "wisconsin.reject_uim_coverage",
+        "anchor": {
+          "start": {
+            "type": "includes",
+            "text": "only in wisconsin"
+          },
+          "match": {
+            "type": "includes",
+            "text": "i reject uim"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetX": 0.4
+        }
+      },
+      {
+        "id": "wisconsin.select_uim_limits",
+        "anchor": {
+          "start": {
+            "type": "includes",
+            "text": "only in wisconsin"
+          },
+          "match": {
+            "type": "includes",
+            "text": "select uim limits"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "right",
+          "offsetX": 0.4
+        }
+      },
+      {
+        "id": "producer's_signature",
+        "anchor": "producer's signature",
+        "method": {
+          "id": "signature",
+          "start": "left",
+          "offsetX": 0,
+          "offsetY": -0.02,
+          "height": 0.24,
+          "width": 3.20
+        }
+      },
+      {
+        "id": "producer's_name",
+        "anchor": "producer's name",
+        "method": {
+          "id": "box"
+        }
+      },
+      {
+        "id": "state_producer_license_no",
+        "anchor": "producer license no",
+        "method": {
+          "id": "box",
+          "offsetY": 0.1,
+          "wordFilters": [
+            "(required in florida)"
+          ]
+        }
+      },
+      {
+        "id": "applicant's_signature",
+        "anchor": "applicant's signature",
+        "method": {
+          "id": "signature",
+          "start": "left",
+          "offsetX": 0,
+          "offsetY": -0.02,
+          "height": 0.26,
+          "width": 5.55
+        }
+      },
+      {
+        "id": "date_signed",
+        "type": "date",
+        "anchor": {
+          "start": {
+            "type": "includes",
+            "text": "louisiana"
+          },
+          "match": {
+            "type": "equals",
+            "text": "date"
+          }
+        },
+        "method": {
+          "id": "box"
+        }
+      },
+      {
+        "id": "national_producer_number",
+        "anchor": "national producer ",
+        "method": {
+          "id": "box"
+        }
+      }
+    ],
+    "sections": [
+      {
+        "id": "primary_location_and_subsidiaries",
+        "range": {
+          "anchor": {
+            "start": {
+              "type": "includes",
+              "text": "all subsidiary companies"
+            },
+            "match": {
+              "type": "startsWith",
+              "text": "name:"
+            },
+            "end": {
+              "type": "equals",
+              "text": "underlying insurance"
+            }
+          },
+          "stop": {
+            "type": "equals",
+            "text": "description"
+          },
+          "direction": "horizontal"
+        },
+        "fields": [
+          {
+            "id": "number",
+            "anchor": "name:",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "left",
+                "number": 1
+              }
+            }
+          },
+          {
+            "id": "name",
+            "anchor": "name:",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "location",
+            "anchor": "location:",
+            "type": "address",
+            "method": {
+              "id": "box"
+            }
+          },
+          {
+            "id": "description",
+            "anchor": "description:",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "annual_payroll",
+            "anchor": "name:",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "right",
+                "number": 1
+              }
+            }
+          },
+          {
+            "id": "annual_gross_sales",
+            "anchor": "name:",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "right",
+                "number": 2
+              }
+            }
+          },
+          {
+            "id": "foreign_gross_sales",
+            "anchor": "name:",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "right",
+                "number": 3
+              }
+            }
+          },
+          {
+            "id": "empl",
+            "anchor": "name:",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "right",
+                "number": 4
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "watercratft_liability",
+        "range": {
+          "anchor": {
+            "start": {
+              "type": "startsWith",
+              "text": "watercraft liability"
+            },
+            "match": {
+              "type": "equals",
+              "text": "loc #"
+            },
+            "end": {
+              "type": "startsWith",
+              "text": "apartments"
+            }
+          },
+          "stop": {
+            "type": "equals",
+            "text": "horsepower"
+          },
+          "direction": "horizontal"
+        },
+        "fields": [
+          {
+            "id": "watercraft_liability.loc",
+            "anchor": "loc #",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "below",
+                "number": 1
+              }
+            }
+          },
+          {
+            "id": "watercraft_liability.owned",
+            "anchor": "# owned",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "below",
+                "number": 1
+              }
+            }
+          },
+          {
+            "id": "watercraft_liability.length",
+            "anchor": "length",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "below",
+                "number": 1
+              }
+            }
+          },
+          {
+            "id": "watercraft_liability.horsepower",
+            "anchor": "horsepower",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "below",
+                "number": 1
+              }
+            }
+          }
+        ]
+      },
+      {
+        "id": "apartments_condominiums_hotels_motels",
+        "range": {
+          "anchor": {
+            "start": {
+              "type": "startsWith",
+              "text": "apartments"
+            },
+            "match": {
+              "type": "startsWith",
+              "text": "loc #"
+            },
+            "end": {
+              "type": "startsWith",
+              "text": "remarks"
+            }
+          },
+          "stop": {
+            "type": "equals",
+            "text": "horsepower"
+          }
+        },
+        "fields": [
+          {
+            "id": "apartments_condominiums_hotels_motels.loc",
+            "anchor": "loc #",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "below",
+                "number": 1
+              }
+            }
+          },
+          {
+            "id": "apartments_condominiums_hotels_motels.owned",
+            "anchor": "# stories",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "below",
+                "number": 1
+              }
+            }
+          },
+          {
+            "id": "apartments_condominiums_hotels_motels.length",
+            "anchor": "# units",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "below",
+                "number": 1
+              }
+            }
+          },
+          {
+            "id": "apartments_condominiums_hotels_motels.horsepower",
+            "anchor": "# swimming pools",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "below",
+                "number": 1
+              }
+            }
+          },
+          {
+            "id": "apartments_condominiums_hotels_motels.diving_boards",
+            "anchor": "# diving boards",
+            "method": {
+              "id": "box",
+              "offsetBoxes": {
+                "direction": "below",
+                "number": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
