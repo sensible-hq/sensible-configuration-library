@@ -87,7 +87,8 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 - [ACORD 23 (03/2016)](./acords/acord_23/acord_23_2010_05__2016_03.json)
 - [ACORD 24 (03/2016)](./acords/acord_24/acord_24_2009_09__2016_03.json)
-- [ACORD 25 (03/2016)](./acords/acord_25/acord_25_2010_05__2014_01__2016_03.json)
+- [ACORD 25 (04/2010_01/2014)](./acords/acord_25/acord_25_2010_05_2014_01.json)
+- [ACORD 25 (03/2016)](./acords/acord_25/acord_25_2016_03.json)
 - [ACORD 27 (03/2016)](./acords/acord_27/acord_27_2016_03.json)
 - [ACORD 28 (03/2016)](./acords/acord_28/acord_28_2016_03.json)
 - [ACORD 45 (03/2016)](./acords/acord_45/acord_45_2016_03.json)
