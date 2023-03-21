@@ -912,42 +912,6 @@
       }
     },
     {
-      "id": "certificate_number",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "xRangeFilter": {
-          "width": 1,
-          "offsetX": 0,
-          "start": "right"
-        },
-      },
-      "anchor": {
-        "match": {
-          "text": "certificate number:",
-          "type": "startsWith"
-        },
-      },
-    },
-    {
-      "id": "revision_number",
-      "method": {
-        "id": "row",
-        "position": "right",
-        "xRangeFilter": {
-          "width": 1,
-          "offsetX": 0,
-          "start": "right"
-        },
-      },
-      "anchor": {
-        "match": {
-          "text": "revision number:",
-          "type": "startsWith"
-        },
-      },
-    },
-    {
       "id": "coverages.insurer_letter_1",
       "method": {
         "id": "region",
@@ -3873,15 +3837,15 @@
       }
     },
     {
-      "id": "workers_comp.policy_effective_date",
+      "id": "coverages.policy_effective_date_4",
       "type": "date",
       "method": {
-        "id": "region",
-        "start": "left",
-        "height": 0.3,
-        "width": 0.7,
-        "offsetY": 2.8,
-        "offsetX": -0.1,
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 4
+        },
         "tiebreaker": "<"
       },
       "anchor": {
@@ -3896,6 +3860,10 @@
               "text": "policy eff",
               "type": "startsWith"
             },
+            {
+              "text": "eff date",
+              "type": "startsWith"
+            }
           ]
         },
         "end": {
@@ -3905,7 +3873,7 @@
       }
     },
     {
-      "id": "workers_comp.policy_effective_date",
+      "id": "coverages.policy_effective_date_4",
       "type": "date",
       "method": {
         "id": "row",
@@ -3933,7 +3901,7 @@
       }
     },
     {
-      "id": "workers_comp.policy_effective_date",
+      "id": "coverages.policy_effective_date_4",
       "type": "date",
       "method": {
         "id": "row",
@@ -3961,16 +3929,16 @@
       }
     },
     {
-      "id": "workers_comp.policy_expiration_date",
+      "id": "coverages.policy_expiration_date_4",
       "type": "date",
       "method": {
-        "id": "region",
-        "start": "left",
-        "height": 0.3,
-        "width": 0.7,
-        "offsetY": 2.8,
-        "offsetX": -0.1,
-        "tiebreaker": "<"
+        "id": "box",
+        "position": "right",
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 4
+        },
+        "tiebreaker": ">"
       },
       "anchor": {
         "start": {
@@ -3988,7 +3956,7 @@
       }
     },
     {
-      "id": "workers_comp.policy_expiration_date",
+      "id": "coverages.policy_expiration_date_4",
       "type": "date",
       "method": {
         "id": "row",
@@ -4011,7 +3979,7 @@
       }
     },
     {
-      "id": "workers_comp.policy_expiration_date",
+      "id": "coverages.policy_expiration_date_4",
       "type": "date",
       "method": {
         "id": "row",
@@ -5581,31 +5549,6 @@
           "type": "startsWith"
         }
       }
-    },
-    {
-      "id": "signature_raw_text",
-      "method": {
-        "id": "region",
-        "start": "left",
-        "height": 0.4,
-        "width": 3.9,
-        "offsetX": 0,
-        "offsetY": 0
-      },
-      "anchor": {
-        "start": {
-          "text": "certificate holder",
-          "type": "startsWith"
-        },
-        "match": {
-          "text": "authorized representative",
-          "type": "equals"
-        },
-        "end": {
-          "text": "acord",
-          "type": "startsWith"
-        }
-      }
-    },
+    }
   ]
 }
