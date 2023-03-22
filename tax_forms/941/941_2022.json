@@ -1,0 +1,3235 @@
+{
+  "preprocessors": [
+    {
+      "type": "ocr",
+      "match": {
+        "type": "first"
+      },
+      "pageOffset": 0
+    },
+    {
+      "type": "ocr",
+      "match": {
+        "type": "first"
+      },
+      "pageOffset": 1
+    },
+    {
+      "type": "ocr",
+      "match": {
+        "type": "first"
+      },
+      "pageOffset": 2
+    }
+  ],
+  "fields": [
+    {
+      "id": "ein",
+      "anchor": {
+        "match": {
+          "text": "employer identification number",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.2,
+        "width": 4.75,
+        "height": 0.35,
+        "sortLines": "readingOrderLeftToRight",
+        "wordFilters": [
+          "Employer identification number (EIN)"
+        ]
+      }
+    },
+    {
+      "id": "name",
+      "anchor": {
+        "match": {
+          "text": "name",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.2,
+        "width": 4.75,
+        "height": 0.3,
+        "wordFilters": [
+          "Name (not your trade name)"
+        ]
+      }
+    },
+    {
+      "id": "trade",
+      "anchor": {
+        "match": {
+          "text": "trade",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.2,
+        "width": 4.75,
+        "height": 0.3,
+        "wordFilters": [
+          "Trade name (if any)"
+        ]
+      }
+    },
+    {
+      "id": "street_address",
+      "anchor": {
+        "match": {
+          "text": "address",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.2,
+        "width": 4.75,
+        "height": 0.3,
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "Number",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "Address",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "Street",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "Suite or room number",
+            "isCaseSensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "city",
+      "anchor": {
+        "match": {
+          "text": "city",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.2,
+        "offsetY": -0.32,
+        "width": 2.6,
+        "height": 0.3,
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "Number",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "Street",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "City",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "State",
+            "isCaseSensitive": true
+          },
+          {
+            "type": "equals",
+            "text": "Suite or room number",
+            "isCaseSensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "state",
+      "anchor": {
+        "match": {
+          "text": "State",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.2,
+        "offsetY": -0.32,
+        "width": 0.55,
+        "height": 0.3,
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "State",
+            "isCaseSensitive": true
+          }
+        ]
+      }
+    },
+    {
+      "id": "zip_code",
+      "anchor": {
+        "match": {
+          "text": "Zip code",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.35,
+        "offsetY": -0.32,
+        "width": 1.2,
+        "height": 0.3,
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "zip code"
+          }
+        ]
+      }
+    },
+    {
+      "id": "foreign_country_name",
+      "anchor": {
+        "match": {
+          "text": "foreign country name",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.35,
+        "offsetY": -0.32,
+        "width": 2.2,
+        "height": 0.3,
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "foreign country name"
+          },
+          {
+            "type": "startsWith",
+            "text": "foreign province"
+          }
+        ]
+      }
+    },
+    {
+      "id": "foreign_province",
+      "anchor": {
+        "match": {
+          "text": "foreign province",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.05,
+        "offsetY": -0.32,
+        "width": 1.15,
+        "height": 0.3,
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "foreign postal code"
+          },
+          {
+            "type": "startsWith",
+            "text": "foreign province"
+          }
+        ]
+      }
+    },
+    {
+      "id": "foreign_postal_code",
+      "anchor": {
+        "match": {
+          "text": "foreign postal code",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.05,
+        "offsetY": -0.32,
+        "width": 1.15,
+        "height": 0.3,
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "foreign postal code"
+          }
+        ]
+      }
+    },
+    {
+      "id": "1: January, February, March",
+      "anchor": {
+        "match": {
+          "text": "january, february, march",
+          "type": "includes"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "2: April, May, June",
+      "anchor": {
+        "match": {
+          "text": "april, may, june",
+          "type": "includes"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "3: July, August, September",
+      "anchor": {
+        "match": {
+          "text": "july, august, september",
+          "type": "includes"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "4: October, November, December",
+      "anchor": {
+        "match": {
+          "text": "october, november, december",
+          "type": "includes"
+        },
+        "end": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "report_for_this_quarter",
+      "method": {
+        "id": "pickValues",
+        "match": "one",
+        "source_ids": [
+          "1: January, February, March",
+          "2: April, May, June",
+          "3: July, August, September",
+          "4: October, November, December"
+        ]
+      }
+    },
+    {
+      "id": "number_of_employees_who_received_wages_tips_or_other_compensation",
+      "type": "number",
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": {
+          "text": "including: june 12",
+          "type": "includes"
+        },
+        "end": {
+          "text": "reserved for future use",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "number_of_employees_who_received_wages_tips_or_other_compensation",
+      "type": "number",
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "including: june 12",
+            "type": "includes"
+          }
+        ],
+        "end": {
+          "text": "reserved for future use",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 2
+      }
+    },
+    {
+      "id": "wages_tips_and_other_compensation",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": {
+          "text": "wages, tips, and other compensation",
+          "type": "includes"
+        },
+        "end": {
+          "text": "federal income tax withheld",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "2"
+          }
+        ]
+      }
+    },
+    {
+      "id": "federal_income_tax_withheld_from_wages_tips_and_other_compensation",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": {
+          "text": "federal income tax withheld from wages",
+          "type": "includes"
+        },
+        "end": {
+          "text": "reserved for future use",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "3"
+          }
+        ]
+      }
+    },
+    {
+      "id": "if_no_wages_tips_and_other_compensation_are_subject_to_social_security_or_medicare_tax",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": {
+          "text": "check and go to line 6",
+          "type": "includes"
+        },
+        "end": {
+          "text": "reserved for future use",
+          "type": "includes"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "taxable_social_security_wages_column_1",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": {
+          "text": "5a",
+          "type": "startsWith"
+        },
+        "end": [
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 1
+      }
+    },
+    {
+      "id": "taxable_social_security_wages_column_2",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": {
+          "text": "5a",
+          "type": "startsWith"
+        },
+        "end": [
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 3
+      }
+    },
+    {
+      "id": "qualified_sick_leave_wages_column_1",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+        ],
+        "end": [
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 1
+      }
+    },
+    {
+      "id": "qualified_sick_leave_wages_column_2",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+        ],
+        "end": [
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 3
+      }
+    },
+    {
+      "id": "qualified_family_leave_wages_column_1",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+          {
+            "text": "5a",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "5b",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 1
+      }
+    },
+    {
+      "id": "qualified_family_leave_wages_column_2",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+          {
+            "text": "5a",
+            "type": "startsWith"
+          },
+          {
+            "text": "5a",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "5b",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 3
+      }
+    },
+    {
+      "id": "taxable_social_security_tips_column_1",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "5b",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "5c",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 1
+      }
+    },
+    {
+      "id": "taxable_social_security_tips_column_2",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "5b",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "5c",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 3
+      }
+    },
+    {
+      "id": "taxable_medicare_wages_and_tips_column_1",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "5c",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "5d",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 1
+      }
+    },
+    {
+      "id": "taxable_medicare_wages_and_tips_column_2",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "5c",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "5d",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 3
+      }
+    },
+    {
+      "id": "taxable_wages_and_tips_subject_to_additional_medicare_tax_withholding_column_1",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "5d",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "5e",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 1,
+        "offsetY": 0.05
+      }
+    },
+    {
+      "id": "taxable_wages_and_tips_subject_to_additional_medicare_tax_withholding_column_2",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "5d",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "5e",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 3,
+        "offsetY": 0.05
+      }
+    },
+    {
+      "id": "total_social_security_and_medicare_taxes",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "total social security and medicare taxes",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "5e"
+          }
+        ]
+      }
+    },
+    {
+      "id": "section_3121_notice_and_demand",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "section 3121",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "5f"
+          }
+        ]
+      }
+    },
+    {
+      "id": "total_taxes_before_adjustments",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "total taxes before adjustments",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "6"
+          }
+        ]
+      }
+    },
+    {
+      "id": "current_quarters_adjustment_for_fractions_of_cents",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "current quarter's adjustment for fractions",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "7"
+          }
+        ]
+      }
+    },
+    {
+      "id": "current_quarters_adjustment_for_sick_pay",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "current quarter's adjustment for sick pay",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "8"
+          }
+        ]
+      }
+    },
+    {
+      "id": "current_quarters_adjustments_for_tips_and_group_term_life_insurance",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "current quarter's adjustments for tips and group-term life insurance",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "9"
+          }
+        ]
+      }
+    },
+    {
+      "id": "total_taxes_after_adjustments",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "total taxes after adjustments",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "10"
+          }
+        ]
+      }
+    },
+    {
+      "id": "qualified_small_business_payroll_tax_credit_for_increasing_research_activities",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "qualified small business payroll tax credit for increasing research",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "11a"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nonrefundable_portion_of_credit_for_qualified_sick_and_family_leave_wages_for_leave_taken_before_april_1",
+      "match": "last",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "11b",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "11b"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reserved_for_future_use",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "11d",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "11c"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nonrefundable_portion_of_credit_for_qualified_sick_and_family_leave_wages_for_leave_taken_after_march_31",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "answer these questions for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "11d",
+            "type": "startsWith"
+          },
+          {
+            "text": "11d",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "balance due.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "11d"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reserved_for_future_use_11e",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "11d",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "11e",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "balance due.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "11e"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reserved_for_future_use_11f",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "11d",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "11f",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "balance due.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "11f"
+          }
+        ]
+      }
+    },
+    {
+      "id": "total_nonrefundable_credits",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "11d",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "total nonrefundable credits",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "balance due.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "11g"
+          }
+        ]
+      }
+    },
+    {
+      "id": "total_taxes_after_adjustments_and_nonrefundable_credits",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "11d",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "total taxes after adjustments and nonrefundable credits",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "balance due.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "12"
+          }
+        ]
+      }
+    },
+    {
+      "id": "total_deposits_for_this_quarter_including_overpayment_applied_from_a_prior_quarter",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "11d",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "13a",
+            "type": "startsWith"
+          },
+          {
+            "text": "13a",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "balance due.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "11g"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reserved_for_future_use_13b",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "13a",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "13c",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "13b"
+          }
+        ]
+      }
+    },
+    {
+      "id": "refundable_portion_of_credit_for_qualified_sick_and_family_leave_wages_for_leave_taken_before_april_1_13c",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "13a",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "13c",
+            "type": "includes"
+          },
+          {
+            "text": "13c",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "13d",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "13c"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reserved_for_future_use_13d",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "13c",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "13e",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "13d"
+          }
+        ]
+      }
+    },
+    {
+      "id": "refundable_portion_of_credit_for_qualified_sick_and_family_leave_wages_for_leave_taken_before_april_1_13e",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "13a",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "13e",
+            "type": "includes"
+          },
+          {
+            "text": "13e",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "13f",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "13e"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reserved_for_future_use_13f",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "13e",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "13g",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "13f"
+          }
+        ]
+      }
+    },
+    {
+      "id": "total_deposits_and_refundable_credits",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "13e",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "total deposits and refundable credits",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "13h",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "13g"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reserved_for_future_use_13h",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "13g",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "13i",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "13h"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reserved_for_future_use_13i",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "13h",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "13i",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "balance due.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "13i"
+          }
+        ]
+      }
+    },
+    {
+      "id": "balance_due",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "13h",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "balance due.",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "overpayment.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "14"
+          }
+        ]
+      }
+    },
+    {
+      "id": "overpayment",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "balance due.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "overpayment.",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "tell us about your deposit schedule",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.7,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "Apply to next return",
+      "anchor": {
+        "start": {
+          "text": "balance due.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "apply to next return",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "tell us about your deposit schedule",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "Send a refund",
+      "anchor": {
+        "start": {
+          "text": "balance due.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "send a refund",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "tell us about your deposit schedule",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "overpayment.check_one",
+      "method": {
+        "id": "pickValues",
+        "match": "one",
+        "source_ids": [
+          "Apply to next return",
+          "Send a refund"
+        ]
+      }
+    },
+    {
+      "id": "Line 12 on this return is less than $2,500 or line 12 on the return for the prior quarter was less than $2,500 and you didn't incur a $100,000 next-day deposit obligation during the current quarter",
+      "anchor": {
+        "start": {
+          "text": "tell us about your deposit schedule and tax liability for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "line 12 on this return is less than",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "tell us about your business.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "You were a monthly schedule depositer for the entire quarter",
+      "anchor": {
+        "start": {
+          "text": "tell us about your deposit schedule and tax liability for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "you were a monthly schedule depositor for the entire quarter",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "tell us about your business.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "tax_liability_month_1",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your deposit schedule and tax liability for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "month 1",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "tell us about your business.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.7,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "tax_liability_month_2",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your deposit schedule and tax liability for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "month 2",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "tell us about your business.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.7,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "tax_liability_month_3",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your deposit schedule and tax liability for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "month 3",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "tell us about your business.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.7,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "total_liability_for_quarter",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your deposit schedule and tax liability for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "total liability for quarter",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "tell us about your business.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.7,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "You were a semiweekly schedule depositor for any part of this quarter",
+      "anchor": {
+        "start": {
+          "text": "tell us about your deposit schedule and tax liability for this quarter",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "you were a semiweekly schedule depositor for any part of this quarter",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "tell us about your business.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "deposit_schedule.check_one",
+      "method": {
+        "id": "pickValues",
+        "match": "one",
+        "source_ids": [
+          "Line 12 on this return is less than $2,500 or line 12 on the return for the prior quarter was less than $2,500 and you didn't incur a $100,000 next-day deposit obligation during the current quarter",
+          "You were a monthly schedule depositer for the entire quarter",
+          "You were a semiweekly schedule depositor for any part of this quarter"
+        ]
+      }
+    },
+    {
+      "id": "your_business_has_closed_or_you_stopped_paying_wages",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your business.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "check here",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "enter the final date you paid wages",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "final_date_you_paid_wages",
+      "type": {
+        "id": "date",
+        "format": [
+          "%m ?/ %d ?/ ?%Y",
+          "%m %d %Y",
+          "%m / %d %Y",
+          "%m %d /%Y",
+          "%m/%d/%Y",
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your business.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "enter the final date you paid wages",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "may we speak with your third-party",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.7,
+        "whitespaceFilter": "all"
+      }
+    },
+    {
+      "id": "youre_a_seasonal_employer_and_you_dont_have_to_file_a_return_for_every_quarter_of_the_year",
+      "anchor": {
+        "start": {
+          "text": "enter the final date you paid wages",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "check here",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "may we speak with your third-party",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "qualified_health_plan_expenses_allocable_to_qualified_sick_leave_wages_for_leave_taken_before_april_1",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your business.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "qualified health plan expenses allocable to qualified sick leave wages for leave taken",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "may we speak with your third-party",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "19"
+          }
+        ]
+      }
+    },
+    {
+      "id": "qualified_health_plan_expenses_allocable_to_qualified_family_wages_for_leave_taken_before_april_1",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your business.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "qualified health plan expenses allocable to qualified family leave wages for leave",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "may we speak with your third-party",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "20"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reserved_for_future_use_21",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your business.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          },
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "21"
+          }
+        ]
+      }
+    },
+    {
+      "id": "reserved_for_future_use_22",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your business.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          },
+          {
+            "text": "reserved for future use",
+            "type": "includes"
+          },
+        ],
+        "end": [
+          {
+            "text": "may we speak with your third-party",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "22"
+          }
+        ]
+      }
+    },
+    {
+      "id": "qualified_sick_leave_wages_for_leave_taken_after_march_31",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your business.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "qualified sick leave wages for leave taken after march 31",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "may we speak with your third-party",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "23"
+          }
+        ]
+      }
+    },
+    {
+      "id": "qualfied_health_plan_expenses_allocable_to_qualified_sick_leave_wages",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your business.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "qualified health plan expenses allocable to qualified sick leave wages reported on line 23",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "may we speak with your third-party",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "24"
+          }
+        ]
+      }
+    },
+    {
+      "id": "amounts_under_certain_collectively_bargained_agreements_allocable_to_qualified_sick_leave_wages",
+      "match": "last",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your business.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "leave wages reported on line 23",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "may we speak with your third-party",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "25"
+          }
+        ]
+      }
+    },
+    {
+      "id": "qualified_family_leave_wages_for_leave_taken_after_march_31",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your business.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "qualified family leave wages for leave taken after march 31",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "may we speak with your third-party",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "26"
+          }
+        ]
+      }
+    },
+    {
+      "id": "qualified_health_plan_expenses_allocable_to_qualified_family_leave_wages",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your business.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "qualified health plan expenses allocable to qualified family leave wages reported on",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "may we speak with your third-party",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "27"
+          }
+        ]
+      }
+    },
+    {
+      "id": "amounts_under_certain_collectively_bargained_agreements_allocable_to_qualified_family_leave_wages",
+      "type": {
+        "id": "currency",
+        "accountingNegative": "default"
+      },
+      "anchor": {
+        "start": {
+          "text": "tell us about your business.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "leave wages reported on line 26",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "may we speak with your third-party",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "last",
+        "lineFilters": [
+          {
+            "type": "equals",
+            "text": "28"
+          }
+        ]
+      }
+    },
+    {
+      "id": "yes",
+      "anchor": {
+        "start": {
+          "text": "may we speak with your third-party",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "yes.",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "sign here.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "no",
+      "anchor": {
+        "start": {
+          "text": "may we speak with your third-party",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "no.",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "sign here.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "do_you_want_to_allow_an_employee_a_paid_tax_preparer_or_another_person_to_discuss_this_return_with_the_irs",
+      "method": {
+        "id": "pickValues",
+        "match": "one",
+        "source_ids": [
+          "yes",
+          "no"
+        ]
+      }
+    },
+    {
+      "id": "designees_name",
+      "anchor": {
+        "start": {
+          "text": "may we speak with your third-party",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "designee's name and phone number",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "sign here.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 1,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "designees_phone_number",
+      "anchor": {
+        "start": {
+          "text": "may we speak with your third-party",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "designee's name and phone number",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "sign here.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 3.5,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "5_digit_personal_identification_number_to_use_when_talking_to_the_irs",
+      "anchor": {
+        "start": {
+          "text": "may we speak with your third-party",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "select a 5-digit personal identification number",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "sign here.",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 4.3,
+        "offsetY": -0.15,
+        "width": 2,
+        "height": 0.25
+      }
+    },
+    {
+      "id": "signed",
+      "anchor": {
+        "start": {
+          "text": "sign here.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "sign your",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "paid preparer use only",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "signature",
+        "start": "left",
+        "offsetX": 0.8,
+        "offsetY": 0,
+        "width": 2.7,
+        "height": 0.2
+      }
+    },
+    {
+      "id": "printed_name",
+      "anchor": {
+        "start": {
+          "text": "sign here.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "name here",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "paid preparer use only",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.5
+      }
+    },
+    {
+      "id": "printed_title",
+      "anchor": {
+        "start": {
+          "text": "sign here.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "title here",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "paid preparer use only",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.5
+      }
+    },
+    {
+      "id": "signed_date",
+      "type": {
+        "id": "date",
+        "format": [
+          "%m ?/ %d ?/ ?%Y",
+          "%m %d %Y",
+          "%m / %d %Y",
+          "%m %d /%Y",
+          "%m/%d/%Y",
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "sign here.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "date",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "paid preparer use only",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.5
+      }
+    },
+    {
+      "id": "best_daytime_phone",
+      "anchor": {
+        "start": {
+          "text": "sign here.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "best daytime phone",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "paid preparer use only",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.5
+      }
+    },
+    {
+      "id": "preparer_check_if_youre_self_employed",
+      "anchor": {
+        "start": {
+          "text": "sign here.",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "check if you're self-employed",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "zip code",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "right",
+        "offsetX": 0.7
+      }
+    },
+    {
+      "id": "preparers_name",
+      "anchor": {
+        "start": {
+          "text": "paid preparer use only",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "preparer's name",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "zip code",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 1,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "preparers_signautre",
+      "anchor": {
+        "start": {
+          "text": "paid preparer use only",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "preparer's signature",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "zip code",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "signature",
+        "start": "left",
+        "offsetX": 1.2,
+        "offsetY": -0.07,
+        "width": 2.9,
+        "height": 0.1
+      }
+    },
+    {
+      "id": "firms_name_or_yours_if_self_employed",
+      "anchor": {
+        "start": {
+          "text": "preparer's signature",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "self-employed",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "zip code",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 1,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "preparer_street_address",
+      "anchor": {
+        "start": {
+          "text": "paid preparer use only",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "address",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "zip code",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 1.5,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "preparer_city",
+      "anchor": {
+        "start": {
+          "text": "paid preparer use only",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "city",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "zip code",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 2,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "preparer_state",
+      "anchor": {
+        "start": {
+          "text": "paid preparer use only",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "state",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "zip code",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "preparer_ptin",
+      "anchor": {
+        "start": {
+          "text": "paid preparer use only",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "ptin",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "zip code",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 1.3,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "preparer_date",
+      "type": "date",
+      "anchor": {
+        "start": {
+          "text": "paid preparer use only",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "date",
+            "type": "includes"
+          }
+        ],
+        "end": [
+          {
+            "text": "zip code",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.9,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "preparer_ein",
+      "anchor": {
+        "start": {
+          "text": "paid preparer use only",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "ein",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "zip code",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.9,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "preparer_phone",
+      "anchor": {
+        "start": {
+          "text": "paid preparer use only",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "phone",
+            "type": "startsWith"
+          }
+        ],
+        "end": [
+          {
+            "text": "zip code",
+            "type": "includes"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.9,
+        "offsetY": -0.025
+      }
+    },
+    {
+      "id": "preparer_zip_code",
+      "anchor": {
+        "start": {
+          "text": "paid preparer use only",
+          "type": "includes"
+        },
+        "match": [
+          {
+            "text": "zip code",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.9,
+        "offsetY": -0.025
+      }
+    },
+  ],
+  "computed_fields": [
+    {
+      "id": "suppress",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": [
+          "1: January, February, March",
+          "2: April, May, June",
+          "3: July, August, September",
+          "4: October, November, December",
+          "Apply to next return",
+          "Send a refund",
+          "Line 12 on this return is less than $2,500 or line 12 on the return for the prior quarter was less than $2,500 and you didn't incur a $100,000 next-day deposit obligation during the current quarter",
+          "You were a monthly schedule depositer for the entire quarter",
+          "You were a semiweekly schedule depositor for any part of this quarter",
+          "yes",
+          "no"
+        ]
+      }
+    }
+  ]
+}
