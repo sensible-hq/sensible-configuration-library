@@ -190,20 +190,27 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Paylocity](./pay_stubs/paylocity/paylocity.json)
 
 ### Real Estate
+
 - [Closing Disclosure](./real_estate/closing_disclosure/closing_disclosure.json)
 
 ### Explanation of Benefits
+
 - [Cigna](./eobs/cigna/cigna_2022.json)
 - [Medicaid](./eobs/medicaid/medicaid.json)
 - [Tricare](./eobs/tricare/tricare.json)
 
 ### Bank Statements
+
 - [Ally (Combined Customer Statement)](./bank_statements/ally/ally_combined_customer_statement.json)
 - [Bank of America](./bank_statements/bank_of_america/boa.json.json)
 - [Chase (Consolidated Balance Summary)](./bank_statements/chase/chase_consolidated_balance_summary.json)
 - [Well Fargo (Checking)](./bank_statements/wells_fargo/wells_fargo_checking.json)
 - [Well Fargo (Savings)](./bank_statements/wells_fargo/wells_fargo_savings.json)
 - [Well Fargo (Combined Statement of Accounts)](./bank_statements/wells_fargo/wells_fargo_combined_statement_of_accounts.json)
+
+#### Health Insurance Claims
+
+- [CMS 1500 (08/05)](./health_insurance_claims/cms_1500/cms_1500_08_05.json)
 
 
 ## Using a configuration
