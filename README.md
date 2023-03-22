@@ -173,7 +173,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [US Express](./rate_confirmations/us_express/us_express.json)
 - [XPO](./rate_confirmations/xpo.json)
 
-### Verifications of employement
+### Verifications of employment
 
 - [Blend](./verifications_of_employment/blend/blend.json)
 - [CCC Verify](./verifications_of_employment/ccc_verify/ccc_verify.json)
@@ -208,7 +208,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Well Fargo (Savings)](./bank_statements/wells_fargo/wells_fargo_savings.json)
 - [Well Fargo (Combined Statement of Accounts)](./bank_statements/wells_fargo/wells_fargo_combined_statement_of_accounts.json)
 
-#### Health Insurance Claims
+### Healthcare
 
 - [CMS 1500 (08/05)](./health_insurance_claims/cms_1500/cms_1500_08_05.json)
 
