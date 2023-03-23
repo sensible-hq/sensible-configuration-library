@@ -1,0 +1,2070 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "every",
+          "match": [
+            {
+              "text": "FORM CMS-1500 (08-05)",
+              "type": "endsWith",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "carrier",
+        "anchor": {
+          "match": {
+            "text": "CARRIER",
+            "type": "includes",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2.5,
+          "height": 1,
+          "offsetX": -3,
+          "offsetY": -0.6,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item1.medicare",
+        "anchor": {
+          "match": {
+            "text": "medicare #",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "item1.medicaid",
+        "anchor": {
+          "match": {
+            "text": "medicaid #",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "item1.sponsors_ssn",
+        "anchor": {
+          "match": {
+            "text": "sponsor's ssn",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "item1.member_id",
+        "anchor": {
+          "match": {
+            "text": "member id",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "item1.ssn_or_id",
+        "anchor": {
+          "match": {
+            "text": "ssn or id",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "item1.ssn",
+        "anchor": {
+          "match": {
+            "text": "(ssn)",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "item1.id",
+        "anchor": {
+          "match": {
+            "text": "(id)",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "item1a.insureds_id_number",
+        "anchor": {
+          "match": {
+            "text": "insured's i.d. number",
+            "type": "endsWith",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item2.patients_name",
+        "anchor": {
+          "match": {
+            "text": "patient's name",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item3.patients_birth_date",
+        "type": {
+          "id": "date",
+          "format": "%M %D %Y"
+        },
+        "anchor": {
+          "match": {
+            "text": "MM",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "patient relationship",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1,
+          "height": 0.2,
+          "offsetX": -0.01,
+          "offsetY": 0.01,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item3.male",
+        "anchor": {
+          "match": {
+            "text": "M",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "patient relationship",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item3.female",
+        "anchor": {
+          "match": {
+            "text": "F",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "patient relationship",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item4.insureds_name",
+        "anchor": {
+          "match": {
+            "text": "insured's name",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item5.patients_street_address",
+        "anchor": {
+          "match": {
+            "text": "patient's address",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item5.patients_city",
+        "anchor": {
+          "match": {
+            "text": "city",
+            "type": "equals"
+          },
+          "end": [
+            {
+              "text": "city",
+              "type": "equals"
+            },
+            {
+              "text": "city",
+              "type": "equals"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item5.patients_state",
+        "anchor": {
+          "match": {
+            "text": "state",
+            "type": "equals"
+          },
+          "end": [
+            {
+              "text": "state",
+              "type": "equals"
+            },
+            {
+              "text": "state",
+              "type": "equals"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item5.patients_zip_code",
+        "anchor": {
+          "match": {
+            "text": "zip code",
+            "type": "equals"
+          },
+          "end": [
+            {
+              "text": "zip code",
+              "type": "equals"
+            },
+            {
+              "text": "zip code",
+              "type": "equals"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item5.patients_telephone",
+        "anchor": {
+          "match": {
+            "text": "telephone",
+            "type": "startsWith"
+          },
+          "end": [
+            {
+              "text": "telephone",
+              "type": "startsWith"
+            },
+            {
+              "text": "telephone",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item6.patient_relationship_to_insured.self",
+        "anchor": {
+          "match": {
+            "text": "self",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item6.patient_relationship_to_insured.spouse",
+        "anchor": {
+          "match": {
+            "text": "spouse",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item6.patient_relationship_to_insured.child",
+        "anchor": {
+          "match": {
+            "text": "child",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item6.patient_relationship_to_insured.other",
+        "anchor": {
+          "match": {
+            "text": "other",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item7.insureds_street_address",
+        "anchor": {
+          "match": {
+            "text": "insured's address",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item7.insureds_city",
+        "anchor": {
+          "match": [
+            {
+              "text": "city",
+              "type": "equals"
+            },
+            {
+              "text": "city",
+              "type": "equals"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item7.insureds_state",
+        "anchor": {
+          "match": [
+            {
+              "text": "state",
+              "type": "equals"
+            },
+            {
+              "text": "state",
+              "type": "equals"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item7.insureds_zip_code",
+        "anchor": {
+          "match": [
+            {
+              "text": "zip code",
+              "type": "equals"
+            },
+            {
+              "text": "zip code",
+              "type": "equals"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item7.insureds_telephone",
+        "anchor": {
+          "match": [
+            {
+              "text": "telephone",
+              "type": "startsWith"
+            },
+            {
+              "text": "telephone",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item7.insureds_telephone",
+        "anchor": {
+          "match": [
+            {
+              "text": "telephone",
+              "type": "startsWith"
+            },
+            {
+              "text": "telephone",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        }
+      },
+      {
+        "id": "item8.patient_status.single",
+        "anchor": {
+          "match": {
+            "text": "single",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item8.patient_status.married",
+        "anchor": {
+          "match": {
+            "text": "married",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item8.patient_status.other",
+        "anchor": {
+          "match": [
+            {
+              "text": "other",
+              "type": "startsWith"
+            },
+            {
+              "text": "other",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item8.patient_status.employed",
+        "anchor": {
+          "match": [
+            {
+              "text": "employed",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item8.patient_status.full_time_student",
+        "anchor": {
+          "match": [
+            {
+              "text": "full-time",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item8.patient_status.part_time_student",
+        "anchor": {
+          "match": [
+            {
+              "text": "part-time",
+              "type": "startsWith"
+            }
+          ]
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item9.other_insureds_name",
+        "anchor": {
+          "match": {
+            "text": "other insured's name",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item9a.other_insureds_name_policy_or_group_number",
+        "anchor": {
+          "match": {
+            "text": "other insured's policy",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item9b.other_insureds_birth_date",
+        "type": {
+          "id": "date",
+          "format": "%M %D %Y"
+        },
+        "anchor": {
+          "start": {
+            "text": "other insured's date of birth",
+            "type": "includes"
+          },
+          "match": {
+            "text": "MM",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "reserved for local use",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1,
+          "height": 0.2,
+          "offsetX": -0.01,
+          "offsetY": 0.01,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item9b.male",
+        "anchor": {
+          "start": {
+            "text": "other insured's date of birth",
+            "type": "includes"
+          },
+          "match": {
+            "text": "M",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item9b.female",
+        "anchor": {
+          "start": {
+            "text": "other insured's date of birth",
+            "type": "includes"
+          },
+          "match": {
+            "text": "F",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item9c.employers_name_or_school_name",
+        "anchor": {
+          "match": [
+            {
+              "text": "employer's name or school name",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "employer's name or school name",
+              "type": "includes",
+              "editDistance": 1
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item9d.insurance_plan_name_or_program_name",
+        "anchor": {
+          "match": [
+            {
+              "text": "insurance plan name or program name",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "insurance plan name or program name",
+              "type": "includes",
+              "editDistance": 1
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item10a.is_patients_condition_related_to_employment",
+        "anchor": {
+          "start": {
+            "text": "is patient's condition related to",
+            "type": "includes"
+          },
+          "match": {
+            "text": "YES",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "auto accident?",
+            "type": "endsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "item10b.is_patients_condition_related_to_auto_accident",
+        "anchor": {
+          "start": {
+            "text": "auto accident?",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "YES",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "other accident?",
+            "type": "endsWith"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "item10b.is_patients_condition_related_to_auto_accident.place",
+        "anchor": {
+          "start": {
+            "text": "auto accident?",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "PLACE",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "other accident?",
+            "type": "endsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "width": 0.4,
+          "height": 0.18,
+          "offsetX": -0.45,
+          "offsetY": 0.05,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item10c.is_patients_condition_related_to_other_accident",
+        "anchor": {
+          "start": {
+            "text": "other accident?",
+            "type": "endsWith"
+          },
+          "match": {
+            "text": "YES",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "reserved for local use",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "item10d.reserved_for_local_use",
+        "anchor": {
+          "match": {
+            "text": "reserved for local use",
+            "type": "includes",
+            "editDistance": 1
+          },
+          "end": {
+            "text": "insured's or authorized",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item11.insureds_policy_group_or_feca_number",
+        "anchor": {
+          "match": {
+            "text": "insured's policy group",
+            "type": "includes",
+            "editDistance": 1
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item11a.insureds_birth_date",
+        "type": {
+          "id": "date",
+          "format": "%M %D %Y"
+        },
+        "anchor": {
+          "start": {
+            "text": "insured's date of birth",
+            "type": "includes"
+          },
+          "match": {
+            "text": "MM",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "other insured's date of birth",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1,
+          "height": 0.2,
+          "offsetX": -0.01,
+          "offsetY": 0.01,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item11a.male",
+        "anchor": {
+          "start": {
+            "text": "insured's date of birth",
+            "type": "includes"
+          },
+          "match": {
+            "text": "M",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "other insured's date of birth",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item11a.female",
+        "anchor": {
+          "start": {
+            "text": "insured's date of birth",
+            "type": "includes"
+          },
+          "match": {
+            "text": "F",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "other insured's date of birth",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item11b.employers_name_or_school_name",
+        "anchor": {
+          "match": {
+            "text": "employer's name or school name",
+            "type": "includes",
+            "editDistance": 1
+          },
+          "end": [
+            {
+              "text": "employer's name or school name",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "employer's name or school name",
+              "type": "includes",
+              "editDistance": 1
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item11c.insurance_plan_name_or_program_name",
+        "anchor": {
+          "match": {
+            "text": "insurance plan name or program name",
+            "type": "includes",
+            "editDistance": 1
+          },
+          "end": [
+            {
+              "text": "insurance plan name or program name",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "insurance plan name or program name",
+              "type": "includes",
+              "editDistance": 1
+            }
+          ]
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item11d.is_ther_another_health_benefit_plan",
+        "anchor": {
+          "start": {
+            "text": "is there another health benefit plan",
+            "type": "includes",
+            "editDistance": 1
+          },
+          "match": {
+            "text": "YES",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "insured's or authorized",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "item12.patients_authorized_persons.signature",
+        "anchor": {
+          "match": {
+            "text": "patient's or authorized person's sign",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2.2,
+          "height": 0.18,
+          "offsetX": 0.39,
+          "offsetY": 0.23
+        }
+      },
+      {
+        "id": "item12.patients_authorized_persons.date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "patient's or authorized person's sign",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2,
+          "height": 0.18,
+          "offsetX": 2.9,
+          "offsetY": 0.23
+        }
+      },
+      {
+        "id": "item13.insureds_authorized_persons.signature",
+        "anchor": {
+          "match": {
+            "text": "insured's or authorized person's sign",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2.2,
+          "height": 0.18,
+          "offsetX": 0.39,
+          "offsetY": 0.3
+        }
+      },
+      {
+        "id": "item14.date_of_current",
+        "type": {
+          "id": "date",
+          "format": "%M %D %y"
+        },
+        "anchor": {
+          "match": {
+            "text": "date of current",
+            "type": "includes"
+          },
+          "end": {
+            "text": "name of referring provider",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1,
+          "height": 0.2,
+          "offsetX": -0.01,
+          "offsetY": 0.1,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item15.first_date_same_similar_issue",
+        "type": {
+          "id": "date",
+          "format": "%M %D %y"
+        },
+        "anchor": {
+          "match": {
+            "text": "if patient has had same or similar",
+            "type": "includes"
+          },
+          "end": {
+            "text": "name of referring provider",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "width": 1,
+          "height": 0.2,
+          "offsetX": -1.35,
+          "offsetY": 0.1,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item16.dates_patient_unable_to_work_in_current_occupation.from",
+        "type": {
+          "id": "date",
+          "format": "%M %D %y"
+        },
+        "anchor": {
+          "match": {
+            "text": "dates patient unable to work",
+            "type": "includes"
+          },
+          "end": {
+            "text": "name of referring provider",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1,
+          "height": 0.2,
+          "offsetX": 0.3,
+          "offsetY": 0.1,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item16.dates_patient_unable_to_work_in_current_occupation.to",
+        "type": {
+          "id": "date",
+          "format": "%M %D %y"
+        },
+        "anchor": {
+          "match": {
+            "text": "dates patient unable to work",
+            "type": "includes"
+          },
+          "end": {
+            "text": "name of referring provider",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1,
+          "height": 0.2,
+          "offsetX": 1.71,
+          "offsetY": 0.1,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item17.name_of_referring_provider_or_other_source",
+        "anchor": {
+          "match": {
+            "text": "name of referring provider",
+            "type": "includes"
+          },
+          "end": {
+            "text": "outside lab",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item17a",
+        "anchor": {
+          "match": {
+            "text": "17a",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2.04,
+          "height": 0.2,
+          "offsetX": 0.2,
+          "offsetY": -0.05,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item17b",
+        "anchor": {
+          "match": {
+            "text": "17b",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2.04,
+          "height": 0.2,
+          "offsetX": 0.2,
+          "offsetY": -0.05,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item18.hospitalization_dates_related_to_current_services.from",
+        "type": {
+          "id": "date",
+          "format": "%M %D %y"
+        },
+        "anchor": {
+          "match": {
+            "text": "hospitalization dates related",
+            "type": "includes"
+          },
+          "end": {
+            "text": "outside lab",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1,
+          "height": 0.2,
+          "offsetX": 0.3,
+          "offsetY": 0.1,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item18.hospitalization_dates_related_to_current_services.to",
+        "type": {
+          "id": "date",
+          "format": "%M %D %y"
+        },
+        "anchor": {
+          "match": {
+            "text": "hospitalization dates related",
+            "type": "includes"
+          },
+          "end": {
+            "text": "outside lab",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1,
+          "height": 0.2,
+          "offsetX": 1.71,
+          "offsetY": 0.1,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item19.reserved_for_local_use",
+        "anchor": {
+          "match": [
+            {
+              "text": "reserved for local use",
+              "type": "includes",
+              "editDistance": 1
+            },
+            {
+              "text": "reserved for local use",
+              "type": "includes",
+              "editDistance": 1
+            }
+          ],
+          "end": {
+            "text": "diagnosis or nature of illness",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item20.outside_lab",
+        "anchor": {
+          "start": {
+            "text": "outside lab?",
+            "type": "includes"
+          },
+          "match": {
+            "text": "YES",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "medicaid resubmission",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "item20.charges",
+        "anchor": {
+          "start": {
+            "text": "outside lab?",
+            "type": "includes"
+          },
+          "match": {
+            "text": "CHARGES",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "medicaid resubmission",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item21.diagnosis_pointer",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "21.",
+            "type": "startsWith"
+          },
+          "match": {
+            "pattern": "^[0-9]\\.|^[0-1][0-9]\\.",
+            "type": "regex"
+          },
+          "end": {
+            "text": "date(s) of service",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "item21.diagnosis_or_nature_of_illness_or_injury",
+        "match": "all",
+        "anchor": {
+          "start": {
+            "text": "21.",
+            "type": "startsWith"
+          },
+          "match": {
+            "pattern": "^[0-9]\\.|^[0-1][0-9]\\.",
+            "type": "regex"
+          },
+          "end": {
+            "text": "date(s) of service",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first",
+          "whitespaceFilter": "all",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "right",
+            "offsetX": 0,
+            "width": 1
+          }
+        }
+      },
+      {
+        "id": "item21",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "item21.diagnosis_pointer",
+            "item21.diagnosis_or_nature_of_illness_or_injury"
+          ]
+        }
+      },
+      {
+        "id": "clean_item21",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "item21.diagnosis_pointer",
+            "item21.diagnosis_or_nature_of_illness_or_injury"
+          ]
+        }
+      },
+      {
+        "id": "item22.medicaid_resubmission.code",
+        "anchor": {
+          "start": {
+            "text": "outside lab?",
+            "type": "includes"
+          },
+          "match": {
+            "text": "medicaid resubmission",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1.2,
+          "height": 0.18,
+          "offsetX": 0.01,
+          "offsetY": 0.13,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item22.medicaid_resubmission.original_ref_no",
+        "anchor": {
+          "start": {
+            "text": "outside lab?",
+            "type": "includes"
+          },
+          "match": {
+            "text": "medicaid resubmission",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 1.2,
+          "height": 0.18,
+          "offsetX": 1.4,
+          "offsetY": 0.13,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "item23.prior_authorization_number",
+        "anchor": {
+          "match": [
+            {
+              "text": "prior authorization number",
+              "type": "includes",
+              "editDistance": 1
+            }
+          ]
+        },
+        "method": {
+          "id": "box",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item24",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "start": [
+              {
+                "type": "startsWith",
+                "text": "24."
+              },
+              {
+                "type": "includes",
+                "text": "MODIFIER",
+                "isCaseSensitive": true
+              }
+            ],
+            "match": {
+              "type": "regex",
+              "pattern": "^\\d{2} \\d{2}"
+            },
+            "end": {
+              "text": "25.",
+              "type": "startsWith"
+            }
+          },
+          "stop": {
+            "text": "25.",
+            "type": "startsWith"
+          }
+        },
+        "fields": [
+          {
+            "id": "a.dates_of_service.from",
+            "type": {
+              "id": "date",
+              "format": [
+                "%M %D %y",
+                "%M1 %D %y",
+                "%M 1 %D %y"
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "regex",
+                "pattern": "^\\d{2} \\d{2}"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "width": 0.8,
+              "height": 0.25,
+              "offsetX": -0.01,
+              "offsetY": -0.15,
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "a.dates_of_service.to",
+            "type": {
+              "id": "date",
+              "format": [
+                "%M %D %y",
+                "%M1 %D %y",
+                "%M 1 %D %y"
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "regex",
+                "pattern": "^\\d{2} \\d{2}"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "width": 0.8,
+              "height": 0.25,
+              "offsetX": 0.85,
+              "offsetY": -0.15,
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "b.place_of_service",
+            "anchor": {
+              "match": {
+                "type": "regex",
+                "pattern": "^\\d{2} \\d{2}"
+              },
+              "end": [
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                },
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                }
+              ]
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "width": 0.41,
+              "height": 0.25,
+              "offsetX": 1.7,
+              "offsetY": -0.15,
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "c.emg",
+            "anchor": {
+              "match": {
+                "type": "regex",
+                "pattern": "^\\d{2} \\d{2}"
+              },
+              "end": [
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                },
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                }
+              ]
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "width": 0.28,
+              "height": 0.25,
+              "offsetX": 2.14,
+              "offsetY": -0.15,
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "d.procedures_services_or_supplies",
+            "anchor": {
+              "match": {
+                "type": "regex",
+                "pattern": "^\\d{2} \\d{2}"
+              },
+              "end": [
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                },
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                }
+              ]
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "width": 1.83,
+              "height": 0.25,
+              "offsetX": 2.45,
+              "offsetY": -0.15,
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "e.diagnosis_pointer",
+            "anchor": {
+              "match": {
+                "type": "regex",
+                "pattern": "^\\d{2} \\d{2}"
+              },
+              "end": [
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                },
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                }
+              ]
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "width": 0.5,
+              "height": 0.25,
+              "offsetX": 4.3,
+              "offsetY": -0.15,
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "f.charges",
+            "type": "currency",
+            "anchor": {
+              "match": {
+                "type": "regex",
+                "pattern": "^\\d{2} \\d{2}"
+              },
+              "end": [
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                },
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                }
+              ]
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "width": 0.74,
+              "height": 0.26,
+              "offsetX": 4.8,
+              "offsetY": -0.15,
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "g.days_or_units",
+            "anchor": {
+              "match": {
+                "type": "regex",
+                "pattern": "^\\d{2} \\d{2}"
+              },
+              "end": [
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                },
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                }
+              ]
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "width": 0.28,
+              "height": 0.25,
+              "offsetX": 5.55,
+              "offsetY": -0.15,
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "h.epsdt",
+            "anchor": {
+              "match": {
+                "type": "regex",
+                "pattern": "^\\d{2} \\d{2}"
+              },
+              "end": [
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                },
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                }
+              ]
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "width": 0.28,
+              "height": 0.25,
+              "offsetX": 5.85,
+              "offsetY": -0.15,
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "i.id_qual",
+            "anchor": {
+              "match": {
+                "type": "regex",
+                "pattern": "^\\d{2} \\d{2}"
+              },
+              "end": [
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                },
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                }
+              ]
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "width": 0.28,
+              "height": 0.25,
+              "offsetX": 6.15,
+              "offsetY": -0.15,
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "j.rendering_provider_id",
+            "anchor": {
+              "match": {
+                "type": "regex",
+                "pattern": "^\\d{2} \\d{2}"
+              },
+              "end": [
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                },
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2} \\d{2}"
+                }
+              ]
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "width": 1.17,
+              "height": 0.25,
+              "offsetX": 6.45,
+              "offsetY": -0.15,
+              "sortLines": "readingOrderLeftToRight"
+            }
+          }
+        ]
+      },
+      {
+        "id": "item25.federal_tax_id_number",
+        "anchor": {
+          "match": {
+            "text": "federal tax",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item25.ssn",
+        "anchor": {
+          "match": {
+            "text": "federal tax",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetY": 0.18,
+          "offsetX": 1.46
+        }
+      },
+      {
+        "id": "item25.ein",
+        "anchor": {
+          "match": {
+            "text": "federal tax",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "left",
+          "offsetY": 0.18,
+          "offsetX": 1.7
+        }
+      },
+      {
+        "id": "item26.patients_account_no",
+        "anchor": {
+          "match": {
+            "text": "patient's account no",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item27.accept_assignment",
+        "anchor": {
+          "start": {
+            "text": "accept assignment",
+            "type": "includes"
+          },
+          "match": {
+            "text": "YES",
+            "type": "includes",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "nearestCheckbox",
+          "position": "left"
+        }
+      },
+      {
+        "id": "item28.total_charge",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "total charge",
+            "type": "endsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item29.amount_paid",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "amount paid",
+            "type": "endsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item30.balance_due",
+        "type": "currency",
+        "anchor": {
+          "match": {
+            "text": "balance due",
+            "type": "endsWith"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below"
+        }
+      },
+      {
+        "id": "item31.signature_of_physician_or_supplier",
+        "anchor": {
+          "match": {
+            "text": "signature of physician or supplier",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2,
+          "height": 0.37,
+          "offsetX": -0.01,
+          "offsetY": 0.35
+        }
+      },
+      {
+        "id": "item31.signature_of_physician_or_supplier.date",
+        "type": "date",
+        "anchor": {
+          "start": {
+            "text": "signature of physician or supplier",
+            "type": "includes"
+          },
+          "match": {
+            "text": "signed",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "item32.service_facility_location_information",
+        "anchor": {
+          "match": {
+            "text": "service facility location",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2.5,
+          "height": 0.65,
+          "offsetX": -0.01,
+          "offsetY": 0.1
+        }
+      },
+      {
+        "id": "item32a",
+        "anchor": {
+          "match": {
+            "text": "service facility location",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.75,
+          "wordFilters": [
+            "a."
+          ]
+        }
+      },
+      {
+        "id": "item32b",
+        "anchor": {
+          "match": {
+            "text": "service facility location",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.75,
+          "offsetX": 1.28,
+          "wordFilters": [
+            "b."
+          ]
+        }
+      },
+      {
+        "id": "item33.billing_provider_info",
+        "anchor": {
+          "match": {
+            "text": "billing provider info",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "width": 2.5,
+          "height": 0.65,
+          "offsetX": -0.01,
+          "offsetY": 0.1
+        }
+      },
+      {
+        "id": "item33.billing_provider_info.phone_number",
+        "anchor": {
+          "match": {
+            "text": "billing provider info",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "right",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "item33a",
+        "anchor": {
+          "match": {
+            "text": "billing provider info",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.75,
+          "wordFilters": [
+            "a."
+          ]
+        }
+      },
+      {
+        "id": "item33b",
+        "anchor": {
+          "match": {
+            "text": "billing provider info",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "box",
+          "position": "below",
+          "offsetY": 0.75,
+          "offsetX": 1.28,
+          "wordFilters": [
+            "b."
+          ]
+        }
+      }
+    ]
+  }
