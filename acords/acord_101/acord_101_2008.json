@@ -1,163 +1,172 @@
 {
-    "fields": [
-      {
-        "id": "agency_customer_id",
-        "anchor": {
-          "match": {
-            "type": "equals",
-            "text": "agency customer id:"
-          }
-        },
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
+  "fields": [
+    {
+      "id": "agency_customer_id",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "agency customer id:"
         }
       },
-      {
-        "id": "loc_#",
-        "anchor": {
-          "match": {
-            "type": "equals",
-            "text": "loc #:"
-          }
-        },
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "loc_#",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "loc #:"
         }
       },
-      {
-        "id": "agency",
-        "anchor": {
-          "match": {
-            "text": "agency",
-            "type": "equals"
-          },
-          "end": {
-            "text": "policy information",
-            "type": "equals"
-          }
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "agency",
+      "anchor": {
+        "match": {
+          "text": "agency",
+          "type": "equals"
         },
-        "type": "string",
-        "method": {
-          "id": "box",
-          "position": "below",
-          "tiebreaker": "last"
+        "end": {
+          "text": "policy information",
+          "type": "equals"
         }
       },
-      {
-        "id": "policy_number",
-        "anchor": {
-          "match": {
-            "text": "policy number",
-            "type": "equals"
-          },
-          "end": {
-            "text": "policy information",
-            "type": "equals"
-          }
+      "type": "string",
+      "method": {
+        "id": "box",
+        "position": "below",
+        "tiebreaker": "last"
+      }
+    },
+    {
+      "id": "policy_number",
+      "anchor": {
+        "match": {
+          "text": "policy number",
+          "type": "equals"
         },
-        "method": {
-          "id": "label",
-          "position": "below"
+        "end": {
+          "text": "policy information",
+          "type": "equals"
         }
       },
-      {
-        "id": "carrier",
-        "anchor": {
-          "match": {
-            "type": "equals",
-            "text": "carrier"
-          }
-        },
-        "method": {
-          "id": "box",
-          "position": "below"
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "carrier",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "carrier"
         }
       },
-      {
-        "id": "naic_code",
-        "anchor": "naic code",
-        "method": {
-          "id": "box",
-          "position": "below"
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "naic_code",
+      "anchor": "naic code",
+      "method": {
+        "id": "box",
+        "position": "below"
+      }
+    },
+    {
+      "id": "name_of_insured",
+      "anchor": "named insured",
+      "type": "string",
+      "method": {
+        "id": "box",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "name_of_insured_address",
+      "anchor": "named insured",
+      "type": "address",
+      "method": {
+        "id": "box",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "effective_date",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "effective date"
+        },
+        "end": {
+          "text": "name of insured",
+          "type": "endsWith"
         }
       },
-      {
-        "id": "name_of_insured",
-        "anchor": "named insured",
-        "type": "string",
-        "method": {
-          "id": "box",
-          "tiebreaker": "first"
+      "type": "date",
+      "method": {
+        "id": "row",
+        "position": "right"
+      }
+    },
+    {
+      "id": "form_number",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "form number:"
         }
       },
-      {
-        "id": "effective_date",
-        "anchor": {
-          "match": {
-            "type": "startsWith",
-            "text": "effective date"
-          },
-          "end": {
-            "text": "name of insured",
-            "type": "endsWith"
-          }
-        },
-        "type": "date",
-        "method": {
-          "id": "row",
-          "position": "right"
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "form_title",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "form title:"
         }
       },
-      {
-        "id": "form_number",
-        "type": "number",
-        "anchor": {
-          "match": {
-            "type": "equals",
-            "text": "form number:"
-          }
-        },
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "additional_remarks",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "form number:"
         }
       },
-      {
-        "id": "form_title",
-        "anchor": {
-          "match": {
-            "type": "equals",
-            "text": "form title:"
-          }
-        },
-        "method": {
-          "id": "row",
-          "position": "right",
-          "tiebreaker": "first"
-        }
-      },
-      {
-        "id": "additional_remarks",
-        "anchor": {
-          "match": {
-            "type": "equals",
-            "text": "form number:"
-          }
-        },
-        "method": {
-          "id": "documentRange",
-          "includeAnchor": false,
-          "offsetY": 0.2,
-          "stop": {
-            "type": "startsWith",
-            "text": "acord 101",
-          },
+      "method": {
+        "id": "documentRange",
+        "includeAnchor": false,
+        "offsetY": 0.2,
+        "stop": {
+          "type": "startsWith",
+          "text": "acord 101",
         },
       },
-    ]
-  }
+    },
+  ]
+}
