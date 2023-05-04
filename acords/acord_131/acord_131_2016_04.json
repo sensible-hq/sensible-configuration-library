@@ -5,8 +5,8 @@
         "page": "every",
         "match": [
           {
-            "text": "ACORD 131 (2009/10)",
-            "type": "includes",
+            "text": "ACORD 131 (2016/04)",
+            "type": "equals",
             "isCaseSensitive": true
           }
         ]
@@ -225,6 +225,23 @@
       }
     },
     {
+      "id": "policy_info.transaction_type.voluntary",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "voluntary"
+        },
+        "end": {
+          "type": "equals",
+          "text": "proposed"
+        }
+      },
+      "method": {
+        "id": "checkbox",
+        "position": "left"
+      }
+    },
+    {
       "id": "transaction_type.retroactive_date_proposed",
       "anchor": {
         "match": {
@@ -284,51 +301,64 @@
     {
       "id": "policy_info.limit_of_liability.each_occurrance",
       "anchor": {
-        "match": {
+        "start": {
           "text": "limit of liability",
           "type": "equals"
+        },
+        "match": {
+          "text": "EA OCC",
+          "type": "equals",
+          "isCaseSensitive": true
         }
       },
       "type": "currency",
       "method": {
-        "id": "box",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 1
-        },
-        "tiebreaker": "first",
-        "wordFilters": [
-          "ea occ",
-          "$",
-          "aggregate"
-        ]
+        "id": "row",
+        "position": "left",
+        "tiebreaker": "last"
       }
     },
     {
       "id": "policy_info.limit_of_liability.aggregate",
       "anchor": {
-        "match": {
+        "start": {
           "text": "limit of liability",
           "type": "equals"
+        },
+        "match": {
+          "text": "AGG",
+          "type": "equals",
+          "isCaseSensitive": true
         }
       },
       "type": "currency",
       "method": {
-        "id": "box",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 1
-        },
-        "tiebreaker": "second",
-        "wordFilters": [
-          "ea occ",
-          "$",
-          "aggregate"
-        ]
+        "id": "row",
+        "position": "left",
+        "tiebreaker": "last"
       }
     },
     {
-      "id": "policy_info.retained limit",
+      "id": "policy_info.limit_of_liability.umbrella",
+      "anchor": {
+        "start": {
+          "text": "limit of liability",
+          "type": "equals"
+        },
+        "match": {
+          "text": "umbrella",
+          "type": "startsWith"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "position": "left",
+        "tiebreaker": "last"
+      }
+    },
+    {
+      "id": "policy_info.retained_limit",
       "anchor": {
         "match": {
           "type": "equals",
@@ -346,13 +376,17 @@
     },
     {
       "id": "policy_info.first_dollar_defence",
-      "anchor": "first dollar defense (y / n)",
+      "anchor": {
+        "match": {
+          "text": "DEFENSE",
+          "type": "startsWith",
+          "isCaseSensitive": true
+        }
+      },
       "method": {
         "id": "box",
-        "offsetBoxes": {
-          "direction": "right",
-          "number": 1
-        }
+        "position": "right",
+        "offsetX": 0.3
       }
     },
     {
@@ -678,7 +712,7 @@
     {
       "id": "general_liability.limits_m_e",
       "type": "currency",
-      "anchor": "medical expense $",
+      "anchor": "medical expense",
       "method": {
         "id": "row",
         "position": "right",
@@ -841,87 +875,6 @@
       }
     },
     {
-      "id": "liquor_liability.policy_number",
-      "anchor": "carrier / policy number",
-      "method": {
-        "id": "box",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 4
-        }
-      }
-    },
-    {
-      "id": "liquor_liability.policy_eff_date",
-      "anchor": "policy eff date",
-      "method": {
-        "id": "box",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 4
-        }
-      }
-    },
-    {
-      "id": "liquor_liability.policy_exp_date",
-      "anchor": "policy exp date",
-      "method": {
-        "id": "box",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 4
-        }
-      }
-    },
-    {
-      "id": "liqour_liability.limits",
-      "anchor": {
-        "match": {
-          "type": "equals",
-          "text": "limits"
-        }
-      },
-      "method": {
-        "id": "box",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 14
-        }
-      }
-    },
-    {
-      "id": "liquor_liability.ann_premium",
-      "anchor": {
-        "match": {
-          "type": "equals",
-          "text": "annual renewal"
-        }
-      },
-      "method": {
-        "id": "box",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 8
-        }
-      }
-    },
-    {
-      "id": "liquor_liability.rating_mod",
-      "anchor": {
-        "match": {
-          "type": "equals",
-          "text": "mod"
-        }
-      },
-      "method": {
-        "id": "box",
-        "offsetBoxes": {
-          "direction": "below",
-          "number": 4
-        }
-      }
-    },
-    {
       "id": "general_liability.defence_costs.within_aggregate_limits",
       "anchor": {
         "match": {
@@ -991,9 +944,9 @@
         }
       },
       "method": {
-        "id": "box",
+        "id": "row",
         "position": "right",
-        "offsetX": 0.26
+        "tiebreaker": "last"
       }
     },
     {
@@ -1043,6 +996,10 @@
     },
     {
       "id": "general_liability.tail_coverage",
+      "type": {
+        "id": "custom",
+        "pattern": "^Y$|^N$"
+      },
       "anchor": {
         "match": {
           "text": "coverage purchased for any",
@@ -1050,8 +1007,9 @@
         }
       },
       "method": {
-        "id": "checkbox",
-        "position": "right"
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
       }
     },
     {
@@ -1198,7 +1156,7 @@
       "method": {
         "id": "checkbox",
         "position": "right",
-        "offsetX": 1.45
+        "offsetX": 1.5
       }
     },
     {
@@ -1259,7 +1217,7 @@
       "method": {
         "id": "checkbox",
         "position": "right",
-        "offsetX": 1.45
+        "offsetX": 1.46
       }
     },
     {
@@ -1327,7 +1285,7 @@
       "method": {
         "id": "checkbox",
         "position": "right",
-        "offsetX": 0.7
+        "offsetX": 0.8
       }
     },
     {
@@ -1361,40 +1319,30 @@
       "method": {
         "id": "checkbox",
         "position": "right",
-        "offsetX": 1
-      }
-    },
-    {
-      "id": "underlying_insurance.coverage.exc_liab",
-      "anchor": "exc liab - 1st layer",
-      "method": {
-        "id": "checkbox",
-        "position": "left"
-      }
-    },
-    {
-      "id": "underlying_insurance.exposure.exc_liab",
-      "anchor": "exc liab - 1st layer",
-      "method": {
-        "id": "checkbox",
-        "position": "right",
-        "offsetX": 0.82
+        "offsetX": 1.1
       }
     },
     {
       "id": "underlying_insurance_coverage_information",
       "anchor": {
         "match": {
-          "text": "coverage) attach acord 101",
-          "type": "startsWith"
+          "text": "UNDERLYING INSURANCE COVERAGE INFORMATION",
+          "type": "startsWith",
+          "isCaseSensitive": true
         }
       },
       "method": {
         "id": "documentRange",
         "stop": {
           "type": "startsWith",
-          "text": "previous experience: (give"
-        }
+          "text": "previous experience"
+        },
+        "lineFilters": [
+          {
+            "text": "additional remarks",
+            "type": "includes"
+          }
+        ]
       }
     },
     {
@@ -1410,7 +1358,13 @@
         "stop": {
           "type": "equals",
           "text": "no such claims"
-        }
+        },
+        "lineFilters": [
+          {
+            "text": "required",
+            "type": "startsWith"
+          }
+        ]
       }
     },
     {
@@ -1472,9 +1426,10 @@
       },
       "method": {
         "id": "box",
-        "position": "left",
-        "offsetX": 0.01,
-        "offsetY": 0.15
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 1
+        }
       }
     },
     {
@@ -1497,15 +1452,16 @@
       "id": "care_custody_control.c*",
       "anchor": {
         "match": {
-          "type": "endsWith",
+          "type": "includes",
           "text": "c*"
         }
       },
       "method": {
         "id": "box",
-        "position": "right",
-        "offsetX": -0.01,
-        "offsetY": 0.15
+        "offsetBoxes": {
+          "direction": "below",
+          "number": 1
+        }
       }
     },
     {
@@ -2973,6 +2929,7 @@
       },
       "method": {
         "id": "box",
+        "position": "right",
         "offsetBoxes": {
           "direction": "right",
           "number": 1
@@ -3463,6 +3420,10 @@
     },
     {
       "id": "contractors_liability.subcontractors_carry_coverages",
+      "type": {
+        "id": "custom",
+        "pattern": "^Y$|^N$"
+      },
       "anchor": {
         "match": {
           "type": "startsWith",
@@ -3471,9 +3432,10 @@
       },
       "method": {
         "id": "box",
+        "position": "right",
         "offsetBoxes": {
-          "direction": "right",
-          "number": 2
+          "number": 1,
+          "direction": "right"
         }
       }
     },
@@ -3761,6 +3723,7 @@
       },
       "method": {
         "id": "box",
+        "position": "right",
         "offsetBoxes": {
           "direction": "right",
           "number": 1
@@ -4539,30 +4502,6 @@
       }
     },
     {
-      "id": "remarks_continuation",
-      "anchor": {
-        "start": {
-          "type": "equals",
-          "text": "page 4 of 5"
-        },
-        "match": {
-          "type": "startsWith",
-          "text": "remarks (attach"
-        },
-        "end": {
-          "type": "equals",
-          "text": "signature"
-        }
-      },
-      "method": {
-        "id": "documentRange",
-        "stop": {
-          "type": "equals",
-          "text": "signature"
-        }
-      }
-    },
-    {
       "id": "signature.uninsured_motorists_coverage",
       "type": "currency",
       "anchor": {
@@ -4602,6 +4541,33 @@
         "start": "right",
         "width": 1.2,
         "offsetX": 0.05,
+        "offsetY": -0.14,
+        "height": 0.2
+      }
+    },
+    {
+      "id": "signature.medical_payments_coverage",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "text": "SIGNATURE",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "medical payments"
+        },
+        "end": {
+          "type": "includes",
+          "text": "louisiana"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "right",
+        "width": 1.2,
+        "offsetX": 0.53,
         "offsetY": -0.14,
         "height": 0.2
       }
@@ -4648,6 +4614,28 @@
         "id": "box",
         "position": "right",
         "offsetX": 0.4
+      }
+    },
+    {
+      "id": "montana.acknowledge_um_coverage",
+      "anchor": {
+        "start": {
+          "type": "includes",
+          "text": "montana"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "i acknowledge"
+        },
+        "end": {
+          "type": "startsWith",
+          "text": "applicable only in new hampshire"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": 6.88
       }
     },
     {
