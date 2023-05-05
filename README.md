@@ -214,7 +214,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 ### HR
 
-- [Resume Example](./resume/resume.json)
+- [Resume](./resume/resume.json)
 
 ## Using a configuration
 
