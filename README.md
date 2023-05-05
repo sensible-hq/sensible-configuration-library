@@ -212,9 +212,9 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 - [CMS 1500 (08/05)](./health_insurance_claims/cms_1500/cms_1500_08_05.json)
 
-### NLP
+### HR
 
-- [CMS 1500 (08/05)](./nlp_resume/nlp_resume.json)
+- [Resume Example](./resume/resume.json)
 
 ## Using a configuration
 
