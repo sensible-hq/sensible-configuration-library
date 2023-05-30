@@ -2,19 +2,23 @@
   "fingerprint": {
     "tests": [
       {
-        "text": "Knight Specialty Insurance Company",
-        "type": "equals",
-        "isCaseSensitive": true
-      },
-      {
-        "text": "North American Risk Services",
-        "type": "equals",
-        "isCaseSensitive": true
-      },
-      {
-        "text": "SUB TOTALS for Policy Period:",
-        "type": "startsWith",
-        "isCaseSensitive": true
+        "page": "every",
+        "match": [
+          {
+            "text": "Knight Specialty Insurance Company",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "North American Risk Services",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "pattern": "SUB TOTALS for Policy Period|^Line/Cov$",
+            "type": "regex"
+          }
+        ]
       }
     ]
   },
@@ -47,7 +51,7 @@
       },
       "fields": [
         {
-          "id": "insured",
+          "id": "__insured",
           "method": {
             "id": "row",
             "position": "right",
@@ -61,7 +65,7 @@
           }
         },
         {
-          "id": "policy_number",
+          "id": "__policy_number",
           "method": {
             "id": "row",
             "position": "right",
@@ -75,7 +79,7 @@
           }
         },
         {
-          "id": "policy_start_date",
+          "id": "__policy_start_date",
           "type": "date",
           "method": {
             "id": "label",
@@ -90,7 +94,7 @@
           }
         },
         {
-          "id": "policy_end_date",
+          "id": "__policy_end_date",
           "type": "date",
           "method": {
             "id": "label",
@@ -105,21 +109,21 @@
           }
         },
         {
-          "id": "open_claims",
+          "id": "__open_claims",
           "method": {
             "id": "passthrough"
           },
           "anchor": "not found, not configured"
         },
         {
-          "id": "closed_claims",
+          "id": "__closed_claims",
           "method": {
             "id": "passthrough"
           },
           "anchor": "not found, not configured"
         },
         {
-          "id": "total_claims",
+          "id": "__total_claims",
           "method": {
             "id": "label",
             "position": "right"
@@ -143,6 +147,55 @@
             }
           },
           "fields": [
+            {
+              "id": "_insured",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "__insured"
+              }
+            },
+            {
+              "id": "_policy_number",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "__policy_number"
+              }
+            },
+            {
+              "id": "_policy_start_date",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "__policy_start_date"
+              }
+            },
+            {
+              "id": "_policy_end_date",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "__policy_end_date"
+              }
+            },
+            {
+              "id": "_open_claims",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "__open_claims"
+              }
+            },
+            {
+              "id": "_closed_claims",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "__closed_claims"
+              }
+            },
+            {
+              "id": "_total_claims",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "__total_claims"
+              }
+            },
             {
               "id": "_claim_number",
               "method": {
@@ -217,6 +270,55 @@
                 }
               },
               "fields": [
+                {
+                  "id": "insured",
+                  "method": {
+                    "id": "copy_to_section",
+                    "source_id": "_insured"
+                  }
+                },
+                {
+                  "id": "policy_number",
+                  "method": {
+                    "id": "copy_to_section",
+                    "source_id": "_policy_number"
+                  }
+                },
+                {
+                  "id": "policy_start_date",
+                  "method": {
+                    "id": "copy_to_section",
+                    "source_id": "_policy_start_date"
+                  }
+                },
+                {
+                  "id": "policy_end_date",
+                  "method": {
+                    "id": "copy_to_section",
+                    "source_id": "_policy_end_date"
+                  }
+                },
+                {
+                  "id": "open_claims",
+                  "method": {
+                    "id": "copy_to_section",
+                    "source_id": "_open_claims"
+                  }
+                },
+                {
+                  "id": "closed_claims",
+                  "method": {
+                    "id": "copy_to_section",
+                    "source_id": "_closed_claims"
+                  }
+                },
+                {
+                  "id": "total_claims",
+                  "method": {
+                    "id": "copy_to_section",
+                    "source_id": "_total_claims"
+                  }
+                },
                 {
                   "id": "claimant",
                   "method": {
@@ -506,6 +608,23 @@
           }
         }
       ]
+    },
+    {
+      "id": "claims",
+      "method": {
+        "id": "copy_from_sections",
+        "source_sections": "loss_run_policy",
+        "source_field": "claims_details"
+      }
+    },
+    {
+      "id": "clean",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": [
+          "loss_run_policy"
+        ]
+      }
     }
   ]
 }

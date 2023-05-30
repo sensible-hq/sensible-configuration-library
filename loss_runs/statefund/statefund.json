@@ -10,6 +10,11 @@
             "isCaseSensitive": true
           },
           {
+            "text": "Cancellation Code",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          {
             "text": "Brokerage",
             "type": "startsWith",
             "isCaseSensitive": true
@@ -47,7 +52,7 @@
       },
       "fields": [
         {
-          "id": "insured",
+          "id": "_insured",
           "method": {
             "id": "label",
             "position": "right"
@@ -60,7 +65,7 @@
           }
         },
         {
-          "id": "policy_start_date",
+          "id": "_policy_start_date",
           "type": "date",
           "method": {
             "id": "label",
@@ -74,7 +79,7 @@
           }
         },
         {
-          "id": "policy_end_date",
+          "id": "_policy_end_date",
           "type": "date",
           "method": {
             "id": "label",
@@ -88,7 +93,7 @@
           }
         },
         {
-          "id": "policy_number",
+          "id": "_policy_number",
           "method": {
             "id": "region",
             "start": "left",
@@ -106,7 +111,7 @@
           }
         },
         {
-          "id": "open_claims",
+          "id": "_open_claims",
           "type": "number",
           "method": {
             "id": "row",
@@ -131,7 +136,7 @@
           }
         },
         {
-          "id": "closed_claims",
+          "id": "_closed_claims",
           "type": "number",
           "method": {
             "id": "row",
@@ -156,7 +161,7 @@
           }
         },
         {
-          "id": "total_claims",
+          "id": "_total_claims",
           "type": "number",
           "method": {
             "id": "row",
@@ -194,9 +199,62 @@
                 "type": "regex",
                 "pattern": "^\\d{7,9}"
               }
+            },
+            "stop": {
+              "text": "copyright",
+              "type": "startsWith"
             }
           },
           "fields": [
+            {
+              "id": "insured",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_insured"
+              }
+            },
+            {
+              "id": "policy_number",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_policy_number"
+              }
+            },
+            {
+              "id": "policy_start_date",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_policy_start_date"
+              }
+            },
+            {
+              "id": "policy_end_date",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_policy_end_date"
+              }
+            },
+            {
+              "id": "open_claims",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_open_claims"
+              }
+            },
+            {
+              "id": "closed_claims",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_closed_claims"
+              }
+            },
+            {
+              "id": "total_claims",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_total_claims"
+              }
+            },
             {
               "id": "claimant",
               "method": {
@@ -271,18 +329,24 @@
             },
             {
               "id": "accident_description",
+              "type": {
+                "id": "custom",
+                "pattern": "\\$[0-9\\,]+ (.*$)",
+                "matchMultipleLines": true
+              },
               "method": {
-                "id": "region",
-                "start": "left",
-                "offsetX": 5.8,
-                "offsetY": -0.1,
-                "width": 4,
-                "height": 0.4
+                "id": "documentRange",
+                "xRangeFilter": {
+                  "start": "left",
+                  "offsetX": 2.64,
+                  "width": 4
+                },
+                "offsetY": -0.05
               },
               "anchor": {
                 "match": {
                   "type": "regex",
-                  "pattern": "^\\d{7,9}"
+                  "pattern": "^\\d{2}-\\d{2}"
                 }
               }
             },
@@ -428,6 +492,23 @@
           ]
         }
       ]
+    },
+    {
+      "id": "claims",
+      "method": {
+        "id": "copy_from_sections",
+        "source_sections": "loss_run_policy",
+        "source_field": "claims_details"
+      }
+    },
+    {
+      "id": "clean",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": [
+          "loss_run_policy"
+        ]
+      }
     }
   ]
 }
