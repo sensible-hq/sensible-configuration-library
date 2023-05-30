@@ -2,19 +2,24 @@
   "fingerprint": {
     "tests": [
       {
-        "text": "WC LOSS RUN REPORT",
-        "type": "equals",
-        "isCaseSensitive": true
-      },
-      {
-        "text": "AmTrust North America",
-        "type": "equals",
-        "isCaseSensitive": true
-      },
-      {
-        "text": "Run ID:",
-        "type": "equals",
-        "isCaseSensitive": true
+        "page": "every",
+        "match": [
+          {
+            "text": "WC LOSS RUN REPORT",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "Run ID:",
+            "type": "equals",
+            "isCaseSensitive": true
+          },
+          {
+            "text": "AmTrust North America",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        ]
       }
     ]
   },
@@ -44,14 +49,24 @@
       },
       "fields": [
         {
-          "id": "insured",
-          "anchor": "not found, not configured",
+          "id": "_insured",
+          "anchor": {
+            "match": {
+              "text": "amtrust north america",
+              "type": "equals"
+            }
+          },
           "method": {
-            "id": "passthrough"
+            "id": "region",
+            "start": "left",
+            "offsetX": -0.01,
+            "offsetY": 0.2,
+            "width": 2,
+            "height": 0.3
           }
         },
         {
-          "id": "policy_number",
+          "id": "_policy_number",
           "type": {
             "id": "custom",
             "pattern": "^[A-Z0-9\\-]{10,}"
@@ -69,7 +84,7 @@
           }
         },
         {
-          "id": "policy_start_date",
+          "id": "_policy_start_date",
           "type": "date",
           "method": {
             "id": "label",
@@ -84,7 +99,7 @@
           }
         },
         {
-          "id": "policy_end_date",
+          "id": "_policy_end_date",
           "type": "date",
           "method": {
             "id": "passthrough"
@@ -92,7 +107,7 @@
           "anchor": "not found, not configured"
         },
         {
-          "id": "open_claims",
+          "id": "_open_claims",
           "anchor": {
             "match": {
               "text": "open",
@@ -107,7 +122,7 @@
           }
         },
         {
-          "id": "closed_claims",
+          "id": "_closed_claims",
           "anchor": {
             "match": {
               "text": "closed",
@@ -122,7 +137,7 @@
           }
         },
         {
-          "id": "total_claims",
+          "id": "_total_claims",
           "anchor": "not found, not configured",
           "method": {
             "id": "passthrough"
@@ -139,17 +154,73 @@
                 "type": "startsWith",
                 "isCaseSensitive": true
               },
-              "match": {
-                "type": "regex",
-                "pattern": "^\\d{7}$"
-              }
+              "match": [
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{7}$"
+                },
+                {
+                  "type": "regex",
+                  "pattern": "^\\d{2}/\\d{2}"
+                }
+              ]
             },
             "stop": {
               "text": "claim no",
               "type": "startsWith"
-            }
+            },
+            "offsetY": -0.1
           },
           "fields": [
+            {
+              "id": "insured",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_insured"
+              }
+            },
+            {
+              "id": "policy_number",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_policy_number"
+              }
+            },
+            {
+              "id": "policy_start_date",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_policy_start_date"
+              }
+            },
+            {
+              "id": "policy_end_date",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_policy_end_date"
+              }
+            },
+            {
+              "id": "open_claims",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_open_claims"
+              }
+            },
+            {
+              "id": "closed_claims",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_closed_claims"
+              }
+            },
+            {
+              "id": "total_claims",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_total_claims"
+              }
+            },
             {
               "id": "claimant",
               "method": {
@@ -496,6 +567,23 @@
           ]
         }
       ]
+    },
+    {
+      "id": "claims",
+      "method": {
+        "id": "copy_from_sections",
+        "source_sections": "loss_run_policy",
+        "source_field": "claims_details"
+      }
+    },
+    {
+      "id": "clean",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": [
+          "loss_run_policy"
+        ]
+      }
     }
   ]
 }

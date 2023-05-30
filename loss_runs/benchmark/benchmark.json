@@ -59,7 +59,7 @@
       },
       "fields": [
         {
-          "id": "insured",
+          "id": "_insured",
           "method": {
             "id": "label",
             "position": "right"
@@ -72,7 +72,7 @@
           }
         },
         {
-          "id": "policy_number",
+          "id": "_policy_number",
           "method": {
             "id": "label",
             "position": "below"
@@ -85,7 +85,7 @@
           }
         },
         {
-          "id": "policy_start_date",
+          "id": "_policy_start_date",
           "type": "date",
           "method": {
             "id": "label",
@@ -100,7 +100,7 @@
           }
         },
         {
-          "id": "policy_end_date",
+          "id": "_policy_end_date",
           "type": "date",
           "method": {
             "id": "label",
@@ -115,7 +115,7 @@
           }
         },
         {
-          "id": "open_claims",
+          "id": "_open_claims",
           "type": "number",
           "match": "last",
           "method": {
@@ -135,7 +135,7 @@
           }
         },
         {
-          "id": "closed_claims",
+          "id": "_closed_claims",
           "type": "number",
           "match": "last",
           "method": {
@@ -155,7 +155,7 @@
           }
         },
         {
-          "id": "total_claims",
+          "id": "_total_claims",
           "type": "number",
           "match": "last",
           "method": {
@@ -190,6 +190,55 @@
             }
           },
           "fields": [
+            {
+              "id": "insured",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_insured"
+              }
+            },
+            {
+              "id": "policy_number",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_policy_number"
+              }
+            },
+            {
+              "id": "policy_start_date",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_policy_start_date"
+              }
+            },
+            {
+              "id": "policy_end_date",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_policy_end_date"
+              }
+            },
+            {
+              "id": "open_claims",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_open_claims"
+              }
+            },
+            {
+              "id": "closed_claims",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_closed_claims"
+              }
+            },
+            {
+              "id": "total_claims",
+              "method": {
+                "id": "copy_to_section",
+                "source_id": "_total_claims"
+              }
+            },
             {
               "id": "claimant",
               "anchor": {
@@ -548,6 +597,23 @@
           ]
         }
       ]
+    },
+    {
+      "id": "claims",
+      "method": {
+        "id": "copy_from_sections",
+        "source_field": "claims_details",
+        "source_sections": "loss_run_policy"
+      }
+    },
+    {
+      "id": "clean",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": [
+          "loss_run_policy"
+        ]
+      }
     }
   ]
 }
