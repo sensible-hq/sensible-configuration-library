@@ -1,0 +1,94 @@
+{
+    "fields": [
+      {
+        "id": "beginning_balance",
+        "method": {
+          "id": "question",
+          "question": "statement beginning balance"
+        },
+        "type": "currency"
+      },
+      {
+        "id": "ending_balance",
+        "method": {
+          "id": "question",
+          "question": "statement ending balance"
+        },
+        "type": "currency"
+      },
+      {
+        "id": "_transactions",
+        "type": "table",
+        "method": {
+          "id": "nlpTable",
+          "description": "transactions from account activity",
+          "columns": [
+            {
+              "id": "transaction_date",
+              "description": "date of transaction"
+            },
+            {
+              "id": "merchant_name",
+              "description": "merchant"
+            },
+            {
+              "id": "transaction_description",
+              "description": "description or category of transaction"
+            },
+            {
+              "id": "transaction_amount",
+              "description": "amount",
+              "type": "accountingCurrency",
+              "isRequired": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "_transactions",
+        "type": "table",
+        "method": {
+          "id": "list",
+          "description": "transactions detail",
+          "properties": [
+            {
+              "id": "transaction_date",
+              "description": "date of transaction"
+            },
+            {
+              "id": "merchant_name",
+              "description": "merchant"
+            },
+            {
+              "id": "transaction_description",
+              "description": "description or category of transaction"
+            },
+            {
+              "id": "transaction_amount",
+              "description": "amount",
+              "type": "accountingCurrency",
+              "isRequired": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "transactions",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "_transactions"
+          ]
+        }
+      },
+      {
+        "id": "clean",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_transactions"
+          ]
+        }
+      }
+    ]
+  }

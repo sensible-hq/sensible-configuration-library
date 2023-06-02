@@ -210,6 +210,10 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Well Fargo (Savings)](./bank_statements/wells_fargo/wells_fargo_savings.json)
 - [Well Fargo (Combined Statement of Accounts)](./bank_statements/wells_fargo/wells_fargo_combined_statement_of_accounts.json)
 
+### Credit Card Statements
+
+- [Credit Card Statement](./credit_card_statements/cc_statement/cc_statement.json)
+
 ### Healthcare
 
 - [CMS 1500 (08/05)](./health_insurance_claims/cms_1500/cms_1500_08_05.json)
