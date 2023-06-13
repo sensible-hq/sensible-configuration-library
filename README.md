@@ -218,9 +218,14 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 - [CMS 1500 (08/05)](./health_insurance_claims/cms_1500/cms_1500_08_05.json)
 
-### HR
+### hr
 
-- [Resume](./resume/resume.json)
+- [Resume](./hr/resume/resume.json)
+
+### Drivers License
+
+- [Drivers License](./drivers_license/drivers_license/drivers_license.json)
+
 
 ## Using a configuration
 
