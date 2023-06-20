@@ -220,7 +220,12 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 ### HR
 
-- [Resume](./resume/resume.json)
+- [Resume](./hr/resume/resume.json)
+
+### Driver's License
+
+- [Driver's License](./drivers_license/drivers_license/drivers_license.json)
+
 
 ## Using a configuration
 
