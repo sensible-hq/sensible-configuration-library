@@ -1,106 +1,184 @@
 {
-    "fields": [
-      {
-        "id": "name",
-        "method": {
-          "id": "question",
-          "question": "This is a resume. return the person that this resume belongs to, usually found at the top"
-        },
-        "type": "string"
-      },
-      {
-        "id": "email",
-        "method": {
-          "id": "question",
-          "question": "This is a resume. reutrn the email of the person"
-        }
-      },
-      {
-        "id": "phone",
-        "method": {
-          "id": "question",
-          "question": "This is a resume. The phone of the person. Standardize this output to the format [country code]-[area code]-[phone number]"
-        }
-      },
-      {
-        "id": "school",
-        "method": {
-          "id": "list",
-          "description": "This is a resume. return the academic information listed on this resume.",
-          "properties": [
-            {
-              "id": "school_item",
-              "description": "a single name of the school or university this person attended. if there are multiple schools return a line for each"
-            },
-            {
-              "id": "major",
-              "description": "return the major this person studied in undergrad. If no major is listed, return none listed"
-            },
-            {
-              "id": "gpa",
-              "description": "return the gpa of the person. If the resume contains more than one, return the most recent. If no gpa is listed, return none listed"
-            },
-            {
-              "id": "graudation_year",
-              "description": "return the graduation year of the person. If the resume contains more than one, return the most recent. If no year is listed, return none listed"
-            }
-          ]
-        }
-      },
-      {
-        "id": "companies",
-        "method": {
-          "id": "list",
-          "description": "This is a resume. a list of the companies this person has worked at, what title they held, and a description of their role.",
-          "properties": [
-            {
-              "id": "company_item",
-              "description": "a company or organization name"
-            },
-            {
-              "id": "title",
-              "description": "a job title or role that the person held at an organization. do not include the name of the organization"
-            },
-            {
-              "id": "date_start",
-              "description": "the date that the person started at the role"
-            },
-            {
-              "id": "date_end",
-              "description": "the date when the person left this role"
-            },
-            {
-              "id": "role",
-              "description": "summarize the description of each position this person has held. do not include the company name or their title. put each description on a seperate line"
-            }
-          ]
-        }
-      },
-      {
-        "id": "skills",
-        "method": {
-          "id": "list",
-          "description": "This is a resume. return a list of skills mentioned in the resume.",
-          "properties": [
-            {
-              "id": "skills",
-              "description": "the skills mentioned on the resume, summarized in at most three words. if there are multiple skills, return a line for each"
-            }
-          ]
-        }
-      },
-      {
-        "id": "certifications_and_accolades",
-        "method": {
-          "id": "list",
-          "description": "This is a resume. return a list of non-college certifications and awards mentioned in the resume. Do not list job titles.",
-          "properties": [
-            {
-              "id": "certifications_awards",
-              "description": "the certifications or awards listed on the resume. if there are multiple skills, return a line for each"
-            }
-          ]
-        }
+  "preprocessors": [
+    {
+      "type": "nlp",
+      "contextDescription": "the following context is an excerpt from a resume",
+      "chunkSize": 1,
+      "chunkCount": 2,
+      "chunkOverlapPercentage": 0
+    }
+  ],
+  "fields": [
+    {
+      "id": "name",
+      "method": {
+        "id": "question",
+        "question": "first and last name"
       }
-    ]
-  }
+    },
+    {
+      "id": "email",
+      "method": {
+        "id": "question",
+        "question": "email address of person"
+      }
+    },
+    {
+      "id": "phone",
+      "method": {
+        "id": "question",
+        "question": "phone of person. Standardize this output to the format [country code]-[area code]-[phone number]"
+      }
+    },
+    {
+      "id": "_experience",
+      "type": "table",
+      "method": {
+        "id": "list",
+        "description": "list every and all of the various job titles the person has held for each company and when they held each job title. there can be multiple job titles listed under a single company. output all job titles along with the respective information. job titles and companies can repeat",
+        "properties": [
+          {
+            "id": "title",
+            "description": "entire job title verbatim"
+          },
+          {
+            "id": "company",
+            "description": "company name listed above the job title. if no company is found, repeat the previous company name"
+          },
+          {
+            "id": "date_start",
+            "description": "start date of job title"
+          },
+          {
+            "id": "date_end",
+            "description": "output the end date or \"Present\" if none"
+          },
+          {
+            "id": "date_range",
+            "description": "date range in which the job title was held"
+          },
+          {
+            "id": "duration",
+            "description": "duration listed in months and years that the position was held. if duration is not listed, output \"none\""
+          },
+          {
+            "id": "highlights",
+            "description": "summarize the job description or contributions listed under the role. if no description, output none"
+          }
+        ]
+      }
+    },
+    {
+      "id": "experience",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_experience"
+        ]
+      }
+    },
+    {
+      "id": "school",
+      "method": {
+        "id": "list",
+        "description": "list of schools attended, majors studied, and when person attended the school. do not include coursework or skills",
+        "properties": [
+          {
+            "id": "school",
+            "description": "name of the school or university"
+          },
+          {
+            "id": "degree",
+            "description": "return the major and degree. If no major or degree is listed, return none listed"
+          },
+          {
+            "id": "grad_year_or_years_attended",
+            "description": "date range of attendance. if none listed, return none"
+          },
+          {
+            "id": "gpa",
+            "description": "grade point average. if none listed, return none"
+          }
+        ]
+      }
+    },
+    {
+      "id": "education",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "school"
+        ]
+      }
+    },
+    {
+      "id": "_skills",
+      "method": {
+        "id": "list",
+        "description": "each skill mentioned, listed separatelty",
+        "properties": [
+          {
+            "id": "skills",
+            "description": "technical and soft skills"
+          }
+        ]
+      }
+    },
+    {
+      "id": "_skills",
+      "method": {
+        "id": "list",
+        "description": "all technical and soft skills mentioned",
+        "properties": [
+          {
+            "id": "skills",
+            "description": "skills mentioned, summarized in at most three words. return a line for each for each skill listed"
+          }
+        ]
+      }
+    },
+    {
+      "id": "skills",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_skills"
+        ]
+      }
+    },
+    {
+      "id": "_certifications_and_accolades",
+      "method": {
+        "id": "list",
+        "description": "all certifications, awards, and recognitions listed. if none listed, return none",
+        "properties": [
+          {
+            "id": "certifications_awards",
+            "description": "certifications, awards, and recognitions"
+          }
+        ]
+      }
+    },
+    {
+      "id": "certifications_and_accolades",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "_certifications_and_accolades"
+        ]
+      }
+    },
+    {
+      "id": "clean",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": [
+          "_experience",
+          "school",
+          "_skills",
+          "_certifications_and_accolades"
+        ]
+      }
+    }
+  ]
+}
