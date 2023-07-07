@@ -100,6 +100,109 @@
       "id": "insured",
       "method": {
         "id": "label",
+        "position": "below",
+        "typeFilters": [
+          "address"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "insured",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insured",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.8,
+        "height": 0.7,
+        "offsetX": 0,
+        "offsetY": 0.75,
+        "typeFilters": [
+          "address"
+        ],
+        "wordFilters": [
+          "insured"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "text": "producer",
+          "type": "startsWith",
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insured",
+      "method": {
+        "id": "question",
+        "question": "what is the name/company being insured"
+      },
+    },
+    {
+      "id": "insured_address",
+      "type": "address",
+      "method": {
+        "id": "box",
+        "position": "right",
+        "sortLines": "readingOrderLeftToRight",
+        "tiebreaker": "last"
+      },
+      "anchor": {
+        "match": {
+          "text": "insured",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insured_address",
+      "method": {
+        "id": "question",
+        "question": "what is the address of the insured"
+      },
+    },
+    {
+      "id": "insured_address",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.8,
+        "height": 0.5,
+        "offsetX": 0,
+        "offsetY": 1.1,
+      },
+      "type": "address",
+      "anchor": {
+        "match": {
+          "text": "producer",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "coverages",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "insured",
+      "method": {
+        "id": "label",
         "position": "below"
       },
       "anchor": {
@@ -162,26 +265,6 @@
           "text": "INSURED",
           "type": "startsWith",
           "isCaseSensitive": true
-        },
-        "end": {
-          "text": "coverages",
-          "type": "startsWith"
-        }
-      }
-    },
-    {
-      "id": "insured_address",
-      "type": "address",
-      "method": {
-        "id": "box",
-        "position": "right",
-        "sortLines": "readingOrderLeftToRight",
-        "tiebreaker": "last"
-      },
-      "anchor": {
-        "match": {
-          "text": "insured",
-          "type": "endsWith"
         },
         "end": {
           "text": "coverages",
@@ -1449,7 +1532,22 @@
         "id": "box",
         "position": "left",
         "offsetX": -0.8,
-        "offsetY": 0.23
+        "offsetY": 0.23,
+        "wordFilters": [
+          "ADDL",
+          "INSD",
+          "ADDL INSD",
+          "A",
+          "commercial general liability",
+          "claims-made",
+          "occur",
+          "gen'l aggregate limit applies per:",
+          "policy",
+          "pro-",
+          "ject",
+          "loc",
+          "other:"
+        ]
       },
       "anchor": {
         "start": {
@@ -1464,6 +1562,100 @@
           "text": "certificate holder",
           "type": "startsWith"
         }
+      }
+    },
+    {
+      "id": "coverages.additional_insured_1",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "height": 1,
+        "width": 0.29,
+        "offsetX": -1,
+        "offsetY": 0.23,
+        "wordFilters": [
+          "ADDL",
+          "INSD",
+          "ADDL INSD"
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "policy number",
+          "type": "startsWith",
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.additional_insured_1",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "height": 1,
+        "width": 0.29,
+        "offsetX": 0,
+        "offsetY": 0.23,
+        "wordFilters": [
+          "ADDL",
+          "INSD",
+          "ADDL INSD"
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "ADDTL",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "coverages.additional_insured_1",
+      "method": {
+        "id": "box",
+        "position": "left",
+        "offsetX": -1.65,
+        "offsetY": 0.53,
+        "wordFilters": [
+          "ADDL",
+          "INSD",
+          "ADDL INSD"
+        ]
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "eff",
+          "type": "equals",
+        },
+        "end": [
+          {
+            "text": "certificate holder",
+            "type": "startsWith"
+          },
+          {
+            "text": "ACORD 25 (2016/03)",
+            "type": "endsWith"
+          }
+        ]
       }
     },
     {
@@ -5382,6 +5574,40 @@
         },
         "end": {
           "text": "certificate holder",
+          "type": "startsWith"
+        }
+      }
+    },
+    {
+      "id": "certificate_holder",
+      "method": {
+        "id": "box",
+        "position": "below",
+        "offsetY": 0.2,
+        "sortLines": "readingOrderLeftToRight",
+      },
+      "anchor": {
+        "start": {
+          "text": "coverages",
+          "type": "startsWith"
+        },
+        "match": [
+          {
+            "type": "any",
+            "matches": [
+              {
+                "text": "certificate holder",
+                "type": "equals"
+              },
+              {
+                "text": "certificate molder",
+                "type": "equals"
+              },
+            ],
+          },
+        ],
+        "end": {
+          "text": "acord",
           "type": "startsWith"
         }
       }
