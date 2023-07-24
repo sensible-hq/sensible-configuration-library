@@ -230,7 +230,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 ### Balance Sheets
 
-- [Form 10k Balance Sheet](./balance_sheets/form_10k.form_10k_balance_sheet.json)
+- [Form 10k Balance Sheet](./balance_sheets/form_10k/form_10k_balance_sheet.json)
 
 
 ## Using a configuration
