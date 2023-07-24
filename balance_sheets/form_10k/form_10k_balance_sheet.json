@@ -1,0 +1,319 @@
+{
+    "fields": [
+      {
+        "id": "balance_sheet",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "match": [
+              {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "total equity",
+                    "type": "startsWith"
+                  },
+                  {
+                    "text": "total stockholders' equity",
+                    "type": "startsWith"
+                  },
+                  {
+                    "text": "total shareholders' equity",
+                    "type": "startsWith"
+                  }
+                ]
+              },
+              {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "consolidated balance sheets",
+                    "type": "startsWith"
+                  },
+                  {
+                    "text": "Balance sheets",
+                    "type": "equals"
+                  }
+                ],
+                "reverse": true
+              }
+            ],
+            "end": [
+              {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "total equity",
+                    "type": "startsWith"
+                  },
+                  {
+                    "text": "total stockholders' equity",
+                    "type": "startsWith"
+                  },
+                  {
+                    "text": "total shareholders' equity",
+                    "type": "startsWith"
+                  }
+                ]
+              },
+              {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "consolidated balance sheets",
+                    "type": "startsWith"
+                  },
+                  {
+                    "text": "Balance sheets",
+                    "type": "equals"
+                  }
+                ],
+                "reverse": true
+              },
+              {
+                "type": "any",
+                "matches": [
+                  {
+                    "pattern": "total liabilities and .+ equity",
+                    "type": "regex",
+                    "flags": "i"
+                  },
+                  {
+                    "text": "total liabilities and equity",
+                    "type": "equals"
+                  },
+                  {
+                    "text": "see notes to consolidated",
+                    "type": "startsWith"
+                  }
+                ]
+              }
+            ]
+          },
+          "stop": {
+            "type": "any",
+            "matches": [
+              {
+                "pattern": "total liabilities and .+ equity",
+                "type": "regex",
+                "flags": "i"
+              },
+              {
+                "text": "total liabilities and equity",
+                "type": "equals"
+              },
+              {
+                "text": "see notes to consolidated",
+                "type": "startsWith"
+              }
+            ]
+          },
+          "stopOffsetY": 0.4
+        },
+        "fields": [
+          {
+            "id": "column 1 date",
+            "type": "date",
+            "anchor": {
+              "match": {
+                "text": "assets",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": 5,
+              "offsetY": -0.3,
+              "width": 3.5,
+              "height": 0.5,
+              "sortLines": "readingOrderLeftToRight",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "column 1 date",
+            "type": "date",
+            "method": {
+              "id": "question",
+              "question": "I'm giving you a balance sheet that will have items for two dates.  Return the date for the first column of values."
+            }
+          },
+          {
+            "id": "column 2 date",
+            "type": "date",
+            "anchor": {
+              "match": {
+                "text": "assets",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": 5,
+              "offsetY": -0.3,
+              "width": 3.5,
+              "height": 0.5,
+              "sortLines": "readingOrderLeftToRight",
+              "tiebreaker": "second"
+            }
+          },
+          {
+            "id": "column 2 date",
+            "type": "date",
+            "method": {
+              "id": "question",
+              "question": "I'm giving you a balance sheet that will have items for two dates.  Return the month, date, and year associated with the second column's values."
+            }
+          },
+          {
+            "id": "current assets",
+            "method": {
+              "id": "list",
+              "description": "List of 'Current assets' from a balance sheet.  The list will be comprised of a list of each asset along with an associated dollar amount from two different years.  It will also have a 'total' value at the end.",
+              "properties": [
+                {
+                  "id": "asset",
+                  "description": "description of asset"
+                },
+                {
+                  "id": "amount1",
+                  "description": "first dollar value associated with asset",
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "default"
+                  }
+                },
+                {
+                  "id": "amount2",
+                  "description": "second dollar value associated with asset",
+                  "type": "currency"
+                }
+              ]
+            }
+          },
+  
+          {
+            "id": "non current assets",
+            "method": {
+              "id": "list",
+              "description": "List of 'non Current assets' from a balance sheet.  Include the total if it's present.  The list will start after the list of 'current assets' and usually ends with the line 'total assets'.  Include the 'total assets' value at the end.",
+              "properties": [
+                {
+                  "id": "asset",
+                  "description": "description of asset"
+                },
+                {
+                  "id": "amount1",
+                  "description": "first dollar value associated with asset",
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "default"
+                  }
+                },
+                {
+                  "id": "amount2",
+                  "description": "second dollar value associated with asset",
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "default"
+                  }
+                }
+              ]
+            }
+          },
+    
+          {
+            "id": "current liabilities",
+            "method": {
+              "id": "list",
+              "description": "List of 'current liabilities' from a balance sheet.  It will be comprised of a list of each liability along with an associated dollar amount from two different years.  Include the 'total current liabilities' value if it's present.",
+              "properties": [
+                {
+                  "id": "liability",
+                  "description": "description of liability"
+                },
+                {
+                  "id": "amount1",
+                  "description": "first dollar value associated with liability",
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "default"
+                  }
+                },
+                {
+                  "id": "amount2",
+                  "description": "second dollar value associated with liability",
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "default"
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "id": "non current liabilities",
+            "method": {
+              "id": "list",
+              "description": "List of 'non current liabilities'.  They're listed after 'total current liabilities'.  Short term debt is not a non current liability.  'Total liabilities' should not be included if it's present.",
+              "properties": [
+                {
+                  "id": "liability",
+                  "description": "description of liability.  "
+                },
+                {
+                  "id": "amount1",
+                  "description": "first dollar value associated with liability",
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "default"
+                  }
+                },
+                {
+                  "id": "amount2",
+                  "description": "second dollar value associated with liability",
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "default"
+                  }
+                }
+              ]
+            }
+          },
+         
+  
+          {
+            "id": "stockholder's equity",
+            "method": {
+              "id": "list",
+              "description": "List of 'stockholder's equity' options from a balance sheet.  It will be comprised of a list of equity descriptions along with an associated dollar amount from two different years.  Include the total.  Include the values for 'total liabilities and stockholder's equity' if it's present.",
+              "properties": [
+                {
+                  "id": "liability",
+                  "description": "Full description of stock option"
+                },
+                {
+                  "id": "amount1",
+                  "description": "first dollar value associated with asset",
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "default"
+                  }
+                },
+                {
+                  "id": "amount2",
+                  "description": "second dollar value associated with asset",
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "default"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
