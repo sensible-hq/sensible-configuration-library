@@ -228,9 +228,9 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Driver's License](./drivers_licenses/drivers_license.json)
 
 
-### Balance Sheets
+### 10-Ks
 
-- [Form 10k Balance Sheet](./balance_sheets/form_10k/form_10k_balance_sheet.json)
+- [Balance Sheet](./10-Ks/balance_sheet/balance_sheet.json)
 
 
 ## Using a configuration
