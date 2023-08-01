@@ -1,0 +1,169 @@
+{
+    "preprocessors": [
+      {
+        "type": "nlp",
+        "contextDescription": "The following context is a paystub"
+      }
+    ],
+    "fields": [
+      {
+        "id": "employer_name",
+        "method": {
+          "id": "question",
+          "question": "employer name"
+        }
+      },
+      {
+        "id": "employee_name",
+        "method": {
+          "id": "question",
+          "question": "employee name"
+        }
+      },
+      {
+        "id": "employee_address",
+        "method": {
+          "id": "question",
+          "question": "address listed under employee. do not return address listed under company. if two street addresses are listed, return the second one"
+        }
+      },
+      {
+        "id": "_employee_address.street_address",
+        "method": {
+          "id": "question",
+          "question": "return the street address listed at the far right of the page"
+        }
+      },
+      {
+        "id": "_employee_address.city_state_zipcode",
+        "method": {
+          "id": "question",
+          "question": "return the city, state, and zipcode listed at the far right of the page"
+        }
+      },
+      {
+        "id": "employee_address",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_employee_address.street_address",
+            "_employee_address.city_state_zipcode"
+          ],
+          "delimiter": ","
+        }
+      },
+      {
+        "id": "pay_date",
+        "method": {
+          "id": "question",
+          "question": "pay date"
+        }
+      },
+      {
+        "id": "pay_period_start_date",
+        "method": {
+          "id": "question",
+          "question": "pay period start date"
+        }
+      },
+      {
+        "id": "pay_period_end_date",
+        "method": {
+          "id": "question",
+          "question": "pay period end date"
+        }
+      },
+      {
+        "id": "net_pay",
+        "type": "currency",
+        "method": {
+          "id": "question",
+          "question": "net pay"
+        }
+      },
+      {
+        "id": "_earnings_table",
+        "type": "table",
+        "method": {
+          "id": "nlpTable",
+          "description": "earnings table",
+          "columns": [
+            {
+              "id": "earnings_type",
+              "description": "earnings type such as regular, normal, additions",
+              "isRequired": true
+            },
+            {
+              "id": "rate",
+              "description": "rate"
+            },
+            {
+              "id": "hours",
+              "description": "hours"
+            },
+            {
+              "id": "amount",
+              "description": "current amount"
+            },
+            {
+              "id": "ytd",
+              "description": "year to date amount"
+            }
+          ]
+        }
+      },
+      {
+        "id": "earnings",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "_earnings_table"
+          ]
+        }
+      },
+      {
+        "id": "_deductions_table",
+        "type": "table",
+        "method": {
+          "id": "nlpTable",
+          "description": "employee deductions",
+          "columns": [
+            {
+              "id": "deduction",
+              "description": "deduction or statutory description",
+              "isRequired": true
+            },
+            {
+              "id": "this_period",
+              "description": "this period's amount listed to the immediate right of the deduction or \"current\""
+            },
+            {
+              "id": "ytd",
+              "description": "year to date amount or \"YTD\". typically the last column in the row"
+            }
+          ]
+        }
+      },
+      {
+        "id": "deductions",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "_deductions_table"
+          ]
+        }
+      },
+      {
+        "id": "clean",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_employee_address.street_address",
+            "_employee_address.city_state_zipcode",
+            "_earnings_table",
+            "_deductions_table"
+          ]
+        }
+      }
+    ]
+  }
