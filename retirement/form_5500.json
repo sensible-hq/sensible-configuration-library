@@ -1,0 +1,388 @@
+{
+    "fields": [
+      {
+        "id": "beginning_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "fiscal plan year beginning",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "ending_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "and ending",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "name_of_plan",
+        "anchor": {
+          "match": {
+            "text": "name of plan",
+            "type": "endsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.4,
+          "offsetY": 0.01,
+          "width": 6,
+          "height": 0.4
+        }
+      },
+      {
+        "id": "plan_number",
+        "anchor": {
+          "match": {
+            "text": "three-digit plan",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 0.2,
+          "offsetY": -0.1,
+          "width": 0.6,
+          "height": 0.3
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "effective date of plan",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "effective date of plan",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        }
+      },
+      {
+        "id": "plan_sponsor_address",
+        "type": "address",
+        "anchor": {
+          "match": {
+            "text": "plan sponsor's name",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.4,
+          "offsetY": 0.3,
+          "width": 6,
+          "height": 1.2
+        }
+      },
+      {
+        "id": "ein",
+        "anchor": {
+          "match": {
+            "text": "EIN",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "a penalty for the late or incomplete filing",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below"
+        }
+      },
+      {
+        "id": "plan_sponsor_phone",
+        "anchor": {
+          "match": {
+            "text": "plan sponsor's telephone",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": 0.2,
+          "width": 1.9,
+          "height": 0.15
+        }
+      },
+      {
+        "id": "business_code",
+        "anchor": {
+          "match": {
+            "text": "business code",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": 0.2,
+          "width": 1.9,
+          "height": 0.15,
+          "wordFilters": [
+            ")"
+          ]
+        }
+      },
+      {
+        "id": "plan_administrator",
+        "anchor": {
+          "match": {
+            "text": "individual signing as plan admin",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "above"
+        }
+      },
+      {
+        "id": "plan_administrator.signing_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "individual signing as plan admin",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -1.1,
+          "offsetY": -0.4,
+          "width": 1,
+          "height": 0.3
+        }
+      },
+      {
+        "id": "total_number_of_participants.beginning",
+        "anchor": {
+          "match": {
+            "text": "total number of participants at the beginning",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 6.47,
+          "offsetY": -0.08,
+          "width": 1.35,
+          "height": 0.15
+        }
+      },
+      {
+        "id": "total_number_of_active_participants.beginning",
+        "anchor": {
+          "match": {
+            "text": "total number of active participants at the beginning",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 6.47,
+          "offsetY": -0.1,
+          "width": 1.45,
+          "height": 0.15,
+          "wordFilters": [
+            "6a(1)"
+          ]
+        }
+      },
+      {
+        "id": "total_number_of_active_participants.beginning",
+        "anchor": {
+          "match": {
+            "text": "total number of active participants at the beginning",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 6.47,
+          "offsetY": -0.1,
+          "width": 1.45,
+          "height": 0.15,
+          "wordFilters": [
+            "6a(1)"
+          ]
+        }
+      },
+      {
+        "id": "total_number_of_active_participants.end",
+        "anchor": {
+          "match": {
+            "text": "total number of active participants at the end",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 6.47,
+          "offsetY": -0.1,
+          "width": 1.45,
+          "height": 0.15,
+          "wordFilters": [
+            "6a(2)",
+            "((2)"
+          ]
+        }
+      },
+      {
+        "id": "number_of_participants_with_account_balance.end",
+        "anchor": {
+          "match": {
+            "text": "number of participants with account balances",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 6.47,
+          "offsetY": -0.15,
+          "width": 1.45,
+          "height": 0.3,
+          "wordFilters": [
+            "6a(1)"
+          ]
+        }
+      },
+      {
+        "id": "applicable_pension_feature_codes",
+        "anchor": {
+          "match": {
+            "text": "if the plan provides pension benefits, enter the applicable",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.1,
+          "offsetY": 0.1,
+          "width": 3,
+          "height": 0.25
+        }
+      },
+      {
+        "id": "applicable_pension_feature_codes",
+        "anchor": {
+          "match": {
+            "text": "if the plan provides pension benefits, enter the applicable",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "below",
+          "textAlignment": "hangingIndent"
+        }
+      },
+      {
+        "id": "plan_funding_arrangement.insurance",
+        "anchor": {
+          "match": {
+            "text": "plan funding arrangement",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": -1.85,
+          "offsetY": 0.18
+        }
+      },
+      {
+        "id": "plan_funding_arrangement.code_section_412e3",
+        "anchor": {
+          "match": {
+            "text": "plan funding arrangement",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": -1.85,
+          "offsetY": 0.36
+        }
+      },
+      {
+        "id": "plan_funding_arrangement.trust",
+        "anchor": {
+          "match": {
+            "text": "plan funding arrangement",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": -1.85,
+          "offsetY": 0.52
+        }
+      },
+      {
+        "id": "plan_funding_arrangement.general_assets_of_the_sponsor",
+        "anchor": {
+          "match": {
+            "text": "plan funding arrangement",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "checkbox",
+          "position": "right",
+          "offsetX": -1.85,
+          "offsetY": 0.7
+        }
+      }
+    ]
+  }
