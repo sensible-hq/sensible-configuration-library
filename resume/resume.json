@@ -2,10 +2,7 @@
   "preprocessors": [
     {
       "type": "nlp",
-      "contextDescription": "the following context is an excerpt from a resume",
-      "chunkSize": 1,
-      "chunkCount": 2,
-      "chunkOverlapPercentage": 0
+      "contextDescription": "the following context is an excerpt from a resume"
     }
   ],
   "fields": [
@@ -27,14 +24,8 @@
       "id": "phone",
       "method": {
         "id": "question",
-        "question": "phone of person. Standardize this output to the format [country code]-[area code]-[phone number]"
-      }
-    },
-    {
-      "id": "phone",
-      "method": {
-        "id": "question",
-        "question": "phone number of person. Standardize this output to the format [country code]-[area code]-[phone number]"
+        "question": "phone number of applicant. reformat the phone number to use paranthesis for the area code and dashes. omit the dash immediately after the closing parenthesis, but place one in between the phone number itself",
+        "whitespaceFilter": "all"
       }
     },
     {
@@ -100,7 +91,33 @@
           },
           {
             "id": "grad_year_or_years_attended",
-            "description": "date range of attendance. if none listed, return none"
+            "description": "years or the calendar year listed. if none listed, return none"
+          },
+          {
+            "id": "gpa",
+            "description": "grade point average. if none listed, return none"
+          }
+        ]
+      }
+    },
+    {
+      "id": "school",
+      "method": {
+        "id": "list",
+        "description": "education information . do not include coursework or skills",
+        "properties": [
+          {
+            "id": "school",
+            "description": "name of the school or university",
+            "isRequired": true
+          },
+          {
+            "id": "degree",
+            "description": "return the major and degree. If no major or degree is listed, return none listed"
+          },
+          {
+            "id": "grad_year_or_years_attended",
+            "description": "years or the calendar year listed. if none listed, return none"
           },
           {
             "id": "gpa",
@@ -122,24 +139,11 @@
       "id": "_skills",
       "method": {
         "id": "list",
-        "description": "each skill mentioned, listed separatelty",
+        "description": "each skill mentioned, listed separately",
         "properties": [
           {
             "id": "skills",
-            "description": "technical and soft skills summarized in at most three words. if there are multiple skills, return a line for each"
-          }
-        ]
-      }
-    },
-    {
-      "id": "_skills",
-      "method": {
-        "id": "list",
-        "description": "all technical and soft skills mentioned",
-        "properties": [
-          {
-            "id": "skills",
-            "description": "skills mentioned, summarized in at most three words. return a line for each for each skill listed"
+            "description": "all technical and soft skills. if there are multiple skills listed, separate individually"
           }
         ]
       }
@@ -155,37 +159,56 @@
     },
     {
       "id": "_certifications_and_accolades",
+      "anchor": {
+        "match": {
+          "type": "any",
+          "matches": [
+            {
+              "text": "award",
+              "type": "includes"
+            },
+            {
+              "text": "certification",
+              "type": "includes"
+            },
+            {
+              "text": "recognition",
+              "type": "includes"
+            }
+          ]
+        }
+      },
       "method": {
-        "id": "list",
-        "description": "all certifications, awards, and recognitions listed. if none listed, return none",
-        "properties": [
-          {
-            "id": "certifications_awards",
-            "description": "certifications, awards, and recognitions"
-          }
-        ]
-      }
-    },
-    {
-      "id": "certifications_and_accolades",
-      "method": {
-        "id": "zip",
-        "source_ids": [
-          "_certifications_and_accolades"
-        ]
-      }
-    },
-    {
-      "id": "clean",
-      "method": {
-        "id": "suppressOutput",
-        "source_ids": [
-          "_experience",
-          "school",
-          "_skills",
-          "_certifications_and_accolades"
-        ]
-      }
+            "id": "list",
+            "description": "any certification, award, and/or accolade listed separately",
+            "properties": [
+              {
+                "id": "certifications_awards",
+                "description": "all certifications, awards, and accolades. if multiple listed, separate individually"
+              }
+      ]
     }
-  ]
+  },
+  {
+    "id": "certifications_and_accolades",
+    "method": {
+      "id": "zip",
+      "source_ids": [
+        "_certifications_and_accolades"
+      ]
+    }
+  },
+  {
+    "id": "clean",
+    "method": {
+      "id": "suppressOutput",
+      "source_ids": [
+        "_experience",
+        "school",
+        "_skills",
+        "_certifications_and_accolades"
+      ]
+    }
+  }
+]
 }
