@@ -3,114 +3,170 @@
     {
       "id": "state",
       "method": {
-        "id": "question",
-        "question": "return the state this license pertains to"
+        "id": "query",
+        "description": "return the state this license pertains to"
       },
       "type": "string"
     },
     {
       "id": "license_number",
       "method": {
-        "id": "question",
-        "question": "driver license number, DL"
+        "id": "query",
+        "description": "driver's license number, DL, DLN",
+        "lineFilters": [
+          {
+            "text": "DD ",
+            "type": "startsWith"
+          },
+          {
+            "text": "NUMBER",
+            "type": "endsWith"
+          }
+        ]
       },
-      "type": "string"
+      "type": {
+        "id": "custom",
+        "pattern": "[A-Z0-9\\- ]{7,}"
+      }
+    },
+    {
+      "id": "license_number",
+      "method": {
+        "id": "query",
+        "contextDescription": "the below context is an excerpt from a driver's licence",
+        "description": "driver's license number. sometimes a sequence of capitalized letters and numbers listed next to \"4d\"",
+        "lineFilters": [
+          {
+            "text": "DD ",
+            "type": "startsWith"
+          },
+          {
+            "text": "NUMBER",
+            "type": "endsWith"
+          }
+        ]
+      },
+      "type": {
+        "id": "custom",
+        "pattern": "[A-Z0-9\\- ]{7,}"
+      }
     },
     {
       "id": "expiry_date",
       "method": {
-        "id": "question",
-        "question": "expiry date"
+        "id": "query",
+        "description": "expiry date"
       },
       "type": "date"
     },
     {
       "id": "first_name",
       "method": {
-        "id": "question",
-        "question": "the first name of the person depicted on the driver's license. sometimes found next to a label that reads FN or first name"
+        "id": "query",
+            "contextDescription": "the below context is an excerpt from a driver's licence",
+        "description": "first name of driver. sometimes found next to a label that reads FN or first name"
       },
       "type": "string"
     },
     {
       "id": "last_name",
       "method": {
-        "id": "question",
-        "question": "the last name of the person depicted on this driver's license. sometimes found next to a label that reads LN or last name"
+        "id": "query",
+        "description": "last name of driver. do not return middle name. typically listed separately and above first name"
       },
       "type": "string"
     },
     {
       "id": "address",
       "method": {
-        "id": "question",
-        "question": "address"
+        "id": "query",
+        "description": "driver's full address"
       },
       "type": "string"
     },
     {
       "id": "dob",
       "method": {
-        "id": "question",
-        "question": "date of birth, dob"
+        "id": "query",
+        "description": "date of birth, dob"
       },
       "type": "string"
     },
     {
       "id": "height",
       "method": {
-        "id": "question",
-        "question": "height"
-      },
-      "type": "string"
-    },
-    {
-      "id": "hair_color",
-      "method": {
-        "id": "question",
-        "question": "hair color"
-      },
-      "type": "string"
-    },
-    {
-      "id": "eye_color",
-      "method": {
-        "id": "question",
-        "question": "eye color"
+        "id": "query",
+        "description": "height"
       },
       "type": "string"
     },
     {
       "id": "weight",
       "method": {
-        "id": "question",
-        "question": "weight"
+        "id": "query",
+        "description": "weight"
+      },
+      "type": "string"
+    },
+    {
+      "id": "sex",
+      "method": {
+        "id": "query",
+        "description": "sex"
+      },
+      "type": "string"
+    },
+    {
+      "id": "hair_color",
+      "method": {
+        "id": "query",
+        "description": "hair color"
+      },
+      "type": "string"
+    },
+    {
+      "id": "eye_color",
+      "method": {
+        "id": "query",
+        "description": "eye color"
       },
       "type": "string"
     },
     {
       "id": "issue_date",
       "method": {
-        "id": "question",
-        "question": "issue date"
+        "id": "query",
+        "description": "issue date"
       },
       "type": "string"
     },
     {
       "id": "restrictions",
       "method": {
-        "id": "question",
-        "question": "RE, Restr, or restrictions, without the label"
+        "id": "query",
+                "contextDescription": "the below context is an excerpt from a driver's licence",
+        "description": "restrictions. can be indicated as RE, Re:, Rest, RES. do not return any letter listed under \"Classifications\". do not include the label",
+        "confidenceSignals": true
       },
       "type": "string"
     },
     {
       "id": "endorsements",
       "method": {
-        "id": "question",
-        "question": "END, or endorsements. This will not be a date value, and will likely be a string of letters."
+        "id": "query",
+        "description": "END, En:, or endorsements. do not return any letter listed under \"Classifications\". if none listed, return null",
+        "confidenceSignals": true
       },
       "type": "string"
     },
+    {
+      "id": "endorsements",
+      "method": {
+        "id": "query",
+        "description": "END. if none listed, return null",
+        "confidenceSignals": true
+      },
+      "type": "string"
+    }
   ]
 }
