@@ -115,7 +115,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 - [AIG](./loss_runs/aig/aig.json)
 - [AMIC](./loss_runs/amic/amic.json)
-- [Amtrust](./loss_runs/amtrust/amtrust.json)
+- [Amtrust (Worker's Comp)](./loss_runs/amtrust/amtrust_workers_comp.json)
 - [Applied Underwriters](./loss_runs/applied_underwriters/applied_underwriters.json)
 - [Atlas](./loss_runs/atlas/atlas.json)
 - [Benchmark](./loss_runs/benchmark/benchmark.json)
