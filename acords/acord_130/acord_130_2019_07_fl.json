@@ -1,32 +1,22 @@
 {
-    "fingerprint": {
-      "tests": [
-        {
-          "page": "first",
-          "match": [
-            {
-              "text": "WORKERS COMPENSATION APPLICATION",
-              "type": "includes",
-              "isCaseSensitive": true
-            },
-            {
-              "text": "UNDERWRITER",
-              "type": "includes",
-              "isCaseSensitive": true
-            }
-          ]
-        },
-        {
-          "page": "every",
-          "match": [
-            {
-              "text": "ACORD 130 FL (2019/07)",
-              "type": "includes"
-            }
-          ]
-        }
-      ]
-    },
+  "fingerprint": {
+    "tests": [
+      {
+        "page": "any",
+        "match": [[
+          {
+            "text": "workers compensation application",
+            "type": "includes"
+          },
+          {
+            "text": "ACORD 130 FL (2019/07)",
+            "type": "includes",
+            "editDistance": 1
+          }
+        ]]
+      }
+    ]
+  },
     "preprocessors": [
       {
         "type": "ocr",
