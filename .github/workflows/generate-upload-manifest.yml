@@ -19,11 +19,13 @@ jobs:
         run: sudo apt-get install jq
       - name: Make manifest
         run: . .github/generate-manifest.sh
-      - name: upload to ${{ matrix.env }}
-        uses: 3dwardCh3nG/upload-to-s3-action@v1.6.1
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
         with:
-          aws_access_key_id: ${{ secrets.AWS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_bucket_name: sensible-so-utility-bucket-${{ matrix.env }}
-          source: 'output'
-          destination: 'CONFIG_LIBRARY'
+          # this region doesn't matter, s3 is global
+          aws-region: us-west-2
+          aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - name: Upload manifest.json to ${{ matrix.env }}
+        run: |
+          aws s3 cp output/manifest.json s3://sensible-so-utility-bucket-${{ matrix.env }}/CONFIG_LIBRARY/manifest.json
