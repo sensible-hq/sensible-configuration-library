@@ -1,0 +1,180 @@
+{
+    "fields": [
+      {
+        "id": "start_date",
+        "method": {
+          "id": "query",
+          "description": "start date of bank statement period",
+          "pageRange": {
+            "startPage": 0,
+            "endPage": 1
+          }
+        }
+      },
+      {
+        "id": "start_date",
+        "method": {
+          "id": "query",
+          "description": "beginning date of bank statement period"
+        }
+      },
+      {
+        "id": "end_date",
+        "method": {
+          "id": "query",
+          "description": "end date of bank statement period. do not return the date of the next statement period",
+          "pageRange": {
+            "startPage": 0,
+            "endPage": 1
+          }
+        }
+      },
+      {
+        "id": "end_date",
+        "method": {
+          "id": "query",
+          "description": "ending date of bank statement period"
+        }
+      },
+      {
+        "id": "customer_name",
+        "method": {
+          "id": "query",
+          "description": "customer name"
+        }
+      },
+      {
+        "id": "customer_address",
+        "method": {
+          "id": "query",
+          "description": "customer address. omit customer or company name from address. do not return the address of the bank",
+          "pageRange": {
+            "startPage": 0,
+            "endPage": 1
+          }
+        }
+      },
+      {
+        "id": "beginning_balance",
+        "type": "accountingCurrency",
+        "method": {
+          "id": "query",
+          "description": "beginning balance"
+        }
+      },
+      {
+        "id": "beginning_balance",
+        "type": "accountingCurrency",
+        "method": {
+          "id": "query",
+          "description": "beginning balance as listed in the account summary"
+        }
+      },
+      {
+        "id": "ending_balance",
+        "type": "accountingCurrency",
+        "method": {
+          "id": "query",
+          "description": "ending balance of statement"
+        }
+      },
+      {
+        "id": "_transactions",
+        "method": {
+          "id": "list",
+          "llmEngine": "thorough",
+          "description": "Thoroughly extract every transaction from the document. Transactions include all deposits, credits, withdrawals, and debits. Be sure not to miss any transactions. Do not include checks.",
+          "properties": [
+            {
+              "id": "date",
+              "description": "date of transaction",
+              "type": "string"
+            },
+            {
+              "id": "description",
+              "description": "description of the transaction. Do not include checks.",
+              "type": "string",
+              "isRequired": true
+            },
+            {
+              "id": "amount",
+              "description": "amount of transaction",
+              "type": "accountingCurrency",
+              "isRequired": true
+            },
+            {
+              "id": "type_of_transaction",
+              "description": "Classify type_of_transaction as either a Deposit or a Withdrawal",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      {
+        "id": "transactions",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "_transactions"
+          ]
+        }
+      },
+      {
+        "id": "_checks",
+        "method": {
+          "id": "list",
+          "llmEngine": "thorough",
+          "description": "Thoroughly extract every unique \"Check\" listed in the bank statement. Only extract checks. Do not include fees or other charges",
+          "properties": [
+            {
+              "id": "date",
+              "description": "date of check",
+              "type": "string"
+            },
+            {
+              "id": "check_number",
+              "description": "check number or \"Returned Check\". if neither is present, return null. do not include fees",
+              "type": "string",
+              "isRequired": true
+            },
+            {
+              "id": "description",
+              "description": "description or reference number. do not include NSF, service charges nor returned check charges",
+              "type": "string"
+            },
+            {
+              "id": "amount",
+              "description": "amount of check",
+              "type": "accountingCurrency",
+              "isRequired": true
+            },
+            {
+              "id": "type_of_check",
+              "description": "classify type_of_check as the header name of the table in which it is listed under such as Checks, Checks Paid, etc. or by the column header (Debit, Credit, Additions, Subtractions, etc.). Do not return any fee types. Do not include etransfer debits.",
+              "isRequired": true,
+              "type": "string"
+            }
+          ]
+        }
+      },
+      {
+        "id": "checks",
+        "method": {
+          "id": "zip",
+          "source_ids": [
+            "_checks"
+          ]
+        }
+      },
+      {
+        "id": "clean",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_checks",
+            "_transactions"
+          ]
+        }
+      }
+    ]
+  }
