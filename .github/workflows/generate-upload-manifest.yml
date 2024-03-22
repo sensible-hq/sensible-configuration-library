@@ -28,4 +28,4 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Upload manifest.json to ${{ matrix.env }}
         run: |
-          aws s3 cp output/manifest.json s3://sensible-so-utility-bucket-${{ matrix.env }}/CONFIG_LIBRARY/manifest.json
+          aws s3 cp output/manifest.json s3://sensible-so-utility-bucket-${{ matrix.env }}/CONFIG_LIBRARY/manifest_v2.json
