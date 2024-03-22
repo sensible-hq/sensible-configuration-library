@@ -236,6 +236,10 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 - [Form 5500](./retirement/form_5500.json)
 
+### PropTech
+
+- [Offering Memorandums](./proptech/offering_memorandums/offering_memorandums.json)
+
 
 ## Using a configuration
 
