@@ -8,24 +8,26 @@ for config in $CONFIGS; do
     files=()
     config_path=(${config//\// })
     associated_jsons=$(echo "$LINES" | grep -v "config.json" | grep ".json" | grep "/${config_path[1]}/")
-
     for json in $associated_jsons; do
-        fileName=(${json//\.json/ })
-        pdfFile="${fileName}_sample.pdf"
-        pngFile="${fileName}_sample.png"
-        if grep -q "$pdfFile" <<< "$LINES" && grep -q "$pngFile" <<< "$LINES";
-        then
-            jsonPath=(${json//\.\// })
-            pdfPath=(${pdfFile//\.\// })
-            pngPath=(${pngFile//\.\// })
-            files+=(
-                "{\"path\":\"${jsonPath}\",\"download_url\":\"${DOWNLOAD_URL_PREFIX}${jsonPath}\"}" 
-                "{\"path\":\"${pdfPath}\",\"download_url\":\"${DOWNLOAD_URL_PREFIX}${pdfPath}\"}" 
-                "{\"path\":\"${pngPath}\",\"download_url\":\"${DOWNLOAD_URL_PREFIX}${pngPath}\"}"
-                )
-        fi
+        filePath=(${json//\.json/ })
+        pdfPaths=$(echo "$LINES" | grep -v ".json" | grep -v ".png" | grep "${filePath}_sample") 
+        for pdfPath in $pdfPaths; do
+            pngPath=("${pdfPath//\.pdf/}.png")
+            if grep -q $pngPath <<< $LINES;
+            then
+                jsonFile=(${json//\.\// })
+                jsonFileString=("{\"path\":\"${jsonFile}\",\"download_url\":\"${DOWNLOAD_URL_PREFIX}${jsonFile}\"}")
+                if [[ ! ${files[@]} =~ $jsonFileString ]];
+                then
+                    files+=("$jsonFileString")
+                fi
+                pdfFile=(${pdfPath//\.\// })
+                pngFile=(${pngPath//\.\// })
+                files+=("{\"path\":\"${pdfFile}\",\"download_url\":\"${DOWNLOAD_URL_PREFIX}${pdfFile}\"}")
+                files+=("{\"path\":\"${pngFile}\",\"download_url\":\"${DOWNLOAD_URL_PREFIX}${pngFile}\"}")
+            fi
+        done
     done
-
     primary=$(cat $config | jq -s | jq '.[].featured.primary' | tr -d '"')
     secondary=$(cat $config | jq -s | jq '.[].featured.secondary' | tr -d '"')
 
