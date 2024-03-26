@@ -17,20 +17,9 @@ jobs:
         with:
           node-version: lts/Hydrogen
           cache: npm
-      - name: cd into generator
-        run: cd .github/generator
+      # need to cd into the directory for each command
+      # possibly a better organization exists but this works for now
       - name: Install dependencies
-        run: npm ci
+        run: cd .github/generator && npm ci
       - name: Generate manifest.json
-        run: .src/generate-manifest.ts
-      # should move this into the script, 
-      # - name: Configure AWS Credentials
-      #   uses: aws-actions/configure-aws-credentials@v4
-      #   with:
-      #     # this region doesn't matter, s3 is global
-      #     aws-region: us-west-2
-      #     aws-access-key-id: ${{ secrets.AWS_KEY_ID }}
-      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      # - name: Upload manifest.json to ${{ matrix.env }}
-      #   run: |
-      #     aws s3 cp output/manifest.json s3://sensible-so-utility-bucket-${{ matrix.env }}/CONFIG_LIBRARY/manifest_v2.json
+        run: cd .github/generator && .src/generate-manifest.ts
