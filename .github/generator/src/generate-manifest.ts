@@ -1,6 +1,6 @@
 #!/usr/bin/env -S npx ts-node -T
 
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
+import { ListObjectsV2Command, PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { createHash } from "crypto";
 import path from "path";
 
@@ -29,6 +29,10 @@ async function main() {
   console.log("Hello, World!", root);
   // generate manifest
   // call `await uploadManifest(manifest)`
+  await new S3Client({ region: "us-west-2" }).send(new ListObjectsV2Command({
+    Bucket: "sensible-so-utility-bucket-dev-us-west-2",
+    Prefix: "CONFIG_LIBRARY/",
+  }));
 }
 
 
