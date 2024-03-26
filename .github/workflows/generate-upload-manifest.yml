@@ -17,10 +17,12 @@ jobs:
         with:
           node-version: lts/Hydrogen
           cache: npm
+      - name: cd into generator
+        run: cd .github/generator
       - name: Install dependencies
-        run: cd .github/generator && npm ci && cd ../..
+        run: npm ci
       - name: Generate manifest.json
-        run: .github/generator/src/generate-manifest.ts
+        run: .src/generate-manifest.ts
       # should move this into the script, 
       # - name: Configure AWS Credentials
       #   uses: aws-actions/configure-aws-credentials@v4

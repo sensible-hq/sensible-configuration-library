@@ -2,6 +2,7 @@
 
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { createHash } from "crypto";
+import path from "path";
 
 const targets: Record<string, readonly string[]> = {
   "us-west-2": ["prod", "dev", "exp1"],
@@ -24,7 +25,8 @@ async function uploadManifest(manifest: string) {
 }
 
 async function main() {
-  console.log("Hello, World!");
+  const root = path.join(__dirname, "..", "..", "..");
+  console.log("Hello, World!", root);
   // generate manifest
   // call `await uploadManifest(manifest)`
 }
