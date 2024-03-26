@@ -8,9 +8,6 @@ on:
 
 jobs:
   generate-manifest:
-    strategy:
-      matrix:
-        env: [prod-us-west-2, dev-us-west-2, exp1-us-west-2, prod-eu-west-2, prod-ca-central-1]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,9 +18,10 @@ jobs:
           node-version: lts/Hydrogen
           cache: npm
       - name: Install dependencies
-        run: npm ci
+        run: cd .github/generator && npm ci && cd ../..
       - name: Generate manifest.json
         run: .github/generator/src/generate-manifest.ts
+      # should move this into the script, 
       # - name: Configure AWS Credentials
       #   uses: aws-actions/configure-aws-credentials@v4
       #   with:
