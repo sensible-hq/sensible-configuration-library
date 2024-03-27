@@ -1,14 +1,9 @@
-name: generate-upload-manifest
+name: test-manifest-generation
 
-on:
-  pull_request:
-    types:
-      - closed
-  workflow_dispatch:
+on: [pull_request, workflow_dispatch]
 
 jobs:
   generate-manifest:
-    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,8 +16,5 @@ jobs:
       # possibly a better organization exists but this works for now
       - name: Install dependencies
         run: cd .github/generator && npm ci
-      - name: Generate manifest.json
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        run: cd .github/generator && src/generate-manifest.ts
+      - name: Unit tests
+        run: cd .github/generator && npx jest
