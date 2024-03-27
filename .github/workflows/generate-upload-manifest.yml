@@ -3,7 +3,7 @@ name: generate-upload-manifest
 on:
   push:
     branches:
-      - 'main'
+      - "main"
   workflow_dispatch:
 
 jobs:
@@ -25,3 +25,5 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: cd .github/generator && src/generate-manifest.ts
+      - name: Unit tests
+        run: cd .github/generator && jest
