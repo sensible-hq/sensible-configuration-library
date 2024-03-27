@@ -34,6 +34,13 @@ describe("generate-manifest", () => {
       for (const file of entry.files) {
         expect(file).toHaveProperty("path");
         expect(file).toHaveProperty("download_url");
+        if (file.path.includes(".pdf")) {
+          expect(
+            entry.files.find(
+              (png) => png.path === `${file.path.split(".pdf")[0]}.png`
+            )
+          ).toBeDefined();
+        }
       }
     }
   });
