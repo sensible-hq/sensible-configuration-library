@@ -39,32 +39,32 @@ async function uploadManifest(manifest: string) {
   );
 }
 
-async function generateManifest(): Promise<string> {
+//types
+export type Manifest = Entry[];
+
+type Entry = {
+  config_data?: ConfigDataReturn & { path: string };
+  files?: RepoFile[];
+};
+
+type ConfigDataReturn = {
+  path: string;
+  category: string;
+  description: string;
+  display_name: string;
+  featured: {
+    primary: string;
+    secondary: string;
+  };
+};
+
+type RepoFile = {
+  path: string;
+  download_url: string;
+};
+
+export async function generateManifest(): Promise<string> {
   const root = path.join(__dirname, "..", "..", "..");
-
-  //types
-  type Manifest = Entry[];
-
-  type Entry = {
-    config_data?: ConfigDataReturn & { path: string };
-    files?: RepoFile[];
-  };
-
-  type ConfigDataReturn = {
-    path: string;
-    category: string;
-    description: string;
-    display_name: string;
-    featured: {
-      primary: string;
-      secondary: string;
-    };
-  };
-
-  type RepoFile = {
-    path: string;
-    download_url: string;
-  };
 
   //helpers
   const isRepoFile = (dir: Dirent): boolean => {
@@ -149,7 +149,8 @@ async function generateManifest(): Promise<string> {
 
         //there has to be a pdf and png for each senseML config
         if (png) {
-          if (!jsonIncluded) { //only add senseML json once
+          if (!jsonIncluded) {
+            //only add senseML json once
             files.push(getFileInfo(json.path, json.name));
             jsonIncluded = true;
           }
