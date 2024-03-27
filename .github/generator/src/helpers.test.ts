@@ -1,7 +1,7 @@
 import assert from "assert";
-import { generateManifest, type Manifest } from "./generate-manifest";
+import { generateManifest, type Manifest } from "./helpers";
 
-describe("generate-manifest", async () => {
+describe("generate-manifest", () => {
   let manifest: string;
   let parsedManifest: Manifest;
 
