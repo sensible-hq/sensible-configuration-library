@@ -239,7 +239,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 ### PropTech
 
 - [Offering Memorandums](./proptech/offering_memorandums/offering_memorandums.json)
-
+- [Rent Rolls](./proptech/rent_rolls/rent_rolls.json)
 
 ## Using a configuration
 
