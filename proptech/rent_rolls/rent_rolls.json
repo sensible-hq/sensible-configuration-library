@@ -1,4 +1,10 @@
 {
+  "preprocessors": [
+    {
+      "type": "ocr",
+      "match": " "
+    }
+  ],
   "fields": [
     {
       "method": {
@@ -20,8 +26,98 @@
             "type": "string"
           },
           {
-            "id": "llc",
+            "id": "property_name",
             "description": "LLC / Property Owner / Property Name",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "id": "rent_roll_details",
+      "method": {
+        "id": "list",
+        "llmEngine": "thorough",
+        "description": "rent roll details",
+        "properties": [
+          {
+            "id": "unit",
+            "description": "unit",
+            "type": "string"
+          },
+          {
+            "id": "floorplan",
+            "description": "floorplan code (eg. B1)",
+            "type": "string"
+          },
+          {
+            "id": "sqft",
+            "description": "sqft",
+            "type": "string"
+          },
+          {
+            "id": "unit_lease_status",
+            "description": "unit/lease status",
+            "type": "string"
+          },
+          {
+            "id": "_name",
+            "description": "tenant / name / occupant / business",
+            "type": "string"
+          },
+          {
+            "id": "move_in_move_out",
+            "description": "move-in/move-out",
+            "type": "string"
+          },
+          {
+            "id": "lease_start",
+            "description": "lease start / rent start",
+            "type": "string"
+          },
+          {
+            "id": "lease_end",
+            "description": "lease end / expiration",
+            "type": "string"
+          },
+          {
+            "id": "market_addl",
+            "description": "market + addl",
+            "type": "string"
+          },
+          {
+            "id": "sub_journal",
+            "description": "sub journal",
+            "type": "string"
+          },
+          {
+            "id": "trans_code",
+            "description": "trans code",
+            "type": "string"
+          },
+          {
+            "id": "lease_rent",
+            "description": "lease rent",
+            "type": "string"
+          },
+          {
+            "id": "other_charges_credits",
+            "description": "other charges/credits",
+            "type": "string"
+          },
+          {
+            "id": "total_billing",
+            "description": "total billing",
+            "type": "string"
+          },
+          {
+            "id": "dep_on_hand",
+            "description": "dep on hand",
+            "type": "string"
+          },
+          {
+            "id": "balance",
+            "description": "balance",
             "type": "string"
           }
         ]
@@ -40,12 +136,7 @@
           },
           {
             "id": "floorplan",
-            "description": "floorplan",
-            "type": "string"
-          },
-          {
-            "id": "unit_designation",
-            "description": "unit designation",
+            "description": "floorplan code (eg. B1)",
             "type": "string"
           },
           {
@@ -59,8 +150,8 @@
             "type": "string"
           },
           {
-            "id": "name",
-            "description": "name / occupant",
+            "id": "_name",
+            "description": "tenant / name / occupant / business",
             "type": "string"
           },
           {
@@ -157,20 +248,50 @@
             "description": "grand total vacant sqft units",
             "type": "string"
           },
-          {
-            "id": "grand_tot_vac_sqft_rent",
-            "description": "grand total vacant sqft monthly base rent",
-            "type": "string"
-          }
         ]
       }
     },
     {
-      "id": "rent_roll_list",
+      "id": "rent_roll_prettify",
       "method": {
-        "id": "zip",
-        "source_ids": [
-          "rent_roll_details"
+        "id": "addComputedFields",
+        "source_id": "rent_roll_details",
+        "fields": [
+          {
+            "id": "names",
+            "method": {
+              "id": "summarizer",
+              "source_id": "_name",
+              "instructions": "if it's the name of an individual, split the name into first and last names. If it's the name of a business, leave it unchanged",
+              "fields": [
+                "first_name",
+                "surname",
+                "business_name"
+              ],
+              "samples": [
+                {
+                  "prompt": "cooper, joana",
+                  "values": [
+                    [
+                      "joana",
+                      "cooper",
+                      "null"
+                    ]
+                  ]
+                },
+                {
+                  "prompt": "John's icecream shop",
+                  "values": [
+                    [
+                      "null",
+                      "null",
+                      "John's icecream shop"
+                    ]
+                  ]
+                }
+              ]
+            }
+          }
         ]
       }
     },
@@ -183,17 +304,5 @@
         ]
       }
     },
-    {
-      "method": {
-        "id": "queryGroup",
-        "queries": [
-          {
-            "id": "apartment_name",
-            "description": "apartment complex name",
-            "type": "string"
-          }
-        ]
-      }
-    }
   ]
 }
