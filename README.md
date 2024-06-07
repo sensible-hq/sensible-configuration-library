@@ -241,6 +241,13 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Offering Memorandums](./proptech/offering_memorandums/offering_memorandums.json)
 - [Rent Rolls](./proptech/rent_rolls/rent_rolls.json)
 
+### Verification of Assets
+
+- [Accountchek] (./verification_of_assets/accountchek/accountchek.json)
+- [Blend] (./verification_of_assets/blend/blend.json)
+- [Finicity] (./verification_of_assets/finicity/finicity.json)
+- [Plaid] (./verification_of_assets/plaid/plaid.json)
+
 ## Using a configuration
 
 To use the library, you can sign up for a [free Sensible account](https://app.sensible.so/register).

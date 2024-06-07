@@ -1,0 +1,494 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "first",
+          "match": [
+            {
+              "text": "APPLICANT INFORMATION",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ORDER DETAILS",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "ASSET REPORT SUMMARY",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        {
+          "page": "every",
+          "match": [
+            {
+              "text": "AccountChek Asset Report for:",
+              "type": "startsWith"
+            },
+            {
+              "text": "Information current as of:",
+              "type": "startsWith"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "start_date",
+        "type": "date",
+        "method": {
+          "id": "row",
+          "tiebreaker": "<"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Transaction History"
+          }
+        }
+      },
+      {
+        "id": "end_date",
+        "type": "date",
+        "method": {
+          "id": "row",
+          "tiebreaker": ">"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Transaction History"
+          }
+        }
+      },
+      {
+        "id": "name",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "asset report for:"
+          }
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": "not yet found on accountchek"
+        }
+      },
+      {
+        "id": "accounts",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "match": {
+              "text": "Current Balance:",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          },
+          "offsetY": -0.1
+        },
+        "fields": [
+          {
+            "id": "institution",
+            "type": {
+              "id": "custom",
+              "pattern": "(.+) \\d+"
+            },
+            "method": {
+              "id": "label",
+              "position": "left"
+            },
+            "anchor": {
+              "match": {
+                "text": "-",
+                "type": "includes"
+              },
+              "end": {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "transaction history",
+                    "type": "startsWith"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "institution",
+            "method": {
+              "id": "label",
+              "position": "left"
+            },
+            "anchor": {
+              "match": {
+                "text": "-",
+                "type": "includes"
+              }
+            }
+          },
+          {
+            "id": "account_type",
+            "type": {
+              "id": "custom",
+              "pattern": "- (.+) -"
+            },
+            "anchor": {
+              "match": {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "current balance",
+                    "type": "startsWith"
+                  },
+                  {
+                    "text": "available balance",
+                    "type": "startsWith"
+                  }
+                ]
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "left"
+            }
+          },
+          {
+            "id": "account_type",
+            "type": {
+              "id": "custom",
+              "pattern": "- (.+) \\.\\."
+            },
+            "anchor": {
+              "match": {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "current balance",
+                    "type": "startsWith"
+                  },
+                  {
+                    "text": "available balance",
+                    "type": "startsWith"
+                  }
+                ]
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "left"
+            }
+          },
+          {
+            "id": "account_type",
+            "type": {
+              "id": "custom",
+              "pattern": "- (.+)"
+            },
+            "anchor": {
+              "match": {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "current balance",
+                    "type": "startsWith"
+                  },
+                  {
+                    "text": "available balance",
+                    "type": "startsWith"
+                  }
+                ]
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "left"
+            }
+          },
+          {
+            "id": "account_number",
+            "type": {
+              "id": "custom",
+              "pattern": "(\\d+) -"
+            },
+            "method": {
+              "id": "passthrough",
+              "lineFilters": [
+                {
+                  "type": "regex",
+                  "pattern": "\\d{1,2}/\\d{1,2}/d{2}"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "text": "-",
+                "type": "includes"
+              },
+              "end": {
+                "type": "any",
+                "matches": [
+                  {
+                    "type": "includes",
+                    "text": "transaction history"
+                  },
+                  {
+                    "type": "includes",
+                    "text": "account name"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "account_number",
+            "type": {
+              "id": "custom",
+              "pattern": "- ([A-Z]\\d+)"
+            },
+            "method": {
+              "id": "passthrough"
+            },
+            "anchor": {
+              "match": {
+                "text": "-",
+                "type": "includes"
+              },
+              "end": {
+                "type": "any",
+                "matches": [
+                  {
+                    "type": "includes",
+                    "text": "transaction history"
+                  },
+                  {
+                    "type": "includes",
+                    "text": "account name"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "account_number",
+            "type": {
+              "id": "custom",
+              "pattern": "- .+\\.\\.+ ?(\\d+)$"
+            },
+            "method": {
+              "id": "passthrough"
+            },
+            "anchor": {
+              "match": {
+                "text": "-",
+                "type": "includes"
+              },
+              "end": {
+                "type": "any",
+                "matches": [
+                  {
+                    "type": "includes",
+                    "text": "transaction history"
+                  },
+                  {
+                    "type": "includes",
+                    "text": "account name"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "name",
+            "type": {
+              "id": "custom",
+              "pattern": "^[A-Z]+ [A-Z]+ [A-Z]+"
+            },
+            "anchor": {
+              "match": {
+                "text": "account name",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "beginning_balance",
+            "type": "number",
+            "anchor": {
+              "match": "not on accountchek format"
+            },
+            "method": {
+              "id": "passthrough"
+            }
+          },
+          {
+            "id": "deposits",
+            "type": "number",
+            "anchor": "not on accountchek format",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "whitespaceFilter": "all"
+            }
+          },
+          {
+            "id": "ending_balance",
+            "type": "number",
+            "anchor": "available balance:",
+            "method": {
+              "id": "label",
+              "position": "right",
+              "whitespaceFilter": "all"
+            }
+          },
+          {
+            "id": "ending_balance",
+            "type": "number",
+            "anchor": "current balance:",
+            "method": {
+              "id": "label",
+              "position": "right",
+              "whitespaceFilter": "all"
+            }
+          },
+          {
+            "id": "deposits_table_raw",
+            "type": "table",
+            "anchor": {
+              "match": {
+                "text": "transaction history",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "textTable",
+              "columns": [
+                {
+                  "id": "date",
+                  "minX": 0,
+                  "maxX": 1.3,
+                  "type": "date",
+                  "isRequired": true
+                },
+                {
+                  "id": "description",
+                  "minX": 1.3,
+                  "maxX": 5.35
+                },
+                {
+                  "id": "amount",
+                  "minX": 6.15,
+                  "maxX": 6.95,
+                  "isRequired": true,
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "default",
+                    "relaxed": true
+                  }
+                }
+              ],
+              "stop": {
+                "type": "last"
+              }
+            }
+          },
+          {
+            "id": "deposits_table",
+            "method": {
+              "id": "zip",
+              "source_ids": [
+                "deposits_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "suppress_deposits_table",
+            "method": {
+              "id": "suppressOutput",
+              "source_ids": [
+                "deposits_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "withdrawals_table_raw",
+            "type": "table",
+            "anchor": {
+              "match": {
+                "text": "transaction history",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "textTable",
+              "columns": [
+                {
+                  "id": "date",
+                  "minX": 0,
+                  "maxX": 1.3,
+                  "type": "date",
+                  "isRequired": true
+                },
+                {
+                  "id": "description",
+                  "minX": 1.3,
+                  "maxX": 5.35
+                },
+                {
+                  "id": "amount",
+                  "minX": 5.35,
+                  "maxX": 6.15,
+                  "isRequired": true,
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "default",
+                    "relaxed": true
+                  }
+                }
+              ],
+              "stop": {
+                "type": "last"
+              }
+            }
+          },
+          {
+            "id": "withdrawals_table",
+            "method": {
+              "id": "zip",
+              "source_ids": [
+                "withdrawals_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "suppress_withdrawals_table",
+            "method": {
+              "id": "suppressOutput",
+              "source_ids": [
+                "withdrawals_table_raw"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
