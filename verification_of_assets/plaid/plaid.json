@@ -1,0 +1,416 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "first",
+          "match": [
+            {
+              "text": "Overview",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "Borrower Information",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "Asset Summary",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        {
+          "page": "every",
+          "match": [
+            {
+              "text": "ASSET REPORT",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "start_date",
+        "type": "date",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.2,
+          "offsetY": 0.15,
+          "width": 1.4,
+          "height": 0.5
+        },
+        "anchor": "not configured, not present on this format"
+      },
+      {
+        "id": "end_date",
+        "type": "date",
+        "method": {
+          "id": "row"
+        },
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "data as of"
+          }
+        }
+      },
+      {
+        "id": "_CustomerFirstName_raw",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "first name"
+          }
+        }
+      },
+      {
+        "id": "_CustomerLastName_raw",
+        "method": {
+          "id": "row",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "last name"
+          }
+        }
+      },
+      {
+        "id": "name",
+        "method": {
+          "id": "concat",
+          "source_ids": [
+            "_CustomerFirstName_raw",
+            "_CustomerLastName_raw"
+          ]
+        }
+      },
+      {
+        "id": "suppress_name",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_CustomerFirstName_raw",
+            "_CustomerLastName_raw"
+          ]
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetX": 0.75,
+          "offsetY": -0.5,
+          "width": 3.2,
+          "height": 0.9
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "addresses"
+          }
+        }
+      },
+      {
+        "id": "accounts",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "match": {
+              "text": "Account Overview",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          }
+        },
+        "fields": [
+          {
+            "id": "institution",
+            "method": {
+              "id": "label",
+              "position": "left",
+              "wordFilters": [
+                "INSTITUTION:"
+              ]
+            },
+            "anchor": {
+              "match": {
+                "text": "•",
+                "type": "includes"
+              },
+              "end": "account summary"
+            }
+          },
+          {
+            "id": "_AccountInstitution_raw",
+            "method": {
+              "id": "label",
+              "position": "right"
+            },
+            "anchor": {
+              "match": {
+                "text": "institution:",
+                "type": "startsWith"
+              }
+            }
+          },
+          {
+            "id": "institution",
+            "method": {
+              "id": "split",
+              "source_id": "_AccountInstitution_raw",
+              "separator": " .",
+              "index": 0
+            }
+          },
+          {
+            "id": "account_type",
+            "anchor": {
+              "match": {
+                "text": "type",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row"
+            }
+          },
+          {
+            "id": "_AccountType_raw",
+            "anchor": {
+              "match": {
+                "text": "account name:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "account_type",
+            "method": {
+              "id": "split",
+              "source_id": "_AccountType_raw",
+              "separator": " .",
+              "index": 0
+            }
+          },
+          {
+            "id": "account_number",
+            "anchor": {
+              "match": {
+                "text": "account mask:",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "name",
+            "anchor": {
+              "match": {
+                "text": "names",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right"
+            }
+          },
+          {
+            "id": "beginning_balance",
+            "type": "number",
+            "anchor": "not found on sample",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "whitespaceFilter": "all"
+            }
+          },
+          {
+            "id": "deposits",
+            "type": "number",
+            "anchor": "not found on sample",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "whitespaceFilter": "all"
+            }
+          },
+          {
+            "id": "ending_balance",
+            "type": "number",
+            "anchor": "available balance",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "whitespaceFilter": "all"
+            }
+          },
+          {
+            "id": "ending_balance",
+            "type": "number",
+            "anchor": "current balance",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "whitespaceFilter": "all"
+            }
+          },
+          {
+            "id": "deposits_table_raw",
+            "type": "table",
+            "anchor": {
+              "start": {
+                "type": "startsWith",
+                "text": "account history"
+              },
+              "match": {
+                "type": "startsWith",
+                "text": "date"
+              }
+            },
+            "method": {
+              "id": "textTable",
+              "detectMultipleLinesPerRow": true,
+              "columns": [
+                {
+                  "id": "date",
+                  "type": "date",
+                  "minX": 0,
+                  "maxX": 4.75
+                },
+                {
+                  "id": "description",
+                  "minX": 1.8,
+                  "maxX": 4.75
+                },
+                {
+                  "id": "amount",
+                  "minX": 4.75,
+                  "maxX": 5.35,
+                  "type": "currency",
+                  "isRequired": true
+                }
+              ],
+              "stop": {
+                "text": "Pending",
+                "type": "equals",
+                "isCaseSensitive": true
+              }
+            }
+          },
+          {
+            "id": "deposits_table",
+            "method": {
+              "id": "zip",
+              "source_ids": [
+                "deposits_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "suppress_deposits_table",
+            "method": {
+              "id": "suppressOutput",
+              "source_ids": [
+                "deposits_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "withdrawals_table_raw",
+            "type": "table",
+            "anchor": {
+              "start": {
+                "type": "startsWith",
+                "text": "account history"
+              },
+              "match": {
+                "type": "startsWith",
+                "text": "date"
+              }
+            },
+            "method": {
+              "id": "textTable",
+              "detectMultipleLinesPerRow": true,
+              "columns": [
+                {
+                  "id": "date",
+                  "type": "date",
+                  "minX": 0,
+                  "maxX": 4.75
+                },
+                {
+                  "id": "description",
+                  "minX": 1.8,
+                  "maxX": 4.75
+                },
+                {
+                  "id": "amount",
+                  "minX": 5.35,
+                  "maxX": 6.6,
+                  "type": "currency",
+                  "isRequired": true
+                }
+              ],
+              "stop": {
+                "text": "Pending",
+                "type": "equals",
+                "isCaseSensitive": true
+              }
+            }
+          },
+          {
+            "id": "withdrawals_table",
+            "method": {
+              "id": "zip",
+              "source_ids": [
+                "withdrawals_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "suppress_withdrawals_table",
+            "method": {
+              "id": "suppressOutput",
+              "source_ids": [
+                "withdrawals_table_raw"
+              ]
+            }
+          }
+        ],
+        "computed_fields": [
+          {
+            "id": "hide_fields",
+            "method": {
+              "id": "suppressOutput",
+              "source_ids": [
+                "_AccountInstitution_raw",
+                "_AccountType_raw"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
