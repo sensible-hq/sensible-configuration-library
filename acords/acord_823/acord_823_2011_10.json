@@ -1,0 +1,814 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "first",
+          "match": [
+            [
+              {
+                "text": "PREMISES INFORMATION",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              },
+              {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "DESCRIPTION OF OPERATIONS",
+                    "type": "startsWith",
+                    "isCaseSensitive": true
+                  }
+                ]
+              },
+              {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "ACORD 823 (2015/12)",
+                    "type": "startsWith"
+                  }
+                ]
+              }
+            ]
+          ]
+        },
+        {
+          "page": "last",
+          "match": [
+            [
+              {
+                "text": "PREMISES INFORMATION",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              },
+              {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "DESCRIPTION OF OPERATIONS",
+                    "type": "startsWith",
+                    "isCaseSensitive": true
+                  }
+                ]
+              },
+              {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "ACORD 823 (2015/12)",
+                    "type": "startsWith"
+                  }
+                ]
+              }
+            ]
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "agency_customer_id",
+        "anchor": {
+          "match": {
+            "text": "AGENCY CUSTOMER",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.2,
+          "offsetY": -0.2,
+          "width": 4.4,
+          "height": 0.325,
+          "wordFilters": [
+            "AGENCY",
+            "CUSTOMER",
+            "ID:"
+          ],
+          "lineFilters": [
+            {
+              "text": "AGENCY CUSTOMER ID:",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "agency",
+        "anchor": {
+          "match": {
+            "text": "AGENCY",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.2,
+          "offsetY": -0.05,
+          "width": 3.7,
+          "height": 0.325,
+          "lineFilters": [
+            {
+              "text": "AGENCY",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "policy number",
+              "type": "startsWith"
+            },
+            {
+              "text": "effective date",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "carrier",
+        "anchor": {
+          "match": {
+            "text": "CARRIER",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.05,
+          "offsetY": -0.05,
+          "width": 3.6,
+          "height": 0.325,
+          "lineFilters": [
+            {
+              "text": "CARRIER",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "named insured",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "naic_code",
+        "anchor": {
+          "match": {
+            "text": "NAIC CODE",
+            "type": "equals",
+            "isCaseSensitive": true
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.05,
+          "offsetY": -0.05,
+          "width": 0.8,
+          "height": 0.325,
+          "lineFilters": [
+            {
+              "text": "NAIC CODE",
+              "type": "equals",
+              "isCaseSensitive": true
+            }
+          ]
+        }
+      },
+      {
+        "id": "policy_number",
+        "anchor": {
+          "match": {
+            "text": "policy number",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.2,
+          "offsetY": -0.05,
+          "width": 2.9,
+          "height": 0.325,
+          "lineFilters": [
+            {
+              "text": "AGENCY",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "policy number",
+              "type": "startsWith"
+            },
+            {
+              "text": "effective date",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "effective_date",
+        "type": "date",
+        "anchor": {
+          "match": {
+            "text": "effective date",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.2,
+          "offsetY": -0.05,
+          "width": 1,
+          "height": 0.325,
+          "lineFilters": [
+            {
+              "text": "AGENCY",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "policy number",
+              "type": "startsWith"
+            },
+            {
+              "text": "effective date",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "named_insured",
+        "anchor": {
+          "match": {
+            "text": "named insured",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": -0.05,
+          "offsetY": -0.05,
+          "width": 4.5,
+          "height": 0.325,
+          "lineFilters": [
+            {
+              "text": "named insured",
+              "type": "startsWith"
+            }
+          ]
+        }
+      },
+      {
+        "id": "premises_information",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "match": {
+              "type": "any",
+              "matches": [
+                {
+                  "text": "Loc #",
+                  "type": "startsWith"
+                },
+                {
+                  "text": "Loc#",
+                  "type": "startsWith"
+                }
+              ]
+            }
+          },
+          "stop": {
+            "text": "any person who knowingly and",
+            "type": "includes"
+          }
+        },
+        "fields": [
+          {
+            "id": "location_number",
+            "anchor": {
+              "match": {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "Loc #",
+                    "type": "startsWith"
+                  },
+                  {
+                    "text": "Loc#",
+                    "type": "startsWith"
+                  }
+                ]
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.2,
+              "offsetY": -0.05,
+              "width": 0.55,
+              "height": 0.325,
+              "wordFilters": [
+                "LOC",
+                "BLD",
+                "#"
+              ]
+            }
+          },
+          {
+            "id": "building_number",
+            "anchor": {
+              "match": {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "bld #",
+                    "type": "startsWith"
+                  }
+                ]
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.2,
+              "offsetY": -0.05,
+              "width": 0.55,
+              "height": 0.325,
+              "sortLines": "readingOrderLeftToRight",
+              "wordFilters": [
+                "LOC",
+                "BLD",
+                "#"
+              ]
+            }
+          },
+          {
+            "id": "street_raw",
+            "anchor": {
+              "match": {
+                "text": "STREET",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.075,
+              "offsetY": -0.05,
+              "width": 3,
+              "height": 0.325,
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "type": "equals",
+                  "text": "STREET"
+                }
+              ]
+            }
+          },
+          {
+            "id": "city_raw",
+            "anchor": {
+              "match": {
+                "text": "CITY:",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.05,
+              "offsetY": -0.075,
+              "width": 2.1,
+              "height": 0.2,
+              "sortLines": "readingOrderLeftToRight",
+              "wordFilters": [
+                "CITY:"
+              ]
+            }
+          },
+          {
+            "id": "state_raw",
+            "anchor": {
+              "match": {
+                "text": "STATE:",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.05,
+              "offsetY": -0.075,
+              "width": 0.9,
+              "height": 0.2,
+              "sortLines": "readingOrderLeftToRight",
+              "wordFilters": [
+                "STATE:"
+              ]
+            }
+          },
+          {
+            "id": "county_raw",
+            "anchor": {
+              "match": {
+                "text": "COUNTY:",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.05,
+              "offsetY": -0.075,
+              "width": 2.1,
+              "height": 0.2,
+              "sortLines": "readingOrderLeftToRight",
+              "wordFilters": [
+                "COUNTY:"
+              ]
+            }
+          },
+          {
+            "id": "zip_raw",
+            "anchor": {
+              "match": {
+                "text": "ZIP:",
+                "type": "startsWith",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.05,
+              "offsetY": -0.075,
+              "width": 0.9,
+              "height": 0.2,
+              "sortLines": "readingOrderLeftToRight",
+              "wordFilters": [
+                "ZIP:"
+              ]
+            }
+          },
+          {
+            "id": "address",
+            "type": "address",
+            "method": {
+              "id": "concat",
+              "source_ids": [
+                "street_raw",
+                "city_raw",
+                "state_raw",
+                "zip_raw",
+                "county_raw"
+              ]
+            }
+          },
+          {
+            "id": "suppres_raw_address",
+            "method": {
+              "id": "suppressOutput",
+              "source_ids": [
+                "street_raw",
+                "city_raw",
+                "state_raw",
+                "zip_raw",
+                "county_raw"
+              ]
+            }
+          },
+          {
+            "id": "city_limits.inside",
+            "anchor": {
+              "match": {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "INSIDE",
+                    "type": "startsWith",
+                    "isCaseSensitive": true
+                  }
+                ]
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "city_limits.outside",
+            "anchor": {
+              "match": {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "OUTSIDE",
+                    "type": "startsWith",
+                    "isCaseSensitive": true
+                  }
+                ]
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.owner",
+            "anchor": {
+              "match": {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "OWNER",
+                    "type": "startsWith",
+                    "isCaseSensitive": true
+                  }
+                ]
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "interest.tenant",
+            "anchor": {
+              "match": {
+                "type": "any",
+                "matches": [
+                  {
+                    "text": "TENANT",
+                    "type": "startsWith",
+                    "isCaseSensitive": true
+                  }
+                ]
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "year_built",
+            "anchor": "not found on this format",
+            "method": {
+              "id": "passthrough"
+            }
+          },
+          {
+            "id": "fulltime_employees",
+            "type": "number",
+            "anchor": {
+              "match": {
+                "text": "FULL TIME EMPL",
+                "type": "endsWith",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.075,
+              "offsetY": -0.075,
+              "width": 0.9,
+              "height": 0.375,
+              "sortLines": "readingOrderLeftToRight",
+              "wordFilters": [
+                "#",
+                "FULL TIME EMPL",
+                "PART TIME EMPL"
+              ]
+            }
+          },
+          {
+            "id": "fulltime_employees",
+            "type": "number",
+            "method": {
+              "id": "constant",
+              "value": "0"
+            }
+          },
+          {
+            "id": "parttime_employees",
+            "type": "number",
+            "anchor": {
+              "match": {
+                "text": "PART TIME EMPL",
+                "type": "endsWith",
+                "isCaseSensitive": true
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.075,
+              "offsetY": -0.075,
+              "width": 0.9,
+              "height": 0.375,
+              "sortLines": "readingOrderLeftToRight",
+              "wordFilters": [
+                "#",
+                "FULL TIME EMPL",
+                "PART TIME EMPL"
+              ]
+            }
+          },
+          {
+            "id": "parttime_employees",
+            "type": "number",
+            "method": {
+              "id": "constant",
+              "value": "0"
+            }
+          },
+          {
+            "id": "number_of_employees",
+            "method": {
+              "id": "customComputation",
+              "jsonLogic": {
+                "+": [
+                  {
+                    "var": "fulltime_employees.value"
+                  },
+                  {
+                    "var": "parttime_employees.value"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "id": "annual_revenues",
+            "type": "number",
+            "anchor": {
+              "match": {
+                "text": "annual revenue",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.05,
+              "offsetY": -0.075,
+              "width": 2.1,
+              "height": 0.2,
+              "sortLines": "readingOrderLeftToRight",
+              "wordFilters": [
+                "ANNUAL",
+                "REVENUES",
+                ":",
+                "$"
+              ]
+            }
+          },
+          {
+            "id": "occupied_area",
+            "type": "number",
+            "anchor": {
+              "match": {
+                "text": "occupied area",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.05,
+              "offsetY": -0.075,
+              "width": 2.1,
+              "height": 0.2,
+              "sortLines": "readingOrderLeftToRight",
+              "wordFilters": [
+                "occupied",
+                "area",
+                ":",
+                "SQ FT"
+              ]
+            }
+          },
+          {
+            "id": "open_to_public_area",
+            "type": "number",
+            "anchor": {
+              "match": {
+                "text": "open to public area:",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.05,
+              "offsetY": -0.075,
+              "width": 2.1,
+              "height": 0.2,
+              "sortLines": "readingOrderLeftToRight",
+              "wordFilters": [
+                "OPEN",
+                "TO",
+                "PUBLIC",
+                "area",
+                ":",
+                "SQ FT"
+              ]
+            }
+          },
+          {
+            "id": "building_area",
+            "type": "number",
+            "anchor": {
+              "match": {
+                "text": "total building area",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.05,
+              "offsetY": -0.075,
+              "width": 2.1,
+              "height": 0.2,
+              "sortLines": "readingOrderLeftToRight",
+              "wordFilters": [
+                "occupied",
+                "area",
+                ":",
+                "SQ FT"
+              ]
+            }
+          },
+          {
+            "id": "description_of_operations",
+            "anchor": {
+              "match": {
+                "text": "description of operations",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.05,
+              "offsetY": -0.075,
+              "width": 5.9,
+              "height": 0.2,
+              "sortLines": "readingOrderLeftToRight",
+              "wordFilters": [
+                "description of operations",
+                ":"
+              ]
+            }
+          },
+          {
+            "id": "any_area_leased_to_others",
+            "anchor": {
+              "match": {
+                "text": "any area leased to others",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.05,
+              "offsetY": -0.075,
+              "width": 5.9,
+              "height": 0.2,
+              "sortLines": "readingOrderLeftToRight",
+              "wordFilters": [
+                "any area leased to others?",
+                "y/n",
+                "y / n",
+                ":"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
