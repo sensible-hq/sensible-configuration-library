@@ -246,10 +246,10 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 ### Verification of Assets
 
-- [Accountchek] (./verification_of_assets/accountchek/accountchek.json)
-- [Blend] (./verification_of_assets/blend/blend.json)
-- [Finicity] (./verification_of_assets/finicity/finicity.json)
-- [Plaid] (./verification_of_assets/plaid/plaid.json)
+- [Accountchek](./verification_of_assets/accountchek/accountchek.json)
+- [Blend](./verification_of_assets/blend/blend.json)
+- [Finicity](./verification_of_assets/finicity/finicity.json)
+- [Plaid](./verification_of_assets/plaid/plaid.json)
 
 ## Using a configuration
 
