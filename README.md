@@ -205,6 +205,10 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Medicaid](./eobs/medicaid/medicaid.json)
 - [Tricare](./eobs/tricare/tricare.json)
 
+### Dental Explanation of Benefits
+
+- [Cigna](./dental_eobs/humanna/humanna.json)
+
 ### Bank Statements
 
 - [Ally (Combined Customer Statement)](./bank_statements/ally/ally_combined_customer_statement.json)
