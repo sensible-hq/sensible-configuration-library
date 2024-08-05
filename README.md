@@ -152,6 +152,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [1065 (2018)](./tax_forms/1065_2018.json)
 - [1099 (2020)](./tax_forms/1099_2020.json)
 - [1120 (2019)](./tax_forms/1120_2019.json)
+- [1120s (2023)](./tax_forms/1120s/1120s_2023.json)
 - [4868 (2021)](./tax_forms/4868_2021.json)
 - [4868 (2022)](./tax_forms/4868_2022.json)
 - [w-2](./tax_forms/w2/w2.json)
