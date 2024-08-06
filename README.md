@@ -240,6 +240,11 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 - [Offering Memorandums](./proptech/offering_memorandums/offering_memorandums.json)
 
+### Invoices
+
+- [Invoices](./invoices/invoice.json)
+
+
 
 ## Using a configuration
 
