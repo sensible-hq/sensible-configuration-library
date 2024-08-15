@@ -202,6 +202,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 ### Explanation of Benefits
 
+- [Apex](./eobs/apex/apex.json)
 - [Cigna](./eobs/cigna/cigna_2022.json)
 - [Medicaid](./eobs/medicaid/medicaid.json)
 - [Tricare](./eobs/tricare/tricare.json)
