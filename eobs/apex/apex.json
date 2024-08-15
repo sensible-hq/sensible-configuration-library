@@ -1,0 +1,728 @@
+{
+    "preprocessors": [
+      {
+        "type": "ocr",
+        "matchAll": true,
+        "pageOffset": 0,
+        "match": {
+          "text": "rend prov",
+          "type": "equals"
+        }
+      }
+    ],
+    "fields": [
+      {
+        "id": "payment_voucher",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "match": {
+              "text": "payer:",
+              "type": "equals"
+            }
+          }
+        },
+        "fields": [
+          {
+            "id": "date_of_remittance",
+            "anchor": {
+              "match": {
+                "text": "date",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "npi",
+            "anchor": "not found, not configured",
+            "method": {
+              "id": "passthrough"
+            }
+          },
+          {
+            "id": "check_number",
+            "anchor": {
+              "match": {
+                "text": "eft #",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "hospital_subtotal",
+            "type": "currency",
+            "anchor": {
+              "match": {
+                "text": "billed amount",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "interest",
+            "type": "currency",
+            "anchor": {
+              "match": {
+                "text": "total interest amount",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "federal_tax_withheld",
+            "anchor": "not found, not configured",
+            "method": {
+              "id": "passthrough"
+            }
+          },
+          {
+            "id": "offset",
+            "anchor": "not found, not configured",
+            "method": {
+              "id": "passthrough"
+            }
+          },
+          {
+            "id": "check_amount",
+            "type": "currency",
+            "anchor": {
+              "match": {
+                "text": "total check",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "claims_details",
+            "type": "sections",
+            "range": {
+              "anchor": {
+                "match": {
+                  "text": "rend prov",
+                  "type": "startsWith"
+                }
+              }
+            },
+            "fields": [
+              {
+                "id": "patient_account_number",
+                "anchor": {
+                  "match": {
+                    "text": "acnt:",
+                    "type": "includes"
+                  }
+                },
+                "method": {
+                  "id": "label",
+                  "position": "right"
+                }
+              },
+              {
+                "id": "patient_name",
+                "type": {
+                  "id": "custom",
+                  "pattern": "(.*) \\d{2}/"
+                },
+                "anchor": {
+                  "match": {
+                    "text": "name:",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "label",
+                  "position": "right"
+                }
+              },
+              {
+                "id": "patient_name",
+                "anchor": {
+                  "match": {
+                    "text": "name:",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "label",
+                  "position": "right"
+                }
+              },
+              {
+                "id": "ssn",
+                "anchor": "not found, not configured",
+                "method": {
+                  "id": "passthrough"
+                }
+              },
+              {
+                "id": "claim_number",
+                "anchor": {
+                  "match": {
+                    "text": "icn:",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "label",
+                  "position": "right"
+                }
+              },
+              {
+                "id": "totals.total_charges",
+                "type": "currency",
+                "anchor": {
+                  "match": {
+                    "text": "claim totals",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 0,
+                  "sortLines": "readingOrderLeftToRight"
+                }
+              },
+              {
+                "id": "totals.allowed_covered_charges",
+                "type": "currency",
+                "anchor": {
+                  "match": {
+                    "text": "claim totals",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 1,
+                  "sortLines": "readingOrderLeftToRight"
+                }
+              },
+              {
+                "id": "totals.cost_share",
+                "type": "currency",
+                "anchor": {
+                  "match": {
+                    "text": "claim totals",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 3,
+                  "sortLines": "readingOrderLeftToRight"
+                }
+              },
+              {
+                "id": "totals.copay",
+                "type": "currency",
+                "anchor": "not found, not configured",
+                "method": {
+                  "id": "passthrough"
+                }
+              },
+              {
+                "id": "hic",
+                "type": {
+                  "id": "custom",
+                  "pattern": "(.*) ACNT"
+                },
+                "anchor": {
+                  "match": {
+                    "text": "hic:",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "label",
+                  "position": "right"
+                }
+              },
+              {
+                "id": "hic",
+                "anchor": {
+                  "match": {
+                    "text": "hic:",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "label",
+                  "position": "right"
+                }
+              },
+              {
+                "id": "asg",
+                "anchor": {
+                  "match": {
+                    "text": "asg:",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "label",
+                  "position": "right"
+                }
+              },
+              {
+                "id": "moa",
+                "anchor": {
+                  "match": {
+                    "text": "moa:",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "label",
+                  "position": "right"
+                }
+              },
+              {
+                "id": "totals.payment",
+                "anchor": {
+                  "match": {
+                    "text": "claim totals",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": "last",
+                  "sortLines": "readingOrderLeftToRight"
+                }
+              },
+              {
+                "id": "patients_responsibility",
+                "anchor": {
+                  "match": {
+                    "text": "pt resp",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": "first",
+                  "sortLines": "readingOrderLeftToRight"
+                }
+              },
+              {
+                "id": "totals.deduct",
+                "anchor": {
+                  "match": {
+                    "text": "claim totals",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 2,
+                  "sortLines": "readingOrderLeftToRight"
+                }
+              },
+              {
+                "id": "totals.net",
+                "anchor": {
+                  "match": {
+                    "text": "claim totals",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": 4,
+                  "sortLines": "readingOrderLeftToRight"
+                }
+              },
+              {
+                "id": "adj_to_totals",
+                "anchor": {
+                  "match": {
+                    "text": "adj. to totals:",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "label",
+                  "position": "right"
+                }
+              },
+              {
+                "id": "interest",
+                "anchor": {
+                  "match": {
+                    "text": "interest",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": "first",
+                  "sortLines": "readingOrderLeftToRight"
+                }
+              },
+              {
+                "id": "late_filing_charge",
+                "anchor": {
+                  "match": {
+                    "text": "late filing charge",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": "first",
+                  "sortLines": "readingOrderLeftToRight"
+                }
+              },
+              {
+                "id": "net",
+                "anchor": {
+                  "match": {
+                    "text": "net",
+                    "type": "startsWith"
+                  }
+                },
+                "method": {
+                  "id": "row",
+                  "position": "right",
+                  "tiebreaker": "first",
+                  "sortLines": "readingOrderLeftToRight"
+                }
+              },
+              {
+                "id": "claims",
+                "type": "sections",
+                "requiredFields": [
+                  "payment"
+                ],
+                "range": {
+                  "anchor": {
+                    "start": {
+                      "text": "rend prov",
+                      "type": "startsWith"
+                    },
+                    "match": {
+                      "pattern": "^\\d{2}/\\d{2}",
+                      "type": "regex"
+                    },
+                    "end": {
+                      "text": "summary",
+                      "type": "equals"
+                    }
+                  },
+                  "stop": {
+                    "type": "any",
+                    "matches": [
+                      {
+                        "text": "pt resp",
+                        "type": "startsWith"
+                      },
+                      {
+                        "text": "summary",
+                        "type": "equals"
+                      }
+                    ]
+                  },
+                  "stopOffsetY": -0.1
+                },
+                "fields": [
+                  {
+                    "id": "rend_prov",
+                    "anchor": {
+                      "match": {
+                        "pattern": "^\\d{2}/\\d{2}",
+                        "type": "regex"
+                      }
+                    },
+                    "method": {
+                      "id": "row",
+                      "position": "left",
+                      "tiebreaker": "first",
+                      "sortLines": "readingOrderLeftToRight"
+                    }
+                  },
+                  {
+                    "id": "dates_of_service.begin",
+                    "anchor": {
+                      "match": {
+                        "pattern": "^\\d{2}/\\d{2}",
+                        "type": "regex"
+                      }
+                    },
+                    "method": {
+                      "id": "passthrough"
+                    }
+                  },
+                  {
+                    "id": "pos",
+                    "anchor": {
+                      "match": {
+                        "pattern": "^\\d{2}/\\d{2}",
+                        "type": "regex"
+                      }
+                    },
+                    "method": {
+                      "id": "row",
+                      "position": "right",
+                      "sortLines": "readingOrderLeftToRight",
+                      "tiebreaker": "first",
+                      "xRangeFilter": {
+                        "start": "left",
+                        "offsetX": 1,
+                        "width": 0.4
+                      }
+                    }
+                  },
+                  {
+                    "id": "nos",
+                    "type": "number",
+                    "anchor": {
+                      "match": {
+                        "pattern": "^\\d{2}/\\d{2}",
+                        "type": "regex"
+                      }
+                    },
+                    "method": {
+                      "id": "region",
+                      "start": "left",
+                      "offsetX": 1.45,
+                      "width": 1,
+                      "offsetY": -0.05,
+                      "height": 0.09,
+                      "sortLines": "readingOrderLeftToRight",
+                      "tiebreaker": "first"
+                    }
+                  },
+                  {
+                    "id": "procedure",
+                    "type": {
+                      "id": "custom",
+                      "pattern": "^\\d+ (.*) \\d+",
+                      "matchMultipleLines": true
+                    },
+                    "anchor": {
+                      "match": {
+                        "pattern": "^\\d{2}/\\d{2}",
+                        "type": "regex"
+                      }
+                    },
+                    "method": {
+                      "id": "region",
+                      "start": "left",
+                      "offsetX": 1.45,
+                      "width": 1,
+                      "offsetY": -0.05,
+                      "height": 0.09,
+                      "sortLines": "readingOrderLeftToRight"
+                    }
+                  },
+                  {
+                    "id": "procedure",
+                    "type": {
+                      "id": "custom",
+                      "pattern": "^\\d+ (.*)$",
+                      "matchMultipleLines": true
+                    },
+                    "anchor": {
+                      "match": {
+                        "pattern": "^\\d{2}/\\d{2}",
+                        "type": "regex"
+                      }
+                    },
+                    "method": {
+                      "id": "region",
+                      "start": "left",
+                      "offsetX": 1.45,
+                      "width": 1,
+                      "offsetY": -0.05,
+                      "height": 0.09,
+                      "sortLines": "readingOrderLeftToRight"
+                    }
+                  },
+                  {
+                    "id": "mods",
+                    "type": {
+                      "id": "custom",
+                      "pattern": "^\\d+ .* (\\d+)$",
+                      "matchMultipleLines": true
+                    },
+                    "anchor": {
+                      "match": {
+                        "pattern": "^\\d{2}/\\d{2}",
+                        "type": "regex"
+                      }
+                    },
+                    "method": {
+                      "id": "region",
+                      "start": "left",
+                      "offsetX": 1.45,
+                      "width": 1,
+                      "offsetY": -0.05,
+                      "height": 0.09,
+                      "sortLines": "readingOrderLeftToRight",
+                      "tiebreaker": "last"
+                    }
+                  },
+                  {
+                    "id": "total_charges",
+                    "type": "currency",
+                    "anchor": {
+                      "match": {
+                        "pattern": "^\\d{2}/\\d{2}",
+                        "type": "regex"
+                      }
+                    },
+                    "method": {
+                      "id": "region",
+                      "start": "left",
+                      "offsetX": 2.52,
+                      "width": 3,
+                      "offsetY": -0.05,
+                      "height": 0.09,
+                      "sortLines": "readingOrderLeftToRight",
+                      "tiebreaker": "first"
+                    }
+                  },
+                  {
+                    "id": "allowed_covered_charges",
+                    "type": "currency",
+                    "anchor": {
+                      "match": {
+                        "pattern": "^\\d{2}/\\d{2}",
+                        "type": "regex"
+                      }
+                    },
+                    "method": {
+                      "id": "region",
+                      "start": "left",
+                      "offsetX": 2.52,
+                      "width": 3,
+                      "offsetY": -0.05,
+                      "height": 0.09,
+                      "sortLines": "readingOrderLeftToRight",
+                      "tiebreaker": "second"
+                    }
+                  },
+                  {
+                    "id": "deduct",
+                    "type": "currency",
+                    "anchor": {
+                      "match": {
+                        "pattern": "^\\d{2}/\\d{2}",
+                        "type": "regex"
+                      }
+                    },
+                    "method": {
+                      "id": "region",
+                      "start": "left",
+                      "offsetX": 2.52,
+                      "width": 3,
+                      "offsetY": -0.05,
+                      "height": 0.09,
+                      "sortLines": "readingOrderLeftToRight",
+                      "tiebreaker": "third"
+                    }
+                  },
+                  {
+                    "id": "cost_share",
+                    "type": "currency",
+                    "anchor": {
+                      "match": {
+                        "pattern": "^\\d{2}/\\d{2}",
+                        "type": "regex"
+                      }
+                    },
+                    "method": {
+                      "id": "region",
+                      "start": "left",
+                      "offsetX": 2.52,
+                      "width": 3,
+                      "offsetY": -0.05,
+                      "height": 0.09,
+                      "sortLines": "readingOrderLeftToRight",
+                      "tiebreaker": 3
+                    }
+                  },
+                  {
+                    "id": "copay",
+                    "type": "currency",
+                    "anchor": "not found, not configured",
+                    "method": {
+                      "id": "passthrough"
+                    }
+                  },
+                  {
+                    "id": "payment",
+                    "type": "currency",
+                    "anchor": {
+                      "match": {
+                        "pattern": "^\\d{2}/\\d{2}",
+                        "type": "regex"
+                      }
+                    },
+                    "method": {
+                      "id": "row",
+                      "position": "right",
+                      "xRangeFilter": {
+                        "start": "left",
+                        "offsetX": 5.5,
+                        "width": 2
+                      },
+                      "sortLines": "readingOrderLeftToRight",
+                      "tiebreaker": "last"
+                    }
+                  },
+                  {
+                    "id": "remark",
+                    "anchor": {
+                      "match": {
+                        "text": "remark:",
+                        "type": "startsWith"
+                      }
+                    },
+                    "method": {
+                      "id": "label",
+                      "position": "right"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
