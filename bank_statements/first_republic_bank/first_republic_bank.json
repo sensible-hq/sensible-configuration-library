@@ -1,0 +1,378 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "any",
+          "match": [
+            {
+              "text": "FirstRepublic.com",
+              "type": "includes"
+            }
+          ]
+        }
+      ]
+    },
+    "preprocessors": [
+      {
+        "type": "ocr",
+        "matchAll": true,
+        "match": {
+          "text": "first republic bank",
+          "type": "equals"
+        },
+        "engine": "lazarus"
+      }
+    ],
+    "fields": [
+      {
+        "id": "start_date",
+        "type": "date",
+        "method": {
+          "id": "label",
+          "position": "right"
+        },
+        "anchor": {
+          "match": {
+            "text": "statement period",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "end_date",
+        "type": "date",
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetY": 0.1,
+          "offsetX": -0.1,
+          "width": 3.5,
+          "height": 0.2
+        },
+        "anchor": {
+          "match": {
+            "text": "statement period",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "customer_name",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": "not found, not configured"
+        }
+      },
+      {
+        "id": "customer_address",
+        "type": "address",
+        "method": {
+          "id": "passthrough"
+        },
+        "anchor": {
+          "match": "not found, not configured"
+        }
+      },
+      {
+        "id": "_account_number",
+        "anchor": {
+          "match": {
+            "text": "account number:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "account_summary_table",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "match": {
+              "text": "account summary",
+              "type": "equals"
+            },
+            "end": {
+              "text": "ending balance",
+              "type": "startsWith"
+            }
+          },
+          "stop": {
+            "text": "ending balance",
+            "type": "startsWith"
+          }
+        },
+        "fields": [
+          {
+            "id": "account_name",
+            "method": {
+              "id": "passthrough"
+            },
+            "anchor": {
+              "match": "not found, not configured"
+            }
+          },
+          {
+            "id": "account_number",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "_account_number"
+            }
+          },
+          {
+            "id": "beginning_balance",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "suffixNegativeSign"
+            },
+            "anchor": {
+              "match": {
+                "text": "beginning balance",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "end_balance",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "suffixNegativeSign"
+            },
+            "anchor": {
+              "match": {
+                "text": "ending balance",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          }
+        ]
+      },
+      {
+        "id": "accounts",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "match": {
+              "text": "account statement",
+              "type": "equals"
+            }
+          },
+          "stop": {
+            "text": "total withdrawals and debits",
+            "type": "equals",
+            "xRangeFilter": {
+              "minX": 1.5,
+              "maxX": 4.3
+            }
+          },
+          "requireStop": true
+        },
+        "fields": [
+          {
+            "id": "account_type",
+            "anchor": {
+              "match": {
+                "text": "account statement",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "below"
+            }
+          },
+          {
+            "id": "account_number",
+            "anchor": {
+              "match": {
+                "text": "account number:",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "beginning_balance",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "suffixNegativeSign"
+            },
+            "anchor": {
+              "match": {
+                "text": "beginning balance",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "deposits",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "suffixNegativeSign"
+            },
+            "anchor": {
+              "match": {
+                "text": "total deposits and credits",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "withdrawals",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "suffixNegativeSign"
+            },
+            "anchor": {
+              "match": {
+                "text": "total withdrawals and debits",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "end_balance",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "suffixNegativeSign"
+            },
+            "anchor": {
+              "match": {
+                "text": "ending balance",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            }
+          },
+          {
+            "id": "_transactions",
+            "type": "table",
+            "anchor": {
+              "match": {
+                "text": "description",
+                "type": "equals"
+              }
+            },
+            "method": {
+              "id": "textTable",
+              "columnsRelativeToAnchor": true,
+              "detectMultipleLinesPerRow": true,
+              "columns": [
+                {
+                  "id": "date",
+                  "minX": -0.8,
+                  "maxX": -0.1,
+                  "type": {
+                    "id": "custom",
+                    "pattern": "^\\d{2}/\\d{2}$"
+                  },
+                  "isRequired": true
+                },
+                {
+                  "id": "description",
+                  "minX": -0.08,
+                  "maxX": 4
+                },
+                {
+                  "id": "amount",
+                  "minX": 4.5,
+                  "maxX": 6.5,
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "suffixNegativeSign",
+                    "removeSpaces": true
+                  }
+                }
+              ],
+              "stop": {
+                "text": "total withdrawals and debits",
+                "type": "equals"
+              }
+            }
+          },
+          {
+            "id": "deposits_table",
+            "method": {
+              "id": "passthrough"
+            },
+            "anchor": {
+              "match": "not found, not configured"
+            }
+          },
+          {
+            "id": "withdrawals_table",
+            "method": {
+              "id": "passthrough"
+            },
+            "anchor": {
+              "match": "not found, not configured"
+            }
+          },
+          {
+            "id": "transaction_table",
+            "method": {
+              "id": "zip",
+              "source_ids": [
+                "_transactions"
+              ]
+            }
+          },
+          {
+            "id": "clean_tables",
+            "method": {
+              "id": "suppressOutput",
+              "source_ids": [
+                "_transactions"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "id": "clean",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_account_number"
+          ]
+        }
+      }
+    ]
+  }
