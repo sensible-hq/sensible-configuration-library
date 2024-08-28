@@ -51,28 +51,18 @@ export async function generateManifest(): Promise<string> {
     download_url: `${DOWNLOAD_URL_PREFIX}/${getRelativePath(path)}/${name}`,
   });
 
-  console.log({ root })
-
   //read all files in repo
   const directory = await fs.readdir(root, {
     withFileTypes: true,
     recursive: true,
   });
 
-  directory.forEach((f) => {
-    console.log(f.path, f.name)
-    console.log(' - is file:', f.isFile())
-    console.log(' - is directory:', f.isDirectory())
-  })
-
-  const filtered = directory.filter(isConfigFile)
-
-  console.log({ root, directory, filtered })
+  const configFiles = directory.filter(isConfigFile)
 
   const manifest: Manifest = [];
 
   //loop through config.json files
-  for (const config of filtered) {
+  for (const config of configFiles) {
     const entry: Entry = {};
     const files: RepoFile[] = [];
 
