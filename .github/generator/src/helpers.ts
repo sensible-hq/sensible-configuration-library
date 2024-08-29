@@ -98,15 +98,18 @@ export async function generateManifest(): Promise<string> {
       let jsonIncluded = false;
       const jsonName = json.name.split(".")[0];
 
+      const pdfRegex = new RegExp(`^${jsonName}_sample.*\\.pdf$`)
+      const pngRegex = new RegExp(`^${jsonName}_sample.*\\.png$`)
+
       const associatedPDFs = associatedFiles.filter(
         (pdf) =>
           getRelativePath(pdf.path) == getRelativePath(json.path) &&
-          pdf.name.match(`${jsonName}_sample.*\\.pdf`)
+          pdf.name.match(pdfRegex)
       );
       const associatedPNGs = associatedFiles.filter(
         (png) =>
           getRelativePath(png.path) == getRelativePath(json.path) &&
-          png.name.match(`${jsonName}_sample.*\\.png`)
+          png.name.match(pngRegex)
       );
 
       associatedPDFs.forEach((pdf) => {
