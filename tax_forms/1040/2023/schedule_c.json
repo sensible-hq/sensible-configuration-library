@@ -1,0 +1,1742 @@
+{
+    "fields": [
+      {
+        "id": "f1040ScheduleC",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "match": {
+              "text": "SCHEDULE C",
+              "type": "equals",
+              "isCaseSensitive": true
+            },
+            "end": {
+              "type": "includes",
+              "text": "Enter here and on line 27a"
+            }
+          },
+          "stop": {
+            "type": "includes",
+            "text": "Enter here and on line 27a"
+          },
+          "requireStop": true
+        },
+        "fields": [
+          {
+            "id": "schedule_c_year",
+            "method": {
+              "id": "passthrough"
+            },
+            "anchor": {
+              "match": {
+                "type": "regex",
+                "pattern": "^20\\d{2}$"
+              }
+            }
+          },
+          {
+            "id": "name_of_proprietor",
+            "anchor": {
+              "match": {
+                "type": "startsWith",
+                "text": "Name of proprietor"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "below",
+              "height": 0.2,
+              "width": 3,
+              "offsetX": -0.5,
+              "offsetY": 0
+            }
+          },
+          {
+            "id": "princpal_business_or_profession",
+            "method": {
+              "id": "label",
+              "position": "below"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "principal business or profession"
+              }
+            }
+          },
+          {
+            "id": "princpal_business_or_profession",
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.4,
+              "offsetY": 0.05,
+              "width": 5,
+              "height": 0.2
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "principal business or profession"
+              }
+            }
+          },
+          {
+            "id": "business_name",
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "Business name"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "below",
+              "height": 0.2,
+              "width": 5,
+              "offsetX": -1.75,
+              "offsetY": 0
+            }
+          },
+          {
+            "id": "SSN",
+            "method": {
+              "id": "label",
+              "position": "below"
+            },
+            "anchor": {
+              "match": {
+                "type": "startsWith",
+                "text": "social security number"
+              }
+            }
+          },
+          {
+            "id": "SSN",
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.05,
+              "offsetY": 0.05,
+              "width": 2,
+              "height": 0.2
+            },
+            "anchor": {
+              "match": {
+                "type": "startsWith",
+                "text": "social security number"
+              }
+            }
+          },
+          {
+            "id": "EIN",
+            "method": {
+              "id": "label",
+              "position": "below"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "employer id number"
+              }
+            }
+          },
+          {
+            "id": "EIN",
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": -0.2,
+              "offsetY": 0.05,
+              "width": 2,
+              "height": 0.2
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "employer id number"
+              }
+            }
+          },
+          {
+            "id": "business_address_street",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "business address"
+              }
+            }
+          },
+          {
+            "id": "business_address_city_state_zip",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "city, town or post office"
+              }
+            }
+          },
+          {
+            "id": "accounting_method.cash",
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            },
+            "anchor": {
+              "match": {
+                "type": "endsWith",
+                "text": "cash"
+              }
+            }
+          },
+          {
+            "id": "accounting_method.accrual",
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            },
+            "anchor": {
+              "match": {
+                "type": "endsWith",
+                "text": "accrual"
+              }
+            }
+          },
+          {
+            "id": "accounting_method.other",
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            },
+            "anchor": {
+              "match": {
+                "type": "endsWith",
+                "text": "(specify)"
+              }
+            }
+          },
+          {
+            "id": "accounting_method.other.name",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first"
+            },
+            "anchor": {
+              "match": {
+                "type": "endsWith",
+                "text": "(specify)"
+              }
+            }
+          },
+          {
+            "id": "did_you_materially_participate_in_the_operation_of_business_during_2023",
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "right",
+              "offsetX": 0.3
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "did you \"materially participate\" in the operation of this business"
+              }
+            }
+          },
+          {
+            "id": "started_business_during_2023",
+            "method": {
+              "id": "checkbox",
+              "position": "right",
+              "offsetX": 3.26
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "if you started or acquired this business during"
+              }
+            }
+          },
+          {
+            "id": "started_business_during_2023",
+            "method": {
+              "id": "checkbox",
+              "position": "right",
+              "offsetX": 3
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "if you started or acquired this business during"
+              }
+            }
+          },
+          {
+            "id": "did_you_make_any_payments_in_2023_that_would_require_form_1099",
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "right",
+              "offsetX": 1.64
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "did you make any payments in 2023 that would require you to file"
+              }
+            }
+          },
+          {
+            "id": "if_yes_did_you_or_will_you_file_form_1099",
+            "method": {
+              "id": "nearestCheckbox",
+              "position": "right",
+              "offsetX": 3.69
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "if \"yes,\" did you or will you file required form",
+                "editDistance": 2
+              }
+            }
+          },
+          {
+            "id": "gross_receipts_or_sales",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "start": "gross receipts or sales",
+              "match": {
+                "type": "equals",
+                "text": "1"
+              },
+              "end": "returns and allowances"
+            }
+          },
+          {
+            "id": "returns_and_allowances",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "lineFilters": [
+                {
+                  "text": "2",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "returns and allowances"
+              }
+            }
+          },
+          {
+            "id": "subtract_line_2_from_line_1",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "lineFilters": [
+                {
+                  "text": "3",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "subtract line 2 from line 1"
+              }
+            }
+          },
+          {
+            "id": "cost_of_goods_sold",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "lineFilters": [
+                {
+                  "text": "4",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "cost of goods sold"
+              },
+              "end": {
+                "text": "part III",
+                "type": "startsWith"
+              }
+            }
+          },
+          {
+            "id": "gross_profit",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "lineFilters": [
+                {
+                  "type": "regex",
+                  "pattern": "^5$"
+                }
+              ],
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "gross profit"
+              }
+            }
+          },
+          {
+            "id": "other_income",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "lineFilters": [
+                {
+                  "text": "6",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "ohter income"
+              }
+            }
+          },
+          {
+            "id": "gross_income",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "lineFilters": [
+                {
+                  "type": "regex",
+                  "pattern": "^7$"
+                }
+              ],
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "gross income"
+              }
+            }
+          },
+          {
+            "id": "expenses.advertising",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "xRangeFilter": {
+                "start": "left",
+                "offsetX": 1.9,
+                "width": 1.47
+              },
+              "whitespaceFilter": "all",
+              "lineFilters": [
+                {
+                  "text": "8",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "advertising"
+              }
+            }
+          },
+          {
+            "id": "expenses.car_and_truck",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "lineFilters": [
+                {
+                  "text": "9",
+                  "type": "equals"
+                }
+              ],
+              "whitespaceFilter": "all",
+              "xRangeFilter": {
+                "start": "right",
+                "offsetX": 0.1,
+                "width": 1.47
+              }
+            },
+            "anchor": {
+              "start": "car and truck expenses",
+              "match": {
+                "type": "equals",
+                "text": "9"
+              }
+            }
+          },
+          {
+            "id": "expenses.commissions_and_fees",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "xRangeFilter": {
+                "start": "left",
+                "offsetX": 1.9,
+                "width": 1.47
+              },
+              "whitespaceFilter": "all",
+              "lineFilters": [
+                {
+                  "text": "10",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "commissions and fees"
+              }
+            }
+          },
+          {
+            "id": "expenses.contract_labor",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "xRangeFilter": {
+                "start": "left",
+                "offsetX": 1.9,
+                "width": 1.47
+              },
+              "whitespaceFilter": "all",
+              "lineFilters": [
+                {
+                  "text": "11",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "contract labor"
+              }
+            }
+          },
+          {
+            "id": "expenses.depletion",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "lineFilters": [
+                {
+                  "type": "regex",
+                  "pattern": "^12$"
+                },
+                {
+                  "type": "regex",
+                  "pattern": "^21$"
+                }
+              ],
+              "xRangeFilter": {
+                "start": "right",
+                "offsetX": 0,
+                "width": 3.2
+              },
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "depletion"
+              }
+            }
+          },
+          {
+            "id": "expenses.depreciation",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "lineFilters": [
+                {
+                  "type": "regex",
+                  "pattern": "^13$"
+                },
+                {
+                  "type": "regex",
+                  "pattern": "^24$"
+                }
+              ],
+              "xRangeFilter": {
+                "start": "right",
+                "offsetX": 0,
+                "width": 2
+              },
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "start": "depreciation and",
+              "match": {
+                "type": "equals",
+                "text": "13"
+              }
+            }
+          },
+          {
+            "id": "expenses.employee_benefit_programs",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "xRangeFilter": {
+                "start": "left",
+                "offsetX": 0.1,
+                "width": 1.47
+              },
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "match": [
+                {
+                  "type": "includes",
+                  "text": "employee benefit programs"
+                },
+                {
+                  "type": "equals",
+                  "text": "14"
+                }
+              ]
+            }
+          },
+          {
+            "id": "expenses.insurance",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "xRangeFilter": {
+                "start": "left",
+                "offsetX": 1.9,
+                "width": 1.47
+              },
+              "whitespaceFilter": "all",
+              "lineFilters": [
+                {
+                  "text": "15",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "insurance (other than health)"
+              }
+            }
+          },
+          {
+            "id": "expenses.interest.mortgage",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "xRangeFilter": {
+                "start": "left",
+                "offsetX": 1.9,
+                "width": 1.47
+              },
+              "whitespaceFilter": "all",
+              "lineFilters": [
+                {
+                  "text": "16e",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": [
+                {
+                  "type": "includes",
+                  "text": "interest (see instructions)"
+                },
+                {
+                  "type": "includes",
+                  "text": "mortgage"
+                }
+              ]
+            }
+          },
+          {
+            "id": "expenses.interest.other",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "xRangeFilter": {
+                "start": "left",
+                "offsetX": 1.9,
+                "width": 1.47
+              },
+              "whitespaceFilter": "all",
+              "lineFilters": [
+                {
+                  "text": "16e",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": [
+                {
+                  "type": "includes",
+                  "text": "interest (see instructions)"
+                },
+                {
+                  "type": "endsWith",
+                  "text": "other"
+                }
+              ]
+            }
+          },
+          {
+            "id": "expenses.legal_and_professional_services",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "xRangeFilter": {
+                "start": "left",
+                "offsetX": 1.9,
+                "width": 1.47
+              },
+              "whitespaceFilter": "all",
+              "lineFilters": [
+                {
+                  "text": "17",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "legal and professional services"
+              }
+            }
+          },
+          {
+            "id": "expenses.office_expense",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "text": "18",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "office expense"
+              }
+            }
+          },
+          {
+            "id": "expenses.pension_and_profit_sharing_plans",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "text": "19",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "pension and profit"
+              }
+            }
+          },
+          {
+            "id": "expenses.rent_or_lease.vehicles_machinery_equipment",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "text": "20a",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": [
+                {
+                  "type": "includes",
+                  "text": "rent or lease"
+                },
+                {
+                  "text": "vehicles, machinery, and equipment",
+                  "type": "includes"
+                }
+              ]
+            }
+          },
+          {
+            "id": "expenses.rent_or_lease.other_business_property",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "text": "20b",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": [
+                {
+                  "type": "includes",
+                  "text": "rent or lease"
+                },
+                {
+                  "text": "other business property",
+                  "type": "includes"
+                }
+              ]
+            }
+          },
+          {
+            "id": "expenses.repairs_and_maintenance",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "text": "21",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "repairs and maintenance"
+              }
+            }
+          },
+          {
+            "id": "expenses.supplies",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "text": "22",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "supplies"
+              },
+              "end": {
+                "text": "cost of goods sold",
+                "type": "startsWith"
+              }
+            }
+          },
+          {
+            "id": "expenses.taxes_and_licenses",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "text": "23",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "taxes and licenses"
+              }
+            }
+          },
+          {
+            "id": "expenses.travel_and_meals.travel",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "text": "24a",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": [
+                {
+                  "type": "includes",
+                  "text": "travel and meals"
+                },
+                {
+                  "text": "travel",
+                  "type": "endsWith"
+                }
+              ]
+            }
+          },
+          {
+            "id": "expenses.travel_and_meals.deductible_meals",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "text": "24a",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": [
+                {
+                  "type": "includes",
+                  "text": "travel and meals"
+                },
+                {
+                  "text": "deductible meals",
+                  "type": "includes"
+                }
+              ]
+            }
+          },
+          {
+            "id": "expenses.utilities",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "text": "25",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "utilities"
+              }
+            }
+          },
+          {
+            "id": "expenses.eages",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "text": "26",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "wages"
+              }
+            }
+          },
+          {
+            "id": "expenses.other_expenses",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "text": "27a",
+                  "type": "equals"
+                }
+              ]
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "other expenses"
+              },
+              "end": {
+                "text": "part III",
+                "type": "startsWith"
+              }
+            }
+          },
+          {
+            "id": "expenses.energy_efficient_commercial_bldgs_deduction",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "whitespaceFilter": "all",
+              "sortLines": "readingOrderLeftToRight"
+            },
+            "anchor": {
+              "match": [
+                {
+                  "type": "includes",
+                  "text": "energy efficient commercial bldgs"
+                },
+                {
+                  "type": "equals",
+                  "text": "27b"
+                }
+              ]
+            }
+          },
+          {
+            "id": "total_expenses",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "lineFilters": [
+                {
+                  "type": "regex",
+                  "pattern": "^28$"
+                }
+              ],
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "total expenses"
+              }
+            }
+          },
+          {
+            "id": "tentative_profit_or_loss",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "lineFilters": [
+                {
+                  "type": "equals",
+                  "text": "29"
+                }
+              ],
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "tentative profit"
+              }
+            }
+          },
+          {
+            "id": "home_business_expenses",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "start": "expenses for business use of your home",
+              "match": {
+                "type": "equals",
+                "text": "30"
+              },
+              "end": "net profit or"
+            }
+          },
+          {
+            "id": "net_profit_or_loss",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "start": "net profit or (loss)",
+              "match": {
+                "type": "equals",
+                "text": "31"
+              }
+            }
+          },
+          {
+            "id": "32a.all_investment_is_at_risk",
+            "anchor": {
+              "match": {
+                "text": "all investment is at risk",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "32b.all_investment_is_at_risk",
+            "anchor": {
+              "match": {
+                "text": "some investment is not",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "cost_of_goods_sold.methods_used_to_value_closing_inventory.cost",
+            "anchor": {
+              "start": {
+                "text": "part III",
+                "type": "startsWith"
+              },
+              "match": {
+                "text": "cost",
+                "type": "endsWith"
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "cost_of_goods_sold.methods_used_to_value_closing_inventory.lower_of_cost_or_market",
+            "anchor": {
+              "start": {
+                "text": "part III",
+                "type": "startsWith"
+              },
+              "match": {
+                "text": "lower of cost or market",
+                "type": "endsWith"
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "cost_of_goods_sold.methods_used_to_value_closing_inventory.other",
+            "anchor": {
+              "start": {
+                "text": "part III",
+                "type": "startsWith"
+              },
+              "match": {
+                "text": "other (attach explanation)",
+                "type": "endsWith"
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "cost_of_goods_sold.any_change_in_determining_quantities_costs_or_valuations_between_opening_and_closing_inventory",
+            "anchor": {
+              "start": {
+                "text": "part III",
+                "type": "startsWith"
+              },
+              "match": {
+                "text": "yes",
+                "type": "endsWith"
+              },
+              "end": {
+                "text": "inventory at beginning of year",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "cost_of_goods_sold.inventory_at_beginning_of_year",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "lineFilters": [
+                {
+                  "type": "equals",
+                  "text": "35"
+                }
+              ],
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "inventory at beginning of year"
+              }
+            }
+          },
+          {
+            "id": "cost_of_goods_sold.purchases_less_cost_of_items_withdrawn_for_personal_use",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "lineFilters": [
+                {
+                  "type": "equals",
+                  "text": "36"
+                }
+              ],
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "purchases less cost of items withdrawn for personal use"
+              }
+            }
+          },
+          {
+            "id": "cost_of_goods_sold.cost_of_labor",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "lineFilters": [
+                {
+                  "type": "equals",
+                  "text": "37"
+                }
+              ],
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "cost of labor"
+              }
+            }
+          },
+          {
+            "id": "cost_of_goods_sold.materials_and_supplies",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "lineFilters": [
+                {
+                  "type": "equals",
+                  "text": "38"
+                }
+              ],
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "materials and supplies"
+              }
+            }
+          },
+          {
+            "id": "cost_of_goods_sold.other_costs",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "lineFilters": [
+                {
+                  "type": "equals",
+                  "text": "39"
+                }
+              ],
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "other costs"
+              }
+            }
+          },
+          {
+            "id": "cost_of_goods_sold.add_lines_35_through_39",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "lineFilters": [
+                {
+                  "type": "equals",
+                  "text": "40"
+                }
+              ],
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "add lines 35 through 39"
+              }
+            }
+          },
+          {
+            "id": "cost_of_goods_sold.inventory_at_end_of_year",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "lineFilters": [
+                {
+                  "type": "equals",
+                  "text": "41"
+                }
+              ],
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "match": {
+                "type": "includes",
+                "text": "inventory at end of year"
+              }
+            }
+          },
+          {
+            "id": "cost_of_goods_sold.cost_of_goods_sold",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "lineFilters": [
+                {
+                  "type": "equals",
+                  "text": "42"
+                }
+              ],
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "start": {
+                "text": "Cost of Goods Sold",
+                "type": "includes",
+                "isCaseSensitive": true
+              },
+              "match": {
+                "type": "includes",
+                "text": "cost of goods sold"
+              }
+            }
+          },
+          {
+            "id": "when_did_you_place_your_vehicle_in_service_for_business_purposes",
+            "anchor": {
+              "match": {
+                "text": "when did you place your vehicle in service for business purposes",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "right",
+              "offsetX": 0.1,
+              "offsetY": -0.1,
+              "width": 1.4,
+              "height": 0.2
+            }
+          },
+          {
+            "id": "miles_driven.business",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "lineFilters": [
+                {
+                  "type": "regex",
+                  "pattern": "^b$"
+                },
+                {
+                  "type": "includes",
+                  "text": "commuting"
+                }
+              ],
+              "xRangeFilter": {
+                "start": "right",
+                "offsetX": 0,
+                "width": 1.8
+              }
+            },
+            "anchor": {
+              "start": "information on your vehicle",
+              "match": {
+                "type": "endsWith",
+                "text": "business"
+              }
+            }
+          },
+          {
+            "id": "miles_driven.commuting",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "lineFilters": [
+                {
+                  "type": "regex",
+                  "pattern": "^b$"
+                },
+                {
+                  "type": "includes",
+                  "text": "commuting"
+                }
+              ],
+              "xRangeFilter": {
+                "start": "right",
+                "offsetX": 0,
+                "width": 1.4
+              }
+            },
+            "anchor": {
+              "start": "information on your vehicle",
+              "match": {
+                "type": "includes",
+                "text": "commuting"
+              }
+            }
+          },
+          {
+            "id": "miles_driven.other",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "first",
+              "lineFilters": [
+                {
+                  "type": "regex",
+                  "pattern": "^b$"
+                },
+                {
+                  "type": "includes",
+                  "text": "commuting"
+                }
+              ],
+              "xRangeFilter": {
+                "start": "right",
+                "offsetX": 0,
+                "width": 1.8
+              }
+            },
+            "anchor": {
+              "start": "information on your vehicle",
+              "match": {
+                "type": "endsWith",
+                "text": "other"
+              }
+            }
+          },
+          {
+            "id": "was_your_vehicle_available_for_personal_use_during_off_duty_hours",
+            "anchor": {
+              "start": {
+                "text": "part IV",
+                "type": "startsWith"
+              },
+              "match": {
+                "text": "yes",
+                "type": "endsWith"
+              },
+              "end": {
+                "text": "another vehicle available for personal use",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "have_another_vehicle_for_personal_use",
+            "anchor": {
+              "start": {
+                "text": "part IV",
+                "type": "startsWith"
+              },
+              "match": [
+                {
+                  "text": "46",
+                  "type": "equals"
+                },
+                {
+                  "text": "yes",
+                  "type": "endsWith"
+                }
+              ],
+              "end": {
+                "text": "evidence to support your deduction",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "have_evidence_to_support_your_deduction",
+            "anchor": {
+              "start": {
+                "text": "part IV",
+                "type": "startsWith"
+              },
+              "match": [
+                {
+                  "text": "47a",
+                  "type": "equals"
+                },
+                {
+                  "text": "yes",
+                  "type": "endsWith"
+                }
+              ],
+              "end": {
+                "text": "is the evidence written",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "is_the_evidence_written",
+            "anchor": {
+              "start": {
+                "text": "part IV",
+                "type": "startsWith"
+              },
+              "match": [
+                {
+                  "text": "b",
+                  "type": "equals"
+                },
+                {
+                  "text": "yes",
+                  "type": "endsWith"
+                }
+              ],
+              "end": {
+                "text": "part v",
+                "type": "includes"
+              }
+            },
+            "method": {
+              "id": "checkbox",
+              "position": "left"
+            }
+          },
+          {
+            "id": "other_expenses",
+            "type": "table",
+            "method": {
+              "id": "textTable",
+              "columns": [
+                {
+                  "id": "Expense",
+                  "minX": 0,
+                  "maxX": 6.45
+                },
+                {
+                  "id": "Amount",
+                  "minX": 6.45,
+                  "maxX": 8.25,
+                  "type": "number",
+                  "isRequired": true
+                }
+              ],
+              "stop": {
+                "text": "total other expenses",
+                "type": "includes"
+              }
+            },
+            "anchor": {
+              "start": "information on your vehicle",
+              "match": {
+                "text": "other expenses.",
+                "type": "includes"
+              }
+            }
+          },
+          {
+            "id": "total_other_expenses",
+            "type": "number",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "tiebreaker": "last",
+              "lineFilters": [
+                {
+                  "type": "regex",
+                  "pattern": "^48$"
+                }
+              ],
+              "whitespaceFilter": "all"
+            },
+            "anchor": {
+              "start": "part v",
+              "match": {
+                "text": "total other expenses",
+                "type": "includes"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
