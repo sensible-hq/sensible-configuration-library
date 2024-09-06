@@ -2,8 +2,23 @@ import { Dirent } from "fs";
 import path from "path";
 import * as fs from "fs/promises";
 
+const REPO_NAME = 'sensible-configuration-library'
 const DOWNLOAD_URL_PREFIX =
   "https://raw.githubusercontent.com/sensible-hq/sensible-configuration-library/main";
+
+function getTemplatePath(dirent: Dirent): string {
+  const fileSystemPathSplit = dirent.path.split(REPO_NAME)
+  const templatePath = fileSystemPathSplit.at(-1)
+
+  if (!templatePath) throw new Error('Invalid reference doc path')
+  return templatePath
+}
+
+function getFileDownloadUrl(dirent: Dirent): string {
+  const path = getTemplatePath(dirent)
+
+  return `${DOWNLOAD_URL_PREFIX}${path}/${dirent.name}`
+}
 
 //types
 export type Manifest = Entry[];
@@ -28,6 +43,91 @@ type RepoFile = {
   path: string;
   download_url: string;
 };
+
+export async function createTemplateLibrary() {
+  const root = path.join(__dirname, "..", "..", "..", "templates");
+  const directories = await fs.readdir(root, {
+    withFileTypes: true,
+  })
+
+  const templateLibrary = await Promise.all(directories.map((dirent) => {
+    const path = [dirent.path, dirent.name].join('/')
+    return getSubDirectoryTree(path)
+  }))
+
+  return JSON.stringify(templateLibrary)
+}
+
+type Template = {
+  name: string
+  path: string
+  files: string[]
+};
+
+type TemplateGroup = {
+  name: string;
+  templates?: Template[];
+  groups?: TemplateGroup[];
+};
+
+export async function getSubDirectoryTree(path: string) {
+  const files = await fs.readdir(path, {
+    withFileTypes: true
+  })
+
+  const refDocsDirent = files.find((dirent) => dirent.name === 'refdocs')
+  const isDocType = refDocsDirent !== undefined
+
+  const groupPathParts = path.split('/')
+  const groupName = groupPathParts.at(-1)
+  if (!groupName) throw new Error('Invalid Library Group Path')
+
+  const templateGroup: TemplateGroup = {
+    name: groupName
+  }
+
+  if (isDocType) {
+    const refDocs = await fs.readdir(`${refDocsDirent.path}/${refDocsDirent.name}`, {
+      withFileTypes: true
+    })
+
+    const jsonFiles = files.filter((dirent) => dirent.name.match(/\.json$/))
+    const templates: Template[] = []
+
+    for (const jsonFile of jsonFiles) {
+      const templateName = jsonFile.name.replace('.json', '')
+
+      const pdfRegex = new RegExp(`^${templateName}.*\\.pdf$`)
+      const pngRegex = new RegExp(`^${templateName}.*\\.png$`)
+
+      const pdfFile = refDocs.find((refDoc) => refDoc.name.match(pdfRegex))
+      const pngFile = refDocs.find((refDoc) => refDoc.name.match(pngRegex))
+      if (!pdfFile || !pngFile) continue
+
+      const template: Template = {
+        name: templateName.replaceAll(/_/g, ' '),
+        path: getTemplatePath(jsonFile),
+        files: [jsonFile, pdfFile, pngFile].map(getFileDownloadUrl)
+      }
+      templates.push(template)
+    }
+
+    templateGroup.templates = templates
+  } else {
+    const templateSubGroups: TemplateGroup[] = []
+
+    for (const file of files) {
+      if (!file.isDirectory()) continue
+
+      const templateSubGroup = await getSubDirectoryTree([file.path, file.name].join('/'))
+      templateSubGroups.push(templateSubGroup)
+    }
+
+    templateGroup.groups = templateSubGroups
+  }
+
+  return templateGroup
+}
 
 export async function generateManifest(): Promise<string> {
   const root = path.join(__dirname, "..", "..", "..");
