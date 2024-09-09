@@ -6,16 +6,16 @@ const REPO_NAME = 'sensible-configuration-library'
 const DOWNLOAD_URL_PREFIX =
   "https://raw.githubusercontent.com/sensible-hq/sensible-configuration-library/main";
 
-function getTemplatePath(dirent: Dirent): string {
+function getDocTypePath(dirent: Dirent): string {
   const fileSystemPathSplit = dirent.path.split(REPO_NAME)
-  const templatePath = fileSystemPathSplit.at(-1)
+  const docTypePath = fileSystemPathSplit.at(-1)
 
-  if (!templatePath) throw new Error('Invalid reference doc path')
-  return templatePath
+  if (!docTypePath) throw new Error('Invalid reference doc path')
+  return docTypePath
 }
 
 function getFileDownloadUrl(dirent: Dirent): string {
-  const path = getTemplatePath(dirent)
+  const path = getDocTypePath(dirent)
 
   return `${DOWNLOAD_URL_PREFIX}${path}/${dirent.name}`
 }
@@ -45,7 +45,7 @@ type RepoFile = {
 };
 
 export async function createTemplateLibrary() {
-  const root = path.join(__dirname, "..", "..", "..", "templates");
+  const root = path.join(__dirname, "..", "..", "..", "libraryDocTypes");
   const directories = await fs.readdir(root, {
     withFileTypes: true,
   })
@@ -58,16 +58,18 @@ export async function createTemplateLibrary() {
   return JSON.stringify(templateLibrary)
 }
 
-type Template = {
+type LibraryDocType = {
   name: string
   path: string
-  files: string[]
+  configs: string[],
+  refDocs: string[]
+  previews: string[],
 };
 
-type TemplateGroup = {
+type LibraryGroup = {
   name: string;
-  templates?: Template[];
-  groups?: TemplateGroup[];
+  docTypes?: LibraryDocType[];
+  groups?: LibraryGroup[];
 };
 
 export async function getSubDirectoryTree(path: string) {
@@ -82,7 +84,7 @@ export async function getSubDirectoryTree(path: string) {
   const groupName = groupPathParts.at(-1)
   if (!groupName) throw new Error('Invalid Library Group Path')
 
-  const templateGroup: TemplateGroup = {
+  const libraryGroup: LibraryGroup = {
     name: groupName
   }
 
@@ -92,41 +94,43 @@ export async function getSubDirectoryTree(path: string) {
     })
 
     const jsonFiles = files.filter((dirent) => dirent.name.match(/\.json$/))
-    const templates: Template[] = []
+    const libraryDocTypes: LibraryDocType[] = []
 
     for (const jsonFile of jsonFiles) {
-      const templateName = jsonFile.name.replace('.json', '')
+      const docTypeName = jsonFile.name.replace('.json', '')
 
-      const pdfRegex = new RegExp(`^${templateName}.*\\.pdf$`)
-      const pngRegex = new RegExp(`^${templateName}.*\\.png$`)
+      const pdfRegex = new RegExp(`^${docTypeName}.*\\.pdf$`)
+      const pngRegex = new RegExp(`^${docTypeName}.*\\.png$`)
 
       const pdfFile = refDocs.find((refDoc) => refDoc.name.match(pdfRegex))
       const pngFile = refDocs.find((refDoc) => refDoc.name.match(pngRegex))
       if (!pdfFile || !pngFile) continue
 
-      const template: Template = {
-        name: templateName.replaceAll(/_/g, ' '),
-        path: getTemplatePath(jsonFile),
-        files: [jsonFile, pdfFile, pngFile].map(getFileDownloadUrl)
+      const libraryDocType: LibraryDocType = {
+        name: docTypeName.replaceAll(/_/g, ' '),
+        path: getDocTypePath(jsonFile),
+        configs: [jsonFile].map(getFileDownloadUrl),
+        refDocs: [pdfFile].map(getFileDownloadUrl),
+        previews: [pngFile].map(getFileDownloadUrl),
       }
-      templates.push(template)
+      libraryDocTypes.push(libraryDocType)
     }
 
-    templateGroup.templates = templates
+    libraryGroup.docTypes = libraryDocTypes
   } else {
-    const templateSubGroups: TemplateGroup[] = []
+    const librarySubGroups: LibraryGroup[] = []
 
     for (const file of files) {
       if (!file.isDirectory()) continue
 
-      const templateSubGroup = await getSubDirectoryTree([file.path, file.name].join('/'))
-      templateSubGroups.push(templateSubGroup)
+      const librarySubGroup = await getSubDirectoryTree([file.path, file.name].join('/'))
+      librarySubGroups.push(librarySubGroup)
     }
 
-    templateGroup.groups = templateSubGroups
+    libraryGroup.groups = librarySubGroups
   }
 
-  return templateGroup
+  return libraryGroup
 }
 
 export async function generateManifest(): Promise<string> {
