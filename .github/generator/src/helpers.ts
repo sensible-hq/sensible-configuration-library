@@ -52,7 +52,7 @@ export async function createTemplateLibrary() {
 
   const templateLibrary = await Promise.all(directories.map((dirent) => {
     const path = [dirent.path, dirent.name].join('/')
-    return getSubDirectoryTree(path)
+    return getLibrarySubGroup(path)
   }))
 
   return JSON.stringify(templateLibrary)
@@ -72,7 +72,7 @@ type LibraryGroup = {
   groups?: LibraryGroup[];
 };
 
-export async function getSubDirectoryTree(path: string) {
+export async function getLibrarySubGroup(path: string) {
   const files = await fs.readdir(path, {
     withFileTypes: true
   })
@@ -123,7 +123,7 @@ export async function getSubDirectoryTree(path: string) {
     for (const file of files) {
       if (!file.isDirectory()) continue
 
-      const librarySubGroup = await getSubDirectoryTree([file.path, file.name].join('/'))
+      const librarySubGroup = await getLibrarySubGroup([file.path, file.name].join('/'))
       librarySubGroups.push(librarySubGroup)
     }
 
