@@ -20,6 +20,10 @@ function getFileDownloadUrl(dirent: Dirent): string {
   return `${DOWNLOAD_URL_PREFIX}${encodeURI(path)}/${dirent.name}`
 }
 
+function getTitleCase(line: string) {
+  return line.split(' ').map((word) => word[0]?.toUpperCase() + word.slice(1)).join(' ')
+}
+
 //types
 export type Manifest = Entry[];
 
@@ -44,20 +48,6 @@ type RepoFile = {
   download_url: string;
 };
 
-export async function createTemplateLibrary() {
-  const root = path.join(__dirname, "..", "..", "..", "templates");
-  const directories = await fs.readdir(root, {
-    withFileTypes: true,
-  })
-
-  const templateLibrary = await Promise.all(directories.map((dirent) => {
-    const path = [dirent.path, dirent.name].join('/')
-    return getLibrarySubGroup(path)
-  }))
-
-  return JSON.stringify(templateLibrary)
-}
-
 type LibraryDocType = {
   name: string
   path: string
@@ -71,6 +61,20 @@ type LibraryGroup = {
   children: (LibraryGroup | LibraryDocType)[];
   thumbnails: string[];
 };
+
+export async function createTemplateLibrary() {
+  const root = path.join(__dirname, "..", "..", "..", "templates");
+  const directories = await fs.readdir(root, {
+    withFileTypes: true,
+  })
+
+  const templateLibrary = await Promise.all(directories.map((dirent) => {
+    const path = [dirent.path, dirent.name].join('/')
+    return getLibrarySubGroup(path)
+  }))
+
+  return JSON.stringify(templateLibrary)
+}
 
 export async function getLibrarySubGroup(path: string) {
   const files = await fs.readdir(path, {
@@ -109,7 +113,7 @@ export async function getLibrarySubGroup(path: string) {
       if (!pdfFile || !pngFile) continue
 
       const libraryDocType: LibraryDocType = {
-        name: docTypeName.replaceAll(/_/g, ' '),
+        name: getTitleCase(docTypeName.replaceAll(/_/g, ' ')),
         path: getDocTypePath(jsonFile),
         configs: [jsonFile].map(getFileDownloadUrl),
         refDocs: [pdfFile].map(getFileDownloadUrl),
