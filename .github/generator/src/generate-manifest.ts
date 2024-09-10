@@ -5,7 +5,7 @@ import {
   S3Client,
 } from "@aws-sdk/client-s3";
 import { createHash } from "crypto";
-import { generateManifest } from "./helpers";
+import { createTemplateLibrary  } from "./helpers";
 
 const targets: Record<string, readonly string[]> = {
   "us-west-2": ["prod", "dev", "exp1"],
@@ -34,8 +34,9 @@ async function uploadManifest(manifest: string) {
 }
 
 async function main() {
-  const manifest = await generateManifest();
-  await uploadManifest(manifest);
+  const manifest = await createTemplateLibrary();
+  console.log({ manifest })
+  //await uploadManifest(manifest);
 }
 
 main().catch((error) => {
