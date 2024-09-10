@@ -17,7 +17,7 @@ function getDocTypePath(dirent: Dirent): string {
 function getFileDownloadUrl(dirent: Dirent): string {
   const path = getDocTypePath(dirent)
 
-  return `${DOWNLOAD_URL_PREFIX}${path}/${dirent.name}`
+  return `${DOWNLOAD_URL_PREFIX}${encodeURI(path)}/${dirent.name}`
 }
 
 //types
@@ -45,7 +45,7 @@ type RepoFile = {
 };
 
 export async function createTemplateLibrary() {
-  const root = path.join(__dirname, "..", "..", "..", "libraryDocTypes");
+  const root = path.join(__dirname, "..", "..", "..", "templates");
   const directories = await fs.readdir(root, {
     withFileTypes: true,
   })
@@ -68,8 +68,7 @@ type LibraryDocType = {
 
 type LibraryGroup = {
   name: string;
-  docTypes?: LibraryDocType[];
-  groups?: LibraryGroup[];
+  children: LibraryGroup[] | LibraryDocType[];
 };
 
 export async function getLibrarySubGroup(path: string) {
@@ -85,7 +84,8 @@ export async function getLibrarySubGroup(path: string) {
   if (!groupName) throw new Error('Invalid Library Group Path')
 
   const libraryGroup: LibraryGroup = {
-    name: groupName
+    name: groupName,
+    children: [],
   }
 
   if (isDocType) {
@@ -116,7 +116,7 @@ export async function getLibrarySubGroup(path: string) {
       libraryDocTypes.push(libraryDocType)
     }
 
-    libraryGroup.docTypes = libraryDocTypes
+    libraryGroup.children = libraryDocTypes
   } else {
     const librarySubGroups: LibraryGroup[] = []
 
@@ -127,7 +127,7 @@ export async function getLibrarySubGroup(path: string) {
       librarySubGroups.push(librarySubGroup)
     }
 
-    libraryGroup.groups = librarySubGroups
+    libraryGroup.children = librarySubGroups
   }
 
   return libraryGroup
