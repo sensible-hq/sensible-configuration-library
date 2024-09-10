@@ -63,12 +63,13 @@ type LibraryDocType = {
   path: string
   configs: string[],
   refDocs: string[]
-  previews: string[],
+  thumbnails: string[],
 };
 
 type LibraryGroup = {
   name: string;
-  children: LibraryGroup[] | LibraryDocType[];
+  children: (LibraryGroup | LibraryDocType)[];
+  thumbnails: string[];
 };
 
 export async function getLibrarySubGroup(path: string) {
@@ -86,6 +87,7 @@ export async function getLibrarySubGroup(path: string) {
   const libraryGroup: LibraryGroup = {
     name: groupName,
     children: [],
+    thumbnails: []
   }
 
   if (isDocType) {
@@ -111,7 +113,7 @@ export async function getLibrarySubGroup(path: string) {
         path: getDocTypePath(jsonFile),
         configs: [jsonFile].map(getFileDownloadUrl),
         refDocs: [pdfFile].map(getFileDownloadUrl),
-        previews: [pngFile].map(getFileDownloadUrl),
+        thumbnails: [pngFile].map(getFileDownloadUrl),
       }
       libraryDocTypes.push(libraryDocType)
     }
@@ -124,11 +126,19 @@ export async function getLibrarySubGroup(path: string) {
       if (!file.isDirectory()) continue
 
       const librarySubGroup = await getLibrarySubGroup([file.path, file.name].join('/'))
-      librarySubGroups.push(librarySubGroup)
+      if (librarySubGroup.children.length) {
+        librarySubGroups.push(librarySubGroup)
+      }
     }
 
     libraryGroup.children = librarySubGroups
   }
+
+  const thumbnails = libraryGroup.children.reduce(
+    (thumbnails: string[], child: LibraryDocType | LibraryGroup) => [...thumbnails, ...child.thumbnails],
+    []
+  )
+  libraryGroup.thumbnails = thumbnails.slice(0, 2)
 
   return libraryGroup
 }
