@@ -80,7 +80,7 @@ export async function createTemplateLibrary() {
   })
 
   const templateLibrary: Library = {
-    baseUrl:,
+    baseUrl: DOWNLOAD_URL_PREFIX,
     library: {}
   }
 
