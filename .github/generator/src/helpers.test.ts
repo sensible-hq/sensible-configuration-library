@@ -1,47 +1,27 @@
-import assert from "assert";
-import { generateManifest, type Manifest } from "./helpers";
+import { createTemplateLibrary, Library } from "./helpers";
 
-describe("generate-manifest", () => {
-  let manifest: string;
-  let parsedManifest: Manifest;
+describe('createTemplateLibrary', () => {
+  let templateLibrary: string
+  let parsedLibrary: Library
+  let library: Library['library']
 
   beforeAll(async () => {
-    manifest = await generateManifest();
-    parsedManifest = JSON.parse(manifest);
-  });
+    templateLibrary = await createTemplateLibrary()
+    parsedLibrary = JSON.parse(templateLibrary)
+    library = parsedLibrary.library
+  })
 
-  it("should generate manifest", () => {
-    expect(parsedManifest).toBeInstanceOf(Array);
-    expect(parsedManifest.length).toBeGreaterThan(0);
-  });
+  it('should create the library', () => {
+    expect(parsedLibrary).toHaveProperty('baseUrl')
 
-  it("should have valid entries", () => {
-    for (const entry of parsedManifest) {
-      expect(entry).toHaveProperty("config_data");
-      expect(entry.config_data).toBeInstanceOf(Object);
-      expect(entry.config_data).toHaveProperty("path");
-      expect(entry.config_data).toHaveProperty("category");
-      expect(entry.config_data).toHaveProperty("description");
-      expect(entry.config_data).toHaveProperty("display_name");
-      expect(entry.config_data).toHaveProperty("featured");
-      expect(entry.config_data?.featured).toHaveProperty("primary");
-      expect(entry.config_data?.featured).toHaveProperty("secondary");
-      expect(entry.config_data?.featured.primary).toMatch(/.*_sample\.png/);
-      expect(entry).toHaveProperty("files");
-      expect(entry.files).toBeInstanceOf(Array);
-      expect(entry.files?.length).toBeGreaterThanOrEqual(3);
-      assert(entry.files);
-      for (const file of entry.files) {
-        expect(file).toHaveProperty("path");
-        expect(file).toHaveProperty("download_url");
-        if (file.path.includes(".pdf")) {
-          expect(
-            entry.files.find(
-              (png) => png.path === `${file.path.split(".pdf")[0]}.png`
-            )
-          ).toBeDefined();
-        }
-      }
-    }
-  });
-});
+    expect(library).toHaveProperty('Financial Services')
+    expect(library).toHaveProperty('Healthcare')
+    expect(library).toHaveProperty('Human Resources')
+    expect(library).toHaveProperty('Identification')
+    expect(library).toHaveProperty('Insurance')
+    expect(library).toHaveProperty('Logistics')
+    expect(library).toHaveProperty('Real Estate')
+    expect(library).toHaveProperty('Tax Forms')
+  })
+})
+
