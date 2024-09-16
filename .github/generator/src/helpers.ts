@@ -74,7 +74,7 @@ export async function getLibrarySubGroup(path: string) {
       { withFileTypes: true }
     )
     const schemaFile = await fs.readFile(`${schemaDirent.path}/${schemaDirent.name}`, 'utf8')
-    const schemaObj = JSON.parse(schemaFile)
+    const schemaObj = JSON.parse(schemaFile) as LibraryDocTypeSchema
 
     const docTypeThumbnails = refDocs
       .filter((refDoc) => refDoc.name.match(/.*\.png$/i))
