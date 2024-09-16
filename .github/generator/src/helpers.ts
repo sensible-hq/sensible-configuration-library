@@ -48,19 +48,27 @@ type RepoFile = {
   download_url: string;
 };
 
-type LibraryDocType = {
-  name: string
-  path: string
-  configs: string[],
-  refDocs: string[]
-  thumbnails: string[],
-};
-
 type LibraryGroup = {
   name: string;
   children: (LibraryGroup | LibraryDocType)[];
   thumbnails: string[];
 };
+
+type LibraryDocType = {
+  name: string;
+  schema?: LibraryDocTypeSchema;
+  templates: LibraryTemplate[];
+  thumbnails: string[];
+};
+
+type LibraryDocTypeSchema = {
+  description: string;
+}
+
+type LibraryTemplate = {
+  name: string;
+  refDocs: string[];
+}
 
 export async function createTemplateLibrary() {
   const root = path.join(__dirname, "..", "..", "..", "templates");
@@ -82,69 +90,83 @@ export async function getLibrarySubGroup(path: string) {
   })
 
   const refDocsDirent = files.find((dirent) => dirent.name === 'refdocs')
-  const isDocType = refDocsDirent !== undefined
+  const configurationsDirent = files.find((dirent) => dirent.name === 'configurations')
+  const schemaDirent = files.find((dirent) => dirent.name === 'schema.json')
+  const isDocType = !!(refDocsDirent && configurationsDirent && schemaDirent)
 
   const groupPathParts = path.split('/')
   const groupName = groupPathParts.at(-1)
   if (!groupName) throw new Error('Invalid Library Group Path')
 
-  const libraryGroup: LibraryGroup = {
-    name: groupName,
-    children: [],
-    thumbnails: []
-  }
-
   if (isDocType) {
     const refDocs = await fs.readdir(`${refDocsDirent.path}/${refDocsDirent.name}`, {
       withFileTypes: true
     })
+    const configurations = await fs.readdir(
+      `${configurationsDirent.path}/${configurationsDirent.name}`,
+      { withFileTypes: true }
+    )
 
-    const jsonFiles = files.filter((dirent) => dirent.name.match(/\.json$/))
-    const libraryDocTypes: LibraryDocType[] = []
+    const schemaFile = await fs.readFile(`${schemaDirent.path}/${schemaDirent.name}`, 'utf8')
+    const schemaObj = JSON.parse(schemaFile)
 
-    for (const jsonFile of jsonFiles) {
-      const docTypeName = jsonFile.name.replace('.json', '')
+    const docTypeThumbnails = refDocs
+      .filter((refDoc) => refDoc.name.match(/.*\.png$/i))
+      .slice(0, 2)
+      .map((refDoc) => getFileDownloadUrl(refDoc))
 
-      const pdfRegex = new RegExp(`^${docTypeName}.*\\.pdf$`)
-      const pngRegex = new RegExp(`^${docTypeName}.*\\.png$`)
-
-      const pdfFile = refDocs.find((refDoc) => refDoc.name.match(pdfRegex))
-      const pngFile = refDocs.find((refDoc) => refDoc.name.match(pngRegex))
-      if (!pdfFile || !pngFile) continue
-
-      const libraryDocType: LibraryDocType = {
-        name: getTitleCase(docTypeName.replaceAll(/_/g, ' ')),
-        path: getDocTypePath(jsonFile),
-        configs: [jsonFile].map(getFileDownloadUrl),
-        refDocs: [pdfFile].map(getFileDownloadUrl),
-        thumbnails: [pngFile].map(getFileDownloadUrl),
-      }
-      libraryDocTypes.push(libraryDocType)
+    const libraryDocType: LibraryDocType = {
+      name: groupName,
+      schema: schemaObj,
+      thumbnails: docTypeThumbnails,
+      templates: []
     }
 
-    libraryGroup.children = libraryDocTypes
+    for (const jsonFile of configurations) {
+      const templateName = jsonFile.name.replace('.json', '')
+
+      const refDocRegex = new RegExp(`^${templateName}.*\\.pdf$`, 'i')
+      const templateRefDocs = refDocs
+        .filter((refDoc) => refDoc.name.match(refDocRegex))
+        .map((refDoc) => refDoc.name.replace('.pdf', ''))
+
+      if (!templateRefDocs.length) continue
+
+      const libraryTemplate: LibraryTemplate = {
+        name: templateName,
+        refDocs: templateRefDocs
+      }
+
+      libraryDocType.templates.push(libraryTemplate)
+    }
+
+    return libraryDocType
   } else {
-    const librarySubGroups: LibraryGroup[] = []
+    const libraryGroup: LibraryGroup = {
+      name: groupName,
+      thumbnails: [],
+      children: [],
+    }
+    const libraryGroupChildren: (LibraryGroup | LibraryDocType)[] = []
 
     for (const file of files) {
       if (!file.isDirectory()) continue
 
       const librarySubGroup = await getLibrarySubGroup([file.path, file.name].join('/'))
-      if (librarySubGroup.children.length) {
-        librarySubGroups.push(librarySubGroup)
+      const isValidSubGroup = 'children' in librarySubGroup && !!librarySubGroup.children.length
+      const isValidDocType = 'templates' in librarySubGroup && !!librarySubGroup.templates.length
+      if (isValidSubGroup || isValidDocType) {
+        libraryGroupChildren.push(librarySubGroup)
       }
     }
 
-    libraryGroup.children = librarySubGroups
+    const thumbnails = libraryGroupChildren.flatMap((child) => child.thumbnails).slice(0, 2)
+
+    libraryGroup.children = libraryGroupChildren
+    libraryGroup.thumbnails = thumbnails
+
+    return libraryGroup
   }
-
-  const thumbnails = libraryGroup.children.reduce(
-    (thumbnails: string[], child: LibraryDocType | LibraryGroup) => [...thumbnails, ...child.thumbnails],
-    []
-  )
-  libraryGroup.thumbnails = thumbnails.slice(0, 2)
-
-  return libraryGroup
 }
 
 export async function generateManifest(): Promise<string> {
