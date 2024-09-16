@@ -48,14 +48,17 @@ type RepoFile = {
   download_url: string;
 };
 
+type Library = {
+  baseUrl: string;
+  library: LibraryGroup['children'];
+}
+
 type LibraryGroup = {
-  name: string;
-  children: (LibraryGroup | LibraryDocType)[];
+  children: Record<string, LibraryGroup | LibraryDocType>;
   thumbnails: string[];
 };
 
 type LibraryDocType = {
-  name: string;
   schema?: LibraryDocTypeSchema;
   templates: LibraryTemplate[];
   thumbnails: string[];
@@ -76,9 +79,15 @@ export async function createTemplateLibrary() {
     withFileTypes: true,
   })
 
-  const templateLibrary = await Promise.all(directories.map((dirent) => {
+  const templateLibrary: Library = {
+    baseUrl:,
+    library: {}
+  }
+
+  await Promise.all(directories.map(async (dirent) => {
     const path = [dirent.path, dirent.name].join('/')
-    return getLibrarySubGroup(path)
+    const subgroup = await getLibrarySubGroup(path)
+    templateLibrary.library[dirent.name] = subgroup
   }))
 
   return JSON.stringify(templateLibrary)
@@ -106,7 +115,6 @@ export async function getLibrarySubGroup(path: string) {
       `${configurationsDirent.path}/${configurationsDirent.name}`,
       { withFileTypes: true }
     )
-
     const schemaFile = await fs.readFile(`${schemaDirent.path}/${schemaDirent.name}`, 'utf8')
     const schemaObj = JSON.parse(schemaFile)
 
@@ -116,7 +124,6 @@ export async function getLibrarySubGroup(path: string) {
       .map((refDoc) => getFileDownloadUrl(refDoc))
 
     const libraryDocType: LibraryDocType = {
-      name: groupName,
       schema: schemaObj,
       thumbnails: docTypeThumbnails,
       templates: []
@@ -124,46 +131,45 @@ export async function getLibrarySubGroup(path: string) {
 
     for (const jsonFile of configurations) {
       const templateName = jsonFile.name.replace('.json', '')
-
       const refDocRegex = new RegExp(`^${templateName}.*\\.pdf$`, 'i')
+
       const templateRefDocs = refDocs
         .filter((refDoc) => refDoc.name.match(refDocRegex))
         .map((refDoc) => refDoc.name.replace('.pdf', ''))
 
-      if (!templateRefDocs.length) continue
-
-      const libraryTemplate: LibraryTemplate = {
-        name: templateName,
-        refDocs: templateRefDocs
+      if (templateRefDocs.length) {
+        const libraryTemplate: LibraryTemplate = {
+          name: templateName,
+          refDocs: templateRefDocs
+        }
+        libraryDocType.templates.push(libraryTemplate)
       }
-
-      libraryDocType.templates.push(libraryTemplate)
     }
 
     return libraryDocType
   } else {
-    const libraryGroup: LibraryGroup = {
-      name: groupName,
-      thumbnails: [],
-      children: [],
-    }
-    const libraryGroupChildren: (LibraryGroup | LibraryDocType)[] = []
+    const libraryGroupChildren: LibraryGroup['children'] = {}
 
     for (const file of files) {
       if (!file.isDirectory()) continue
 
       const librarySubGroup = await getLibrarySubGroup([file.path, file.name].join('/'))
-      const isValidSubGroup = 'children' in librarySubGroup && !!librarySubGroup.children.length
+      const isValidSubGroup = 'children' in librarySubGroup && !!Object.keys(librarySubGroup.children).length
       const isValidDocType = 'templates' in librarySubGroup && !!librarySubGroup.templates.length
+
       if (isValidSubGroup || isValidDocType) {
-        libraryGroupChildren.push(librarySubGroup)
+        libraryGroupChildren[file.name] = librarySubGroup
       }
     }
 
-    const thumbnails = libraryGroupChildren.flatMap((child) => child.thumbnails).slice(0, 2)
+    const thumbnails = Object.values(libraryGroupChildren)
+      .flatMap((child) => child.thumbnails)
+      .slice(0, 2)
 
-    libraryGroup.children = libraryGroupChildren
-    libraryGroup.thumbnails = thumbnails
+    const libraryGroup: LibraryGroup = {
+      thumbnails: thumbnails,
+      children: libraryGroupChildren,
+    }
 
     return libraryGroup
   }
