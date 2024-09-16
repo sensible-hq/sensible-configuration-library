@@ -260,6 +260,11 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Finicity](./verification_of_assets/finicity/finicity.json)
 - [Plaid](./verification_of_assets/plaid/plaid.json)
 
+### Invoices
+
+- [Invoices](./invoices/invoice.json)
+
+
 ## Using a configuration
 
 To use the library, you can sign up for a [free Sensible account](https://app.sensible.so/register).
