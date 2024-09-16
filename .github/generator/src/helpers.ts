@@ -4,7 +4,7 @@ import * as fs from "fs/promises";
 
 const REPO_NAME = 'sensible-configuration-library'
 const DOWNLOAD_URL_PREFIX =
-  "https://raw.githubusercontent.com/sensible-hq/sensible-configuration-library/main";
+  `https://raw.githubusercontent.com/sensible-hq/${REPO_NAME}/main`;
 
 function getDocTypePath(dirent: Dirent): string {
   const fileSystemPathSplit = dirent.path.split(REPO_NAME)
