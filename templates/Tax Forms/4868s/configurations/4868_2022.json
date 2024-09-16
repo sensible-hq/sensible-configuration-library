@@ -17,7 +17,7 @@
             "type": "includes"
           }
         ]
-      },
+      }
     ]
   },
   "fields": [
@@ -31,12 +31,12 @@
         "match": {
           "text": "1 Your name(s) (see instructions)",
           "type": "equals"
-        },
+        }
       },
       "method": {
         "id": "label",
-        "position": "below",
-      },
+        "position": "below"
+      }
     },
     {
       "id": "primaryAddressStreet",
@@ -49,7 +49,7 @@
         "match": {
           "text": "Address (see instructions)",
           "type": "equals"
-        },
+        }
       },
       "method": {
         "id": "region",
@@ -58,12 +58,8 @@
         "height": 0.34,
         "offsetY": 0.1,
         "offsetX": -0.2,
-        "wordFilters": [
-          "city, town, or post office",
-          "state",
-          "zip code"
-        ]
-      },
+        "wordFilters": ["city, town, or post office", "state", "zip code"]
+      }
     },
     {
       "id": "primaryAddressCitySTZip",
@@ -76,7 +72,7 @@
         "match": {
           "text": "Address (see instructions)",
           "type": "equals"
-        },
+        }
       },
       "method": {
         "id": "region",
@@ -85,12 +81,8 @@
         "height": 0.34,
         "offsetY": 0.4,
         "offsetX": -0.2,
-        "wordFilters": [
-          "city, town, or post office",
-          "state",
-          "zip code"
-        ]
-      },
+        "wordFilters": ["city, town, or post office", "state", "zip code"]
+      }
     },
     {
       "id": "primarySSN",
@@ -102,12 +94,12 @@
         "match": {
           "text": "2 Your social security number",
           "type": "equals"
-        },
+        }
       },
       "method": {
         "id": "label",
-        "position": "below",
-      },
+        "position": "below"
+      }
     },
     {
       "id": "spouseSSN",
@@ -119,12 +111,12 @@
         "match": {
           "text": "3 Spouse's social security number",
           "type": "equals"
-        },
+        }
       },
       "method": {
         "id": "label",
-        "position": "below",
-      },
+        "position": "below"
+      }
     },
     {
       "id": "estimateTaxLiability",
@@ -137,12 +129,12 @@
         "match": {
           "text": "estimate of total",
           "type": "startsWith"
-        },
+        }
       },
       "method": {
         "id": "row",
-        "position": "right",
-      },
+        "position": "right"
+      }
     },
     {
       "id": "PaymentsMade",
@@ -155,12 +147,12 @@
         "match": {
           "text": "total 2022",
           "type": "startsWith"
-        },
+        }
       },
       "method": {
         "id": "row",
-        "position": "right",
-      },
+        "position": "right"
+      }
     },
     {
       "id": "balanceDue",
@@ -173,12 +165,12 @@
         "match": {
           "text": "see instructions",
           "type": "startsWith"
-        },
+        }
       },
       "method": {
         "id": "row",
-        "position": "right",
-      },
+        "position": "right"
+      }
     },
     {
       "id": "amountBeingPaid",
@@ -191,12 +183,12 @@
         "match": {
           "text": "amount you're paying",
           "type": "startsWith"
-        },
+        }
       },
       "method": {
         "id": "row",
-        "position": "right",
-      },
+        "position": "right"
+      }
     },
     {
       "id": "overseasUSCitizen",
@@ -214,7 +206,7 @@
       "method": {
         "id": "nearestCheckbox",
         "position": "right"
-      },
+      }
     },
     {
       "id": "nonresidentAlien",
@@ -233,7 +225,7 @@
       "method": {
         "id": "nearestCheckbox",
         "position": "right"
-      },
+      }
     },
     {
       "id": "taxYearBeginMonth",
@@ -246,12 +238,12 @@
         "match": {
           "text": "other tax year beginning",
           "type": "endsWith"
-        },
+        }
       },
       "method": {
         "id": "label",
-        "position": "right",
-      },
+        "position": "right"
+      }
     },
     {
       "id": "taxYearEndMonth",
@@ -264,12 +256,12 @@
         "match": {
           "text": ", and ending",
           "type": "endsWith"
-        },
+        }
       },
       "method": {
         "id": "label",
-        "position": "right",
-      },
+        "position": "right"
+      }
     },
     {
       "id": "taxYearEndYear",
@@ -282,7 +274,7 @@
         "match": {
           "text": ", and ending",
           "type": "endsWith"
-        },
+        }
       },
       "method": {
         "id": "region",
@@ -290,8 +282,8 @@
         "width": 0.3,
         "height": 0.3,
         "offsetY": -0.2,
-        "offsetX": 1.6,
-      },
+        "offsetX": 1.6
+      }
     },
     {
       "id": "year",
@@ -304,7 +296,7 @@
         "match": {
           "text": ", and ending",
           "type": "endsWith"
-        },
+        }
       },
       "method": {
         "id": "region",
@@ -312,9 +304,9 @@
         "width": 1,
         "height": 0.5,
         "offsetY": -0.4,
-        "offsetX": 2.2,
-      },
-    },
+        "offsetX": 2.2
+      }
+    }
   ],
   "computed_fields": [
     {
@@ -324,7 +316,7 @@
         "source_id": "primaryRaw",
         "separator": " ",
         "index": 0
-      },
+      }
     },
     {
       "id": "primaryLastName",
@@ -333,16 +325,14 @@
         "source_id": "primaryRaw",
         "separator": " ",
         "index": 1
-      },
+      }
     },
     {
       "id": "suppress",
       "method": {
         "id": "suppressOutput",
-        "source_ids": [
-          "primaryRaw"
-        ]
-      },
-    },
-  ],
+        "source_ids": ["primaryRaw"]
+      }
+    }
+  ]
 }
