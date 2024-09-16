@@ -1,0 +1,160 @@
+{
+  "fields": [
+    {
+      "method": {
+        "id": "queryGroup",
+        "chunkSize": 1,
+        "queries": [
+          {
+            "id": "vendor_name",
+            "description": "What is the vendor name?",
+            "type": "string"
+          },
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "chunkSize": 1,
+        "queries": [
+          {
+            "id": "recipient",
+            "description": "who is this being shipped to?",
+            "type": "string"
+          },
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "chunkSize": 1,
+        "queries": [
+          {
+            "id": "recipient",
+            "description": "who is the recipient?",
+            "type": "string"
+          },
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "chunkSize": 1,
+        "queries": [
+          {
+            "id": "invoice_number",
+            "description": "What is the invoice number?",
+            "type": "string"
+          },
+          {
+            "id": "invoice_date",
+            "description": "What is the date of the invoice?",
+            "type": "string"
+          },
+          {
+            "id": "purchase_order_number",
+            "description": "What is the purchase order number?",
+            "type": "string"
+          },
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "chunkSize": 1,
+        "queries": [
+          {
+            "id": "billed_by",
+            "description": "Who is the invoice billed by?",
+            "type": "string"
+          },
+          {
+            "id": "billing_name",
+            "description": "What is the billing name on the invoice?",
+            "type": "string"
+          },
+          {
+            "id": "billing_address",
+            "description": "What is the billing address?",
+            "type": "address"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "chunkSize": 1,
+        "queries": [
+          {
+            "id": "total_amount_due",
+            "description": "What is the total amount due?",
+            "type": "string"
+          },
+          {
+            "id": "payment_terms",
+            "description": "What are the payment terms?",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "id": "invoice_line_items",
+      "method": {
+        "id": "list",
+        "description": "invoice line items",
+        "chunkCount": 3,
+        "properties": [
+          {
+            "id": "item_number",
+            "description": "id / item number",
+            "type": "string"
+          },
+          {
+            "id": "quantity",
+            "description": "quantity / number / pack",
+            "type": "string"
+          },
+          {
+            "id": "description",
+            "description": "description / type / reference",
+            "type": "string"
+          },
+          {
+            "id": "unit_price",
+            "description": "unit price / rate ",
+            "type": "string"
+          },
+          {
+            "id": "total",
+            "description": "total amount",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "id": "line_items",
+      "method": {
+        "id": "zip",
+        "source_ids": [
+          "invoice_line_items"
+        ]
+      }
+    },
+    {
+      "id": "clean",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": [
+          "invoice_line_items"
+        ]
+      }
+    },
+  ]
+}
