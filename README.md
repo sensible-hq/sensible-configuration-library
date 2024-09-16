@@ -110,6 +110,9 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [ACORD 140 (12/2014)](./acords/acord_140/acord_140_2014_12.json)
 - [ACORD 140 (03/2016)](./acords/acord_140/acord_140_2016_03.json)
 - [ACORD 304 (06/2008)](./acords/acord_304/acord_304_2008_06.json)
+- [ACORD 823 (07/2007)](./acords/acord_823/acord_823_2007_07.json)
+- [ACORD 823 (10/2011)](./acords/acord_823/acord_823_2011_10.json)
+- [ACORD 823 (12/2015)](./acords/acord_823/acord_823_2015_12.json)
 
 #### Loss runs
 
@@ -149,6 +152,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [1065 (2018)](./tax_forms/1065_2018.json)
 - [1099 (2020)](./tax_forms/1099_2020.json)
 - [1120 (2019)](./tax_forms/1120_2019.json)
+- [1120s (2023)](./tax_forms/1120s/1120s_2023.json)
 - [4868 (2021)](./tax_forms/4868_2021.json)
 - [4868 (2022)](./tax_forms/4868_2022.json)
 - [w-2](./tax_forms/w2/w2.json)
@@ -198,15 +202,23 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 ### Explanation of Benefits
 
+- [Apex](./eobs/apex/apex.json)
 - [Cigna](./eobs/cigna/cigna_2022.json)
 - [Medicaid](./eobs/medicaid/medicaid.json)
 - [Tricare](./eobs/tricare/tricare.json)
 
+### Dental Explanation of Benefits
+
+- [Cigna](./dental_eobs/humanna/humanna.json)
+
 ### Bank Statements
 
 - [Ally (Combined Customer Statement)](./bank_statements/ally/ally_combined_customer_statement.json)
-- [Bank of America](./bank_statements/bank_of_america/boa.json.json)
+- [Bank of America](./bank_statements/bank_of_america/boa.json)
 - [Chase (Consolidated Balance Summary)](./bank_statements/chase/chase_consolidated_balance_summary.json)
+- [Chase (for Business)](./bank_statements/chase/chase_for_business.json)
+- [First Republic Bank](./bank_statements/first_republic_bank/first_republic_bank.json)
+- [HSBC](./bank_statements/hsbc/hsbc.json)
 - [Well Fargo (Checking)](./bank_statements/wells_fargo/wells_fargo_checking.json)
 - [Well Fargo (Savings)](./bank_statements/wells_fargo/wells_fargo_savings.json)
 - [Well Fargo (Combined Statement of Accounts)](./bank_statements/wells_fargo/wells_fargo_combined_statement_of_accounts.json)
@@ -218,7 +230,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 ### Healthcare
 
-- [CMS 1500 (08/05)](./health_insurance_claims/cms_1500/cms_1500_08_05.json)
+- [CMS 1500 (08/05)](./cms_1500/cms_1500_08_05.json)
 
 ### HR
 
@@ -239,11 +251,18 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 ### PropTech
 
 - [Offering Memorandums](./proptech/offering_memorandums/offering_memorandums.json)
+- [Rent Rolls](./proptech/rent_rolls/rent_rolls.json)
+
+### Verification of Assets
+
+- [Accountchek](./verification_of_assets/accountchek/accountchek.json)
+- [Blend](./verification_of_assets/blend/blend.json)
+- [Finicity](./verification_of_assets/finicity/finicity.json)
+- [Plaid](./verification_of_assets/plaid/plaid.json)
 
 ### Invoices
 
 - [Invoices](./invoices/invoice.json)
-
 
 
 ## Using a configuration

@@ -1,0 +1,1357 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "first",
+          "match": [
+            {
+              "text": "\"Estimated amount you may owe\"",
+              "type": "includes",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        {
+          "page": "last",
+          "match": [
+            {
+              "text": "if you suspect fraud, please contact humana",
+              "type": "startsWith"
+            }
+          ]
+        }
+      ]
+    },
+    "preprocessors": [
+      {
+        "type": "ocr",
+        "match": {
+          "text": "service date",
+          "type": "startsWith"
+        },
+        "matchAll": true
+      }
+    ],
+    "fields": [
+      {
+        "id": "totals.provider_charges.total_charge",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "total charge",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3.15
+          }
+        }
+      },
+      {
+        "id": "totals.provider_charges.plan_discounts",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "plan discounts",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3.15
+          }
+        }
+      },
+      {
+        "id": "totals.provider_charges.plan_benefit_exclusions",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "plan/benefit exclusions",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 3.15
+          }
+        }
+      },
+      {
+        "id": "totals.provider_charges.copay",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "copay",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2.95
+          }
+        }
+      },
+      {
+        "id": "totals.provider_charges.deductible",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "deductible",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2.95
+          }
+        }
+      },
+      {
+        "id": "totals.provider_charges.coinsurance",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "coinsurance",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2.95
+          }
+        }
+      },
+      {
+        "id": "totals.provider_charges.estimated_benefits",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "estimated benefits",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2.95
+          }
+        }
+      },
+      {
+        "id": "totals.provider_charges.claim_totals",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "claim totals",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "service date(s)",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 2.95
+          }
+        }
+      },
+
+      {
+        "id": "totals.estimated_payment.total_charge",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "total charge",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 3,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_payment.plan_discounts",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "plan discounts",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 3,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_payment.plan_benefit_exclusions",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "plan/benefit exclusions",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 3,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_payment.copay",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "copay",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 2.8,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_payment.deductible",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "deductible",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 2.8,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_payment.coinsurance",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "coinsurance",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 2.8,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_payment.estimated_benefits",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "estimated benefits",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 3,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_payment.claim_totals",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "claim totals",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "service date(s)",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 3,
+            "width": 1.1
+          }
+        }
+      },
+      
+      {
+        "id": "totals.estimated_amount_you_may_owe.total_charge",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "total charge",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 4.15,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_amount_you_may_owe.plan_discounts",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "plan discounts",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 4.15,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_amount_you_may_owe.plan_benefit_exclusions",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "plan/benefit exclusions",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 4.15,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_amount_you_may_owe.copay",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "copay",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 3.9,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_amount_you_may_owe.deductible",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "deductible",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 3.9,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_amount_you_may_owe.coinsurance",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "coinsurance",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 3.9,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_amount_you_may_owe.estimated_benefits",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "estimated benefits",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "claim totals",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 4.15,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "totals.estimated_amount_you_may_owe.claim_totals",
+        "type": {
+          "id": "currency",
+          "accountingNegative": "default"
+        },
+        "anchor": {
+          "start": {
+            "text": "\"Estimated amount you may owe\"",
+            "type": "includes",
+            "isCaseSensitive": true
+          },
+          "match": {
+            "text": "claim totals",
+            "type": "startsWith"
+          },
+          "end": {
+            "text": "service date(s)",
+            "type": "includes"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 4.15,
+            "width": 1.1
+          }
+        }
+      },
+      {
+        "id": "patient_name_raw",
+        "anchor": {
+          "match": {
+            "text": "name:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "position": "left",
+          "tiebreaker": "last",
+          "sortLines": "readingOrderLeftToRight",
+          "lineFilters": [
+            {
+              "type": "startsWith",
+              "text": "name:"
+            }
+          ]
+        }
+      },
+      {
+        "id": "patient_name_raw",
+        "anchor": {
+          "match": {
+            "text": "name:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "member_id_raw",
+        "anchor": {
+          "match": {
+            "text": "member id:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first",
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "group_name_raw",
+        "anchor": {
+          "match": {
+            "text": "group name:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 5
+          }
+        }
+      },
+      {
+        "id": "group_id_raw",
+        "anchor": {
+          "match": {
+            "text": "group id:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 5
+          }
+        }
+      },
+      {
+        "id": "plan_type_raw",
+        "anchor": {
+          "match": {
+            "text": "plan type:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 5
+          }
+        }
+      },
+      {
+        "id": "birth_year_raw",
+        "anchor": {
+          "match": {
+            "text": "birth year:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 5
+          }
+        }
+      },
+      {
+        "id": "provider_raw",
+        "type": {
+          "id": "custom",
+          "pattern": "Provider: ([a-z ]+) \\|",
+          "flags": "i",
+          "matchMultipleLines": true
+        },
+        "anchor": {
+          "match": {
+            "text": "provider:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right",
+          "includeAnchor": true
+        }
+      },
+      {
+        "id": "provider_raw",
+       
+        "anchor": {
+          "match": {
+            "text": "provider:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "sortLines": "readingOrderLeftToRight",
+          "xRangeFilter": {
+            "start": "left",
+            "offsetX": 0,
+            "width": 5
+          }
+        }
+      },
+      {
+        "id": "claim_number_raw",
+        "type": {
+          "id": "custom",
+          "pattern": "claim number: (.+)",
+          "flags": "i",
+          "matchMultipleLines": true
+        },
+        "anchor": {
+          "match": {
+            "text": "provider:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "includeAnchor": true
+        }
+      },
+      {
+        "id": "claim_number_raw",
+        "anchor": {
+          "match": {
+            "text": "claim number:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "row",
+          "tiebreaker": "first"
+        }
+      },
+      {
+        "id": "npi_raw",
+        "anchor": {
+          "match": {
+            "text": "not found on this format",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "passthrough"
+        }
+      },
+      {
+        "id": "service_dates",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "match": {
+              "text": "service date(s)",
+              "type": "startsWith"
+            },
+            "end": {
+              "type": "any",
+              "matches": [
+                {
+                  "text": "reason code descriptions",
+                  "type": "includes"
+                }
+              ]
+            }
+          },
+          "stop": {
+            "type": "any",
+            "matches": [
+              {
+                "text": "coinsurance",
+                "type": "includes"
+              }
+            ]
+          },
+          "stopOffsetY": 0.1
+        },
+        "fields": [
+          {
+            "id": "patient_name",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "patient_name_raw"
+            }
+          },
+          {
+            "id": "member_id",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "member_id_raw"
+            }
+          },
+          {
+            "id": "group_name",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "group_name_raw"
+            }
+          },
+          {
+            "id": "group_id",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "group_id_raw"
+            }
+          },
+          {
+            "id": "plan_type",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "plan_type_raw"
+            }
+          },
+          {
+            "id": "birth_year",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "birth_year_raw"
+            }
+          },
+          {
+            "id": "provider",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "provider_raw"
+            }
+          },
+          {
+            "id": "claim_number",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "claim_number_raw"
+            }
+          },
+          {
+            "id": "npi",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "npi_raw"
+            }
+          },
+          {
+            "id": "service_date_1",
+            "type": "date",
+            "anchor": {
+              "match": {
+                "text": "service date(s)",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "includeAnchor": true,
+              "sortLines": "readingOrderLeftToRight",
+              "xRangeFilter": {
+                "start": "left",
+                "offsetX": -0.1,
+                "width": 3.7
+              }
+            }
+          },
+          {
+            "id": "service_date_2",
+            "type": "date",
+            "anchor": {
+              "match": {
+                "text": "service date(s)",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "includeAnchor": true,
+              "sortLines": "readingOrderLeftToRight",
+              "tiebreaker": "second",
+              "xRangeFilter": {
+                "start": "left",
+                "offsetX": -0.1,
+                "width": 3.7
+              }
+            }
+          },
+          {
+            "id": "service_codes",
+            "type": {
+              "id": "custom",
+              "pattern": ": (.+)",
+              "matchMultipleLines": true
+            },
+            "anchor": {
+              "match": {
+                "text": "service code(s)",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "includeAnchor": true,
+              "sortLines": "readingOrderLeftToRight",
+              "xRangeFilter": {
+                "start": "left",
+                "offsetX": -0.1,
+                "width": 3.7
+              }
+            }
+          },
+          {
+            "id": "reason_codes",
+            "type": {
+              "id": "custom",
+              "pattern": ": (.+)",
+              "matchMultipleLines": true
+            },
+            "anchor": {
+              "match": {
+                "text": "reason code(s)",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "includeAnchor": true,
+              "sortLines": "readingOrderLeftToRight",
+              "xRangeFilter": {
+                "start": "left",
+                "offsetX": -0.1,
+                "width": 3.7
+              }
+            }
+          },
+          {
+            "id": "tooth_number",
+            "type": {
+              "id": "custom",
+              "pattern": ": (.+)",
+              "matchMultipleLines": true
+            },
+            "anchor": {
+              "match": {
+                "text": "tooth number",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "includeAnchor": true,
+              "sortLines": "readingOrderLeftToRight",
+              "xRangeFilter": {
+                "start": "left",
+                "offsetX": -0.1,
+                "width": 3.7
+              }
+            }
+          },
+          {
+            "id": "total_charge",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "default"
+            },
+            "anchor": {
+              "match": {
+                "text": "total charge",
+                "type": "startsWith",
+                "editDistance": 1
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "plan_discounts",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "default"
+            },
+            "anchor": {
+              "match": {
+                "text": "plan discounts",
+                "type": "startsWith",
+                "editDistance": 1
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "plan_benefit_exclusions",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "default"
+            },
+            "anchor": {
+              "match": {
+                "text": "plan/benefit exclusions",
+                "type": "startsWith",
+                "editDistance": 1
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "allowed_amount",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "default"
+            },
+            "anchor": {
+              "match": {
+                "text": "allowed amount",
+                "type": "startsWith",
+                "editDistance": 1
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "estimated_benefit",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "default"
+            },
+            "anchor": {
+              "match": {
+                "text": "estimated benefit",
+                "type": "startsWith",
+                "editDistance": 1
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "copay",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "default"
+            },
+            "anchor": {
+              "match": {
+                "text": "copay",
+                "type": "startsWith",
+                "editDistance": 1
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "sortLines": "readingOrderLeftToRight"
+            }
+          },
+          {
+            "id": "coinsurance",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "default"
+            },
+            "anchor": {
+              "match": {
+                "text": "coinsurance",
+                "type": "includes",
+                "editDistance": 1
+              }
+            },
+            "method": {
+              "id": "row",
+              "position": "right",
+              "sortLines": "readingOrderLeftToRight"
+            }
+          }
+        ]
+      }
+    ],
+    "computed_fields": [
+      {
+        "id": "suppress",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "provider_raw",
+            "claim_number_raw",
+            "patient_name_raw",
+            "member_id_raw",
+            "group_name_raw",
+            "group_id_raw",
+            "plan_type_raw",
+            "birth_year_raw",
+            "npi_raw"
+          ]
+        }
+      }
+    ]
+  }
