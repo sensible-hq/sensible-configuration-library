@@ -1,11 +1,8 @@
 #!/usr/bin/env -S npx ts-node -T
 
-import {
-  PutObjectCommand,
-  S3Client,
-} from "@aws-sdk/client-s3";
+import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { createHash } from "crypto";
-import { createTemplateLibrary  } from "./helpers";
+import { createTemplateLibrary } from "./helpers";
 
 const targets: Record<string, readonly string[]> = {
   "us-west-2": ["prod", "dev", "exp1"],
@@ -13,8 +10,8 @@ const targets: Record<string, readonly string[]> = {
   "ca-central-1": ["prod"],
 } as const;
 
-async function uploadManifest(manifest: string) {
-  const ContentMD5 = createHash("md5").update(manifest).digest("base64");
+async function uploadLibrary(library: string) {
+  const ContentMD5 = createHash("md5").update(library).digest("base64");
   await Promise.all(
     Object.entries(targets).flatMap(async ([region, stages]) => {
       const s3 = new S3Client({ region });
@@ -23,20 +20,19 @@ async function uploadManifest(manifest: string) {
           new PutObjectCommand({
             Bucket: `sensible-so-utility-bucket-${stage}-${region}`,
             Key: "CONFIG_LIBRARY/manifest_v2.json",
-            Body: manifest,
+            Body: library,
             ContentMD5,
             ContentType: "application/json",
-          })
-        )
+          }),
+        ),
       );
-    })
+    }),
   );
 }
 
 async function main() {
-  const manifest = await createTemplateLibrary();
-  console.log({ manifest })
-  //await uploadManifest(manifest);
+  const library = await createTemplateLibrary();
+  await uploadLibrary(library);
 }
 
 main().catch((error) => {
