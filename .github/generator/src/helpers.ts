@@ -23,8 +23,7 @@ export async function createTemplateLibrary() {
 
   await Promise.all(
     directories.map(async (dirent) => {
-      const path = [dirent.path, dirent.name].join("/");
-      const subgroup = await getLibrarySubGroup(path);
+      const subgroup = await getLibrarySubGroup(dirent.path);
       templateLibrary.library[dirent.name] = subgroup;
     }),
   );
@@ -32,7 +31,7 @@ export async function createTemplateLibrary() {
   return JSON.stringify(templateLibrary);
 }
 
-export async function getLibrarySubGroup(
+async function getLibrarySubGroup(
   path: string,
 ): Promise<LibraryGroup | LibraryDocType> {
   const groupPathParts = path.split("/");
@@ -74,9 +73,7 @@ export async function getLibrarySubGroup(
   for (const entry of directoryEntries) {
     if (!entry.isDirectory()) continue;
 
-    const librarySubGroup = await getLibrarySubGroup(
-      [entry.path, entry.name].join("/"),
-    );
+    const librarySubGroup = await getLibrarySubGroup(entry.path);
 
     const isValidSubGroup =
       "children" in librarySubGroup &&
@@ -113,18 +110,13 @@ async function getLibraryDocType({
   schemaFile: Dirent;
 }) {
   // grab doc type refdocs, configs, and the doctype schema object
-  const refDocs = await fs.readdir(
-    `${refDocsDirectory.path}/${refDocsDirectory.name}`,
-    { withFileTypes: true },
-  );
-  const configurations = await fs.readdir(
-    `${configurationsDirectory.path}/${configurationsDirectory.name}`,
-    { withFileTypes: true },
-  );
-  const schema = await fs.readFile(
-    `${schemaFile.path}/${schemaFile.name}`,
-    "utf8",
-  );
+  const refDocs = await fs.readdir(refDocsDirectory.path, {
+    withFileTypes: true,
+  });
+  const configurations = await fs.readdir(configurationsDirectory.path, {
+    withFileTypes: true,
+  });
+  const schema = await fs.readFile(schemaFile.path, "utf8");
   const schemaObj = JSON.parse(schema) as LibraryDocTypeSchema;
 
   // grab the first two available thumbnails from child files
@@ -165,5 +157,5 @@ function getDocPath(dirent: Dirent): string {
   const docTypePath = fileSystemPathSplit.at(-1);
 
   if (!docTypePath) throw new Error("Invalid reference doc path");
-  return `${docTypePath}/${dirent.name}`;
+  return docTypePath;
 }
