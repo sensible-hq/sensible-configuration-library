@@ -131,7 +131,7 @@ async function getLibraryDocType({
   const docTypeThumbnails = refDocs
     .filter((refDoc) => refDoc.name.match(/.*\.png$/i))
     .slice(0, 2)
-    .map((refDoc) => getFileDownloadUrl(refDoc));
+    .map((refDoc) => getDocPath(refDoc));
 
   const libraryDocType: LibraryDocType = {
     schema: schemaObj,
@@ -160,16 +160,10 @@ async function getLibraryDocType({
   return libraryDocType;
 }
 
-function getDocTypePath(dirent: Dirent): string {
-  const fileSystemPathSplit = dirent.path.split(REPO_NAME);
+function getDocPath(dirent: Dirent): string {
+  const fileSystemPathSplit = dirent.path.split(`${REPO_NAME}/`);
   const docTypePath = fileSystemPathSplit.at(-1);
 
   if (!docTypePath) throw new Error("Invalid reference doc path");
-  return docTypePath;
-}
-
-function getFileDownloadUrl(dirent: Dirent): string {
-  const path = getDocTypePath(dirent);
-
-  return `${DOWNLOAD_URL_PREFIX}${encodeURI(path)}/${dirent.name}`;
+  return `${docTypePath}/${dirent.name}`;
 }
