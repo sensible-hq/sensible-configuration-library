@@ -129,6 +129,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [IAT](./loss_runs/iat/iat.json)
 - [ICW](./loss_runs/icw/icw.json)
 - [Knight Specialty](./loss_runs/knight_specialty/knight_specialty.json)
+- [PMA](./loss_runs/pma/pma.json)
 - [Northland](./loss_runs/northland/northland.json)
 - [Spirit](./loss_runs/spirit/spirit.json)
 - [Statefund](./loss_runs/statefund/statefund.json)
