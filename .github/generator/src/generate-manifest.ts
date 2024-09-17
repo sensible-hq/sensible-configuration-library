@@ -2,7 +2,7 @@
 
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
 import { createHash } from "crypto";
-import { createTemplateLibrary } from "./helpers";
+import { createTemplateLibrary } from "./create-template-library";
 
 const targets: Record<string, readonly string[]> = {
   "us-west-2": ["prod", "dev", "exp1"],

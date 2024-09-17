@@ -1,5 +1,5 @@
 import assert from "assert";
-import { createTemplateLibrary } from "./helpers";
+import { createTemplateLibrary } from "./create-template-library";
 import { Library, LibraryGroup } from "./types";
 
 describe("createTemplateLibrary", () => {
