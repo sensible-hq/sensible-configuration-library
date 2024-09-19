@@ -4,7 +4,7 @@ import * as fs from "fs/promises";
 import {
   Library,
   LibraryDocType,
-  LibraryDocTypeSchema,
+  OutputSchema,
   LibraryGroup,
   LibraryTemplate,
 } from "./types";
@@ -117,7 +117,7 @@ async function getLibraryDocType({
     withFileTypes: true,
   });
   const schema = await fs.readFile(schemaFile.path, "utf8");
-  const schemaObj = JSON.parse(schema) as LibraryDocTypeSchema;
+  const schemaObj = JSON.parse(schema) as OutputSchema;
 
   // grab the first two available thumbnails from child files
   const docTypeThumbnails = refDocs
