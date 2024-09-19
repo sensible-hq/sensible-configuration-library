@@ -149,6 +149,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [1040 (Senior 2020)](./tax_forms/1040/2020/senior_1040_2020.json)
 - [1040 (2021)](./tax_forms/1040/2021/1040_2021.json)
 - [1040 (Senior 2021)](./tax_forms/1040/2021/senior_1040_2021.json)
+- [1040 (Schedule C 2023)](./tax_forms/1040/2023/schedule_c.json)
 - [1065 (2018)](./tax_forms/1065_2018.json)
 - [1099 (2020)](./tax_forms/1099_2020.json)
 - [1120 (2019)](./tax_forms/1120_2019.json)
