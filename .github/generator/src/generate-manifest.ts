@@ -19,7 +19,7 @@ async function uploadLibrary(library: string) {
         s3.send(
           new PutObjectCommand({
             Bucket: `sensible-so-utility-bucket-${stage}-${region}`,
-            Key: "CONFIG_LIBRARY/manifest_v2.json",
+            Key: "CONFIG_LIBRARY/manifest_v3.json",
             Body: library,
             ContentMD5,
             ContentType: "application/json",
