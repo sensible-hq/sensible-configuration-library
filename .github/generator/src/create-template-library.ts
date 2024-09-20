@@ -23,7 +23,7 @@ export async function createTemplateLibrary() {
 
   await Promise.all(
     directories.map(async (dirent) => {
-      const subgroup = await getLibrarySubGroup(dirent.path);
+      const subgroup = await getLibrarySubGroup(realPath(dirent));
       templateLibrary.library[dirent.name] = subgroup;
     }),
   );
@@ -73,7 +73,7 @@ async function getLibrarySubGroup(
   for (const entry of directoryEntries) {
     if (!entry.isDirectory()) continue;
 
-    const librarySubGroup = await getLibrarySubGroup(entry.path);
+    const librarySubGroup = await getLibrarySubGroup(`${path}/${entry.name}`);
 
     const isValidSubGroup =
       "children" in librarySubGroup &&
@@ -110,13 +110,13 @@ async function getLibraryDocType({
   schemaFile: Dirent;
 }) {
   // grab doc type refdocs, configs, and the doctype schema object
-  const refDocs = await fs.readdir(refDocsDirectory.path, {
+  const refDocs = await fs.readdir(realPath(refDocsDirectory), {
     withFileTypes: true,
   });
-  const configurations = await fs.readdir(configurationsDirectory.path, {
+  const configurations = await fs.readdir(realPath(configurationsDirectory), {
     withFileTypes: true,
   });
-  const schema = await fs.readFile(schemaFile.path, "utf8");
+  const schema = await fs.readFile(realPath(schemaFile), "utf8");
   const schemaObj = JSON.parse(schema) as OutputSchema;
 
   // grab the first two available thumbnails from child files
@@ -153,9 +153,13 @@ async function getLibraryDocType({
 }
 
 function getDocPath(dirent: Dirent): string {
-  const fileSystemPathSplit = dirent.path.split(`${REPO_NAME}/`);
+  const fileSystemPathSplit = realPath(dirent).split(`${REPO_NAME}/`);
   const docTypePath = fileSystemPathSplit.at(-1);
 
   if (!docTypePath) throw new Error("Invalid reference doc path");
   return docTypePath;
+}
+
+function realPath(dirent: Dirent) {
+  return `${dirent.parentPath}/${dirent.name}`
 }
