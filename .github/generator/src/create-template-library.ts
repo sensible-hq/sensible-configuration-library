@@ -10,7 +10,7 @@ import {
 } from "./types";
 
 const REPO_NAME = "sensible-configuration-library";
-const DOWNLOAD_URL_PREFIX = `https://raw.githubusercontent.com/sensible-hq/${REPO_NAME}/nm_template-library-reorg`;
+const DOWNLOAD_URL_PREFIX = `https://raw.githubusercontent.com/sensible-hq/${REPO_NAME}/main`;
 
 export async function createTemplateLibrary() {
   const root = path.join(__dirname, "..", "..", "..", "templates");
