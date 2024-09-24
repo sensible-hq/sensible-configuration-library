@@ -104,7 +104,7 @@ export type OutputSchema = {
 
 export type Library = {
   baseUrl: string;
-  library: LibraryGroup["children"];
+  library: Record<string, LibraryGroup>;
 };
 
 export type LibraryGroup = {

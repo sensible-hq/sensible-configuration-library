@@ -24,7 +24,9 @@ export async function createTemplateLibrary() {
   await Promise.all(
     directories.map(async (dirent) => {
       const subgroup = await getLibrarySubGroup(realPath(dirent));
-      templateLibrary.library[dirent.name] = subgroup;
+      if ('children' in subgroup) {
+        templateLibrary.library[dirent.name] = subgroup;
+      }
     }),
   );
 
