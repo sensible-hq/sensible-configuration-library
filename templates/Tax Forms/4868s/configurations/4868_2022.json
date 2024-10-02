@@ -1,0 +1,338 @@
+{
+  "fingerprint": {
+    "tests": [
+      {
+        "page": "first",
+        "match": [
+          {
+            "text": "application for automatic extension",
+            "type": "startsWith"
+          },
+          {
+            "text": "2022",
+            "type": "equals"
+          },
+          {
+            "text": "For calendar year 2022,",
+            "type": "includes"
+          }
+        ]
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "primaryRaw",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "1 Your name(s) (see instructions)",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "primaryAddressStreet",
+      "type": "string",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "Address (see instructions)",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.7,
+        "height": 0.34,
+        "offsetY": 0.1,
+        "offsetX": -0.2,
+        "wordFilters": ["city, town, or post office", "state", "zip code"]
+      }
+    },
+    {
+      "id": "primaryAddressCitySTZip",
+      "type": "string",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "Address (see instructions)",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 3.7,
+        "height": 0.34,
+        "offsetY": 0.4,
+        "offsetX": -0.2,
+        "wordFilters": ["city, town, or post office", "state", "zip code"]
+      }
+    },
+    {
+      "id": "primarySSN",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "2 Your social security number",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "spouseSSN",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "3 Spouse's social security number",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "estimateTaxLiability",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "estimate of total",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right"
+      }
+    },
+    {
+      "id": "PaymentsMade",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "total 2022",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right"
+      }
+    },
+    {
+      "id": "balanceDue",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "see instructions",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right"
+      }
+    },
+    {
+      "id": "amountBeingPaid",
+      "type": "currency",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "amount you're paying",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right"
+      }
+    },
+    {
+      "id": "overseasUSCitizen",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "Check here if you're",
+          "type": "startsWith"
+        },
+        "end": "(2022)"
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "right"
+      }
+    },
+    {
+      "id": "nonresidentAlien",
+      "match": "last",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "withholding",
+          "type": "includes"
+        },
+        "end": "(2022)"
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "right"
+      }
+    },
+    {
+      "id": "taxYearBeginMonth",
+      "type": "string",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "other tax year beginning",
+          "type": "endsWith"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "taxYearEndMonth",
+      "type": "string",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": ", and ending",
+          "type": "endsWith"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "taxYearEndYear",
+      "type": "number",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": ", and ending",
+          "type": "endsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 0.3,
+        "height": 0.3,
+        "offsetY": -0.2,
+        "offsetX": 1.6
+      }
+    },
+    {
+      "id": "year",
+      "type": "string",
+      "anchor": {
+        "start": {
+          "text": "application for automatic",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": ", and ending",
+          "type": "endsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "width": 1,
+        "height": 0.5,
+        "offsetY": -0.4,
+        "offsetX": 2.2
+      }
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "primaryFirstName",
+      "method": {
+        "id": "split",
+        "source_id": "primaryRaw",
+        "separator": " ",
+        "index": 0
+      }
+    },
+    {
+      "id": "primaryLastName",
+      "method": {
+        "id": "split",
+        "source_id": "primaryRaw",
+        "separator": " ",
+        "index": 1
+      }
+    },
+    {
+      "id": "suppress",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": ["primaryRaw"]
+      }
+    }
+  ]
+}
