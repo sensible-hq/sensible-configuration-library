@@ -8,8 +8,8 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 
 ## Table of Contents
 
-## [Verticals](#verticals)
-### [Financial Services](#financial-services)
+## [Verticals](#verticals-1)
+### [Financial Services](#financial-services-1)
 - [Balance Sheets](#balance-sheets)
 - [Bank statements](#bank-statements)
 - [Credid Card Statements](#credit-card-statements)
@@ -17,31 +17,31 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [Verification of Assets](#verification-of-assets)
 - [Verification of Employement](#verifications-of-employment)
 
-### [Healthcare](#healthcare)
+### [Healthcare](#healthcare-1)
 - [CMS 1500](#cms-1500s)
 - [Dental Explanation of Benefits](#dental-explanation-of-benefits)
 - [Explanation of Benefits](#explanation-of-benefits)
 
-### [Human Resources](#human-resources)
+### [Human Resources](#human-resources-1)
 - [Pay Stubs](#pay-stubs)
 - [Resumes](#resumes)
 
-### [Identification](#identification)
+### [Identification](#identification-1)
 - [Driver's License](#drivers-licenses)
 
-### [Insurance](#insurance)
+### [Insurance](#insurance-1)
 - [ACORD Forms](#acords)
 - [Loss Runs](#loss-runs)
 - [Policy Declaration Pages](#policy-declaration-pages)
 
-### [Logistics](#logistics)
+### [Logistics](#logistics-1)
 - [Rate Confirmations](#rate-confirmations)
 
-### [Real Estate](#real-estate)
+### [Real Estate](#real-estate-1)
 - [Closing Disclosures](#closing-disclosures)
 - [PropTech](#proptech)
 
-### [Tax Forms](#tax-forms)
+### [Tax Forms](#tax-forms-1)
 - [941](#941s)
 - [1040](#1040s)
 - [1065](#1065s)
@@ -51,10 +51,10 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [W2](#w2s)
 - [W9](#w9s)
 
-### [Invoices](#invoices)
+### [Invoices](#invoices-1)
 
-## [Using a configuration](#using-a-configuration)
-## [Contributing to the library](#contributing-to-the-library)
+## [Using a configuration](#using-a-configuration-1)
+## [Contributing to the library](#contributing-to-the-library-1)
 --------------------------
 
 ## Verticals
