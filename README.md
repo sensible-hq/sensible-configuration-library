@@ -6,6 +6,57 @@ Open-source SenseML configurations for public use by [Sensible](https://www.sens
 
 SenseML is Sensible's document query language. SenseML provides a set of [primitives](https://docs.sensible.so/docs/methods) (such as `label`, `row`, and `table`) that make it easy to describe the data you'd like to extract from documents.
 
+## Table of Contents
+
+## [Verticals](#verticals)
+### [Financial Services](#financial-services)
+- [Balance Sheets](#balance-sheets)
+- [Bank statements](#bank-statements)
+- [Credid Card Statements](#credit-card-statements)
+- [Retirement](#retirement)
+- [Verification of Assets](#verification-of-assets)
+- [Verification of Employement](#verifications-of-employment)
+
+### [Healthcare](#healthcare)
+- [CMS 1500](#cms-1500s)
+- [Dental Explanation of Benefits](#dental-explanation-of-benefits)
+- [Explanation of Benefits](#explanation-of-benefits)
+
+### [Human Resources](#human-resources)
+- [Pay Stubs](#pay-stubs)
+- [Resumes](#resumes)
+
+### [Identification](#identification)
+- [Driver's License](#drivers-licenses)
+
+### [Insurance](#insurance)
+- [ACORD Forms](#acords)
+- [Loss Runs](#loss-runs)
+- [Policy Declaration Pages](#policy-declaration-pages)
+
+### [Logistics](#logistics)
+- [Rate Confirmations](#rate-confirmations)
+
+### [Real Estate](#real-estate)
+- [Closing Disclosures](#closing-disclosures)
+- [PropTech](#proptech)
+
+### [Tax Forms](#tax-forms)
+- [941](#941s)
+- [1040](#1040s)
+- [1065](#1065s)
+- [1099](#1099s)
+- [1120](#1120s)
+- [4868](#4868s)
+- [W2](#w2s)
+- [W9](#w9s)
+
+### [Invoices](#invoices)
+
+## [Using a configuration](#using-a-configuration)
+## [Contributing to the library](#contributing-to-the-library)
+--------------------------
+
 ## Verticals
 
 ### Insurance
@@ -14,70 +65,70 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 
 ##### Auto
 
-- [Allstate](./auto_policy_declaration_pages/allstate/allstate.json)
-- [Branch](./auto_policy_declaration_pages/branch/branch.json)
-- [Dairyland](./auto_policy_declaration_pages/Dairyland/Dairyland.json)
-- [Farmer's](./auto_policy_declaration_pages/farmers/farmers.json)
-- [Geico](./auto_policy_declaration_pages/geico/geico.json)
-- [Liberty Mutual](./auto_policy_declaration_pages/liberty_mutual/liberty_mutual.json)
-- [Nationwide](./auto_policy_declaration_pages/nationwide/nationwide.json)
-- [Progressive](./auto_policy_declaration_pages/progressive/progressive.json)
-- [Root Insurance](./auto_policy_declaration_pages/root_insurance/root_insurance.json)
-- [State Farm](./auto_policy_declaration_pages/state_farm/state_farm.json)
-- [The General](./auto_policy_declaration_pages/the_general/the_general.json)
-- [Traveler's](./auto_policy_declaration_pages/travelers/travelers.json)
-- [USAA](./auto_policy_declaration_pages/usaa/usaa.json)
+- [Allstate](<./templates/Insurance/Policy Declaration Pages/Auto Policy Declaration/configurations/allstate.json>)
+- [Branch](<./templates/Insurance/Policy Declaration Pages/Auto Policy Declaration/configurations/branch.json>)
+- [Dairyland](<./templates/Insurance/Policy Declaration Pages/Auto Policy Declaration/configurations/dairyland.json>)
+- [Farmer's](<./templates/Insurance/Policy Declaration Pages/Auto Policy Declaration/configurations/farmers.json>)
+- [Geico](<./templates/Insurance/Policy Declaration Pages/Auto Policy Declaration/configurations/geico.json>)
+- [Liberty Mutual](<./templates/Insurance/Policy Declaration Pages/Auto Policy Declaration/configurations/liberty_mutual.json>)
+- [Nationwide](<./templates/Insurance/Policy Declaration Pages/Auto Policy Declaration/configurations/nationwide.json>)
+- [Progressive](<./templates/Insurance/Policy Declaration Pages/Auto Policy Declaration/configurations/progressive.json>)
+- [Root Insurance](<./templates/Insurance/Policy Declaration Pages/Auto Policy Declaration/configurations/root_insurance.json>)
+- [State Farm](<./templates/Insurance/Policy Declaration Pages/Auto Policy Declaration/configurations/state_farm.json>)
+- [The General](<./templates/Insurance/Policy Declaration Pages/Auto Policy Declaration/configurations/the_general.json>)
+- [Traveler's](<./templates/Insurance/Policy Declaration Pages/Auto Policy Declaration/configurations/travelers.json>)
+- [USAA](<./templates/Insurance/Policy Declaration Pages/Auto Policy Declaration/configurations/usaa.json>)
 
 ##### Home
 
-- [Allstate](./home_policy_declaration_pages/allstate/allstate.json)
-- [Branch](./home_policy_declaration_pages/branch/branch.json)
-- [Farmer's](./home_policy_declaration_pages/farmers/farmers.json)
-- [Geico](./home_policy_declaration_pages/geico/geico.json)
-- [Hanover](./home_policy_declaration_pages/hanover/hanover.json)
-- [Hartford](./home_policy_declaration_pages/hartford/hartford.json)
-- [Lemonade](./home_policy_declaration_pages/lemonade/lemonade.json)
-- [Liberty Mutual](./home_policy_declaration_pages/liberty_mutual/liberty_mutual.json)
-- [Nationwide](./home_policy_declaration_pages/nationwide/nationwide.json)
-- [Progessive (Short)](./home_policy_declaration_pages/progressive/progressive_short.json)
-- [Progressive](./home_policy_declaration_pages/progressive/progressive.json)
-- [Pure](./home_policy_declaration_pages/pure/pure.json)
-- [State Farm](./home_policy_declaration_pages/state_farm/state_farm.json)
-- [State Farm (Short)](./home_policy_declaration_pages/state_farm/state_farm_short.json)
-- [Traveler's](./home_policy_declaration_pages/travelers/travelers.json)
-- [Traveler's (Geico)](./home_policy_declaration_pages/travelers/travelers_geico.json)
-- [Traveler's (High Value)](./home_policy_declaration_pages/travelers/travelers_high_value.json)
-- [USAA](./home_policy_declaration_pages/usaa/usaa.json)
+- [Allstate](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/allstate.json>)
+- [Branch](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/branch.json>)
+- [Farmer's](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/farmers.json>)
+- [Geico](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/geico.json>)
+- [Hanover](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/hanover.json>)
+- [Hartford](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/hartford.json>)
+- [Lemonade](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/lemonade.json>)
+- [Liberty Mutual](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/liberty_mutual.json>)
+- [Nationwide](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/nationwide.json>)
+- [Progessive (Short)](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/progressive_short.json>)
+- [Progressive](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/progressive.json>)
+- [Pure](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/pure.json>)
+- [State Farm](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/state_farm.json>)
+- [State Farm (Short)](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/state_farm_short.json>)
+- [Traveler's](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/travelers.json>)
+- [Traveler's (Geico)](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/travelers_geico.json>)
+- [Traveler's (High Value)](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/travelers_high_value.json>)
+- [USAA](<./templates/Insurance/Policy Declaration Pages/Home Policy Declaration/configurations/usaa.json>)
 
 ##### Renters
 
-- [Allstate](./renters_policy_declaration_pages/allstate/allstate.json)
-- [Farmer's](./renters_policy_declaration_pages/farmers/farmers.json)
-- [Geico](./renters_policy_declaration_pages/geico/geico.json)
-- [Lemonade](./renters_policy_declaration_pages/lemonade/lemonade.json)
-- [Liberty Mutual](./renters_policy_declaration_pages/liberty_mutual/liberty_mutual.json)
-- [Nationwide](./renters_policy_declaration_pages/nationwide/nationwide.json)
-- [Progressive (Short)](./renters_policy_declaration_pages/progressive/progressive_short.json)
-- [Progressive](./renters_policy_declaration_pages/progressive/progressive.json)
-- [State Farm](./renters_policy_declaration_pages/state_farm/state_farm.json)
-- [Travelers](./renters_policy_declaration_pages/travelers/travelers.json)
-- [USAA](./renters_policy_declaration_pages/usaa/usaa.json)
+- [Allstate](<./templates/Insurance/Policy Declaration Pages/Renters Policy Declaration/configurations/allstate.json>)
+- [Farmer's](<./templates/Insurance/Policy Declaration Pages/Renters Policy Declaration/configurations/farmers.json>)
+- [Geico](<./templates/Insurance/Policy Declaration Pages/Renters Policy Declaration/configurations/geico.json>)
+- [Lemonade](<./templates/Insurance/Policy Declaration Pages/Renters Policy Declaration/configurations/lemonade.json>)
+- [Liberty Mutual](<./templates/Insurance/Policy Declaration Pages/Renters Policy Declaration/configurations/liberty_mutual.json>)
+- [Nationwide](<./templates/Insurance/Policy Declaration Pages/Renters Policy Declaration/configurations/nationwide.json>)
+- [Progressive (Short)](<./templates/Insurance/Policy Declaration Pages/Renters Policy Declaration/configurations/progressive_short.json>)
+- [Progressive](<./templates/Insurance/Policy Declaration Pages/Renters Policy Declaration/configurations/progressive.json>)
+- [State Farm](<./templates/Insurance/Policy Declaration Pages/Renters Policy Declaration/configurations/state_farm.json>)
+- [Travelers](<./templates/Insurance/Policy Declaration Pages/Renters Policy Declaration/configurations/travelers.json>)
+- [USAA](<./templates/Insurance/Policy Declaration Pages/Renters Policy Declaration/configurations/usaa.json>)
 
 ##### Pet
 
-- [Healthy Paws](./pet_policy_declaration_pages/healthy_paws/healthy_paws.json)
-- [Lemonade](./pet_policy_declaration_pages/lemonade/lemonade.json)
-- [Nationwide](./pet_policy_declaration_pages/nationwide/nationwide.json)
-- [Trupanion](./pet_policy_declaration_pages/trupanion/trupanion.json)
+- [Healthy Paws](<./templates/Insurance/Policy Declaration Pages/Pet Policy Declaration/configurations/healthy_paws.json>)
+- [Lemonade](<./templates/Insurance/Policy Declaration Pages/Pet Policy Declaration/configurations/lemonade.json>)
+- [Nationwide](<./templates/Insurance/Policy Declaration Pages/Pet Policy Declaration/configurations/nationwide.json>)
+- [Trupanion](<./templates/Insurance/Policy Declaration Pages/Pet Policy Declaration/configurations/trupanion.json>)
 
 ##### Businessowners
 
-- [Auto Owners](./businessowners_policy_declaration_pages/auto_owners/auto_owners.json)
-- [Chubb](./businessowners_policy_declaration_pages/chubb/chubb.json)
-- [CNA](./businessowners_policy_declaration_pages/cna/cna.json)
-- [Erie](./businessowners_policy_declaration_pages/erie/erie.json)
-- [Nationwide](./businessowners_policy_declaration_pages/nationwide/nationwide.json)
-- [Society](./businessowners_policy_declaration_pages/society/society.json)
+- [Auto Owners](<./templates/Insurance/Policy Declaration Pages/Businessowners Policy Declaration/configurations/auto_owners.json>)
+- [Chubb](<./templates/Insurance/Policy Declaration Pages/Businessowners Policy Declaration/configurations/chubb.json>)
+- [CNA](<./templates/Insurance/Policy Declaration Pages/Businessowners Policy Declaration/configurations/cna.json>)
+- [Erie](<./templates/Insurance/Policy Declaration Pages/Businessowners Policy Declaration/configurations/erie.json>)
+- [Nationwide](<./templates/Insurance/Policy Declaration Pages/Businessowners Policy Declaration/configurations/nationwide.json>)
+- [Society](<./templates/Insurance/Policy Declaration Pages/Businessowners Policy Declaration/configurations/society.json>)
 
 
 
@@ -85,181 +136,216 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 
 Find the ACORD year/month at the bottom left corner of each ACORD page. Often the differences between versions are minor and can use the same configuration.
 
-- [ACORD 23 (03/2016)](./acords/acord_23/acord_23_2010_05__2016_03.json)
-- [ACORD 24 (03/2016)](./acords/acord_24/acord_24_2009_09__2016_03.json)
-- [ACORD 25 (04/2010_01/2014)](./acords/acord_25/acord_25_2010_05_2014_01.json)
-- [ACORD 25 (03/2016)](./acords/acord_25/acord_25_2016_03.json)
-- [ACORD 27 (03/2016)](./acords/acord_27/acord_27_2016_03.json)
-- [ACORD 28 (03/2016)](./acords/acord_28/acord_28_2016_03.json)
-- [ACORD 45 (03/2016)](./acords/acord_45/acord_45_2016_03.json)
-- [ACORD 75 (09/2013)](./acords/acord_75/acord_75_2013_09.json)
-- [ACORD 101 (01/2008)](./acords/acord_101/acord_101_2008_01.json)
-- [ACORD 125 (12/2014)](./acords/acord_125/acord_125_2014_12.json)
-- [ACORD 125 (03/2016)](./acords/acord_125/acord_125_2016_03.json)
-- [ACORD 126 (05/2007)](./acords/acord_126/acord_126_2007_05.json)
-- [ACORD 126 (09/2011)](./acords/acord_126/acord_126_2011_09.json)
-- [ACORD 126 (09/2016)](./acords/acord_126/acord_126_2016_09.json)
-- [ACORD 127 (12/2015)](./acords/acord_127/acord_127_2015_12.json)
-- [ACORD 130 (08/2005)](./acords/acord_130/acord_130_2005_08.json)
-- [ACORD 130 (09/2013)](./acords/acord_130/acord_130_2013_09.json)
-- [ACORD 130 (05/2017)](./acords/acord_130/acord_130_2017_05.json)
-- [ACORD 130 (07/2019 FL)](./acords/acord_130/acord_130_2019_07_fl.json)
-- [ACORD 131 (10/2009)](./acords/acord_131/acord_131_2009_10.json)
-- [ACORD 131 (04/2016)](./acords/acord_131/acord_131_2016_04.json)
-- [ACORD 140 (09/2007)](./acords/acord_140/acord_140_2007_09.json)
-- [ACORD 140 (12/2014)](./acords/acord_140/acord_140_2014_12.json)
-- [ACORD 140 (03/2016)](./acords/acord_140/acord_140_2016_03.json)
-- [ACORD 304 (06/2008)](./acords/acord_304/acord_304_2008_06.json)
-- [ACORD 823 (07/2007)](./acords/acord_823/acord_823_2007_07.json)
-- [ACORD 823 (10/2011)](./acords/acord_823/acord_823_2011_10.json)
-- [ACORD 823 (12/2015)](./acords/acord_823/acord_823_2015_12.json)
+- [ACORD 23 (03/2016)](<./templates/Insurance/ACORD Forms/configurations/acord_23_2010_05__2016_03.json>)
+- [ACORD 24 (03/2016)](<./templates/Insurance/ACORD Forms/configurations/acord_24_2009_09__2016_03.json>)
+- [ACORD 25 (04/2010_01/2014)](<./templates/Insurance/ACORD Forms/configurations/acord_25_2010_05_2014_01.json>)
+- [ACORD 25 (03/2016)](<./templates/Insurance/ACORD Forms/configurations/acord_25_2016_03.json>)
+- [ACORD 27 (03/2016)](<./templates/Insurance/ACORD Forms/configurations/acord_27_2016_03.json>)
+- [ACORD 28 (03/2016)](<./templates/Insurance/ACORD Forms/configurations/acord_28_2016_03.json>)
+- [ACORD 45 (03/2016)](<./templates/Insurance/ACORD Forms/configurations/acord_45_2016_03.json>)
+- [ACORD 75 (09/2013)](<./templates/Insurance/ACORD Forms/configurations/acord_75_2013_09.json>)
+- [ACORD 101 (01/2008)](<./templates/Insurance/ACORD Forms/configurations/acord_101_2008_01.json>)
+- [ACORD 125 (12/2014)](<./templates/Insurance/ACORD Forms/configurations/acord_125_2014_12.json>)
+- [ACORD 125 (03/2016)](<./templates/Insurance/ACORD Forms/configurations/acord_125_2016_03.json>)
+- [ACORD 126 (05/2007)](<./templates/Insurance/ACORD Forms/configurations/acord_126_2007_05.json>)
+- [ACORD 126 (09/2011)](<./templates/Insurance/ACORD Forms/configurations/acord_126_2011_09.json>)
+- [ACORD 126 (09/2016)](<./templates/Insurance/ACORD Forms/configurations/acord_126_2016_09.json>)
+- [ACORD 127 (12/2015)](<./templates/Insurance/ACORD Forms/configurations/acord_127_2015_12.json>)
+- [ACORD 130 (08/2005)](<./templates/Insurance/ACORD Forms/configurations/acord_130_2005_08.json>)
+- [ACORD 130 (09/2013)](<./templates/Insurance/ACORD Forms/configurations/acord_130_2013_09.json>)
+- [ACORD 130 (05/2017)](<./templates/Insurance/ACORD Forms/configurations/acord_130_2017_05.json>)
+- [ACORD 130 (07/2019 FL)](<./templates/Insurance/ACORD Forms/configurations/acord_130_2019_07_fl.json>)
+- [ACORD 131 (10/2009)](<./templates/Insurance/ACORD Forms/configurations/acord_131_2009_10.json>)
+- [ACORD 131 (04/2016)](<./templates/Insurance/ACORD Forms/configurations/acord_131_2016_04.json>)
+- [ACORD 140 (09/2007)](<./templates/Insurance/ACORD Forms/configurations/acord_140_2007_09.json>)
+- [ACORD 140 (12/2014)](<./templates/Insurance/ACORD Forms/configurations/acord_140_2014_12.json>)
+- [ACORD 140 (03/2016)](<./templates/Insurance/ACORD Forms/configurations/acord_140_2016_03.json>)
+- [ACORD 304 (06/2008)](<./templates/Insurance/ACORD Forms/configurations/acord_304_2008_06.json>)
+- [ACORD 823 (07/2007)](<./templates/Insurance/ACORD Forms/configurations/acord_823_2007_07.json>)
+- [ACORD 823 (10/2011)](<./templates/Insurance/ACORD Forms/configurations/acord_823_2011_10.json>)
+- [ACORD 823 (12/2015)](<./templates/Insurance/ACORD Forms/configurations/acord_823_2015_12.json>)
 
 #### Loss runs
 
-- [AIG](./loss_runs/aig/aig.json)
-- [AMIC](./loss_runs/amic/amic.json)
-- [Amtrust (Worker's Comp)](./loss_runs/amtrust/amtrust_workers_comp.json)
-- [Applied Underwriters](./loss_runs/applied_underwriters/applied_underwriters.json)
-- [Atlas](./loss_runs/atlas/atlas.json)
-- [Benchmark](./loss_runs/benchmark/benchmark.json)
-- [Berkley National](./loss_runs/berkley_national/berkley_national.json)
-- [Berkley Prime](./loss_runs/berkley_prime/berkley_prime.json)
-- [Berkshire](./loss_runs/berkshire/berkshire.json)
-- [Canal](./loss_runs/canal/canal.json)
-- [Chubb](./loss_runs/chubb/chubb.json)
-- [Compwest](./loss_runs/compwest/compwest.json)
-- [Hallmark](./loss_runs/hallmark/hallmark.json)
-- [IAT](./loss_runs/iat/iat.json)
-- [ICW](./loss_runs/icw/icw.json)
-- [Knight Specialty](./loss_runs/knight_specialty/knight_specialty.json)
-- [Northland](./loss_runs/northland/northland.json)
-- [Spirit](./loss_runs/spirit/spirit.json)
-- [Statefund](./loss_runs/statefund/statefund.json)
-- [Sutton](./loss_runs/sutton/sutton.json)
-- [Travelers](./loss_runs/travelers/travelers.json)
-- [United Specialty](./loss_runs/united_specialty/united_specialty.json)
-- [Zenith](./loss_runs/zenith/zenith.json)
+- [AIG](<./templates/Insurance/Loss Runs/configurations/aig.json>)
+- [AMIC](<./templates/Insurance/Loss Runs/configurations/amic.json>)
+- [Amtrust (Worker's Comp)](<./templates/Insurance/Loss Runs/configurations/amtrust_workers_comp.json>)
+- [Applied Underwriters](<./templates/Insurance/Loss Runs/configurations/applied_underwriters.json>)
+- [Atlas](<./templates/Insurance/Loss Runs/configurations/atlas.json>)
+- [Benchmark](<./templates/Insurance/Loss Runs/configurations/benchmark.json>)
+- [Berkley National](<./templates/Insurance/Loss Runs/configurations/berkley_national.json>)
+- [Berkley Prime](<./templates/Insurance/Loss Runs/configurations/berkley_prime.json>)
+- [Berkshire](<./templates/Insurance/Loss Runs/configurations/berkshire.json>)
+- [Canal](<./templates/Insurance/Loss Runs/configurations/canal.json>)
+- [Chubb](<./templates/Insurance/Loss Runs/configurations/chubb.json>)
+- [Compwest](<./templates/Insurance/Loss Runs/configurations/compwest.json>)
+- [Hallmark](<./templates/Insurance/Loss Runs/configurations/hallmark.json>)
+- [IAT](<./templates/Insurance/Loss Runs/configurations/iat.json>)
+- [ICW](<./templates/Insurance/Loss Runs/configurations/icw.json>)
+- [Knight Specialty](<./templates/Insurance/Loss Runs/configurations/knight_specialty.json>)
+- [Northland](<./templates/Insurance/Loss Runs/configurations/northland.json>)
+- [Spirit](<./templates/Insurance/Loss Runs/configurations/spirit.json>)
+- [Statefund](<./templates/Insurance/Loss Runs/configurations/statefund.json>)
+- [Sutton](<./templates/Insurance/Loss Runs/configurations/sutton.json>)
+- [Travelers](<./templates/Insurance/Loss Runs/configurations/travelers.json>)
+- [United Specialty](<./templates/Insurance/Loss Runs/configurations/united_specialty.json>)
+- [Zenith](<./templates/Insurance/Loss Runs/configurations/zenith.json>)
 
 ### Tax forms
 
-- [941 (2022)](./tax_forms/941/941_2022.json)
-- [1040 (2018)](./tax_forms/1040/2018/1040_2018.json)
-- [1040 (2019)](./tax_forms/1040/2019/1040_2019.json)
-- [1040 (2020)](./tax_forms/1040/2020/1040_2020.json)
-- [1040 (Senior 2020)](./tax_forms/1040/2020/senior_1040_2020.json)
-- [1040 (2021)](./tax_forms/1040/2021/1040_2021.json)
-- [1040 (Senior 2021)](./tax_forms/1040/2021/senior_1040_2021.json)
-- [1065 (2018)](./tax_forms/1065_2018.json)
-- [1099 (2020)](./tax_forms/1099_2020.json)
-- [1120 (2019)](./tax_forms/1120_2019.json)
-- [1120s (2023)](./tax_forms/1120s/1120s_2023.json)
-- [4868 (2021)](./tax_forms/4868_2021.json)
-- [4868 (2022)](./tax_forms/4868_2022.json)
-- [w-2](./tax_forms/w2/w2.json)
-- [w-9 (2018)](./tax_forms/w9_2018.json)
+#### 941s
 
-### Rate Confirmations
+- [941 (2022)](<./templates/Tax Forms/941s/configurations/941_2022.json>)
 
-- [Arrive](./rate_confirmations/arrive.json)
-- [CH Robinson](./rate_confirmations/ch_robinson.json)
-- [Convoy](./rate_confirmations/convoy.json)
-- [Coyote](./rate_confirmations/coyote.json)
-- [Echo](./rate_confirmations/echo.json)
-- [Eotsl](./rate_confirmations/eotsl.json)
-- [JB Hunt](./rate_confirmations/jb_hunt.json)
-- [Landstar Inway](./rate_confirmations/landstar_inway/landstar_inway.json)
-- [LD Logistics](./rate_confirmations/ld_logistics.json)
-- [Nolan](./rate_confirmations/nolan.json)
-- [ORT Load](./rate_confirmations/ort_load_confirmation.json)
-- [ORT](./rate_confirmations/ort.json)
-- [Schneider](./rate_confirmations/schneider.json)
-- [TQL](./rate_confirmations/tql.json)
-- [Transfix](./rate_confirmations/transfix/transfix.json)
-- [Uber Freight](./rate_confirmations/uber_freight.json)
-- [US Express](./rate_confirmations/us_express/us_express.json)
-- [XPO](./rate_confirmations/xpo.json)
+#### 1040s
 
-### Verifications of employment
+- [1040 (2018)](<./templates/Tax Forms/1040s/configurations/1040_2018.json>)
+- [1040 (2019)](<./templates/Tax Forms/1040s/configurations/1040_2019.json>)
+- [1040 (2020)](<./templates/Tax Forms/1040s/configurations/1040_2020.json>)
+- [1040 (Senior 2020)](<./templates/Tax Forms/1040s/configurations/senior_1040_2020.json>)
+- [1040 (2021)](<./templates/Tax Forms/1040s/configurations/1040_2021.json>)
+- [1040 (Senior 2021)](<./templates/Tax Forms/1040s/configurations/senior_1040_2021.json>)
 
-- [Blend](./verifications_of_employment/blend/blend.json)
-- [CCC Verify](./verifications_of_employment/ccc_verify/ccc_verify.json)
-- [Equifax](./verifications_of_employment/equifax/equifax.json)
-- [Lender's One](./verifications_of_employment/lenders_one/lenders_one.json)
-- [Truework](./verifications_of_employment/truework/truework.json)
-- [Veritax](./verifications_of_employment/veritax/veritax.json)
-- [Xactus](./verifications_of_employment/xactus/xactus.json)
+#### 1065s
 
-### Pay stubs
+- [1065 (2018)](<./templates/Tax Forms/1065s/configurations/1065_2018.json>)
 
-- [ADP](./pay_stubs/adp/adp.json)
-- [Gusto](./pay_stubs/gusto/gusto.json)
-- [Paylocity](./pay_stubs/paylocity/paylocity.json)
-- [Pay stubs](./pay_stubs/pay_stubs/pay_stubs.json)
+#### 1099s
+
+- [1099 (2020)](<./templates/Tax Forms/1099s/configurations/1099_2020.json>)
+
+#### 1120s
+
+- [1120 (2019)](<./templates/Tax Forms/1120s/configurations/1120_2019.json>)
+- [1120s (2023)](<./templates/Tax Forms/1120s/configurations/1120s/1120s_2023.json>)
+
+#### 4868s
+
+- [4868 (2021)](<./templates/Tax Forms/4868s/configurations/4868_2021.json>)
+- [4868 (2022)](<./templates/Tax Forms/4868s/configurations/4868_2022.json>)
+
+#### W2s
+
+- [w-2](<./templates/Tax Forms/W2s/configurations/w2/w2.json>)
+
+#### W9s
+
+- [w-9 (2018)](<./templates/Tax Forms/W9s/configurations/w9_2018.json>)
+
+### Logistics
+
+#### Rate Confirmations
+
+- [Arrive](<./templates/Logistics/Rate Confirmations/configurations/arrive.json>)
+- [CH Robinson](<./templates/Logistics/Rate Confirmations/configurations/ch_robinson.json>)
+- [Convoy](<./templates/Logistics/Rate Confirmations/configurations/convoy.json>)
+- [Coyote](<./templates/Logistics/Rate Confirmations/configurations/coyote.json>)
+- [Echo](<./templates/Logistics/Rate Confirmations/configurations/echo.json>)
+- [Eotsl](<./templates/Logistics/Rate Confirmations/configurations/eotsl.json>)
+- [JB Hunt](<./templates/Logistics/Rate Confirmations/configurations/jb_hunt.json>)
+- [Landstar Inway](<./templates/Logistics/Rate Confirmations/configurations/landstar_inway.json>)
+- [LD Logistics](<./templates/Logistics/Rate Confirmations/configurations/ld_logistics.json>)
+- [Nolan](<./templates/Logistics/Rate Confirmations/configurations/nolan.json>)
+- [ORT Load](<./templates/Logistics/Rate Confirmations/configurations/ort_load_confirmation.json>)
+- [ORT](<./templates/Logistics/Rate Confirmations/configurations/ort.json>)
+- [Schneider](<./templates/Logistics/Rate Confirmations/configurations/schneider.json>)
+- [TQL](<./templates/Logistics/Rate Confirmations/configurations/tql.json>)
+- [Transfix](<./templates/Logistics/Rate Confirmations/configurations/transfix.json>)
+- [Uber Freight](<./templates/Logistics/Rate Confirmations/configurations/uber_freight.json>)
+- [US Express](<./templates/Logistics/Rate Confirmations/configurations/us_express.json>)
+- [XPO](<./templates/Logistics/Rate Confirmations/configurations/xpo.json>)
+
+### Financial Services
+
+#### Verifications of employment
+
+- [Blend](<./templates/Financial Services/Verifications of Employment/configurations/blend.json>)
+- [CCC Verify](<./templates/Financial Services/Verifications of Employment/configurations/ccc_verify.json>)
+- [Equifax](<./templates/Financial Services/Verifications of Employment/configurations/equifax.json>)
+- [Lender's One](<./templates/Financial Services/Verifications of Employment/configurations/lenders_one.json>)
+- [Truework](<./templates/Financial Services/Verifications of Employment/configurations/truework.json>)
+- [Veritax](<./templates/Financial Services/Verifications of Employment/configurations/veritax.json>)
+- [Xactus](<./templates/Financial Services/Verifications of Employment/configurations/xactus.json>)
+
+#### Verification of Assets
+
+- [Accountchek](<./templates/Financial Services/Verification of Assets/configurations/accountchek.json>)
+- [Blend](<./templates/Financial Services/Verification of Assets/configurations/blend.json>)
+- [Finicity](<./templates/Financial Services/Verification of Assets/configurations/finicity.json>)
+- [Plaid](<./templates/Financial Services/Verification of Assets/configurations/plaid.json>)
+
+#### Retirement
+
+- [Form 5500](<./templates/Financial Services/Retirement/configurations/form_5500.json>)
+
+#### Credit Card Statements
+
+- [Credit Card Statement](<./templates/Financial Services/Credit Card Statements/configurations/cc_statement.json>)
+
+#### Bank Statements
+
+- [Ally (Combined Customer Statement)](<./templates/Financial Services/Bank Statements/configurations/ally_combined_customer_statement.json>)
+- [Bank of America](<./templates/Financial Services/Bank Statements/configurations/boa.json>)
+- [Chase (Consolidated Balance Summary)](<./templates/Financial Services/Bank Statements/configurations/chase_consolidated_balance_summary.json>)
+- [Well Fargo (Checking)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_checking.json>)
+- [Well Fargo (Savings)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_savings.json>)
+- [Well Fargo (Combined Statement of Accounts)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_combined_statement_of_accounts.json>)
+- [LLM (Any Single Account Bank Statement)](<./templates/Financial Services/Bank Statements/configurations/any_single_account_bank_statement.json>)
+
+#### Balance Sheets
+
+- [Balance Sheet](<./templates/Financial Services/Balance Sheets/configurations/form_10k_balance_sheet.json>)
+
+### Human Resources
+
+#### Pay stubs
+
+- [ADP](<./templates/Human Resources/Pay Stubs/configurations/adp.json>)
+- [Gusto](<./templates/Human Resources/Pay Stubs/configurations/gusto.json>)
+- [Paylocity](<./templates/Human Resources/Pay Stubs/configurations/paylocity.json>)
+- [Pay stubs](<./templates/Human Resources/Pay Stubs/configurations/pay_stubs.json>)
+
+#### Resumes
+
+- [Resume](<./templates/Human Resources/Resumes/configurations/resume.json>)
 
 ### Real Estate
 
-- [Closing Disclosure](./real_estate/closing_disclosure/closing_disclosure.json)
+#### Closing Disclosures
 
-### Explanation of Benefits
+- [Closing Disclosure](<./templates/Real Estate/Closing Disclosures/configurations/closing_disclosure.json>)
 
-- [Apex](./eobs/apex/apex.json)
-- [Cigna](./eobs/cigna/cigna_2022.json)
-- [Medicaid](./eobs/medicaid/medicaid.json)
-- [Tricare](./eobs/tricare/tricare.json)
+#### PropTech
 
-### Dental Explanation of Benefits
-
-- [Cigna](./dental_eobs/humanna/humanna.json)
-
-### Bank Statements
-
-- [Ally (Combined Customer Statement)](./bank_statements/ally/ally_combined_customer_statement.json)
-- [Bank of America](./bank_statements/bank_of_america/boa.json)
-- [Chase (Consolidated Balance Summary)](./bank_statements/chase/chase_consolidated_balance_summary.json)
-- [Well Fargo (Checking)](./bank_statements/wells_fargo/wells_fargo_checking.json)
-- [Well Fargo (Savings)](./bank_statements/wells_fargo/wells_fargo_savings.json)
-- [Well Fargo (Combined Statement of Accounts)](./bank_statements/wells_fargo/wells_fargo_combined_statement_of_accounts.json)
-- [LLM (Any Single Account Bank Statement)](./bank_statements/LLM/any_single_account_bank_statement.json)
-
-### Credit Card Statements
-
-- [Credit Card Statement](./credit_card_statements/cc_statement/cc_statement.json)
+- [Offering Memorandums](<./templates/Real Estate/PropTech/configurations/offering_memorandums.json>)
+- [Rent Rolls](<./templates/Real Estate/PropTech/configurations/rent_rolls.json>)
 
 ### Healthcare
 
-- [CMS 1500 (08/05)](./cms_1500/cms_1500_08_05.json)
+#### Explanation of Benefits
 
-### HR
+- [Apex](<./templates/Healthcare/EOBs/configurations/apex.json>)
+- [Cigna](<./templates/Healthcare/EOBs/configurations/cigna_2022.json>)
+- [Medicaid](<./templates/Healthcare/EOBs/configurations/medicaid.json>)
+- [Tricare](<./templates/Healthcare/EOBs/configurations/tricare.json>)
 
-- [Resume](./resume/resume.json)
+#### Dental Explanation of Benefits
 
-### Driver's Licenses
+- [Cigna](<./templates/Healthcare/Dental EOBs/configurations/humanna.json>)
 
-- [Driver's License](./drivers_licenses/drivers_license.json)
+#### CMS 1500s
 
-### Balance Sheets
+- [CMS 1500 (08/05)](<./templates/Healthcare/CMS 1500/configurations/cms_1500_08_05.json>)
 
-- [Balance Sheet](./balance_sheets/form_10k_balance_sheet/form_10k_balance_sheet.json)
+### Identification
 
-### Retirement
+#### Driver's Licenses
 
-- [Form 5500](./retirement/form_5500.json)
-
-### PropTech
-
-- [Offering Memorandums](./proptech/offering_memorandums/offering_memorandums.json)
-- [Rent Rolls](./proptech/rent_rolls/rent_rolls.json)
-
-### Verification of Assets
-
-- [Accountchek](./verification_of_assets/accountchek/accountchek.json)
-- [Blend](./verification_of_assets/blend/blend.json)
-- [Finicity](./verification_of_assets/finicity/finicity.json)
-- [Plaid](./verification_of_assets/plaid/plaid.json)
+- [Driver's License](<./templates/Identification/Driver License/configurations/drivers_license.json>)
 
 ### Invoices
 
-- [Invoices](./invoices/invoice.json)
+- [Invoices](<./invoices/invoice.json>)
 
 
 ## Using a configuration
