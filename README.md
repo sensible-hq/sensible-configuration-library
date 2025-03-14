@@ -12,7 +12,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 ### [Financial Services](#financial-services-1)
 - [Balance Sheets](#balance-sheets)
 - [Bank statements](#bank-statements)
-- [Credid Card Statements](#credit-card-statements)
+- [Credit Card Statements](#credit-card-statements)
 - [Retirement](#retirement)
 - [Verification of Assets](#verification-of-assets)
 - [Verification of Employement](#verifications-of-employment)
