@@ -1,0 +1,358 @@
+{ 
+  "fields": [
+    {
+      "id": "institution",
+      "method": {
+        "id": "constant",
+        "value": "Fifth Third Bank"
+      }
+    },
+    {
+      "id": "account_holder_name",
+      "anchor": {
+        "match": {
+          "text": "Banking Center Phone",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "width": 3,
+        "height": 0.2,
+        "offsetX": -5,
+        "offsetY": -0.05,
+        "sortLines": "readingOrderLeftToRight",
+        "start": "left"
+      }
+    },
+    {
+      "id": "account_name",
+      "anchor": {
+        "match": {
+          "text": "Account Type",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "width": 3,
+        "height": 0.1,
+        "offsetX": -0.05,
+        "offsetY": -0.05,
+        "sortLines": "readingOrderLeftToRight",
+        "start": "left",
+        "wordFilters": [
+          "Account Type:",
+          "Account Type"
+        ]
+      }
+    },
+    {
+      "id": "_raw_statement_date",
+      "anchor": {
+        "match": {
+          "text": "Statement Period Date",
+          "type": "startsWith",
+        }
+      },
+      "method": {
+        "id": "region",
+        "width": 3,
+        "height": 0.1,
+        "offsetX": -0.05,
+        "offsetY": -0.05,
+        "sortLines": "readingOrderLeftToRight",
+        "start": "left",
+        "wordFilters": [
+          "Statement Period Date:",
+          "Statement Period Date"
+        ]
+      }
+    },
+    {
+      "id": "statement_start_date",
+      "type": "date",
+      "method": {
+        "id": "split",
+        "source_id": "_raw_statement_date",
+        "separator": " ",
+        "index": 0
+      }
+    },
+    {
+      "id": "statement_end_date",
+      "type": "date",
+      "method": {
+        "id": "split",
+        "source_id": "_raw_statement_date",
+        "separator": "-",
+        "index": 1
+      }
+    },
+    {
+      "id": "statement_end_date",
+      "type": "date",
+      "method": {
+        "id": "split",
+        "source_id": "_raw_statement_date",
+        "separator": " ",
+        "index": 2
+      }
+    },
+    {
+      "id": "hide",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": [
+          "_raw_statement_date"
+        ]
+      }
+    },
+    {
+      "id": "account_number",
+      "anchor": {
+        "match": {
+          "text": "Account Number",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "width": 3,
+        "height": 0.1,
+        "offsetX": -0.05,
+        "offsetY": -0.05,
+        "sortLines": "readingOrderLeftToRight",
+        "start": "left",
+        "wordFilters": [
+          "Account Number:",
+          "Account Number"
+        ]
+      }
+    },
+    {
+      "id": "accounts",
+      "type": "sections",
+      "range": {
+        "externalRange": {
+          "anchor": {
+            "text": "Account Summary",
+            "type": "includes",
+            "reverse": true
+          },
+          "stop": "Account Summary",
+          "stopOffsetY": 0.1,
+          "offsetY": -0.1
+        },
+        "anchor": {
+          "start": {
+            "text": "Account Summary",
+            "type": "includes"
+          },
+          "match": {
+            "text": "Beginning Balance",
+            "type": "includes"
+          },
+          "end": {
+            "text": "Daily Balance Summary",
+            "type": "includes"
+          }
+        },
+        "stop": {
+          "text": "Daily Balance Summary",
+          "type": "includes"
+        }
+      },
+      "fields": [
+       
+        {
+          "id": "account_number",
+          "anchor": {
+            "match": {
+              "text": "Account Summary",
+              "type": "includes"
+            }
+          },
+          "method": {
+            "id": "region",
+            "sortLines": "readingOrderLeftToRight",
+            "width": 4,
+            "height": 0.2,
+            "offsetX": -0.05,
+            "offsetY": -0.05,
+            "start": "left",
+            "wordFilters": [
+              "Account Summary - ",
+              "Account Summary"
+            ]
+          }
+        },
+        {
+          "id": "account_type",
+          "method": {
+            "id": "copy_to_section",
+            "source_id": "account_name"
+          }
+        },
+        {
+          "id": "opening_balance",
+          "anchor": {
+            "match": {
+              "text": "Beginning Balance",
+              "type": "includes"
+            }
+          },
+          "type": "currency",
+          "method": {
+            "id": "region",
+            "sortLines": "readingOrderLeftToRight",
+            "width": 4,
+            "height": 0.1,
+            "offsetX": -0.3,
+            "offsetY": -0.05,
+            "start": "left",
+            "wordFilters": [
+              "Beginning Balance",
+            ]
+          }
+        },
+        {
+          "id": "closing_balance",
+          "anchor": {
+            "match": {
+              "text": "Ending Balance",
+              "type": "includes"
+            }
+          },
+          "type": "currency",
+          "method": {
+            "id": "region",
+            "sortLines": "readingOrderLeftToRight",
+            "width": 4,
+            "height": 0.1,
+            "offsetX": -0.3,
+            "offsetY": -0.05,
+            "start": "left",
+            "wordFilters": [
+              "Ending Balance",
+            ]
+          }
+        },
+        {
+          "id": "transaction_data",
+          "type": "sections",
+          "range": {
+            "externalRange": {
+              "anchor": {
+                "text": "items totaling",
+                "type": "includes",
+                "reverse": true
+              },
+              "stop": "items totaling",
+              "offsetY": -0.1,
+              "stopOffsetY": 0.3
+            },
+            "anchor": {
+              "start": {
+                "text": "items totaling",
+                "type": "includes"
+              },
+              "match": {
+                "type": "regex",
+                "pattern": "\\b\\d{2}/\\d{2}\\b"
+              },
+            }
+          },
+          "fields": [
+            {
+              "id": "date",
+              "anchor": {
+                "match": {
+                  "type": "regex",
+                  "pattern": "\\b\\d{2}/\\d{2}\\b"
+                },
+              },
+              "method": {
+                "id": "passthrough"
+              }
+            },
+            {
+              "id": "transaction_type",
+              "anchor": {
+                "match": {
+                  "type": "regex",
+                  "pattern": "\\b\\d{2}/\\d{2}\\b"
+                },
+              },
+              "method": {
+                "id": "intersection",
+                "verticalAnchor": "Description",
+                "sortLines": "readingOrderLeftToRight",
+                "offsetX": 2,
+                "width": 4,
+                "height": 0.2,
+                "percentOverlapX": 0,
+                "percentOverlapY": 0
+              }
+            },
+            {
+              "id": "debit",
+              "type": "currency",
+              "anchor": {
+                "match": {
+                  "type": "regex",
+                  "pattern": "\\b\\d{2}/\\d{2}\\b"
+                },
+              },
+              "method": {
+                "id": "intersection",
+                "verticalAnchor": "Debits",
+                "sortLines": "readingOrderLeftToRight",
+                "offsetX": 1,
+                "width": 1,
+                "percentOverlapX": 0,
+                "percentOverlapY": 0
+              }
+            },
+            {
+              "id": "credit",
+              "type": "currency",
+              "anchor": {
+                "match": {
+                  "type": "regex",
+                  "pattern": "\\b\\d{2}/\\d{2}\\b"
+                },
+              },
+              "method": {
+                "id": "intersection",
+                "verticalAnchor": "Credits",
+                "sortLines": "readingOrderLeftToRight",
+                "offsetX": 1,
+                "width": 1,
+                "percentOverlapX": 0,
+                "percentOverlapY": 0
+              }
+            },
+            {
+              "id": "balance",
+              "anchor": {
+                "match": {
+                  "text": "not found on this doc",
+                  "type": "equals"
+                }
+              },
+              "method": {
+                "id": "region",
+                "offsetX": 0,
+                "offsetY": 0,
+                "width": 0,
+                "height": 0,
+                "start": "left"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
