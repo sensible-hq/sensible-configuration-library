@@ -288,6 +288,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Ally (Combined Customer Statement)](<./templates/Financial Services/Bank Statements/configurations/ally_combined_customer_statement.json>)
 - [Bank of America](<./templates/Financial Services/Bank Statements/configurations/boa.json>)
 - [Chase (Consolidated Balance Summary)](<./templates/Financial Services/Bank Statements/configurations/chase_consolidated_balance_summary.json>)
+- [Frostk](<./templates/Financial Services/Bank Statements/configurations/frost.json>)
 - [Well Fargo (Checking)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_checking.json>)
 - [Well Fargo (Savings)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_savings.json>)
 - [Well Fargo (Combined Statement of Accounts)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_combined_statement_of_accounts.json>)
