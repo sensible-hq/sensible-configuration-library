@@ -286,7 +286,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 - [Fifth Third Bank](<./templates/Financial Services/Bank Statements/configurations/5_3_bank.json>)
 - [Ally (Combined Customer Statement)](<./templates/Financial Services/Bank Statements/configurations/ally_combined_customer_statement.json>)
-- [Bank of America](<./templates/Financial Services/Bank Statements/configurations/boa.json>)
+- [Bank of America](<./templates/Financial Services/Bank Statements/configurations/bank_of_america.json>)
 - [Blue Vine](<./templates/Financial Services/Bank Statements/configurations/blue_vine.json>)
 - [BMO](<./templates/Financial Services/Bank Statements/configurations/bmo.json>)
 - [Chase (Consolidated Balance Summary)](<./templates/Financial Services/Bank Statements/configurations/chase_consolidated_balance_summary.json>)
