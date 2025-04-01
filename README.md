@@ -289,6 +289,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Bank of America](<./templates/Financial Services/Bank Statements/configurations/bank_of_america.json>)
 - [Blue Vine](<./templates/Financial Services/Bank Statements/configurations/blue_vine.json>)
 - [BMO](<./templates/Financial Services/Bank Statements/configurations/bmo.json>)
+- [Chase (Checking Summary)](<./templates/Financial Services/Bank Statements/configurations/chase_checking_summary.json>)
 - [Chase (Consolidated Balance Summary)](<./templates/Financial Services/Bank Statements/configurations/chase_consolidated_balance_summary.json>)
 - [Frost](<./templates/Financial Services/Bank Statements/configurations/frost.json>)
 - [M and T](<./templates/Financial Services/Bank Statements/configurations/m_and_t.json>)
