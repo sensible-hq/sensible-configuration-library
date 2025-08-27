@@ -1,0 +1,426 @@
+{
+  "fingerprint": {
+    "tests": [
+      {
+        "type": "equals",
+        "text": "Location",
+        "isCaseSensitive": true
+      },
+      {
+        "type": "equals",
+        "text": "Taxes and Assessment",
+        "isCaseSensitive": true
+      },
+      {
+        "type": "equals",
+        "text": "Building Info",
+        "isCaseSensitive": true
+      },
+      {
+        "type": "includes",
+        "text": "compiled by BRIGHT",
+        "isCaseSensitive": true
+      },
+      {
+        "type": "includes",
+        "text": "BRIGHT MLS",
+        "editDistance": 1,
+        "isCaseSensitive": true
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "county",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "County:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "property_type",
+      "anchor": {
+        "match": {
+          "type": "regex",
+          "pattern": "\\$\\d+,\\d+"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": -2.8,
+        "width": 2,
+        "height": 0.45,
+        "offsetY": -0.25
+      }
+    },
+    {
+      "id": "property_subtype",
+      "anchor": "not_found",
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "structure_type",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Structure Type:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "levels",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Levels"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "subdivision_name",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Subdiv"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "list_price",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Original Price:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "year_built",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Year Built:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "tax_annual_amount",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Tax Annual Amt"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "tax_legal_description",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "County Legal Desc:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "tax_legal_description",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "County Legal Desc:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "building_area_total",
+      "type": "number",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Building Info"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "Total SQFT:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "living_area",
+      "type": "number",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Building Info"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "Total Fin SQFT:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "above_grade_finished_area",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Above Grade Fin SQFT:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "bedrooms",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Beds:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "bathrooms",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Baths:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "parking_type",
+      "type": {
+        "id": "replace",
+        "pattern": " - # of Spaces$",
+        "replaceWith": ""
+      },
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Parking"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "parking_spaces",
+      "type": "number",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Parking"
+        },
+        "match": {
+          "type": "endsWith",
+          "text": "# of spaces"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "lot_size_acres",
+      "type": {
+        "id": "compose",
+        "types": [
+          {
+            "id": "replace",
+            "pattern": "^(\\d+\\.\\d+)a\\s.*",
+            "replaceWith": "$1"
+          },
+          {
+            "id": "number",
+            "decimalSeparator": "."
+          }
+        ]
+      },
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Lot Acres"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "lot_size_sqft",
+      "type": {
+        "id": "compose",
+        "types": [
+          {
+            "id": "replace",
+            "pattern": "^\\d+\\.\\d+a\\s*/\\s*(\\d+)sf",
+            "replaceWith": "$1"
+          },
+          {
+            "id": "number"
+          }
+        ]
+      },
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Lot Acres"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "parcel_number",
+      "anchor": "not_found",
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "zoning",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Zoning:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "architectural_style",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Style:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "construction_materials",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Construction Materials:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "exterior_features",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Exterior Features:"
+        }
+      },
+      "method": {
+        "id": "documentRange",
+        "stop": {
+          "type": "equals",
+          "text": "Utilities"
+        }
+      }
+    }
+  ]
+}
