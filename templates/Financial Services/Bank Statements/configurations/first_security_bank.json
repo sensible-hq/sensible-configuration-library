@@ -1,0 +1,693 @@
+{
+  "fingerprint": {
+    "tests": [
+      {
+        "type": "equals",
+        "text": "account statement"
+      },
+      {
+        "type": "equals",
+        "text": "First Security Bank"
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "start_date",
+      "type": {
+        "id": "compose",
+        "types": [
+          {
+            "id": "replace",
+            "pattern": "^(\\d+/\\d+/\\d+)\\s+thru.*$",
+            "replaceWith": "$1"
+          },
+          "date"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "statement dates"
+        }
+      },
+      "method": {
+        "id": "row",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "end_date",
+      "type": {
+        "id": "compose",
+        "types": [
+          {
+            "id": "replace",
+            "pattern": "^\\d+/\\d+/\\d+ thru\\s+(.*)$",
+            "replaceWith": "$1"
+          },
+          "date"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "statement dates"
+        }
+      },
+      "method": {
+        "id": "row",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "customer_name",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "first security bank"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetY": 1.6,
+        "height": 0.8,
+        "width": 3.5,
+        "offsetX": 0,
+        "typeFilters": [
+          "address"
+        ]
+      }
+    },
+    {
+      "id": "customer_address",
+      "type": "address",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "first security bank"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetY": 1.6,
+        "height": 0.8,
+        "width": 3.5,
+        "offsetX": 0,
+        "typeFilters": [
+          "address"
+        ]
+      }
+    },
+    {
+      "id": "account_summary_table",
+      "type": "sections",
+      "range": {
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "number of enclosures"
+          }
+        },
+        "stop": {
+          "type": "equals",
+          "text": "ending balance"
+        }
+      },
+      "fields": [
+        {
+          "id": "account_name",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "account number"
+            }
+          },
+          "method": {
+            "id": "label",
+            "position": "above"
+          }
+        },
+        {
+          "id": "account_number",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "account number"
+            }
+          },
+          "method": {
+            "id": "region",
+            "start": "left",
+            "width": 2,
+            "offsetX": 1.6,
+            "height": 0.25,
+            "offsetY": -0.14
+          }
+        },
+        {
+          "id": "beginning_balance",
+          "type": "currency",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "previous balance"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "end_balance",
+          "type": "currency",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "Ending balance"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        }
+      ]
+    },
+    {
+      "id": "accounts",
+      "type": "sections",
+      "range": {
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "number of enclosures"
+          }
+        }
+      },
+      "fields": [
+        {
+          "id": "account_type",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "account number"
+            }
+          },
+          "method": {
+            "id": "label",
+            "position": "above"
+          }
+        },
+        {
+          "id": "account_number",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "account number"
+            }
+          },
+          "method": {
+            "id": "region",
+            "start": "left",
+            "width": 2,
+            "offsetX": 1.6,
+            "height": 0.25,
+            "offsetY": -0.14
+          }
+        },
+        {
+          "id": "beginning_balance",
+          "type": "currency",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "previous balance"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "deposits",
+          "type": "currency",
+          "anchor": {
+            "match": {
+              "type": "endsWith",
+              "text": "deposits/credits"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "withdrawals",
+          "type": "currency",
+          "anchor": {
+            "match": {
+              "type": "endsWith",
+              "text": "checks/debits"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "end_balance",
+          "type": "currency",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "Ending balance"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "_transactions",
+          "type": "sections",
+          "range": {
+            "externalRange": {
+              "anchor": {
+                "type": "startsWith",
+                "text": "Date",
+                "reverse": true
+              },
+              "stop": {
+                "type": "first"
+              },
+              "offsetY": -0.02,
+              "stopOffsetY": 0.02
+            },
+            "anchor": {
+              "start": {
+                "type": "includes",
+                "text": "Activity in date order"
+              },
+              "match": {
+                "type": "regex",
+                "pattern": "^\\d+/\\d+\\s+"
+              }
+            },
+            "stop": {
+              "type": "regex",
+              "pattern": "\\d",
+              "xRangeFilter": {
+                "minX": 4,
+                "maxX": 9
+              }
+            }
+          },
+          "fields": [
+            {
+              "id": "date",
+              "type": {
+                "id": "replace",
+                "pattern": "^(\\d+/\\d+)\\s+.*$",
+                "replaceWith": "$1"
+              },
+              "anchor": {
+                "match": {
+                  "type": "firstInSection"
+                }
+              },
+              "method": {
+                "id": "intersection",
+                "height": "sectionHeight",
+                "width": 0.7,
+                "percentOverlapY": 0,
+                "percentOverlapX": 0,
+                "verticalAnchor": {
+                  "match": {
+                    "type": "startsWith",
+                    "text": "Date"
+                  }
+                }
+              }
+            },
+            {
+              "id": "description",
+              "type": {
+                "id": "replace",
+                "pattern": "^\\d+/\\d+\\s+(.*)$",
+                "replaceWith": "$1"
+              },
+              "anchor": {
+                "match": {
+                  "type": "firstInSection"
+                }
+              },
+              "method": {
+                "id": "intersection",
+                "height": "sectionHeight",
+                "offsetX": 1,
+                "width": 3,
+                "percentOverlapY": 0,
+                "percentOverlapX": 0,
+                "verticalAnchor": {
+                  "match": {
+                    "type": "endsWith",
+                    "text": "Description"
+                  }
+                }
+              }
+            },
+            {
+              "id": "withdrawal",
+              "type": {
+                "id": "compose",
+                "types": [
+                  {
+                    "id": "replace",
+                    "pattern": "^\\.",
+                    "replaceWith": ""
+                  },
+                  {
+                    "id": "currency",
+                    "alwaysNegative": true
+                  }
+                ]
+              },
+              "anchor": {
+                "match": {
+                  "type": "firstInSection"
+                }
+              },
+              "method": {
+                "id": "intersection",
+                "height": "sectionHeight",
+                "width": 0.7,
+                "percentOverlapY": 0,
+                "percentOverlapX": 0,
+                "verticalAnchor": {
+                  "match": {
+                    "type": "equals",
+                    "text": "withdrawals"
+                  }
+                }
+              }
+            },
+            {
+              "id": "deposit",
+              "type": {
+                "id": "compose",
+                "types": [
+                  {
+                    "id": "replace",
+                    "pattern": "^\\.",
+                    "replaceWith": ""
+                  },
+                  {
+                    "id": "currency",
+                    "alwaysNegative": false
+                  }
+                ]
+              },
+              "anchor": {
+                "match": {
+                  "type": "firstInSection"
+                }
+              },
+              "method": {
+                "id": "intersection",
+                "height": "sectionHeight",
+                "width": 0.7,
+                "percentOverlapY": 0,
+                "percentOverlapX": 0,
+                "verticalAnchor": {
+                  "match": {
+                    "type": "equals",
+                    "text": "Deposits"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "deposits_table",
+          "method": {
+            "id": "customComputation",
+            "jsonLogic": {
+              "map": [
+                {
+                  "filter": [
+                    {
+                      "var": "_transactions"
+                    },
+                    {
+                      ">": [
+                        {
+                          "var": "deposit.value"
+                        },
+                        0
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eachKey": {
+                    "amount": {
+                      "var": "deposit"
+                    },
+                    "description": {
+                      "var": "description"
+                    },
+                    "date": {
+                      "var": "date"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "withdrawals_table",
+          "method": {
+            "id": "customComputation",
+            "jsonLogic": {
+              "map": [
+                {
+                  "filter": [
+                    {
+                      "var": "_transactions"
+                    },
+                    {
+                      "<": [
+                        {
+                          "var": "withdrawal.value"
+                        },
+                        0
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "eachKey": {
+                    "amount": {
+                      "var": "withdrawal"
+                    },
+                    "description": {
+                      "var": "description"
+                    },
+                    "date": {
+                      "var": "date"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "transactions_table",
+          "anchor": "not_found",
+          "method": {
+            "id": "passthrough"
+          }
+        },
+        {
+          "id": "suppress",
+          "method": {
+            "id": "suppressOutput",
+            "source_ids": [
+              "_transactions"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "accounts",
+      "range": {
+        "anchor": {
+          "match": {
+            "text": "Wells Fargo",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        },
+        "stop": {
+          "text": "fee period",
+          "type": "startsWith"
+        },
+        "requireStop": true
+      },
+      "fields": [
+        {
+          "id": "_deposits_table_raw",
+          "type": "table",
+          "anchor": {
+            "match": [
+              {
+                "text": "transaction history",
+                "type": "startsWith"
+              }
+            ]
+          },
+          "method": {
+            "id": "textTable",
+            "columns": [
+              {
+                "id": "date",
+                "minX": 0.5,
+                "maxX": 1.4
+              },
+              {
+                "id": "description",
+                "minX": 1.4,
+                "maxX": 5.5
+              },
+              {
+                "id": "amount",
+                "minX": 5.5,
+                "maxX": 6.5,
+                "type": {
+                  "id": "currency",
+                  "relaxedWithCents": true,
+                  "removeSpaces": true
+                },
+                "isRequired": true
+              }
+            ],
+            "stop": {
+              "text": "ending balance on",
+              "type": "startsWith"
+            }
+          }
+        },
+        {
+          "id": "_withdrawals_table_raw",
+          "type": "table",
+          "anchor": {
+            "match": [
+              {
+                "text": "transaction history",
+                "type": "startsWith"
+              }
+            ]
+          },
+          "method": {
+            "id": "textTable",
+            "columns": [
+              {
+                "id": "date",
+                "minX": 0.5,
+                "maxX": 1.4
+              },
+              {
+                "id": "description",
+                "minX": 1.4,
+                "maxX": 5.5
+              },
+              {
+                "id": "amount",
+                "minX": 6.5,
+                "maxX": 7.4,
+                "type": {
+                  "id": "currency",
+                  "relaxedWithCents": true,
+                  "removeSpaces": true
+                },
+                "isRequired": true
+              }
+            ],
+            "stop": {
+              "text": "ending balance on",
+              "type": "startsWith"
+            }
+          }
+        },
+        {
+          "id": "_transaction_table_raw",
+          "type": "table",
+          "anchor": "not applicable to Wells Fargo",
+          "method": {
+            "id": "passthrough"
+          }
+        }
+      ],
+      "computed_fields": [
+        {
+          "id": "deposits_table",
+          "method": {
+            "id": "zip",
+            "source_ids": [
+              "_deposits_table_raw"
+            ]
+          }
+        },
+        {
+          "id": "withdrawals_table",
+          "method": {
+            "id": "zip",
+            "source_ids": [
+              "_withdrawals_table_raw"
+            ]
+          }
+        },
+        {
+          "id": "transaction_table",
+          "method": {
+            "id": "zip",
+            "source_ids": [
+              "_transaction_table_raw"
+            ]
+          }
+        },
+        {
+          "id": "suppress",
+          "method": {
+            "id": "suppressOutput",
+            "source_ids": [
+              "_deposits_table_raw",
+              "_withdrawals_table_raw",
+              "_transaction_table_raw"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
