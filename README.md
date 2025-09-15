@@ -51,6 +51,9 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [W2](#w2s)
 - [W9](#w9s)
 
+### [Utilities & Invoices](#utilities--invoices-1)
+- [Utility Bills](#utility-bills)
+
 ### [Invoices](#invoices-1)
 
 ## [Using a configuration](#using-a-configuration-1)
