@@ -325,6 +325,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [ARMLS](<./templates/Real Estate/MLS/configurations/ARMLS.json>)
 - [Recolorado](<./templates/Real Estate/MLS/configurations/recolorado.json>)
 - [Bright](<./templates/Real Estate/MLS/configurations/bright_mls.json>)
+- [LLM](<./templates/Real Estate/MLS/configurations/General.json>)
 
 ### Healthcare
 
