@@ -1,0 +1,805 @@
+{
+  "fingerprint": {
+    "tests": [
+      {
+        "type": "includes",
+        "text": "www.ladwp.com"
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "Account",
+      "type": {
+        "id": "custom",
+        "pattern": "(?:\\d{3} ){2}\\d{4}"
+      },
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "Account Number"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "UtilityType",
+      "method": {
+        "id": "constant",
+        "value": "Electric"
+      }
+    },
+    {
+      "id": "StatementDate",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "bill date"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "below"
+      }
+    },
+    {
+      "id": "Supplier Accounts",
+      "type": "sections",
+      "range": {
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "Electric Charges"
+          }
+        }
+      },
+      "fields": [
+        {
+          "id": "Meter #",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "meter number"
+            }
+          },
+          "method": {
+            "id": "label",
+            "position": "below"
+          }
+        },
+        {
+          "id": "Rate Class",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "rate schedule"
+            }
+          },
+          "method": {
+            "id": "documentRange",
+            "xRangeFilter": {
+              "start": "left",
+              "offsetX": -0.05,
+              "width": 5
+            },
+            "stop": {
+              "type": "equals",
+              "text": "NEXT SCHEDULED READ DATE"
+            }
+          }
+        },
+        {
+          "id": "Multiplier",
+          "type": "number",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "multiplier"
+            }
+          },
+          "method": {
+            "id": "intersection",
+            "width": 0.4,
+            "percentOverlapX": 0,
+            "horizontalAnchor": {
+              "match": {
+                "type": "endsWith",
+                "text": "kW",
+                "isCaseSensitive": true
+              }
+            }
+          }
+        },
+        {
+          "id": "DateFrom",
+          "type": "date",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "billing period"
+            }
+          },
+          "method": {
+            "id": "label",
+            "position": "below"
+          }
+        },
+        {
+          "id": "DateTo",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* - (.*)",
+                "replaceWith": "$1"
+              },
+              "date"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "billing period"
+            }
+          },
+          "method": {
+            "id": "label",
+            "position": "below"
+          }
+        },
+        {
+          "id": "Supply - Supplier Name",
+          "method": {
+            "id": "constant",
+            "value": "Los Angeles Department of Water & Power"
+          }
+        },
+        {
+          "id": "Supply - Supplier Account Number",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "SA #",
+              "isCaseSensitive": true
+            }
+          },
+          "method": {
+            "id": "label",
+            "position": "right"
+          }
+        },
+        {
+          "id": "Supply - Supplier Customer Charge",
+          "type": "number",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "Service Charge"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "Facilities Charge",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "currency"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "Facilities Charge"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "ESA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "currency"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "ESA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "RCA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "currency"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "RCA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "IRCA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "currency"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "IRCA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "IRCA based on KWH",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "currency"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "IRCA based on KWH"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "Supply - On Peak Energy Delivery Cost",
+          "anchor": "not_found",
+          "method": {
+            "id": "passthrough"
+          }
+        },
+        {
+          "id": "Supply - Off Peak Energy Delivery Cost",
+          "anchor": "not_found",
+          "method": {
+            "id": "passthrough"
+          }
+        },
+        {
+          "id": "On Peak - Customer Charge",
+          "anchor": "not_found",
+          "method": {
+            "id": "passthrough"
+          }
+        },
+        {
+          "id": "On Peak Energy Delivery Cost",
+          "anchor": "not_found",
+          "method": {
+            "id": "passthrough"
+          }
+        },
+        {
+          "id": "On Peak Energy Delivery Quantity",
+          "type": "number",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "high peak subtotal"
+            }
+          },
+          "method": {
+            "id": "passthrough"
+          }
+        },
+        {
+          "id": "Off Peak - Customer Charge",
+          "anchor": "not_found",
+          "method": {
+            "id": "passthrough"
+          }
+        },
+        {
+          "id": "Off Peak Energy Delivery Cost",
+          "anchor": "not_found",
+          "method": {
+            "id": "passthrough"
+          }
+        },
+        {
+          "id": "Off Peak Energy Delivery Quantity",
+          "type": "number",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "low peak subtotal"
+            }
+          },
+          "method": {
+            "id": "passthrough"
+          }
+        },
+        {
+          "id": "On Peak Energy ECA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "currency"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "high peak ECA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "off Peak Energy ECA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "currency"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "low peak ECA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "On Peak Energy VEA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "currency"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "high peak VEA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "off Peak Energy VEA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "currency"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "low peak VEA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "On Peak Energy CRPSEA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "currency"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "high peak CRPSEA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "off Peak Energy CRPSEA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "currency"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "low peak CRPSEA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "On Peak Energy VRPSEA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "currency"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "high peak VRPSEA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "off Peak Energy VRPSEA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "currency"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "low peak VRPSEA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "On Peak Electricity Total",
+          "type": "currency",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "high peak subtotal"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "off Peak Electricity Total",
+          "type": "currency",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "low peak subtotal"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        // YOYO
+        {
+          "id": "Base - Customer Charge",
+          "anchor": "not_found",
+          "method": {
+            "id": "passthrough"
+          }
+        },
+        {
+          "id": "Base Energy Delivery Cost",
+          "anchor": "not_found",
+          "method": {
+            "id": "passthrough"
+          }
+        },
+        {
+          "id": "Base Energy Delivery Quantity",
+          "type": "number",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "Base subtotal"
+            }
+          },
+          "method": {
+            "id": "passthrough"
+          }
+        },
+        {
+          "id": "Base Energy ECA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "number"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "Base ECA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "Base Energy VEA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (\\$.*)/kWh",
+                "replaceWith": "$1"
+              },
+              "number"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "Base VEA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "Base Energy CRPSEA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "number"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "Base CRPSEA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "Base Energy VRPSEA",
+          "type": {
+            "id": "compose",
+            "types": [
+              {
+                "id": "replace",
+                "pattern": ".* x (.*)",
+                "replaceWith": "$1"
+              },
+              "number"
+            ]
+          },
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "Base VRPSEA"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "Base Electricity Total",
+          "type": "currency",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "Base subtotal"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "Subtotal Electricity",
+          "type": "currency",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "subtotal electric charges"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "Total Electricity",
+          "type": "number",
+          "anchor": {
+            "match": {
+              "type": "startsWith",
+              "text": "state energy surcharge"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "Electricity Total",
+          "type": "currency",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "Total electric charges"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        }
+      ]
+    }
+  ]
+}

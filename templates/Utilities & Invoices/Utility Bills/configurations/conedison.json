@@ -1,0 +1,862 @@
+{
+  "fingerprint": {
+    "tests": [
+      {
+        "type": "includes",
+        "text": "conEd.com"
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "Account",
+      "type": {
+        "id": "custom",
+        "pattern": "(?:\\d{5}-){2}\\d{1}"
+      },
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Account:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "Account",
+      "type": {
+        "id": "custom",
+        "pattern": "(?:\\d{5}-){2}\\d{1}"
+      },
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Account:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "UtilityType",
+      "type": {
+        "id": "replace",
+        "pattern": "(\\w+).*",
+        "replaceWith": "$1"
+      },
+      "anchor": {
+        "match": {
+          "type": "includes",
+          "text": "meter detail"
+        }
+      },
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "Rate Class",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Rate: "
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "Rate Class",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Rate: "
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "Meter #",
+      "anchor": {
+        "match": [
+          {
+            "type": "startsWith",
+            "text": "Meter #"
+          },
+          {
+            "type": "startsWith",
+            "text": "Meter #"
+          }
+        ]
+      },
+      "method": {
+        "id": "column",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "Meter #",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Meter #"
+        }
+      },
+      "method": {
+        "id": "column",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "Meters",
+      "type": "sections",
+      "range": {
+        "externalRange": {
+          "anchor": {
+            "type": "equals",
+            "text": "Meter #",
+            "reverse": true
+          },
+          "stop": {
+            "type": "first"
+          },
+          "offsetY": -0.05,
+          "stopOffsetY": 0.05
+        },
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "New Read"
+          },
+          "match": {
+            "type": "regex",
+            "pattern": "\\w{3} \\d{2}"
+          },
+          "end": {
+            "type": "equals",
+            "text": "Meter #"
+          }
+        },
+        "stop": {
+          "type": "equals",
+          "text": "Meter #"
+        },
+        "stopOffsetY": -0.1
+      },
+      "fields": [
+        {
+          "id": "Meter #",
+          "type": "number",
+          "anchor": {
+            "match": {
+              "type": "firstInSection"
+            }
+          },
+          "method": {
+            "id": "intersection",
+            "verticalAnchor": {
+              "match": {
+                "type": "equals",
+                "text": "Meter #"
+              }
+            }
+          }
+        },
+        {
+          "id": "Multiplier",
+          "type": "number",
+          "anchor": {
+            "match": {
+              "type": "firstInSection"
+            }
+          },
+          "method": {
+            "id": "intersection",
+            "width": 0.3,
+            "percentOverlapX": 0,
+            "verticalAnchor": {
+              "match": {
+                "type": "equals",
+                "text": "Multiplier"
+              }
+            }
+          }
+        },
+        {
+          "id": "Read Type",
+          "anchor": {
+            "match": {
+              "type": "firstInSection"
+            }
+          },
+          "method": {
+            "id": "intersection",
+            "width": 0.3,
+            "percentOverlapX": 0,
+            "verticalAnchor": {
+              "match": {
+                "type": "equals",
+                "text": "Read Type"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "StatementDate",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Your billing summary as of"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "DateFrom",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "billing period"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "DateTo",
+      "type": {
+        "id": "compose",
+        "types": [
+          {
+            "id": "replace",
+            "pattern": ".* to (\\w{3} \\d{2}, \\d{4})$",
+            "replaceWith": "$1"
+          },
+          "date"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "billing period"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "Supply - Supplier Name",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "supplier:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "Supply - Supplier Tag",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "supplier tag:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "Supply - Supplier Account Number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "supplier account:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "Supply - Customer Charge",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "customer charge",
+          "xRangeFilter": {
+            "minX": 0,
+            "maxX": 4
+          }
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "Supply - Supply Cost",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "supply cost",
+          "xRangeFilter": {
+            "minX": 0,
+            "maxX": 4
+          }
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "Supply - Supply Quantity",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "supply quantity",
+          "xRangeFilter": {
+            "minX": 0,
+            "maxX": 4
+          }
+        }
+      },
+      "type": "number",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "Supply - Total Electricity Supply Charges",
+      "anchor": {
+        "match": {
+          "type": "endsWith",
+          "text": "Total",
+          "xRangeFilter": {
+            "minX": 0,
+            "maxX": 4
+          }
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "Delivery - Customer Charge",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "equals",
+          "text": "Customer charge",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "_on_peak_cost",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "on peak",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": {
+        "id": "compose",
+        "types": [
+          {
+            "id": "custom",
+            "pattern": ".*@(.*)$"
+          },
+          "number"
+        ]
+      },
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "Delivery - On Peak Energy Delivery Cost",
+      "method": {
+        "id": "customComputation",
+        "jsonLogic": {
+          "round": [
+            {
+              "/": [
+                {
+                  "var": "_on_peak_cost.value"
+                },
+                100
+              ]
+            },
+            5
+          ]
+        }
+      }
+    },
+    {
+      "id": "Delivery - On Peak Energy Delivery Quantity",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "on peak",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": "number",
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "_off_peak_cost",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "off peak",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": {
+        "id": "compose",
+        "types": [
+          {
+            "id": "custom",
+            "pattern": ".*@(.*)$"
+          },
+          "number"
+        ]
+      },
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "Delivery - Off Peak Energy Delivery Cost",
+      "method": {
+        "id": "customComputation",
+        "jsonLogic": {
+          "round": [
+            {
+              "/": [
+                {
+                  "var": "_off_peak_cost.value"
+                },
+                100
+              ]
+            },
+            5
+          ]
+        }
+      }
+    },
+    {
+      "id": "Delivery - Off Peak Energy Delivery Quantity",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "off peak",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": "number",
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "Delivery - G&T Demand Delivery Cost",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "G & T demand",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": {
+        "id": "compose",
+        "types": [
+          {
+            "id": "custom",
+            "pattern": ".*@(.*)$"
+          },
+          "number"
+        ]
+      },
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "Delivery - G&T Demand Delivery Quantity",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "G & T demand",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": "number",
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "Delivery - Primary Demand Delivery Cost",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "Primary demand",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": {
+        "id": "compose",
+        "types": [
+          {
+            "id": "custom",
+            "pattern": ".*@(.*)$"
+          },
+          "number"
+        ]
+      },
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "Delivery - Primary Demand Delivery Quantity",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "Primary demand",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": "number",
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "Delivery - Secondary Demand Delivery Cost",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "Secondary demand",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": {
+        "id": "compose",
+        "types": [
+          {
+            "id": "custom",
+            "pattern": ".*@(.*)$"
+          },
+          "number"
+        ]
+      },
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "Delivery - Secondary Demand Delivery Quantity",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "Secondary demand",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": "number",
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "Delivery - System Benefit Charge",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "System benefit charge",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "Delivery - Billing and payment processing charge",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "billing and payment processing charge",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "Delivery - GRT & other tax surcharges",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "GRT & other tax surcharges",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "Delivery - Sales tax",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "Sales tax",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "Delivery - Total electricity delivery charges",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "startsWith",
+          "text": "Total electricity delivery charges",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "Electricity Total",
+      "anchor": {
+        "start": {
+          "type": "equals",
+          "text": "Your Delivery Charges"
+        },
+        "match": {
+          "type": "equals",
+          "text": "Your electricity total",
+          "xRangeFilter": {
+            "minX": 4.2,
+            "maxX": 10
+          }
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "total_charge_on_bill",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "Total from this billing period"
+        }
+      },
+      "type": "currency",
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "suppress",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": ["_on_peak_cost", "_off_peak_cost"]
+      }
+    }
+  ]
+}
