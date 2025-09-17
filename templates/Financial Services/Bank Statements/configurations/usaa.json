@@ -1,0 +1,465 @@
+{
+  "fingerprint": {
+    "tests": [
+      {
+        "text": "USAA Federal Savings Bank",
+        "type": "equals"
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "start_date",
+      "type": {
+        "id": "date",
+      },
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "statement period"
+        }
+      },
+      "method": {
+        "id": "passthrough",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "end_date",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "statement period"
+        }
+      },
+      "method": {
+        "id": "passthrough",
+        "tiebreaker": "last"
+      }
+    },
+    {
+      "id": "customer_name",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -1.8,
+        "width": 3.2,
+        "height": 1.8,
+        "typeFilters": ["address"]
+      },
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "activity summary"
+        }
+      }
+    },
+    {
+      "id": "customer_address",
+      "type": "address",
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -1.8,
+        "width": 3.2,
+        "height": 1.8
+      },
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "activity summary"
+        }
+      }
+    },
+    {
+      "id": "_account_name",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "for account number"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -1,
+        "offsetY": -1,
+        "width": 3,
+        "height": 0.9
+      }
+    },
+    {
+      "id": "_account_number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "for account number:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "_deposits",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "endsWith",
+          "text": "deposits/credits"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "_withdrawals",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "endsWith",
+          "text": "withdrawals/debits"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "account_summary_table",
+      "type": "sections",
+      "range": {
+        "anchor": {
+          "start": {
+            "type": "equals",
+            "text": "activity summary"
+          },
+          "match": {
+            "type": "equals",
+            "text": "Beginning balance"
+          },
+          "end": {
+            "type": "equals",
+            "text": "Transactions"
+          }
+        },
+        "stop": {
+          "type": "equals",
+          "text": "ending balance"
+        }
+      },
+      "fields": [
+        {
+          "id": "account_name",
+          "method": {
+            "id": "copy_to_section",
+            "source_id": "_account_name"
+          }
+        },
+        {
+          "id": "account_number",
+          "method": {
+            "id": "copy_to_section",
+            "source_id": "_account_number"
+          }
+        },
+        {
+          "id": "beginning_balance",
+          "type": "currency",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "beginning balance"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        },
+        {
+          "id": "ending_balance",
+          "type": "currency",
+          "anchor": {
+            "match": {
+              "type": "equals",
+              "text": "ending balance"
+            }
+          },
+          "method": {
+            "id": "row",
+            "tiebreaker": "first",
+            "sortLines": "readingOrderLeftToRight"
+          }
+        }
+      ]
+    },
+    {
+      "id": "accounts",
+      "type": "sections",
+      "range": {
+        "externalRange": {
+          "anchor": {
+            "type": "equals",
+            "text": "Description",
+            "reverse": true
+          },
+          "stop": {
+            "type": "first"
+          },
+          "offsetY": -0.02,
+          "stopOffsetY": 0.02
+        },
+        "anchor": {
+          "match": {
+            "type": "equals",
+            "text": "transactions"
+          }
+        },
+        "stop": {
+          "type": "equals",
+          "text": "ending balance"
+        },
+        "requireStop": true,
+        "stopOffsetY": 0.1
+      },
+      "fields": [
+        {
+          "id": "account_type",
+          "method": {
+            "id": "copy_to_section",
+            "source_id": "_account_name"
+          }
+        },
+        {
+          "id": "account_number",
+          "method": {
+            "id": "copy_to_section",
+            "source_id": "_account_number"
+          }
+        },
+        {
+          "id": "beginning_balance",
+          "type": {
+            "id": "currency",
+            "relaxedWithCents": true,
+            "removeSpaces": true
+          },
+          "anchor": {
+            "match": {
+              "text": "beginning balance",
+              "type": "startsWith"
+            }
+          },
+          "method": {
+            "id": "row",
+            "position": "right"
+          }
+        },
+        {
+          "id": "deposits",
+          "method": {
+            "id": "copy_to_section",
+            "source_id": "_deposits"
+          }
+        },
+        {
+          "id": "withdrawals",
+          "method": {
+            "id": "copy_to_section",
+            "source_id": "_withdrawals"
+          }
+        },
+        {
+          "id": "end_balance",
+          "type": {
+            "id": "currency",
+            "relaxedWithCents": true,
+            "removeSpaces": true
+          },
+          "anchor": {
+            "match": {
+              "text": "ending balance",
+              "type": "startsWith"
+            }
+          },
+          "method": {
+            "id": "row",
+            "position": "right",
+            "tiebreaker": "last"
+          }
+        },
+        {
+          "id": "_deposits_table_raw",
+          "type": "table",
+          "anchor": {
+            "match": {
+              "type": "endsWith",
+              "text": "description"
+            }
+          },
+          "method": {
+            "id": "fixedTable",
+            "columnCount": 5,
+            "columns": [
+              {
+                "id": "date",
+                "index": 0
+              },
+              {
+                "id": "description",
+                "index": 1
+              },
+              {
+                "id": "amount",
+                "index": 3,
+                "type": "currency",
+                "isRequired": true
+              }
+            ],
+            "stop": {
+              "type": "equals",
+              "text": "Interest Paid Information"
+            }
+          }
+        },
+        {
+          "id": "_withdrawals_table_raw",
+          "type": "table",
+          "anchor": {
+            "match": {
+              "type": "endsWith",
+              "text": "description"
+            }
+          },
+          "method": {
+            "id": "fixedTable",
+            "columnCount": 5,
+            "columns": [
+              {
+                "id": "date",
+                "index": 0
+              },
+              {
+                "id": "description",
+                "index": 1
+              },
+              {
+                "id": "amount",
+                "index": 2,
+                "type": "currency",
+                "isRequired": true
+              }
+            ],
+            "stop": {
+              "type": "equals",
+              "text": "Interest Paid Information"
+            }
+          }
+        },
+        {
+          "id": "_transactions_table_raw",
+          "type": "table",
+          "anchor": {
+            "match": {
+              "type": "endsWith",
+              "text": "description"
+            }
+          },
+          "method": {
+            "id": "fixedTable",
+            "columnCount": 5,
+            "columns": [
+              {
+                "id": "date",
+                "index": 0
+              },
+              {
+                "id": "description",
+                "index": 1
+              },
+              {
+                "id": "debit",
+                "index": 2,
+                "type": {
+                  "id": "currency",
+                  "alwaysNegative": true
+                }
+              },
+              {
+                "id": "credit",
+                "index": 3,
+                "type": "currency"
+              },
+              {
+                "id": "balance",
+                "index": 4,
+                "type": "currency",
+                "isRequired": true
+              }
+            ],
+            "stop": {
+              "type": "equals",
+              "text": "Interest Paid Information"
+            }
+          }
+        },
+        {
+          "id": "deposits_table",
+          "method": {
+            "id": "zip",
+            "source_ids": ["_deposits_table_raw"]
+          }
+        },
+        {
+          "id": "withdrawals_table",
+          "method": {
+            "id": "zip",
+            "source_ids": ["_withdrawals_table_raw"]
+          }
+        },
+        {
+          "id": "transactions_table",
+          "method": {
+            "id": "zip",
+            "source_ids": ["_transactions_table_raw"]
+          }
+        },
+        {
+          "id": "suppress",
+          "method": {
+            "id": "suppressOutput",
+            "source_ids": [
+              "_deposits_table_raw",
+              "_withdrawals_table_raw",
+              "_transactions_table_raw"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "suppress",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": [
+          "_account_summary_table_raw",
+          "_account_name",
+          "_account_number",
+          "_deposits",
+          "_withdrawals"
+        ]
+      }
+    }
+  ]
+}
