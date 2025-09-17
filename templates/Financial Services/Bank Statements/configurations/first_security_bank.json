@@ -3,10 +3,6 @@
     "tests": [
       {
         "type": "equals",
-        "text": "account statement"
-      },
-      {
-        "type": "equals",
         "text": "First Security Bank"
       }
     ]
@@ -14,17 +10,7 @@
   "fields": [
     {
       "id": "start_date",
-      "type": {
-        "id": "compose",
-        "types": [
-          {
-            "id": "replace",
-            "pattern": "^(\\d+/\\d+/\\d+)\\s+thru.*$",
-            "replaceWith": "$1"
-          },
-          "date"
-        ]
-      },
+      "type": "date",
       "anchor": {
         "match": {
           "type": "startsWith",
@@ -33,22 +19,13 @@
       },
       "method": {
         "id": "row",
+        "tiebreaker": "first",
         "sortLines": "readingOrderLeftToRight"
       }
     },
     {
       "id": "end_date",
-      "type": {
-        "id": "compose",
-        "types": [
-          {
-            "id": "replace",
-            "pattern": "^\\d+/\\d+/\\d+ thru\\s+(.*)$",
-            "replaceWith": "$1"
-          },
-          "date"
-        ]
-      },
+      "type": "date",
       "anchor": {
         "match": {
           "type": "startsWith",
@@ -57,6 +34,7 @@
       },
       "method": {
         "id": "row",
+        "tiebreaker": "last",
         "sortLines": "readingOrderLeftToRight"
       }
     },
@@ -75,9 +53,7 @@
         "height": 0.8,
         "width": 3.5,
         "offsetX": 0,
-        "typeFilters": [
-          "address"
-        ]
+        "typeFilters": ["address"]
       }
     },
     {
@@ -96,9 +72,7 @@
         "height": 0.8,
         "width": 3.5,
         "offsetX": 0,
-        "typeFilters": [
-          "address"
-        ]
+        "typeFilters": ["address"]
       }
     },
     {
@@ -520,18 +494,16 @@
         },
         {
           "id": "transactions_table",
-          "anchor": "not_found",
           "method": {
-            "id": "passthrough"
+            "id": "customComputation",
+            "jsonLogic": { "var": "_transactions" }
           }
         },
         {
           "id": "suppress",
           "method": {
             "id": "suppressOutput",
-            "source_ids": [
-              "_transactions"
-            ]
+            "source_ids": ["_transactions"]
           }
         }
       ]
@@ -653,27 +625,21 @@
           "id": "deposits_table",
           "method": {
             "id": "zip",
-            "source_ids": [
-              "_deposits_table_raw"
-            ]
+            "source_ids": ["_deposits_table_raw"]
           }
         },
         {
           "id": "withdrawals_table",
           "method": {
             "id": "zip",
-            "source_ids": [
-              "_withdrawals_table_raw"
-            ]
+            "source_ids": ["_withdrawals_table_raw"]
           }
         },
         {
           "id": "transaction_table",
           "method": {
             "id": "zip",
-            "source_ids": [
-              "_transaction_table_raw"
-            ]
+            "source_ids": ["_transaction_table_raw"]
           }
         },
         {

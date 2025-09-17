@@ -1,4 +1,3 @@
-
 {
   "fingerprint": {
     "tests": [
@@ -12,15 +11,7 @@
     {
       "id": "start_date",
       "type": {
-        "id": "compose",
-        "types": [
-          {
-            "id": "replace",
-            "pattern": "\\d{2}/\\d{2}/\\d{4}$",
-            "replaceWith": ""
-          },
-          "date"
-        ]
+        "id": "date",
       },
       "anchor": {
         "match": {
@@ -29,22 +20,13 @@
         }
       },
       "method": {
-        "id": "passthrough"
+        "id": "passthrough",
+        "tiebreaker": "first"
       }
     },
     {
       "id": "end_date",
-      "type": {
-        "id": "compose",
-        "types": [
-          {
-            "id": "replace",
-            "pattern": "(\\d{2}/\\d{2}/\\d{4})$",
-            "replaceWith": "$1"
-          },
-          "date"
-        ]
-      },
+      "type": "date",
       "anchor": {
         "match": {
           "type": "startsWith",
@@ -52,7 +34,8 @@
         }
       },
       "method": {
-        "id": "passthrough"
+        "id": "passthrough",
+        "tiebreaker": "last"
       }
     },
     {
@@ -385,10 +368,50 @@
           }
         },
         {
-          "id": "_transaction_table_raw",
-          "anchor": "not_listed",
+          "id": "_transactions_table_raw",
+          "type": "table",
+          "anchor": {
+            "match": {
+              "type": "endsWith",
+              "text": "description"
+            }
+          },
           "method": {
-            "id": "passthrough"
+            "id": "fixedTable",
+            "columnCount": 5,
+            "columns": [
+              {
+                "id": "date",
+                "index": 0
+              },
+              {
+                "id": "description",
+                "index": 1
+              },
+              {
+                "id": "debit",
+                "index": 2,
+                "type": {
+                  "id": "currency",
+                  "alwaysNegative": true
+                }
+              },
+              {
+                "id": "credit",
+                "index": 3,
+                "type": "currency"
+              },
+              {
+                "id": "balance",
+                "index": 4,
+                "type": "currency",
+                "isRequired": true
+              }
+            ],
+            "stop": {
+              "type": "equals",
+              "text": "Interest Paid Information"
+            }
           }
         },
         {
@@ -406,13 +429,20 @@
           }
         },
         {
+          "id": "transactions_table",
+          "method": {
+            "id": "zip",
+            "source_ids": ["_transactions_table_raw"]
+          }
+        },
+        {
           "id": "suppress",
           "method": {
             "id": "suppressOutput",
             "source_ids": [
               "_deposits_table_raw",
               "_withdrawals_table_raw",
-              "_transaction_table_raw"
+              "_transactions_table_raw"
             ]
           }
         }
