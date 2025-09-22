@@ -1,0 +1,644 @@
+{
+  "fingerprint": {
+    "tests": [
+      [
+        {
+          "type": "includes",
+          "text": "armls"
+        },
+        {
+          "type": "includes",
+          "text": "All information should be verified by the recipient and none is guaranteed as accurate by ARMLS"
+        }
+      ]
+    ]
+  },
+  "fields": [
+    {
+      "id": "county",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "County Code:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "county",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "County Code:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "property_type",
+      "type": {
+        "id": "replace",
+        "pattern": "\\d+",
+        "replaceWith": ""
+      },
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Beds/Baths"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.02,
+        "width": 2.18,
+        "height": 0.3,
+        "offsetY": -0.42
+      }
+    },
+    {
+      "id": "property_subtype",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Dwelling Type:"
+        }
+      },
+      "method": {
+        "id": "documentRange",
+        "includeAnchor": true,
+        "xRangeFilter": {
+          "start": "left",
+          "offsetX": -0.02,
+          "width": 2.18
+        },
+        "wordFilters": [
+          "Dwelling Type:"
+        ],
+        "stop": {
+          "type": "startsWith",
+          "text": "Dwelling styles"
+        }
+      }
+    },
+    {
+      "id": "structure_type",
+      "anchor": "not_listed",
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "levels",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "# of Interior Levels:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "levels",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "# of Interior Levels:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "subdivision_name",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Subdivision:"
+        }
+      },
+      "method": {
+        "id": "documentRange",
+        "includeAnchor": true,
+        "xRangeFilter": {
+          "start": "left",
+          "offsetX": -0.02,
+          "width": 2.6
+        },
+        "wordFilters": [
+          "Subdivision:"
+        ],
+        "stop": {
+          "type": "startsWith",
+          "text": "Tax Municipality"
+        }
+      }
+    },
+    {
+      "id": "list_price",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "List Price:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "year_built",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Year Built:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "year_built",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Year Built:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "tax_annual_amount",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Taxes/Yr:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "tax_annual_amount",
+      "type": "currency",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Taxes/Yr:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "tax_legal_description",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Legal Description (Abbrev"
+        }
+      },
+      "method": {
+        "id": "documentRange",
+        "includeAnchor": true,
+        "xRangeFilter": {
+          "start": "left",
+          "offsetX": -0.02,
+          "width": 2.2
+        },
+        "wordFilters": [
+          "Legal Description",
+          "(",
+          ")",
+          "Abbrev"
+        ],
+        "stop": {
+          "type": "startsWith",
+          "text": "AN:",
+          "isCaseSensitive": true
+        }
+      }
+    },
+    {
+      "id": "building_area_total",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Approx Lot SqFt:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "building_area_total",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Approx Lot SqFt:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "living_area",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Approx SqFt:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "living_area",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Approx SqFt:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "above_grade_finished_area",
+      "anchor": "not_listed",
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "bedrooms",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Beds/Baths:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "bedrooms",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Beds/Baths:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "bathrooms",
+      "type": {
+        "id": "compose",
+        "types": [
+          {
+            "id": "replace",
+            "pattern": "\\d+\\s*/\\s*(\\d+)$",
+            "replaceWith": "$1"
+          },
+          "number"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Beds/Baths:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "bathrooms",
+      "type": {
+        "id": "compose",
+        "types": [
+          {
+            "id": "replace",
+            "pattern": "\\d+\\s*/\\s*(\\d+)$",
+            "replaceWith": "$1"
+          },
+          "number"
+        ]
+      },
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Beds/Baths:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "parking_type",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Parking Features:"
+        }
+      },
+      "method": {
+        "id": "documentRange",
+        "includeAnchor": true,
+        "xRangeFilter": {
+          "start": "left",
+          "offsetX": -0.02,
+          "width": 2
+        },
+        "wordFilters": [
+          "Parking Features:"
+        ],
+        "stop": {
+          "type": "any",
+          "matches": [
+            {
+              "type": "startsWith",
+              "text": "Road Responsibility"
+            },
+            {
+              "type": "startsWith",
+              "text": "Pool Features:"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "parking_spaces",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Total Covered Spaces:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "parking_spaces",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Total Covered Spaces:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "lot_size_acres",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Approx Lot Acres:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "lot_size_acres",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Approx Lot Acres:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "lot_size_sqft",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Approx Lot SqFt:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "lot_size_sqft",
+      "type": "number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Approx Lot SqFt:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "parcel_number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "AN:",
+          "isCaseSensitive": true
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "parcel_number",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "AN:",
+          "isCaseSensitive": true
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "zoning",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Town-Range-Section:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "zoning",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Town-Range-Section:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "architectural_style",
+      "anchor": "not_listed",
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "architectural_style",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Architectural Style:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "construction_materials",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Construction:"
+        }
+      },
+      "method": {
+        "id": "label",
+        "position": "right"
+      }
+    },
+    {
+      "id": "construction_materials",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Construction:"
+        }
+      },
+      "method": {
+        "id": "row",
+        "tiebreaker": "first",
+        "sortLines": "readingOrderLeftToRight"
+      }
+    },
+    {
+      "id": "exterior_features",
+      "anchor": {
+        "match": {
+          "type": "startsWith",
+          "text": "Exterior Features:"
+        }
+      },
+      "method": {
+        "id": "documentRange",
+        "includeAnchor": true,
+        "xRangeFilter": {
+          "start": "left",
+          "offsetX": -0.02,
+          "width": 2
+        },
+        "wordFilters": [
+          "Exterior Features::"
+        ],
+        "stop": {
+          "type": "startsWith",
+          "text": "Features:"
+        }
+      }
+    }
+  ]
+}
