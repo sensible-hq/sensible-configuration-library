@@ -357,8 +357,8 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 #### Utility Bills
 
-- [Conedison](<./templates/Utilities & Invoices/Utility Bills/Conedison/configurations/conedison.json>)
-- [LA DWP](<./templates/Utilities & Invoices/Utility Bills/LA DWP/configurations/la_dwp.json>)
+- [Conedison](<./templates/Utilities & Invoices/Utility Bills/configurations/conedison.json>)
+- [LA DWP](<./templates/Utilities & Invoices/Utility Bills/configurations/la_dwp.json>)
 
 ### Invoices
 
