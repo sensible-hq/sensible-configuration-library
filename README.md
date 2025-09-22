@@ -51,6 +51,9 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [W2](#w2s)
 - [W9](#w9s)
 
+### [Utilities & Invoices](#utilities--invoices-1)
+- [Utility Bills](#utility-bills)
+
 ### [Invoices](#invoices-1)
 
 ## [Using a configuration](#using-a-configuration-1)
@@ -349,6 +352,13 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 #### Driver's Licenses
 
 - [Driver's License](<./templates/Identification/Driver License/configurations/drivers_license.json>)
+
+### Utilities & Invoices
+
+#### Utility Bills
+
+- [Conedison](<./templates/Utilities & Invoices/Utility Bills/configurations/conedison.json>)
+- [LA DWP](<./templates/Utilities & Invoices/Utility Bills/configurations/la_dwp.json>)
 
 ### Invoices
 
