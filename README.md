@@ -293,6 +293,8 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Well Fargo (Checking)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_checking.json>)
 - [Well Fargo (Savings)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_savings.json>)
 - [Well Fargo (Combined Statement of Accounts)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_combined_statement_of_accounts.json>)
+- [USAA](<./templates/Financial Services/Bank Statements/configurations/usaa.json>)
+- [First Security Bank](<./templates/Financial Services/Bank Statements/configurations/first_security_bank.json>)
 - [LLM (Any Single Account Bank Statement)](<./templates/Financial Services/Bank Statements/configurations/any_single_account_bank_statement.json>)
 
 #### Balance Sheets
