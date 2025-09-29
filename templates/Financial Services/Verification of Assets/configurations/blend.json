@@ -1,0 +1,410 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "page": "first",
+          "match": [
+            {
+              "text": "Borrower Details",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "Lender Details",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            },
+            {
+              "text": "Current Address:",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          ]
+        },
+        {
+          "page": "every",
+          "match": [
+            {
+              "text": "blend",
+              "type": "startsWith"
+            },
+            {
+              "text": "reference #",
+              "type": "startsWith"
+            }
+          ]
+        }
+      ]
+    },
+    "fields": [
+      {
+        "id": "start_date",
+        "type": "date",
+        "method": {
+          "id": "row",
+          "tiebreaker": "<"
+        },
+        "anchor": {
+          "match": {
+            "type": "startsWith",
+            "text": "Transaction History"
+          }
+        }
+      },
+      {
+        "id": "end_date",
+        "type": "date",
+        "method": {
+          "id": "row"
+        },
+        "anchor": {
+          "match": {
+            "type": "includes",
+            "text": "current as of"
+          }
+        }
+      },
+      {
+        "id": "name",
+        "anchor": {
+          "match": {
+            "text": "account holders:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "label",
+          "position": "right"
+        }
+      },
+      {
+        "id": "name",
+        "anchor": {
+          "match": {
+            "text": "account holders:",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "start": "left",
+          "offsetX": 0,
+          "offsetY": -0.15,
+          "width": 3.4,
+          "height": 0.5,
+          "wordFilters": [
+            "account holders",
+            ":",
+            "Current Balance"
+          ],
+          "sortLines": "readingOrderLeftToRight",
+          "lineFilters": [
+            {
+              "type": "startsWith",
+              "text": "$"
+            }
+          ]
+        }
+      },
+      {
+        "id": "address",
+        "type": "address",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "offsetY": -0.15,
+          "offsetX": 0.05,
+          "width": 2,
+          "height": 0.8
+        },
+        "anchor": {
+          "match": {
+            "text": "current address",
+            "type": "startsWith"
+          }
+        }
+      },
+      {
+        "id": "accounts",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "match": {
+              "text": "Account Details",
+              "type": "startsWith",
+              "isCaseSensitive": true
+            }
+          }
+        },
+        "fields": [
+          {
+            "id": "institution",
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": 0.7,
+              "offsetY": -0.15,
+              "width": 2.5,
+              "height": 0.6
+            },
+            "anchor": {
+              "match": {
+                "type": "startsWith",
+                "text": "Institution",
+                "isCaseSensitive": true
+              }
+            }
+          },
+          {
+            "id": "account_type",
+            "method": {
+              "id": "row",
+              "tiebreaker": "first"
+            },
+            "anchor": {
+              "match": {
+                "type": "startsWith",
+                "text": "Account Type:",
+                "isCaseSensitive": true
+              }
+            }
+          },
+          {
+            "id": "account_number",
+            "method": {
+              "id": "label",
+              "position": "right"
+            },
+            "anchor": {
+              "match": {
+                "text": "account number:",
+                "type": "startsWith"
+              }
+            }
+          },
+          {
+            "id": "account_number",
+            "method": {
+              "id": "row",
+              "position": "right"
+            },
+            "anchor": {
+              "match": {
+                "text": "account number:",
+                "type": "startsWith"
+              }
+            }
+          },
+          {
+            "id": "name",
+            "anchor": {
+              "match": {
+                "text": "account holders:",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "name",
+            "anchor": {
+              "match": {
+                "text": "account holders:",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "start": "left",
+              "offsetX": 0,
+              "offsetY": -0.15,
+              "width": 3.4,
+              "height": 0.5,
+              "wordFilters": [
+                "account holders",
+                ":",
+                "Current Balance"
+              ],
+              "sortLines": "readingOrderLeftToRight",
+              "lineFilters": [
+                {
+                  "type": "startsWith",
+                  "text": "$"
+                }
+              ]
+            }
+          },
+          {
+            "id": "beginning_balance",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "anyParentheses"
+            },
+            "anchor": {
+              "match": "not on blend format"
+            },
+            "method": {
+              "id": "passthrough"
+            }
+          },
+          {
+            "id": "deposits",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "anyParentheses"
+            },
+            "anchor": "not on blend format",
+            "method": {
+              "id": "row",
+              "position": "right",
+              "whitespaceFilter": "all"
+            }
+          },
+          {
+            "id": "ending_balance",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "default"
+            },
+            "anchor": "current balance:",
+            "method": {
+              "id": "label",
+              "position": "right"
+            }
+          },
+          {
+            "id": "ending_balance",
+            "type": {
+              "id": "currency",
+              "accountingNegative": "default"
+            },
+            "anchor": "current balance:",
+            "method": {
+              "id": "row",
+              "position": "right"
+            }
+          },
+          {
+            "id": "deposits_table_raw",
+            "type": "table",
+            "anchor": {
+              "match": {
+                "text": "transaction history",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "textTable",
+              "detectMultipleLinesPerRow": true,
+              "columns": [
+                {
+                  "id": "date",
+                  "minX": 0.6,
+                  "maxX": 1.6,
+                  "type": "date",
+                  "isRequired": true
+                },
+                {
+                  "id": "description",
+                  "minX": 1.6,
+                  "maxX": 5.8
+                },
+                {
+                  "id": "amount",
+                  "type": {
+                    "id": "currency"
+                  },
+                  "minX": 6.8,
+                  "maxX": 7.8,
+                  "isRequired": true
+                }
+              ],
+              "stop": {
+                "type": "last"
+              }
+            }
+          },
+          {
+            "id": "deposits_table",
+            "method": {
+              "id": "zip",
+              "source_ids": [
+                "deposits_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "suppress_deposits_table",
+            "method": {
+              "id": "suppressOutput",
+              "source_ids": [
+                "deposits_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "withdrawals_table_raw",
+            "type": "table",
+            "anchor": {
+              "match": {
+                "text": "transaction history",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "textTable",
+              "detectMultipleLinesPerRow": true,
+              "columns": [
+                {
+                  "id": "date",
+                  "minX": 0.6,
+                  "maxX": 1.6,
+                  "type": "date",
+                  "isRequired": true
+                },
+                {
+                  "id": "description",
+                  "minX": 1.6,
+                  "maxX": 5.8
+                },
+                {
+                  "id": "amount",
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "anyParentheses"
+                  },
+                  "minX": 5.75,
+                  "maxX": 6.8,
+                  "isRequired": true
+                }
+              ],
+              "stop": {
+                "type": "last"
+              }
+            }
+          },
+          {
+            "id": "withdrawals_table",
+            "method": {
+              "id": "zip",
+              "source_ids": [
+                "withdrawals_table_raw"
+              ]
+            }
+          },
+          {
+            "id": "suppress_withdrawals_table",
+            "method": {
+              "id": "suppressOutput",
+              "source_ids": [
+                "withdrawals_table_raw"
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
