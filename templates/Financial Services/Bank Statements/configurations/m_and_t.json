@@ -1,0 +1,406 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "type": "startsWith",
+          "text": "M&T"
+        },
+        {
+          "type": "startsWith",
+          "text": "ACCOUNT NUMBER",
+          "isCaseSensitive": true
+        },
+        {
+          "type": "startsWith",
+          "text": "BEGINNING BALANCE",
+          "isCaseSensitive": true
+        },
+        {
+          "type": "startsWith",
+          "text": "ACCOUNT ACTIVITY",
+          "isCaseSensitive": true
+        },
+      ]
+    },
+    "fields": [
+      {
+        "id": "institution",
+        "method": {
+          "id": "constant",
+          "value": "M&T"
+        }
+      },
+      {
+        "id": "account_holder_name",
+        "anchor": {
+          "match": {
+            "text": "BEGINNING BALANCE",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "width": 3,
+          "height": 1,
+          "offsetX": -4,
+          "offsetY": -0.05,
+          "sortLines": "readingOrderLeftToRight",
+          "start": "left",
+          "tiebreaker": 0
+        }
+      },
+      {
+        "id": "account_name",
+        "anchor": {
+          "match": {
+            "text": "Account Type",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "width": 3,
+          "height": 0.32,
+          "offsetX": -1,
+          "offsetY": -0.05,
+          "sortLines": "readingOrderLeftToRight",
+          "start": "left",
+          "wordFilters": [
+            "Account Type:",
+            "Account Type"
+          ]
+        }
+      },
+      {
+        "id": "_raw_statement_date",
+        "anchor": {
+          "match": {
+            "text": "STATEMENT PERIOD",
+            "type": "startsWith",
+          }
+        },
+        "method": {
+          "id": "region",
+          "width": 3,
+          "height": 0.31,
+          "offsetX": -0.05,
+          "offsetY": -0.05,
+          "sortLines": "readingOrderLeftToRight",
+          "start": "left",
+          "wordFilters": [
+            "Statement Period",
+          ]
+        }
+      },
+      {
+        "id": "statement_start_date",
+        "type": "date",
+        "method": {
+          "id": "split",
+          "source_id": "_raw_statement_date",
+          "separator": " ",
+          "index": 0
+        }
+      },
+      {
+        "id": "statement_end_date",
+        "type": "date",
+        "method": {
+          "id": "split",
+          "source_id": "_raw_statement_date",
+          "separator": "-",
+          "index": 1
+        }
+      },
+      {
+        "id": "account_number",
+        "anchor": {
+          "match": {
+            "text": "Account number",
+            "type": "startsWith"
+          },
+        },
+        "method": {
+          "id": "region",
+          "sortLines": "readingOrderLeftToRight",
+          "width": 1,
+          "height": 0.2,
+          "offsetX": 0,
+          "offsetY": 0.1,
+          "start": "left",
+        }
+      },
+      {
+        "id": "raw_beginning_balance",
+        "anchor": {
+          "match": {
+            "text": "BEGINNING BALANCE",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "DEPOSITS",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "width": 1.5,
+          "height": 0.2,
+          "offsetX": 0.3,
+          "offsetY": -0.07,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "raw_ending_balance",
+        "anchor": {
+          "match": {
+            "text": "ENDING BALANCE",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          },
+          "end": {
+            "text": "ACCOUNT ACTIVITY",
+            "type": "startsWith",
+            "isCaseSensitive": true
+          }
+        },
+        "type": "currency",
+        "method": {
+          "id": "region",
+          "start": "right",
+          "width": 1.8,
+          "height": 0.2,
+          "offsetX": 0.3,
+          "offsetY": -0.07,
+          "sortLines": "readingOrderLeftToRight"
+        }
+      },
+      {
+        "id": "accounts",
+        "type": "sections",
+        "range": {
+          "externalRange": {
+            "anchor": {
+              "text": "TRANSACTION DESCRIPTION",
+              "type": "equals",
+              "reverse": true
+            },
+            "stop": {
+              "text": "TRANSACTION DESCRIPTION",
+              "type": "equals"
+            },
+            "stopOffsetY": 0.1,
+            "offsetY": -0.1
+          },
+          "anchor": {
+            "start": {
+              "text": "ACCOUNT ACTIVITY",
+              "type": "equals",
+            },
+            "match": {
+              "type": "equals",
+              "text": "TRANSACTION DESCRIPTION"
+            }
+          },
+          "stop": {
+            "type": "equals",
+            "text": "null no stop"
+          },
+          "requireStop": true
+        },
+        "fields": [
+          {
+            "id": "account_number",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "account_number"
+            }
+          },
+          {
+            "id": "account_type",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "account_name"
+            }
+          },
+          {
+            "id": "opening_balance",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "raw_beginning_balance"
+            }
+          },
+          {
+            "id": "closing_balance",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "raw_ending_balance"
+            }
+          },
+          {
+            "id": "transaction_data",
+            "type": "sections",
+            "range": {
+              "externalRange": {
+                "anchor": {
+                  "text": "TRANSACTION DESCRIPTION",
+                  "type": "equals",
+                  "reverse": true,
+                },
+                "stop": {
+                  "text": "TRANSACTION DESCRIPTION",
+                  "type": "equals"
+                },
+                "stopOffsetY": 0.1,
+                "offsetY": -0.1
+              },
+              "anchor": {
+                "start": {
+                  "text": "TRANSACTION DESCRIPTION",
+                  "type": "equals"
+                },
+                "match": {
+                  "type": "regex",
+                  "pattern": "^(0[1-9]|1[0-2])/(0[1-9]|[12]\\d|3[01])/(\\d{4})$"
+                }
+              },
+              "stop": {
+                "text": "NUMBER OF DEPOSITS",
+                "type": "startsWith"
+              },
+              "stopOffsetY": -0.1
+            },
+            "requiredFields": [
+              "date"
+            ],
+            "fields": [
+              {
+                "id": "date",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^(0[1-9]|1[0-2])/(0[1-9]|[12]\\d|3[01])/(\\d{4})$"
+                  }
+                },
+                "type": "date",
+                "method": {
+                  "id": "passthrough"
+                }
+              },
+              {
+                "id": "transaction_type",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^(0[1-9]|1[0-2])/(0[1-9]|[12]\\d|3[01])/(\\d{4})$"
+                  }
+                },
+                "method": {
+                  "id": "intersection",
+                  "verticalAnchor": {
+                    "match": {
+                      "text": "TRANSACTION DESCRIPTION",
+                      "type": "startsWith"
+                    }
+                  },
+                  "width": 3,
+                  "height": 0.3,
+                  "offsetY": 0.1,
+                  "percentOverlapX": 0,
+                  "percentOverlapY": 0
+                }
+              },
+              {
+                "id": "debit",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^(0[1-9]|1[0-2])/(0[1-9]|[12]\\d|3[01])/(\\d{4})$"
+                  }
+                },
+                "type": "currency",
+                "method": {
+                  "id": "intersection",
+                  "verticalAnchor": {
+                    "match": {
+                      "text": "WITHDRAWALS",
+                      "type": "startsWith"
+                    }
+                  },
+                  "width": 0.8,
+                  "height": 0.3,
+                  "offsetY": 0.1,
+                  "percentOverlapX": 0,
+                  "percentOverlapY": 0
+                }
+              },
+              {
+                "id": "credit",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^(0[1-9]|1[0-2])/(0[1-9]|[12]\\d|3[01])/(\\d{4})$"
+                  }
+                },
+                "type": "currency",
+                "method": {
+                  "id": "intersection",
+                  "verticalAnchor": {
+                    "match": {
+                      "text": "DEPOSITS",
+                      "type": "startsWith"
+                    }
+                  },
+                  "width": 0.8,
+                  "height": 0.3,
+                  "offsetY": 0.1,
+                  "percentOverlapX": 0,
+                  "percentOverlapY": 0
+                }
+              },
+              {
+                "id": "balance",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^(0[1-9]|1[0-2])/(0[1-9]|[12]\\d|3[01])/(\\d{4})$"
+                  }
+                },
+                "type": "currency",
+                "method": {
+                  "id": "intersection",
+                  "verticalAnchor": {
+                    "match": {
+                      "text": "BALANCE",
+                      "type": "startsWith"
+                    }
+                  },
+                  "width": 0.8,
+                  "height": 0.3,
+                  "offsetY": 0.1,
+                  "percentOverlapX": 0,
+                  "percentOverlapY": 0
+                }
+              },
+            ]
+          }
+        ]
+      },
+      {
+        "id": "hide",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_raw_statement_date",
+            "raw_beginning_balance",
+            "raw_ending_balance"
+          ]
+        }
+      }
+    ]
+  }
