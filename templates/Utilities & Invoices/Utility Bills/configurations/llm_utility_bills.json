@@ -1,0 +1,242 @@
+{
+  "preprocessors": [
+    {
+      "type": "nlp",
+      "searchBySummarization": true
+    }
+  ],
+  "fields": [
+    {
+      "method": {
+        "id": "queryGroup",
+
+        "multimodalEngine": {
+          "region": "automatic"
+        },
+        "confidenceSignals": false,
+        "queries": [
+          {
+            "id": "Service Provider",
+            "description": "Extract the name of the company providing the service. Look for Logo or company name",
+            "type": "string"
+          },
+          {
+            "id": "Service Account Number",
+            "description": "Extract the account number of the consumer. Not Invoice number",
+            "type": "string"
+          },
+          {
+            "id": "Service Type",
+            "description": "What is the utility service?",
+            "type": "string"
+          },
+          {
+            "id": "Service Customer Name",
+            "description": "Extract the full name of the account holder responsible for the service. Not the company issuing",
+            "type": "string"
+          },
+          {
+            "id": "Previous Balance",
+            "description": "Return the Previous Balance exactly as printed. Look for labels like 'Previous Balance', or similar. Do not calculate or combine values. If not explicitly shown, return null.",
+            "type": "number"
+          },
+          {
+            "id": "Payments",
+            "description": "Return the payment amount exactly as printed. Look for labels like 'Payments', 'Payments Received', or 'Last Payment'. Do not infer or calculate. If no payment amount is shown, return null.",
+            "type": "number"
+          },
+          {
+            "id": "Current Charges",
+            "description": "Return the Current Charges total exactly as shown on the bill. Look for labels such as 'Current Charges', 'New Charges', 'Current Bill', or 'This Period Charges'. Do not sum line items or compute subtotals; only return the bill's stated total for current charges. If no explicit total for current charges exists, return null.",
+            "type": "number"
+          },
+
+          {
+            "id": "Total Amount Due",
+            "description": "how much is the total amount due?",
+            "type": "string"
+          },
+          {
+            "id": "Service Tax",
+            "description": "Return the bill total tax amount exactly as printed (e.g., 'Tax', 'State Tax', 'Sales Tax', 'Utility Tax').",
+
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Bill Date",
+            "description": "What is the Billng Date, or Statement Date?. Output in YYYY/MM/DD format. If Issue Date is not explicitly found, return null. Do NOT return Payment Due Date, or Service Period dates",
+            "type": "string"
+          },
+          {
+            "id": "Bill Date",
+            "description": "What is the Billing month, or Summary as of date?. Output in YYYY/MM/DD format. If Issue Date is not explicitly found, return null. Do NOT return Payment Due Date, or Service Period dates",
+            "type": "string"
+          },
+          {
+            "id": "Bill Due Date",
+            "description": "Extract the Payment Due Date only. Look for labels such as 'Due Date' or 'Payment Due By'. Do NOT return Bill Issue Date, Bill Statement Date, or Service Period dates. If no due date is present, return null. Output in YYYY/MM/DD format.",
+            "type": "string"
+          },
+          {
+            "id": "Bill Service Period",
+            "description": "Get the Billed period as stated on the bill. Must have a start and end Dates",
+            "type": "string"
+          },
+          {
+            "id": "Bill Service Period",
+            "description": "Get the Service period or cycle as stated on the bill.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+
+    {
+      "method": {
+        "id": "queryGroup",
+
+        "contextDescription": "Search only for 'Service Address' # Dismiss Address of issuing company #Dismiss any address near barcode",
+        "confidenceSignals": false,
+        "queries": [
+          {
+            "id": "ServiceAddress_Street_raw",
+            "description": "Extract the service address or service location as in document. Dismiss Address of issuing company. ",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "contextDescription": "Search only on customer 'Service Address', dismiss Address of issuing company",
+        "confidenceSignals": false,
+        "queries": [
+          {
+            "id": "ServiceAddress_Street_raw",
+            "description": "Extract the full service address or service location. Dismiss any other address in the bill",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "source_ids": ["ServiceAddress_Street_raw"],
+
+        "queries": [
+          {
+            "id": "Service Street Address",
+            "description": "Extract street and number address, including apartment number. Return capitalized and remove special characters",
+            "type": "string"
+          },
+          {
+            "id": "Service Street Address 2",
+            "description": "second address line information, if any",
+            "type": "string"
+          },
+          {
+            "id": "Service Address City",
+            "description": "Extract the city of the service address of the consumer. Dismiss address from the issuing company",
+            "type": "string"
+          },
+          {
+            "id": "Service Address State",
+            "description": "Extract the state, of the consumer. Dismiss address from the issuing company",
+            "type": "string"
+          },
+          {
+            "id": "Service Address ZIP",
+            "description": "Extract the postal code or ZIP code  of the consumer.  Dismiss address from the issuing company",
+            "type": "string"
+          }
+        ]
+      }
+    },
+
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Electric Meter Number",
+            "description": "Return the meter number for the electricity service exactly as shown on the bill (for example: 'Meter Number', 'Electric Meter', 'Meter ID', 'Meter No' for the electric service). If there are multiple electricity meters, return all meter numbers separated by commas in a single string, in the same order they appear. If no electricity meter number can be found, return null.",
+            "type": "string"
+          },
+          {
+            "id": "Electricity Total Usage",
+            "description": "Return the total electricity usage for the entire billing period as a numeric value. Use the kWh value labeled as total usage for the bill or account (for example: 'Total kWh', 'Total Usage kWh', 'Total Electric Consumption'). Do not include kW demand, peak demand, or per-meter subtotals unless the bill only has one meter and that meter clearly represents the entire service. Do not perform any arithmetic; copy the value as printed on the bill. If a clear, bill-wide total kWh cannot be identified, return null.",
+            "type": "number"
+          },
+          {
+            "id": "Electricity Usage Unit",
+            "description": "Return the unit used to measure electricity consumption, such as 'kWh' or 'MWh', exactly as printed on the bill. Look near the total usage, energy charges, or usage tables for the electricity service. If no clear electricity consumption unit is stated, return null.",
+            "type": "string"
+          },
+          {
+            "id": "Gas Meter Number",
+            "description": "Return the meter number for the gas service exactly as shown on the bill (for example: 'Gas Meter', 'Meter Number', 'Meter ID' associated with gas). If there are multiple gas meters, return all meter numbers separated by commas in a single string, in the same order they appear. If no gas meter number can be found, return null.",
+            "type": "string"
+          },
+          {
+            "id": "Gas Total Usage",
+            "description": "Return the total gas usage in therms for the entire billing period as a numeric value, if the bill explicitly reports a total in therms (for example: 'Total Therms', 'Gas Usage (therms)'). Do not sum individual lines; copy the bill’s total therms value. If the bill does not report gas usage in therms, return null.",
+            "type": "number"
+          },
+          {
+            "id": "Gas Total Usage",
+            "description": "Return the total gas usage in CCF for the entire billing period as a numeric value, if the bill explicitly reports a total in CCF (for example: 'Total CCF', 'Gas Usage (CCF)'). Do not sum individual lines; copy the bill’s total CCF value. If the bill does not report gas usage in CCF, return null.",
+            "type": "number"
+          },
+          {
+            "id": "Gas Usage Unit",
+            "description": "Return the unit used to measure gas consumption, such as 'CCF', 'MCF', 'MMBTU', or 'Therms', exactly as printed on the bill. Look near the total usage, gas charges, or usage tables for the gas service. If no clear gas consumption unit is stated, return null.",
+            "type": "string"
+          },
+          {
+            "id": "Water Meter Number",
+            "description": "Return the meter number for the water service exactly as shown on the bill (for example: 'Water Meter', 'Meter Number', 'Meter ID' associated with water). If there are multiple water meters, return all meter numbers separated by commas in a single string, in the same order they appear. If no water meter number can be found, return null.",
+            "type": "string"
+          },
+          {
+            "id": "Water Total Usage",
+            "description": "Return the total water usage for the entire billing period as a numeric value, using the total volume value (for example: 'Total Usage', 'Total Consumption') associated with the water service. Do not sum individual line items; copy the bill’s total water usage as printed. If a clear bill-wide total for water usage cannot be identified, return null.",
+            "type": "number"
+          },
+          {
+            "id": "Water Usage Unit",
+            "description": "Return the unit used to measure water consumption, such as 'gallons', 'CCF', 'HCF', or 'cubic feet', exactly as printed on the bill. Look near the total usage, water charges, or usage tables for the water service. If no clear water consumption unit is stated, return null.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+
+
+    {
+      "id": "hide",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": [
+   
+         "ServiceAddress_Street_raw"
+   
+        ]
+      }
+    }
+  ]
+}
