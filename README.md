@@ -361,10 +361,11 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 - [Conedison](<./templates/Utilities & Invoices/Utility Bills/configurations/conedison.json>)
 - [LA DWP](<./templates/Utilities & Invoices/Utility Bills/configurations/la_dwp.json>)
+- [LLM Utility Bills Template](<./templates/Utilities & Invoices/Utility Bills/configurations/llm_utility_bills_template.json>)
 
 ### Invoices
 
-- [Invoices](<./invoices/invoice.json>)
+- [LLM Invoices Template](<./templates/Utilities & Invoices/Invoices/configurations/llm_invoices_template.json>)
 
 
 ## Using a configuration

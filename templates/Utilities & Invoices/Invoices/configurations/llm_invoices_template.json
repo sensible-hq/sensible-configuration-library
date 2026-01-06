@@ -1,0 +1,458 @@
+{
+  "fields": [
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "open-ai"
+        },
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Vendor name",
+            "description": "Read vendor name only from the header/supplier area near the logo. Do not use billing or shipping blocks.",
+            "type": "string"
+          },
+          {
+            "id": "Vendor address",
+            "description": "From the header/supplier area: return the vendor address only (no company name). Ignore 'Bill To', 'Ship To', and delivery addresses.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Customer name",
+            "description": "Name in the 'Bill To' or 'Customer' panel. Do not pull vendor info.",
+            "type": "string"
+          },
+          {
+            "id": "Customer address",
+            "description": "Address only (no name) from the 'Bill To' or 'Customer' panel. Prefer 'Bill To' over 'Ship To'.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Customer ID (primary)",
+            "description": "Customer number tied to labels: 'Customer ID', 'Customer No', 'Account No', 'Customer Account'. Not a bank account/IBAN/routing.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Invoice number",
+            "description": "Extract the invoice number from this document",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Invoice date",
+            "description": "Extract the invoice date and return it in YYYY-MM-DD format if available",
+            "type": "date"
+          },
+          {
+            "id": "Invoice due date",
+            "description": "Extract the invoice due date and return it in YYYY-MM-DD format if available",
+            "type": "date"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Ship Via",
+            "description": "Extract the shipping method or carrier specified on the invoice (e.g., UPS, FedEx, DHL, Ground, Air).",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Ship Via",
+            "type": "string",
+            "description": "Extrach the Shipper code"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Ship Via",
+            "description": "Extract the shipping method or carrier specified on the invoice (e.g., UPS, FedEx, DHL, Ground, Air).",
+            "type": "string"
+          },
+          {
+            "id": "Ship Date",
+            "description": "Return the date labeled 'Ship Date'/'Shipment Date'/'Date Shipped' in the Shipping/Shipment section. Ignore any header/billing/summary dates such as 'Invoice Date', 'Issue Date', 'Billing Date', 'Due Date'. Never use ETA/Delivery."
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Ship Date",
+            "description": "use the date next to 'Dispatch'/'Despatch'/'ETD' in Shipping Terms/Logistics. Exclude header dates and ETA.",
+            "type": "date"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "contextDescription": "Searh specifically for shipping info",
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Ship Date raw",
+            "description": "Find the date when the goods were shipped. Use ONLY dates located near labels related to shipment, dispatch, or delivery. Skip any dates found in billing, payment, or header sections. Do NOT extract: 'Invoice Date', 'Billing Date', 'Emission Date', 'Payment Date', or similar. Look only for labels like: 'Ship Date', 'Shipping Date', 'Shipment Date', 'Date Shipped', or 'Dispatch Date'.",
+            "type": "date"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "open-ai"
+        },
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Ship Date raw",
+            "description": "what is the shipment date?. Search near 'Ship Date', or Shipping ETD"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Ship Date",
+      "method": {
+        "id": "customComputation",
+        "jsonLogic": {
+          "if": [
+            {
+              "!==": [
+                {
+                  "var": "Ship Via"
+                },
+                null
+              ]
+            },
+            {
+              "var": "Ship Date raw.value"
+            },
+            null
+          ]
+        }
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "PO number",
+            "description": "Extract all the purchase order number (PO number) from this invoice if present.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Currency",
+            "description": "Extract the currency used in this invoice and return it as a three-letter ISO code like USD, EUR, or GBP",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Terms",
+            "description": "Extract the payment terms for this invoice, such as Net 30 or Due on receipt",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Bank_name",
+            "description": "Extract the name of the bank provided in the payment details on the invoice",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Bank_account_name_raw",
+            "description": "Extract the account holder name associated with the bank account. Not the Bank name itself",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "id": "Bank account name",
+      "method": {
+        "id": "customComputation",
+        "jsonLogic": {
+          "if": [
+            {
+              "!==": [
+                {
+                  "var": "Bank_name"
+                },
+                null
+              ]
+            },
+            {
+              "var": "Bank_account_name_raw.value"
+            },
+            null
+          ]
+        }
+      }
+    },
+    {
+      "id": "hide",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": ["Bank_account_name_raw", "Ship Date raw"]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Bank routing number",
+            "description": "Extract the bank routing number or ABA number provided in the payment section",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Bank Swift code",
+            "description": "Extract the bank SWIFT/BIC code provided in the payment details section.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Bank account number",
+            "description": "Extract the bank account number listed in the payment instructions",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Sub-total before taxes",
+            "description": "Extract the subtotal amount before any taxes are applied and return it as a numeric value",
+            "type": "number"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Tax amount",
+            "description": "Extract the tax amount or IVA from this invoice and return it as a numeric value",
+            "type": "number"
+          }
+        ]
+      }
+    },
+  
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "Total amount of invoice",
+            "description": "Extract the total due amount from this invoice and return it. Dismiss Balance, only total amount",
+            "type": "number"
+          }
+        ]
+      }
+    },
+
+    {
+      "id": "items",
+
+      "type": "table",
+      "method": {
+        "id": "list",
+        "searchBySummarization": true,
+        "description": "Extract the information of all items in the invoice",
+        "properties": [
+          {
+            "id": "item_number",
+            "description": "Item code or Part Number, if included"
+          },
+          {
+            "id": "item_description",
+            "description": "Item name description"
+          },
+          {
+            "id": "item_boxes",
+            "description": "“Extract the number of boxes explicitly stated on the invoice. Return a value only if the document clearly mentions boxes (e.g., ‘boxes’, ‘ctns’, ‘cartons’). If no box quantity is stated, return null",
+            "type": "number"
+          },
+          {
+            "id": "item_unit_quantity",
+            "description": "quantity of the item purchased. If specified consider only shipped quantities.",
+            "type": "number"
+          },
+          {
+            "id": "item__uom",
+            "description": "Is the item measured in boxes or units?"
+          },
+
+          {
+            "id": "item__unit_price",
+            "description": "Extracth the unit price or bunch price per item purchased."
+          },
+          {
+            "id": "item__box_price",
+            "description": "If the item is in boxes, return the price per box"
+          },
+          {
+            "id": "item_total",
+            "description": "The total amount of the line item. return only numbers"
+          }
+        ]
+      }
+    },
+    {
+      "id": "line_items",
+      "method": {
+        "id": "zip",
+        "source_ids": ["items"]
+      }
+    },
+    {
+      "id": "hide",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": ["items"]
+      }
+    }
+  ]
+}
