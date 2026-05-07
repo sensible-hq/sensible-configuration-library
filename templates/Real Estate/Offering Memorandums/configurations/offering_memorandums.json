@@ -1,15 +1,13 @@
 {
-  "preprocessors": [
-    {
-      "type": "nlp",
-      "confidenceSignals": true,
-      "contextDescription": "The following is an excerpt from a commercial real estate offering memorandum (OM) presenting a multifamily or mixed-use investment property for sale."
-    }
-  ],
+
   "fields": [
     {
       "method": {
         "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
         "confidenceSignals": true,
         "queries": [
           {
@@ -21,6 +19,11 @@
             "id": "property_address",
             "description": "full street address of the subject property",
             "type": "string"
+          },
+          {
+            "id": "property_type",
+            "description": "property type or asset class such as multifamily, retail, office, industrial, or mixed-use",
+            "type": "string"
           }
         ]
       }
@@ -28,13 +31,12 @@
     {
       "method": {
         "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
         "confidenceSignals": true,
         "queries": [
-          {
-            "id": "property_type",
-            "description": "property type or asset class such as multifamily, retail, office, industrial, or mixed-use",
-            "type": "string"
-          },
           {
             "id": "parcel_id",
             "description": "parcel ID, tax parcel number, or assessor parcel number (APN)",
@@ -54,11 +56,6 @@
             "id": "year_built",
             "description": "year the property was originally built or constructed",
             "type": "string"
-          },
-          {
-            "id": "zoning",
-            "description": "zoning classification or designation; return null if not stated",
-            "type": "string"
           }
         ]
       }
@@ -66,6 +63,10 @@
     {
       "method": {
         "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
         "confidenceSignals": true,
         "queries": [
           {
@@ -82,7 +83,19 @@
             "id": "number_of_buildings",
             "description": "number of buildings on the property",
             "type": "number"
-          },
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
+        "confidenceSignals": true,
+        "queries": [
           {
             "id": "number_of_stories",
             "description": "number of stories or floors per building",
@@ -104,6 +117,10 @@
     {
       "method": {
         "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
         "confidenceSignals": true,
         "queries": [
           {
@@ -142,6 +159,9 @@
     {
       "method": {
         "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
         "confidenceSignals": true,
         "queries": [
           {
@@ -165,6 +185,10 @@
     {
       "method": {
         "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
         "confidenceSignals": true,
         "queries": [
           {
@@ -203,6 +227,10 @@
     {
       "method": {
         "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
         "confidenceSignals": true,
         "queries": [
           {
@@ -219,7 +247,19 @@
             "id": "price_per_sf",
             "description": "purchase price per rentable square foot",
             "type": "currency"
-          },
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
+        "confidenceSignals": true,
+        "queries": [
           {
             "id": "in_place_cap_rate",
             "description": "in-place or trailing capitalization rate based on current net operating income",
@@ -234,20 +274,25 @@
             "id": "in_place_noi",
             "description": "current or trailing net operating income (NOI) in dollars",
             "type": "currency"
-          }
-        ]
-      }
-    },
-    {
-      "method": {
-        "id": "queryGroup",
-        "confidenceSignals": true,
-        "queries": [
+          },
           {
             "id": "pro_forma_noi",
             "description": "projected or stabilized net operating income after renovations or lease-up",
             "type": "currency"
-          },
+          }
+        ]
+      }
+    },
+
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
+        "confidenceSignals": true,
+        "queries": [
           {
             "id": "effective_gross_income",
             "description": "current effective gross income (EGI) in dollars",
@@ -267,11 +312,6 @@
             "id": "total_operating_expenses",
             "description": "total annual operating expenses in dollars",
             "type": "currency"
-          },
-          {
-            "id": "in_place_effective_rent",
-            "description": "current average effective rent per unit per month",
-            "type": "currency"
           }
         ]
       }
@@ -279,6 +319,10 @@
     {
       "method": {
         "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
         "confidenceSignals": true,
         "queries": [
           {
@@ -290,17 +334,19 @@
             "id": "renovated_rent_per_unit",
             "description": "projected rent per unit per month after the value-add renovation program",
             "type": "currency"
-          },
-          {
-            "id": "initial_cash_on_cash_return",
-            "description": "initial or first-year cash-on-cash return percentage",
-            "type": "string"
-          },
-          {
-            "id": "leveraged_irr",
-            "description": "leveraged internal rate of return (IRR) over the hold period",
-            "type": "string"
-          },
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
+        "confidenceSignals": true,
+        "queries": [
           {
             "id": "loan_proceeds",
             "description": "proposed loan proceeds or total loan amount",
@@ -310,15 +356,7 @@
             "id": "loan_to_value",
             "description": "proposed loan-to-value ratio (LTV) as a percentage",
             "type": "string"
-          }
-        ]
-      }
-    },
-    {
-      "method": {
-        "id": "queryGroup",
-        "confidenceSignals": true,
-        "queries": [
+          },
           {
             "id": "interest_rate",
             "description": "proposed loan interest rate",
@@ -328,7 +366,19 @@
             "id": "loan_term",
             "description": "proposed loan term in years",
             "type": "string"
-          },
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
+        "confidenceSignals": true,
+        "queries": [
           {
             "id": "in_place_dcr",
             "description": "in-place debt coverage ratio (DCR or DSCR)",
@@ -345,6 +395,32 @@
     {
       "method": {
         "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+    
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "in_place_dcr",
+            "description": "in-place debt coverage ratio (DCR or DSCR)",
+            "type": "string"
+          },
+          {
+            "id": "in_place_debt_yield",
+            "description": "in-place debt yield as a percentage",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
         "confidenceSignals": true,
         "queries": [
           {
@@ -373,6 +449,10 @@
     {
       "method": {
         "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "page",
         "confidenceSignals": true,
         "queries": [
           {
