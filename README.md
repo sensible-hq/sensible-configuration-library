@@ -32,6 +32,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 ### [Insurance](#insurance-1)
 - [ACORD Forms](#acords)
 - [Loss Runs](#loss-runs)
+- [Commission Statement](#commission-statement)
 - [Policy Declaration Pages](#policy-declaration-pages)
 
 ### [Logistics](#logistics-1)
@@ -39,7 +40,9 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 
 ### [Real Estate](#real-estate-1)
 - [Closing Disclosures](#closing-disclosures)
-- [PropTech](#proptech)
+- [MLS](#mls)
+- [Offering Memorandums](#offering-memorandums)
+- [Rent Rolls](#rent-rolls)
 
 ### [Tax Forms](#tax-forms-1)
 - [941](#941s)
@@ -167,6 +170,10 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [ACORD 823 (07/2007)](<./templates/Insurance/ACORD Forms/configurations/acord_823_2007_07.json>)
 - [ACORD 823 (10/2011)](<./templates/Insurance/ACORD Forms/configurations/acord_823_2011_10.json>)
 - [ACORD 823 (12/2015)](<./templates/Insurance/ACORD Forms/configurations/acord_823_2015_12.json>)
+
+#### Commission Statement
+- [Sunlife](<./templates/Insurance/Commission Statement/configurations/sunlife.json>)
+
 
 #### Loss runs
 
@@ -320,10 +327,13 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 - [Closing Disclosure](<./templates/Real Estate/Closing Disclosures/configurations/closing_disclosure.json>)
 
-#### PropTech
+#### Rent Rolls
 
-- [Offering Memorandums](<./templates/Real Estate/PropTech/configurations/offering_memorandums.json>)
-- [Rent Rolls](<./templates/Real Estate/PropTech/configurations/rent_rolls.json>)
+- [Rent Rolls](<./templates/Real Estate/Rent Rolls/configurations/rent_rolls.json>)
+
+#### Offering Memorandums
+
+- [Offering Memorandums](<./templates/Real Estate/Offering Memorandums/configurations/offering_memorandums.json>)
 
 #### MLS
 
