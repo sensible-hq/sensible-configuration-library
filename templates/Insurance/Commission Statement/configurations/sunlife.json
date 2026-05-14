@@ -1,0 +1,345 @@
+{
+  "fields": [
+    {
+      "id": "commission_total",
+      "type": { "id": "currency", "accountingNegative": "anyParentheses" },
+      "anchor": {
+        "match": {
+          "text": "Disbursement this period via EFT",
+          "type": "startsWith"
+        }
+      },
+      "method": { "id": "row", "position": "right", "tiebreaker": "last" }
+    },
+    {
+      "id": "_policies_raw",
+      "type": "sections",
+      "range": {
+        "anchor": {
+          "start": { "text": "Current Period Detail", "type": "startsWith" },
+          "match": { "text": "Policy Holder Name", "type": "includes" }
+        },
+        "requireStop": true,
+        "stop": { "text": "Total for Broker", "type": "startsWith" },
+        "stopOffsetY": 0,
+        "externalRange": {
+          "anchor": {
+            "text": "Policy Holder Name",
+            "type": "includes",
+            "reverse": true
+          },
+          "stop": { "text": "Policy Holder Name", "type": "endsWith" },
+          "offsetY": -0.2,
+          "stopOffsetY": 0.1
+        }
+      },
+      "fields": [
+        {
+          "id": "_total_for_broker",
+          "type": { "id": "currency", "accountingNegative": "anyParentheses" },
+          "anchor": {
+            "match": { "text": "Total for Broker", "type": "startsWith" }
+          },
+          "method": { "id": "row", "position": "right", "tiebreaker": "first" }
+        },
+        {
+          "id": "_policies",
+          "type": "sections",
+          "range": {
+            "anchor": {
+              "match": { "text": "Base", "type": "equals" }
+            },
+            "requireStop": true,
+            "stop": { "text": "Total for Policy", "type": "startsWith" },
+            "stopOffsetY": 0,
+            "externalRange": {
+              "anchor": {
+                "text": "Policy Holder Name",
+                "type": "includes",
+                "reverse": true
+              },
+              "stop": { "text": "Policy Holder Name", "type": "endsWith" },
+              "offsetY": -0.2,
+              "stopOffsetY": 0.1
+            }
+          },
+          "fields": [
+            {
+              "id": "_total_for_policy",
+              "type": {
+                "id": "currency",
+                "accountingNegative": "anyParentheses"
+              },
+              "anchor": {
+                "match": { "text": "Total for Policy", "type": "startsWith" }
+              },
+              "method": {
+                "id": "row",
+                "position": "right",
+                "tiebreaker": "first"
+              }
+            },
+            {
+              "id": "transactions",
+              "type": "sections",
+              "requiredFields": ["transaction_date", "product_name"],
+              "range": {
+                "anchor": {
+                  "match": { "type": "regex", "pattern": "\\.\\d{2}" }
+                },
+                "externalRange": {
+                  "anchor": {
+                    "text": "Policy Holder Name",
+                    "type": "includes",
+                    "reverse": true
+                  },
+                  "stop": { "text": "Policy Holder Name", "type": "endsWith" },
+                  "offsetY": -0.2,
+                  "stopOffsetY": 0.1
+                }
+              },
+              "fields": [
+                {
+                  "id": "policy_name",
+                  "type": "string",
+                  "anchor": {
+                    "match": { "type": "regex", "pattern": "\\.\\d{2}" }
+                  },
+                  "method": {
+                    "id": "intersection",
+                    "verticalAnchor": {
+                      "match": {
+                        "text": "Policy Holder Name",
+                        "type": "equals"
+                      }
+                    },
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "width": 0.5,
+                    "height": 0,
+                    "percentOverlapX": 0,
+                    "percentOverlapY": 0
+                  }
+                },
+                {
+                  "id": "policy_number",
+                  "type": "string",
+                  "anchor": {
+                    "match": { "type": "regex", "pattern": "\\.\\d{2}" }
+                  },
+                  "method": {
+                    "id": "intersection",
+                    "verticalAnchor": {
+                      "match": {
+                        "text": "Number",
+                        "type": "equals",
+                        "xRangeFilter": { "minX": 0.3, "maxX": 1.0 }
+                      }
+                    },
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "width": 0.5,
+                    "height": 0,
+                    "percentOverlapX": 0,
+                    "percentOverlapY": 0
+                  }
+                },
+                {
+                  "id": "transaction_date",
+                  "type": "string",
+                  "anchor": {
+                    "match": { "type": "regex", "pattern": "\\.\\d{2}" }
+                  },
+                  "method": {
+                    "id": "intersection",
+                    "verticalAnchor": {
+                      "match": {
+                        "text": "Period",
+                        "type": "equals",
+                        "xRangeFilter": { "minX": 4.3, "maxX": 5.0 }
+                      }
+                    },
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "width": 0.35,
+                    "height": 0,
+                    "percentOverlapX": 0,
+                    "percentOverlapY": 0
+                  }
+                },
+                {
+                  "id": "product_name",
+                  "type": "string",
+                  "anchor": {
+                    "match": { "type": "regex", "pattern": "\\.\\d{2}" }
+                  },
+                  "method": {
+                    "id": "intersection",
+                    "verticalAnchor": {
+                      "match": { "text": "Benefit", "type": "equals" }
+                    },
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "width": 0.5,
+                    "height": 0,
+                    "percentOverlapX": 0,
+                    "percentOverlapY": 0
+                  }
+                },
+                {
+                  "id": "premium_applied",
+                  "type": "number",
+                  "anchor": {
+                    "match": { "type": "regex", "pattern": "\\.\\d{2}" }
+                  },
+                  "method": {
+                    "id": "intersection",
+                    "verticalAnchor": {
+                      "match": { "text": "Share", "type": "startsWith" }
+                    },
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "width": 0.35,
+                    "height": 0,
+                    "percentOverlapX": 0,
+                    "percentOverlapY": 0
+                  }
+                },
+                {
+                  "id": "commission_rate",
+                  "type": "number",
+                  "anchor": {
+                    "match": { "type": "regex", "pattern": "\\.\\d{2}" }
+                  },
+                  "method": {
+                    "id": "intersection",
+                    "verticalAnchor": {
+                      "match": {
+                        "text": "Comm",
+                        "type": "equals",
+                        "xRangeFilter": { "minX": 5.0, "maxX": 6.5 }
+                      }
+                    },
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "width": 0.35,
+                    "height": 0,
+                    "percentOverlapX": 0,
+                    "percentOverlapY": 0
+                  }
+                },
+                {
+                  "id": "transaction_premium_amount",
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "anyParentheses"
+                  },
+                  "anchor": {
+                    "match": { "type": "regex", "pattern": "\\.\\d{2}" }
+                  },
+                  "method": {
+                    "id": "intersection",
+                    "verticalAnchor": {
+                      "match": {
+                        "text": "Premium",
+                        "type": "equals",
+                        "xRangeFilter": { "minX": 6.0, "maxX": 7.2 }
+                      }
+                    },
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "width": 0.7,
+                    "height": 0,
+                    "percentOverlapX": 0,
+                    "percentOverlapY": 0
+                  }
+                },
+                {
+                  "id": "commission_amount",
+                  "type": {
+                    "id": "currency",
+                    "accountingNegative": "anyParentheses"
+                  },
+                  "anchor": {
+                    "match": { "type": "regex", "pattern": "\\.\\d{2}" }
+                  },
+                  "method": {
+                    "id": "intersection",
+                    "verticalAnchor": {
+                      "match": {
+                        "text": "Comm",
+                        "type": "equals",
+                        "xRangeFilter": { "minX": 7.0, "maxX": 8.0 }
+                      }
+                    },
+                    "offsetX": 0,
+                    "offsetY": 0,
+                    "width": 0.45,
+                    "height": 0,
+                    "percentOverlapX": 0,
+                    "percentOverlapY": 0
+                  }
+                },
+                {
+                  "id": "transaction_type",
+                  "type": "string",
+                  "anchor": {
+                    "match": { "type": "regex", "pattern": "\\.\\d{2}" }
+                  },
+                  "method": {
+                    "id": "intersection",
+                    "verticalAnchor": {
+                      "match": { "text": "Transaction", "type": "equals" }
+                    },
+                    "offsetX": 0.1,
+                    "offsetY": 0,
+                    "width": 0.45,
+                    "height": 0,
+                    "percentOverlapX": 0,
+                    "percentOverlapY": 0
+                  }
+                },
+                {
+                  "id": "total_for_policy",
+                  "method": {
+                    "id": "copy_to_section",
+                    "source_id": "_total_for_policy"
+                  }
+                },
+                {
+                  "id": "total_for_broker",
+                  "method": {
+                    "id": "customComputation",
+                    "jsonLogic": { "var": "../../_total_for_broker" }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "_transactions_per_broker",
+          "method": {
+            "id": "copy_from_sections",
+            "source_field": "transactions",
+            "source_sections": "_policies"
+          }
+        }
+      ]
+    },
+    {
+      "id": "billing_detail",
+      "method": {
+        "id": "copy_from_sections",
+        "source_field": "_transactions_per_broker",
+        "source_sections": "_policies_raw"
+      }
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "_cleanup",
+      "method": { "id": "suppressOutput", "source_ids": ["_policies_raw"] }
+    }
+  ]
+}
