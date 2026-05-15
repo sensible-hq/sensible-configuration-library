@@ -39,7 +39,9 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 
 ### [Real Estate](#real-estate-1)
 - [Closing Disclosures](#closing-disclosures)
-- [PropTech](#proptech)
+- [MLS](#mls)
+- [Offering Memorandums](#offering-memorandums)
+- [Rent Rolls](#rent-rolls)
 
 ### [Tax Forms](#tax-forms-1)
 - [941](#941s)
@@ -295,7 +297,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Well Fargo (Combined Statement of Accounts)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_combined_statement_of_accounts.json>)
 - [USAA](<./templates/Financial Services/Bank Statements/configurations/usaa.json>)
 - [First Security Bank](<./templates/Financial Services/Bank Statements/configurations/first_security_bank.json>)
-- [LLM (Any Single Account Bank Statement)](<./templates/Financial Services/Bank Statements/configurations/any_single_account_bank_statement.json>)
+- [LLM (Any Single Account Bank Statement)](<./templates/Financial Services/Bank Statements/configurations/AI_generalized_single_account_statement.json>)
 
 #### Balance Sheets
 
@@ -320,17 +322,20 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 - [Closing Disclosure](<./templates/Real Estate/Closing Disclosures/configurations/closing_disclosure.json>)
 
-#### PropTech
+#### Offering Memorandums
 
-- [Offering Memorandums](<./templates/Real Estate/PropTech/configurations/offering_memorandums.json>)
-- [Rent Rolls](<./templates/Real Estate/PropTech/configurations/rent_rolls.json>)
+- [Offering Memorandums](<./templates/Real Estate/Offering Memorandums/configurations/AI_generalized_offering_memorandum.json>)
+
+#### Rent Rolls
+
+- [Rent Rolls](<./templates/Real Estate/Rent Rolls/configurations/rent_rolls.json>)
 
 #### MLS
 
-- [ARMLS](<./templates/Real Estate/MLS/configurations/ARMLS.json>)
+- [ARMLS](<./templates/Real Estate/MLS/configurations/armls.json>)
 - [Recolorado](<./templates/Real Estate/MLS/configurations/recolorado.json>)
 - [Bright](<./templates/Real Estate/MLS/configurations/bright_mls.json>)
-- [LLM](<./templates/Real Estate/MLS/configurations/General.json>)
+- [LLM](<./templates/Real Estate/MLS/configurations/AI_generalized_MLS.json>)
 
 ### Healthcare
 
@@ -361,11 +366,11 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 - [Conedison](<./templates/Utilities & Invoices/Utility Bills/configurations/conedison.json>)
 - [LA DWP](<./templates/Utilities & Invoices/Utility Bills/configurations/la_dwp.json>)
-- [LLM Utility Bills Template](<./templates/Utilities & Invoices/Utility Bills/configurations/llm_utility_bills_template.json>)
+- [LLM Utility Bills Template](<./templates/Utilities & Invoices/Utility Bills/configurations/AI_generalized_utility_bills.json>)
 
 ### Invoices
 
-- [LLM Invoices Template](<./templates/Utilities & Invoices/Invoices/configurations/llm_invoices_template.json>)
+- [LLM Invoices Template](<./templates/Utilities & Invoices/Invoices/configurations/AI_generalized_invoices.json>)
 
 
 ## Using a configuration
