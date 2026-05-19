@@ -289,22 +289,22 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 #### Bank Statements
 
-- [Fifth Third Bank](<./templates/Financial Services/Bank Statements/configurations/5_3_bank.json>)
+- [AI Generalized Single Account Statement](<./templates/Financial Services/Bank Statements/configurations/AI_generalized_single_account_statement.json>)
 - [Ally (Combined Customer Statement)](<./templates/Financial Services/Bank Statements/configurations/ally_combined_customer_statement.json>)
 - [Bank of America](<./templates/Financial Services/Bank Statements/configurations/bank_of_america.json>)
 - [Blue Vine](<./templates/Financial Services/Bank Statements/configurations/blue_vine.json>)
 - [BMO](<./templates/Financial Services/Bank Statements/configurations/bmo.json>)
 - [Chase (Checking Summary)](<./templates/Financial Services/Bank Statements/configurations/chase_checking_summary.json>)
 - [Chase (Consolidated Balance Summary)](<./templates/Financial Services/Bank Statements/configurations/chase_consolidated_balance_summary.json>)
+- [Fifth Third Bank](<./templates/Financial Services/Bank Statements/configurations/5_3_bank.json>)
+- [First Security Bank](<./templates/Financial Services/Bank Statements/configurations/first_security_bank.json>)
 - [Frost](<./templates/Financial Services/Bank Statements/configurations/frost.json>)
 - [M and T](<./templates/Financial Services/Bank Statements/configurations/m_and_t.json>)
 - [Regions Bank](<./templates/Financial Services/Bank Statements/configurations/regions_bank.json>)
-- [Well Fargo (Checking)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_checking.json>)
-- [Well Fargo (Savings)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_savings.json>)
-- [Well Fargo (Combined Statement of Accounts)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_combined_statement_of_accounts.json>)
 - [USAA](<./templates/Financial Services/Bank Statements/configurations/usaa.json>)
-- [First Security Bank](<./templates/Financial Services/Bank Statements/configurations/first_security_bank.json>)
-- [LLM (Any Single Account Bank Statement)](<./templates/Financial Services/Bank Statements/configurations/AI_generalized_single_account_statement.json>)
+- [Well Fargo (Checking)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_checking.json>)
+- [Well Fargo (Combined Statement of Accounts)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_combined_statement_of_accounts.json>)
+- [Well Fargo (Savings)](<./templates/Financial Services/Bank Statements/configurations/wells_fargo_savings.json>)
 
 #### Balance Sheets
 
@@ -336,13 +336,14 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 #### Rent Rolls
 
 - [Rent Rolls](<./templates/Real Estate/Rent Rolls/configurations/rent_rolls.json>)
+- [AI Generalized Rent Rolls](<./templates/Real Estate/Rent Rolls/configurations/AI_generalized_rent_rolls.json>)
 
 #### MLS
 
 - [ARMLS](<./templates/Real Estate/MLS/configurations/armls.json>)
 - [Recolorado](<./templates/Real Estate/MLS/configurations/recolorado.json>)
 - [Bright](<./templates/Real Estate/MLS/configurations/bright_mls.json>)
-- [LLM](<./templates/Real Estate/MLS/configurations/AI_generalized_MLS.json>)
+- [AI Generalized MLS](<./templates/Real Estate/MLS/configurations/AI_generalized_MLS.json>)
 
 ### Healthcare
 
@@ -373,11 +374,11 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 - [Conedison](<./templates/Utilities & Invoices/Utility Bills/configurations/conedison.json>)
 - [LA DWP](<./templates/Utilities & Invoices/Utility Bills/configurations/la_dwp.json>)
-- [LLM Utility Bills Template](<./templates/Utilities & Invoices/Utility Bills/configurations/AI_generalized_utility_bills.json>)
+- [AI Generalized Utility Bills](<./templates/Utilities & Invoices/Utility Bills/configurations/AI_generalized_utility_bills.json>)
 
 ### Invoices
 
-- [LLM Invoices Template](<./templates/Utilities & Invoices/Invoices/configurations/AI_generalized_invoices.json>)
+- [AI Generalized Invoices](<./templates/Utilities & Invoices/Invoices/configurations/AI_generalized_invoices.json>)
 
 
 ## Using a configuration
