@@ -1,0 +1,948 @@
+{
+    "fingerprint": {
+        "tests": [
+            {
+                "type": "startsWith",
+                "text": "Chase Bank"
+            },
+            {
+                "type": "startsWith",
+                "text": "Account"
+            },
+            {
+                "type": "startsWith",
+                "text": "customer service"
+            },
+            {
+                "type": "startsWith",
+                "text": "Checking Summary"
+            },
+            {
+                "type": "startsWith",
+                "text": "Beginning balance"
+            },
+        ]
+    },
+    "fields": [
+        {
+            "id": "institution",
+            "method": {
+                "id": "constant",
+                "value": "Chase Bank"
+            }
+        },
+        {
+            "id": "account_holder_name",
+            "anchor": {
+                "match": {
+                    "text": "International Calls",
+                    "type": "startsWith"
+                }
+            },
+            "method": {
+                "id": "region",
+                "width": 3,
+                "height": 1,
+                "offsetX": -4.5,
+                "offsetY": -0.05,
+                "sortLines": "readingOrderLeftToRight",
+                "start": "left",
+                "tiebreaker": 0
+            }
+        },
+        {
+            "id": "account_name",
+            "anchor": {
+                "match": {
+                    "text": "INSTANCES",
+                    "type": "startsWith",
+                    "isCaseSensitive": true
+                }
+            },
+            "method": {
+                "id": "region",
+                "width": 3,
+                "height": 0.4,
+                "offsetX": -0.3,
+                "offsetY": -0.4,
+                "sortLines": "readingOrderLeftToRight",
+                "start": "left",
+                "tiebreaker": 0,
+                "wordFilters": [
+                    "instances",
+                    "amount"
+                ]
+            }
+        },
+        {
+            "id": "_statement_end_start_date",
+            "anchor": {
+                "match": {
+                    "text": "Account Number",
+                    "type": "startsWith",
+                    "isCaseSensitive": true
+                },
+                "end": {
+                    "text": "Web",
+                    "type": "startsWith"
+                }
+            },
+            "method": {
+                "id": "region",
+                "width": 3,
+                "height": 0.4,
+                "offsetX": -0.3,
+                "offsetY": -0.4,
+                "sortLines": "readingOrderLeftToRight",
+                "start": "left",
+                "tiebreaker": 0,
+                "wordFilters": [
+                    "instances",
+                    "amount"
+                ]
+            }
+        },
+        {
+            "id": "_year",
+            "type": {
+                "id": "custom",
+                "pattern": "\\d{4}"
+            },
+            "method": {
+                "id": "concat",
+                "source_ids": [
+                    "_statement_end_start_date"
+                ]
+            }
+        },
+        {
+            "id": "statement_start_date",
+            "type": "date",
+            "method": {
+                "id": "split",
+                "source_id": "_statement_end_start_date",
+                "separator": "through",
+                "index": 0
+            }
+        },
+        {
+            "id": "statement_end_date",
+            "type": "date",
+            "method": {
+                "id": "split",
+                "source_id": "_statement_end_start_date",
+                "separator": "through",
+                "index": 1
+            }
+        }, ////////////////////////
+        { // Transforms statement date end to string
+            "id": "_strings_statement_end_date",
+            "type": "string",
+            "method": {
+                "id": "concat",
+                "source_ids": [
+                    "statement_end_date"
+                ]
+            }
+        },
+        { // Extracts the month from the statement end date
+            "id": "_month_from_statement",
+            "type": "number",
+            "method": {
+                "id": "split",
+                "source_id": "_strings_statement_end_date",
+                "separator": "-",
+                "index": 1
+            }
+        },
+        { // Extracts the year from the statement end date
+            "id": "_year_from_statement",
+            "type": "number",
+            "method": {
+                "id": "split",
+                "source_id": "_strings_statement_end_date",
+                "separator": "-",
+                "index": 0
+            }
+        },
+        { /// If the month of the statement is 01 = January, it deduces -1 year to the statement year
+            "id": "__year_deduced",
+            "method": {
+                "id": "customComputation",
+                "jsonLogic": {
+                    "if": [
+                        {
+                            "==": [
+                                {
+                                    "var": "_month_from_statement.value"
+                                },
+                                1
+                            ]
+                        },
+                        {
+                            "-": [
+                                {
+                                    "var": "_year_from_statement.value"
+                                },
+                                1
+                            ]
+                        },
+                        {
+                            "var": "_year_from_statement.value"
+                        }
+                    ]
+                }
+            }
+        },
+        //NOTE:  If the Statement month is not January, '_year' and '__year_deduced' will be the same
+        //
+        {
+            "id": "account_number",
+            "anchor": {
+                "match": {
+                    "text": "Account number",
+                    "type": "startsWith"
+                },
+                "start": {
+                    "text": "Summary of accounts",
+                    "type": "startsWith"
+                },
+                "end": {
+                    "text": "total",
+                    "type": "startsWith"
+                }
+            },
+            "match": "all",
+            "method": {
+                "id": "region",
+                "sortLines": "readingOrderLeftToRight",
+                "width": 1,
+                "height": 0.3,
+                "offsetX": 0,
+                "offsetY": 0.1,
+                "start": "left",
+            }
+        },
+        {
+            "id": "account_number",
+            "anchor": {
+                "match": {
+                    "text": "Account Number",
+                    "type": "startsWith"
+                }
+            },
+            "method": {
+                "id": "region",
+                "width": 3,
+                "height": 0.1,
+                "offsetX": -0.05,
+                "offsetY": -0.05,
+                "sortLines": "readingOrderLeftToRight",
+                "start": "left",
+                "wordFilters": [
+                    "Account Number:",
+                    "Account Number"
+                ]
+            }
+        },
+        {
+            "id": "accounts",
+            "type": "sections",
+            "range": {
+                "anchor": {
+                    "start": {
+                        "text": "Beginning Balance",
+                        "type": "startsWith"
+                    },
+                    "match": {
+                        "text": "Beginning Balance",
+                        "type": "startsWith"
+                    }
+                },
+                "stop": {
+                    "text": "DAILY ENDING BALANCE",
+                    "type": "startsWith"
+                }
+            },
+            "fields": [
+                { // Imports the statement year 
+                    "id": "_year",
+                    "method": {
+                        "id": "copy_to_section",
+                        "source_id": "_year"
+                    }
+                },
+                { // Imports the statement year deduced in 1
+                    "id": "__year_deduced",
+                    "method": {
+                        "id": "copy_to_section",
+                        "source_id": "__year_deduced"
+                    }
+                },
+                {
+                    "id": "account_number",
+                    "anchor": {
+                        "match": {
+                            "text": "Account Number",
+                            "type": "startsWith"
+                        }
+                    },
+                    "method": {
+                        "id": "region",
+                        "width": 3,
+                        "height": 0.1,
+                        "offsetX": -0.05,
+                        "offsetY": -0.05,
+                        "sortLines": "readingOrderLeftToRight",
+                        "start": "left",
+                        "wordFilters": [
+                            "Account Number:",
+                            "Account Number"
+                        ]
+                    }
+                },
+                {
+                    "id": "account_type",
+                    "method": {
+                        "id": "copy_to_section",
+                        "source_id": "account_name"
+                    }
+                },
+                {
+                    "id": "opening_balance",
+                    "anchor": {
+                        "match": {
+                            "text": "Beginning Balance",
+                            "type": "includes"
+                        }
+                    },
+                    "type": "currency",
+                    "method": {
+                        "id": "region",
+                        "sortLines": "readingOrderLeftToRight",
+                        "width": 6,
+                        "height": 0.1,
+                        "offsetX": -0.3,
+                        "offsetY": -0.05,
+                        "start": "left",
+                        "tiebreaker": "last",
+                        "wordFilters": [
+                            "Beginning Balance",
+                        ]
+                    }
+                },
+                {
+                    "id": "closing_balance",
+                    "anchor": {
+                        "match": {
+                            "text": "Ending Balance",
+                            "type": "includes"
+                        }
+                    },
+                    "type": "currency",
+                    "method": {
+                        "id": "region",
+                        "sortLines": "readingOrderLeftToRight",
+                        "width": 6,
+                        "height": 0.1,
+                        "offsetX": -0.3,
+                        "offsetY": -0.05,
+                        "start": "left",
+                        "tiebreaker": "last",
+                        "wordFilters": [
+                            "Ending Balance",
+                        ]
+                    }
+                },
+                {
+                    "id": "_credits_transaction_data",
+                    "type": "sections",
+                    "range": {
+                        "externalRange": {
+                            "anchor": {
+                                "text": "Description",
+                                "type": "equals",
+                                "reverse": true
+                            },
+                            "stop": "Description",
+                            "offsetY": -0.1,
+                            "stopOffsetY": 0.1
+                        },
+                        "anchor": {
+                            "start": {
+                                "text": "DEPOSITS AND ADDITIONS",
+                                "type": "startsWith"
+                            },
+                            "match": {
+                                "pattern": "^\\d{2}/\\d{2}$",
+                                "type": "regex",
+                                "xRangeFilter": {
+                                    "minX": 0,
+                                    "maxX": 1.4
+                                }
+                            },
+                            "end": {
+                                "text": "Total Deposits and Additions",
+                                "type": "startsWith"
+                            },
+                        },
+                        "stop": {
+                            "text": "Total Deposits and Additions",
+                            "type": "startsWith"
+                        },
+                        "stopOffsetY": -0.1
+                    },
+                    "fields": [
+                        { // Imports the statement year 
+                            "id": "_year",
+                            "method": {
+                                "id": "copy_to_section",
+                                "source_id": "_year"
+                            }
+                        },
+                        { // Imports the statement year deduced in 1
+                            "id": "__year_deduced",
+                            "method": {
+                                "id": "copy_to_section",
+                                "source_id": "__year_deduced"
+                            }
+                        },
+                        {
+                            "id": "__date",
+                            "anchor": {
+                                "match": {
+                                    "pattern": "^\\d{2}/\\d{2}$",
+                                    "type": "regex",
+                                    "xRangeFilter": {
+                                        "minX": 0,
+                                        "maxX": 1.4
+                                    }
+                                },
+                            },
+                            "method": {
+                                "id": "passthrough"
+                            }
+                        },
+                        {
+                            "id": "_date",
+                            "type": {
+                                "id": "replace",
+                                "pattern": " ",
+                                "replaceWith": "/"
+                            },
+                            "method": {
+                                "id": "concat",
+                                "source_ids": [
+                                    "__date",
+                                    "_year"
+                                ]
+                            }
+                        },
+                        { //Concats the trasnaction date + the statement date deduced in 1 year
+                            "id": "_date__year_deduced",
+                            "type": {
+                                "id": "replace",
+                                "pattern": " ",
+                                "replaceWith": "/"
+                            },
+                            "method": {
+                                "id": "concat",
+                                "source_ids": [
+                                    "__date",
+                                    "__year_deduced"
+                                ]
+                            }
+                        },
+                        { //Concats the trasnaction date + the statement date
+                            "id": "_date_year",
+                            "type": {
+                                "id": "replace",
+                                "pattern": " ",
+                                "replaceWith": "/"
+                            },
+                            "method": {
+                                "id": "concat",
+                                "source_ids": [
+                                    "__date",
+                                    "_year"
+                                ]
+                            }
+                        },
+                        { //Evaluates the Month, if it is 12, outputs the Statement year -1
+                            // If the Statement month is not January, _year and __year_deduced will be the same
+                            "id": "_date",
+                            "method": {
+                                "id": "customComputation",
+                                "jsonLogic": {
+                                    "if": [
+                                        {
+                                            "==": [
+                                                {
+                                                    "substr": [
+                                                        {
+                                                            "var": "__date.value"
+                                                        },
+                                                        0,
+                                                        2
+                                                    ]
+                                                },
+                                                "12"
+                                            ]
+                                        },
+                                        {
+                                            "var": "_date__year_deduced.value"
+                                        },
+                                        {
+                                            "var": "_date_year.value"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        { //concat to set type to Date
+                            "id": "date",
+                            "type": "date",
+                            "method": {
+                                "id": "concat",
+                                "source_ids": [
+                                    "_date"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "transaction_type",
+                            "anchor": {
+                                "match": {
+                                    "pattern": "^\\d{2}/\\d{2}$",
+                                    "type": "regex",
+                                    "xRangeFilter": {
+                                        "minX": 0,
+                                        "maxX": 1.4
+                                    }
+                                },
+                            },
+                            "method": {
+                                "id": "intersection",
+                                "verticalAnchor": "Description",
+                                "width": 4,
+                                "offsetX": 1.7,
+                                "height": 0.5,
+                                "offsetY": 0.2,
+                                "percentOverlapX": 0,
+                                "percentOverlapY": 0,
+                                "sortLines": "readingOrderLeftToRight",
+                                "wordFilters": [
+                                    "Description/"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "debit",
+                            "anchor": {
+                                "match": {
+                                    "text": "not found on this doc",
+                                    "type": "equals"
+                                }
+                            },
+                            "method": {
+                                "id": "passthrough"
+                            }
+                        },
+                        {
+                            "id": "credit",
+                            "anchor": {
+                                "match": {
+                                    "pattern": "^\\d{2}/\\d{2}$",
+                                    "type": "regex",
+                                    "xRangeFilter": {
+                                        "minX": 0,
+                                        "maxX": 1.4
+                                    }
+                                },
+                            },
+                            "type": "currency",
+                            "method": {
+                                "id": "intersection",
+                                "verticalAnchor": "amount",
+                                "width": 1,
+                                "offsetX": 0,
+                                "height": 0.5,
+                                "offsetY": 0,
+                                "percentOverlapX": 0,
+                                "percentOverlapY": 0,
+                                "sortLines": "readingOrderLeftToRight",
+                                "wordFilters": [
+                                    "Description/"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "balance",
+                            "anchor": {
+                                "match": {
+                                    "text": "not found on this doc",
+                                    "type": "equals"
+                                }
+                            },
+                            "method": {
+                                "id": "passthrough"
+                            }
+                        },
+                        {
+                            "id": "hide",
+                            "method": {
+                                "id": "suppressOutput",
+                                "source_ids": [
+                                    "_year",
+                                    "__date",
+                                    "_date",
+                                    "__date",
+                                    "_date",
+                                    "_year",
+                                    "_date_year",
+                                    "_date__year_deduced",
+                                    "__year_deduced"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "_debits_transaction_data",
+                    "type": "sections",
+                    "range": {
+                        "externalRange": {
+                            "anchor": {
+                                "text": "Description",
+                                "type": "equals",
+                                "reverse": true
+                            },
+                            "stop": "Description",
+                            "offsetY": -0.1,
+                            "stopOffsetY": 0.1
+                        },
+                        "anchor": {
+                            "start": [
+                                {
+                                    "type": "any",
+                                    "matches": [
+                                        {
+                                            "text": "Total ATM & Debit Card Withdrawals",
+                                            "type": "startsWith"
+                                        },
+                                        {
+                                            "text": "ELECTRONIC WITHDRAWALS",
+                                            "type": "startsWith"
+                                        },
+                                    ]
+                                }
+                            ],
+                            "match": {
+                                "pattern": "^\\d{2}/\\d{2}$",
+                                "type": "regex",
+                                "xRangeFilter": {
+                                    "minX": 0,
+                                    "maxX": 1.4
+                                }
+                            },
+                            "end": {
+                                "text": "Total Electronic Withdrawals",
+                                "type": "startsWith"
+                            },
+                        },
+                        "stop": [
+                            {
+                                "type": "any",
+                                "matches": [
+                                    {
+                                        "text": "Total ATM & Debit Card Withdrawals",
+                                        "type": "startsWith"
+                                    },
+                                    {
+                                        "text": "Total Electronic Withdrawals",
+                                        "type": "startsWith"
+                                    },
+                                ]
+                            }
+                        ],
+                        "stopOffsetY": -0.1
+                    },
+                    "fields": [
+                        { // Imports the statement year 
+                            "id": "_year",
+                            "method": {
+                                "id": "copy_to_section",
+                                "source_id": "_year"
+                            }
+                        },
+                        { // Imports the statement year deduced in 1
+                            "id": "__year_deduced",
+                            "method": {
+                                "id": "copy_to_section",
+                                "source_id": "__year_deduced"
+                            }
+                        },
+                        {
+                            "id": "__date",
+                            "anchor": {
+                                "match": {
+                                    "pattern": "^\\d{2}/\\d{2}$",
+                                    "type": "regex",
+                                    "xRangeFilter": {
+                                        "minX": 0,
+                                        "maxX": 1.4
+                                    }
+                                },
+                            },
+                            "method": {
+                                "id": "passthrough"
+                            }
+                        },
+                        {
+                            "id": "_date",
+                            "type": {
+                                "id": "replace",
+                                "pattern": " ",
+                                "replaceWith": "/"
+                            },
+                            "method": {
+                                "id": "concat",
+                                "source_ids": [
+                                    "__date",
+                                    "_year"
+                                ]
+                            }
+                        },
+                        { //Concats the trasnaction date + the statement date deduced in 1 year
+                            "id": "_date__year_deduced",
+                            "type": {
+                                "id": "replace",
+                                "pattern": " ",
+                                "replaceWith": "/"
+                            },
+                            "method": {
+                                "id": "concat",
+                                "source_ids": [
+                                    "__date",
+                                    "__year_deduced"
+                                ]
+                            }
+                        },
+                        { //Concats the trasnaction date + the statement date
+                            "id": "_date_year",
+                            "type": {
+                                "id": "replace",
+                                "pattern": " ",
+                                "replaceWith": "/"
+                            },
+                            "method": {
+                                "id": "concat",
+                                "source_ids": [
+                                    "__date",
+                                    "_date",
+                                    "_year",
+                                    "_date_year",
+                                    "_date__year_deduced",
+                                    "__year_deduced"
+                                ]
+                            }
+                        },
+                        { //Evaluates the Month, if it is 12, outputs the Statement year -1
+                            // If the Statement month is not January, _year and __year_deduced will be the same
+                            "id": "_date",
+                            "method": {
+                                "id": "customComputation",
+                                "jsonLogic": {
+                                    "if": [
+                                        {
+                                            "==": [
+                                                {
+                                                    "substr": [
+                                                        {
+                                                            "var": "__date.value"
+                                                        },
+                                                        0,
+                                                        2
+                                                    ]
+                                                },
+                                                "12"
+                                            ]
+                                        },
+                                        {
+                                            "var": "_date__year_deduced.value"
+                                        },
+                                        {
+                                            "var": "_date_year.value"
+                                        }
+                                    ]
+                                }
+                            }
+                        },
+                        { //concat to set type to Date
+                            "id": "date",
+                            "type": "date",
+                            "method": {
+                                "id": "concat",
+                                "source_ids": [
+                                    "_date"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "transaction_type",
+                            "anchor": {
+                                "match": {
+                                    "pattern": "^\\d{2}/\\d{2}$",
+                                    "type": "regex",
+                                    "xRangeFilter": {
+                                        "minX": 0,
+                                        "maxX": 1.4
+                                    }
+                                },
+                            },
+                            "method": {
+                                "id": "intersection",
+                                "verticalAnchor": "Description",
+                                "width": 4,
+                                "offsetX": 1.7,
+                                "height": 0.5,
+                                "offsetY": 0.2,
+                                "percentOverlapX": 0,
+                                "percentOverlapY": 0,
+                                "sortLines": "readingOrderLeftToRight",
+                                "wordFilters": [
+                                    "Description/"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "debit",
+                            "anchor": {
+                                "match": {
+                                    "pattern": "^\\d{2}/\\d{2}$",
+                                    "type": "regex",
+                                    "xRangeFilter": {
+                                        "minX": 0,
+                                        "maxX": 1.4
+                                    }
+                                },
+                            },
+                            "type": "currency",
+                            "method": {
+                                "id": "intersection",
+                                "verticalAnchor": "amount",
+                                "width": 1,
+                                "offsetX": 0,
+                                "height": 0.5,
+                                "offsetY": 0,
+                                "percentOverlapX": 0,
+                                "percentOverlapY": 0,
+                                "sortLines": "readingOrderLeftToRight",
+                                "wordFilters": [
+                                    "Description/"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "credit",
+                            "anchor": {
+                                "match": {
+                                    "text": "not found on this doc",
+                                    "type": "equals"
+                                }
+                            },
+                            "method": {
+                                "id": "passthrough"
+                            }
+                        },
+                        {
+                            "id": "balance",
+                            "anchor": {
+                                "match": {
+                                    "text": "not found on this doc",
+                                    "type": "equals"
+                                }
+                            },
+                            "method": {
+                                "id": "passthrough"
+                            }
+                        },
+                        {
+                            "id": "hide",
+                            "method": {
+                                "id": "suppressOutput",
+                                "source_ids": [
+                                    "_year",
+                                    "__date",
+                                    "_date",
+                                    "_year",
+                                    "__year_deduced",
+                                    "__date",
+                                    "_date",
+                                    "_year",
+                                    "_date_year",
+                                    "_date__year_deduced",
+                                    "__year_deduced"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "hide",
+                    "method": {
+                        "id": "suppressOutput",
+                        "source_ids": [
+                            "_year",
+                            "__year_deduced"
+                        ]
+                    }
+                }
+            ],
+            "computed_fields": [
+                {
+                    "id": "transaction_data",
+                    "method": {
+                        "id": "customComputation",
+                        "jsonLogic": {
+                            "merge": [
+                                {
+                                    "var": "_credits_transaction_data"
+                                },
+                                {
+                                    "var": "_debits_transaction_data"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "id": "hide",
+                    "method": {
+                        "id": "suppressOutput",
+                        "source_ids": [
+                            "_credits_transaction_data",
+                            "_debits_transaction_data",
+                            "_year"
+                        ]
+                    }
+                }
+            ]
+        },
+        {
+            "id": "hide",
+            "method": {
+                "id": "suppressOutput",
+                "source_ids": [
+                    "_statement_end_start_date",
+                    "_year",
+                    "_statements_dates",
+                    "_strings_statement_end_date",
+                    "_month_from_statement",
+                    "_year_from_statement",
+                    "__year_deduced"
+                ]
+            }
+        },
+    ]
+}
