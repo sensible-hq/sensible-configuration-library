@@ -1,0 +1,365 @@
+{
+    "fingerprint": {
+      "tests": [
+        {
+          "type": "startsWith",
+          "text": "BANK OF AMERICA ACCOUNT DETAILS"
+        },
+        {
+          "type": "startsWith",
+          "text": "Bank Account ID",
+          "isCaseSensitive": true
+        },
+        {
+          "type": "startsWith",
+          "text": "Account Type",
+          "isCaseSensitive": true
+        },
+        {
+          "type": "startsWith",
+          "text": "SUMMARY",
+          "isCaseSensitive": true
+        },
+      ]
+    },
+    "fields": [
+      {
+        "id": "institution",
+        "method": {
+          "id": "constant",
+          "value": "BMO"
+        }
+      },
+      {
+        "id": "account_holder_name",
+        "anchor": {
+          "match": {
+            "text": "Bank Account ID",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "width": 2.5,
+          "height": 0.6,
+          "offsetX": -4.25,
+          "offsetY": -0.2,
+          "sortLines": "readingOrderLeftToRight",
+          "start": "left",
+          "tiebreaker": 0
+        }
+      },
+      {
+        "id": "account_name",
+        "anchor": {
+          "match": {
+            "text": "Account Type",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "width": 1.5,
+          "height": 0.3,
+          "offsetX": 0.7,
+          "offsetY": -0.1,
+          "sortLines": "readingOrderLeftToRight",
+          "start": "right",
+          "wordFilters": [
+            "Account Type:",
+            "Account Type"
+          ]
+        }
+      },
+      {
+        "id": "_raw_statement_date",
+        "anchor": {
+          "match": {
+            "text": "Statement Period",
+            "type": "startsWith"
+          }
+        },
+        "method": {
+          "id": "region",
+          "width": 1.5,
+          "height": 0.2,
+          "offsetX": 0.2,
+          "offsetY": -0.1,
+          "sortLines": "readingOrderLeftToRight",
+          "start": "right",
+          "wordFilters": [
+            "Account Type:",
+            "Account Type"
+          ]
+        }
+      },
+      {
+        "id": "statement_start_date",
+        "type": "date",
+        "method": {
+          "id": "split",
+          "source_id": "_raw_statement_date",
+          "separator": "to",
+          "index": 0
+        }
+      },
+      {
+        "id": "statement_end_date",
+        "type": "date",
+        "method": {
+          "id": "split",
+          "source_id": "_raw_statement_date",
+          "separator": "to",
+          "index": 1
+        }
+      },
+      {
+        "id": "account_number",
+        "anchor": {
+          "match": {
+            "text": "Bank Account ID",
+            "type": "startsWith"
+          },
+        },
+        "method": {
+          "id": "region",
+          "width": 1.5,
+          "height": 0.2,
+          "offsetX": 0.6,
+          "offsetY": -0.1,
+          "sortLines": "readingOrderLeftToRight",
+          "start": "right",
+          "wordFilters": [
+            "Account Type:",
+            "Account Type"
+          ]
+        }
+      },
+      {
+        "id": "accounts",
+        "type": "sections",
+        "range": {
+          "anchor": {
+            "start": {
+              "text": "SUMMARY",
+              "type": "equals"
+            },
+            "match": {
+              "text": "Deposits & Credits",
+              "type": "startsWith"
+            },
+          },
+          "offsetY": -0.5,
+          "stop": {
+            "text": "Opening Balance",
+            "type": "startsWith"
+          },
+          "stopOffsetY": -0.1
+        },
+        "fields": [
+          {
+            "id": "account_number",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "account_number"
+            }
+          },
+          {
+            "id": "account_type",
+            "method": {
+              "id": "copy_to_section",
+              "source_id": "account_name"
+            }
+          },
+          {
+            "id": "opening_balance",
+            "anchor": {
+              "match": {
+                "text": "Opening Balance",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "width": 1.5,
+              "height": 0.2,
+              "offsetX": 1,
+              "offsetY": -0.1,
+              "sortLines": "readingOrderLeftToRight",
+              "start": "right",
+            }
+          },
+          {
+            "id": "closing_balance",
+            "anchor": {
+              "match": {
+                "text": "Closing Balance",
+                "type": "startsWith"
+              }
+            },
+            "method": {
+              "id": "region",
+              "width": 1.5,
+              "height": 0.2,
+              "offsetX": 1,
+              "offsetY": -0.1,
+              "sortLines": "readingOrderLeftToRight",
+              "start": "right",
+            }
+          },
+          {
+            "id": "transaction_data",
+            "type": "sections",
+            "range": {
+              "externalRange": {
+                "anchor": {
+                  "text": "Particulars",
+                  "type": "equals",
+                  "reverse": true,
+                },
+                "stop": {
+                  "text": "Particulars",
+                  "type": "equals"
+                },
+                "stopOffsetY": 0.1,
+                "offsetY": -0.1
+              },
+              "anchor": {
+                "start": {
+                  "type": "startsWith",
+                  "text": "TRANSACTION DETAILS"
+                },
+                "match": {
+                  "type": "regex",
+                  "pattern": "^(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])-(\\d{4})$"
+                }
+              },
+              "stopOffsetY": -0.1
+            },
+            "fields": [
+              {
+                "id": "date",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])-(\\d{4})$"
+                  }
+                },
+                "method": {
+                  "id": "passthrough"
+                }
+              },
+              {
+                "id": "transaction_type",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])-(\\d{4})$"
+                  }
+                },
+                "method": {
+                  "id": "intersection",
+                  "verticalAnchor": "Particulars",
+                  "width": 3,
+                  "height": 0.3,
+                  "offsetX": 1.2,
+                  "percentOverlapX": 0,
+                  "percentOverlapY": 0,
+                }
+              },
+              {
+                "id": "debit",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])-(\\d{4})$"
+                  }
+                },
+                "type": "currency",
+                "method": {
+                  "id": "intersection",
+                  "verticalAnchor": "Withdrawals",
+                  "width": 0.7,
+                  "height": 0.3,
+                  "offsetX": 0.1,
+                  "percentOverlapX": 0,
+                  "percentOverlapY": 0,
+                }
+              },
+              {
+                "id": "credit",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])-(\\d{4})$"
+                  }
+                },
+                "type": "currency",
+                "method": {
+                  "id": "intersection",
+                  "verticalAnchor": "Deposits",
+                  "width": 0.7,
+                  "height": 0.3,
+                  "offsetX": 0,
+                  "percentOverlapX": 0,
+                  "percentOverlapY": 0,
+                }
+              },
+              {
+                "id": "_balance",
+                "anchor": {
+                  "match": {
+                    "type": "regex",
+                    "pattern": "^(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01])-(\\d{4})$"
+                  }
+                },
+                "type": {
+                  "id": "replace",
+                  "pattern": "$-",
+                  "replaceWith": "-$"
+                },
+                "method": {
+                  "id": "intersection",
+                  "verticalAnchor": "Balance",
+                  "width": 0.7,
+                  "height": 0.3,
+                  "offsetX": 0.1,
+                  "percentOverlapX": 0,
+                  "percentOverlapY": 0,
+                }
+              },
+              {
+                "id": "balance",
+                "type": "currency",
+                "method": {
+                  "id": "concat",
+                  "source_ids": [
+                    "_balance"
+                  ]
+                }
+              },
+              {
+                "id": "hide",
+                "method": {
+                  "id": "suppressOutput",
+                  "source_ids": [
+                    "_balance",
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+
+      {
+        "id": "hide",
+        "method": {
+          "id": "suppressOutput",
+          "source_ids": [
+            "_raw_statement_date",
+          ]
+        }
+      }
+    ]
+  }

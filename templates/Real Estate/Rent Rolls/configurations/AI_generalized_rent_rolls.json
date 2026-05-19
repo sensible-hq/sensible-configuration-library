@@ -1,0 +1,137 @@
+{
+  "fields": [
+    {
+      "method": {
+        "id": "queryGroup",
+        "confidenceSignals": true,
+        "pageRange": { "startPage": 0, "endPage": 0 },
+        "queries": [
+          {
+            "id": "property_name",
+            "description": "The name of the apartment community or property the rent roll is for. Usually appears in the page header, often above or near the management company name. Aliases seen across PM software: 'Property', 'Property Name', 'Community', 'Building', or appears unlabeled as the most prominent header line (e.g. 'Terracita Apartments', 'The Apartments at Shade Tree', '85 NORTH 3RD'). NOT the management company. Return null if absent.",
+            "type": "string"
+          },
+          {
+            "id": "management_company",
+            "description": "The name of the property management company that produced this rent roll. Usually appears in the page header, often near the property name. Examples: 'Linebacker Equity Management, LLC', 'Professional Management Inc', 'EYC Companies'. Software-vendor strings like 'OneSite Rents v3.0', 'ResMan', 'Yardi', 'AppFolio' are NOT the management company — those identify the software, not the company. Return null if absent.",
+            "type": "string"
+          },
+          {
+            "id": "report_date",
+            "description": "The as-of date of the rent roll — the snapshot date the data represents. Usually labeled 'As of', 'Date', 'Rent Roll Date', or appears as a standalone date directly below the 'Rent Roll' header. NOT the report-generated/printed date and NOT a 'Page X of Y' timestamp. Examples seen: '9/1/2018', '08/13/2018', '2018-08-13'. Return null if absent.",
+            "type": "date"
+          }
+        ]
+      }
+    },
+    {
+      "id": "_units_raw",
+      "type": "table",
+      "method": {
+        "id": "list",
+        "llmEngine": "thorough",
+        "searchBySummarization": true,
+        "confidenceSignals": true,
+        "description": "Thoroughly extract EVERY unit row from the rent-roll detail table(s) across all pages. Each row in the output represents ONE physical apartment unit. Some PM software (OneSite, ResMan) lists individual charge codes (RENT, PETRENT, CONC, etc.) as separate sub-rows beneath each unit — fold those into the same unit row, do NOT emit duplicate units. Skip rows that have no unit_number (page totals, building subtotals, grand totals, parameters, footers, headers). Skip rows whose unit_number is the literal word 'Total', 'Subtotal', 'Bonds', or similar summary label. Include every real unit even if some fields are blank. Watch for parentheses or 'CR' suffixes indicating negative currency (concessions, credits).",
+        "properties": [
+          {
+            "id": "unit_number",
+            "description": "The unit identifier (a string, may contain digits, dashes, letters, e.g. '1', '101', '1-111', '31301', 'A-205'). Found in a column labeled 'Unit', 'Unit #', 'Unit Number', 'Apt', 'Suite', or as the first column of each row. Return the value exactly as printed.",
+            "type": "string",
+            "isRequired": true
+          },
+          {
+            "id": "floorplan_code",
+            "description": "Internal floor-plan / marketing identifier assigned by the property-management software (Yardi, RealPage, Entrata, etc.). Distinguished from unit_type by BOTH (a) a dedicated column header — 'Floorplan', 'Floor Plan', 'FP', 'FP Code', 'Plan', 'Plan Code', 'Style', 'Model' — AND (b) values that do NOT directly encode bed/bath, e.g. '1S1FV', '2S2BV', 'CYPRESS', 'OAK-A', 'A1', 'B2-PH', 'LOFT-N'. DECISION RULE — read carefully: only populate this field when there is a SEPARATE floorplan column in addition to a unit_type column on the same row. If only one layout-style column exists, leave floorplan_code null and put the value in unit_type. Never copy the unit_type value into floorplan_code; if the two columns happen to print the same string, return that string in both fields, but only when both columns are physically present. Return null when no dedicated floorplan column exists.",
+            "type": "string"
+          },
+          {
+            "id": "unit_type",
+            "description": "The bedroom x bathroom layout label for the unit. Values almost always encode bed/bath counts directly, e.g. '2X1' (2BR/1BA), '1X1', '1X1 E', '2BR/2BA', '3/2', 'STU' / 'STUDIO', 'EFF'. Column headers in priority order: 'Unit Type', 'Type', 'BR/BA', 'Bed/Bath', 'U-Type', 'Unit Style'. DECISION RULE — read carefully: (1) If the row has only ONE layout-style column, return its value here and leave floorplan_code null. Never split a single column across both fields. (2) If TWO layout-style columns coexist, the one whose value matches an NxM / 'NBR/MBA' / 'STU' shorthand is unit_type; the other (opaque marketing/management code) is floorplan_code. NOT square_footage, NOT resident_name, NOT lease_rent. Return exactly as printed.",
+            "type": "string"
+          },
+          {
+            "id": "square_footage",
+            "description": "The unit's interior square footage as a number. Column labels include 'Sq. Feet', 'SqFt', 'SF', 'Square Feet', 'Sq Ft'. Return as a plain integer (e.g. 757, 1265). NOT the lease square-foot rate.",
+            "type": "number"
+          },
+          {
+            "id": "unit_status",
+            "description": "Occupancy status of the unit. Normalize to one of: 'Occupied', 'Vacant', 'Notice to Vacate', 'Future' (pre-leased). Source values may be raw codes ('C' = Occupied, 'V'/'VR'/'VC' = Vacant, 'PR' = Future, 'NTV'/'NTVL' = Notice to Vacate, 'O' = Occupied) OR full words. Map to the normalized value. Return null only if the cell is genuinely blank.",
+            "type": "string"
+          },
+          {
+            "id": "resident_name",
+            "description": "Name of the current resident(s). Column aliases: 'Residents', 'Resident', 'Tenant', 'Name', 'Occupant', 'Occupant Name', 'Lessee'. May contain multiple names separated by '/' or 'and'. NOT the property name and NOT the unit_type. For vacant units this is typically blank or 'Vacant Unit' — in either case return null.",
+            "type": "string"
+          },
+          {
+            "id": "move_in_date",
+            "description": "The date the current resident actually moved into the unit. Column aliases: 'Move In', 'Move-In', 'Moved In'. Distinct from lease_start_date, which is the lease-term start. Return null if absent.",
+            "type": "date"
+          },
+          {
+            "id": "lease_start_date",
+            "description": "Start date of the current lease term. Column aliases: 'Lease Start', 'Lease From', 'Lease Begin', 'Start'. Distinct from move_in_date (resident may have moved in earlier and renewed). Return null if absent.",
+            "type": "date"
+          },
+          {
+            "id": "lease_end_date",
+            "description": "End / expiration date of the current lease term. Column aliases: 'Lease End', 'Lease To', 'Lease Exp', 'Expiration', 'Lease Expiry', 'End'. Return null if absent.",
+            "type": "date"
+          },
+          {
+            "id": "move_out_date",
+            "description": "Scheduled or actual move-out date for the resident. Column aliases: 'Move Out', 'Move-Out', 'Moved Out', 'NTV Date', 'Vacate Date'. Most occupied units will have no move-out date — return null in that case. NOT the lease_end_date.",
+            "type": "date"
+          },
+          {
+            "id": "lease_rent",
+            "description": "The contracted monthly base rent the resident is obligated to pay under the lease. Column aliases: 'Lease', 'Lease Rent', 'Rent', 'Amount' on a 'RENT' charge line, 'Contract Rent', 'Charge Amount' for the RENT code. NOT market_rent (the asking rent), NOT total_billing (which adds other charges). For vacant units this may be 0 or blank. Return as a positive currency number.",
+            "type": { "id": "currency", "accountingNegative": "anyParentheses" }
+          },
+          {
+            "id": "market_rent",
+            "description": "The market / asking rent for the unit — what the unit would rent for at current market rates, regardless of what the current lease says. Column aliases: 'Market', 'Market Rent', 'Asking', 'Market + Addl.'. NOT lease_rent. Return as a positive currency number.",
+            "type": { "id": "currency", "accountingNegative": "anyParentheses" }
+          },
+          {
+            "id": "other_charges",
+            "description": "Sum of additional recurring monthly charges beyond base rent: parking, pet rent, washer/dryer, storage, utility reimbursement, month-to-month fees, etc. Column aliases: 'Other', 'Other Charges', 'Other Charges/Credits', 'Addl', 'Additional Charges'. May appear as a single column total OR as multiple charge-code lines beneath the unit — in the latter case sum all non-RENT, non-CONCESSION charge amounts for the unit. Negative-signed values (credits) reduce the sum. Return the net as a currency number.",
+            "type": { "id": "currency", "accountingNegative": "anyParentheses" }
+          },
+          {
+            "id": "total_billing",
+            "description": "Total monthly amount billed to the resident — the sum of lease_rent + other_charges (less concessions). Column aliases: 'Total Billing', 'Total', 'Total Charges', 'Total Monthly'. NOT lease_rent alone. Return as a currency number.",
+            "type": { "id": "currency", "accountingNegative": "anyParentheses" }
+          },
+          {
+            "id": "current_balance",
+            "description": "The current ledger balance the resident owes (positive = owed, negative = credit). Column aliases: 'Current Balance', 'Balance', 'Resident Balance', 'Outstanding'. Treat parentheses or 'CR' suffix as negative. Distinct from deposit_on_hand. Return as a currency number.",
+            "type": { "id": "currency", "accountingNegative": "anyParentheses" }
+          },
+          {
+            "id": "deposit_on_hand",
+            "description": "Security deposit currently held for the unit. Column aliases: 'Deposit', 'Deposits', 'Deposit on Hand', 'Security Deposit', 'Sec Dep'. NOT 'Surety Bonds' (a separate column) and NOT current_balance. Return as a positive currency number.",
+            "type": { "id": "currency", "accountingNegative": "anyParentheses" }
+          },
+          {
+            "id": "concessions",
+            "description": "Active monthly concession or discount applied to the resident, typically a negative number. Sources include a 'Concession' charge line with values like '-75.00', a 'CONC' code on a charge sub-row, or a dedicated 'Concession' column. Aliases: 'Concession', 'Concession - One', 'Discount', 'CONC'. Return as a currency number (preserve negative sign).",
+            "type": { "id": "currency", "accountingNegative": "anyParentheses" }
+          }
+        ]
+      }
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "units",
+      "method": { "id": "zip", "source_ids": ["_units_raw"] }
+    },
+    {
+      "id": "_cleanup",
+      "method": { "id": "suppressOutput", "source_ids": ["_units_raw"] }
+    }
+  ]
+}
