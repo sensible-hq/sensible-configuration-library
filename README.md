@@ -290,7 +290,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 #### Bank Statements
 
-- [AI Generalized Single Account Statement](<./templates/Financial Services/Bank Statements/configurations/AI_generalized_single_account_statement.json>)
+- [AI Generalized Single Account Statement](<./templates/Financial Services/Bank Statements/configurations/ai_generalized_single_account_statement.json>)
 - [Ally (Combined Customer Statement)](<./templates/Financial Services/Bank Statements/configurations/ally_combined_customer_statement.json>)
 - [Bank of America](<./templates/Financial Services/Bank Statements/configurations/bank_of_america.json>)
 - [Blue Vine](<./templates/Financial Services/Bank Statements/configurations/blue_vine.json>)
@@ -331,19 +331,19 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 #### Offering Memorandums
 
-- [Offering Memorandums](<./templates/Real Estate/Offering Memorandums/configurations/AI_generalized_offering_memorandum.json>)
+- [Offering Memorandums](<./templates/Real Estate/Offering Memorandums/configurations/ai_generalized_offering_memorandum.json>)
 
 #### Rent Rolls
 
 - [Rent Rolls](<./templates/Real Estate/Rent Rolls/configurations/rent_rolls.json>)
-- [AI Generalized Rent Rolls](<./templates/Real Estate/Rent Rolls/configurations/AI_generalized_rent_rolls.json>)
+- [AI Generalized Rent Rolls](<./templates/Real Estate/Rent Rolls/configurations/ai_generalized_rent_rolls.json>)
 
 #### MLS
 
 - [ARMLS](<./templates/Real Estate/MLS/configurations/armls.json>)
 - [Recolorado](<./templates/Real Estate/MLS/configurations/recolorado.json>)
 - [Bright](<./templates/Real Estate/MLS/configurations/bright_mls.json>)
-- [AI Generalized MLS](<./templates/Real Estate/MLS/configurations/AI_generalized_MLS.json>)
+- [AI Generalized MLS](<./templates/Real Estate/MLS/configurations/ai_generalized_mls.json>)
 
 ### Healthcare
 
@@ -364,7 +364,7 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 #### Summary of Benefits and Coverage (SBCs)
 
-- [AI Generalized SBC](<./templates/Healthcare/SBCs/configurations/AI_generalized_sbc.json>)
+- [AI Generalized SBC](<./templates/Healthcare/SBCs/configurations/ai_generalized_sbc.json>)
 
 ### Identification
 
@@ -378,11 +378,11 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 
 - [Conedison](<./templates/Utilities & Invoices/Utility Bills/configurations/conedison.json>)
 - [LA DWP](<./templates/Utilities & Invoices/Utility Bills/configurations/la_dwp.json>)
-- [AI Generalized Utility Bills](<./templates/Utilities & Invoices/Utility Bills/configurations/AI_generalized_utility_bills.json>)
+- [AI Generalized Utility Bills](<./templates/Utilities & Invoices/Utility Bills/configurations/ai_generalized_utility_bills.json>)
 
 ### Invoices
 
-- [AI Generalized Invoices](<./templates/Utilities & Invoices/Invoices/configurations/AI_generalized_invoices.json>)
+- [AI Generalized Invoices](<./templates/Utilities & Invoices/Invoices/configurations/ai_generalized_invoices.json>)
 
 
 ## Using a configuration
