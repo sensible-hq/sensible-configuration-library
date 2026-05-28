@@ -21,6 +21,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [CMS 1500](#cms-1500s)
 - [Dental Explanation of Benefits](#dental-explanation-of-benefits)
 - [Explanation of Benefits](#explanation-of-benefits)
+- [Summary of Benefits and Coverage (SBCs)](#summary-of-benefits-and-coverage-sbcs)
 
 ### [Human Resources](#human-resources-1)
 - [Pay Stubs](#pay-stubs)
@@ -360,6 +361,10 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 #### CMS 1500s
 
 - [CMS 1500 (08/05)](<./templates/Healthcare/CMS 1500/configurations/cms_1500_08_05.json>)
+
+#### Summary of Benefits and Coverage (SBCs)
+
+- [AI Generalized SBC](<./templates/Healthcare/SBCs/configurations/AI_generalized_sbc.json>)
 
 ### Identification
 

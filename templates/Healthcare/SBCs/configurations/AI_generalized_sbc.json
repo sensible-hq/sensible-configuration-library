@@ -1,0 +1,185 @@
+{
+  "fields": [
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": "page",
+        "queries": [
+          {
+            "id": "plan_name",
+            "description": "What is the name of the health plan? It appears in the document header, typically in bold or colored text near the top of the first page. It may appear as 'COMPANY HEALTH PLAN: PLAN_NAME' \u2014 in that case return only the plan name part after the colon (e.g., 'GN 19 LFP EHDHP'). It may also appear as a standalone line next to the company logo. Do NOT include the insurance company name (Humana, Aetna, etc.) in the plan name.",
+            "type": "string"
+          },
+          {
+            "id": "plan_type",
+            "description": "What is the plan type? Look for 'Plan Type:' in the document header on page 1. Return just the type code (e.g., 'HMO', 'PPO', 'EPO', 'HDHP', 'NPOS').",
+            "type": "string"
+          },
+          {
+            "id": "coverage_period_start",
+            "description": "What is the start date of the coverage period? Look for 'Coverage Period:' in the document header. The format may be 'MM/DD/YYYY - MM/DD/YYYY', or 'Beginning on or after MM/DD/YYYY', or 'MM-DD-YYYY-MM-DD-YYYY'. Return only the START date. If the period says 'Beginning on or after [date]', that date IS the start date.",
+            "type": "date"
+          },
+          {
+            "id": "coverage_period_end",
+            "description": "What is the end date of the coverage period? Look for 'Coverage Period:' in the document header. The format may be 'MM/DD/YYYY - MM/DD/YYYY' or 'MM-DD-YYYY-MM-DD-YYYY'. Return only the END date. If the coverage period only has a start date (e.g., 'Beginning on or after [date]') with no explicit end date, return null.",
+            "type": "date"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": "page",
+        "queries": [
+          {
+            "id": "insurer_name",
+            "description": "What is the name of the health insurance company providing this plan? Return the brand/trade name, not the legal entity name. Examples: 'Aetna' (not 'Aetna Life Insurance Company'), 'Humana' (not 'Humana Health Plan, Inc.'), 'Angle Health' (not 'Angle Insurance Company of Utah'), 'UnitedHealthcare', 'Cigna', 'Anthem', 'Blue Cross Blue Shield'. Look for the brand name in the document header, URLs (e.g., anglehealth.com \u2192 'Angle Health'), or the civil rights section where it appears as '[Company] complies with applicable Federal civil rights laws'.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": "page",
+        "queries": [
+          {
+            "id": "deductible_individual_in_network",
+            "description": "What is the in-network individual deductible amount? Look in the 'What is the overall deductible?' row of the Important Questions table for the in-network individual amount.",
+            "type": "currency"
+          },
+          {
+            "id": "deductible_family_in_network",
+            "description": "What is the in-network family deductible amount? Look in the 'What is the overall deductible?' row of the Important Questions table for the in-network family amount.",
+            "type": "currency"
+          },
+          {
+            "id": "deductible_individual_out_of_network",
+            "description": "What is the out-of-network individual deductible amount? Look in the 'What is the overall deductible?' row. If no out-of-network deductible is listed (common for EPO or HMO plans that don't cover out-of-network), return null.",
+            "type": "currency"
+          },
+          {
+            "id": "deductible_family_out_of_network",
+            "description": "What is the out-of-network family deductible amount? Look in the 'What is the overall deductible?' row. If no out-of-network deductible is listed, return null.",
+            "type": "currency"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": "page",
+        "queries": [
+          {
+            "id": "oop_max_individual_in_network",
+            "description": "What is the in-network individual out-of-pocket limit (maximum)? Look in the 'What is the out-of-pocket limit for this plan?' row of the Important Questions table for the in-network individual amount. If no out-of-pocket limit is listed, return null.",
+            "type": "currency"
+          },
+          {
+            "id": "oop_max_family_in_network",
+            "description": "What is the in-network family out-of-pocket limit (maximum)? Look in the 'What is the out-of-pocket limit for this plan?' row for the in-network family amount. If no out-of-pocket limit is listed, return null.",
+            "type": "currency"
+          },
+          {
+            "id": "oop_max_individual_out_of_network",
+            "description": "What is the out-of-network individual out-of-pocket limit (maximum)? Look in the 'What is the out-of-pocket limit for this plan?' row. If no out-of-network OOP max is listed, return null.",
+            "type": "currency"
+          },
+          {
+            "id": "oop_max_family_out_of_network",
+            "description": "What is the out-of-network family out-of-pocket limit (maximum)? Look in the 'What is the out-of-pocket limit for this plan?' row. If no out-of-network OOP max is listed, return null.",
+            "type": "currency"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": "page",
+        "queries": [
+          {
+            "id": "referral_required",
+            "description": "Is a referral required to see a specialist? Look for 'Do you need a referral to see a specialist?' in the Important Questions table. Return true if yes (referral required), false if no.",
+            "type": "boolean"
+          },
+          {
+            "id": "hsa_eligible",
+            "description": "Is this health plan HSA-eligible (eligible for a Health Savings Account)? Indicators: the plan name or plan type contains 'HSA', 'HDHP', or 'EHDHP', or the document explicitly states HSA eligibility. Return true if any HSA indicator is present. Return false if NO HSA indicators are present \u2014 never return null for this field.",
+            "type": "boolean"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": "page",
+        "queries": [
+          {
+            "id": "primary_care_visit_out_of_network",
+            "description": "What is the out-of-network cost for a primary care visit to treat an injury or illness? Look in the cost-sharing table under 'If you visit a health care provider\u2019s office or clinic' for the primary care visit row. IMPORTANT: Some plans (especially UnitedHealthcare) have THREE cost columns \u2014 'Designated Network Provider', 'Network Provider', and 'Out-of-Network Provider (You will pay the most)'. You must use the OUT-OF-NETWORK column, which is the RIGHTMOST column and always the most expensive. Do NOT use the 'Network Provider' column. If out-of-network care is not covered (common for EPO and HMO plans), return 'Not covered'. Use 'copay' not 'copayment'. Examples: '50% coinsurance', '50% coinsurance after deductible', '$50 copay', 'Not covered'.",
+            "type": "string"
+          },
+          {
+            "id": "specialist_visit_out_of_network",
+            "description": "What is the out-of-network cost for a specialist visit? Look in the cost-sharing table under 'If you visit a health care provider's office or clinic' for the specialist visit row. IMPORTANT: Some plans (especially UnitedHealthcare) have THREE cost columns \u2014 'Designated Network Provider', 'Network Provider', and 'Out-of-Network Provider (You will pay the most)'. You must use the OUT-OF-NETWORK column, which is the RIGHTMOST column and always the most expensive. Do NOT use the 'Network Provider' column. If out-of-network care is not covered, return 'Not covered'. Use 'copay' not 'copayment'. Examples: '50% coinsurance', '50% coinsurance after deductible', 'Not covered'.",
+            "type": "string"
+          },
+          {
+            "id": "emergency_room_out_of_network",
+            "description": "What is the out-of-network cost for emergency room care? Look in the cost-sharing table under 'If you need immediate medical attention', Emergency room care row, in the NON-NETWORK / Out-of-Network Provider column (the right side column). Use 'copay' not 'copayment'. If the document says 'No charge after network deductible', return exactly that phrase \u2014 keep the word 'network' (unlike in-network ER where it is stripped). Examples: '50% coinsurance', '$400 copay after deductible', 'No charge after deductible', 'No charge after network deductible'.",
+            "type": "string"
+          },
+          {
+            "id": "generic_drug_cost_out_of_network",
+            "description": "What is the out-of-network cost for the lowest-tier preferred generic drugs? Look in the cost-sharing table under 'If you need drugs to treat your illness or condition' for the lowest tier (Tier 1, Level 1, or equivalent), Non-Network / Out-of-Network / Non-Network Provider column. CRITICAL: Only return 'Not covered' if the document cell literally contains the words 'Not Covered' or 'Not covered' and nothing else \u2014 any cell that shows a dollar amount or percentage means the drug IS covered, so return that cost instead. Use 'copay' not 'copayment'. If the cost is a compound structure like '(Retail) X% coinsurance, after $Y copay/prescription; deductible does not apply', extract and return 'X% coinsurance after $Y copay retail' (strip the parenthetical label, the mail order portion, and the deductible note). If only a retail copay is shown (e.g., 'Retail: $15 copay' or 'Deductible does not apply. Retail: $15 copay'), return '$15 copay retail' \u2014 always include the word 'retail'. Never include '/prescription' or '; deductible does not apply'. Examples: 'Not covered', '$15 copay retail', '30% coinsurance after $5 copay retail'.",
+            "type": "string"
+          },
+          {
+            "id": "inpatient_hospital_out_of_network",
+            "description": "What is the out-of-network cost for an inpatient hospital facility fee (hospital room)? Look in the cost-sharing table under 'If you have a hospital stay' for the facility fee row, Non-Network Provider / Out-of-Network column. If out-of-network care is not covered, return 'Not covered'. Use 'copay' not 'copayment'. Examples: '50% coinsurance', '50% coinsurance after deductible', 'Not covered'.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "searchBySummarization": "page",
+        "queries": [
+          {
+            "id": "primary_care_visit_in_network",
+            "description": "What is the in-network cost for a primary care visit to treat an injury or illness? Look in the cost-sharing table under 'If you visit a health care provider's office or clinic' for the primary care visit row, In-Network Provider column. Return a concise cost. Use 'copay' not 'copayment'. Keep 'per visit' if shown in the document (e.g., '$70 copay per visit'). Examples: '$35 copay/visit', '$30 copay', '$40 copay', '$70 copay per visit', 'No charge after deductible'. Do not include '; deductible does not apply' or '/office visit'. If the table has multiple sub-rows for primary care (virtual vs office visit), return the regular office visit copay.",
+            "type": "string"
+          },
+          {
+            "id": "specialist_visit_in_network",
+            "description": "What is the in-network cost for a specialist visit? Look in the cost-sharing table under 'If you visit a health care provider's office or clinic' for the specialist visit row, In-Network Provider column. Return a concise cost. Use 'copay' not 'copayment'. Keep 'per visit' if shown in the document. Examples: '$60 copay', '$110 copay per visit', 'No charge after deductible'. Do not include '; deductible does not apply'.",
+            "type": "string"
+          },
+          {
+            "id": "emergency_room_in_network",
+            "description": "What is the in-network cost for emergency room care? Look in the cost-sharing table under 'If you need immediate medical attention', Emergency room care row, in the NETWORK PROVIDER column only (not the out-of-network column). The network column is typically on the left side. Return a concise cost. Use 'copay' not 'copayment'. Normalize phrasing: return 'No charge after deductible' (not 'No charge after network deductible' \u2014 strip the word 'network'). Examples: '$400 copay after deductible', 'No charge after deductible', '30% coinsurance', '50% coinsurance'.",
+            "type": "string"
+          },
+          {
+            "id": "generic_drug_cost",
+            "description": "What is the in-network cost for the lowest-tier preferred generic drugs? Look in the cost-sharing table under 'If you need drugs to treat your illness or condition' for the preferred generic drugs row, specifically the lowest tier (Tier 1A, Tier 1, Level 1, or equivalent). Use 'copay' not 'copayment'. Rules: (1) CRITICAL: If the cost is 'No charge after deductible', return exactly 'No charge after deductible' \u2014 never append 'retail' or 'mail order'. (2) If the cost structure is compound (e.g., 'X% coinsurance after $Y copay/prescription'), extract only the copay component and return '$Y copay retail' \u2014 do not include the coinsurance percentage or mail order in this case. (3) For simple flat copay amounts: if BOTH retail and mail order costs are listed and they are different simple copays, use this format: '$X copay retail / $Y copay mail order'. Tier label rule \u2014 this is the ONLY case where you append a tier label: if the lowest-cost tier is named with a letter qualifier like 'Tier 1A' or 'Tier 1B' (the letter after the number indicates a sub-tier), append it: '$3 copay retail / $6 copay mail order (Tier 1A)'. If the tier is named with a plain number only \u2014 'Tier 1', 'Level 1', 'Tier 2' \u2014 do NOT append any label at all. DO NOT output '(Tier 1)' \u2014 omit it entirely: '$15 copay retail / $37.50 copay mail order'. If only retail is shown, return '$X copay retail'. Never include '/prescription' or '; deductible does not apply'.",
+            "type": "string"
+          },
+          {
+            "id": "inpatient_hospital_in_network",
+            "description": "What is the in-network cost for an inpatient hospital facility fee (hospital room)? Look in the cost-sharing table under 'If you have a hospital stay' for the facility fee row, In-Network Provider column. Return a concise cost. Use 'copay' not 'copayment'. Examples: 'No charge after deductible', '30% coinsurance after deductible', '$500 copay'.",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ]
+}
