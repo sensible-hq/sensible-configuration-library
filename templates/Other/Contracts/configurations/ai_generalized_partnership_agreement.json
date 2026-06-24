@@ -1,0 +1,162 @@
+{
+  "preprocessors": [
+    {
+      "type": "nlp",
+      "searchBySummarization": "page"
+    }
+  ],
+  "fields": [
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "queries": [
+          {
+            "id": "agreement_date",
+            "description": "The date on which the Partnership Agreement was made/executed, typically appearing in the introductory paragraph (e.g. 'THIS PARTNERSHIP AGREEMENT is made this [DAY] day of [MONTH] [YEAR]'). Return as a date. If the date is left as a blank placeholder (e.g. '____ day of ____ 2XXX'), return null.",
+            "type": "date"
+          },
+          {
+            "id": "execution_date",
+            "description": "The date on which the agreement was signed/executed by all parties. Look in the signature block at the end of the document, or in the introductory paragraph if no separate signature dates appear. If the document refers to 'the date first above written' and that date is left as a blank placeholder (e.g. '____ day of ____ 2XXX'), return null.",
+            "type": "date"
+          },
+          {
+            "id": "partnership_name",
+            "description": "The legal name of the partnership entity established by this agreement. Look for an explicit naming clause (e.g. 'the Partnership shall be known as [NAME]' or a defined term identifying the partnership by a specific name). If the document only refers to 'the Partnership' generically without a specific named entity, return null.",
+            "type": "string"
+          },
+          {
+            "id": "principal_place_of_business",
+            "description": "The principal office or place of business of the Partnership. Look for a section titled 'Principal Place of Business' or similar (e.g. 'The principal office and place of business of the Partnership shall be located at [ADDRESS]'). Return only the address, location, or place name as written.",
+            "type": "string"
+          },
+          {
+            "id": "business_purpose",
+            "description": "The stated business purpose of the partnership \u2014 what activities or business the partnership will conduct. Look for a section titled 'Business and Purpose' or similar, or for descriptions in the Explanatory Statement / recitals. Return a concise one- to two-sentence summary of the stated purpose.",
+            "type": "string"
+          },
+          {
+            "id": "term",
+            "description": "The duration of the partnership. Look for a section titled 'Term' or similar. If the term is for a fixed period, return that period (e.g. '5 years', 'until December 31, 2030'). If the partnership is indefinite or perpetual (e.g. 'shall continue without defined term', 'until terminated by the partners'), return 'indefinite'.",
+            "type": "string"
+          }
+        ]
+      
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "confidenceSignals": "strict",
+        "queries": [
+          {
+            "id": "partner_1_name",
+            "description": "Name of the FIRST partner identified in the agreement. Look in the introductory paragraph (e.g. 'by and between [Partner 1 Name] and [Partner 2 Name]') and in the Capital Contribution section where partners are listed by name. Return the exact name as written. If the document uses a placeholder like 'Partner 1' instead of a real name, return that placeholder verbatim.",
+            "type": "string"
+          },
+          {
+            "id": "partner_2_name",
+            "description": "Name of the SECOND partner identified in the agreement. Look in the introductory paragraph (e.g. 'by and between [Partner 1 Name] and [Partner 2 Name]') and in the Capital Contribution section where partners are listed by name. Return the exact name as written. If the document uses a placeholder like 'Partner 2' instead of a real name, return that placeholder verbatim.",
+            "type": "string"
+          },
+          {
+            "id": "partner_1_capital_contribution",
+            "description": "The total dollar value of the FIRST partner's capital contribution. Look in the Capital Contribution section. If the contribution includes multiple components (e.g. property/land plus cash), return the combined total dollar amount. If the contribution is described in non-dollar terms (e.g. acreage), use the appraised/estimated dollar value stated. Return the dollar amount as a number with no currency symbol.",
+            "type": "number"
+          },
+          {
+            "id": "partner_2_capital_contribution",
+            "description": "The total dollar value of the SECOND partner's capital contribution. Look in the Capital Contribution section. If the contribution includes multiple components, return the combined total dollar amount. If the contribution is described in non-dollar terms, use the appraised/estimated dollar value stated. Return the dollar amount as a number with no currency symbol.",
+            "type": "number"
+          },
+          {
+            "id": "total_capital_contributions",
+            "description": "Extract each partner's capital contribution and the total, flagging any figure the document qualifies as approximate, estimated, margin-of-error, or conditionally financed rather than treating it as exact.",
+            "type": "number"
+          }
+        ]
+       
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "confidenceSignals": "strict",
+        "queries": [
+          {
+            "id": "partner_1_ownership_percentage",
+            "description": "The FIRST partner's percentage of partnership interest/ownership. Look in the Profit and Loss section or wherever Partnership Rights/Interest percentages are listed. Return only the percentage as a number (e.g. 50 for 50%, not 0.5).",
+            "type": "number"
+          },
+          {
+            "id": "partner_2_ownership_percentage",
+            "description": "The SECOND partner's percentage of partnership interest/ownership. Look in the Profit and Loss section or wherever Partnership Rights/Interest percentages are listed. Return only the percentage as a number (e.g. 50 for 50%, not 0.5).",
+            "type": "number"
+          },
+          {
+            "id": "profit_sharing_method",
+            "description": "The method by which profits are distributed among the partners. Look for a section titled 'Distribution of Profits', 'Profit Sharing', or 'Profit and Loss'. Return a concise description (e.g. 'in proportion to each partner's percentage of partnership interest', 'equally among partners', 'as agreed by majority of partners').",
+            "type": "string"
+          },
+          {
+            "id": "profit_distribution_frequency",
+            "description": "The frequency or timing at which profit distributions are made to the partners. Look for language describing when distributions occur (e.g. 'monthly', 'quarterly', 'annually', 'within X days of receipt of payments from processors'). Return a concise description of the timing or frequency.",
+            "type": "string"
+          },
+          {
+            "id": "loss_sharing_method",
+            "description": "Extract how losses and operating expenses are shared including any exception or carve-out, and report any fill-in blank (e.g. \"first ___ year\") as unspecified rather than assuming a value.",
+            "type": "string"
+          },
+          {
+            "id": "management_rights",
+            "description": "Who has authority to make management decisions for the partnership. Look for a section titled 'Management of the Partnership Business' or similar. Return a concise description (e.g. 'decisions by majority share of partnership interest', 'managing partner has full authority', 'unanimous consent required'). If a particular partner effectively controls due to majority ownership, mention that.",
+            "type": "string"
+          }
+        ]
+        
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "queries": [
+          {
+            "id": "dissolution_triggers",
+            "description": "Identify only events that actually dissolve, terminate, or wind up the partnership, and exclude events like death, bankruptcy, retirement, default, or transfer if the document states the partnership continues through them as buyout/purchase-option triggers rather than dissolution.",
+            "type": "string"
+          },
+          {
+            "id": "buyout_provisions",
+            "description": "Summarize the buyout provisions for each scenario separately, verifying each price clause individually and noting where the defaulting partner's price differs (e.g. full value with no percentage discount or startup-assistance deduction) rather than assuming similar terms apply across scenarios.",
+            "type": "string"
+          }
+        ]
+       
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "searchBySummarization": "outline",
+        "queries": [
+          {
+            "id": "governing_law",
+            "description": "`Find the governing law / choice-of-law clause (near the end, ~Section 23) and return the state or jurisdiction whose laws control the agreement. Return null only if no such clause exists anywhere in the document.`",
+            "type": "string"
+          }
+        ]
+       
+      }
+    }
+  ]
+}

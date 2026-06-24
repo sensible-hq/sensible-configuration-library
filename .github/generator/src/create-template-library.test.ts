@@ -25,6 +25,7 @@ describe("createTemplateLibrary", () => {
     expect(library).toHaveProperty("Real Estate");
     expect(library).toHaveProperty("Tax Forms");
     expect(library).toHaveProperty("Utilities & Invoices");
+    expect(library).toHaveProperty("Other");
 
     recursiveChildrenAssertions(library);
   });
