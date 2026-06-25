@@ -1,0 +1,172 @@
+{
+  "preprocessors": [
+    {
+      "type": "nlp",
+      "searchBySummarization": "page"
+    }
+  ],
+  "fields": [
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "confidenceSignals": "strict",
+        "queries": [
+          {
+            "id": "agreement_type",
+            "description": "Type of nondisclosure agreement. Read the document title and the language describing how confidential information flows. Return 'Mutual NDA' if both parties exchange and protect confidential information, or 'One-way NDA' if only one party discloses. Look for cues like 'Mutual Non-Disclosure Agreement' in the title or 'each Party' / 'Parties' wording in the body.",
+            "type": "string"
+          },
+          {
+            "id": "effective_date",
+            "description": "The Effective Date of the agreement. Look for an explicit definition such as 'the effective date of this non-disclosure agreement is [DATE]' or 'this Agreement is dated as of [DATE]'. This is the start date of the parties' obligations, not the signature date.",
+            "type": "date"
+          },
+          {
+            "id": "purpose",
+            "description": "The stated business purpose for which the parties are exchanging confidential information under this agreement. Look in the introductory recitals for language such as 'In order to explore the possibility of...' or 'for the purpose of evaluating...'. Return a concise one- to two-sentence summary of the stated purpose.",
+            "type": "string"
+          },
+          {
+            "id": "confidential_information_definition",
+            "description": "The agreement's definition of 'Confidential Information'. Find the section that defines what qualifies as confidential (typically begins with '\"Confidential Information\" shall mean...' or similar). Return a concise summary of the substantive scope of the definition (one to two sentences). Include the categories listed (e.g. business information, technical information, customer/vendor data, products and plans).",
+            "type": "string"
+          },
+
+          {
+            "id": "permitted_disclosures",
+            "description": "The categories of persons or entities to whom the Recipient is permitted to disclose Confidential Information. Look for the agreement's definition of 'Representatives' or similar (e.g. 'directors, officers, employees, agents, advisors including financial advisors, legal counsel and accountants'). Return a brief summary of the permitted recipient categories.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "confidenceSignals": "strict",
+        "queries": [
+          {
+            "id": "party_1_name",
+            "description": "Full legal name of the FIRST party named in the agreement (the party listed first in the introductory paragraph). Return the exact legal name including any corporate suffix such as 'Corporation', 'Inc.', 'LLC', or 'Ltd.'. Do NOT include any defined-term aliases in parentheses (e.g. omit '(\"Discloser\")', '(\"Recipient\")', or any party-specific alias).",
+            "type": "string"
+          },
+          {
+            "id": "party_1_entity_type",
+            "description": "The legal entity type of the FIRST party. Look in the introduction for phrases like 'a [State] corporation', 'an [State] limited liability company', 'a [State] limited partnership'. Return only the entity-type phrase (e.g. 'corporation', 'LLC', 'limited partnership'). Do NOT include the state name.",
+            "type": "string"
+          },
+          {
+            "id": "party_1_state_of_incorporation",
+            "description": "The U.S. state (or non-U.S. jurisdiction) under whose laws the FIRST party is incorporated or organized. Look for the phrase 'a [State] corporation' or similar describing party 1. Return only the state or jurisdiction name (e.g. 'New York'). Do NOT include the entity-type word.",
+            "type": "string"
+          },
+          {
+            "id": "party_2_name",
+            "description": "Full legal name of the SECOND party named in the agreement (the party listed second in the introductory paragraph). Return the exact legal name including any corporate suffix such as 'Corporation', 'Inc.', 'LLC', or 'Ltd.'. Do NOT include any defined-term aliases in parentheses (e.g. omit '(\"Discloser\")', '(\"Recipient\")', or any party-specific alias).",
+            "type": "string"
+          },
+          {
+            "id": "party_2_entity_type",
+            "description": "The legal entity type of the SECOND party. Look in the introduction for phrases like 'a [State] corporation', 'an [State] limited liability company', 'a [State] limited partnership'. Return only the entity-type phrase (e.g. 'corporation', 'LLC', 'limited partnership'). Do NOT include the state name.",
+            "type": "string"
+          },
+          {
+            "id": "party_2_state_of_incorporation",
+            "description": "The U.S. state (or non-U.S. jurisdiction) under whose laws the SECOND party is incorporated or organized. Look for the phrase 'a [State] corporation' or similar describing party 2. Return only the state or jurisdiction name (e.g. 'Delaware'). Do NOT include the entity-type word.",
+            "type": "string"
+          }
+        ]
+      
+      }
+    },
+
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "confidenceSignals": "strict",
+        "queries": [
+          {
+            "id": "return_or_destruction_required",
+            "description": "Whether the agreement requires the Recipient to return or destroy Confidential Information upon request or termination. Look for clauses requiring delivery back to the Discloser or destruction of copies (often phrased 'will promptly deliver to the Discloser all Confidential Information... will destroy all copies'). Return 'true' if such an obligation exists, 'false' if not.",
+            "type": "string"
+          },
+
+          {
+            "id": "exclusions_from_confidentiality",
+            "description": "Categories of information that are NOT subject to the confidentiality obligations. Find the section listing exclusions (often phrased as 'Confidential Information does NOT include...' or '(a)...(b)...(c)...'). Return a brief comma-separated list summarizing each enumerated exclusion (e.g. 'already in possession; publicly available; received from third party; independently developed; disclosed under operation of law; disclosed with prior written approval').",
+            "type": "string"
+          }
+        ]
+       
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "confidenceSignals": "strict",
+        "queries": [
+          {
+            "id": "injunctive_relief_clause",
+            "description": "Determine whether the agreement entitles the injured party to injunctive or equitable relief (injunction, preliminary injunction, specific performance) for breach, and return true if such a remedy clause exists rather than inferring its absence.",
+            "type": "string"
+          },
+          {
+            "id": "term_years",
+            "description": "The duration of the confidentiality obligation expressed in whole years. Look for clauses like 'expires X years from the Effective Date' or 'this Agreement will terminate X years from the Effective Date'. Return only the integer number of years (e.g. 2). Return null if the term is not stated in years.",
+            "type": "number"
+          },
+          {
+            "id": "term_end_date",
+            "description": "The date on which the confidentiality obligations expire. If the agreement specifies a duration relative to the Effective Date (e.g. 'two years from the Effective Date'), compute the end date by adding that duration to the Effective Date. Return as a date. If no fixed end date is computable, return null.",
+            "type": "date"
+          },
+          {
+            "id": "governing_law",
+            "description": "Find the governing-law / choice-of-law clause (the agreement is \"made under\" or \"construed according to\" the laws of a state) and return that state. Return null only if no such clause exists anywhere in the document.",
+            "type": "string"
+          }
+        ]
+       
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "anthropic"
+        },
+        "confidenceSignals": "strict",
+        "queries": [
+          {
+            "id": "party_1_signatory_name",
+            "description": "From the signature block, return the name of the individual who signed on behalf of the first party, taken from the \"Name\" line or the signature — not from any letterhead, header, or footer.n",
+            "type": "string"
+          },
+          {
+            "id": "party_2_signatory_name",
+            "description": "From the signature block, return the name of the individual who signed on behalf of the second party, taken from the \"Name\" line or the signature.",
+            "type": "string"
+          },
+          {
+            "id": "execution_date",
+            "description": "Return the execution date from the signature block's \"Date\" line (the date the parties actually signed). Do not use any page header or footer timestamp, such as an access/print date, even if it looks like a date.",
+            "type": "date"
+          }
+        ]
+       
+      }
+    }
+  ]
+}
