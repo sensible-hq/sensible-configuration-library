@@ -59,6 +59,9 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 
 ### [Invoices](#invoices-1)
 
+### [Other](#other-1)
+- [Contracts](#contracts)
+
 ## [Using a configuration](#using-a-configuration-1)
 ## [Contributing to the library](#contributing-to-the-library-1)
 --------------------------
@@ -383,6 +386,13 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 ### Invoices
 
 - [AI Generalized Invoices](<./templates/Utilities & Invoices/Invoices/configurations/ai_generalized_invoices.json>)
+
+### Other
+
+#### Contracts
+
+- [AI Generalized NDA](<./templates/Other/Contracts/configurations/ai_generalized_nda.json>)
+- [AI Generalized Partnership Agreement](<./templates/Other/Contracts/configurations/ai_generalized_partnership_agreement.json>)
 
 
 ## Using a configuration
