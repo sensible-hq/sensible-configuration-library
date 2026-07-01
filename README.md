@@ -43,6 +43,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [MLS](#mls)
 - [Offering Memorandums](#offering-memorandums)
 - [Rent Rolls](#rent-rolls)
+- [Appraisals](#appraisals)
 
 ### [Tax Forms](#tax-forms-1)
 - [941](#941s)
@@ -347,6 +348,10 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [Recolorado](<./templates/Real Estate/MLS/configurations/recolorado.json>)
 - [Bright](<./templates/Real Estate/MLS/configurations/bright_mls.json>)
 - [AI Generalized MLS](<./templates/Real Estate/MLS/configurations/ai_generalized_mls.json>)
+
+#### Appraisals
+
+- [1004](<./templates/Real Estate/Appraisals/configurations/1004.json>)
 
 ### Healthcare
 
