@@ -32,11 +32,14 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 
 ### [Insurance](#insurance-1)
 - [ACORD Forms](#acords)
+- [Cyber Quotes](#cyber-quotes)
 - [Loss Runs](#loss-runs)
 - [Policy Declaration Pages](#policy-declaration-pages)
 
 ### [Logistics](#logistics-1)
 - [Airway Bills](#airway-bills)
+- [Commercial Invoices](#commercial-invoices)
+- [Delivery Orders](#delivery-orders)
 - [Rate Confirmations](#rate-confirmations)
 
 ### [Real Estate](#real-estate-1)
@@ -176,6 +179,11 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [ACORD 823 (10/2011)](<./templates/Insurance/ACORD Forms/configurations/acord_823_2011_10.json>)
 - [ACORD 823 (12/2015)](<./templates/Insurance/ACORD Forms/configurations/acord_823_2015_12.json>)
 
+#### Cyber Quotes
+
+- [At-Bay](<./templates/Insurance/Cyber Quotes/configurations/atbay.json>)
+- [Beazley](<./templates/Insurance/Cyber Quotes/configurations/beazley.json>)
+
 #### Loss runs
 
 - [AIG](<./templates/Insurance/Loss Runs/configurations/aig.json>)
@@ -248,6 +256,14 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 #### Airway Bills
 
 - [Airway Bill](<./templates/Logistics/Airway Bills/configurations/airway_bill.json>)
+
+#### Commercial Invoices
+
+- [AI Generalized Commercial Invoice](<./templates/Logistics/Commercial Invoices/configurations/ai_generalized_commercial_invoice.json>)
+
+#### Delivery Orders
+
+- [OOCL](<./templates/Logistics/Delivery Orders/configurations/oocl.json>)
 
 #### Rate Confirmations
 
