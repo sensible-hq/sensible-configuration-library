@@ -1,0 +1,170 @@
+{
+  "preprocessors": [
+    {
+      "type": "ocr",
+      "engine": "amazon",
+      "matchAll": true,
+      "match": ""
+    },
+    {
+      "type": "nlp",
+      "searchBySummarization": "page"
+    }
+  ],
+  "fields": [
+    {
+      "id": "form_date",
+      "anchor": "not found, not configured",
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "contextDescription": "A medical Prior Authorization Request form. The 'Member Information' section near the top has Last Name, First Name, Insurance ID #, DOB, and Date of Service fields.",
+        "queries": [
+          {
+            "id": "member_name",
+            "description": "Read the 'First Name:' and 'Last Name:' fields in the Member Information section. Return them concatenated in that order as '<First Name value> <Last Name value>', separated by a single space, using the values exactly as entered even if they appear semantically swapped (e.g. do not try to correct which looks like a first vs last name)."
+          },
+          {
+            "id": "member_insurance_id",
+            "description": "the value written in the 'Insurance ID #:' field"
+          },
+          {
+            "id": "member_dob",
+            "description": "the value written in the 'DOB:' field, exactly as written, do not reformat it"
+          },
+          {
+            "id": "date_of_service",
+            "type": "date",
+            "description": "the date written in the 'Date of Service:' field"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "contextDescription": "This form has three near-identical provider/facility blocks in this order: 'Requesting Provider:', then 'Servicing Provider:', then 'Servicing Facility:'. Each has its own Name, TIN#, and NPI#. Use only the values that immediately follow the specific label named in each question below — do not reuse a value from a different block.",
+        "queries": [
+          {
+            "id": "requesting_provider_name",
+            "description": "the name written next to 'Requesting Provider:' (the first of the three provider/facility blocks)"
+          },
+          {
+            "id": "requesting_provider_tin",
+            "description": "the TIN# value in the 'Requesting Provider:' block (the first of the three provider/facility blocks) — not the TIN# in the Servicing Provider or Servicing Facility blocks"
+          },
+          {
+            "id": "requesting_provider_npi",
+            "description": "the NPI# value in the 'Requesting Provider:' block (the first of the three provider/facility blocks) — not the NPI# in the Servicing Provider or Servicing Facility blocks"
+          },
+          {
+            "id": "servicing_provider_name",
+            "description": "the name written next to 'Servicing Provider:' (the second of the three provider/facility blocks)"
+          },
+          {
+            "id": "servicing_provider_tin",
+            "description": "the TIN# value in the 'Servicing Provider:' block (the second of the three provider/facility blocks) — not the TIN# in the Requesting Provider or Servicing Facility blocks"
+          },
+          {
+            "id": "servicing_provider_npi",
+            "description": "the NPI# value in the 'Servicing Provider:' block (the second of the three provider/facility blocks) — not the NPI# in the Requesting Provider or Servicing Facility blocks"
+          },
+          {
+            "id": "servicing_facility_name",
+            "description": "the name written next to 'Servicing Facility:' (the third of the three provider/facility blocks)"
+          },
+          {
+            "id": "servicing_facility_tin",
+            "description": "the TIN# value in the 'Servicing Facility:' block (the third of the three provider/facility blocks) — not the TIN# in the Requesting Provider or Servicing Provider blocks"
+          },
+          {
+            "id": "servicing_facility_npi",
+            "description": "the NPI# value in the 'Servicing Facility:' block (the third of the three provider/facility blocks) — not the NPI# in the Requesting Provider or Servicing Provider blocks"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "contextDescription": "The 'Requested Item/Service:' section, followed by 'ICD-10 Code(s):' and 'CPT Code(s):' boxes.",
+        "queries": [
+          {
+            "id": "requested_service_description",
+            "description": "the text written next to 'Requested Item/Service:' describing the requested item or service"
+          },
+          {
+            "id": "icd10_codes",
+            "description": "the ICD-10 code(s) written in the 'ICD-10 Code(s):' box; return null if blank"
+          },
+          {
+            "id": "cpt_codes",
+            "description": "the CPT code(s) written in the 'CPT Code(s):' box; return null if blank"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": {
+          "provider": "google"
+        },
+        "queries": [
+          {
+            "description": "What service type(s) checkbox is marked? return the label(s). Can be multiple",
+            "id": "service_type"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+"llmEngine":{
+  "provider": "anthropic",
+  "mode": "thorough"
+},
+        "queries": [
+          {
+            "id": "admission_type",
+            "description": "What admission type(s) checkbox is marked? return the label(s). "
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "contextDescription": "The form has two separate 'Explanation Required:' fields: one in the 'Expedite-' section (the one about a determination being in serious jeopardy if not made in the standard timeframe), and one later in the 'In-Network Benefits' section. Only the first one (Expedite) is relevant here.",
+        "queries": [
+          {
+            "id": "is_expedited",
+            "type": "boolean",
+            "description": "Is there any text written after 'Explanation Required:' in the Expedite section (not the later In-Network Benefits section)? Answer true if any text is present there, false if it is blank."
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "contextDescription": "The '**REQUIRED** Contact Information:' row near the bottom of the form, with Name, Phone #, and Fax# fields.",
+        "queries": [
+          {
+            "id": "contact_name",
+            "description": "the value written next to 'Name:' in the Contact Information row"
+          },
+          {
+            "id": "contact_phone",
+            "description": "the value written next to 'Phone #:' in the Contact Information row"
+          }
+        ]
+      }
+    }
+  ]
+}

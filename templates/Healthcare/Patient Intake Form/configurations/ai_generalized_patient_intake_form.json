@@ -1,0 +1,207 @@
+{
+  "preprocessors": [
+    { "type": "ocr", "matchAll": true, "match": "", "engine": "amazon" }
+  ],
+ 
+  "fields": [
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": { "provider": "google" },
+        "queries": [
+          {
+            "id": "visit_date",
+            "description": "The date written next to \"Today's date\" in the Patient Information section.",
+            "type": "date"
+          },
+          {
+            "id": "patient_name",
+            "description": "The patient's full name, written next to \"Your name\" in the Patient Information section."
+          },
+          {
+            "id": "patient_dob",
+            "description": "The patient's date of birth, written next to \"Date of Birth\" in the Patient Information section.",
+            "type": "date"
+          },
+          {
+            "id": "referring_physician",
+            "description": "The name of the referring physician, written next to \"Referring Physician\" in the Patient Information section.",
+            "type": "string"
+          },
+          {
+            "id": "primary_care_physician",
+            "description": "The name of the patient's primary care physician, written next to \"Primary Care Physician\" in the Patient Information section.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": { "provider": "google" },
+        "queries": [
+          {
+            "id": "chief_complaint",
+            "description": "The patient's stated reason for today's visit, written in the answer to \"Chief Complaint (Reason for your visit today)?\" in the Pain History section.",
+            "type": "string"
+          },
+          {
+            "id": "pain_location",
+            "description": "Additional areas of pain the patient lists, written in the answer to \"Please list any additional areas of pain\" in the Pain History section.",
+            "type": "string"
+          },
+          {
+            "id": "pain_radiation",
+            "description": "Where the patient's pain radiates to, written in the answer to \"Does this pain radiate? If so where?\" in the Pain History section.",
+            "type": "string"
+          },
+          {
+            "id": "pain_onset_date",
+            "description": "Approximately when the patient's current pain began, written in the answer to \"Approximately, when did this pain begin?\" in the Onset of Symptoms section.",
+            "type": "string"
+          },
+          {
+            "id": "pain_cause",
+            "description": "What caused the patient's current pain episode, written in the answer to \"What caused your current pain episode?\" in the Onset of Symptoms section.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": { "provider": "google", "mode": "thorough" },
+        "queries": [
+          {
+            "id": "pain_onset_type",
+            "description": "Whether the patient's current pain episode began \"Gradually\" or \"Suddenly\" - identify which checkbox is filled in/marked (solid black or blue square, not an empty square) next to \"How did your current pain episode begin?\" in the Onset of Symptoms section. Return the label of the marked checkbox.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": { "provider": "anthropic", "mode": "thorough" },
+        "queries": [
+          {
+            "id": "pain_onset_type",
+            "description": "Whether the patient's current pain episode began \"Gradually\" or \"Suddenly\" - identify which checkbox is filled in/marked (solid black or blue square, not an empty square) next to \"How did your current pain episode begin?\" in the Onset of Symptoms section. Return the label of the marked checkbox.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": { "provider": "anthropic" },
+        "queries": [
+          {
+            "id": "pain_change_since_onset",
+            "description": "Which checkbox is marked next to 'Since your pain began, how has it changed?' — Improved, Worsened, or Stayed the same? Return the marked label.",
+
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": { "provider": "google" },
+        "queries": [
+          {
+            "id": "pain_character",
+            "description": "The character of the patient's pain (e.g. dull, stabbing, throbbing), written in the answer to \"Describe the character of your pain\" in the Pain Description section.",
+            "type": "string"
+          },
+          {
+            "id": "pain_score_current",
+            "description": "The patient's current pain score on the 0-10 scale, written next to \"Right Now\" under the pain rating question in the Pain Description section.",
+            "type": "number"
+          },
+          {
+            "id": "pain_score_worst",
+            "description": "The patient's worst pain score on the 0-10 scale, written next to \"The Worst It Gets\" under the pain rating question in the Pain Description section.",
+            "type": "number"
+          }
+        ]
+      }
+    },
+
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": { "provider": "anthropic", "mode": "thorough" },
+        "queries": [
+          {
+            "id": "pain_frequency",
+            "description": "How often the patient's pain occurs - identify which checkbox is filled in/marked (solid black or blue square, not an empty square) among \"Constant\", \"Changes in severity but always present\", and \"Intermittent (comes and goes)\" under \"How often does the pain occur?\" in the Pain Description section. Return the label of the marked checkbox.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "llmEngine": { "provider": "google" },
+        "queries": [
+          {
+            "id": "aggravating_factors",
+            "description": "Factors that worsen or affect the patient's pain, written in the answer to \"What other factors worsen or affect your pain?\" in the Pain Description section.",
+            "type": "string"
+          },
+          {
+            "id": "relieving_factors",
+            "description": "Factors that relieve the patient's pain, written in the answer to \"What other factors relieve your pain?\" in the Pain Description section.",
+            "type": "string"
+          },
+          {
+            "id": "associated_symptoms",
+            "description": "Symptoms associated with the patient's pain, such as numbness, tingling, weakness, or incontinence, written in the answer to \"Are there any associated symptoms?\" in the Pain Description section.",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "id": "past_medical_history_raw",
+      "type": "table",
+      "method": {
+        "id": "list",
+        "llmEngine": { "provider": "anthropic", "mode": "thorough" },
+        "description": "List every condition with a filled/shaded checkbox in the Past Medical History section. Skip empty checkboxes.",
+        "properties": [
+          {
+            "id": "condition",
+            "description": "The name of the marked medical condition/diagnosis exactly as printed next to its checkbox. Consider only marked checkboxes. Review each section / categoru",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "id": "past_medical_history",
+      "method": {
+        "id": "zip",
+        "source_ids": ["past_medical_history_raw"]
+      }
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "hide",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": ["past_medical_history_raw"]
+      }
+    }
+  ]
+}
