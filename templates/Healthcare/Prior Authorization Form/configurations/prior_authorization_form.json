@@ -1,0 +1,1035 @@
+{
+  "preprocessors": [
+    {
+      "type": "splitLines",
+      "minSpaces": 2
+    },
+    {
+      "type": "ocr",
+      "engine": "amazon",
+      "matchAll": true,
+      "match": ""
+    }
+  ],
+  "fields": [
+    {
+      "id": "_member_last",
+      "anchor": {
+        "match": {
+          "text": "Last Name:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "_member_first",
+      "anchor": {
+        "match": {
+          "text": "First Name:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "_elective_inpatient",
+      "anchor": {
+        "start": {
+          "text": "Type of Service:",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "Elective Inpatient",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "_svc_surgery",
+      "anchor": {
+        "match": {
+          "text": "Surgery",
+          "type": "equals"
+        },
+        "start": "Requested Services",
+        "end": {
+          "text": "Type of Service:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "_svc_diagnostic",
+      "anchor": {
+        "start": "Requested Services",
+        "end": {
+          "text": "Type of Service:",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "Diagnostic",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "_svc_facility_auth",
+      "anchor": {
+        "start": "Requested Services",
+        "end": {
+          "text": "Type of Service:",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "Facility Auth Only",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "_svc_dme",
+      "anchor": {
+        "start": "Requested Services",
+        "end": {
+          "text": "Type of Service:",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "DME",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+
+    {
+      "id": "_adm_inpatient",
+      "anchor": {
+        "match": {
+          "text": "Inpatient",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "_adm_outpatient_surgery",
+      "anchor": {
+        "match": {
+          "text": "Elective Outpatient Surgery",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "_adm_office_surgery",
+      "anchor": {
+        "match": {
+          "text": "Office Surgery",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "_adm_outpatient_diag",
+      "anchor": {
+        "match": {
+          "text": "Outpatient Diagnostics",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "_adm_asc",
+      "anchor": {
+        "match": {
+          "text": "ASC",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "nearestCheckbox",
+        "position": "left"
+      }
+    },
+    {
+      "id": "_expedite_explanation",
+      "anchor": {
+        "start": {
+          "text": "Expedite-",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "Required:",
+          "type": "endsWith"
+        },
+        "end": {
+          "text": "In-Network",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.18,
+        "width": 7,
+        "height": 0.25,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0
+      }
+    },
+    {
+      "id": "form_date",
+      "anchor": "not found, not configured",
+      "method": {
+        "id": "passthrough"
+      }
+    },
+    {
+      "id": "member_name",
+      "method": {
+        "id": "customComputation",
+        "jsonLogic": {
+          "cat": [
+            {
+              "var": "_member_first.value"
+            },
+            " ",
+            {
+              "var": "_member_last.value"
+            }
+          ]
+        }
+      }
+    },
+
+    {
+      "id": "member_insurance_id",
+      "anchor": {
+        "match": {
+          "text": "Insurance ID #:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": -0.05,
+        "width": 3.5,
+        "height": 0.2,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["Insurance ID #:"]
+      }
+    },
+    {
+      "id": "member_insurance_id",
+      "anchor": {
+        "match": {
+          "text": "Insurance ID #:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "member_dob",
+      "anchor": {
+        "match": {
+          "text": "DOB:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": -0.05,
+        "width": 3.5,
+        "height": 0.2,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["DOB:"]
+      }
+    },
+    {
+      "id": "member_dob",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "text": "DOB:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "date_of_service",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "text": "Date of Service:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "date_of_service",
+      "type": "date",
+      "anchor": {
+        "match": {
+          "text": "Date of Service:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": -0.05,
+        "width": 1.8,
+        "height": 0.2,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["DOB:"]
+      }
+    },
+    {
+      "id": "date_of_service",
+      "anchor": {
+        "match": {
+          "text": "Date of Service:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      },
+      "type": "string"
+    },
+    {
+      "id": "requesting_provider_name",
+      "anchor": {
+        "match": {
+          "text": "Requesting Provider:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "requesting_provider_name",
+      "anchor": {
+        "match": {
+          "text": "Requesting Provider:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.1,
+        "width": 5,
+        "height": 0.3,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["Requesting Provider:"]
+      }
+    },
+    {
+      "id": "requesting_provider_npi",
+      "anchor": {
+        "match": {
+          "text": "NPI#:",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "Servicing Provider:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "tiebreaker": "first"
+      }
+    },
+    {
+      "id": "requesting_provider_tin",
+      "anchor": {
+        "match": {
+          "text": "TIN#:",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "Servicing Provider:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.1,
+        "width": 5,
+        "height": 0.3,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["TIN#:"]
+      }
+    },
+    {
+      "id": "requesting_provider_npi",
+      "anchor": {
+        "match": {
+          "text": "NPI#:",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "Servicing Provider:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.1,
+        "width": 5,
+        "height": 0.3,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["NPI#:"]
+      }
+    },
+    {
+      "id": "requesting_provider_tin",
+      "anchor": {
+        "match": {
+          "text": "TIN#:",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "Servicing Provider:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "servicing_provider_name",
+      "anchor": {
+        "match": {
+          "text": "Servicing Provider:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "servicing_provider_name",
+      "anchor": {
+        "match": {
+          "text": "Servicing Provider:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.1,
+        "width": 5,
+        "height": 0.3,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["Servicing Provider:"]
+      }
+    },
+    {
+      "id": "servicing_provider_npi",
+      "anchor": {
+        "start": {
+          "text": "Servicing Provider:",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "NPI#:",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "Servicing Facility:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.1,
+        "width": 5,
+        "height": 0.3,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["NPI#:"]
+      }
+    },
+    {
+      "id": "servicing_provider_tin",
+      "anchor": {
+        "match": [
+          {
+            "text": "TIN#:",
+            "type": "startsWith"
+          },
+          {
+            "text": "TIN#:",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.1,
+        "width": 5,
+        "height": 0.3,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["TIN#:"]
+      }
+    },
+    {
+      "id": "servicing_provider_npi",
+      "anchor": {
+        "start": {
+          "text": "Servicing Provider:",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "NPI#:",
+          "type": "startsWith"
+        },
+        "end": {
+          "text": "Servicing Facility:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "servicing_provider_tin",
+      "anchor": {
+        "match": [
+          {
+            "text": "TIN#:",
+            "type": "startsWith"
+          },
+          {
+            "text": "TIN#:",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "servicing_facility_name",
+      "anchor": {
+        "match": {
+          "text": "Servicing Facility:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "servicing_facility_name",
+      "anchor": {
+        "match": {
+          "text": "Servicing Facility:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.1,
+        "width": 5,
+        "height": 0.3,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["Servicing Facility:"]
+      }
+    },
+    {
+      "id": "servicing_facility_npi",
+      "anchor": {
+        "start": {
+          "text": "Servicing Facility:",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "NPI#:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.1,
+        "width": 3,
+        "height": 0.3,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["NPI#:"]
+      }
+    },
+    {
+      "id": "servicing_facility_tin",
+      "anchor": {
+        "match": [
+          {
+            "text": "TIN#",
+            "type": "startsWith"
+          },
+          {
+            "text": "TIN#",
+            "type": "startsWith"
+          },
+          {
+            "text": "TIN#",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.1,
+        "width": 3,
+        "height": 0.3,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["TIN#:"]
+      }
+    },
+    {
+      "id": "servicing_facility_npi",
+      "anchor": {
+        "start": {
+          "text": "Servicing Facility:",
+          "type": "startsWith"
+        },
+        "match": {
+          "text": "NPI#:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "servicing_facility_tin",
+      "anchor": {
+        "match": [
+          {
+            "text": "TIN#",
+            "type": "startsWith"
+          },
+          {
+            "text": "TIN#",
+            "type": "startsWith"
+          },
+          {
+            "text": "TIN#",
+            "type": "startsWith"
+          }
+        ]
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "requested_service_description",
+      "anchor": {
+        "match": {
+          "text": "Requested Item/Service:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.1,
+        "width": 6,
+        "height": 0.3,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["Name:", "Requested Item/Service:"]
+      }
+    },
+    {
+      "id": "requested_service_description",
+      "anchor": {
+        "match": {
+          "text": "Requested Item/Service:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "icd10_codes",
+      "anchor": {
+        "match": {
+          "text": "ICD-10 Code(s):",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": -0.08,
+        "width": 4,
+        "height": 0.7,
+        "wordFilters": ["ICD-10 Code(s):"]
+      }
+    },
+    {
+      "id": "cpt_codes",
+      "anchor": {
+        "match": {
+          "text": "CPT Code(s):",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.1,
+        "offsetY": -0.08,
+        "width": 4,
+        "height": 0.7,
+        "wordFilters": ["CPT Code(s):"]
+      }
+    },
+    {
+      "id": "service_type",
+      "method": {
+        "id": "customComputation",
+        "jsonLogic": {
+          "cat": [
+            {
+              "if": [
+                {
+                  "var": "_svc_office_visits.value"
+                },
+                "Office Visits, ",
+                ""
+              ]
+            },
+            {
+              "if": [
+                {
+                  "var": "_svc_surgery.value"
+                },
+                "Surgery, ",
+                ""
+              ]
+            },
+            {
+              "if": [
+                {
+                  "var": "_svc_diagnostic.value"
+                },
+                "Diagnostic, ",
+                ""
+              ]
+            },
+            {
+              "if": [
+                {
+                  "var": "_svc_facility_auth.value"
+                },
+                "Facility Auth Only, ",
+                ""
+              ]
+            },
+            {
+              "if": [
+                {
+                  "var": "_svc_dme.value"
+                },
+                "DME, ",
+                ""
+              ]
+            },
+            {
+              "if": [
+                {
+                  "var": "_svc_other.value"
+                },
+                "Other, ",
+                ""
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "admission_type",
+      "method": {
+        "id": "customComputation",
+        "jsonLogic": {
+          "if": [
+            {
+              "var": "_adm_inpatient.value"
+            },
+            "Elective Inpatient Admit",
+            {
+              "var": "_adm_outpatient_surgery.value"
+            },
+            "Elective Outpatient Surgery",
+            {
+              "var": "_adm_office_surgery.value"
+            },
+            "Office Surgery",
+            {
+              "var": "_adm_outpatient_diag.value"
+            },
+            "Outpatient Diagnostics",
+            {
+              "var": "_adm_asc.value"
+            },
+            "ASC",
+            null
+          ]
+        }
+      }
+    },
+    {
+      "id": "is_expedited",
+      "method": {
+        "id": "customComputation",
+        "jsonLogic": {
+          "!==": [
+            {
+              "var": "_expedite_explanation.value"
+            },
+            null
+          ]
+        }
+      }
+    },
+    {
+      "id": "contact_name",
+      "anchor": {
+        "start": {
+          "text": "Contact Information",
+          "type": "includes"
+        },
+        "match": {
+          "text": "Name:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.1,
+        "width": 3,
+        "height": 0.3,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["Name:"]
+      }
+    },
+    {
+      "id": "contact_name",
+      "anchor": {
+        "start": {
+          "text": "Contact Information",
+          "type": "includes"
+        },
+        "match": {
+          "text": "Name:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "contact_phone",
+      "anchor": {
+        "start": {
+          "text": "Contact Information",
+          "type": "includes"
+        },
+        "match": {
+          "text": "Phone #:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": -0.081,
+        "width": 1.5,
+        "height": 0.3,
+        "percentOverlapX": 0,
+        "percentOverlapY": 0,
+        "wordFilters": ["Phone #:"]
+      }
+    },
+    {
+      "id": "contact_phone",
+      "anchor": {
+        "start": {
+          "text": "Contact Information",
+          "type": "includes"
+        },
+        "match": {
+          "text": "Phone #:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "box",
+        "position": "right",
+        "offsetX": 0.4
+      }
+    },
+    {
+      "id": "_cleanup",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": [
+          "_member_first",
+          "_member_last",
+          "_svc_office_visits",
+          "_svc_surgery",
+          "_svc_diagnostic",
+          "_svc_facility_auth",
+          "_svc_dme",
+          "_svc_other",
+          "_adm_inpatient",
+          "_adm_outpatient_surgery",
+          "_adm_office_surgery",
+          "_adm_outpatient_diag",
+          "_adm_asc",
+          "_expedite_explanation",
+          "_elective_inpatient"
+        ]
+      }
+    }
+  ]
+}
