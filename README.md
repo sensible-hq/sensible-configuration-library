@@ -13,6 +13,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [Balance Sheets](#balance-sheets)
 - [Bank statements](#bank-statements)
 - [Credit Card Statements](#credit-card-statements)
+- [Credit Reports](#credit-reports)
 - [Retirement](#retirement)
 - [Verification of Assets](#verification-of-assets)
 - [Verification of Employement](#verifications-of-employment)
@@ -21,6 +22,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [CMS 1500](#cms-1500s)
 - [Dental Explanation of Benefits](#dental-explanation-of-benefits)
 - [Explanation of Benefits](#explanation-of-benefits)
+- [Lab Reports](#lab-reports)
 - [Summary of Benefits and Coverage (SBCs)](#summary-of-benefits-and-coverage-sbcs)
 
 ### [Human Resources](#human-resources-1)
@@ -40,6 +42,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [Airway Bills](#airway-bills)
 - [Commercial Invoices](#commercial-invoices)
 - [Delivery Orders](#delivery-orders)
+- [Certificate of Origin](#certificate-of-origin)
 - [Rate Confirmations](#rate-confirmations)
 
 ### [Real Estate](#real-estate-1)
@@ -286,6 +289,10 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [US Express](<./templates/Logistics/Rate Confirmations/configurations/us_express.json>)
 - [XPO](<./templates/Logistics/Rate Confirmations/configurations/xpo.json>)
 
+#### Certificate of Origin
+
+- [AI Generalized Certificate of Origin](<./templates/Logistics/Certificate of Origin/configurations/ai_generalized_certificate_of_origin.json>)
+
 ### Financial Services
 
 #### Verifications of employment
@@ -312,6 +319,10 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 #### Credit Card Statements
 
 - [Credit Card Statement](<./templates/Financial Services/Credit Card Statements/configurations/cc_statement.json>)
+
+#### Credit Reports
+
+- [AI Generalized Credit Reports](<./templates/Financial Services/Credit Reports/configurations/ai_generalized_credit_reports.json>)
 
 #### Bank Statements
 
@@ -390,6 +401,10 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 #### CMS 1500s
 
 - [CMS 1500 (08/05)](<./templates/Healthcare/CMS 1500/configurations/cms_1500_08_05.json>)
+
+#### Lab Reports
+
+- [AI Generalized Lab Reports](<./templates/Healthcare/Lab Reports/configurations/ai_generalized_lab_reports.json>)
 
 #### Summary of Benefits and Coverage (SBCs)
 
