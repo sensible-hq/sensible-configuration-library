@@ -1,0 +1,182 @@
+{
+  "fingerprint": {
+    "tests": [
+      { "text": "Beazley InfoSec", "type": "includes" },
+      { "text": "COVERAGE SCHEDULE (Currency in USD)", "type": "includes" }
+    ]
+  },
+  "fields": [
+    {
+      "id": "quote_issuance_date",
+      "anchor": { "match": { "type": "startsWith", "text": "QUOTE ISSUED:" } },
+      "method": { "id": "label", "position": "right" },
+      "type": "string"
+    },
+    {
+      "id": "quote_expiration_date",
+      "anchor": "Quote Effective Until:",
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "string"
+    },
+    {
+      "id": "named_insured",
+      "anchor": "Named Insured:",
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "string"
+    },
+    {
+      "id": "broker_name",
+      "anchor": "Broker:",
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "string"
+    },
+    {
+      "id": "insurer_name",
+      "anchor": "Insurer:",
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "string"
+    },
+    {
+      "id": "policy_effective_date",
+      "anchor": {
+        "match": { "type": "startsWith", "text": "From:" },
+        "start": { "text": "Policy Period:", "type": "startsWith" }
+      },
+      "method": { "id": "label", "position": "right" },
+      "type": "string"
+    },
+    {
+      "id": "policy_expiration_date",
+      "anchor": {
+        "match": { "type": "startsWith", "text": "To:" },
+        "start": { "text": "Policy Period:", "type": "startsWith" }
+      },
+      "method": { "id": "label", "position": "right" },
+      "type": "string"
+    },
+    {
+      "id": "retroactive_date",
+      "anchor": {
+        "match": { "type": "equals", "text": "Continuity Date:" },
+        "start": { "text": "GENERAL INFORMATION", "type": "equals" }
+      },
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "string"
+    },
+    {
+      "id": "waiting_period_hours",
+      "anchor": "Waiting Period:",
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "number"
+    },
+    {
+      "id": "commission_pct",
+      "anchor": "Commission:",
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "number"
+    },
+    {
+      "id": "aggregate_limit",
+      "anchor": "Policy Aggregate Limit of Liability:",
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "currency"
+    },
+    {
+      "id": "annual_premium_a",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "PREMIUM",
+          "isCaseSensitive": true
+        }
+      },
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "currency"
+    },
+    {
+      "id": "annual_premium_b",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "PREMIUM",
+          "isCaseSensitive": true
+        }
+      },
+      "method": { "id": "row", "position": "right", "tiebreaker": 1 },
+      "type": "currency"
+    },
+    {
+      "id": "breach_response_costs_limit",
+      "anchor": {
+        "match": { "type": "equals", "text": "Breach Response Costs:" },
+        "end": { "text": "RETENTIONS", "type": "equals" }
+      },
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "currency"
+    },
+    {
+      "id": "business_interruption_limit",
+      "anchor": {
+        "match": {
+          "type": "equals",
+          "text": "Resulting from Security Breach:"
+        },
+        "end": { "text": "RETENTIONS", "type": "equals" }
+      },
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "currency"
+    },
+    {
+      "id": "cyber_extortion_limit",
+      "anchor": {
+        "match": { "type": "equals", "text": "Cyber Extortion Loss:" },
+        "end": { "text": "RETENTIONS", "type": "equals" }
+      },
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "currency"
+    },
+    {
+      "id": "social_engineering_limit",
+      "anchor": "not found, not configured",
+      "method": { "id": "passthrough" },
+      "type": "currency"
+    },
+    {
+      "id": "insuring_agreements",
+      "type": "sections",
+      "requiredFields": ["sublimit"],
+      "range": {
+        "anchor": {
+          "match": { "type": "regex", "pattern": ":$" },
+          "start": { "text": "Breach Response", "type": "equals" },
+          "end": { "text": "RETENTIONS", "type": "equals" }
+        },
+        "stop": {
+          "text": "RETENTIONS",
+          "type": "equals",
+          "isCaseSensitive": true
+        }
+      },
+      "fields": [
+        {
+          "id": "name",
+          "anchor": { "match": { "type": "regex", "pattern": ":$" } },
+          "method": { "id": "passthrough" },
+          "type": { "id": "custom", "pattern": "^(.+?):\\s*$" }
+        },
+        {
+          "id": "sublimit",
+          "anchor": { "match": { "type": "regex", "pattern": ":$" } },
+          "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+          "type": "currency"
+        },
+        {
+          "id": "retention",
+          "anchor": { "match": { "type": "regex", "pattern": ":$" } },
+          "method": { "id": "row", "position": "right", "tiebreaker": 2 },
+          "type": "currency"
+        }
+      ]
+    }
+  ]
+}

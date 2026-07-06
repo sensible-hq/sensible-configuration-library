@@ -1,0 +1,301 @@
+{
+  "fingerprint": {
+    "tests": [
+      {
+        "match": {
+          "text": "OOCL",
+          "type": "includes",
+          "isCaseSensitive": true
+        },
+        "page": "any"
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "do_issue_date",
+      "anchor": { "match": { "text": "DO ISSUE DATE:", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.03,
+        "offsetY": 0.05,
+        "width": 0.95,
+        "height": 0.21,
+        "tiebreaker": "first"
+      },
+      "type": "date"
+    },
+    {
+      "id": "do_issue_date",
+      "anchor": { "match": { "text": "DO ISSUE DATE:", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.3,
+        "offsetY": 0.05,
+        "width": 0.95,
+        "height": 0.41,
+        "tiebreaker": "first"
+      },
+      "type": "string"
+    },
+    {
+      "id": "bill_of_lading_number",
+      "anchor": {
+        "match": { "text": "BILL OF LADING NO", "type": "startsWith" }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.07,
+        "width": 1.5,
+        "height": 0.41,
+        "tiebreaker": "first"
+      },
+      "type": "string"
+    },
+    {
+      "id": "consignee_name",
+      "anchor": { "match": { "text": "CONSIGNEE", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.05,
+        "width": 2.5,
+        "height": 0.75
+      },
+      "type": "string"
+    },
+    {
+      "id": "notify_party_name",
+      "anchor": { "match": { "text": "NOTIFY PARTY", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.05,
+        "width": 2.5,
+        "height": 0.75
+      },
+      "type": "string"
+    },
+    {
+      "id": "vessel_name",
+      "anchor": { "match": { "text": "VESSEL / VOYAGE", "type": "equals" } },
+      "method": {
+        "id": "regex",
+        "pattern": "^(.+?)\\s+\\S+-\\S+$"
+      },
+      "type": "string"
+    },
+    {
+      "id": "voyage_number",
+      "anchor": { "match": { "text": "VESSEL / VOYAGE", "type": "equals" } },
+      "method": {
+        "id": "regex",
+        "pattern": "(\\d{4}-\\d{3}[A-Z])"
+      },
+      "type": "string"
+    },
+    {
+      "id": "port_of_loading",
+      "anchor": { "match": { "text": "PORT OF LOADING", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.07,
+        "width": 0.65,
+        "height": 0.21,
+        "tiebreaker": "first"
+      },
+      "type": "string"
+    },
+    {
+      "id": "departure_date",
+      "anchor": { "match": { "text": "DEPARTURE", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.03,
+        "offsetY": 0.05,
+        "width": 0.95,
+        "height": 0.21,
+        "tiebreaker": "first"
+      },
+      "type": "date"
+    },
+    {
+      "id": "port_of_discharge",
+      "anchor": { "match": { "text": "PORT OF DISCHARGE", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.07,
+        "width": 0.82,
+        "height": 0.21,
+        "tiebreaker": "first"
+      },
+      "type": "string"
+    },
+    {
+      "id": "eta",
+      "anchor": { "match": { "text": "ETA", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": -0.22,
+        "offsetY": 0.07,
+        "width": 0.94,
+        "height": 0.21,
+        "tiebreaker": "first"
+      },
+      "type": "date"
+    },
+    {
+      "id": "place_of_delivery",
+      "anchor": { "match": { "text": "PLACE OF DELIVERY", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": -1.15,
+        "offsetY": 0.07,
+        "width": 2.17,
+        "height": 0.21,
+        "tiebreaker": "first"
+      },
+      "type": "string"
+    },
+    {
+      "id": "pin",
+      "anchor": { "match": { "text": "PIN", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": 2,
+        "offsetY": 0.1,
+        "width": 3,
+        "height": 0.55,
+        "tiebreaker": "first"
+      },
+      "type": "string"
+    },
+    {
+      "id": "container_number",
+      "anchor": { "match": { "text": "CONTAINER NO", "type": "startsWith" } },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.07,
+        "width": 1.1,
+        "height": 0.41,
+        "tiebreaker": "first"
+      },
+      "type": "string"
+    },
+    {
+      "id": "seal_number",
+      "anchor": { "match": { "text": "SEAL NO", "type": "startsWith" } },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.07,
+        "width": 1.0,
+        "height": 0.41,
+        "tiebreaker": "first"
+      },
+      "type": "string"
+    },
+    {
+      "id": "container_size_type",
+      "anchor": { "match": { "text": "SIZE/TYPE", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.07,
+        "width": 0.59,
+        "height": 0.41,
+        "tiebreaker": "first"
+      },
+      "type": "string"
+    },
+    {
+      "id": "number_of_packages",
+      "anchor": { "match": { "text": "PIECE COUNT", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0,
+        "offsetY": 0.07,
+        "width": 1.0,
+        "height": 0.41,
+        "tiebreaker": "first"
+      },
+      "type": "number"
+    },
+    {
+      "id": "description_of_goods",
+      "anchor": {
+        "match": { "text": "DESCRIPTION OF GOODS", "type": "equals" }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.35,
+        "offsetY": 0.14,
+        "width": 2,
+        "height": 0.41
+      },
+      "type": "string"
+    },
+    {
+      "id": "gross_weight",
+      "anchor": { "match": { "text": "WEIGHT", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.48,
+        "offsetY": 0.14,
+        "width": 0.8,
+        "height": 0.41,
+        "tiebreaker": "first"
+      },
+      "type": "number"
+    },
+    {
+      "id": "free_time_days_storage",
+      "anchor": { "match": { "text": "BEFORE STORAGE", "type": "startsWith" } },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.03,
+        "offsetY": 0.05,
+        "width": 1.23,
+        "height": 0.21,
+        "tiebreaker": "first"
+      },
+      "type": "number"
+    },
+    {
+      "id": "free_time_days_detention",
+      "anchor": { "match": { "text": "DETENTION", "type": "equals" } },
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": -0.64,
+        "offsetY": 0.07,
+        "width": 1.2,
+        "height": 0.21,
+        "tiebreaker": "first"
+      },
+      "type": "number"
+    }
+  ]
+}
