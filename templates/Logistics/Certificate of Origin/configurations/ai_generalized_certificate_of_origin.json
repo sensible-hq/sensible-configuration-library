@@ -1,0 +1,116 @@
+{
+  "fields": [
+    {
+      "method": {
+        "id": "queryGroup",
+        "confidenceSignals": true,
+        "llmEngine": {
+          "mode": "fullDocument",
+          "provider": "google"
+        },
+        "queries": [
+          {
+            "id": "reference_number",
+            "type": "string",
+            "description": "The certificate or reference number identifying this certificate of origin, usually labeled 'Certificate No', 'Reference No', or near the top. Return the full alphanumeric code including any prefix (e.g. 'CCPIT 113328407'). Preserve the exact characters as printed."
+          },
+          {
+            "id": "exporter_name",
+            "type": "string",
+            "description": "The company name of the exporter / consignor, taken ONLY from the numbered box labeled 'Exporter' or 'Goods consigned from'. A logo or brand mark printed at the top-left corner of the page (e.g. 'ODM GROUP') is NOT the exporter - ignore it. If the Exporter box itself contains no typed company name, return null. Return the company name only, not its address. Normalize comma spacing so that every comma has no space before it and EXACTLY ONE space after it (e.g. 'CO. ,LTD' -> 'CO., LTD'; 'CO.,LTD' -> 'CO., LTD')."
+          },
+          {
+            "id": "exporter_address",
+            "type": "string",
+            "description": "The street/postal address of the exporter, taken from the same 'Exporter' / 'Goods consigned from' box, separate from the company name (and separate from any 'O/B' on-behalf-of company line). Convert the ENTIRE address to Title Case (capitalize the first letter of every word, lowercase the rest; e.g. 'NO. 2 SOUTH ZONE' -> 'No. 2 South Zone'). Include every line/word of the address - do not omit any. Join lines with a comma + single space, and insert a comma between the province/region and the country if missing (e.g. 'GUANGDONG CHINA' -> 'Guangdong, China'). Return null if no clear street address is present or the box is illegible."
+          },
+          {
+            "id": "consignee_name",
+            "type": "string",
+            "description": "The consignee / 'Goods consigned to' party (the foreign buyer) from box 2, including the company name together with its full address as a single string. Do NOT include any certificate title or watermark text such as 'THE PEOPLE'S REPUBLIC OF CHINA' / 'CERTIFICATE OF ORIGIN' that overlaps this box. Join the separate printed lines with a comma + single space, but do NOT insert commas within a line. Remove any space inside an apostrophe (e.g. \"D' IVOIRE\" -> \"D'IVOIRE\"). Preserve the EXACT casing as printed on the document - if the box is printed in ALL CAPS, return it in ALL CAPS; never convert it to Title Case. Return null if illegible."
+          },
+          {
+            "id": "country_of_origin",
+            "type": "string",
+            "description": "The country of origin of the goods, as the common short English country name in title case (e.g. 'China', NOT 'THE PEOPLE'S REPUBLIC OF CHINA')."
+          },
+          {
+            "id": "country_of_destination",
+            "type": "string",
+            "description": "The country of final destination ('country or region of destination' / importing country), as the common short English country name in title case (e.g. 'United Kingdom', 'Cote D'Ivoire')."
+          },
+          {
+            "id": "port_of_loading",
+            "type": "string",
+            "description": "The port of loading: the origin/departure port in the 'Means of transport and route' line, i.e. the place that appears after 'FROM' and before 'TO'. Use title case. If the line names a port plus a transit port (e.g. 'FROM SHENZHEN VIA HONGKONG'), render it as 'Shenzhen / Hong Kong'. Otherwise include the country (e.g. 'Xingang, China')."
+          },
+          {
+            "id": "port_of_discharge",
+            "type": "string",
+            "description": "The port of discharge: the destination port/city in the 'Means of transport and route' line, i.e. the place after 'TO'. Use title case and include its country (e.g. 'Glasgow, United Kingdom'; 'Abidjan, Cote D'Ivoire'). Return null if only a country (no port or city) is given after 'TO'."
+          },
+          {
+            "id": "marks_and_numbers",
+            "type": "string",
+            "description": "The shipping marks and numbers for the shipment. If the 'Marks and numbers' column (box 6) contains marks text, return all of its lines joined top-to-bottom with single spaces, preserving casing (e.g. 'Bar Spoons SKU CODE 12345AB', or 'N/M' for no marks). If that column has no marks, instead return ONLY the single SKU line from the goods description - the line that begins with 'SKU' - returned in full INCLUDING its label (e.g. 'SKU NO. 101066'). Do NOT return a purchase-order (PO) number, item number, or quantity. Do not strip the 'SKU NO.'/'SKU CODE' label."
+          },
+          {
+            "id": "number_of_packages",
+            "type": "number",
+            "description": "The number of packages/cartons from the 'Number and kind of packages' box. Return just the integer count (e.g. for 'FIVE (5) CTNS' return 5)."
+          },
+          {
+            "id": "description_of_goods",
+            "type": "string",
+            "description": "The description of the goods being shipped (the product name), taken from the 'description of goods' column - e.g. 'BAR SPOONS', 'WHITE CANDLE', 'CHRISTMAS TIN BALL BANK'. This is usually printed in ALL CAPS; preserve the exact casing shown in that column. Do not take it from the marks/SKU lines."
+          },
+          {
+            "id": "hs_code",
+            "type": "string",
+            "description": "The H.S. Code (Harmonized System tariff code) for the goods, a 6-10 digit number from the 'H.S Code' column. Return null if not shown."
+          },
+          {
+            "id": "gross_weight",
+            "type": "string",
+            "description": "The gross weight of the shipment ONLY if an explicit weight in mass units (e.g. KG, KGS, LBS) is shown. The column '9. Gross weight or other quantity' often contains a piece/unit count (e.g. '12336PCS') rather than a weight - that is NOT a gross weight. Return null unless a real mass weight is clearly given."
+          },
+          {
+            "id": "weight_unit",
+            "type": "string",
+            "description": "The unit of the gross weight (e.g. KG). Return null unless an explicit gross weight in mass units is shown (see gross_weight). Do not return a unit just because the word appears elsewhere."
+          },
+          {
+            "id": "quantity",
+            "type": "number",
+            "description": "The quantity of goods (units/pieces, e.g. the number before 'PCS' or 'CARTONS'). Return just the integer."
+          },
+          {
+            "id": "invoice_number",
+            "type": "string",
+            "description": "The commercial invoice number associated with the shipment. Return null if not shown."
+          },
+          {
+            "id": "invoice_date",
+            "type": "string",
+            "description": "The date of the commercial invoice, formatted strictly as YYYY-MM-DD (e.g. 'JAN. 08, 2020' -> '2020-01-08'). Return null if not shown."
+          },
+          {
+            "id": "certification_date",
+            "type": "string",
+            "description": "The date the certifying authority certified/signed the document (the date next to the certifying-authority stamp/signature in box 11/12, usually bottom-right), formatted strictly as YYYY-MM-DD (e.g. 'MAY 26, 2020' -> '2020-05-26')."
+          },
+          {
+            "id": "certifying_authority",
+            "type": "string",
+            "description": "The organization that certified/issued this certificate of origin, shown near box 11/12 and on the official red stamp at the bottom. It is almost always EXACTLY ONE of these three Chinese authorities - identify which one and return that exact canonical name (do not transcribe the distorted stamp text verbatim): 'China Customs'; 'China Council for the Promotion of International Trade (CCPIT)'; or 'China Entry-Exit Inspection and Quarantine Bureau'. Clues: a 'CCPIT' reference number or 'China Council for the Promotion of International Trade' text -> the CCPIT name; an 'Entry-Exit Inspection and Quarantine' / 'Inspection and Quarantine Bureau' stamp -> the Quarantine Bureau name; a 'Customs' / 'customs.gov' verification reference -> 'China Customs'."
+          },
+          {
+            "id": "origin_criterion",
+            "type": "string",
+            "description": "The origin criterion code from the 'Origin criterion' column (a short code such as 'P', 'W', or 'WO'). Return just the code without quotes. Return null if not shown."
+          }
+        ]
+      }
+    }
+  ]
+}
