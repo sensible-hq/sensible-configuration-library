@@ -1,0 +1,134 @@
+{
+  "fields": [
+    {
+      "method": {
+        "id": "queryGroup",
+        "queries": [
+          {
+            "id": "invoice_number",
+            "description": "The invoice number or identifier. May appear next to 'Inv.no', 'INV. No.', 'Invoice No. & date', 'Invoice Number', or 'INV. No.'. Return only the number, not the date.",
+            "type": "string"
+          },
+          {
+            "id": "invoice_date",
+            "description": "The date the invoice was issued. May appear next to 'Inv.no & date', 'Invoice No. & date', 'Date', or 'Dt.' Return as a date.",
+            "type": "date"
+          },
+          {
+            "id": "seller_name",
+            "description": "The full legal name of the selling or exporting company. Typically the company letterhead or header at the top of the page, or the value next to 'Exporter'. On a signed invoice, also appears in the 'For <CompanyName>' signature block.",
+            "type": "string"
+          },
+          {
+            "id": "seller_address",
+            "description": "The full address of the selling or exporting company (street, city/town, state/province, country). May appear in the company header or next to 'Exporter'.",
+            "type": "string"
+          },
+          {
+            "id": "buyer_name",
+            "description": "The name of the buying or importing company. May appear next to 'Buyer', 'Consignee', 'Messrs', 'Bill To', or 'To'. If it says 'Same as Consignee', return the consignee name instead.",
+            "type": "string"
+          },
+          {
+            "id": "buyer_address",
+            "description": "The full address of the buying or importing company. May appear next to 'Buyer', 'Consignee', or 'Messrs'.",
+            "type": "string"
+          },
+          {
+            "id": "port_of_loading",
+            "description": "The origin port or place from which goods were shipped. May appear next to 'Port of loading', 'Leaving', 'Port of departure', 'Shipped from', or in transport details as 'FROM <PLACE>'. Return the port or city name only.",
+            "type": "string"
+          },
+          {
+            "id": "port_of_discharge",
+            "description": "The destination port where goods will arrive. May appear next to 'Port of discharge', 'Arriving', 'Final destination', 'Destination', or in transport details as 'TO <PLACE>'. Return the port or city name only.",
+            "type": "string"
+          },
+          {
+            "id": "ship_date",
+            "description": "The date goods were shipped or dispatched. May appear next to 'Shipdate', 'Ship date', 'Date of shipment', or 'Departure date'. Return as a date.",
+            "type": "date"
+          },
+          {
+            "id": "payment_terms",
+            "description": "Payment terms such as 'Net 30', 'T/T in advance', '100% Advance', or 'Wire transfer'. May appear next to 'Payment terms' or 'Terms of payment'. Do NOT include Incoterms (EXW, FOB, CIF, EX-WORK) here — those belong to incoterms field.",
+            "type": "string"
+          },
+          {
+            "id": "incoterms",
+            "description": "International commercial trade terms (Incoterms) such as EXW, FOB, CIF, EX-WORK, CIP, DAP. May appear next to 'Terms of delivery', 'Trade terms', 'Terms of trade', 'Incoterms', or in the total line (e.g. 'TOTAL : EX-WORK'). Return the Incoterm code and delivery location if present (e.g. 'EXW TUMKUR', 'EX-WORK').",
+            "type": "string"
+          },
+          {
+            "id": "currency",
+            "description": "The invoice currency. Return only the 3-letter ISO code (e.g., USD, EUR, GBP). Infer from currency symbols if needed: 'US$' or '$' = USD, '€' = EUR. Check currency symbols used on line item amounts.",
+            "type": "string"
+          },
+          {
+            "id": "country_of_origin",
+            "description": "The country where goods were manufactured or produced. May appear next to 'Country of origin of goods', 'Country of origin', or in a statement of origin such as 'products are of [Country] preferential origin' or 'entirely manufactured in [Country]'.",
+            "type": "string"
+          },
+          {
+            "id": "total_amount",
+            "description": "The final total invoice amount. May appear next to 'Total', 'TOTAL', 'Total::', 'Total:', 'TOTAL : EX-WORK', 'Invoice Total', or 'Amount Due'. Return as a currency value.",
+            "type": "currency"
+          }
+        ]
+      }
+    },
+    {
+      "id": "line_items-temp",
+      "method": {
+        "id": "list",
+        "description": "All line items listed in this commercial invoice. Each item represents one product, part, or goods description with its quantity and pricing.",
+        "properties": [
+          {
+            "id": "description",
+            "description": "Description of the goods, part name, product name, or service. May include part numbers, revision codes, or specifications.",
+            "type": "string"
+          },
+          {
+            "id": "hs_code",
+            "description": "The Harmonized System (HS) tariff code for the goods. Typically a numeric code like '8708.99.9000' or '73269099'. May appear next to 'HS-Code', 'HS Code', 'Commodity Code', 'Tariff Code', or 'HTS'. If multiple HS codes appear for different line items, return the first one.",
+            "type": "string"
+          },
+          {
+            "id": "purchase_order_number",
+            "description": "The buyer's purchase order or PO reference number. May appear next to 'PO no.', 'Purchase Order', 'Cust PO No.', 'Order No.', or 'S/C No.' (Sales Contract number). If multiple PO numbers appear, return the first one.",
+            "type": "string"
+          },
+          {
+            "id": "quantity",
+            "description": "Quantity of units shipped for this line item. May appear in a column labeled 'Quantity', 'Qty', 'Pcs', 'In Nos', or 'Units'.",
+            "type": "number"
+          },
+          {
+            "id": "unit_price",
+            "description": "Price per single unit for this line item. May appear in a column labeled 'Unit Cost', 'Rate', 'Unit Price', 'Price/Unit', or 'USD/pc.'.",
+            "type": "currency"
+          },
+          {
+            "id": "extended_price",
+            "description": "Total price for this line item (quantity × unit price). May appear in a column labeled 'Extended Cost', 'Amount', 'Ext. Price', 'Total', or 'Line Total'.",
+            "type": "currency"
+          }
+        ]
+      }
+    },
+    {
+      "id": "line_items",
+      "method": {
+        "id": "zip",
+        "source_ids": ["line_items-temp"]
+      }
+    },
+    {
+      "id": "clean",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": ["line_items-temp"]
+      }
+    }
+  ]
+}

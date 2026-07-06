@@ -1,0 +1,180 @@
+{
+  "fingerprint": {
+    "tests": [
+      {
+        "text": "Technology & Cyber Insurance Quote",
+        "type": "includes"
+      },
+      {
+        "text": "At-bay",
+        "type": "includes"
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "quote_number",
+      "anchor": "Quote Number:",
+      "method": { "id": "row", "position": "right", "tiebreaker": "first" }
+    },
+    {
+      "id": "quote_issuance_date",
+      "anchor": "Quote Issuance Date:",
+      "method": { "id": "row", "position": "right", "tiebreaker": "first" },
+      "type": "date"
+    },
+    {
+      "id": "quote_issuance_date",
+      "anchor": "Quote Issuance Date:",
+      "method": { "id": "row", "position": "right", "tiebreaker": "first" },
+      "type": "string"
+    },
+    {
+      "id": "quote_expiration_date",
+      "anchor": "Quote Expiration Date:",
+      "method": { "id": "row", "position": "right", "tiebreaker": "first" },
+      "type": "date"
+    },
+    {
+      "id": "quote_expiration_date",
+      "anchor": "Quote Expiration Date:",
+      "method": { "id": "row", "position": "right", "tiebreaker": "first" },
+      "type": "string"
+    },
+    {
+      "id": "insurer_name",
+      "anchor": {
+        "match": { "text": "Authorized Signature:", "type": "startsWith" }
+      },
+      "method": { "id": "label", "position": "right" },
+      "type": "string"
+    },
+    {
+      "id": "named_insured",
+      "anchor": "ITEM 1: Named Insured:",
+      "method": { "id": "row", "position": "right", "tiebreaker": "first" }
+    },
+    {
+      "id": "broker_name",
+      "anchor": "not found, not configured",
+      "method": { "id": "passthrough" }
+    },
+    {
+      "id": "policy_effective_date",
+      "anchor": {
+        "match": { "text": "Effective Date:", "type": "startsWith" },
+        "start": "ITEM 2: Policy Period:"
+      },
+      "method": { "id": "row", "position": "right", "tiebreaker": "first" },
+      "type": "date"
+    },
+    {
+      "id": "policy_expiration_date",
+      "anchor": {
+        "match": { "text": "Expiration Date:", "type": "startsWith" },
+        "start": "ITEM 2: Policy Period:"
+      },
+      "method": { "id": "row", "position": "right", "tiebreaker": "first" },
+      "type": "date"
+    },
+    {
+      "id": "annual_premium",
+      "anchor": "ITEM 3: Policy Premium:",
+      "method": { "id": "row", "position": "right", "tiebreaker": "first" },
+      "type": "currency"
+    },
+    {
+      "id": "commission_pct",
+      "anchor": "not found, not configured",
+      "method": { "id": "passthrough" }
+    },
+    {
+      "id": "aggregate_limit",
+      "anchor": "ITEM 4: Aggregate Limit of Insurance:",
+      "method": { "id": "row", "position": "right", "tiebreaker": "first" },
+      "type": "currency"
+    },
+    {
+      "id": "breach_response_costs_limit",
+      "anchor": {
+        "match": { "text": "Event Response and Management", "type": "includes" }
+      },
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "currency"
+    },
+    {
+      "id": "business_interruption_limit",
+      "anchor": {
+        "match": { "text": "Direct Business Interruption", "type": "includes" }
+      },
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "currency"
+    },
+    {
+      "id": "cyber_extortion_limit",
+      "anchor": {
+        "match": { "text": "D.1", "type": "includes" },
+        "start": "ITEM 6: Insuring Agreements"
+      },
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "currency"
+    },
+    {
+      "id": "social_engineering_limit",
+      "anchor": {
+        "match": { "text": "E.1", "type": "includes" },
+        "start": "ITEM 6: Insuring Agreements"
+      },
+      "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+      "type": "currency"
+    },
+    {
+      "id": "waiting_period_hours",
+      "anchor": "System Failure Waiting Period:",
+      "method": { "id": "row", "position": "right", "tiebreaker": "first" },
+      "type": "number"
+    },
+    {
+      "id": "retroactive_date",
+      "anchor": "Cyber & Media Retroactive Date:",
+      "method": { "id": "row", "position": "right", "tiebreaker": "first" },
+      "type": "string"
+    },
+    {
+      "id": "insuring_agreements",
+      "type": "sections",
+      "range": {
+        "anchor": {
+          "match": { "type": "regex", "pattern": "^[A-Z]\\.\\d+\\." },
+          "start": { "text": "ITEM 6", "type": "startsWith" },
+          "end": { "text": "ITEM 7", "type": "startsWith" }
+        }
+      },
+      "fields": [
+        {
+          "id": "name",
+          "anchor": {
+            "match": { "type": "regex", "pattern": "^[A-Z]\\.\\d+\\." }
+          },
+          "method": { "id": "passthrough" }
+        },
+        {
+          "id": "sub_limit",
+          "anchor": {
+            "match": { "type": "regex", "pattern": "^[A-Z]\\.\\d+\\." }
+          },
+          "method": { "id": "row", "position": "right", "tiebreaker": 0 },
+          "type": "currency"
+        },
+        {
+          "id": "retention",
+          "anchor": {
+            "match": { "type": "regex", "pattern": "^[A-Z]\\.\\d+\\." }
+          },
+          "method": { "id": "row", "position": "right", "tiebreaker": 1 },
+          "type": "currency"
+        }
+      ]
+    }
+  ]
+}
