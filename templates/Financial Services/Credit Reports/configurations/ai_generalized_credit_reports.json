@@ -1,0 +1,282 @@
+{
+  "preprocessors": [
+    {
+      "type": "ocr",
+      "match": {
+        "type": "equals",
+        "text": "credit score analysis"
+      }
+    }
+  ],
+  "fields": [
+    {
+      "method": {
+        "id": "queryGroup",
+        "queries": [
+          {
+            "id": "report_number",
+            "description": "the unique credit report number or report identifier (labels vary: 'Report Number', 'Report number', 'report id'). Return the identifier value only, not any client/member code. Return null if none is shown.",
+            "type": "string"
+          },
+          {
+            "id": "report_date",
+            "description": "the date the credit report was pulled, reported, or generated (labels vary: 'Reported Date', 'Date Pulled', 'File Pulled', or a date printed in the report header). Return the report date, not a date of birth or an account date.",
+            "type": "date"
+          }
+        ],
+        "searchBySummarization": "page",
+        "confidenceSignals": false
+      }
+    },
+
+    {
+      "method": {
+        "id": "queryGroup",
+        "queries": [
+          {
+            "id": "consumer_name",
+            "description": "the full name of the primary consumer (the main credit subject named at the top of the report). If this is a joint report covering two people, return only the first/primary consumer's name. Do not return a law firm, preparer, or bureau name.",
+            "type": "string"
+          },
+          {
+            "id": "consumer_ssn",
+            "description": "the primary consumer's Social Security Number. It is almost always masked (e.g. 'XXX-XX-1234' or 'XXX-XX-9820'). Return it exactly as shown including masking characters. If two consumers are listed, return the primary/first consumer's SSN.",
+            "type": "string"
+          },
+          {
+            "id": "consumer_dob",
+            "description": "the primary consumer's date of birth (labels vary: 'DOB', 'Date of Birth', 'Year of birth'). If only a year is shown, return the year. Return null if not present.",
+            "type": "date"
+          }
+        ],
+        "searchBySummarization": "page",
+        "confidenceSignals": false
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "queries": [
+          {
+            "id": "current_address",
+            "description": "the most recently reported current address of the primary consumer. If multiple addresses are listed, choose the current or most recently reported one. Return the full street address, city, state, and zip on one line.",
+            "type": "string"
+          }
+        ],
+        "searchBySummarization": "page",
+        "confidenceSignals": false
+      }
+    },
+    {
+      "id": "credit_score_source",
+      "anchor": {
+        "start": {
+          "text": "STRETTO",
+          "type": "equals",
+          "isCaseSensitive": true
+        },
+        "match": {
+          "text": "credit score analysis",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "row",
+        "sortLines": "readingOrderLeftToRight",
+        "tiebreaker": -1
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "queries": [
+          {
+            "id": "credit_score",
+            "description": "the primary numeric credit score value (a 3-digit number, typically 300-850; may be labeled 'Credit Score', 'Current Score', or 'Generic Risk Score'). If multiple scores appear, return the primary consumer's current score. If the report shows no numeric score, return null.",
+            "type": "number"
+          },
+          {
+            "id": "credit_score_model",
+            "description": "the name/version of the credit scoring model used (e.g. 'FICO', 'FICO 8', 'VantageScore 3.0', 'Generic Risk Score'). Return null if not stated.",
+            "type": "string"
+          },
+          {
+            "id": "credit_score_source",
+            "description": "the credit bureau that provided the score: TransUnion (TU), Equifax (EQ), or Experian (EX). Infer from the report header or score labeling if not explicitly stated next to the score. Return null if unclear.",
+            "type": "string"
+          }
+        ],
+        "searchBySummarization": "page",
+        "confidenceSignals": false
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "queries": [
+          {
+            "id": "total_accounts",
+            "description": "the total number of accounts on file across all account types. Look for an accounts summary section that totals the account count. Return a single integer. Return null if no total is given.",
+            "type": "number"
+          },
+          {
+            "id": "total_balance",
+            "description": "the total balance across all accounts (sum of remaining balances). Look for a summary row labeled like 'Total of Balances Remaining' or a totals line. Return null if no total is given.",
+            "type": "currency"
+          },
+          {
+            "id": "total_monthly_payments",
+            "description": "the total of all monthly minimum payments across accounts (labels vary: 'Total Monthly Payments'). Return the summary total, not a single account's payment. Return null if no total is given.",
+            "type": "currency"
+          }
+        ],
+        "searchBySummarization": "page",
+        "confidenceSignals": false
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "queries": [
+          {
+            "id": "past_due_accounts_count",
+            "description": "the number of accounts that currently have a past-due balance (labels vary: 'Past Due Accounts'). Return a single integer. Return null if not stated.",
+            "type": "number"
+          },
+          {
+            "id": "total_past_due_amount",
+            "description": "the total dollar amount past due across all accounts (labels vary: 'Total Amounts Past Due'). Return the summary total. Return null if not stated.",
+            "type": "currency"
+          },
+          {
+            "id": "delinquencies_30_60_90_day",
+            "description": "the total count of late payments / delinquencies across the 30-, 60-, and 90-day buckets combined. If broken out by bucket, sum them. Return a single integer. Return null if not stated.",
+            "type": "number"
+          }
+        ],
+        "searchBySummarization": "page",
+        "confidenceSignals": false
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "queries": [
+          {
+            "id": "bankruptcies",
+            "description": "the number of bankruptcy records (public records) on the report. Return 0 if the report explicitly shows none, null if not addressed.",
+            "type": "number"
+          },
+          {
+            "id": "collections_count",
+            "description": "the number of collection accounts on the report (labels vary: 'Collection', '3rd Party Collections'). Return a single integer. Return null if not stated.",
+            "type": "number"
+          },
+          {
+            "id": "length_of_credit_history",
+            "description": "the length of credit history or age of the oldest credit account (labels vary: 'Length of Credit History'). Return the value as shown (e.g. '15 years'). Return null if not stated.",
+            "type": "string"
+          }
+        ],
+        "searchBySummarization": "page",
+        "confidenceSignals": false
+      }
+    },
+    {
+      "id": "_fraud_alerts",
+      "type": "table",
+
+      "method": {
+        "id": "list",
+        "llmEngine": {
+          "mode": "thorough",
+          "provider": "anthropic"
+        },
+        "description": "fraud alerts, security freezes, and identity-verification flags on the report (e.g. FraudIQ identity scans, OFAC alerts, address discrepancy indicators, military lending act flags, security freezes).",
+        "properties": [
+          {
+            "id": "alert",
+            "description": "the text or name of a single fraud alert, security freeze, or identity flag. Return one entry per distinct alert."
+          }
+        ],
+        "searchBySummarization": "page"
+      }
+    },
+    {
+      "id": "fraud_alerts",
+      "method": {
+        "id": "zip",
+        "source_ids": ["_fraud_alerts"]
+      }
+    },
+    {
+      "id": "_tradelines",
+      "type": "table",
+      "method": {
+        "id": "list",
+        "llmEngine": {
+          "mode": "thorough",
+          "provider": "anthropic"
+        },
+        "description": "the individual credit account tradelines listed on the report. Each tradeline is one account (from sections such as accounts with balances, potentially negative items, or accounts in good standing).",
+        "properties": [
+          {
+            "id": "creditor",
+            "description": "the creditor or account/company name for this tradeline",
+            "type": "string"
+          },
+          {
+            "id": "balance",
+            "description": "the current balance owed on this account",
+            "type": "currency"
+          },
+          {
+            "id": "status",
+            "description": "the account status for this tradeline (e.g. Open, Current, Closed, Collection, Past Due)",
+            "type": "string"
+          },
+          {
+            "id": "date_opened",
+            "description": "the date this account was opened",
+            "type": "date"
+          }
+        ],
+        "searchBySummarization": "page"
+      }
+    },
+    {
+      "id": "tradelines",
+      "method": {
+        "id": "zip",
+        "source_ids": ["_tradelines"]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "queries": [
+          {
+            "id": "report_number",
+            "description": "report number",
+            "type": "string"
+          },
+          {
+            "id": "report_date",
+            "description": "report date",
+            "type": "date"
+          }
+        ],
+        "confidenceSignals": false
+      }
+    },
+    {
+      "id": "suppress_temps",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": {
+          "pattern": "^_.+$"
+        }
+      }
+    }
+  ]
+}
