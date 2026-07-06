@@ -23,6 +23,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [Dental Explanation of Benefits](#dental-explanation-of-benefits)
 - [Explanation of Benefits](#explanation-of-benefits)
 - [Lab Reports](#lab-reports)
+- [Patient Intake Form](#patient-intake-form)
 - [Prior Authorization Form](#prior-authorization-form)
 - [Summary of Benefits and Coverage (SBCs)](#summary-of-benefits-and-coverage-sbcs)
 
@@ -389,6 +390,10 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 #### Summary of Benefits and Coverage (SBCs)
 
 - [AI Generalized SBC](<./templates/Healthcare/SBCs/configurations/ai_generalized_sbc.json>)
+
+#### Patient Intake Form
+
+- [AI Generalized Patient Intake Form](<./templates/Healthcare/Patient Intake Form/configurations/ai_generalized_patient_intake_form.json>)
 
 #### Prior Authorization Form
 
