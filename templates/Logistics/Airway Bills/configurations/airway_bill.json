@@ -1,0 +1,468 @@
+{
+  "fingerprint": {
+    "tests": [
+      {
+        "match": [
+          {
+            "text": "Air Waybill",
+            "type": "includes"
+          }
+        ],
+        "page": "first"
+      }
+    ]
+  },
+  "fields": [
+    {
+      "id": "awb_number",
+      "anchor": {
+        "match": {
+          "pattern": "\\d{3}-\\d{4}\\s\\d{4}",
+          "type": "regex"
+        }
+      },
+      "method": {
+        "id": "passthrough",
+        "wordFilters": ["WO", "W1", "W2", "W3"]
+      },
+      "type": "string"
+    },
+    {
+      "id": "awb_number",
+      "anchor": {
+        "match": {
+          "pattern": "^\\d{3}-\\d{8}$",
+          "type": "regex"
+        }
+      },
+      "method": {
+        "id": "passthrough"
+      },
+      "type": "string"
+    },
+    {
+      "id": "shipper_name",
+      "anchor": {
+        "match": {
+          "text": "Shipper's Name and Address",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": -1.02,
+        "offsetY": 0.12,
+        "width": 1.98,
+        "height": 0.2
+      },
+      "type": "string"
+    },
+    {
+      "id": "shipper_name",
+      "anchor": {
+        "match": {
+          "text": "Shipper's Name and Address",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": -1.02,
+        "offsetY": 0.32,
+        "width": 1.98,
+        "height": 0.14
+      },
+      "type": "string"
+    },
+    {
+      "id": "shipper_address",
+      "anchor": {
+        "match": {
+          "text": "Shipper's Name and Address",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": -1.02,
+        "offsetY": 0.36,
+        "width": 2.31,
+        "height": 0.55
+      },
+      "type": "string"
+    },
+    {
+      "id": "consignee_name",
+      "anchor": {
+        "match": {
+          "text": "Consignee's Name and Address",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "right",
+        "offsetX": -1.14,
+        "offsetY": 0.13,
+        "width": 1.91,
+        "height": 0.38
+      },
+      "type": "string"
+    },
+    {
+      "id": "consignee_address",
+      "anchor": {
+        "match": {
+          "text": "Consignee's Name and Address",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.3,
+        "offsetY": 0.4,
+        "width": 1.85,
+        "height": 0.6
+      },
+      "type": "string"
+    },
+    {
+      "id": "issuing_carrier",
+      "anchor": {
+        "match": {
+          "text": "Air Waybill",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "above",
+        "offsetX": 0.5,
+        "offsetY": -0.15,
+        "width": 2.0,
+        "height": 0.12
+      },
+      "type": "string"
+    },
+    {
+      "id": "issuing_carrier",
+      "anchor": {
+        "match": {
+          "text": "Issued by",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "below",
+        "offsetY": 0.05,
+        "offsetX": -0.5,
+        "width": 3.5,
+        "height": 0.25
+      },
+      "type": "string"
+    },
+    {
+      "id": "airport_of_departure",
+      "anchor": {
+        "match": {
+          "text": "Airport of Departure",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0.05,
+        "offsetY": 0.11,
+        "width": 1.75,
+        "height": 0.18
+      },
+      "type": "string"
+    },
+    {
+      "id": "airport_of_destination",
+      "anchor": {
+        "match": {
+          "text": "Airport of Destination",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.45,
+        "offsetY": 0.04,
+        "width": 1.6,
+        "height": 0.2
+      },
+      "type": "string"
+    },
+    {
+      "id": "number_of_pieces",
+      "anchor": {
+        "match": {
+          "text": "RCP",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "below",
+        "offsetY": 0.05,
+        "offsetX": -0.3,
+        "width": 0.55,
+        "height": 0.3
+      },
+      "type": "number"
+    },
+    {
+      "id": "gross_weight",
+      "anchor": {
+        "match": {
+          "text": "lb",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "below",
+        "offsetY": 0.1,
+        "offsetX": -0.6,
+        "width": 0.75,
+        "height": 0.25
+      },
+      "type": "number"
+    },
+    {
+      "id": "weight_unit",
+      "anchor": {
+        "match": {
+          "text": "lb",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.02,
+        "offsetY": 0.23,
+        "width": 0.17,
+        "height": 0.3
+      },
+      "type": "string"
+    },
+    {
+      "id": "weight_unit",
+      "method": {
+        "id": "constant",
+        "value": "K"
+      },
+      "type": "string"
+    },
+    {
+      "id": "chargeable_weight",
+      "anchor": {
+        "match": {
+          "text": "Chargeable",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.3,
+        "offsetY": 0.25,
+        "width": 0.75,
+        "height": 0.4
+      },
+      "type": "number"
+    },
+    {
+      "id": "rate_per_kg",
+      "anchor": {
+        "match": {
+          "text": "Charge",
+          "type": "equals"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "below",
+        "offsetY": 0.05,
+        "offsetX": -0.5,
+        "width": 0.75,
+        "height": 0.25
+      },
+      "type": "currency"
+    },
+    {
+      "id": "total_charges",
+      "anchor": {
+        "match": {
+          "text": "Total Collect",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "below",
+        "offsetX": 0.1,
+        "offsetY": -0.02,
+        "width": 0.85,
+        "height": 0.2
+      },
+      "type": "currency"
+    },
+    {
+      "id": "total_charges",
+      "anchor": {
+        "match": {
+          "text": "Total Prepaid",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "below",
+        "offsetY": 0.02,
+        "offsetX": -0.5,
+        "width": 1.5,
+        "height": 0.25
+      },
+      "type": "currency"
+    },
+    {
+      "id": "nature_and_quantity_of_goods",
+      "anchor": {
+        "match": {
+          "text": "Nature and Quantity of Goods",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": -0.47,
+        "offsetY": 0.3,
+        "width": 2.0,
+        "height": 1.1
+      },
+      "type": "string"
+    },
+    {
+      "id": "declared_value_for_customs",
+      "anchor": {
+        "match": {
+          "text": "Declared Value for Custom",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "below",
+        "offsetY": 0.04,
+        "offsetX": -0.5,
+        "width": 1.5,
+        "height": 0.2
+      },
+      "type": "string"
+    },
+    {
+      "id": "declared_value_for_carriage",
+      "anchor": {
+        "match": {
+          "text": "Declared Value for Carriage",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "below",
+        "offsetY": 0.04,
+        "offsetX": -0.6,
+        "width": 1.5,
+        "height": 0.2
+      },
+      "type": "string"
+    },
+    {
+      "id": "_collect_amount",
+      "anchor": {
+        "match": {
+          "text": "Total Collect",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "below",
+        "offsetX": 0.1,
+        "offsetY": -0.02,
+        "width": 0.85,
+        "height": 0.2
+      },
+      "type": "currency"
+    },
+    {
+      "id": "date_of_issue",
+      "anchor": {
+        "match": {
+          "text": "Executed on",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "region",
+        "start": "left",
+        "offsetX": 0.2,
+        "offsetY": -0.35,
+        "width": 0.85,
+        "height": 0.25
+      },
+      "type": "date"
+    },
+    {
+      "id": "notify_party_name",
+      "anchor": {
+        "match": {
+          "text": "NOTIFY PARTY:",
+          "type": "startsWith"
+        }
+      },
+      "method": {
+        "id": "row",
+        "position": "right",
+        "includeAnchor": true,
+        "wordFilters": ["NOTIFY", "PARTY:"]
+      },
+      "type": "string"
+    }
+  ],
+  "computed_fields": [
+    {
+      "id": "payment_method",
+      "method": {
+        "id": "customComputation",
+        "jsonLogic": {
+          "if": [
+            { "!!": { "var": "_collect_amount.value" } },
+            "Collect",
+            "Prepaid"
+          ]
+        }
+      }
+    },
+    {
+      "id": "suppress_collect_amount",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": ["_collect_amount"]
+      }
+    }
+  ]
+}

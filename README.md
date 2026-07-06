@@ -38,6 +38,7 @@ SenseML is Sensible's document query language. SenseML provides a set of [primit
 - [Policy Declaration Pages](#policy-declaration-pages)
 
 ### [Logistics](#logistics-1)
+- [Airway Bills](#airway-bills)
 - [Certificate of Origin](#certificate-of-origin)
 - [Rate Confirmations](#rate-confirmations)
 
@@ -246,6 +247,10 @@ Find the ACORD year/month at the bottom left corner of each ACORD page. Often th
 - [w-9 (2018)](<./templates/Tax Forms/W9s/configurations/w9_2018.json>)
 
 ### Logistics
+
+#### Airway Bills
+
+- [Airway Bill](<./templates/Logistics/Airway Bills/configurations/airway_bill.json>)
 
 #### Rate Confirmations
 
