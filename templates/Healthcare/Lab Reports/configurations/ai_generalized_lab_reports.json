@@ -1,0 +1,167 @@
+{
+  "fields": [
+    {
+      "method": {
+        "id": "queryGroup",
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "lab_id",
+            "type": "string",
+            "description": "The lab identifier labeled 'Lab Id' in the Sample Information block of the page header (for example '02232160XXXX'). Return the value exactly as printed."
+          },
+          {
+            "id": "patient_name",
+            "type": "string",
+            "description": "The patient's full name labeled 'Name' in the Patient Information block of the page header (for example 'Lyubochka Svetka')."
+          },
+          {
+            "id": "patient_dob",
+            "type": "date",
+            "description": "The patient's date of birth. It appears in the Patient Information block of the page header, on the same line as the Sex/Age (for example 'Male / 41 Y   01-Feb-1982'), printed in DD-Mon-YYYY format. Convert it and return it strictly in YYYY-MM-DD format (e.g. '1982-02-01')."
+          },
+          {
+            "id": "patient_sex",
+            "type": "string",
+            "description": "The patient's sex/gender from the 'Sex/Age' value in the Patient Information block (for example from 'Male / 41 Y' return 'Male'). Return only the sex word, not the age."
+          },
+          {
+            "id": "collection_date",
+            "type": "date",
+            "description": "The sample collection date, labeled 'Collected on' in the Sample Information block of the page header (for example '20-Feb-2023 08:53', in DD-Mon-YYYY format). Ignore the time. Return strictly in YYYY-MM-DD format (e.g. '2023-02-20')."
+          },
+          {
+            "id": "registration_date",
+            "type": "date",
+            "description": "The registration date, labeled 'Registration On' in the Sample Information block of the page header (for example '20-Feb-2023 09:10', in DD-Mon-YYYY format). Ignore the time. Return strictly in YYYY-MM-DD format (e.g. '2023-02-20')."
+          },
+          {
+            "id": "approved_date",
+            "type": "string",
+            "description": "The report approval date, labeled 'Approved on' in the Client/Location Information block of the page header (for example '20-Feb-2023 11:29', in DD-Mon-YYYY format). Ignore the time and any 'Status:' text after it. Return strictly in YYYY-MM-DD format (e.g. '2023-02-20')."
+          },
+          {
+            "id": "referring_physician",
+            "type": "string",
+            "description": "The referring physician / doctor who referred the patient, labeled 'Ref. By' in the Patient Information block. If this field is blank or not present, return null."
+          },
+          {
+            "id": "client_name",
+            "type": "string",
+            "description": "The client name, labeled 'Client Name' in the Client/Location Information block (for example 'Sterling Accuris Buddy')."
+          },
+          {
+            "id": "report_status",
+            "type": "string",
+            "description": "The report status, shown as 'Status:' next to 'Approved on' in the Client/Location Information block (for example 'Final')."
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "blood_group",
+            "type": "string",
+            "description": "The patient's ABO blood group. Locate the page whose centered title bar reads 'Blood Group'; its table has exactly two rows, 'ABO Type' and 'Rh (D) Type'. Return the Result-column value of the 'ABO Type' row (one of 'A', 'B', 'AB', or 'O'). Return only the blood-group letter(s), nothing else."
+          },
+          {
+            "id": "rh_type",
+            "type": "string",
+            "description": "The patient's Rhesus (Rh) factor. Locate the page whose centered title bar reads 'Blood Group'; its table has exactly two rows, 'ABO Type' and 'Rh (D) Type'. Return the Result-column value of the 'Rh (D) Type' row (for example 'Positive' or 'Negative')."
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "approving_pathologist",
+            "type": "string",
+            "description": "The name of the approving pathologist. At the bottom of each report page there are three signatures in a row. The LEFT-most signature has the title 'M.D. Pathology' (or 'M.D.(Path)' / 'Hematopathologist') printed beneath the name; the middle and right signatures are titled 'MD Path'. Return ONLY the name printed above the 'M.D. Pathology' title on the first page (for example 'DR.TEJASWINI DHOTE'). Return a single name; do not list the other two signatories."
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "sample_type",
+            "type": "string",
+            "description": "The complete set of sample/specimen types used across this report. The page header has a 'Sample Type' field whose value changes from page to page. You MUST read the 'Sample Type' value on EVERY page and combine them into the complete distinct set. There are exactly four distinct specimen types in this report: 'EDTA Blood' (e.g. the Complete Blood Count and HB Electrophoresis pages), 'Serum' (e.g. the Lipid Profile and chemistry pages), 'Fluoride plasma' (the Biochemistry / Fasting Blood Sugar page), and 'Urine' (the Microalbumin and Urine Routine pages). Return all four as a comma-separated list in this exact order: 'EDTA Blood, Serum, Fluoride plasma, Urine'. Never return fewer than what appears across the pages."
+          }
+        ]
+      }
+    },
+    {
+      "method": {
+        "id": "queryGroup",
+        "confidenceSignals": true,
+        "queries": [
+          {
+            "id": "panel_names",
+            "type": "string",
+            "description": "The complete ordered list of every test-panel / report-section title in this multi-page report. Each panel sits on its own page (occasionally two panels share a page) with a centered title bar above its result table. Scan EVERY page from first to last and include EVERY panel title - do not summarize or return only a subset. The full ordered set is: Complete Blood Count, Blood Group, Lipid Profile, Biochemistry (Fasting Blood Sugar), HbA1c (Glycosylated Hemoglobin), Thyroid Function Test, Biochemistry (Microalbumin), Protein, Bilirubin, Iron Studies, Immunoassay (Homocysteine), Biochemistry (Renal/Liver/Electrolytes), Immunoassay (25(OH) Vitamin D), Immunoassay (Vitamin B12), Immunoassay (PSA), Immunoassay (IgE), Serology (HIV/HBsAg), HB Electrophoresis By HPLC, Urine Routine. Return all 19 as a single comma-separated string in that order."
+          }
+        ]
+      }
+    },
+    {
+      "id": "_test_results",
+      "method": {
+        "id": "list",
+        "description": "Every individual test result row across all panels/tables in the entire report. Each row is one analyte/parameter from a 'Test | Result | Unit | Biological Ref. Interval' table (including sub-tables such as Protein and Bilirubin, and qualitative rows such as Blood Group ABO/Rh and Urine Routine parameters). Capture one item per test row; skip panel title bars and column headers.",
+        "properties": [
+          {
+            "id": "test_name",
+            "type": "string",
+            "description": "The name of the test/analyte/parameter from the 'Test' column (for example 'Hemoglobin', 'RBC Count', 'Cholesterol', 'ABO Type', 'pH')."
+          },
+          {
+            "id": "result_value",
+            "type": "string",
+            "description": "The measured result from the 'Result' column, exactly as printed (for example '14.5', '189.0', 'Positive', 'Present (+)'). Do NOT include the high/low flag letter here."
+          },
+          {
+            "id": "unit",
+            "type": "string",
+            "description": "The unit of measurement from the 'Unit' column (for example 'g/dL', 'mg/dL', '%', 'mmol/L'). If no unit is printed, return null."
+          },
+          {
+            "id": "reference_range",
+            "type": "string",
+            "description": "The reference/normal range from the 'Biological Ref. Interval' column, as printed (for example '13.0-16.5', '<200', '74 - 106'). If none is printed, return null."
+          },
+          {
+            "id": "flag",
+            "type": "string",
+            "description": "The abnormality flag for the result, if any: 'H' (printed as 'H' before the result) means high, 'L' means low, otherwise normal. Return 'high', 'low', or 'normal'."
+          }
+        ]
+      }
+    },
+    {
+      "id": "test_results",
+      "method": {
+        "id": "zip",
+        "source_ids": ["_test_results"]
+      }
+    },
+    {
+      "id": "suppress_test_results",
+      "method": {
+        "id": "suppressOutput",
+        "source_ids": ["_test_results"]
+      }
+    }
+  ]
+}
