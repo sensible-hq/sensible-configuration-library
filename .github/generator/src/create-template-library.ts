@@ -10,7 +10,10 @@ import {
 } from "./types";
 
 const REPO_NAME = "sensible-configuration-library";
-const DOWNLOAD_URL_PREFIX = `https://raw.githubusercontent.com/sensible-hq/${REPO_NAME}/main`;
+// Base for every library asset (manifest, configs, ref-doc PDFs, thumbnails).
+// The CI workflow syncs this repo's templates/ tree and the manifest into this
+// Cloudflare-fronted bucket; consumers resolve each asset against this base.
+const DOWNLOAD_URL_PREFIX = "https://template-library.sensible.so";
 
 export async function createTemplateLibrary() {
   const root = path.join(__dirname, "..", "..", "..", "templates");
@@ -24,7 +27,7 @@ export async function createTemplateLibrary() {
   await Promise.all(
     directories.map(async (dirent) => {
       const subgroup = await getLibrarySubGroup(realPath(dirent));
-      if ('children' in subgroup) {
+      if ("children" in subgroup) {
         templateLibrary.library[dirent.name] = subgroup;
       }
     }),
@@ -163,5 +166,5 @@ function getDocPath(dirent: Dirent): string {
 }
 
 function realPath(dirent: Dirent) {
-  return `${dirent.parentPath}/${dirent.name}`
+  return `${dirent.parentPath}/${dirent.name}`;
 }
