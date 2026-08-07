@@ -1,38 +1,19 @@
 #!/usr/bin/env -S npx ts-node -T
 
-import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { createHash } from "crypto";
+import { mkdirSync, writeFileSync } from "fs";
+import path from "path";
 import { createTemplateLibrary } from "./create-template-library";
 
-const targets: Record<string, readonly string[]> = {
-  "us-west-2": ["prod", "dev", "exp1"],
-  "eu-west-3": ["prod"],
-  "ca-central-1": ["prod"],
-} as const;
-
-async function uploadLibrary(library: string) {
-  const ContentMD5 = createHash("md5").update(library).digest("base64");
-  await Promise.all(
-    Object.entries(targets).flatMap(async ([region, stages]) => {
-      const s3 = new S3Client({ region });
-      return stages.map(async (stage) =>
-        s3.send(
-          new PutObjectCommand({
-            Bucket: `sensible-so-utility-bucket-${stage}-${region}`,
-            Key: "CONFIG_LIBRARY/manifest_v3.json",
-            Body: library,
-            ContentMD5,
-            ContentType: "application/json",
-          }),
-        ),
-      );
-    }),
-  );
-}
+// Repo-root output/ (gitignored). The CI workflow uploads this manifest and
+// syncs the templates/ tree to the config-library bucket.
+const OUTPUT_DIR = path.join(__dirname, "..", "..", "..", "output");
+const MANIFEST_OUTPUT_PATH = path.join(OUTPUT_DIR, "manifest_v3.json");
 
 async function main() {
   const library = await createTemplateLibrary();
-  await uploadLibrary(library);
+  mkdirSync(OUTPUT_DIR, { recursive: true });
+  writeFileSync(MANIFEST_OUTPUT_PATH, library);
+  console.log(`Wrote manifest to ${MANIFEST_OUTPUT_PATH}`);
 }
 
 main().catch((error) => {
